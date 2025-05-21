@@ -1,7 +1,5 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": "介绍",
   "about": {
     "title": "About",
     "type": "page"
