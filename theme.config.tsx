@@ -39,7 +39,7 @@ const LogoComponent = () => {
 const config: DocsThemeConfig = {
   logo: <LogoComponent />,
   project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+    link: 'https://github.com/EriseHe/topo-book',
   },
   docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
   footer: {
