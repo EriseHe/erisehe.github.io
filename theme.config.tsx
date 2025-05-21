@@ -30,7 +30,7 @@ const LogoComponent = () => {
             transition: 'filter 0.3s ease'
           }} 
         />
-        <span style={{ fontFamily: "'Century Schoolbook', serif" }}>人工主体補完計画</span>
+        <span style={{ fontFamily: "'Century Schoolbook', serif", fontSize: '1.5em' }}>人工主体補完計画</span>
       </span>
     </>
   )
