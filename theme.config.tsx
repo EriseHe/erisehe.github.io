@@ -1,13 +1,43 @@
 import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
+import { DocsThemeConfig, useTheme } from 'nextra-theme-docs'
+
+// Add CSS for the Century Schoolbook font
+const fontStyles = `
+@font-face {
+  font-family: 'Century Schoolbook';
+  src: url('/static/fonts/EVA/Century-Schoolbook.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+`;
+
+const LogoComponent = () => {
+  const { theme } = useTheme()
+  const isDarkTheme = theme === 'dark'
+  
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
+      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <img 
+          src="/static/topo.png" 
+          alt="Topology logo" 
+          width="24" 
+          height="24" 
+          style={{ 
+            filter: isDarkTheme ? 'invert(1)' : 'none',
+            transition: 'filter 0.3s ease'
+          }} 
+        />
+        <span style={{ fontFamily: "'Century Schoolbook', serif" }}>人工主体補完計画</span>
+      </span>
+    </>
+  )
+}
 
 const config: DocsThemeConfig = {
-  logo: (
-    <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <img src="/static/topo.png" alt="Topology logo" width="24" height="24" />
-      <span>人工主体補完計画</span>
-    </span>
-  ),
+  logo: <LogoComponent />,
   project: {
     link: 'https://github.com/shuding/nextra-docs-template',
   },
