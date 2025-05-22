@@ -23,8 +23,8 @@ const LogoComponent = () => {
         <img 
           src="/static/topo.png" 
           alt="Topology logo" 
-          width="24" 
-          height="24" 
+          width="30" 
+          height="30" 
           style={{ 
             filter: isDarkTheme ? 'invert(1)' : 'none',
             transition: 'filter 0.3s ease'
