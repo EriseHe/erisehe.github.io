@@ -42,20 +42,16 @@ const config: DocsThemeConfig = {
     link: 'https://github.com/EriseHe/topo-book',
   },
   docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
-  footer: {
-    text: 'Nextra Docs Template',
-  },
   head: (
     <>
       <style>{`
         .nx-nav-header {
-          background-color: lightgray !important; /* Or your preferred silver/gray */
+          background-color: lightgray !important; 
         }
-        /* Optional: ensure text/icons are visible on the new background */
         .nx-nav-header button,
         .nx-nav-header a,
         .nx-nav-header input {
-          color: black !important; /* Adjust if your gray is dark */
+          color: black !important;
         }
       `}</style>
     </>
