@@ -46,7 +46,7 @@ const config: DocsThemeConfig = {
     <>
       <style>{`
         .nx-nav-header {
-          background-color: lightgray !important; 
+          background-color: gray !important; 
         }
         .nx-nav-header button,
         .nx-nav-header a,
