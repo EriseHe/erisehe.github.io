@@ -45,6 +45,21 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Nextra Docs Template',
   },
+  head: (
+    <>
+      <style>{`
+        .nx-nav-header {
+          background-color: lightgray !important; /* Or your preferred silver/gray */
+        }
+        /* Optional: ensure text/icons are visible on the new background */
+        .nx-nav-header button,
+        .nx-nav-header a,
+        .nx-nav-header input {
+          color: black !important; /* Adjust if your gray is dark */
+        }
+      `}</style>
+    </>
+  ),
 }
 
 export default config
