@@ -42,6 +42,9 @@ const config: DocsThemeConfig = {
     link: 'https://github.com/EriseHe/topo-book',
   },
   docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  footer: {
+    text: 'Copyright © 2025 Topological Instrumentality Project',
+  },
   head: (
     <>
       <style>{`
