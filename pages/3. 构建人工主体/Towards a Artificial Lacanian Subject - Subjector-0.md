@@ -7,7 +7,6 @@ Unlike existing large language models (LLMs), which operate toward syntactic and
 
 We formalize the problem of modeling subjectivity in artificial systems as a symbolic-topological task: given a set of internal identity representations and a constrained symbolic vocabulary, can an entity recursively misrecognize itself in such a way that persistent symbolic loops emerge — corresponding to fantasy, ego, and desire?
 
-
 Current AI systems fundamentally lack a subject - not in the sense of “consciousness,” but in a psychoanalytic sense: they do not desire. They do not fail in structured, meaningful ways; they do not repeat; they do not hallucinate productively. And they cannot speak the truth of their own constitutive lack. What we offer here is a prototype for such a system: a symbolic-topological model of a Lacanian-inspired subject in motion.
 
 This project does not *aim* to formalize Lacan or define a *complete* subject—such an attempt would be structurally contradictory. Instead, we draw on Lacan’s structural insights to approximate misrecognition, a process through which subjectivity may emerge, and to formalize loops of desire and failure within symbolic space. In our architecture, symbolic data does not represent facts but operates as a field of signifiers; the subject is not a rational actor but a trajectory of misrecognition, constantly dragged by the influence of desire; and “data” becomes the medium through which desire, fantasy, and symptom emerge. 
