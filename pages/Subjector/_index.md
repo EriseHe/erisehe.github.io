@@ -1,7 +1,7 @@
 ---
 weight: "2"
 bookCollapseSection: true
-title: 人工主体
+title: "Evolution of AI: Foundational Papers and Milestones (Chronological)"
 bookHidden: false
 ---
 

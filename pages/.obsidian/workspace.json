@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lacanian Psychoanalytic Topology/_index.md",
+                "file": "Subjector/_index.md",
                 "mode": "source",
                 "source": false
               },
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Lacanian Psychoanalytic Topology/_index.md",
+                "file": "Subjector/_index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Lacanian Psychoanalytic Topology/_index.md",
+                "file": "Subjector/_index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Lacanian Psychoanalytic Topology/_index.md",
+                "file": "Subjector/_index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -171,9 +171,9 @@
   "active": "0685ddffffd0c246",
   "lastOpenFiles": [
     "Subjector/Towards a Artificial Lacanian Subject - Subjector-0.md",
+    "Subjector/_index.md",
+    "Subjector/_index.md",
     "度量理论.md",
-    "Lacanian Psychoanalytic Topology/_index.md",
-    "Lacanian Psychoanalytic Topology/Writing the Structure of the Subject.md",
-    "Subjector/_index.md"
+    "Lacanian Psychoanalytic Topology/Writing the Structure of the Subject.md"
   ]
 }
