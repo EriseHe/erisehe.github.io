@@ -51,8 +51,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "18.19.0"
+          architecture: "x64"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: "package-lock.json"
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -61,6 +63,10 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 make g++ git build-essential
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -72,8 +78,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          npm_config_target_platform: linux
+          npm_config_target_arch: x64
+          npm_config_build_from_source: true
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }} --legacy-peer-deps
+      - name: Rebuild native dependencies
+        run: |
+          npm rebuild @napi-rs/simple-git --verbose || echo "Rebuild failed, continuing..."
       - name: Build with Next.js
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          CI: true
+          NODE_ENV: production
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
