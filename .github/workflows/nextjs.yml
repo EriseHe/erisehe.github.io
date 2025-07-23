@@ -84,14 +84,33 @@ jobs:
           npm_config_target_arch: x64
           npm_config_build_from_source: true
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }} --legacy-peer-deps
-      - name: Rebuild native dependencies
+      - name: Fix native dependencies
         run: |
+          # Try to explicitly install the missing native binary
+          npm install @napi-rs/simple-git-linux-x64-gnu --save-optional || echo "Could not install native binary directly"
+          
+          # Rebuild all native dependencies
           npm rebuild @napi-rs/simple-git --verbose || echo "Rebuild failed, continuing..."
+          
+          # Check if the binary exists
+          ls -la node_modules/@napi-rs/ || echo "No @napi-rs directory found"
+          find node_modules -name "*simple-git*" -type f || echo "No simple-git files found"
+          
+          # Alternative: try to download the binary directly if npm install fails
+          if [ ! -f "node_modules/@napi-rs/simple-git-linux-x64-gnu/simple-git.linux-x64-gnu.node" ]; then
+            echo "Native binary not found, attempting manual download..."
+            mkdir -p node_modules/@napi-rs/simple-git-linux-x64-gnu
+            curl -L "https://registry.npmjs.org/@napi-rs/simple-git-linux-x64-gnu/-/simple-git-linux-x64-gnu-0.18.1.tgz" -o temp.tgz || echo "Download failed"
+            tar -xzf temp.tgz -C node_modules/@napi-rs/simple-git-linux-x64-gnu --strip-components=1 || echo "Extract failed"
+            rm -f temp.tgz
+          fi
       - name: Build with Next.js
         env:
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
           NODE_ENV: production
+          # Disable git info features in case native deps still fail
+          NEXTRA_DISABLE_GIT_INFO: 1
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
