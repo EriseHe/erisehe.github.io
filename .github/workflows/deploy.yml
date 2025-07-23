@@ -17,25 +17,33 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: node:18-bullseye
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
+    - name: Install system dependencies
+      run: |
+        apt-get update
+        apt-get install -y python3 make g++ git
+        
     - name: Install dependencies
+      env:
+        NEXT_TELEMETRY_DISABLED: 1
+        CI: true
       run: |
         npm ci --legacy-peer-deps
         
     - name: Build with Next.js
+      env:
+        NEXT_TELEMETRY_DISABLED: 1
+        CI: true
+        NODE_ENV: production
       run: |
         npm run export
         touch out/.nojekyll
