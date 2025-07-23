@@ -39,9 +39,9 @@ const LogoComponent = () => {
 const config: DocsThemeConfig = {
   logo: <LogoComponent />,
   project: {
-    link: 'https://github.com/EriseHe/topo-book',
+    link: 'https://github.com/erisehe/erisehe.github.io',
   },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  docsRepositoryBase: 'https://github.com/erisehe/erisehe.github.io/tree/main',
   footer: {
     text: 'Copyright © 2025 Topological Instrumentality Project',
   },

@@ -13,15 +13,58 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Subjector/_index.md",
+                "file": "Lacanian Psychoanalytic Topology/0. Writing the Structure of the Subject.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "_index"
+              "title": "0. Writing the Structure of the Subject"
+            }
+          },
+          {
+            "id": "0e71698caf70bcd3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lacanian Psychoanalytic Topology/1. Mirror Stage.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1. Mirror Stage"
+            }
+          },
+          {
+            "id": "35f67c66c2eeeb13",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lacanian Psychoanalytic Topology/0.  Repositioning of the Lacanian Topology.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "0.  Repositioning of the Lacanian Topology"
+            }
+          },
+          {
+            "id": "9552de6700da3bac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lacanian Psychoanalytic Topology/0.Reframing Lacanian Topology as Computational Architecture.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "0.Reframing Lacanian Topology as Computational Architecture"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -94,7 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Subjector/_index.md",
+                "file": "Lacanian Psychoanalytic Topology/0. Writing the Structure of the Subject.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +147,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for _index"
+              "title": "Backlinks for 0. Writing the Structure of the Subject"
             }
           },
           {
@@ -113,12 +156,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Subjector/_index.md",
+                "file": "Lacanian Psychoanalytic Topology/0. Writing the Structure of the Subject.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from _index"
+              "title": "Outgoing links from 0. Writing the Structure of the Subject"
             }
           },
           {
@@ -142,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Subjector/_index.md",
+                "file": "Lacanian Psychoanalytic Topology/0. Writing the Structure of the Subject.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _index"
+              "title": "Outline of 0. Writing the Structure of the Subject"
             }
           }
         ]
@@ -168,12 +211,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0685ddffffd0c246",
+  "active": "9552de6700da3bac",
   "lastOpenFiles": [
+    "Deep Learning/Procedure of Machine Learning.md",
+    "Lacanian Psychoanalytic Topology/0.Reframing Lacanian Topology as Computational Architecture.md",
+    "Lacanian Psychoanalytic Topology/0. draft.md",
     "Subjector/Towards a Artificial Lacanian Subject - Subjector-0.md",
+    "Deep Learning",
+    "Lacanian Psychoanalytic Topology/2. Desire.md",
+    "Lacanian Psychoanalytic Topology/1. Mirror Stage.md",
+    "Lacanian Psychoanalytic Topology/3. Subject.md",
     "Subjector/_index.md",
-    "Subjector/_index.md",
-    "度量理论.md",
-    "Lacanian Psychoanalytic Topology/Writing the Structure of the Subject.md"
+    "度量理论.md"
   ]
 }
