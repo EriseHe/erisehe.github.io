@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
+  "name": "erisehe-github-pages",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "Personal website for Topological Instrumentality Project",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/erisehe/erisehe.github.io.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Erise He",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/erisehe/erisehe.github.io/issues"
