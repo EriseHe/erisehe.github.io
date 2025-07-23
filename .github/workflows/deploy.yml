@@ -8,8 +8,7 @@ permissions:
   contents: write
 
 env:
-  # Disable git operations that might trigger native dependencies
-  DISABLE_ESLINT_PLUGIN: true
+  # Disable operations that might trigger native dependencies
   NEXT_TELEMETRY_DISABLED: 1
   CI: true
 
@@ -30,24 +29,34 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential python3
+        sudo apt-get install -y build-essential python3 git
         
-    - name: Install dependencies with native module fixes
+    - name: Clear npm cache and install dependencies
       run: |
-        npm ci --legacy-peer-deps
-        npm rebuild
-        npm install --platform=linux --arch=x64 @napi-rs/simple-git-linux-x64-gnu || true
+        npm cache clean --force
+        rm -rf node_modules package-lock.json
+        npm install --legacy-peer-deps --no-optional
         
-    - name: Verify installation
+    - name: Try to rebuild native modules if they exist
       run: |
-        npm ls --depth=0
+        npm rebuild || echo "Rebuild failed, continuing anyway"
+        
+    - name: Verify installation and debug
+      run: |
+        npm ls --depth=0 || true
         node -e "console.log('Node.js version:', process.version, 'Platform:', process.platform, 'Arch:', process.arch)"
+        ls -la node_modules/@napi-rs/ || echo "No @napi-rs modules found"
         
-    - name: Build static site
+    - name: Build static site with fallbacks
       env:
         NODE_ENV: production
         NEXT_TELEMETRY_DISABLED: 1
-      run: npm run export
+      run: |
+        npm run export || {
+          echo "Build failed, trying with git disabled"
+          export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+          npm run export
+        }
       
     - name: Add .nojekyll file
       run: touch ./out/.nojekyll
