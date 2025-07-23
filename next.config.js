@@ -10,17 +10,5 @@ module.exports = withNextra({
   trailingSlash: true,
   images: {
     unoptimized: true
-  },
-  // Webpack configuration to handle problematic dependencies
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        path: false,
-        crypto: false,
-      }
-    }
-    return config
   }
 })
