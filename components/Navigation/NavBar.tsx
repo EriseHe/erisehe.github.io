@@ -15,6 +15,7 @@ export default function NavBar() {
       <div className={styles.control}>
         <div className={styles.controlTrack}>
           <div className={styles.indicator}></div>
+          
           <label htmlFor="home">Home</label>
           <input 
             className={styles.srOnly} 
@@ -24,19 +25,19 @@ export default function NavBar() {
             checked={activeSection === 'home'}
             onChange={() => handleSectionChange('home')}
           />
+          
+          <label htmlFor="project">Project</label>
+          <input 
+            className={styles.srOnly} 
+            type="radio" 
+            name="navigation" 
+            id="project" 
+            checked={activeSection === 'project'}
+            onChange={() => handleSectionChange('project')}
+          />
+          
           <div className={styles.more}>
             <div className={styles.indicator}></div>
-            <label htmlFor="project">
-              <span>Project</span>
-            </label>
-            <input 
-              className={styles.srOnly} 
-              type="radio" 
-              name="navigation" 
-              id="project" 
-              checked={activeSection === 'project'}
-              onChange={() => handleSectionChange('project')}
-            />
             <label htmlFor="about">
               <span>About</span>
             </label>
@@ -47,6 +48,17 @@ export default function NavBar() {
               id="about" 
               checked={activeSection === 'about'}
               onChange={() => handleSectionChange('about')}
+            />
+            <label htmlFor="contact">
+              <span>Contact</span>
+            </label>
+            <input 
+              className={styles.srOnly} 
+              type="radio" 
+              name="navigation" 
+              id="contact" 
+              checked={activeSection === 'contact'}
+              onChange={() => handleSectionChange('contact')}
             />
           </div>
         </div>
