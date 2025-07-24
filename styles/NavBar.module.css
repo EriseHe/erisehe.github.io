@@ -12,9 +12,9 @@
   scale: 1.2;
   letter-spacing: 0.5px;
   position: relative;
-  width: 260px;
+  width: 320px; /* Increased width for better spacing */
   height: 38px;
-  aspect-ratio: 300 / 38;
+  aspect-ratio: 320 / 38; /* Updated aspect ratio */
   background: #ffffff;
   border-radius: 100px;
   border: 1px solid hsl(0 0% 80%);
@@ -41,6 +41,7 @@
   position: relative;
 }
 
+/* MAIN INDICATOR - slides between Home/Project/More sections */
 .indicator {
   position: absolute;
   width: calc(100% / 3); /* One third width for three main options */
@@ -92,7 +93,7 @@
 }
 
 .more:has(:checked)::before {
-  translate: -50% -250%;
+  translate: -50% -150%; /* Reduced from -250% to -150% - less distance */
   scale: 0.85;
 }
 
@@ -100,11 +101,15 @@
   scale: 1;
 }
 
-/* More section internal indicator */
+/* INTERNAL INDICATOR - slides between About/Contact within More section */
 .more .indicator {
-  background: hsl(0 0% 10%);
+  position: absolute;
+  width: 50%; /* Half width within the More section */
   left: 50%;
   top: 0;
+  bottom: 0;
+  background: hsl(0 0% 10%);
+  border-radius: 100px;
   translate: -50% 0;
   transition-property: translate, clip-path, background;
   transition-duration: 0.22s;
@@ -124,18 +129,20 @@
   opacity: 0.75;
 }
 
-.more:has(:nth-of-type(1):checked) label:nth-of-type(1),
-.more:has(:nth-of-type(2):checked) label:nth-of-type(2) {
+/* Internal indicator positions within More section */
+.more:has(input[id="about"]:checked) .indicator {
+  translate: -100% 0; /* Left position for About */
+}
+
+.more:has(input[id="contact"]:checked) .indicator {
+  translate: 0 0; /* Right position for Contact */
+}
+
+/* Selected internal option styling */
+.more:has(input[id="about"]:checked) label[for="about"],
+.more:has(input[id="contact"]:checked) label[for="contact"] {
   color: hsl(0 0% 10%);
   opacity: 1;
-}
-
-.more:has(:nth-of-type(1):checked) .indicator {
-  translate: -100% 0;
-}
-
-.more:has(:nth-of-type(2):checked) .indicator {
-  translate: 0 0;
 }
 
 .control label {
@@ -154,10 +161,6 @@
 
 /* Direct children labels (Home, Project) styling */
 .controlTrack > label {
-  color: #ffffff; /* White when selected by main indicator */
-}
-
-.controlTrack:not(:has(.more :checked)) > label {
   color: hsl(0 0% 10%);
   opacity: 0.6;
 }
@@ -170,11 +173,13 @@
 }
 
 /* More section inactive state when main sections are selected */
-.controlTrack:has(> input:checked) .more .indicator {
+.controlTrack:has(input[id="home"]:checked) .more .indicator,
+.controlTrack:has(input[id="project"]:checked) .more .indicator {
   background: hsl(0 0% 60%);
 }
 
-.controlTrack:has(> input:checked) .more label {
+.controlTrack:has(input[id="home"]:checked) .more label,
+.controlTrack:has(input[id="project"]:checked) .more label {
   color: hsl(0 0% 60%);
 }
 
