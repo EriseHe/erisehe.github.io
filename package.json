@@ -1,7 +1,7 @@
 {
   "name": "erisehe-github-pages",
   "version": "1.0.0",
-  "description": "Personal website for Topological Instrumentality Project - Nextra documentation site",
+  "description": "Personal portfolio website featuring projects in applied mathematics, physics, and AI",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,13 +17,14 @@
     "url": "https://github.com/erisehe/erisehe.github.io/issues"
   },
   "homepage": "https://erisehe.github.io",
-  "keywords": ["nextra", "documentation", "psychology", "topology", "AI"],
+  "keywords": ["portfolio", "mathematics", "physics", "AI", "nextra", "topology"],
   "dependencies": {
     "next": "^13.5.0",
     "nextra": "^2.10.0",
     "nextra-theme-docs": "^2.10.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "gsap": "^3.12.2"
   },
   "devDependencies": {
     "@types/node": "18.11.10",

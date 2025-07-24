@@ -1,17 +1,18 @@
 /** @type {import('next').NextConfig} */
-// Nextra configuration with GitHub Pages optimization
+// Main portfolio configuration with Nextra support for topology project
 const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
-  latex: true, // Enable LaTeX support for mathematical content
+  latex: true,
 })
 
-// Export configuration for static hosting on GitHub Pages
-// Note: We handle 'output: export' manually to avoid conflicts with GitHub's auto-injection
-module.exports = withNextra({
+const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true,
   },
-})
+}
+
+// Apply Nextra to the entire project for simplicity during development
+module.exports = withNextra(nextConfig)

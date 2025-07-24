@@ -1,0 +1,83 @@
+/* iPad-style Cursor - Simplified for Performance */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #000000; /* Solid black */
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+  transition: all 0.08s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, width, height, border-radius;
+  transform: translateZ(0); /* Hardware acceleration */
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+/* Default state - circular black dot */
+.cursor.default {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000000;
+}
+
+/* Text state - elongated vertical cursor like iPad */
+.cursor.text {
+  width: 2px;
+  height: 24px;
+  border-radius: 1px;
+  background-color: #000000;
+  transform: translate3d(-9px, -2px, 0); /* Center the thinner cursor properly */
+}
+
+/* Smooth text cursor animation */
+@keyframes cursorPulse {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.3; 
+  }
+}
+
+.cursor.text {
+  animation: cursorPulse 1.2s ease-in-out infinite;
+}
+
+/* COMPREHENSIVE cursor hiding - eliminate ALL browser cursors */
+body.ipad-cursor-active,
+body.ipad-cursor-active *,
+body.ipad-cursor-active *:hover,
+body.ipad-cursor-active *:active,
+body.ipad-cursor-active *:focus,
+body.ipad-cursor-active a,
+body.ipad-cursor-active a:hover,
+body.ipad-cursor-active a:active,
+body.ipad-cursor-active a:visited,
+body.ipad-cursor-active button,
+body.ipad-cursor-active button:hover,
+body.ipad-cursor-active button:active,
+body.ipad-cursor-active [role="button"],
+body.ipad-cursor-active [role="button"]:hover,
+body.ipad-cursor-active input,
+body.ipad-cursor-active textarea,
+body.ipad-cursor-active select,
+body.ipad-cursor-active [onclick],
+body.ipad-cursor-active [onclick]:hover,
+body.ipad-cursor-active .clickable,
+body.ipad-cursor-active .cursor-pointer {
+  cursor: none !important;
+}
+
+/* Force override any CSS framework cursors */
+body.ipad-cursor-active * {
+  cursor: none !important;
+}
+
+/* Override any specific cursor declarations */
+body.ipad-cursor-active [style*="cursor"] {
+  cursor: none !important;
+} 

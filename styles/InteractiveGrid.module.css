@@ -1,0 +1,109 @@
+/* Interactive Grid Background */
+.gridContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Only cover page 1 (hero section) */
+  z-index: 1; /* Above background, below content */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grid {
+  --gap: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  opacity: 0; /* Start invisible, will be animated */
+  position: absolute;
+  top: -60px; /* Offset to ensure full coverage */
+  left: -60px; /* Offset to ensure full coverage */
+}
+
+.row {
+  display: flex;
+  gap: var(--gap);
+}
+
+.cell {
+  --size: 6px;
+  width: var(--size);
+  height: var(--size);
+  background-color: #666666;
+  border-radius: 50%;
+  will-change: transform;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.2s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.cell:hover {
+  --size: 8px;
+  background-color: #333333;
+  box-shadow: 0 0 8px rgba(102, 102, 102, 0.5);
+}
+
+.cell::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102, 102, 102, 0.1) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cell:hover::before {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .grid {
+    --gap: 50px;
+    top: -50px;
+    left: -50px;
+  }
+  
+  .cell {
+    --size: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    --gap: 40px;
+    top: -40px;
+    left: -40px;
+  }
+  
+  .cell {
+    --size: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    --gap: 30px;
+    top: -30px;
+    left: -30px;
+  }
+  
+  .cell {
+    --size: 3px;
+  }
+}
+
+/* Performance optimizations */
+.grid * {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+} 
