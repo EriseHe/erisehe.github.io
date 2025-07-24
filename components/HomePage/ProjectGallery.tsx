@@ -40,7 +40,7 @@ export default function ProjectGallery() {
   }, [])
 
   return (
-    <section className={styles.projectGallery} ref={galleryRef} data-speed="0.9">
+    <section id="project-gallery" className={styles.projectGallery} ref={galleryRef} data-speed="0.9">
       <div className={styles.galleryContainer}>
         <h2 ref={titleRef} className={styles.galleryTitle}>
           Projects

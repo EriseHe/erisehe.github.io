@@ -15,7 +15,14 @@
   padding: 0 var(--space-lg);
   position: relative;
   z-index: 4; /* Ensure text is above grid nodes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
 }
+
+
 
 .heroTitle {
   font-size: clamp(3rem, 8vw, 6rem);

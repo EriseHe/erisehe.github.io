@@ -2,15 +2,6 @@
 :root {
   box-sizing: border-box;
   
-  /* Navigation Bar Variables - Original Toggle Design */
-  --nav-primary: hsl(0 0% 10%);
-  --nav-secondary: #ffffff;
-  --nav-inactive: hsl(0 0% 60%);
-  --nav-duration: 0.22;
-  --nav-drop-off: 0.4;
-  --nav-ease: ease-out;
-  --nav-border: hsl(0 0% 80%);
-  
   /* Color Palette */
   --color-primary: #000000;
   --color-secondary: #666666;
@@ -74,6 +65,15 @@ body {
 
 .scroll-content {
   will-change: transform;
+}
+
+/* Fixed Navigation */
+.fixed-navigation {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
 }
 
 /* Typography */

@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import ScrollWrapper from '../components/SmoothScroll/ScrollWrapper'
+import NavigationToggle from '../components/UI/NavigationToggle'
 import HeroSection from '../components/HomePage/HeroSection'
 import ProjectGallery from '../components/HomePage/ProjectGallery'
 import IPadCursor from '../components/UI/iPadCursor'
-import NavBar from '../components/Navigation/NavBar'
 import { useEffect } from 'react'
 
 export default function Home() {
@@ -45,8 +45,10 @@ export default function Home() {
       {/* iPad-style Cursor */}
       <IPadCursor />
 
-      {/* Navigation Bar */}
-      <NavBar />
+      {/* Fixed Navigation */}
+      <div className="fixed-navigation">
+        <NavigationToggle />
+      </div>
 
       <ScrollWrapper>
         <main>
