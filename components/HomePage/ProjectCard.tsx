@@ -51,18 +51,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <Link href={project.url} className={styles.projectLink}>
         <div className={styles.projectThumbnail}>
           <div className={styles.projectPlaceholder}>
-            {project.title}
+            {project.id === 'topology' ? 'T' : project.id === 'notebook' ? 'N' : project.id[0].toUpperCase()}
           </div>
         </div>
         
         <div className={styles.projectInfo}>
-          <h3 className={styles.projectTitle}>{project.title}</h3>
+          <h3 className={styles.projectTitle}>
+            {project.title}
+            {project.subtitle && <span className={styles.projectSubtitle}>{project.subtitle}</span>}
+          </h3>
           <p className={styles.projectDescription}>{project.description}</p>
           
           <div className={styles.projectMeta}>
             <span className={styles.projectYear}>{project.year}</span>
             <div className={styles.projectTags}>
-              {project.tags.map((tag, idx) => (
+              {project.tags.slice(0, 2).map((tag, idx) => (
                 <span key={idx} className={styles.projectTag}>
                   {tag}
                 </span>

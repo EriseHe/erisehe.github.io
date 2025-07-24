@@ -1,6 +1,7 @@
 export interface Project {
   id: string
   title: string
+  subtitle?: string // Adding subtitle for English/secondary title
   description: string
   thumbnail: string
   url: string
@@ -13,6 +14,7 @@ export const projects: Project[] = [
   {
     id: 'topology',
     title: '人工主体補完計画',
+    subtitle: 'Topological Instrumentality Project',
     description: 'Exploring Lacanian psychoanalytic topology and artificial intelligence through computational architecture',
     thumbnail: '/projects/topology-thumb.png',
     url: '/projects/topology',
@@ -20,6 +22,17 @@ export const projects: Project[] = [
     featured: true,
     year: '2024'
   },
+  {
+    id: 'notebook',
+    title: '学习笔记',
+    subtitle: 'Notebook',
+    description: 'Personal notes and explorations on mathematics, physics, and computer science topics',
+    thumbnail: '/projects/notebook-thumb.png',
+    url: '/notebook',
+    tags: ['Notes', 'Mathematics', 'Physics', 'Computer Science'],
+    featured: true,
+    year: '2024'
+  }
   // Future projects will be added here
 ]
 

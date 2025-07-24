@@ -37,11 +37,7 @@ export default function NavigationToggle() {
 
   // Update selected section based on current route and setup scroll tracking
   useEffect(() => {
-    if (router.pathname === '/about') {
-      setSelectedSection('about')
-    } else if (router.pathname === '/contact') {
-      setSelectedSection('contact')
-    } else if (router.pathname === '/') {
+    if (router.pathname === '/') {
       setSelectedSection('home')
       
       // Set up scroll tracking for home page sections
@@ -54,6 +50,7 @@ export default function NavigationToggle() {
         }
       }
     }
+    // Note: About and Contact navigation removed - only visual indicators remain
   }, [router.pathname, setupScrollTracking])
 
   const handleNavigation = (section: NavigationSection) => {
@@ -86,11 +83,13 @@ export default function NavigationToggle() {
         break
         
       case 'about':
-        router.push('/about')
+        // Keep the visual state but remove navigation
+        // No action - just visual indicator
         break
         
       case 'contact':
-        router.push('/contact')
+        // Keep the visual state but remove navigation
+        // No action - just visual indicator
         break
     }
   }

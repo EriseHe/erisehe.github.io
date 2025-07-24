@@ -5,7 +5,7 @@
   /* Color Palette */
   --color-primary: #000000;
   --color-secondary: #666666;
-  --color-accent: #0066ff;
+  --color-accent: #6a26cd; /* Changed from #0066ff to dark purple */
   --color-background: #ffffff;
   --color-surface: #f8f9fa;
   --color-border: #e9ecef;
