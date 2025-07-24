@@ -3,6 +3,7 @@ import ScrollWrapper from '../components/SmoothScroll/ScrollWrapper'
 import HeroSection from '../components/HomePage/HeroSection'
 import ProjectGallery from '../components/HomePage/ProjectGallery'
 import IPadCursor from '../components/UI/iPadCursor'
+import NavBar from '../components/Navigation/NavBar'
 import { useEffect } from 'react'
 
 export default function Home() {
@@ -43,6 +44,9 @@ export default function Home() {
 
       {/* iPad-style Cursor */}
       <IPadCursor />
+
+      {/* Navigation Bar */}
+      <NavBar />
 
       <ScrollWrapper>
         <main>
