@@ -1,4 +1,4 @@
-/* Navigation Bar Styles - Home | Project | More (with About/Contact toggle) */
+/* Navigation Bar Styles - Using Original Animation System */
 
 .navBar {
   position: fixed;
@@ -14,10 +14,10 @@
   position: relative;
   width: 320px; /* Increased width for better spacing */
   height: 38px;
-  aspect-ratio: 320 / 38; /* Updated aspect ratio */
-  background: #ffffff;
+  aspect-ratio: 320 / 38;
+  background: var(--nav-secondary);
   border-radius: 100px;
-  border: 1px solid hsl(0 0% 80%);
+  border: 1px solid var(--nav-border);
   padding: 2px;
   box-shadow: 
     -0.1px 1px 1px hsl(0deg 0% 63% / 0.39),
@@ -41,39 +41,42 @@
   position: relative;
 }
 
-/* MAIN INDICATOR - slides between Home/Project/More sections */
+/* MAIN INDICATOR */
 .indicator {
   position: absolute;
-  width: calc(100% / 3); /* One third width for three main options */
-  height: 100%;
+  width: calc(100% / 3);
   left: 0;
   top: 0;
-  background: hsl(0 0% 10%);
+  bottom: 0;
+  background: var(--nav-primary);
   border-radius: 100px;
-  transition: translate 0.22s ease-out;
+  transition: translate calc(var(--nav-duration) * 1s) var(--nav-ease);
 }
 
-/* Main indicator positions */
+/* Main indicator positions - using original logic */
+.controlTrack:not(:has(> :checked)) > .indicator {
+  translate: 100% 0;
+}
+
 .controlTrack:has(input[id="home"]:checked) .indicator {
-  translate: 0 0; /* First position */
+  translate: 0 0;
 }
 
 .controlTrack:has(input[id="project"]:checked) .indicator {
-  translate: 100% 0; /* Second position */
+  translate: 100% 0;
 }
 
-.controlTrack:has(input[id="about"]:checked) .indicator,
-.controlTrack:has(input[id="contact"]:checked) .indicator {
-  translate: 200% 0; /* Third position for More section */
+.controlTrack:has(.more :checked) .indicator {
+  translate: 200% 0;
 }
 
-/* More section styling - based on original premium section */
+/* MORE SECTION - exact copy of original premium structure */
 .more {
   width: 100%;
   height: 100%;
   display: grid;
   position: relative;
-  grid-template-columns: 1fr 1fr; /* Internal About | Contact columns */
+  grid-template-columns: 1fr 1fr;
   border: 1px solid transparent;
   container-type: size;
 }
@@ -84,16 +87,16 @@
   left: 50%;
   top: 50%;
   translate: -50% -80%;
-  color: hsl(0 0% 10%);
+  color: var(--nav-primary);
   font-size: 0.75rem;
   z-index: 2;
   transition-property: scale, translate;
-  transition-duration: 0.22s;
-  transition-timing-function: ease-out;
+  transition-duration: calc(var(--nav-duration) * 1s);
+  transition-timing-function: var(--nav-ease);
 }
 
 .more:has(:checked)::before {
-  translate: -50% -150%; /* Reduced from -250% to -150% - less distance */
+  translate: -50% -250%;
   scale: 0.85;
 }
 
@@ -101,95 +104,84 @@
   scale: 1;
 }
 
-/* INTERNAL INDICATOR - slides between About/Contact within More section */
+/* MORE INTERNAL INDICATOR - exact original structure */
 .more .indicator {
-  position: absolute;
-  width: 50%; /* Half width within the More section */
+  background: var(--nav-primary);
   left: 50%;
   top: 0;
-  bottom: 0;
-  background: hsl(0 0% 10%);
-  border-radius: 100px;
   translate: -50% 0;
   transition-property: translate, clip-path, background;
-  transition-duration: 0.22s;
-  transition-timing-function: ease-out;
+  transition-duration: calc(var(--nav-duration) * 1s);
+  transition-timing-function: var(--nav-ease);
   clip-path: inset(
     73cqh calc(50% + 1px) calc(27cqh - 2px) calc(50% - 3px) round 100px
   );
 }
 
 .more:has(:checked) .indicator {
-  background: #ffffff;
+  background: var(--nav-secondary);
   clip-path: inset(0 0 0 0 round 100px);
 }
 
 .more:has(:checked) label {
-  color: hsl(0 0% 60%);
+  color: var(--nav-inactive);
   opacity: 0.75;
 }
 
-/* Internal indicator positions within More section */
-.more:has(input[id="about"]:checked) .indicator {
-  translate: -100% 0; /* Left position for About */
-}
-
-.more:has(input[id="contact"]:checked) .indicator {
-  translate: 0 0; /* Right position for Contact */
-}
-
-/* Selected internal option styling */
-.more:has(input[id="about"]:checked) label[for="about"],
-.more:has(input[id="contact"]:checked) label[for="contact"] {
-  color: hsl(0 0% 10%);
+.more:has(:nth-of-type(1):checked) label:nth-of-type(1),
+.more:has(:nth-of-type(2):checked) label:nth-of-type(2) {
+  color: var(--nav-primary);
   opacity: 1;
 }
 
+.more:has(:nth-of-type(1):checked) .indicator {
+  translate: -100% 0;
+}
+
+.more:has(:nth-of-type(2):checked) .indicator {
+  translate: 0 0;
+}
+
+/* LABELS - original structure */
 .control label {
-  display: grid;
-  place-items: center;
+  transition-property: color, opacity;
+  transition-duration: calc(var(--nav-duration) * 1s);
+  transition-timing-function: var(--nav-ease);
+  display: inline-block;
   height: 100%;
   width: 100%;
+  display: grid;
+  place-items: center;
   cursor: pointer;
   font-size: 0.75rem;
-  color: hsl(0 0% 10%);
+  color: var(--nav-primary);
   z-index: 2;
-  transition-property: color, opacity;
-  transition-duration: 0.22s;
-  transition-timing-function: ease-out;
 }
 
-/* Direct children labels (Home, Project) styling */
 .controlTrack > label {
-  color: hsl(0 0% 10%);
-  opacity: 0.6;
+  color: var(--nav-secondary);
 }
 
-/* Selected main section styling */
-.controlTrack:has(input[id="home"]:checked) > label[for="home"],
-.controlTrack:has(input[id="project"]:checked) > label[for="project"] {
-  color: #ffffff;
-  opacity: 1;
+.controlTrack:not(:has(> :checked)) > label {
+  color: var(--nav-primary);
+  opacity: var(--nav-drop-off);
 }
 
-/* More section inactive state when main sections are selected */
-.controlTrack:has(input[id="home"]:checked) .more .indicator,
-.controlTrack:has(input[id="project"]:checked) .more .indicator {
-  background: hsl(0 0% 60%);
+.controlTrack:has(> :checked) .more .indicator {
+  background: var(--nav-inactive);
 }
 
-.controlTrack:has(input[id="home"]:checked) .more label,
-.controlTrack:has(input[id="project"]:checked) .more label {
-  color: hsl(0 0% 60%);
+.controlTrack:has(> :checked) .more label {
+  color: var(--nav-inactive);
 }
 
-/* More section span styling */
+/* SPAN STYLING - original structure */
 .control :global(label span) {
   display: grid;
   place-items: center;
   height: 100%;
   width: 100%;
-  transition: scale 0.22s ease-out;
+  transition: scale calc(var(--nav-duration) * 1s) var(--nav-ease);
 }
 
 .more label:nth-of-type(1) span {
