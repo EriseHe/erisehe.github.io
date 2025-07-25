@@ -73,8 +73,8 @@ export default function ProjectGallery() {
             <p className={styles.profileTitle}>Applied Mathematics & Physics</p>
             
             <div className={styles.profileBio}>
-              <p>Researcher focused on the intersection of topology, data science, and cognitive analysis.</p>
-              <p>Exploring geometric deep learning architectures and their applications to understanding consciousness through Lacanian psychoanalytic frameworks.</p>
+              <p>Researcher focused on the intersection of topology, geometric deep learning, and nero-psychoanalytic topology.</p>
+              <p>Exploring geometric deep learning architectures and their applications to understanding machine subjectivity through Lacanian psychoanalytic frameworks.</p>
             </div>
 
             <div className={styles.profileStats}>
@@ -83,11 +83,11 @@ export default function ProjectGallery() {
                 <span className={styles.statLabel}>Research Areas</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statNumber}>12+</span>
+                <span className={styles.statNumber}>1+</span>
                 <span className={styles.statLabel}>Publications</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statNumber}>5+</span>
+                <span className={styles.statNumber}>3+</span>
                 <span className={styles.statLabel}>Projects</span>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function ProjectGallery() {
         <div className={styles.galleryWrapper}>
           <div className={styles.galleryHeader}>
             <h3 className={styles.galleryTitle}>Featured Projects</h3>
-            <p className={styles.gallerySubtitle}>Exploring the topology of data and consciousness</p>
+            <p className={styles.gallerySubtitle}>Exploring the topological deep learning and artificial desire through Lacanian psychoanalytic frameworks</p>
           </div>
           
           <div className={styles.projectGrid} ref={galleryGridRef}>

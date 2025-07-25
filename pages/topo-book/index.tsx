@@ -6,7 +6,7 @@ export default function TopologyProject() {
   
   useEffect(() => {
     // Redirect to the main content of the topology project
-    router.replace('/projects/topology/introduction')
+    router.replace('/topo-book/introduction')
   }, [router])
   
   return (

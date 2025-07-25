@@ -17,10 +17,10 @@ export const projects: Project[] = [
     subtitle: 'Topological Instrumentality Project',
     description: 'Exploring Lacanian psychoanalytic topology and artificial intelligence through computational architecture',
     thumbnail: '/projects/topology-thumb.png',
-    url: '/projects/topology',
+    url: '/topo-book',
     tags: ['AI', 'Psychoanalysis', 'Topology', 'Theory'],
     featured: true,
-    year: '2024'
+    year: '2025'
   },
   {
     id: 'notebook',
