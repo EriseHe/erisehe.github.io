@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { useEffect, useRef } from 'react'
 import { getFeaturedProjects } from '../../lib/projects'
-import ProjectCard from './ProjectCard'
 import styles from '../../styles/HomePage.module.css'
+import ProjectCard from './ProjectCard'
 
 export default function ProjectGallery() {
   const galleryRef = useRef<HTMLDivElement>(null)
@@ -16,7 +16,7 @@ export default function ProjectGallery() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    // Animate profile section from left
+    // Restore original profile section animation from left
     gsap.fromTo(profileRef.current, {
       autoAlpha: 0,
       x: -50
@@ -32,7 +32,7 @@ export default function ProjectGallery() {
       }
     })
 
-    // Animate gallery grid from right
+    // Restore original gallery grid animation from right
     gsap.fromTo(galleryGridRef.current, {
       autoAlpha: 0,
       x: 50

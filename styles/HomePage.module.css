@@ -20,6 +20,7 @@
   align-items: center;
   min-height: 100vh;
   justify-content: center;
+  transform: translateY(20px); /* Move content slightly lower for better centering */
 }
 
 .heroTitle {
@@ -31,18 +32,20 @@
   letter-spacing: -0.02em;
 }
 
-/* Make description more bold and prominent */
+/* Modern, bold description spanning wider below business card */
 .heroSubtitle {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  line-height: 1.4;
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem); /* Larger for better impact */
+  line-height: 1.65; /* Optimal readability */
   color: var(--color-primary);
-  margin-bottom: var(--space-xl);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  max-width: 900px;
+  margin-bottom: var(--space-3xl); /* More space before scroll indicator */
+  font-weight: 600; /* Bold, modern weight */
+  letter-spacing: -0.005em; /* Tight, modern spacing */
+  max-width: 900px; /* Much wider span below business card */
   text-align: center;
   position: relative;
-  padding-bottom: var(--space-md);
+  padding-bottom: var(--space-xl);
+  margin-top: var(--space-sm); /* Reduced space from business card for closer positioning */
 }
 
 .heroSubtitle::after {
@@ -51,10 +54,26 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: var(--color-accent);
-  border-radius: 2px;
+  width: 60px; /* Smaller accent line */
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), #8b5cf6);
+  border-radius: 1px;
+}
+
+/* Color-coded keywords in description - bold to match modern style */
+.heroSubtitle .keyword-math {
+  color: #c04d87; /* Indigo for mathematics */
+  font-weight: 700; /* Bolder for modern impact */
+}
+
+.heroSubtitle .keyword-tech {
+  color: #6539cd; /* Purple for technical terms */
+  font-weight: 700; /* Bolder for modern impact */
+}
+
+.heroSubtitle .keyword-field {
+  color: #06b6d4; /* Cyan for field of study */
+  font-weight: 700; /* Bolder for modern impact */
 }
 
 .scrollIndicator {
@@ -62,7 +81,8 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-xs);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-3xl); /* Move scroll indicator much lower */
+  transform: translateY(40px); /* Additional spacing */
 }
 
 .scrollPointer {
@@ -99,7 +119,7 @@
   z-index: 2;
   overflow: hidden;
   display: flex;
-  padding-top: 80px; /* Add padding to avoid navbar overlap */
+  padding-top: 120px; /* Add padding to avoid navbar overlap */
 }
 
 /* Profile Sidebar */
@@ -108,7 +128,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 320px; /* Wider profile sidebar */
+  width: 360px; /* Extended right edge for wider profile sidebar */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,10 +140,10 @@
 /* Main Content Area - Gallery */
 .galleryLayout {
   flex: 1;
-  margin-left: 360px; /* Adjust for wider profile sidebar */
+  margin-left: 360px; /* Keep gallery tight to the left side */
   padding: var(--space-xl) var(--space-lg);
   min-height: 100vh;
-  max-width: calc(100% - 360px); /* Adjust for wider profile sidebar */
+  max-width: calc(100% - 360px); /* Keep gallery tight to the left side */
 }
 
 .galleryWrapper {
@@ -148,7 +168,7 @@
 .profileCard {
   background: transparent;
   padding: var(--space-lg);
-  max-width: 280px; /* Wider profile card */
+  max-width: 320px; /* Extended right edge for wider profile card */
   width: 100%;
   z-index: 15;
 }
@@ -193,14 +213,16 @@
 
 .profileBio {
   margin-bottom: var(--space-lg);
-  text-align: left;
+  text-align: justify; /* Align text to both left and right for neat appearance */
 }
 
 .profileBio p {
   margin-bottom: var(--space-sm);
-  line-height: 1.5;
+  line-height: 1.6; /* Slightly increased for better readability with justified text */
   color: var(--color-secondary);
   font-size: 0.875rem;
+  text-align: justify; /* Ensure paragraphs are justified */
+  hyphens: auto; /* Enable automatic hyphenation for better word breaks */
 }
 
 .profileStats {
@@ -340,7 +362,7 @@
   font-size: 3rem;
   font-weight: 700;
   color: white;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: black;
 }
 
 .projectInfo {
@@ -407,20 +429,20 @@
 
 /* Business Card with Wireframe Design */
 .businessCard {
-  background: #e9e9e9;
-  opacity: 0.5;
-  backdrop-filter: none;
-  border-radius: 40px;
-  border: none;
-  padding: 0.75rem 2rem;
+  background: radial-gradient(ellipse at center, #000000 0%,  #210737 100%); /* Elegant radial gradient from dark center to purple edges */
+  opacity: 0.9; /* Slightly more opaque to show gradient better */
+  backdrop-filter: blur(10px);
+  border-radius: 30px; /* Reduced from 40px for sleeker look */
+  border: 1.5px solid #414141;
+  padding: 0.5rem 1.5rem; /* Reduced padding for thinner profile */
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 800px;
-  margin-bottom: var(--space-xl);
-  box-shadow: none;
+  max-width: 500px; /* Reduced from 800px for smaller footprint */
+  margin-bottom: var(--space-md); /* Reduced spacing to move closer to description */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
   position: relative;
-  height: 80px;
+  height: 60px; /* Reduced from 80px for thinner profile */
 }
 
 /* Remove the old rounded wireframe overlay */
@@ -436,7 +458,7 @@
   left: -1.5px;
   right: -1.5px;
   bottom: -1.5px;
-  border: 1.5px solid rgba(0,0,0,0.2);
+  border: 1.5px solid #6b6b6b; /* Original BLACK wireframe */
   border-radius: 0; /* Sharp corners */
   background: transparent;
   pointer-events: none;
@@ -451,36 +473,48 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: rgba(0,0,0,0.4);
+  background: #2d2d2d; /* Original BLACK vertices */
   z-index: 3;
   border-radius: 50%;
 }
 
 .businessCard .vertex-tl {
-  top: -3px;
-  left: -3px;
+  top: -3.5px;
+  left: -3.5px;
   z-index: 15;
 }
 
 .businessCard .vertex-tr {
-  top: -3px;
-  right: -3px;
+  top: -3.5px;
+  right: -3.5px;
   z-index: 15;
 }
 
 .businessCard .vertex-bl {
-  bottom: -3px;
-  left: -3px;
+  bottom: -3.5px;
+  left: -3.5px;
   z-index: 15;
 }
 
 .businessCard .vertex-br {
-  bottom: -3px;
-  right: -3px;
+  bottom: -3.5px;
+  right: -3.5px;
   z-index: 15;
 }
 
 /* Midpoint vertices */
+.businessCard .vertex-tm,
+.businessCard .vertex-bm,
+.businessCard .vertex-ml,
+.businessCard .vertex-mr {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #2d2d2d; /* Original BLACK vertices */
+  z-index: 3;
+  border-radius: 50%;
+}
+
 .businessCard .vertex-tm {
   top: -3px;
   left: 50%;
@@ -495,32 +529,36 @@
 
 .businessCard .vertex-ml {
   top: 50%;
-  left: -3px;
+  left: -4px;
   transform: translateY(-50%);
 }
 
 .businessCard .vertex-mr {
   top: 50%;
-  right: -3px;
+  right: -4px;
   transform: translateY(-50%);
 }
 
 .businessCardAvatar {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: var(--space-lg);
+  margin-right: var(--space-md);
   flex-shrink: 0;
   position: relative;
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: none; /* Removed white border edge */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background: transparent; /* Transparent background for clean look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .businessCardPlaceholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--color-accent) 0%, #4a0e9a 100%);
+  background: black;
   color: white;
   display: flex;
   align-items: center;
@@ -544,17 +582,17 @@
 }
 
 .businessCardName {
-  font-size: 1.5rem;
+  font-size: 1.4rem; /* Slightly smaller for thinner card */
   font-weight: 700;
   margin-right: var(--space-md);
-  color: var(--color-primary);
+  color: #ffffff; /* White text contrasts well with gray background */
   white-space: nowrap;
   letter-spacing: -0.01em;
 }
 
 .businessCardTitle {
-  font-size: 0.875rem;
-  color: var(--color-secondary);
+  font-size: 0.825rem; /* Slightly smaller */
+  color: rgba(255, 255, 255, 0.9); /* Light white for subtitle */
   margin-right: auto;
   white-space: nowrap;
 }
@@ -566,15 +604,18 @@
 }
 
 .businessCardLink {
-  color: var(--color-accent);
-  font-size: 1.25rem;
+  color: #fbbf24; /* Elegant gold/amber that contrasts beautifully with purple gradient */
+  font-size: 1.2rem; /* Slightly smaller */
   display: flex;
   align-items: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Subtle shadow for better readability */
 }
 
 .businessCardLink:hover {
-  opacity: 0.7;
+  color: #fcd34d; /* Brighter gold on hover */
+  transform: translateY(-1px); /* Subtle lift effect */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
 }
 
 /* Responsive adjustments */
@@ -618,19 +659,19 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .profileSidebar {
-    width: 280px;
+    width: 320px; /* Extended for tablet */
     padding-left: min(4vw, 30px);
   }
   
   .galleryLayout {
-    margin-left: 300px;
+    margin-left: 300px; /* Keep gallery tight to the left */
     max-width: calc(100% - 300px);
     padding: var(--space-lg);
   }
   
   .profileCard {
     padding: var(--space-md);
-    max-width: 260px;
+    max-width: 300px; /* Extended for tablet */
   }
   
   .projectGrid {
@@ -641,19 +682,19 @@
 
 @media (max-width: 768px) {
   .profileSidebar {
-    width: 240px;
+    width: 280px; /* Extended for mobile */
     padding-left: min(3vw, 20px);
   }
   
   .galleryLayout {
-    margin-left: 260px;
+    margin-left: 260px; /* Keep gallery tight to the left */
     max-width: calc(100% - 260px);
     padding: var(--space-md);
   }
   
   .profileCard {
     padding: var(--space-sm);
-    max-width: 220px;
+    max-width: 260px; /* Extended for mobile */
   }
   
   .avatarPlaceholder {

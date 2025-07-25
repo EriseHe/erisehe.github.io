@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import Image from 'next/image'
-import InteractiveGrid from '../Background/InteractiveGrid'
+import { useEffect, useRef } from 'react'
 import styles from '../../styles/HomePage.module.css'
+import InteractiveGrid from '../Background/InteractiveGrid'
+import ThreeDAvatar from '../UI/ThreeDAvatar'
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -15,45 +15,20 @@ export default function HeroSection() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const tl = gsap.timeline({ delay: 0.5 })
-
-    tl.fromTo(heroRef.current, {
-      autoAlpha: 0,
-      yPercent: 20
-    }, {
-      autoAlpha: 1,
-      yPercent: 0,
-      duration: 1,
-      ease: 'power3.out'
-    })
-    .fromTo(cardRef.current, {
-      autoAlpha: 0,
-      y: 30
-    }, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power3.out'
-    }, '-=0.5')
-    .fromTo(subtitleRef.current, {
+    // Simplified single animation - much faster than timeline
+    gsap.set([heroRef.current, cardRef.current, subtitleRef.current, indicatorRef.current], {
       autoAlpha: 0,
       y: 20
-    }, {
+    })
+
+    gsap.to([heroRef.current, cardRef.current, subtitleRef.current, indicatorRef.current], {
       autoAlpha: 1,
       y: 0,
       duration: 0.8,
-      ease: 'power3.out'
-    }, '-=0.3')
-    .fromTo(indicatorRef.current, {
-      autoAlpha: 0
-    }, {
-      autoAlpha: 1,
-      duration: 0.5
-    }, '-=0.2')
-
-    return () => {
-      tl.kill()
-    }
+      ease: 'power2.out', // Lighter easing for better performance
+      stagger: 0.1,
+      delay: 0.3
+    })
   }, [])
 
   return (
@@ -70,17 +45,15 @@ export default function HeroSection() {
           <div className={styles['vertex-bl']}></div>
           <div className={styles['vertex-br']}></div>
           
+          {/* Midpoint vertices for complete wireframe */}
+          <div className={styles['vertex-tm']}></div>
+          <div className={styles['vertex-bm']}></div>
+          <div className={styles['vertex-ml']}></div>
+          <div className={styles['vertex-mr']}></div>
+          
           <div className={styles.businessCardAvatar}>
-            {/* Profile image with fallback */}
-            <div className={styles.businessCardPlaceholder}>E</div>
-            {/* Uncomment and provide actual image path when available */}
-            {/* <Image 
-              src="/static/images/profile.jpg" 
-              alt="Erise He"
-              width={50}
-              height={50}
-              priority
-            /> */}
+            {/* 3D Rotating Wireframe Avatar */}
+            <ThreeDAvatar size={45} />
           </div>
           
           <div className={styles.businessCardContent}>
@@ -103,8 +76,8 @@ export default function HeroSection() {
         </div>
         
         <p ref={subtitleRef} className={styles.heroSubtitle}>
-          Hi, I'm Erise — an applied mathematics and physics student working on the topology of data, 
-          the geometric deep learning, and the psychoanalysis of cognition.
+          Hi, I'm Erise — an <span className={styles['keyword-math']}>Applied Mathematics / Physics</span> and <span className={styles['keyword-math']}>Philosophy</span> thinker exploring
+          <span className={styles['keyword-tech']}>discrete differential geometry</span>, the <span className={styles['keyword-tech']}>geometric AI</span>, and the <span className={styles['keyword-tech']}>topological psychoanalysis on cognition</span>.
         </p>
         
         <div ref={indicatorRef} className={styles.scrollIndicator}>

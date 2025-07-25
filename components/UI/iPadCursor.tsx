@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from '../../styles/iPadCursor.module.css'
 
 export default function IPadCursor() {
@@ -9,59 +9,37 @@ export default function IPadCursor() {
   const lastUpdateTime = useRef(0)
   const rafId = useRef<number>()
 
-  // Throttled cursor update for better performance
+  // Heavily optimized cursor update - 30fps max for better performance
   const throttledCursorUpdate = useCallback((x: number, y: number) => {
     const now = Date.now()
-    if (now - lastUpdateTime.current < 8) return // Limit to ~120fps max
+    if (now - lastUpdateTime.current < 33) return // Limit to 30fps for better performance
 
     lastUpdateTime.current = now
     
-    if (rafId.current) cancelAnimationFrame(rafId.current)
-    
-    rafId.current = requestAnimationFrame(() => {
-      if (cursorRef.current) {
-        // Use transform for better performance
-        cursorRef.current.style.transform = `translate3d(${x - 10}px, ${y - 10}px, 0)`
-      }
-    })
+    // Direct style update - no RAF needed for simple transforms
+    if (cursorRef.current) {
+      cursorRef.current.style.transform = `translate3d(${x - 10}px, ${y - 10}px, 0)`
+    }
   }, [])
 
-  // Simplified element detection - only text vs default
+  // Ultra-fast element detection - minimal checks
   const detectCursorState = useCallback((element: Element): 'default' | 'text' => {
     const tagName = element.tagName.toLowerCase()
-    const computedStyle = window.getComputedStyle(element)
     
-    // Check for text cursor only
-    if (computedStyle.cursor === 'text' || 
-        element.getAttribute('contenteditable') === 'true' ||
-        ['input', 'textarea'].includes(tagName) ||
-        (['p', 'span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tagName) && element.textContent?.trim())) {
+    // Fast text element detection - only check common text elements
+    if (['input', 'textarea'].includes(tagName) || 
+        element.getAttribute('contenteditable') === 'true') {
       return 'text'
     }
     
     return 'default'
   }, [])
 
-  // Force cursor hiding on all elements
+  // Simplified cursor hiding - minimal CSS injection
   const enforceCursorHiding = useCallback(() => {
-    // Add comprehensive styles to override any cursor declarations
+    // Lightweight style injection
     const style = document.createElement('style')
-    style.textContent = `
-      *, *:hover, *:active, *:focus, 
-      a, a:hover, a:active, a:visited,
-      button, button:hover, button:active,
-      [role="button"], [role="button"]:hover,
-      input, textarea, select,
-      [onclick], [onclick]:hover,
-      .clickable, .cursor-pointer {
-        cursor: none !important;
-      }
-      
-      /* Override any inline styles */
-      [style*="cursor"] {
-        cursor: none !important;
-      }
-    `
+    style.textContent = `* { cursor: none !important; }`
     document.head.appendChild(style)
     
     return () => {
@@ -83,28 +61,24 @@ export default function IPadCursor() {
     document.body.classList.add('ipad-cursor-active')
     const cleanupStyles = enforceCursorHiding()
 
-    let currentElement: Element | null = null
+    let elementCheckCounter = 0
 
     const updateCursor = (e: MouseEvent) => {
       const x = e.clientX
       const y = e.clientY
       
-      // Throttled position update
+      // Always update position (lightweight)
       throttledCursorUpdate(x, y)
 
-      // Optimized element detection - only check if element changed
-      const elementUnderCursor = document.elementFromPoint(x, y)
-      if (elementUnderCursor && elementUnderCursor !== currentElement) {
-        currentElement = elementUnderCursor
-        
-        // Force cursor none on the current element (cast to HTMLElement for style access)
-        if (elementUnderCursor instanceof HTMLElement) {
-          elementUnderCursor.style.cursor = 'none'
-        }
-        
-        const newState = detectCursorState(elementUnderCursor)
-        if (newState !== cursorState) {
-          setCursorState(newState)
+      // Check element type much less frequently (every 10th call)
+      elementCheckCounter++
+      if (elementCheckCounter % 10 === 0) {
+        const elementUnderCursor = document.elementFromPoint(x, y)
+        if (elementUnderCursor) {
+          const newState = detectCursorState(elementUnderCursor)
+          if (newState !== cursorState) {
+            setCursorState(newState)
+          }
         }
       }
     }

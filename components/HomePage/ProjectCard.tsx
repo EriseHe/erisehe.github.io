@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
-import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import { Project } from '../../lib/projects'
 import styles from '../../styles/HomePage.module.css'
 
@@ -18,31 +18,25 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    gsap.fromTo(cardRef.current, {
-      autoAlpha: 0,
-      y: 50,
-      scale: 0.95
-    }, {
-      autoAlpha: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: cardRef.current,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse'
-      },
-      delay: index * 0.1
+    // Simplified card animation with better performance
+    gsap.set(cardRef.current, { autoAlpha: 0, y: 30 })
+
+    const trigger = ScrollTrigger.create({
+      trigger: cardRef.current,
+      start: 'top 85%',
+      onEnter: () => {
+        gsap.to(cardRef.current, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5, // Faster animation
+          ease: 'power1.out', // Much lighter easing
+          delay: index * 0.05 // Reduced stagger
+        })
+      }
     })
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.trigger === cardRef.current) {
-          trigger.kill()
-        }
-      })
+      trigger.kill()
     }
   }, [index])
 

@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useRef, ReactNode } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { ScrollSmoother } from 'gsap/dist/ScrollSmoother'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { ReactNode, useEffect, useRef } from 'react'
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -28,8 +28,8 @@ export default function ScrollWrapper({ children }: ScrollWrapperProps) {
       smoother = ScrollSmoother.create({
         wrapper: wrapperRef.current,
         content: contentRef.current,
-        smooth: 0.8,
-        effects: true
+        smooth: 0.8, // Restored smooth scrolling you love
+        effects: true // Restored scroll effects
       })
     }
 

@@ -11,19 +11,16 @@ export default function InteractiveGrid() {
   const animationFrameRef = useRef<number>()
   const [gridDimensions, setGridDimensions] = useState({ cols: 0, rows: 0 })
 
-  // Highly optimized space-time curvature constants with strong visual impact
-  const maxInfluenceRange = 600          // Larger influence radius for better visual effect
-  const longRangeFactor = 200000         // Increased gravitational strength for more visible effect
-  const maxDisplacement = 120            // Increased displacement for clear movement
-  const dampingFactor = 0.85             // Slightly less damping for more responsive motion
-  const gap = 60                         // Match CSS --gap value
+  // Proximity reaction constants (based on optimized system)
+  const IMPACT_RADIUS = 280             // Expanded gravitational field range for larger effect
+  const gap = 60                        // Match CSS --gap value
 
-  // Performance optimization: smart throttling and spatial culling
+  // Performance optimization with physics-like smoothing
   const lastMousePos = useRef({ x: -1000, y: -1000 })
+  const targetMousePos = useRef({ x: -1000, y: -1000 })
   const isAnimating = useRef(false)
   const lastUpdateTime = useRef(0)
-  const updateThreshold = 20             // Slightly reduced frequency for better performance
-  const frameSkipCounter = useRef(0)     // Skip frames for distant cells
+  const updateThreshold = 20            // Slightly reduced frequency for more natural movement
 
   const calculateGridSize = () => {
     if (typeof window === 'undefined') return { cols: 0, rows: 0 }
@@ -43,12 +40,12 @@ export default function InteractiveGrid() {
         const cellRect = cell.getBoundingClientRect()
         const containerRect = gridContainerRef.current.getBoundingClientRect()
         
-        ;(cell as any).center_position = {
-          x: cellRect.left + cellRect.width / 2 - containerRect.left,
-          y: cellRect.top + cellRect.height / 2 - containerRect.top,
-        }
-        // Initialize physics properties
-        ;(cell as any).velocity = { x: 0, y: 0 }
+        const centerX = cellRect.left + cellRect.width / 2 - containerRect.left
+        const centerY = cellRect.top + cellRect.height / 2 - containerRect.top
+        
+        ;(cell as any).center_position = { x: centerX, y: centerY }
+        // Initialize proximity reaction properties  
+        ;(cell as any).originalPosition = { x: centerX, y: centerY }
       }
     })
   }
@@ -65,25 +62,33 @@ export default function InteractiveGrid() {
     })
   }
 
-  // Highly optimized space-time curvature calculation with spatial culling
-  const updateGravitationalField = () => {
+    // Optimized proximity attraction system (inspired by Oliviero Spinelli)
+  const updateProximityReactions = () => {
     if (!gridContainerRef.current) return
 
     const now = Date.now()
     if (now - lastUpdateTime.current < updateThreshold) {
       if (isAnimating.current) {
-        animationFrameRef.current = requestAnimationFrame(updateGravitationalField)
+        animationFrameRef.current = requestAnimationFrame(updateProximityReactions)
       }
       return
     }
     lastUpdateTime.current = now
 
+    // Smooth mouse position interpolation for physics-like feel
+    const targetX = targetMousePos.current.x
+    const targetY = targetMousePos.current.y
+    const lerpFactor = 0.12 // Smooth following factor (lower = more lag/realistic)
+    
+    lastMousePos.current.x += (targetX - lastMousePos.current.x) * lerpFactor
+    lastMousePos.current.y += (targetY - lastMousePos.current.y) * lerpFactor
+
     const mouseX = lastMousePos.current.x
     const mouseY = lastMousePos.current.y
-    const updates: Array<{ cell: HTMLDivElement; x: number; y: number }> = []
-    
-    // Frame skipping for even better performance
-    frameSkipCounter.current = (frameSkipCounter.current + 1) % 2
+
+    // Check if mouse is off-screen
+    const isMouseOffScreen = targetX < -500 || targetY < -500
+    let hasActiveReactions = false
 
     for (let i = 0; i < cellsRef.current.length; i++) {
       const cell = cellsRef.current[i]
@@ -92,53 +97,52 @@ export default function InteractiveGrid() {
       const cellX = (cell as any).center_position.x
       const cellY = (cell as any).center_position.y
       
-      // Fast distance-squared calculation for spatial culling
-      const dx = mouseX - cellX
-      const dy = mouseY - cellY
-      const distanceSquared = dx * dx + dy * dy
-      
-             // MAJOR OPTIMIZATION: Skip cells outside influence range (eliminates ~50% of calculations)
-       if (distanceSquared > maxInfluenceRange * maxInfluenceRange) continue
-       
-       // Skip every other frame for very distant cells only (lighter optimization)
-       if (distanceSquared > 25000 && frameSkipCounter.current === 0) continue
+      if (isMouseOffScreen) {
+        // Reset to original position
+        cell.style.setProperty('--dist-factor', '0')
+        cell.style.transform = 'translate3d(0px, 0px, 0)'
+      } else {
+        // Calculate distance from mouse to cell
+        const dx = cellX - mouseX
+        const dy = cellY - mouseY
+        const distance = Math.sqrt(dx * dx + dy * dy)
 
-       // Enhanced long-range space-time curvature with better visual impact
-       const distance = Math.sqrt(distanceSquared)
-       const invDistanceSquared = 1 / Math.max(distanceSquared, 300) // Stronger close-range effect
-       
-       // More visible gravitational effect with distance-based scaling
-       let force = longRangeFactor * invDistanceSquared
-       
-       // Boost force for medium-range interactions (sweet spot for visibility)
-       if (distance < 200) {
-         force *= 1.5 // 50% boost for close-range visibility
-       }
-       
-       force = Math.min(force, maxDisplacement)
-       
-       // Improved direction calculation for smoother motion
-       const invDistance = 1 / distance
-       const directionX = dx * invDistance * force
-       const directionY = dy * invDistance * force
-       
-       // Enhanced velocity integration for more responsive movement
-       const velocity = (cell as any).velocity || { x: 0, y: 0 }
-       velocity.x = (velocity.x + directionX * 0.08) * dampingFactor
-       velocity.y = (velocity.y + directionY * 0.08) * dampingFactor
-      
-      ;(cell as any).velocity = velocity
-      updates.push({ cell, x: velocity.x, y: velocity.y })
+        if (distance < IMPACT_RADIUS) {
+          hasActiveReactions = true
+          
+          // Calculate distance factor (1 = at mouse, 0 = at edge of radius)
+          const distFactor = (IMPACT_RADIUS - Math.min(distance, IMPACT_RADIUS)) / IMPACT_RADIUS
+          
+          // Calculate angle from cell to mouse (for attraction direction)
+          const angle = Math.atan2(-dy, -dx) // Inverted for attraction force
+          
+          // Apply displacement with smoother scaling for more realistic physics
+          const smoothDistFactor = distFactor * distFactor // Quadratic scaling for gentler effect
+          const displacement = smoothDistFactor * 50 // Increased max displacement for dramatic visual effect
+          const translateX = Math.cos(angle) * displacement
+          const translateY = Math.sin(angle) * displacement
+          
+          // Use CSS custom properties for styling
+          cell.style.setProperty('--dist-factor', smoothDistFactor.toString())
+          cell.style.setProperty('--angle', angle.toString())
+          
+          // Apply transform (CSS transition will handle the smoothing)
+          cell.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`
+        } else {
+          // Outside impact radius - reset
+          cell.style.setProperty('--dist-factor', '0')
+          cell.style.transform = 'translate3d(0px, 0px, 0)'
+        }
+      }
     }
 
-    // Batch apply all transforms (unchanged - already optimized)
-    for (let i = 0; i < updates.length; i++) {
-      const { cell, x, y } = updates[i]
-      cell.style.transform = `translate3d(${x}px, ${y}px, 0)`
-    }
-
+    // Continue animation only if there are active reactions or returning to rest
+    if (hasActiveReactions || isMouseOffScreen) {
     if (isAnimating.current) {
-      animationFrameRef.current = requestAnimationFrame(updateGravitationalField)
+        animationFrameRef.current = requestAnimationFrame(updateProximityReactions)
+      }
+    } else {
+      isAnimating.current = false
     }
   }
 
@@ -147,48 +151,33 @@ export default function InteractiveGrid() {
 
     const containerRect = gridContainerRef.current.getBoundingClientRect()
     
-    // Update mouse position with throttling
     if (e) {
       const newX = e.clientX - containerRect.left
       const newY = e.clientY - containerRect.top
       
-      // Only update if position changed significantly (reduces calculations)
-      const deltaX = Math.abs(newX - lastMousePos.current.x)
-      const deltaY = Math.abs(newY - lastMousePos.current.y)
-      
-      if (deltaX > 2 || deltaY > 2) { // 2px threshold for updates
-        lastMousePos.current = { x: newX, y: newY }
-      }
+      // Update target position for smooth following
+      targetMousePos.current = { x: newX, y: newY }
     } else {
-      // Mouse left - gravitational source moves off-screen
-      lastMousePos.current = { x: -1000, y: -1000 }
+      // Mouse left - set to off-screen position for return animation
+      targetMousePos.current = { x: -1000, y: -1000 }
     }
 
     // Start animation loop if not running
     if (!isAnimating.current) {
       isAnimating.current = true
-      updateGravitationalField()
+      updateProximityReactions()
     }
   }
 
   const handlePointerLeave = () => {
-    // Gradually return all nodes to rest state
-    isAnimating.current = false
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current)
+    // Set mouse to off-screen position to trigger return animation
+    lastMousePos.current = { x: -1000, y: -1000 }
+    
+    // Ensure animation loop continues for return animation
+    if (!isAnimating.current) {
+      isAnimating.current = true
+      updateProximityReactions()
     }
-
-    cellsRef.current.forEach((cell) => {
-      if (cell) {
-        ;(cell as any).velocity = { x: 0, y: 0 }
-        gsap.to(cell, {
-          duration: 3,
-          x: 0,
-          y: 0,
-          ease: "elastic.out(1, 0.3)",
-        })
-      }
-    })
   }
 
   const handleResize = () => {

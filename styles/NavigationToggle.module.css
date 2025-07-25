@@ -3,13 +3,13 @@
 /* CSS Variables - Light Mode Fixed */
 .control {
   --shadow-color: 0deg 0% 63%;
-  --primary: hsl(0 0% 10%);
-  --secondary: #ffffff;
-  --inactive: hsl(0 0% 60%);
+  --primary: #ffffff; /* Changed from dark to white for light theme */
+  --secondary: #000000; /* Changed from white to black */
+  --inactive: hsl(0 0% 40%); /* Darker inactive state for light background */
   --duration: 0.22;
   --drop-off: 0.4;
-  --border: rgba(255, 255, 255, 0.2);
-  --mesh-color: rgba(70, 70, 70, 0.9);
+  --border: rgba(0, 0, 0, 0.1); /* Changed to dark border for light background */
+  --mesh-color: rgba(255, 255, 255, 0.9); /* Changed to light background */
   --ease: linear(
     0 0%, 0.2342 12.49%, 0.4374 24.99%,
     0.6093 37.49%, 0.6835 43.74%,
@@ -32,6 +32,7 @@
   border-radius: 100px;
   border: 1px solid var(--border);
   padding: 2px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Added subtle shadow for light background */
   /* Remove box shadow for a more skeletal look */
 }
 
@@ -63,6 +64,7 @@
   transition: translate calc(var(--duration) * 1s) var(--ease);
   /* Remove wireframe pattern and effects */
   border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Added shadow to indicator */
 }
 
 .premium .indicator {
@@ -123,34 +125,37 @@
   place-items: center;
   cursor: pointer;
   font-size: 0.75rem;
-  color: var(--secondary);
+  color: #333333; /* Darker text for light background */
   z-index: 2;
   transition-property: color, opacity;
   transition-duration: calc(var(--duration) * 1s);
   transition-timing-function: var(--ease);
   user-select: none;
-  text-shadow: none; /* Remove text shadow */
+  text-shadow: none;
+  font-weight: 500; /* Slightly bolder for better visibility */
 }
 
 .control label:hover {
-  opacity: 0.8;
+  opacity: 0.7;
+  color: #000000; /* Darker on hover */
 }
 
-/* Main section labels (Erise He, Project) - default white */
+/* Main section labels (Erise He, Project) */
 .controlTrack > label:nth-of-type(1),
 .controlTrack > label:nth-of-type(2) {
-  color: var(--secondary);
+  color: #333333; /* Dark text for light background */
+  font-weight: 600; /* Bolder for main navigation */
 }
 
-/* When main sections are selected, text becomes white */
+/* When main sections are selected, text becomes darker */
 .controlTrack:has(> input:nth-of-type(1):checked) > label:nth-of-type(1),
 .controlTrack:has(> input:nth-of-type(2):checked) > label:nth-of-type(2) {
-  color: var(--secondary);
-  text-shadow: 0 0 4px rgba(255,255,255,0.5);
+  color: #000000; /* Very dark when selected */
+  text-shadow: none; /* Remove text shadow for clean look */
 }
 
 .premium label {
-  color: var(--inactive);
+  color: #666666; /* Medium gray for secondary options */
 }
 
 .premium label span {
@@ -175,7 +180,7 @@
 
 /* Interactive States */
 .controlTrack:not(:has(> :checked)) > label {
-  color: var(--primary);
+  color: #999999; /* Light gray when not selected */
   opacity: var(--drop-off);
 }
 

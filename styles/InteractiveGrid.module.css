@@ -28,22 +28,30 @@
 
 .cell {
   --size: 6px;
+  --dist-factor: 0;
+  --angle: 0;
   width: var(--size);
   height: var(--size);
   background-color: #666666;
   border-radius: 50%;
   will-change: transform;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: all 0.2s ease;
+  pointer-events: none;
   position: relative;
   flex-shrink: 0;
-}
-
-.cell:hover {
-  --size: 8px;
-  background-color: #333333;
-  box-shadow: 0 0 8px rgba(102, 102, 102, 0.5);
+  
+  /* Physics-like transitions for realistic movement */
+  transition: 
+    transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  
+  /* Proximity reaction effects */
+  background-color: hsl(
+    calc(210 + var(--dist-factor) * 50), 
+    calc(30% + var(--dist-factor) * 40%), 
+    calc(40% + var(--dist-factor) * 20%)
+  );
+  box-shadow: 0 0 calc(var(--dist-factor) * 8px) rgba(102, 102, 102, calc(var(--dist-factor) * 0.6));
 }
 
 .cell::before {
@@ -61,9 +69,7 @@
   transition: opacity 0.3s ease;
 }
 
-.cell:hover::before {
-  opacity: 1;
-}
+/* Removed hover effect for performance optimization */
 
 /* Responsive Design */
 @media (max-width: 1200px) {
