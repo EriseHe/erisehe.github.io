@@ -4,14 +4,18 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useEffect, useRef } from 'react'
 import { getFeaturedProjects } from '../../lib/projects'
+import { getPublications } from '../../lib/publications'
 import styles from '../../styles/HomePage.module.css'
+import publicationStyles from '../../styles/Publications.module.css'
 import ProjectCard from './ProjectCard'
 
 export default function ProjectGallery() {
   const galleryRef = useRef<HTMLDivElement>(null)
   const profileRef = useRef<HTMLDivElement>(null)
   const galleryGridRef = useRef<HTMLDivElement>(null)
+  const publicationsRef = useRef<HTMLDivElement>(null)
   const projects = getFeaturedProjects()
+  const publications = getPublications()
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -47,12 +51,29 @@ export default function ProjectGallery() {
         toggleActions: 'play none none reverse'
       }
     })
+    
+    // Publications section animation
+    gsap.fromTo(publicationsRef.current, {
+      autoAlpha: 0,
+      y: 20
+    }, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: publicationsRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none reverse'
+      }
+    })
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
         if (trigger.trigger === galleryRef.current || 
             trigger.trigger === profileRef.current || 
-            trigger.trigger === galleryGridRef.current) {
+            trigger.trigger === galleryGridRef.current ||
+            trigger.trigger === publicationsRef.current) {
           trigger.kill()
         }
       })
@@ -65,7 +86,11 @@ export default function ProjectGallery() {
       <div className={styles.profileSidebar} ref={profileRef}>
         <div className={styles.profileCard}>
           <div className={styles.profileAvatar}>
-            <div className={styles.avatarPlaceholder}>E</div>
+            <img 
+              src="/static/profile.png" 
+              alt="Erise He Profile" 
+              className={styles.avatarImage}
+            />
           </div>
           
           <div className={styles.profileInfo}>
@@ -93,7 +118,7 @@ export default function ProjectGallery() {
             </div>
 
             <div className={styles.profileLinks}>
-              <a href="#" className={styles.profileLink}>Publications</a>
+              <a href="#publications" className={styles.profileLink}>Publications</a>
               <a href="#" className={styles.profileLink}>CV</a>
             </div>
           </div>
@@ -116,6 +141,43 @@ export default function ProjectGallery() {
                 index={index}
               />
             ))}
+          </div>
+          
+          {/* Compact Academic Publications Section */}
+          <div id="publications" className={publicationStyles.compactPublications} ref={publicationsRef}>
+            <div className={publicationStyles.compactPublicationsHeader}>
+              <h3 className={publicationStyles.compactPublicationsTitle}>Academic Publications</h3>
+            </div>
+            
+            <div className={publicationStyles.compactPublicationsList}>
+              {publications.map((publication, index) => (
+                <div key={publication.id} className={publicationStyles.publicationItem}>
+                  <div className={publicationStyles.publicationContent}>
+                    <h4 className={publicationStyles.publicationTitle}>
+                      <a href={publication.url} target="_blank" rel="noopener noreferrer">
+                        {publication.title}
+                      </a>
+                    </h4>
+                    
+                    <p className={publicationStyles.publicationAuthors}>
+                      {publication.authors.join(', ')}
+                    </p>
+                    
+                    <div className={publicationStyles.publicationMeta}>
+                      <span className={publicationStyles.publicationJournal}>{publication.journal}</span>
+                      <span className={publicationStyles.publicationYear}>{publication.year}</span>
+                      {publication.doi && (
+                        <span className={publicationStyles.publicationDoi}>
+                          <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer">
+                            DOI: {publication.doi}
+                          </a>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

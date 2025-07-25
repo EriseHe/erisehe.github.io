@@ -42,11 +42,28 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <div className={styles.projectCard} ref={cardRef}>
-      <Link href={project.url} className={styles.projectLink}>
+      <Link 
+        href={project.url} 
+        className={styles.projectLink}
+        target={project.url.startsWith('http') ? '_blank' : undefined}
+        rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+      >
         <div className={styles.projectThumbnail}>
-          <div className={styles.projectPlaceholder}>
-            {project.id === 'topology' ? 'T' : project.id === 'notebook' ? 'N' : project.id[0].toUpperCase()}
-          </div>
+          <img 
+            src={project.thumbnail} 
+            alt={`${project.title} thumbnail`}
+            className={styles.projectImage}
+            onError={(e) => {
+              // Fallback to placeholder if image fails to load
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.parentElement?.appendChild(
+                Object.assign(document.createElement('div'), {
+                  className: styles.projectPlaceholder,
+                  textContent: project.id === 'topology' ? 'T' : project.id === 'notebook' ? 'N' : project.id[0].toUpperCase()
+                })
+              );
+            }}
+          />
         </div>
         
         <div className={styles.projectInfo}>

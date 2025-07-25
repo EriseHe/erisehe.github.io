@@ -76,8 +76,8 @@ export default function HeroSection() {
         </div>
         
         <p ref={subtitleRef} className={styles.heroSubtitle}>
-          Hi, I'm Erise — an <span className={styles['keyword-math']}>Applied Mathematics / Physics</span> and <span className={styles['keyword-math']}>Philosophy</span> thinker exploring
-          <span className={styles['keyword-tech']}>discrete differential geometry</span>, the <span className={styles['keyword-tech']}>geometric AI</span>, and the <span className={styles['keyword-tech']}>topological psychoanalysis on cognition</span>.
+          Hi, I'm Erise — an <span className={styles['keyword-math']}>Applied Mathematics / Physics</span> and <span className={styles['keyword-philosophy']}>Philosophy</span> <span style={{ textDecoration: 'underline' }}>thinker</span>, exploring
+          <span className={styles['keyword-tech']}> discrete differential geometry</span>, <span className={styles['keyword-tech']}>geometric AI</span>, and the <span className={styles['keyword-tech']}>topological psychoanalysis on cognition</span>.
         </p>
         
         <div ref={indicatorRef} className={styles.scrollIndicator}>

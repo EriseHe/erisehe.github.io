@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
-import ScrollWrapper from '../components/SmoothScroll/ScrollWrapper'
-import NavigationToggle from '../components/UI/NavigationToggle'
 import HeroSection from '../components/HomePage/HeroSection'
 import ProjectGallery from '../components/HomePage/ProjectGallery'
+import ScrollWrapper from '../components/SmoothScroll/ScrollWrapper'
 import IPadCursor from '../components/UI/iPadCursor'
+import NavigationToggle from '../components/UI/NavigationToggle'
 
 export default function Home() {
   useEffect(() => {

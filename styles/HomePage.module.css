@@ -20,7 +20,7 @@
   align-items: center;
   min-height: 100vh;
   justify-content: center;
-  transform: translateY(20px); /* Move content slightly lower for better centering */
+  transform: translateY(80px); /* Move entire hero section significantly lower for better vertical centering */
 }
 
 .heroTitle {
@@ -61,19 +61,29 @@
 }
 
 /* Color-coded keywords in description - bold to match modern style */
+/* Enhanced typography for front page keywords */
 .heroSubtitle .keyword-math {
-  color: #c04d87; /* Indigo for mathematics */
+  color: #c04d87; /* Pink-purple for mathematics */
   font-weight: 700; /* Bolder for modern impact */
+}
+
+.heroSubtitle .keyword-philosophy {
+  color: #16a34a; /* Suitable green for philosophy */
+  font-weight: 700; /* Bolder for modern impact */
+  font-family: 'Times New Roman', serif; /* Different font for philosophy */
 }
 
 .heroSubtitle .keyword-tech {
   color: #6539cd; /* Purple for technical terms */
   font-weight: 700; /* Bolder for modern impact */
+  font-style: italic; /* Italicized for field names */
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif; /* Modern tech font */
 }
 
 .heroSubtitle .keyword-field {
   color: #06b6d4; /* Cyan for field of study */
   font-weight: 700; /* Bolder for modern impact */
+  font-style: italic; /* Italicized for field names */
 }
 
 .scrollIndicator {
@@ -191,6 +201,21 @@
   font-weight: 700;
   color: white;
   box-shadow: var(--shadow-sm);
+}
+
+.avatarImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatarImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .profileInfo {
@@ -365,6 +390,19 @@
   background: black;
 }
 
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.projectImage:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
 .projectInfo {
   padding: var(--space-md);
   display: flex;
@@ -416,7 +454,6 @@
 }
 
 .projectTag {
-  background: var(--color-accent);
   color: white;
   padding: 0.15rem 0.5rem;
   border-radius: var(--radius-sm);
@@ -426,10 +463,15 @@
   letter-spacing: 0.05em;
 }
 
+/* Consistent color for all project tags */
+.projectTag {
+  background: #3b82f6; /* Blue for all tags */
+}
+
 
 /* Business Card with Wireframe Design */
 .businessCard {
-  background: radial-gradient(ellipse at center, #000000 0%,  #210737 100%); /* Elegant radial gradient from dark center to purple edges */
+  background: radial-gradient(ellipse at center, #0f0b16 0%,  #1b1522 100%); /* Elegant radial gradient from dark center to purple edges */
   opacity: 0.9; /* Slightly more opaque to show gradient better */
   backdrop-filter: blur(10px);
   border-radius: 30px; /* Reduced from 40px for sleeker look */

@@ -1,0 +1,167 @@
+/* Compact Publications Section */
+.compactPublications {
+  margin-top: 4rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 2rem;
+}
+
+.compactPublicationsHeader {
+  margin-bottom: var(--space-md);
+}
+
+.compactPublicationsTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+}
+
+/* Remove purple horizontal line */
+
+.compactPublicationsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Publication Item */
+.publicationItem {
+  background: #fcfcfc;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: var(--space-md);
+  border-left: 2px solid #2563eb; /* Changed to blue instead of purple */
+}
+
+.publicationItem:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.publicationContent {
+  flex: 1;
+}
+
+.publicationTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  line-height: 1.4;
+}
+
+.publicationTitle a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.publicationTitle a:hover {
+  color: var(--color-accent);
+}
+
+.publicationAuthors {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+  color: #555;
+}
+
+.publicationMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-size: 0.75rem;
+  color: var(--color-secondary);
+}
+
+.publicationJournal {
+  font-style: italic;
+}
+
+.publicationYear {
+  font-weight: 500;
+}
+
+.publicationDoi a {
+  color: #0369a1; /* Blue for DOI links */
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.publicationDoi a:hover {
+  text-decoration: underline;
+  color: #0284c7; /* Slightly lighter blue on hover */
+}
+
+.publicationTag {
+  background: #0ea5e9; /* Bright blue for publication tag */
+  color: white;
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.7rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: var(--space-xs);
+}
+
+.publicationActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-sm);
+}
+
+.publicationLink {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.75rem;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.publicationLink:hover {
+  color: #7c3aed;
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .compactPublicationsTitle {
+    font-size: 1.3rem;
+  }
+  
+  .publicationItem {
+    padding: var(--space-sm);
+  }
+  
+  .publicationTitle {
+    font-size: 0.95rem;
+  }
+  
+  .publicationAuthors {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .compactPublications {
+    margin-top: 3rem;
+  }
+  
+  .compactPublicationsTitle {
+    font-size: 1.2rem;
+  }
+  
+  .publicationMeta {
+    flex-direction: column;
+    gap: 5px;
+  }
+} 
