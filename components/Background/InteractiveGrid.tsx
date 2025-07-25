@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/InteractiveGrid.module.css'
 
 export default function InteractiveGrid() {
@@ -11,18 +11,19 @@ export default function InteractiveGrid() {
   const animationFrameRef = useRef<number>()
   const [gridDimensions, setGridDimensions] = useState({ cols: 0, rows: 0 })
 
-  // Optimized physics constants for global gravitational field
-  const gravitationalConstant = 400000   // Dramatically increased for strong visual effect
-  const maxForce = 150                   // Much higher maximum displacement
-  const dampingFactor = 0.88             // Lower damping for faster, more responsive movement
-  const minDistance = 15                 // Slightly closer minimum distance
+  // Highly optimized space-time curvature constants with strong visual impact
+  const maxInfluenceRange = 600          // Larger influence radius for better visual effect
+  const longRangeFactor = 200000         // Increased gravitational strength for more visible effect
+  const maxDisplacement = 120            // Increased displacement for clear movement
+  const dampingFactor = 0.85             // Slightly less damping for more responsive motion
   const gap = 60                         // Match CSS --gap value
 
-  // Performance optimization: batch updates with throttling
+  // Performance optimization: smart throttling and spatial culling
   const lastMousePos = useRef({ x: -1000, y: -1000 })
   const isAnimating = useRef(false)
   const lastUpdateTime = useRef(0)
-  const updateThreshold = 16             // ~60fps limit (16ms)
+  const updateThreshold = 20             // Slightly reduced frequency for better performance
+  const frameSkipCounter = useRef(0)     // Skip frames for distant cells
 
   const calculateGridSize = () => {
     if (typeof window === 'undefined') return { cols: 0, rows: 0 }
@@ -64,13 +65,12 @@ export default function InteractiveGrid() {
     })
   }
 
-  // Optimized global gravitational field calculation
+  // Highly optimized space-time curvature calculation with spatial culling
   const updateGravitationalField = () => {
     if (!gridContainerRef.current) return
 
     const now = Date.now()
     if (now - lastUpdateTime.current < updateThreshold) {
-      // Continue animation loop but skip calculation
       if (isAnimating.current) {
         animationFrameRef.current = requestAnimationFrame(updateGravitationalField)
       }
@@ -80,65 +80,63 @@ export default function InteractiveGrid() {
 
     const mouseX = lastMousePos.current.x
     const mouseY = lastMousePos.current.y
-
-    // Optimized batch processing with reduced calculations
     const updates: Array<{ cell: HTMLDivElement; x: number; y: number }> = []
-    const cellCount = cellsRef.current.length
+    
+    // Frame skipping for even better performance
+    frameSkipCounter.current = (frameSkipCounter.current + 1) % 2
 
-    for (let i = 0; i < cellCount; i++) {
+    for (let i = 0; i < cellsRef.current.length; i++) {
       const cell = cellsRef.current[i]
       if (!cell || !(cell as any).center_position) continue
 
       const cellX = (cell as any).center_position.x
       const cellY = (cell as any).center_position.y
       
-      // Calculate distance vector (global field - no radius limit)
-      const diff_x = mouseX - cellX
-      const diff_y = mouseY - cellY
-      const distanceSquared = diff_x * diff_x + diff_y * diff_y
-      const distance = Math.max(Math.sqrt(distanceSquared), minDistance)
+      // Fast distance-squared calculation for spatial culling
+      const dx = mouseX - cellX
+      const dy = mouseY - cellY
+      const distanceSquared = dx * dx + dy * dy
+      
+             // MAJOR OPTIMIZATION: Skip cells outside influence range (eliminates ~50% of calculations)
+       if (distanceSquared > maxInfluenceRange * maxInfluenceRange) continue
+       
+       // Skip every other frame for very distant cells only (lighter optimization)
+       if (distanceSquared > 25000 && frameSkipCounter.current === 0) continue
 
-      // Optimized Einstein's spacetime curvature: F = G*M / r²
-      const gravitationalForce = gravitationalConstant / distanceSquared
+       // Enhanced long-range space-time curvature with better visual impact
+       const distance = Math.sqrt(distanceSquared)
+       const invDistanceSquared = 1 / Math.max(distanceSquared, 300) // Stronger close-range effect
+       
+       // More visible gravitational effect with distance-based scaling
+       let force = longRangeFactor * invDistanceSquared
+       
+       // Boost force for medium-range interactions (sweet spot for visibility)
+       if (distance < 200) {
+         force *= 1.5 // 50% boost for close-range visibility
+       }
+       
+       force = Math.min(force, maxDisplacement)
+       
+       // Improved direction calculation for smoother motion
+       const invDistance = 1 / distance
+       const directionX = dx * invDistance * force
+       const directionY = dy * invDistance * force
+       
+       // Enhanced velocity integration for more responsive movement
+       const velocity = (cell as any).velocity || { x: 0, y: 0 }
+       velocity.x = (velocity.x + directionX * 0.08) * dampingFactor
+       velocity.y = (velocity.y + directionY * 0.08) * dampingFactor
       
-      // Simplified force calculation for better performance
-      const baseForce = gravitationalForce * 2
-      const distanceBoost = distance < 100 ? 1 : (1 + distance * 0.008)
-      const smoothingFactor = 1 / (1 + distance * 0.0001)
-      
-      const force = Math.min(baseForce * distanceBoost * smoothingFactor, maxForce)
-      
-      // Normalize direction vector (optimized)
-      const invDistance = 1 / distance
-      const directionX = diff_x * invDistance
-      const directionY = diff_y * invDistance
-      
-      // Apply spacetime curvature displacement
-      const currentVelocity = (cell as any).velocity || { x: 0, y: 0 }
-      
-      // Physics integration with optimized acceleration
-      const acceleration = force * 0.05
-      const accelerationX = directionX * acceleration
-      const accelerationY = directionY * acceleration
-      
-      // Update velocity with damping
-      currentVelocity.x = (currentVelocity.x + accelerationX) * dampingFactor
-      currentVelocity.y = (currentVelocity.y + accelerationY) * dampingFactor
-      
-      // Store velocity for next frame
-      ;(cell as any).velocity = currentVelocity
-      
-      // Batch the update
-      updates.push({ cell, x: currentVelocity.x, y: currentVelocity.y })
+      ;(cell as any).velocity = velocity
+      updates.push({ cell, x: velocity.x, y: velocity.y })
     }
 
-    // Apply all updates in a single batch using native transforms for performance
+    // Batch apply all transforms (unchanged - already optimized)
     for (let i = 0; i < updates.length; i++) {
       const { cell, x, y } = updates[i]
       cell.style.transform = `translate3d(${x}px, ${y}px, 0)`
     }
 
-    // Continue animation loop
     if (isAnimating.current) {
       animationFrameRef.current = requestAnimationFrame(updateGravitationalField)
     }

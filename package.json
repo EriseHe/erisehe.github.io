@@ -17,14 +17,21 @@
     "url": "https://github.com/erisehe/erisehe.github.io/issues"
   },
   "homepage": "https://erisehe.github.io",
-  "keywords": ["portfolio", "mathematics", "physics", "AI", "nextra", "topology"],
+  "keywords": [
+    "portfolio",
+    "mathematics",
+    "physics",
+    "AI",
+    "nextra",
+    "topology"
+  ],
   "dependencies": {
-    "next": "^13.5.0",
+    "gsap": "^3.12.2",
+    "next": "^15.4.4",
     "nextra": "^2.10.0",
     "nextra-theme-docs": "^2.10.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "gsap": "^3.12.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.11.10",

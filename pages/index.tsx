@@ -1,10 +1,10 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import ScrollWrapper from '../components/SmoothScroll/ScrollWrapper'
 import NavigationToggle from '../components/UI/NavigationToggle'
 import HeroSection from '../components/HomePage/HeroSection'
 import ProjectGallery from '../components/HomePage/ProjectGallery'
 import IPadCursor from '../components/UI/iPadCursor'
-import { useEffect } from 'react'
 
 export default function Home() {
   useEffect(() => {
@@ -36,10 +36,20 @@ export default function Home() {
         <meta property="twitter:title" content="Erise He - Applied Mathematics & AI Research" />
         <meta property="twitter:description" content="Applied mathematics and physics student working on topology of data, geometric deep learning, and psychoanalysis of cognition." />
         
-        {/* Fonts */}
+        {/* Optimized Fonts - Preload critical font */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+          rel="stylesheet" 
+        />
+        <link 
+          rel="preload"
+          href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </Head>
 
       {/* iPad-style Cursor */}
