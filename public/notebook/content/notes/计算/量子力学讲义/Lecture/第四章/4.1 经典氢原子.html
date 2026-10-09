@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>4.1 经典氢原子 — E.H. Notebook</title>
+<meta name="description" content="4.1.1 经典氢原子 (Classical Hydrogen Atom)In the classical model of the hydrogen atom, we have an electron orbiting around a proton. The electrostatic potential energy is: E =">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="量子力学讲义 file hierarchy" data-sidebar-root="content/notes/计算/量子力学讲义"><a class="sidebar-root" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Lecture" aria-controls="folder-210a2627460a" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/Lecture.html">Lecture</a></div><ul class="tree-children" id="folder-210a2627460a"><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第一章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aa50c1410152" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一章</span></button></div><ul class="tree-children" id="folder-aa50c1410152" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E4%B8%80%E7%AB%A0/1.1%20The%20Wave%20Function.html"><span class="page-number">1.1</span><span>The Wave Function</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第四章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 第四章" aria-controls="folder-43e880ae5f94" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.html">第四章</a></div><ul class="tree-children" id="folder-43e880ae5f94"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E7%BB%8F%E5%85%B8%E6%B0%A2%E5%8E%9F%E5%AD%90.html"><span class="page-number">4.1</span><span>经典氢原子</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.2%20Hydrogen%20Atom.html"><span class="page-number">4.2</span><span>Hydrogen Atom</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.3%20%E8%A7%92%E5%8A%A8%E9%87%8F%20(Angular%20Momentum).html"><span class="page-number">4.3</span><span>角动量 (Angular Momentum)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.4%20Spin%20Spin%20Spin.html"><span class="page-number">4.4</span><span>Spin Spin Spin</span></a></li></ul></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E6%B3%A2%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E4%BA%8E%E5%9C%A8Hilbert%E7%A9%BA%E9%97%B4%E4%B8%AD.html"><span class="page-number"></span><span>波函数存在于在Hilbert空间中</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B%E7%9A%84%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2.html"><span class="page-number"></span><span>薛定谔方程的傅立叶变换</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/index.html">计算</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/Lecture.html">Lecture</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.html">第四章</a></nav><h1 id="reader-title">4.1 经典氢原子</h1></header><div id="article-body" class="prose"><h2 data-original-heading="4.1.1 经典氢原子 (Classical Hydrogen Atom)" id="经典氢原子-classical-hydrogen-atom">4.1.1 经典氢原子 (Classical Hydrogen Atom)</h2>
+<p>In the classical model of the hydrogen atom, we have an electron orbiting around a proton. The electrostatic potential energy is: <span class="math display">\[E = -\frac{1}{2}\frac{e^2}{4\pi\varepsilon_0 r}\]</span> According to classical electrodynamics, an accelerated charged particle radiates energy. The power radiated by an accelerated particle is given by the Larmor formula: <span class="math display">\[P = \frac{dE}{dt} = -\frac{e^2}{6\pi\varepsilon_0 c^3}a^2\]</span> This would cause the electron to spiral into the proton in approximately <span class="math inline">\(10^{-11}\)</span> seconds!</p>
+<p><strong>Important conclusion</strong>: Quantum mechanics provides the basis for the stability of matter, as classical physics fails to explain stable atomic structures.</p>
+<h2 data-original-heading="4.1.2 三维薛定谔方程 (3D Schrödinger Equation)" id="三维薛定谔方程-3d-schrödinger-equation">4.1.2 三维薛定谔方程 (3D Schrödinger Equation)</h2>
+<p>The time-dependent Schrödinger equation in three dimensions is: <span class="math display">\[i\hbar\frac{\partial\Psi}{\partial t} = H\Psi\]</span> where the Hamiltonian <span class="math inline">\(H\)</span> is:</p>
+<p><span class="math display">\[H = \frac{1}{2m}(p_x^2 + p_y^2 + p_z^2) + V\]</span> The momentum operators in quantum mechanics are: <span class="math display">\[p_x \rightarrow \frac{\hbar}{i}\frac{\partial}{\partial x}, \quad p_y \rightarrow \frac{\hbar}{i}\frac{\partial}{\partial y}, \quad p_z \rightarrow \frac{\hbar}{i}\frac{\partial}{\partial z}\]</span> More compactly: <span class="math display">\[\mathbf{p} \rightarrow \frac{\hbar}{i}\nabla\]</span></p>
+<p>The canonical commutation relations for position and momentum are:</p>
+<p><span class="math display">\[[r_i, p_j] = -[p_i, r_j] = i\hbar\delta_{ij}, \quad [r_i, r_j] = [p_i, p_j] = 0\]</span></p>
+<p>where the indices <span class="math inline">\(i,j\)</span> stand for <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, or <span class="math inline">\(z\)</span>.</p>
+<h2 data-original-heading="4.1.3 拉普拉斯算子 (Laplacian)" id="拉普拉斯算子-laplacian">4.1.3 拉普拉斯算子 (Laplacian)</h2>
+<p>In terms of the Laplacian operator, the Schrödinger equation can be written as:</p>
+<p><span class="math display">\[i\hbar\frac{\partial\Psi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2\Psi + V\Psi\]</span></p>
+<p>where the Laplacian is defined as:</p>
+<p><span class="math display">\[\nabla^2 \equiv \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}\]</span></p>
+<p>The wavefunction must be normalized:</p>
+<p><span class="math display">\[\int |\Psi|^2 d^3\mathbf{r} = 1\]</span></p>
+<p>where <span class="math display">\[d^3\mathbf{r} = dx\,dy\,dz\]</span> is the volume element.</p>
+<h2 data-original-heading="4.1.4 时间独立势能的平稳态 (Stationary States for Time-Independent Potential)" id="时间独立势能的平稳态-stationary-states-for-time-independent-potential">4.1.4 时间独立势能的平稳态 (Stationary States for Time-Independent Potential)</h2>
+<p>For a time-independent potential, there exist stationary states of the form:</p>
+<p><span class="math display">\[\Psi_n(\mathbf{r}, t) = \psi_n(\mathbf{r})e^{-iE_n t/\hbar}\]</span></p>
+<p>These stationary states satisfy the time-independent Schrödinger equation:</p>
+<p><span class="math display">\[-\frac{\hbar^2}{2m}\nabla^2\psi_n + V\psi_n = E_n\psi_n\]</span></p>
+<p>The general solution to the time-dependent Schrödinger equation is:</p>
+<p><span class="math display">\[\Psi(\mathbf{r}, t) = \sum_n c_n\psi_n(\mathbf{r})e^{-iE_n t/\hbar}\]</span></p>
+<p>The initial state determines the coefficients:</p>
+<p><span class="math display">\[\Psi(\mathbf{r}, 0) = \sum_n c_n\psi_n(\mathbf{r})\]</span></p>
+<h2 data-original-heading="4.1.5 中心势 (Central Potential)" id="中心势-central-potential">4.1.5 中心势 (Central Potential)</h2>
+<p>A central potential depends only on the radial distance:</p>
+<p><span class="math display">\[V(\mathbf{r}) = V(r)\]</span></p>
+<p>For a central potential, we use spherical coordinates:</p>
+<p><span class="math display">\[\mathbf{r} = (x, y, z) = (r, \theta, \phi)\]</span></p>
+<p>The Laplacian in spherical coordinates is:</p>
+<p><span class="math display">\[\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2\sin^2\theta}\left(\frac{\partial^2}{\partial\phi^2}\right)\]</span></p>
+<p>The Schrödinger equation for a central potential becomes:</p>
+<p><span class="math display">\[-\frac{\hbar^2}{2m}\left[\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\psi}{\partial r}\right) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial\psi}{\partial\theta}\right) + \frac{1}{r^2\sin^2\theta}\left(\frac{\partial^2\psi}{\partial\phi^2}\right)\right] + V\psi = E\psi\]</span></p>
+<h3 data-original-heading="变量分离 (Separation of Variables)" id="变量分离-separation-of-variables">4.1.5.1 变量分离 (Separation of Variables)</h3>
+<p>For a central potential, we can separate the variables:</p>
+<p><span class="math display">\[\psi(r, \theta, \phi) = R(r)Y(\theta, \phi)\]</span></p>
+<p>Substituting this into the Schrödinger equation:</p>
+<p><span class="math display">\[-\frac{\hbar^2}{2m}\left[\frac{Y}{r^2}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right) + \frac{R}{r^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right) + \frac{R}{r^2\sin^2\theta}\frac{\partial^2 Y}{\partial\phi^2}\right] + VRY = ERY\]</span></p>
+<p>Dividing by <span class="math inline">\(YR\)</span> and multiplying by <span class="math inline">\(-2mr^2/\hbar^2\)</span>:</p>
+<p><span class="math display">\[\begin{align}
+\left\{\frac{1}{R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right) - \frac{2mr^2}{\hbar^2}[V(r) - E]\right\} + \frac{1}{Y}\left\{\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2 Y}{\partial\phi^2}\right\} = 0
+\end{align}\]</span></p>
+<p>Since the left term depends only on <span class="math inline">\(r\)</span> and the right term depends only on <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\phi\)</span>, each must equal a constant:</p>
+<p><span class="math display">\[\frac{1}{R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right) - \frac{2mr^2}{\hbar^2}[V(r) - E] = \ell(\ell + 1)\]</span></p>
+<p><span class="math display">\[\frac{1}{Y}\left\{\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2 Y}{\partial\phi^2}\right\} = -\ell(\ell + 1)\]</span></p>
+<p>Where <span class="math display">\[\ell(\ell + 1)\]</span> is the separation constant.</p>
+<h2 data-original-heading="4.1.6 角度方程 (Angular Equation)" id="角度方程-angular-equation">4.1.6 角度方程 (Angular Equation)</h2>
+<p>The angular equation is:</p>
+<p><span class="math display">\[\sin\theta\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right) + \frac{\partial^2 Y}{\partial\phi^2} = -\ell(\ell + 1)\sin^2\theta Y\]</span></p>
+<p>We can separate variables again:</p>
+<p><span class="math display">\[Y(\theta, \phi) = \Theta(\theta)\Phi(\phi)\]</span></p>
+<p>Plugging this in and dividing by <span class="math inline">\(\Theta\Phi\)</span>:</p>
+<p><span class="math display">\[\left\{\frac{1}{\Theta}\left[\sin\theta\frac{d}{d\theta}\left(\sin\theta\frac{d\Theta}{d\theta}\right)\right] + \ell(\ell + 1)\sin^2\theta\right\} + \frac{1}{\Phi}\frac{d^2\Phi}{d\phi^2} = 0\]</span></p>
+<p>The <span class="math inline">\(\phi\)</span> equation separates as:</p>
+<p><span class="math display">\[\frac{1}{\Phi}\frac{d^2\Phi}{d\phi^2} = -m^2\]</span></p>
+<p><span class="math display">\[\frac{d^2\Phi}{d\phi^2} = -m^2\Phi \Rightarrow \Phi(\phi) = e^{im\phi}\]</span></p>
+<p>Since <span class="math inline">\(\Phi(\phi + 2\pi) = \Phi(\phi)\)</span> must be true for single-valued wavefunctions, we have:</p>
+<p><span class="math display">\[m = 0, \pm 1, \pm 2, \ldots\]</span></p>
+<h2 data-original-heading="4.1.7 勒让德多项式 (Legendre Polynomials)" id="勒让德多项式-legendre-polynomials">4.1.7 勒让德多项式 (Legendre Polynomials)</h2>
+<p>The <span class="math inline">\(\theta\)</span> equation becomes:</p>
+<p><span class="math display">\[\sin\theta\frac{d}{d\theta}\left(\sin\theta\frac{d\Theta}{d\theta}\right) + [\ell(\ell + 1)\sin^2\theta - m^2]\Theta = 0\]</span></p>
+<p>The solution is: <span class="math display">\[\Theta(\theta) = AP_\ell^m(\cos\theta)\]</span></p>
+<p>where <span class="math inline">\(P_\ell^m\)</span> is the associated Legendre function defined as: <span class="math display">\[P_\ell^m(x) = (-1)^m(1-x^2)^{m/2}\frac{d^m}{dx^m}P_\ell(x)\]</span></p>
+<p>For negative <span class="math inline">\(m\)</span>: <span class="math display">\[P_\ell^{-m}(x) = (-1)^m\frac{(\ell - m)!}{(\ell + m)!}P_\ell^m(x)\]</span> These functions are defined for:</p>
+<ul>
+<li><span class="math inline">\(\ell = 0, 1, 2, \ldots\)</span></li>
+<li><span class="math inline">\(m = -\ell, -\ell+1, \ldots, 0, \ldots, \ell-1, \ell\)</span></li>
+</ul>
+<p>The Legendre polynomials <span class="math inline">\(P_\ell(x)\)</span> can be defined using Rodrigues’ formula: <span class="math display">\[P_\ell(x) \equiv \frac{1}{2^\ell \ell!}\left(\frac{d}{dx}\right)^\ell (x^2 - 1)^\ell\]</span> The Legendre polynomials are orthogonal:</p>
+<p><span class="math display">\[\int_{-1}^{1} dx P_\ell(x)P_{\ell'}(x) = \frac{2}{2\ell + 1}\delta_{\ell,\ell'}\]</span></p>
+<p>For each value of <span class="math inline">\(\ell\)</span>, there are <span class="math inline">\(2\ell + 1\)</span> values of <span class="math inline">\(m\)</span>.</p>
+<h2 data-original-heading="4.1.8 球谐函数 (Spherical Harmonics)" id="球谐函数-spherical-harmonics">4.1.8 球谐函数 (Spherical Harmonics)</h2>
+<p>The normalized angular wave functions, called spherical harmonics, are:</p>
+<p><span class="math display">\[Y_\ell^m(\theta, \phi) = \sqrt{\frac{2\ell + 1}{4\pi}\frac{(\ell - m)!}{(\ell + m)!}} e^{im\phi} P_\ell^m(\cos\theta)\]</span></p>
+<p>These functions are orthonormal:</p>
+<p><span class="math display">\[\int_0^{2\pi} d\phi \int_0^{\pi} \sin\theta d\theta [Y_\ell^m(\theta, \phi)]^* Y_{\ell'}^{m'}(\theta, \phi) = \delta_{\ell\ell'}\delta_{mm'}\]</span></p>
+<h2 data-original-heading="4.1.9 径向方程 (Radial Equation)" id="径向方程-radial-equation">4.1.9 径向方程 (Radial Equation)</h2>
+<p>The radial equation is:</p>
+<p><span class="math display">\[\frac{d}{dr}\left(r^2\frac{dR}{dr}\right) - \frac{2mr^2}{\hbar^2}[V(r) - E]R = \ell(\ell + 1)R\]</span></p>
+<p>A useful substitution is: <span class="math inline">\(u(r) \equiv rR(r)\)</span>, which transforms the radial equation to: <span class="math display">\[-\frac{\hbar^2}{2m}\frac{d^2u}{dr^2} + \left[V + \frac{\hbar^2\ell(\ell+1)}{2mr^2}\right]u = Eu\]</span> The term <span class="math inline">\(\frac{\hbar^2\ell(\ell+1)}{2mr^2}\)</span> is called the centrifugal term or effective potential. The normalization condition becomes: <span class="math display">\[\int_0^{\infty} |u|^2 dr = 1\]</span> ## 4.1.10 无限球势阱 (Infinite Spherical Well)</p>
+<p>Consider a potential: <span class="math display">\[V(r) = \begin{cases}
+0, &amp; r \leq a \\
+\infty, &amp; r &gt; a
+\end{cases}\]</span> ### 对于 <span class="math inline">\(\ell = 0\)</span> (For <span class="math inline">\(\ell = 0\)</span>)</p>
+<p>Inside the well, the radial equation becomes:</p>
+<p><span class="math display">\[\frac{d^2u}{dr^2} = -k^2u\]</span></p>
+<p>where <span class="math display">\[k \equiv \frac{\sqrt{2mE}}{\hbar}\]</span>.</p>
+<p>The general solution is:</p>
+<p><span class="math display">\[u(r) = A\sin(kr) + B\cos(kr)\]</span></p>
+<p>For <span class="math inline">\(r=0\)</span>, we must have <span class="math inline">\(u(0) = 0\)</span> (since <span class="math inline">\(R(r)\)</span> must remain finite), which means <span class="math display">\[B = 0\]</span>.</p>
+<p>At the boundary <span class="math inline">\(r = a\)</span>, we have <span class="math inline">\(u(a) = 0\)</span>, which gives:</p>
+<p><span class="math display">\[\sin(ka) = 0 \Rightarrow ka = N\pi\]</span></p>
+<p>where <span class="math inline">\(N\)</span> is an integer. This gives the energy eigenvalues:</p>
+<p><span class="math display">\[E_{N0} = \frac{N^2\pi^2\hbar^2}{2ma^2}, \quad (N = 1, 2, 3, \ldots)\]</span></p>
+<p>The normalized wave function is:</p>
+<p><span class="math display">\[u_{N0} = \sqrt{\frac{2}{a}}\sin\left(\frac{N\pi r}{a}\right)\]</span></p>
+<h3 data-original-heading="对于 \ell > 0 (For \ell > 0)" id="对于-ell-0-for-ell-0">4.1.9.1 对于 <span class="math inline">\(\ell &gt; 0\)</span> (For <span class="math inline">\(\ell &gt; 0\)</span>)</h3>
+<p>The solution involves spherical Bessel functions:</p>
+<p><span class="math display">\[u(r) = Arj_\ell(kr) + Brn_\ell(kr)\]</span></p>
+<p>where <span class="math inline">\(j_\ell(x)\)</span> is the spherical Bessel function of order <span class="math inline">\(\ell\)</span>, and <span class="math inline">\(n_\ell(x)\)</span> is the spherical Neumann function of order <span class="math inline">\(\ell\)</span>.</p>
+<p>The spherical Bessel functions are defined as:</p>
+<p><span class="math display">\[j_\ell(x) \equiv (-x)^\ell\left(\frac{1}{x}\frac{d}{dx}\right)^\ell \frac{\sin x}{x}\]</span></p>
+<p><span class="math display">\[n_\ell(x) \equiv -(-x)^\ell\left(\frac{1}{x}\frac{d}{dx}\right)^\ell \frac{\cos x}{x}\]</span></p>
+<p>For example: <span class="math display">\[j_0(x) = \frac{\sin x}{x}; \quad n_0(x) = -\frac{\cos x}{x}\]</span></p>
+<p><span class="math display">\[j_1(x) = (-x)\frac{1}{x}\frac{d}{dx}\left(\frac{\sin x}{x}\right) = \frac{\sin x}{x^2} - \frac{\cos x}{x}\]</span></p>
+<p>Since <span class="math inline">\(n_\ell(0)\)</span> diverges, we must set <span class="math display">\[B = 0\]</span> for physical solutions.</p>
+<p>The boundary condition <span class="math inline">\(u(a) = 0\)</span> gives:</p>
+<p><span class="math display">\[j_\ell(ka) = 0\]</span></p>
+<p>If we denote the nth zero of <span class="math inline">\(j_\ell(x)\)</span> as <span class="math inline">\(\beta_{N\ell}\)</span>, then:</p>
+<p><span class="math display">\[k = \frac{1}{a}\beta_{N\ell}\]</span></p>
+<p>And the energy eigenvalues are:</p>
+<p><span class="math display">\[E_{N\ell} = \frac{\hbar^2}{2ma^2}\beta_{N\ell}^2\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.2%20Hydrogen%20Atom.html"><span>Next page →</span><span>氢原子</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">4.1 经典氢原子</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#%E7%BB%8F%E5%85%B8%E6%B0%A2%E5%8E%9F%E5%AD%90-classical-hydrogen-atom" class="is-active" aria-current="location">4.1.1 经典氢原子 (Classical Hydrogen Atom)</a></li><li style="--depth:0"><a href="#%E4%B8%89%E7%BB%B4%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B-3d-schr%C3%B6dinger-equation">4.1.2 三维薛定谔方程 (3D Schrödinger Equation)</a></li><li style="--depth:0"><a href="#%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%AE%97%E5%AD%90-laplacian">4.1.3 拉普拉斯算子 (Laplacian)</a></li><li style="--depth:0"><a href="#%E6%97%B6%E9%97%B4%E7%8B%AC%E7%AB%8B%E5%8A%BF%E8%83%BD%E7%9A%84%E5%B9%B3%E7%A8%B3%E6%80%81-stationary-states-for-time-independent-potential">4.1.4 时间独立势能的平稳态 (Stationary States for Time-Independent Potential)</a></li><li style="--depth:0"><a href="#%E4%B8%AD%E5%BF%83%E5%8A%BF-central-potential">4.1.5 中心势 (Central Potential)</a></li><li style="--depth:1"><a href="#%E5%8F%98%E9%87%8F%E5%88%86%E7%A6%BB-separation-of-variables">4.1.5.1 变量分离 (Separation of Variables)</a></li><li style="--depth:0"><a href="#%E8%A7%92%E5%BA%A6%E6%96%B9%E7%A8%8B-angular-equation">4.1.6 角度方程 (Angular Equation)</a></li><li style="--depth:0"><a href="#%E5%8B%92%E8%AE%A9%E5%BE%B7%E5%A4%9A%E9%A1%B9%E5%BC%8F-legendre-polynomials">4.1.7 勒让德多项式 (Legendre Polynomials)</a></li><li style="--depth:0"><a href="#%E7%90%83%E8%B0%90%E5%87%BD%E6%95%B0-spherical-harmonics">4.1.8 球谐函数 (Spherical Harmonics)</a></li><li style="--depth:0"><a href="#%E5%BE%84%E5%90%91%E6%96%B9%E7%A8%8B-radial-equation">4.1.9 径向方程 (Radial Equation)</a></li><li style="--depth:1"><a href="#%E5%AF%B9%E4%BA%8E-ell-0-for-ell-0">4.1.9.1 对于 \ell &gt; 0 (For \ell &gt; 0)</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

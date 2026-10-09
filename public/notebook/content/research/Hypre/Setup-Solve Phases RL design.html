@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Setup-Solve Phases RL design — E.H. Notebook</title>
+<meta name="description" content="可以，而且你这两种思路本质上是在控制两类“漂移”： \underbrace{\text{Bandit 学 setup}}*{\text{选 } s} \quad+\quad \underbrace{\text{RL 学 solve}}*{\text{学 } \pi} 漂移来源有两个： \begin{aligned} \text{(i) p">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html" aria-current="page">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="research file hierarchy" data-sidebar-root="content/research"><a class="sidebar-root" href="/notebook/content/research/index.html">research</a><ul class="notes-tree"><li class="folder-node" data-folder="content/research/Advanced Lab" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-a0a27906c83c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Advanced Lab</span></button></div><ul class="tree-children" id="folder-a0a27906c83c" hidden><li class="folder-node" data-folder="content/research/Advanced Lab/Module 3" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-2da6076d8ee3" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Module 3</span></button></div><ul class="tree-children" id="folder-2da6076d8ee3" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/md.html"><span class="page-number"></span><span>md</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/Module%203%20Heat%20Conduction.html"><span class="page-number"></span><span>Module 3 Heat Conduction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/Paper.html"><span class="page-number"></span><span>Paper</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Advanced Lab/Module 4" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d2cbcc62a70c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Module 4</span></button></div><ul class="tree-children" id="folder-d2cbcc62a70c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%204/Final.html"><span class="page-number"></span><span>Final</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Instruction%20for%20Lab.html"><span class="page-number"></span><span>Instruction for Lab</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%201%20LabVIEW.html"><span class="page-number"></span><span>Module 1 LabVIEW</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Feminist History" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-734c6ff122df" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Feminist History</span></button></div><ul class="tree-children" id="folder-734c6ff122df" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Barnes%2C%20Nicole%20Elizabeth).%20Intimate%20Communities%20-%20Wartime%20Healthcare%20and%20the%20Birth%20of%20Modern%20China%2C%201937%E2%80%931945.html"><span class="page-number"></span><span>(Barnes, Nicole Elizabeth). Intimate Communities - Wartime Healthcare and the Birth of Modern China, 1937–1945</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Li%2C%20Minghui)%20Childbirth%20transformation%20and%20new%20style%20midwifery%20in%20Beijing%2C%201926%20%E2%80%93%201937.html"><span class="page-number"></span><span>(Li, Minghui) Childbirth transformation and new style midwifery in Beijing, 1926 – 1937</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Shemo%2C%20Connie)%20Able%20to%20Do%20Things%20of%20Which%20They%20Have%20Never%20Dreamed%20-%20Shi%20Meiyu%E2%80%99s%20Vision%20of%20Nursing%20in%20Early%20Twentieth-Century%20China.html"><span class="page-number"></span><span>(Shemo, Connie) Able to Do Things of Which They Have Never Dreamed - Shi Meiyu’s Vision of Nursing in Early Twentieth-Century China</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Xu%2C%20Yier)%20A%20Modern%20Occupation%20for%20Women%20-%20Feminization%20and%20the%20Professionalization%20of%20Nursing%20in%201930s%20China.html"><span class="page-number"></span><span>(Xu, Yier) A Modern Occupation for Women - Feminization and the Professionalization of Nursing in 1930s China</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Yip%2C%20Ka-che)%20Health%20and%20Nationalist%20Reconstruction%20Rural%20Health%20in%20Nationalist%20China%2C%201928-1937.html"><span class="page-number"></span><span>(Yip, Ka-che) Health and Nationalist Reconstruction Rural Health in Nationalist China, 1928-1937</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Hypre" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-6714cbdf71d2" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Hypre</span></button></div><ul class="tree-children" id="folder-6714cbdf71d2"><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Linux%20Environment%20for%20GPTune.html"><span class="page-number"></span><span>Linux Environment for GPTune</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/List%20of%20All%20Proof%20(Learning%20to%20Relax).html"><span class="page-number"></span><span>List of All Proof (Learning to Relax)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Paper.html"><span class="page-number"></span><span>Paper</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Paper%20Notes.html"><span class="page-number"></span><span>Paper Notes</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Relevant%20Proof.html"><span class="page-number"></span><span>Relevant Proof</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/research/Hypre/Setup-Solve%20Phases%20RL%20design.html"><span class="page-number"></span><span>Setup-Solve Phases RL design</span></a></li></ul></li><li class="folder-node" data-folder="content/research/IllustrateTNG Simulation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-43d0b979f227" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>IllustrateTNG Simulation</span></button></div><ul class="tree-children" id="folder-43d0b979f227" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/IllustrateTNG%20Simulation/Short%20Cut%20for%20GIST.html"><span class="page-number"></span><span>Short Cut for GIST</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/IllustrateTNG%20Simulation/Viewing%20Angle.html"><span class="page-number"></span><span>Viewing Angle</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Underdeck" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aefc9997568f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Underdeck</span></button></div><ul class="tree-children" id="folder-aefc9997568f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Design%20Logic.html"><span class="page-number"></span><span>Design Logic</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Instruction%20for%20Generic%20Underdeck%20Setting.html"><span class="page-number"></span><span>Instruction for Generic Underdeck Setting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/research/Hypre/index.html">Hypre</a></nav><h1 id="reader-title">Setup-Solve Phases RL design</h1></header><div id="article-body" class="prose"><p>可以，而且你这两种思路本质上是在控制两类“漂移”：</p>
+<p><span class="math display">\[
+\underbrace{\text{Bandit 学 setup}}*{\text{选 } s}
+\quad+\quad
+\underbrace{\text{RL 学 solve}}*{\text{学 } \pi}
+\]</span></p>
+<p>漂移来源有两个：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{(i) policy drift: }&amp; \pi \text{ 一直在变} \Rightarrow \ell(s)\text{(bandit的loss)在变}\
+\text{(ii) env drift: }&amp; s \text{ 一直在变} \Rightarrow H(s,A)\text{(层次结构)在变}\Rightarrow \text{PPO的MDP在变}
+\end{aligned}
+\]</span></p>
+<p>这是一个非常好的科研切入点。你点到了问题的本质：<strong>Edmond (Khodak et al.) 的论文之所以能做那么漂亮的理论，是因为他们“作弊”了——他们利用了 SOR 的解析性质（单模态、显式公式）。</strong></p>
+<p>对于 <strong>BoomerAMG</strong> 这种完全的“黑盒”求解器，我们没有 这种显式公式，而且就像你说的，算谱半径（Spectral Radius）本身就很贵。</p>
+<p>既然你想做<strong>有理论深度 (Theoretical Guarantees)</strong> 同时 <strong>效果又好 (Practical)</strong> 的研究，你需要跳出“已知函数形状”的舒适区，进入<strong>“函数逼近 (Function Approximation)”</strong> 或 <strong>“平滑性假设 (Smoothness Assumption)”</strong> 的理论领域。</p>
+<p>这里有三个非常适合 BoomerAMG 场景，且在机器学习理论界（ICML/NeurIPS）非常认可的方向：</p>
+<h2 data-original-heading="1. Kernelized Contextual Bandits (基于核方法的上下文老虎机)" id="kernelized-contextual-bandits-基于核方法的上下文老虎机">1. Kernelized Contextual Bandits (基于核方法的上下文老虎机)</h2>
+<p>这是目前处理“黑盒但平滑”函数的理论标准。</p>
+<ul>
+<li><p><strong>核心假设：</strong> 虽然我们不知道 Context () 和 Parameter () 到 Reward () 的具体公式，但我们假设这个函数 位于一个 <strong>再生核希尔伯特空间 (RKHS)</strong> 中。</p></li>
+<li><p>通俗地说：我们假设“相似的矩阵特征”和“相似的参数”会产生“相似的收敛速度”。</p></li>
+<li><p><strong>理论工具：</strong> <strong>GP-UCB / KernelUCB</strong>。</p></li>
+<li><p>你可以引用 <strong>Srinivas et al.&nbsp;(2010)</strong> 或 <strong>Krause &amp; Ong (2011)</strong> 的经典论文。</p></li>
+<li><p><strong>Regret Bound:</strong> 这里的悔失界通常与 <strong>最大信息增益 (Maximum Information Gain, )</strong> 有关。你可以证明，只要核函数选得好（比如 Matérn Kernel，对应物理过程的平滑性），Regret 是亚线性的（）。</p></li>
+<li><p><strong>为什么适合 BoomerAMG：</strong></p></li>
+<li><p>BoomerAMG 的参数（如 <code>strong_threshold</code>）通常是连续且平滑的（0.25 和 0.26 的效果不会差太远）。</p></li>
+<li><p>你不需要显式算出谱半径。你只需要定义一个 Kernel，比如用矩阵的稀疏度、对角占优率等简单特征作为 Context，Kernel 会自动衡量矩阵间的相似度。</p></li>
+</ul>
+<h2 data-original-heading="2. Lipschitz / Zooming Bandits (度量空间上的老虎机)" id="lipschitz-zooming-bandits-度量空间上的老虎机">2. Lipschitz / Zooming Bandits (度量空间上的老虎机)</h2>
+<p>如果你不想假设 RKHS 那么强的条件，可以退一步，只假设<strong>利普希茨连续性 (Lipschitz Continuity)</strong>。</p>
+<ul>
+<li><p><strong>核心假设：</strong> 假设 Reward 函数 满足 。即参数变化一点点，收敛速度的变化是有界的。</p></li>
+<li><p><strong>理论工具：</strong> <strong>Zooming Bandits</strong> (Kleinberg et al., 2008) 或 <strong>Pachinko Allocation (PAB)</strong>。</p></li>
+<li><p>这种算法不仅是理论上的，还有很强的几何直觉：它会动态地离散化参数空间。在“有希望”的区域（Reward 高的参数区），它会网格切得更细（Zoom in）；在差的区域，它就保持粗糙。</p></li>
+<li><p><strong>Regret Bound:</strong> 与 <strong>Zooming Dimension</strong> 有关。</p></li>
+<li><p><strong>为什么适合 BoomerAMG：</strong></p></li>
+<li><p>BoomerAMG 的参数空间很大。Zooming Bandits 提供了一种理论依据，解释为什么我们不需要在整个 10 维空间里均匀搜索，而只需要在“好参数”附近精细搜索。</p></li>
+<li><p>这完美解决了你之前担心的“Overhead 太大”的问题——因为算法会自动忽略大部分劣质参数空间。</p></li>
+</ul>
+<h2 data-original-heading="3. Contextual Bandits with General Function Approximation (通用函数逼近)" id="contextual-bandits-with-general-function-approximation-通用函数逼近">3. Contextual Bandits with General Function Approximation (通用函数逼近)</h2>
+<p>这是最近几年（2020-2024）最火的理论方向，专门针对“我知道这有个规律，但我不知道公式”的场景。</p>
+<ul>
+<li><p><strong>核心假设：</strong> 假设真实的最优参数映射函数 属于某个函数类 （例如深度神经网络，或者高阶多项式）。</p></li>
+<li><p><strong>理论工具：</strong> <strong>SquareCB</strong> (Foster &amp; Rakhlin, 2020) 或 <strong>Eluder Dimension</strong> (Russo &amp; Van Roy, 2013)。</p></li>
+<li><p>你可以使用神经网络来拟合 Context Parameter 的关系（即 <strong>Neural Contextual Bandits</strong>）。</p></li>
+<li><p><strong>Regret Bound:</strong> 界定在 ，其中 是 Eluder Dimension（衡量函数类复杂度的指标）。</p></li>
+<li><p><strong>为什么适合 BoomerAMG：</strong></p></li>
+<li><p>这允许你直接使用 <strong>Neural Networks</strong> 作为代理模型（Surrogate Model）。</p></li>
+<li><p>理论上，你可以证明：只要神经网络足够宽（Wide Neural Network），利用 <strong>Neural Tangent Kernel (NTK)</strong> 理论，它就能保证收敛到全局最优，并且 Regret 是可控的。</p></li>
+<li><p>这比 Khodak 的 ChebCB 更通用，因为你不再受限于“切比雪夫多项式”，而是可以用神经网络去拟合 BoomerAMG 那种极其复杂的非线性关系。</p></li>
+</ul>
+<h2 data-original-heading="总结：你的 Research Story 应该怎么讲？" id="总结你的-research-story-应该怎么讲">4 总结：你的 Research Story 应该怎么讲？</h2>
+<p>如果我是你，我会这样构建这篇论文的叙事（Storyline）：</p>
+<ol type="1">
+<li><strong>Challenge:</strong> Khodak et al.&nbsp;(ICLR 2024) 的工作很棒，但依赖 SOR 的显式性质 (unimodality/explicit spectral dependence)。然而，工业界真正强大的求解器（如 BoomerAMG）是黑盒的，没有这种漂亮的性质。</li>
+<li><strong>Insight:</strong> 虽然 BoomerAMG 是黑盒，但它在物理参数上依然具有<strong>平滑性 (Smoothness)</strong> 或 <strong>可学习性 (Learnability)</strong>。</li>
+<li><strong>Method:</strong> 我们不使用离散的 Tsallis-INF（因为维数灾难），也不使用简单的 ChebCB（因为没有解析解）。我们提出使用 <strong>Kernelized Contextual Bandits (或 Neural Bandits)</strong>。</li>
+<li><strong>Theory:</strong> 我们利用 RKHS 理论（或 Eluder Dimension），证明了即使没有显式的谱半径公式，只要 Solver 的行为是平滑的，我们依然能保证找到最优参数，且 Regret 是亚线性的。</li>
+</ol>
+<p><strong>推荐路线：</strong> 先看 <strong>KernelUCB (GP-UCB)</strong> 的理论。它最成熟，代码（BoTorch）最现成，而且对于连续参数调优（Continuous Parameter Tuning）来说，它是最“名正言顺”的理论框架。</p>
+<h2 data-original-heading="方案 A（最省事、最推荐）：把两边都做成“条件化”的——Contextual Bandit + Contextual PPO" id="方案-a最省事最推荐把两边都做成条件化的contextual-bandit-contextual-ppo">5 方案 A（最省事、最推荐）：把两边都做成“条件化”的——Contextual Bandit + Contextual PPO</h2>
+<p>你现在痛点是：(s)（setup参数）变 ⇒ hierarchy (H) 变 ⇒ PPO 的 MDP 变；同时 PPO 变 ⇒ bandit 的 loss 变。 解决：<strong>让两者都看见“我现在处在哪个 hierarchy / 哪类矩阵”</strong>，把漂移变成 “条件变化”。</p>
+<p>设一个 context 向量 (c)（尽量便宜）：</p>
+<ul>
+<li>来自矩阵 (A)：(n,&nbsp;(A),) 行/列度分布、对角占优指标、graph 特征（简单统计就行）</li>
+<li>或来自 setup 后的 hierarchy：levels (L)、operator/grid complexity、粗化比率等</li>
+</ul>
+<p>然后：</p>
+<p>[ ]</p>
+<p>这样即使 (s) 变了，只要 (c) 也变，PPO 不是在“同一个观测下遇到不同动力学”，而是在学<strong>条件策略</strong>；bandit 的比较也变成“在相似 context 下比较 setup”。</p>
+<p><strong>为什么它更省事？</strong> 你不需要复杂的冻结阶段；你只要把 “hierarchy/矩阵特征” 作为共同接口喂给两个 learner，就能把非平稳性压到可学的程度。</p>
+<p><strong>你要做的最小改动：</strong></p>
+<ol type="1">
+<li>定义 (c)：先用最粗的 10–30 维统计（(n,)、度分布、简单残差斜率、levels/complexity 等）</li>
+<li>PPO 的 observation 里拼上 (c)</li>
+<li>bandit 从“非上下文”变成“上下文 bandit”（哪怕先用最简单的：把 instance 分桶/聚类后每桶一个 Tsallis-INF 都行）</li>
+</ol>
+<blockquote>
+<p>这基本就是你说的“interface design”，但它是一次性改接口，不是反复切训练阶段。</p>
+</blockquote>
+<hr>
+<h2 data-original-heading="方案 B（也很省事）：只让一个东西在线学 —— RL 离线训成“通用策略”，在线只跑 bandit" id="方案-b也很省事只让一个东西在线学-rl-离线训成通用策略在线只跑-bandit">6 方案 B（也很省事）：<strong>只让一个东西在线学</strong> —— RL 离线训成“通用策略”，在线只跑 bandit</h2>
+<p>如果你觉得同时在线更新还是烦，那就干脆：</p>
+<ul>
+<li>PPO：前期用“结构随机化”（不同 setup 的小集合）训练成 <strong>universal policy</strong>，让它能适配多种 hierarchy（同样要喂 (c)）</li>
+<li>正式运行时：<strong>PPO 固定不更新</strong></li>
+<li>在线只跑 bandit（Tsallis-INF），目标函数干净：</li>
+</ul>
+<p>[ <em>t(s)=T</em>{}(s;A_t)+T_{}(s,_{};A_t)]</p>
+<p><strong>优点：</strong> 几乎没有系统耦合问题；论文叙事也清楚：“RL 提供可迁移的 solve-controller，bandit 做 instance-wise setup selection”。</p>
+<p><strong>缺点：</strong> 你放弃了“RL 在线越跑越强”的那部分潜力，但换来的是巨省心+稳定。</p>
+<hr>
+<h2 data-original-heading="方案 C（最“统一”、但 ML 训练更重）：把 setup 当成 episode 开头的一次动作，做成一个 Hierarchical RL（Options）" id="方案-c最统一但-ml-训练更重把-setup-当成-episode-开头的一次动作做成一个-hierarchical-rloptions">7 方案 C（最“统一”、但 ML 训练更重）：把 setup 当成 episode 开头的一次动作，做成一个 <strong>Hierarchical RL（Options）</strong></h2>
+<p>你不想两个 learner 协调？那就<strong>只要一个 learner</strong>：</p>
+<ul>
+<li>step 0：选一次 setup（离散动作 (s)）</li>
+<li>后续每个 cycle：选 solve 动作 (a_k)</li>
+</ul>
+<p>[ ]</p>
+<p>reward 用 time-to-solution / work-unit shaping。</p>
+<p><strong>优点：</strong> 一个系统端到端，最“优雅”。 <strong>缺点：</strong> 训练更难（高层动作回报稀疏、方差大），你得做 reward shaping、baseline、分阶段 curriculum（但不是你刚才那种“冻结来冻结去”，更像 RL 的常规训练技巧）。</p>
+<p>Confirm current model</p>
+<p>LinUCB_AMG is a disjoint (per-arm) linear bandit: it maintains a separate (A_a, b_a) (and thus separate theta_a) for each action a (each grid combo like th/mxrs/tr), so it is exactly the assumption you wrote: E[loss | x, a] ≈ x^T θ_a. Why it’s “unrealistic” for continuous knobs</p>
+<p>With disjoint LinUCB, th=0.25 learns nothing from samples at th=0.30. So sample efficiency collapses as you increase grid resolution. For continuous knobs, the loss surface is typically smooth-ish in the knob values (not always, but often), so you want generalization across nearby parameter values.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/research/Hypre/Relevant%20Proof.html"><span>← Previous page</span><span>Relevant Proof</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Setup-Solve Phases RL design</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#kernelized-contextual-bandits-%E5%9F%BA%E4%BA%8E%E6%A0%B8%E6%96%B9%E6%B3%95%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E8%80%81%E8%99%8E%E6%9C%BA" class="is-active" aria-current="location">1. Kernelized Contextual Bandits (基于核方法的上下文老虎机)</a></li><li style="--depth:0"><a href="#lipschitz-zooming-bandits-%E5%BA%A6%E9%87%8F%E7%A9%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E8%80%81%E8%99%8E%E6%9C%BA">2. Lipschitz / Zooming Bandits (度量空间上的老虎机)</a></li><li style="--depth:0"><a href="#contextual-bandits-with-general-function-approximation-%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91">3. Contextual Bandits with General Function Approximation (通用函数逼近)</a></li><li style="--depth:0"><a href="#%E6%80%BB%E7%BB%93%E4%BD%A0%E7%9A%84-research-story-%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E8%AE%B2">4 总结：你的 Research Story 应该怎么讲？</a></li><li style="--depth:0"><a href="#%E6%96%B9%E6%A1%88-a%E6%9C%80%E7%9C%81%E4%BA%8B%E6%9C%80%E6%8E%A8%E8%8D%90%E6%8A%8A%E4%B8%A4%E8%BE%B9%E9%83%BD%E5%81%9A%E6%88%90%E6%9D%A1%E4%BB%B6%E5%8C%96%E7%9A%84contextual-bandit-contextual-ppo">5 方案 A（最省事、最推荐）：把两边都做成“条件化”的——Contextual Bandit + Contextual PPO</a></li><li style="--depth:0"><a href="#%E6%96%B9%E6%A1%88-b%E4%B9%9F%E5%BE%88%E7%9C%81%E4%BA%8B%E5%8F%AA%E8%AE%A9%E4%B8%80%E4%B8%AA%E4%B8%9C%E8%A5%BF%E5%9C%A8%E7%BA%BF%E5%AD%A6-rl-%E7%A6%BB%E7%BA%BF%E8%AE%AD%E6%88%90%E9%80%9A%E7%94%A8%E7%AD%96%E7%95%A5%E5%9C%A8%E7%BA%BF%E5%8F%AA%E8%B7%91-bandit">6 方案 B（也很省事）：只让一个东西在线学 —— RL 离线训成“通用策略”，在线只跑 bandit</a></li><li style="--depth:0"><a href="#%E6%96%B9%E6%A1%88-c%E6%9C%80%E7%BB%9F%E4%B8%80%E4%BD%86-ml-%E8%AE%AD%E7%BB%83%E6%9B%B4%E9%87%8D%E6%8A%8A-setup-%E5%BD%93%E6%88%90-episode-%E5%BC%80%E5%A4%B4%E7%9A%84%E4%B8%80%E6%AC%A1%E5%8A%A8%E4%BD%9C%E5%81%9A%E6%88%90%E4%B8%80%E4%B8%AA-hierarchical-rloptions">7 方案 C（最“统一”、但 ML 训练更重）：把 setup 当成 episode 开头的一次动作，做成一个 Hierarchical RL（Options）</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

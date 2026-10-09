@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 38 Ergoregion and Horizon — E.H. Notebook</title>
+<meta name="description" content="38.1 OverviewFor Schwarzschild, the surface r = 2GM is bothan infinite-redshift surface (g_{tt}=0) and an event horizonso outgoing light and clocks “freeze” there as seen">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 38 Ergoregion and Horizon</h1></header><div id="article-body" class="prose"><h2 data-original-heading="38.1 Overview" id="overview">38.1 Overview</h2>
+<p>For Schwarzschild, the surface <span class="math inline">\(r = 2GM\)</span> is both</p>
+<ul>
+<li>an <strong>infinite-redshift surface</strong> (<span class="math inline">\(g_{tt}=0\)</span>) and<br>
+</li>
+<li>an <strong>event horizon</strong></li>
+</ul>
+<p>so outgoing light and clocks “freeze” there as seen from infinity.</p>
+<p>In Kerr spacetime, the surface where <span class="math inline">\(g_{tt}=0\)</span> <strong>does not</strong> coincide with the event horizon.<br>
+The infinite-redshift surface instead <strong>encloses</strong> the horizon and bounds the <strong>ergoregion</strong>.</p>
+<hr>
+<h2 data-original-heading="38.2 Infinite-Redshift Surface" id="infinite-redshift-surface">38.2 Infinite-Redshift Surface</h2>
+<p>A clock at rest in Kerr spacetime (<span class="math inline">\(dr = d\theta = d\phi = 0\)</span>) measures proper time</p>
+<p><span class="math display">\[
+d\tau = \sqrt{-g_{tt}}\,dt
+\]</span></p>
+<p>Thus any location with <span class="math inline">\(g_{tt}=0\)</span> is an <strong>infinite-redshift surface</strong>: clocks there tick at zero rate relative to infinity.</p>
+<p>Setting the full Kerr <span class="math inline">\(g_{tt}\)</span> to zero gives two such surfaces</p>
+<p><span class="math display">\[
+r = GM \pm \sqrt{(GM)^2 - a^2\cos^2\theta}
+\tag{38.1}
+\]</span></p>
+<p>For <span class="math inline">\(a &lt; GM\)</span> the <strong>outer</strong> surface</p>
+<p><span class="math display">\[
+r_e = GM + \sqrt{(GM)^2 - a^2\cos^2\theta}
+\tag{38.2}
+\]</span></p>
+<p>is the outer boundary of the <strong>ergoregion</strong> and is usually what we mean by the infinite-redshift surface.</p>
+<hr>
+<h2 data-original-heading="38.3 Static Limit and Allowed Angular Velocities" id="static-limit-and-allowed-angular-velocities">38.3 Static Limit and Allowed Angular Velocities</h2>
+<p>Consider an observer kept at constant <span class="math inline">\(r\)</span> and <span class="math inline">\(\theta\)</span> but free in <span class="math inline">\(\phi\)</span>. A timelike worldline requires <span class="math display">\[
+0 \le d\tau^2 = -ds^2
+= -\big(g_{tt}\,dt^2 + 2g_{t\phi}\,dt\,d\phi + g_{\phi\phi}\,d\phi^2\big)
+\]</span> Dividing by <span class="math inline">\(dt^2\)</span> and defining <span class="math inline">\(\Omega \equiv d\phi/dt\)</span> gives <span class="math display">\[
+0 \ge g_{tt} + 2g_{t\phi}\Omega + g_{\phi\phi}\Omega^2
+\tag{38.3}
+\]</span> This quadratic inequality implies a range <span class="math display">\[
+\Omega_{\min} \le \Omega \le \Omega_{\max}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Omega_{\min}
+&amp;=
+-\frac{g_{t\phi}}{g_{\phi\phi}}
+-\frac{\sqrt{[g_{t\phi}]^2 - g_{tt}g_{\phi\phi}}}{g_{\phi\phi}} \\[4pt]
+\Omega_{\max}
+&amp;=
+-\frac{g_{t\phi}}{g_{\phi\phi}}
++\frac{\sqrt{[g_{t\phi}]^2 - g_{tt}g_{\phi\phi}}}{g_{\phi\phi}}
+\end{aligned}
+\tag{38.4}
+\]</span></p>
+<div class="math-theorem remark" data-callout="remark" data-label="38.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 38.1</span><span class="theorem-title">Interpretation of <span class="math inline">\(\Omega_{\min}\)</span> and <span class="math inline">\(\Omega_{\max}\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p>At a given <span class="math inline">\((r,\theta)\)</span>, any physical observer at rest in <span class="math inline">\(r\)</span> and <span class="math inline">\(\theta\)</span> must rotate with an angular velocity <span class="math inline">\(\Omega\)</span> in this interval.</p>
+</div>
+</div>
+<p>On the <strong>outer infinite-redshift surface</strong> (<span class="math inline">\(g_{tt}=0\)</span>), equation 38.4 gives <span class="math inline">\(\Omega_{\min}=0\)</span>.<br>
+Thus only photons can remain at rest there; massive particles must have <span class="math inline">\(0 &lt; \Omega \le \Omega_{\max}\)</span> and co-rotate with the source.</p>
+<p>For <span class="math inline">\(r\)</span> <strong>inside</strong> the infinite-redshift surface, <span class="math inline">\(g_{tt}&gt;0\)</span> and the square-root term is smaller than <span class="math inline">\(|g_{t\phi}|\)</span>, so both <span class="math inline">\(\Omega_{\min}\)</span> and <span class="math inline">\(\Omega_{\max}\)</span> are positive:</p>
+<p><span class="math display">\[
+0 &lt; \Omega_{\min} \le \Omega \le \Omega_{\max}
+\quad\text{(inside the infinite-redshift surface)}
+\tag{38.6}
+\]</span></p>
+<p>No observer can remain static with respect to infinity inside this region, hence the term <strong>static limit</strong> for the infinite-redshift surface.</p>
+<hr>
+<h2 data-original-heading="38.4 Event Horizon Radius" id="event-horizon-radius">38.4 Event Horizon Radius</h2>
+<p>As <span class="math inline">\(r\)</span> decreases further inside the ergoregion, <span class="math inline">\(g_{tt}\)</span> continues to grow and eventually the quantity</p>
+<p><span class="math display">\[
+[g_{t\phi}]^2 - g_{tt}g_{\phi\phi}
+\]</span></p>
+<p>becomes negative, so the allowed range of <span class="math inline">\(\Omega\)</span> disappears; even a powered spacecraft cannot maintain constant <span class="math inline">\(r\)</span>.<br>
+This is interpreted as an <strong>event horizon</strong> where all timelike worldlines must move inward.</p>
+<p>Using equation 37.4,</p>
+<p><span class="math display">\[
+[g_{t\phi}]^2 - g_{tt}g_{\phi\phi}
+=
+(r^2 + a^2 - 2GMr)\sin^2\theta
+\equiv R^2\sin^2\theta
+\]</span></p>
+<p>so the horizon is located where <span class="math inline">\(R^2 = 0\)</span>:</p>
+<p><span class="math display">\[
+0 = R^2 = r^2 + a^2 - 2GMr
+\quad\Rightarrow\quad
+r_\pm = GM \pm \sqrt{(GM)^2 - a^2}
+\tag{38.7}
+\]</span></p>
+<p>The <strong>outer horizon</strong> is at <span class="math inline">\(r = r_+ = GM + \sqrt{(GM)^2 - a^2}\)</span><br>
+In the limit <span class="math inline">\(a \to 0\)</span>, this becomes <span class="math inline">\(r_+ = 2GM\)</span> as in Schwarzschild.</p>
+<hr>
+<h2 data-original-heading="38.5 Geometry and Area of the Event Horizon" id="geometry-and-area-of-the-event-horizon">38.5 Geometry and Area of the Event Horizon</h2>
+<p>On the horizon <span class="math inline">\(r = r_+\)</span>, the induced 2-metric (in <span class="math inline">\((\theta,\phi)\)</span> coordinates) is</p>
+<p><span class="math display">\[
+ds^2
+=
+\rho_+^2 d\theta^2
++
+\left(\frac{2GMr_+}{\rho_+}\right)^2
+\sin^2\theta\,d\phi^2
+\qquad
+\text{where }\rho_+^2 \equiv r_+^2 + a^2\cos^2\theta
+\tag{38.8}
+\]</span></p>
+<p>Because both <span class="math inline">\(g_{\theta\theta}\)</span> and <span class="math inline">\(g_{\phi\phi}\)</span> depend on <span class="math inline">\(\theta\)</span>, this surface is <strong>not</strong> a perfect sphere unless <span class="math inline">\(a=0\)</span>; it is more like an oblate spheroid whose shape becomes flatter as <span class="math inline">\(a\)</span> increases.</p>
+<p>From this metric one can show that the physical area of the event horizon is</p>
+<p><span class="math display">\[
+A = 8\pi GMr_+
+\tag{38.9}
+\]</span></p>
+<div class="math-theorem remark" data-callout="remark" data-label="38.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 38.2</span><span class="theorem-title">Horizon area</span></p>
+</div>
+<div class="theorem-content">
+<p>For <span class="math inline">\(a=0\)</span>, this reduces to the Schwarzschild value <span class="math inline">\(A = 16\pi G^2M^2\)</span>.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="38.6 Locating the Time Coordinate: The t\phi Submatrix" id="locating-the-time-coordinate-the-tphi-submatrix">38.6 Locating the Time Coordinate: The <span class="math inline">\(t\phi\)</span> Submatrix</h2>
+<p>To understand which coordinate is “time-like” inside and outside the horizon, consider the <span class="math inline">\(t\phi\)</span> submatrix of the Kerr metric</p>
+<p><span class="math display">\[
+g_{\mu\nu}
+=
+\begin{bmatrix}
+g_{tt} &amp; g_{t\phi} \\
+g_{\phi t} &amp; g_{\phi\phi}
+\end{bmatrix}
+\quad
+(t\phi\ \text{submatrix})
+\tag{38.10}
+\]</span></p>
+<p>A general coordinate transformation <span class="math inline">\(x^\mu \to x'^\alpha\)</span> gives</p>
+<p><span class="math display">\[
+g'_{\alpha\beta}
+=
+\frac{\partial x^\mu}{\partial x'^\alpha}
+\frac{\partial x^\nu}{\partial x'^\beta}
+g_{\mu\nu}
+\tag{38.11}
+\]</span></p>
+<p>If there is a time coordinate hidden in some combination <span class="math inline">\(T(t,\phi)\)</span>, we can locally transform the submatrix to</p>
+<p><span class="math display">\[
+g'_{\mu\nu}
+=
+\begin{bmatrix}
+-1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+\quad
+(T\Phi\ \text{submatrix, time coordinate lurking})
+\tag{38.12a}
+\]</span></p>
+<p>If both <span class="math inline">\(t\)</span> and <span class="math inline">\(\phi\)</span> are purely spatial, the best we can do is</p>
+<p><span class="math display">\[
+g'_{\mu\nu}
+=
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+\quad
+(T\Phi\ \text{submatrix, no time coordinate})
+\tag{38.12b}
+\]</span></p>
+<p>The <strong>sign of the determinant</strong> of the submatrix cannot change under such a local transformation. Thus a time coordinate exists behind <span class="math inline">\((t,\phi)\)</span> if and only if</p>
+<p><span class="math display">\[
+\det
+\begin{bmatrix}
+g_{tt} &amp; g_{t\phi} \\
+g_{\phi t} &amp; g_{\phi\phi}
+\end{bmatrix}
+=
+g_{tt}g_{\phi\phi} - [g_{t\phi}]^2
+&lt; 0
+\tag{38.13}
+\]</span></p>
+<p>Using <span class="math inline">\([g_{t\phi}]^2 - g_{tt}g_{\phi\phi} = R^2\sin^2\theta\)</span>, this determinant is negative outside <span class="math inline">\(r = r_+\)</span>, so there is a genuine time coordinate in the ergoregion.</p>
+<p>Inside <span class="math inline">\(r = r_+\)</span>, we have <span class="math inline">\([g_{t\phi}]^2 - g_{tt}g_{\phi\phi} &lt; 0\)</span> and <span class="math inline">\(g_{rr} &lt; 0\)</span>, so <span class="math inline">\(t\)</span> and <span class="math inline">\(\phi\)</span> are spatial and <span class="math inline">\(r\)</span> becomes the time coordinate. Thus <span class="math inline">\(r = r_+\)</span> is indeed an <strong>event horizon</strong>.</p>
+<hr>
+<h2 data-original-heading="38.7 Cosmic Censorship" id="cosmic-censorship">38.7 Cosmic Censorship</h2>
+<p>Equation 38.7 has real solutions only if</p>
+<p><span class="math display">\[
+a \le GM
+\]</span></p>
+<p>If <span class="math inline">\(a &gt; GM\)</span>, there is <strong>no</strong> event horizon; Kerr spacetime then contains a true geometric singularity where</p>
+<p><span class="math display">\[
+r^2 + a^2\cos^2\theta = 0
+\]</span></p>
+<p>that is not cloaked by a horizon (a <strong>naked singularity</strong>).</p>
+<div class="math-theorem definition" data-callout="definition" data-label="38.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 38.3</span><span class="theorem-title">Cosmic Censorship Hypothesis</span></p>
+</div>
+<div class="theorem-content">
+<p>Gravitational collapse of any physically reasonable mass distribution never produces a naked singularity; instead, singularities are always hidden behind event horizons.</p>
+</div>
+</div>
+<p>The hypothesis (proposed by Penrose) remains unproven, but arguments and stability considerations suggest that spacetimes with <span class="math inline">\(a &gt; GM\)</span> are unstable and radiate until <span class="math inline">\(a &lt; GM\)</span>, or cannot form in realistic collapse.<br>
+We therefore assume <strong>astrophysical Kerr black holes</strong> satisfy <span class="math inline">\(a &lt; GM\)</span> and have their singularities always enclosed by event horizons.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span>← Previous page</span><span>Ch. 37 Kerr Particle Orbits</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span>Next page →</span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 38 Ergoregion and Horizon</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#overview" class="is-active" aria-current="location">38.1 Overview</a></li><li style="--depth:0"><a href="#infinite-redshift-surface">38.2 Infinite-Redshift Surface</a></li><li style="--depth:0"><a href="#static-limit-and-allowed-angular-velocities">38.3 Static Limit and Allowed Angular Velocities</a></li><li style="--depth:0"><a href="#event-horizon-radius">38.4 Event Horizon Radius</a></li><li style="--depth:0"><a href="#geometry-and-area-of-the-event-horizon">38.5 Geometry and Area of the Event Horizon</a></li><li style="--depth:0"><a href="#locating-the-time-coordinate-the-tphi-submatrix">38.6 Locating the Time Coordinate: The t\phi Submatrix</a></li><li style="--depth:0"><a href="#cosmic-censorship">38.7 Cosmic Censorship</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

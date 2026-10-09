@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>4.4 Spin Spin Spin — E.H. Notebook</title>
+<meta name="description" content="4.4.1 量子自旋态与算符讲义（Quantum Spin States and Operators Lecture Notes）4.4.1.1 单自旋态（One Spin States）：这里定义了基本的自旋向上和自旋向下态的矢量表示： |\uparrow\rangle = \begin{pmatrix} 1 \\ 0 \end{pma">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="量子力学讲义 file hierarchy" data-sidebar-root="content/notes/计算/量子力学讲义"><a class="sidebar-root" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Lecture" aria-controls="folder-210a2627460a" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/Lecture.html">Lecture</a></div><ul class="tree-children" id="folder-210a2627460a"><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第一章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aa50c1410152" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一章</span></button></div><ul class="tree-children" id="folder-aa50c1410152" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E4%B8%80%E7%AB%A0/1.1%20The%20Wave%20Function.html"><span class="page-number">1.1</span><span>The Wave Function</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第四章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 第四章" aria-controls="folder-43e880ae5f94" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.html">第四章</a></div><ul class="tree-children" id="folder-43e880ae5f94"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E7%BB%8F%E5%85%B8%E6%B0%A2%E5%8E%9F%E5%AD%90.html"><span class="page-number">4.1</span><span>经典氢原子</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.2%20Hydrogen%20Atom.html"><span class="page-number">4.2</span><span>Hydrogen Atom</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.3%20%E8%A7%92%E5%8A%A8%E9%87%8F%20(Angular%20Momentum).html"><span class="page-number">4.3</span><span>角动量 (Angular Momentum)</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.4%20Spin%20Spin%20Spin.html"><span class="page-number">4.4</span><span>Spin Spin Spin</span></a></li></ul></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E6%B3%A2%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E4%BA%8E%E5%9C%A8Hilbert%E7%A9%BA%E9%97%B4%E4%B8%AD.html"><span class="page-number"></span><span>波函数存在于在Hilbert空间中</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B%E7%9A%84%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2.html"><span class="page-number"></span><span>薛定谔方程的傅立叶变换</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/index.html">计算</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/Lecture.html">Lecture</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.html">第四章</a></nav><h1 id="reader-title">4.4 Spin Spin Spin</h1></header><div id="article-body" class="prose"><h2 data-original-heading="量子自旋态与算符讲义（Quantum Spin States and Operators Lecture Notes）" id="量子自旋态与算符讲义quantum-spin-states-and-operators-lecture-notes">4.4.1 量子自旋态与算符讲义（Quantum Spin States and Operators Lecture Notes）</h2>
+<h3 data-original-heading="单自旋态（One Spin States）：" id="单自旋态one-spin-states">4.4.1.1 单自旋态（One Spin States）：</h3>
+<p>这里定义了基本的<strong>自旋向上</strong>和<strong>自旋向下</strong>态的矢量表示： <span class="math inline">\(|\uparrow\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(|\downarrow\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span> <span class="math inline">\(S_z\)</span>算符作用于自旋态，得到对应的本征值</p>
+<p><span class="math inline">\(S_z|\uparrow\rangle = \frac{\hbar}{2}|\uparrow\rangle\)</span></p>
+<p><span class="math inline">\(S_z|\downarrow\rangle = -\frac{\hbar}{2}|\downarrow\rangle\)</span></p>
+<p>这些是三个方向上自旋算符的矩阵表示形式</p>
+<p><span class="math inline">\(S_x = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}\)</span>, <span class="math inline">\(S_y = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}\)</span>, <span class="math inline">\(S_z = \frac{\hbar}{2}\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}\)</span></p>
+<p>重要工具：定义升降算符</p>
+<p><span class="math inline">\(S_+ = S_x + iS_y = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(S_- = S_x - iS_y = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}\)</span></p>
+<p>这部分计算展示了升降算符如何改变自旋态，<span class="math inline">\(S_+\)</span>将自旋向下变为向上，<span class="math inline">\(S_-\)</span>将自旋向上变为向下</p>
+<p><span class="math inline">\(S_+|\uparrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = 0\)</span></p>
+<p><span class="math inline">\(S_+|\downarrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2}|\uparrow\rangle\)</span></p>
+<p><span class="math inline">\(S_-|\uparrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2}|\downarrow\rangle\)</span></p>
+<p><span class="math inline">\(S_-|\downarrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = 0\)</span></p>
+<h3 data-original-heading="从|\uparrow\rangle|\uparrow\rangle开始计算（Start with |\uparrow\rangle|\uparrow\rangle）：" id="从uparrowrangleuparrowrangle开始计算start-with-uparrowrangleuparrowrangle">4.4.1.2 从<span class="math inline">\(|\uparrow\rangle|\uparrow\rangle\)</span>开始计算（Start with <span class="math inline">\(|\uparrow\rangle|\uparrow\rangle\)</span>）：</h3>
+<p>这里开始计算<strong>两个自旋之间的相互作用</strong>，即点积算符作用于两个自旋均向上的态</p>
+<p><span class="math display">\[
+\begin{align}
+\vec{S}_1 \cdot \vec{S}_2 |\uparrow\rangle|\uparrow\rangle = &amp;  (S_{1x}S_{2x} + S_{1y}S_{2y} + S_{1z}S_{2z})|\uparrow\rangle|\uparrow\rangle \\
+= &amp;  \left[\frac{1}{2}(S_{1+}S_{2-} + S_{1-}S_{2+}) + S_{1z}S_{2z}\right]|\uparrow\rangle|\uparrow\rangle \\
+=  &amp; S_{1z}S_{2z}|\uparrow\rangle|\uparrow\rangle \\
+=  &amp;  (S_{1z}|\uparrow\rangle)(S_{2z}|\uparrow\rangle) \\
+=  &amp; \left(\frac{\hbar}{2}|\uparrow\rangle\right)\left(\frac{\hbar}{2}|\uparrow\rangle\right) \\
+=  &amp; \frac{\hbar^2}{4}|\uparrow\rangle|\uparrow\rangle
+\end{align}
+\]</span></p>
+<p><span class="math inline">\(|\uparrow\rangle|\uparrow\rangle\)</span> 是 <span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span> 的eigenstate，对应的的eigenvalue为 <span class="math inline">\(\frac{\hbar^2}{4}\)</span></p>
+<p>这个结论表明两个自旋向上的复合态是自旋-自旋相互作用算符的本征态，这在量子磁学中非常重要</p>
+<h2 data-original-heading="量子自旋相互作用的探讨（继续）" id="量子自旋相互作用的探讨继续">4.4.2 量子自旋相互作用的探讨（继续）</h2>
+<h3 data-original-heading="Focus on 2 Spins: H = J \vec{S}_1 \cdot \vec{S}_2" id="focus-on-2-spins-h-j-vecs_1-cdot-vecs_2">4.4.2.1 Focus on 2 Spins: <span class="math inline">\(H = J \vec{S}_1 \cdot \vec{S}_2\)</span></h3>
+<p><em>关注两个自旋系统，哈密顿量由自旋-自旋相互作用给出，其中<span class="math inline">\(J\)</span>是耦合常数</em></p>
+<p><em>spin-1/2 quantum mechanical operators</em> <em>自旋-1/2量子力学算符</em></p>
+<p><span class="math inline">\((|\uparrow\rangle|\uparrow\rangle, |\uparrow\rangle|\downarrow\rangle, |\downarrow\rangle|\uparrow\rangle, |\downarrow\rangle|\downarrow\rangle)\)</span></p>
+<p><em>这是两个自旋-1/2系统的四个可能基态</em></p>
+<p><span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2 |\downarrow\rangle|\downarrow\rangle = \left(\frac{1}{2}(S_{1+}S_{2-} + S_{1-}S_{2+}) + S_{1z}S_{2z}\right)|\downarrow\rangle|\downarrow\rangle = S_{1z}S_{2z}|\downarrow\rangle|\downarrow\rangle\)</span></p>
+<p><span class="math inline">\(= (S_{1z}|\downarrow\rangle)(S_{2z}|\downarrow\rangle)\)</span></p>
+<p><span class="math inline">\(= \left(-\frac{\hbar}{2}|\downarrow\rangle\right)\left(-\frac{\hbar}{2}|\downarrow\rangle\right)\)</span></p>
+<p><span class="math inline">\(= \frac{\hbar^2}{4}|\downarrow\rangle|\downarrow\rangle\)</span></p>
+<p><em>计算自旋-自旋相互作用算符作用于两个自旋向下态的结果</em></p>
+<h3 data-original-heading="Is |\uparrow\rangle|\downarrow\rangle also an eigenstate?" id="is-uparrowrangledownarrowrangle-also-an-eigenstate">4.4.2.2 Is <span class="math inline">\(|\uparrow\rangle|\downarrow\rangle\)</span> also an eigenstate?</h3>
+<p><em><span class="math inline">\(|\uparrow\rangle|\downarrow\rangle\)</span>是否也是本征态？</em></p>
+<p><span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2 |\uparrow\rangle|\downarrow\rangle = \left[\frac{1}{2}(S_{1+}S_{2-} + S_{1-}S_{2+}) + S_{1z}S_{2z}\right]|\uparrow\rangle|\downarrow\rangle\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2}(S_{1+}|\uparrow\rangle)(S_{2-}|\downarrow\rangle) + \frac{1}{2}(S_{1-}|\uparrow\rangle)(S_{2+}|\downarrow\rangle) + (S_{1z}|\uparrow\rangle)(S_{2z}|\downarrow\rangle)\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2}(0)(\frac{\hbar}{2}|\uparrow\rangle) + \frac{1}{2}(\frac{\hbar}{2}|\downarrow\rangle)(0) + (\frac{\hbar}{2}|\uparrow\rangle)(-\frac{\hbar}{2}|\downarrow\rangle)\)</span></p>
+<p><em>分步计算每一项的结果</em></p>
+<p><span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2 |\uparrow\rangle|\downarrow\rangle = \frac{\hbar^2}{2}|\downarrow\rangle|\uparrow\rangle - \frac{\hbar^2}{4}|\uparrow\rangle|\downarrow\rangle\)</span></p>
+<p><em>结果表明<span class="math inline">\(|\uparrow\rangle|\downarrow\rangle\)</span>不是本征态，因为结果包含不同的量子态</em></p>
+<h3 data-original-heading="Likewise" id="likewise">4.4.2.3 Likewise</h3>
+<p><em>类似地计算另一种混合态</em></p>
+<p><span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2 |\downarrow\rangle|\uparrow\rangle = \frac{\hbar^2}{2}|\uparrow\rangle|\downarrow\rangle - \frac{\hbar^2}{4}|\downarrow\rangle|\uparrow\rangle\)</span></p>
+<p><em>同样，<span class="math inline">\(|\downarrow\rangle|\uparrow\rangle\)</span>也不是本征态</em></p>
+<p><span class="math inline">\(|\downarrow\rangle|\downarrow\rangle\)</span> is an eigenstate of <span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span> with the eigenvalue <span class="math inline">\(\frac{\hbar^2}{4}\)</span></p>
+<p><em><span class="math inline">\(|\downarrow\rangle|\downarrow\rangle\)</span>是<span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span>的本征态，对应本征值<span class="math inline">\(\frac{\hbar^2}{4}\)</span></em></p>
+<p>neither <span class="math inline">\(|\uparrow\rangle|\downarrow\rangle\)</span> nor <span class="math inline">\(|\downarrow\rangle|\uparrow\rangle\)</span> are eigenstates of <span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span>.</p>
+<p><em><span class="math inline">\(|\uparrow\rangle|\downarrow\rangle\)</span>和<span class="math inline">\(|\downarrow\rangle|\uparrow\rangle\)</span>都不是<span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span>的本征态</em></p>
+<p>.. there must be linear combinations that produce eigenstates!</p>
+<p>因此，必须通过线性组合才能得到本征态!</p>
+<h2 data-original-heading="继续量子自旋相互作用讲义" id="继续量子自旋相互作用讲义">4.4.3 继续量子自旋相互作用讲义</h2>
+<h3 data-original-heading="Use symmetry…" id="use-symmetry">4.4.3.1 Use symmetry…</h3>
+<p><em>利用对称性…</em></p>
+<p><span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span> is invariant under permutation of spin 1 and spin 2.</p>
+<p><em>自旋-自旋相互作用算符在交换自旋1和自旋2时是不变的（具有交换对称性）。</em></p>
+<h3 data-original-heading="Consider…" id="consider">4.4.3.2 Consider…</h3>
+<p><span class="math inline">\(\frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle)\)</span></p>
+<p><em>考虑这个归一化的量子态，它是两个混合自旋态的对称叠加</em></p>
+<p>↑ normalization. <em>上面的系数是归一化因子</em></p>
+<h3 data-original-heading="Is this an eigenstate? Yes! (Add (A) &amp; (B))" id="is-this-an-eigenstate-yes-add-a-b">4.4.3.3 Is this an eigenstate? Yes! (Add (A) &amp; (B))</h3>
+<p><em>这是否为本征态？是的！（将(A)和(B)相加）</em></p>
+<p><span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2 \left(\frac{|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle}{\sqrt{2}}\right) =\)</span></p>
+<p><span class="math inline">\(\left(\frac{\hbar^2}{2}-\frac{\hbar^2}{4}\right) \frac{|\uparrow\rangle|\downarrow\rangle}{\sqrt{2}} + \left(\frac{\hbar^2}{2}-\frac{\hbar^2}{4}\right) \frac{|\downarrow\rangle|\uparrow\rangle}{\sqrt{2}}\)</span></p>
+<p><em>将自旋-自旋相互作用算符作用于这个对称态，代入之前计算的结果</em></p>
+<p><span class="math inline">\(= \frac{\hbar^2}{4}\left(\frac{|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle}{\sqrt{2}}\right)\)</span></p>
+<p><em>化简得到</em></p>
+<p><span class="math inline">\(\Rightarrow \frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle)\)</span> is an eigenstate of <span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span> with eigenvalue <span class="math inline">\(\frac{\hbar^2}{4}\)</span></p>
+<p><em>因此，这个对称叠加态确实是<span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span>的本征态，其本征值为<span class="math inline">\(\frac{\hbar^2}{4}\)</span></em></p>
+<p>这部分推导表明，尽管单个混合态<span class="math inline">\(|\uparrow\rangle|\downarrow\rangle\)</span>和<span class="math inline">\(|\downarrow\rangle|\uparrow\rangle\)</span>不是自旋-自旋相互作用算符的本征态，但它们的对称线性组合<span class="math inline">\(\frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle)\)</span>却是本征态。这个对称态在物理上有特殊意义，它是一个总自旋为1的自旋三重态的一个分量，具有与<span class="math inline">\(|\uparrow\rangle|\uparrow\rangle\)</span>和<span class="math inline">\(|\downarrow\rangle|\downarrow\rangle\)</span>相同的本征值<span class="math inline">\(\frac{\hbar^2}{4}\)</span>。</p>
+<p>这种通过对称性原理构造本征态的方法在量子力学中非常常见且实用。上述计算展示了对称性在量子系统中的强大作用。</p>
+<hr>
+<h2 data-original-heading="量子自旋系统讲义" id="量子自旋系统讲义">4.4.4 量子自旋系统讲义</h2>
+<h3 data-original-heading="第一部分：基本自旋态表示" id="第一部分基本自旋态表示">4.4.4.1 第一部分：基本自旋态表示</h3>
+<h4 data-original-heading="单自旋态的定义" id="单自旋态的定义">4.4.4.1.1 单自旋态的定义</h4>
+<p><span class="math display">\[ |\uparrow\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad |\downarrow\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \]</span></p>
+<h4 data-original-heading="自旋算符作用于基态" id="自旋算符作用于基态">4.4.4.1.2 自旋算符作用于基态</h4>
+<p><span class="math display">\[ S_z|\uparrow\rangle = \frac{\hbar}{2}|\uparrow\rangle \]</span></p>
+<p><span class="math display">\[ S_z|\downarrow\rangle = -\frac{\hbar}{2}|\downarrow\rangle \]</span></p>
+<h4 data-original-heading="自旋算符的矩阵表示" id="自旋算符的矩阵表示">4.4.4.1.3 自旋算符的矩阵表示</h4>
+<p><span class="math display">\[ S_x = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad S_y = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}, \quad S_z = \frac{\hbar}{2}\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \]</span></p>
+<h4 data-original-heading="升降算符" id="升降算符">4.4.4.1.4 升降算符</h4>
+<p><span class="math display">\[ S_+ = S_x + iS_y = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix} \]</span></p>
+<p><span class="math display">\[ S_- = S_x - iS_y = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix} \]</span></p>
+<h4 data-original-heading="升降算符的作用" id="升降算符的作用">4.4.4.1.5 升降算符的作用</h4>
+<p><span class="math display">\[ S_+|\uparrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = 0 \]</span></p>
+<p><span class="math display">\[ S_+|\downarrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2}|\uparrow\rangle \]</span></p>
+<p><span class="math display">\[ S_-|\uparrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2}|\downarrow\rangle \]</span></p>
+<p><span class="math display">\[ S_-|\downarrow\rangle = \frac{\hbar}{2}\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = 0 \]</span></p>
+<h3 data-original-heading="第二部分：两自旋系统分析" id="第二部分两自旋系统分析">4.4.4.2 第二部分：两自旋系统分析</h3>
+<h4 data-original-heading="自旋-自旋相互作用哈密顿量" id="自旋-自旋相互作用哈密顿量">4.4.4.2.1 自旋-自旋相互作用哈密顿量</h4>
+<p><span class="math display">\[ H = J \vec{S}_1 \cdot \vec{S}_2 \]</span></p>
+<p>其中<span class="math inline">\(J\)</span>是交换耦合常数，<span class="math inline">\(\vec{S}_1\)</span>和<span class="math inline">\(\vec{S}_2\)</span>是自旋-1/2量子力学算符</p>
+<h4 data-original-heading="两自旋系统的基态" id="两自旋系统的基态">4.4.4.2.2 两自旋系统的基态</h4>
+<p><span class="math display">\[ (|\uparrow\rangle|\uparrow\rangle, |\uparrow\rangle|\downarrow\rangle, |\downarrow\rangle|\uparrow\rangle, |\downarrow\rangle|\downarrow\rangle) \]</span></p>
+<h4 data-original-heading="计算算符作用于|\downarrow\rangle|\downarrow\rangle" id="计算算符作用于downarrowrangledownarrowrangle">4.4.4.2.3 计算算符作用于<span class="math inline">\(|\downarrow\rangle|\downarrow\rangle\)</span></h4>
+<p><span class="math display">\[ \vec{S}_1 \cdot \vec{S}_2 |\downarrow\rangle|\downarrow\rangle = \left(\frac{1}{2}(S_{1+}S_{2-} + S_{1-}S_{2+}) + S_{1z}S_{2z}\right)|\downarrow\rangle|\downarrow\rangle = S_{1z}S_{2z}|\downarrow\rangle|\downarrow\rangle \]</span></p>
+<p><span class="math display">\[ = (S_{1z}|\downarrow\rangle)(S_{2z}|\downarrow\rangle) \]</span></p>
+<p><span class="math display">\[ = \left(-\frac{\hbar}{2}|\downarrow\rangle\right)\left(-\frac{\hbar}{2}|\downarrow\rangle\right) \]</span></p>
+<p><span class="math display">\[ = \frac{\hbar^2}{4}|\downarrow\rangle|\downarrow\rangle \]</span></p>
+<h4 data-original-heading="|\uparrow\rangle|\downarrow\rangle是否为本征态？" id="uparrowrangledownarrowrangle是否为本征态">4.4.4.2.4 <span class="math inline">\(|\uparrow\rangle|\downarrow\rangle\)</span>是否为本征态？</h4>
+<p><span class="math display">\[ \vec{S}_1 \cdot \vec{S}_2 |\uparrow\rangle|\downarrow\rangle = \left[\frac{1}{2}(S_{1+}S_{2-} + S_{1-}S_{2+}) + S_{1z}S_{2z}\right]|\uparrow\rangle|\downarrow\rangle \]</span></p>
+<p><span class="math display">\[ = \frac{1}{2}(S_{1+}|\uparrow\rangle)(S_{2-}|\downarrow\rangle) + \frac{1}{2}(S_{1-}|\uparrow\rangle)(S_{2+}|\downarrow\rangle) + (S_{1z}|\uparrow\rangle)(S_{2z}|\downarrow\rangle) \]</span></p>
+<p><span class="math display">\[ = \frac{1}{2}(0)(\frac{\hbar}{2}|\uparrow\rangle) + \frac{1}{2}(\frac{\hbar}{2}|\downarrow\rangle)(0) + (\frac{\hbar}{2}|\uparrow\rangle)(-\frac{\hbar}{2}|\downarrow\rangle) \]</span></p>
+<p><span class="math display">\[ \vec{S}_1 \cdot \vec{S}_2 |\uparrow\rangle|\downarrow\rangle = \frac{\hbar^2}{2}|\downarrow\rangle|\uparrow\rangle - \frac{\hbar^2}{4}|\uparrow\rangle|\downarrow\rangle \]</span></p>
+<h4 data-original-heading="对|\downarrow\rangle|\uparrow\rangle的类似计算" id="对downarrowrangleuparrowrangle的类似计算">4.4.4.2.5 对<span class="math inline">\(|\downarrow\rangle|\uparrow\rangle\)</span>的类似计算</h4>
+<p><span class="math display">\[ \vec{S}_1 \cdot \vec{S}_2 |\downarrow\rangle|\uparrow\rangle = \frac{\hbar^2}{2}|\uparrow\rangle|\downarrow\rangle - \frac{\hbar^2}{4}|\downarrow\rangle|\uparrow\rangle \]</span></p>
+<h3 data-original-heading="第三部分：利用对称性寻找本征态" id="第三部分利用对称性寻找本征态">4.4.4.3 第三部分：利用对称性寻找本征态</h3>
+<h4 data-original-heading="对称性分析" id="对称性分析">4.4.4.3.1 对称性分析</h4>
+<p><span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span> 在交换自旋1和自旋2时是不变的</p>
+<h4 data-original-heading="对称线性组合态" id="对称线性组合态">4.4.4.3.2 对称线性组合态</h4>
+<p><span class="math display">\[ \frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle) \]</span></p>
+<h4 data-original-heading="验证是否为本征态" id="验证是否为本征态">4.4.4.3.3 验证是否为本征态</h4>
+<p><span class="math display">\[ \vec{S}_1 \cdot \vec{S}_2 \left(\frac{|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle}{\sqrt{2}}\right) = \]</span></p>
+<p><span class="math display">\[ \left(\frac{\hbar^2}{2}-\frac{\hbar^2}{4}\right) \frac{|\uparrow\rangle|\downarrow\rangle}{\sqrt{2}} + \left(\frac{\hbar^2}{2}-\frac{\hbar^2}{4}\right) \frac{|\downarrow\rangle|\uparrow\rangle}{\sqrt{2}} \]</span></p>
+<p><span class="math display">\[ = \frac{\hbar^2}{4}\left(\frac{|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle}{\sqrt{2}}\right) \]</span></p>
+<p>确认：<span class="math inline">\(\frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle)\)</span> 是 <span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span> 的本征态，本征值为 <span class="math inline">\(\frac{\hbar^2}{4}\)</span></p>
+<h4 data-original-heading="反对称线性组合态" id="反对称线性组合态">4.4.4.3.4 反对称线性组合态</h4>
+<p><span class="math display">\[ \frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle - |\downarrow\rangle|\uparrow\rangle) \]</span></p>
+<h4 data-original-heading="验证是否为本征态" id="验证是否为本征态-1">4.4.4.3.5 验证是否为本征态</h4>
+<p><span class="math display">\[ \vec{S}_1 \cdot \vec{S}_2 \left(\frac{|\uparrow\rangle|\downarrow\rangle - |\downarrow\rangle|\uparrow\rangle}{\sqrt{2}}\right) \]</span></p>
+<p><span class="math display">\[ = \left(\frac{\hbar^2}{2}-\frac{\hbar^2}{4}\right) \frac{|\uparrow\rangle|\downarrow\rangle}{\sqrt{2}} - \left(\frac{\hbar^2}{2}-\frac{\hbar^2}{4}\right) \frac{|\downarrow\rangle|\uparrow\rangle}{\sqrt{2}} \]</span></p>
+<p><span class="math display">\[ = -\frac{3\hbar^2}{4}\left(\frac{|\uparrow\rangle|\downarrow\rangle - |\downarrow\rangle|\uparrow\rangle}{\sqrt{2}}\right) \]</span></p>
+<p>确认：<span class="math inline">\(\frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle - |\downarrow\rangle|\uparrow\rangle)\)</span> 是 <span class="math inline">\(\vec{S}_1 \cdot \vec{S}_2\)</span> 的本征态，本征值为 <span class="math inline">\(-\frac{3\hbar^2}{4}\)</span></p>
+<h3 data-original-heading="第四部分：自旋三重态与单重态" id="第四部分自旋三重态与单重态">4.4.4.4 第四部分：自旋三重态与单重态</h3>
+<h4 data-original-heading="三重态与单重态的分类" id="三重态与单重态的分类">4.4.4.4.1 三重态与单重态的分类</h4>
+<p><span class="math display">\[ |t_+\rangle = |\uparrow\rangle|\uparrow\rangle \]</span> <span class="math display">\[ |t_0\rangle = \frac{|\uparrow\rangle|\downarrow\rangle + |\downarrow\rangle|\uparrow\rangle}{\sqrt{2}} \]</span> <span class="math display">\[ |t_-\rangle = |\downarrow\rangle|\downarrow\rangle \]</span></p>
+<p>这三个态构成三重态(triplet)</p>
+<p><span class="math display">\[ |s\rangle = \frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle - |\downarrow\rangle|\uparrow\rangle) \]</span></p>
+<p>这是单重态(singlet)</p>
+<h4 data-original-heading="哈密顿量作用" id="哈密顿量作用">4.4.4.4.2 哈密顿量作用</h4>
+<p><span class="math display">\[ H|triplet\rangle = J\frac{\hbar^2}{4}|triplet\rangle \]</span></p>
+<p><span class="math display">\[ H|singlet\rangle = -J\frac{3\hbar^2}{4}|singlet\rangle \]</span></p>
+<h3 data-original-heading="第五部分：交换耦合常数J的物理意义" id="第五部分交换耦合常数j的物理意义">4.4.4.5 第五部分：交换耦合常数J的物理意义</h3>
+<h4 data-original-heading="J > 0 情况（铁磁耦合）" id="j-0-情况铁磁耦合">4.4.4.5.1 J &gt; 0 情况（铁磁耦合）</h4>
+<p><span class="math display">\[ J &gt; 0 \]</span></p>
+<p><span class="math display">\[ \begin{array}{cc}
+\uparrow &amp; \text{triplet} \\
+\hbar^2J/4 &amp; \\
+&amp; \\
+-3\hbar^2J/4 &amp; \downarrow |singlet\rangle
+\end{array} \]</span></p>
+<h4 data-original-heading="J < 0 情况（反铁磁耦合）" id="j-0-情况反铁磁耦合">4.4.4.5.2 J &lt; 0 情况（反铁磁耦合）</h4>
+<p><span class="math display">\[ J &lt; 0, \quad J = -|J| \]</span></p>
+<p><span class="math display">\[ \begin{array}{cc}
+\uparrow &amp; \text{singlet} \\
+-3\hbar^2|J|/4 &amp; \\
+&amp; \\
+-\hbar^2|J|/4 &amp; \downarrow \text{triplet}
+\end{array} \]</span></p>
+<h3 data-original-heading="第六部分：量子态的纠缠特性" id="第六部分量子态的纠缠特性">4.4.4.6 第六部分：量子态的纠缠特性</h3>
+<h4 data-original-heading="重要观察" id="重要观察">4.4.4.6.1 重要观察</h4>
+<p><span class="math display">\[ |singlet\rangle = \frac{1}{\sqrt{2}}(|\uparrow\rangle|\downarrow\rangle - |\downarrow\rangle|\uparrow\rangle) \neq |\uparrow\rangle|\downarrow\rangle \]</span></p>
+<h4 data-original-heading="张量积表示" id="张量积表示">4.4.4.6.2 张量积表示</h4>
+<p><span class="math display">\[ |A\otimes B\rangle \quad |\psi\rangle = \sum_{a,b}c_{ab}|a\rangle|b\rangle \]</span></p>
+<h3 data-original-heading="附录：量子自旋系统的重要概念解释" id="附录量子自旋系统的重要概念解释">4.4.4.7 附录：量子自旋系统的重要概念解释</h3>
+<h4 data-original-heading="自旋三重态与单重态的物理意义" id="自旋三重态与单重态的物理意义">4.4.4.7.1 自旋三重态与单重态的物理意义</h4>
+<p><strong>三重态</strong>（triplet）包含三个量子态，具有相同的本征值<span class="math inline">\(\frac{\hbar^2}{4}\)</span>。三重态表现为总自旋为1的状态，<span class="math inline">\(|t_+\rangle\)</span>、<span class="math inline">\(|t_0\rangle\)</span>和<span class="math inline">\(|t_-\rangle\)</span>分别对应总自旋z分量为+1、0和-1。</p>
+<p><strong>单重态</strong>（singlet）只包含一个量子态<span class="math inline">\(|s\rangle\)</span>，本征值为<span class="math inline">\(-\frac{3\hbar^2}{4}\)</span>。单重态表现为总自旋为0的状态，两个自旋相互抵消。</p>
+<h4 data-original-heading="交换相互作用的物理解释" id="交换相互作用的物理解释">4.4.4.7.2 交换相互作用的物理解释</h4>
+<p>交换常数<span class="math inline">\(J\)</span>确定了自旋之间的相互作用类型：</p>
+<ul>
+<li>当<span class="math inline">\(J &gt; 0\)</span>时，系统倾向于铁磁排列（自旋平行），三重态能量较低</li>
+<li>当<span class="math inline">\(J &lt; 0\)</span>时，系统倾向于反铁磁排列（自旋反平行），单重态能量较低</li>
+</ul>
+<h4 data-original-heading="自旋算符与泡利矩阵的关系" id="自旋算符与泡利矩阵的关系">4.4.4.7.3 自旋算符与泡利矩阵的关系</h4>
+<p>自旋算符与泡利矩阵的关系可以用以下数学表达式表示：</p>
+<p><span class="math display">\[ S_x = \frac{\hbar}{2}\sigma_x \]</span> <span class="math display">\[ S_y = \frac{\hbar}{2}\sigma_y \]</span> <span class="math display">\[ S_z = \frac{\hbar}{2}\sigma_z \]</span></p>
+<p>其中<span class="math inline">\(\sigma_x\)</span>、<span class="math inline">\(\sigma_y\)</span>和<span class="math inline">\(\sigma_z\)</span>是泡利矩阵：</p>
+<p><span class="math display">\[ \sigma_x = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \]</span> <span class="math display">\[ \sigma_y = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} \]</span> <span class="math display">\[ \sigma_z = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \]</span></p>
+<p>这种关系反映了量子力学中抽象数学与物理观测量之间的深刻联系：</p>
+<ul>
+<li>泡利矩阵是无量纲的数学工具</li>
+<li>自旋算符有角动量的物理单位（由<span class="math inline">\(\frac{\hbar}{2}\)</span>提供）</li>
+<li>系数<span class="math inline">\(\frac{\hbar}{2}\)</span>表明我们在处理自旋-1/2粒子</li>
+</ul>
+<h4 data-original-heading="量子纠缠的意义" id="量子纠缠的意义">4.4.4.7.4 量子纠缠的意义</h4>
+<p>单重态<span class="math inline">\(|s\rangle\)</span>和三重态<span class="math inline">\(|t_0\rangle\)</span>都是纠缠态，无法写成单个粒子态的直积。这种量子纠缠是量子力学的核心特性，表现为一个粒子的测量会立即影响另一个粒子的状态，不论它们相距多远。</p>
+<h4 data-original-heading="实际应用" id="实际应用">4.4.4.7.5 实际应用</h4>
+<p>海森堡模型在凝聚态物理中有广泛应用，特别是在理解磁性材料、高温超导体和量子计算中的量子比特设计方面。</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.3%20%E8%A7%92%E5%8A%A8%E9%87%8F%20(Angular%20Momentum).html"><span>← Previous page</span><span>4.3 角动量 (Angular Momentum)</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">4.4 Spin Spin Spin</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#%E9%87%8F%E5%AD%90%E8%87%AA%E6%97%8B%E6%80%81%E4%B8%8E%E7%AE%97%E7%AC%A6%E8%AE%B2%E4%B9%89quantum-spin-states-and-operators-lecture-notes" class="is-active" aria-current="location">4.4.1 量子自旋态与算符讲义（Quantum Spin States and Operators Lecture Notes）</a></li><li style="--depth:1"><a href="#%E5%8D%95%E8%87%AA%E6%97%8B%E6%80%81one-spin-states">4.4.1.1 单自旋态（One Spin States）：</a></li><li style="--depth:1"><a href="#%E4%BB%8Euparrowrangleuparrowrangle%E5%BC%80%E5%A7%8B%E8%AE%A1%E7%AE%97start-with-uparrowrangleuparrowrangle">4.4.1.2 从|\uparrow\rangle|\uparrow\rangle开始计算（Start with |\uparrow\rangle|\uparrow\rangle）：</a></li><li style="--depth:0"><a href="#%E9%87%8F%E5%AD%90%E8%87%AA%E6%97%8B%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E6%8E%A2%E8%AE%A8%E7%BB%A7%E7%BB%AD">4.4.2 量子自旋相互作用的探讨（继续）</a></li><li style="--depth:1"><a href="#focus-on-2-spins-h-j-vecs_1-cdot-vecs_2">4.4.2.1 Focus on 2 Spins: H = J \vec{S}_1 \cdot \vec{S}_2</a></li><li style="--depth:1"><a href="#is-uparrowrangledownarrowrangle-also-an-eigenstate">4.4.2.2 Is |\uparrow\rangle|\downarrow\rangle also an eigenstate?</a></li><li style="--depth:1"><a href="#likewise">4.4.2.3 Likewise</a></li><li style="--depth:0"><a href="#%E7%BB%A7%E7%BB%AD%E9%87%8F%E5%AD%90%E8%87%AA%E6%97%8B%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E8%AE%B2%E4%B9%89">4.4.3 继续量子自旋相互作用讲义</a></li><li style="--depth:1"><a href="#use-symmetry">4.4.3.1 Use symmetry…</a></li><li style="--depth:1"><a href="#consider">4.4.3.2 Consider…</a></li><li style="--depth:1"><a href="#is-this-an-eigenstate-yes-add-a-b">4.4.3.3 Is this an eigenstate? Yes! (Add (A) &amp; (B))</a></li><li style="--depth:0"><a href="#%E9%87%8F%E5%AD%90%E8%87%AA%E6%97%8B%E7%B3%BB%E7%BB%9F%E8%AE%B2%E4%B9%89">4.4.4 量子自旋系统讲义</a></li><li style="--depth:1"><a href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E5%9F%BA%E6%9C%AC%E8%87%AA%E6%97%8B%E6%80%81%E8%A1%A8%E7%A4%BA">4.4.4.1 第一部分：基本自旋态表示</a></li><li style="--depth:2"><a href="#%E5%8D%95%E8%87%AA%E6%97%8B%E6%80%81%E7%9A%84%E5%AE%9A%E4%B9%89">4.4.4.1.1 单自旋态的定义</a></li><li style="--depth:2"><a href="#%E8%87%AA%E6%97%8B%E7%AE%97%E7%AC%A6%E4%BD%9C%E7%94%A8%E4%BA%8E%E5%9F%BA%E6%80%81">4.4.4.1.2 自旋算符作用于基态</a></li><li style="--depth:2"><a href="#%E8%87%AA%E6%97%8B%E7%AE%97%E7%AC%A6%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA">4.4.4.1.3 自旋算符的矩阵表示</a></li><li style="--depth:2"><a href="#%E5%8D%87%E9%99%8D%E7%AE%97%E7%AC%A6">4.4.4.1.4 升降算符</a></li><li style="--depth:2"><a href="#%E5%8D%87%E9%99%8D%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BD%9C%E7%94%A8">4.4.4.1.5 升降算符的作用</a></li><li style="--depth:1"><a href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%A4%E8%87%AA%E6%97%8B%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90">4.4.4.2 第二部分：两自旋系统分析</a></li><li style="--depth:2"><a href="#%E8%87%AA%E6%97%8B-%E8%87%AA%E6%97%8B%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F">4.4.4.2.1 自旋-自旋相互作用哈密顿量</a></li><li style="--depth:2"><a href="#%E4%B8%A4%E8%87%AA%E6%97%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%80%81">4.4.4.2.2 两自旋系统的基态</a></li><li style="--depth:2"><a href="#%E8%AE%A1%E7%AE%97%E7%AE%97%E7%AC%A6%E4%BD%9C%E7%94%A8%E4%BA%8Edownarrowrangledownarrowrangle">4.4.4.2.3 计算算符作用于|\downarrow\rangle|\downarrow\rangle</a></li><li style="--depth:2"><a href="#uparrowrangledownarrowrangle%E6%98%AF%E5%90%A6%E4%B8%BA%E6%9C%AC%E5%BE%81%E6%80%81">4.4.4.2.4 |\uparrow\rangle|\downarrow\rangle是否为本征态？</a></li><li style="--depth:2"><a href="#%E5%AF%B9downarrowrangleuparrowrangle%E7%9A%84%E7%B1%BB%E4%BC%BC%E8%AE%A1%E7%AE%97">4.4.4.2.5 对|\downarrow\rangle|\uparrow\rangle的类似计算</a></li><li style="--depth:1"><a href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%88%A9%E7%94%A8%E5%AF%B9%E7%A7%B0%E6%80%A7%E5%AF%BB%E6%89%BE%E6%9C%AC%E5%BE%81%E6%80%81">4.4.4.3 第三部分：利用对称性寻找本征态</a></li><li style="--depth:2"><a href="#%E5%AF%B9%E7%A7%B0%E6%80%A7%E5%88%86%E6%9E%90">4.4.4.3.1 对称性分析</a></li><li style="--depth:2"><a href="#%E5%AF%B9%E7%A7%B0%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88%E6%80%81">4.4.4.3.2 对称线性组合态</a></li><li style="--depth:2"><a href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E4%B8%BA%E6%9C%AC%E5%BE%81%E6%80%81">4.4.4.3.3 验证是否为本征态</a></li><li style="--depth:2"><a href="#%E5%8F%8D%E5%AF%B9%E7%A7%B0%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88%E6%80%81">4.4.4.3.4 反对称线性组合态</a></li><li style="--depth:2"><a href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E4%B8%BA%E6%9C%AC%E5%BE%81%E6%80%81-1">4.4.4.3.5 验证是否为本征态</a></li><li style="--depth:1"><a href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%E8%87%AA%E6%97%8B%E4%B8%89%E9%87%8D%E6%80%81%E4%B8%8E%E5%8D%95%E9%87%8D%E6%80%81">4.4.4.4 第四部分：自旋三重态与单重态</a></li><li style="--depth:2"><a href="#%E4%B8%89%E9%87%8D%E6%80%81%E4%B8%8E%E5%8D%95%E9%87%8D%E6%80%81%E7%9A%84%E5%88%86%E7%B1%BB">4.4.4.4.1 三重态与单重态的分类</a></li><li style="--depth:2"><a href="#%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F%E4%BD%9C%E7%94%A8">4.4.4.4.2 哈密顿量作用</a></li><li style="--depth:1"><a href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%E4%BA%A4%E6%8D%A2%E8%80%A6%E5%90%88%E5%B8%B8%E6%95%B0j%E7%9A%84%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">4.4.4.5 第五部分：交换耦合常数J的物理意义</a></li><li style="--depth:2"><a href="#j-0-%E6%83%85%E5%86%B5%E9%93%81%E7%A3%81%E8%80%A6%E5%90%88">4.4.4.5.1 J &gt; 0 情况（铁磁耦合）</a></li><li style="--depth:2"><a href="#j-0-%E6%83%85%E5%86%B5%E5%8F%8D%E9%93%81%E7%A3%81%E8%80%A6%E5%90%88">4.4.4.5.2 J &lt; 0 情况（反铁磁耦合）</a></li><li style="--depth:1"><a href="#%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86%E9%87%8F%E5%AD%90%E6%80%81%E7%9A%84%E7%BA%A0%E7%BC%A0%E7%89%B9%E6%80%A7">4.4.4.6 第六部分：量子态的纠缠特性</a></li><li style="--depth:2"><a href="#%E9%87%8D%E8%A6%81%E8%A7%82%E5%AF%9F">4.4.4.6.1 重要观察</a></li><li style="--depth:2"><a href="#%E5%BC%A0%E9%87%8F%E7%A7%AF%E8%A1%A8%E7%A4%BA">4.4.4.6.2 张量积表示</a></li><li style="--depth:1"><a href="#%E9%99%84%E5%BD%95%E9%87%8F%E5%AD%90%E8%87%AA%E6%97%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5%E8%A7%A3%E9%87%8A">4.4.4.7 附录：量子自旋系统的重要概念解释</a></li><li style="--depth:2"><a href="#%E8%87%AA%E6%97%8B%E4%B8%89%E9%87%8D%E6%80%81%E4%B8%8E%E5%8D%95%E9%87%8D%E6%80%81%E7%9A%84%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">4.4.4.7.1 自旋三重态与单重态的物理意义</a></li><li style="--depth:2"><a href="#%E4%BA%A4%E6%8D%A2%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E7%89%A9%E7%90%86%E8%A7%A3%E9%87%8A">4.4.4.7.2 交换相互作用的物理解释</a></li><li style="--depth:2"><a href="#%E8%87%AA%E6%97%8B%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B3%A1%E5%88%A9%E7%9F%A9%E9%98%B5%E7%9A%84%E5%85%B3%E7%B3%BB">4.4.4.7.3 自旋算符与泡利矩阵的关系</a></li><li style="--depth:2"><a href="#%E9%87%8F%E5%AD%90%E7%BA%A0%E7%BC%A0%E7%9A%84%E6%84%8F%E4%B9%89">4.4.4.7.4 量子纠缠的意义</a></li><li style="--depth:2"><a href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8">4.4.4.7.5 实际应用</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

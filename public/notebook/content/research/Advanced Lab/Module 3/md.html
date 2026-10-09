@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>md — E.H. Notebook</title>
+<meta name="description" content="1 Theory1.1 Static pressure balanceFigure 1 defines the geometry used in the analysis. The tube has length L and cross-sectional area A. The height of the water column in">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html" aria-current="page">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="research file hierarchy" data-sidebar-root="content/research"><a class="sidebar-root" href="/notebook/content/research/index.html">research</a><ul class="notes-tree"><li class="folder-node" data-folder="content/research/Advanced Lab" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-a0a27906c83c" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Advanced Lab</span></button></div><ul class="tree-children" id="folder-a0a27906c83c"><li class="folder-node" data-folder="content/research/Advanced Lab/Module 3" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-2da6076d8ee3" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Module 3</span></button></div><ul class="tree-children" id="folder-2da6076d8ee3"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/research/Advanced%20Lab/Module%203/md.html"><span class="page-number"></span><span>md</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/Module%203%20Heat%20Conduction.html"><span class="page-number"></span><span>Module 3 Heat Conduction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/Paper.html"><span class="page-number"></span><span>Paper</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Advanced Lab/Module 4" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d2cbcc62a70c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Module 4</span></button></div><ul class="tree-children" id="folder-d2cbcc62a70c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%204/Final.html"><span class="page-number"></span><span>Final</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Instruction%20for%20Lab.html"><span class="page-number"></span><span>Instruction for Lab</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%201%20LabVIEW.html"><span class="page-number"></span><span>Module 1 LabVIEW</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Feminist History" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-734c6ff122df" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Feminist History</span></button></div><ul class="tree-children" id="folder-734c6ff122df" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Barnes%2C%20Nicole%20Elizabeth).%20Intimate%20Communities%20-%20Wartime%20Healthcare%20and%20the%20Birth%20of%20Modern%20China%2C%201937%E2%80%931945.html"><span class="page-number"></span><span>(Barnes, Nicole Elizabeth). Intimate Communities - Wartime Healthcare and the Birth of Modern China, 1937–1945</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Li%2C%20Minghui)%20Childbirth%20transformation%20and%20new%20style%20midwifery%20in%20Beijing%2C%201926%20%E2%80%93%201937.html"><span class="page-number"></span><span>(Li, Minghui) Childbirth transformation and new style midwifery in Beijing, 1926 – 1937</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Shemo%2C%20Connie)%20Able%20to%20Do%20Things%20of%20Which%20They%20Have%20Never%20Dreamed%20-%20Shi%20Meiyu%E2%80%99s%20Vision%20of%20Nursing%20in%20Early%20Twentieth-Century%20China.html"><span class="page-number"></span><span>(Shemo, Connie) Able to Do Things of Which They Have Never Dreamed - Shi Meiyu’s Vision of Nursing in Early Twentieth-Century China</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Xu%2C%20Yier)%20A%20Modern%20Occupation%20for%20Women%20-%20Feminization%20and%20the%20Professionalization%20of%20Nursing%20in%201930s%20China.html"><span class="page-number"></span><span>(Xu, Yier) A Modern Occupation for Women - Feminization and the Professionalization of Nursing in 1930s China</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Yip%2C%20Ka-che)%20Health%20and%20Nationalist%20Reconstruction%20Rural%20Health%20in%20Nationalist%20China%2C%201928-1937.html"><span class="page-number"></span><span>(Yip, Ka-che) Health and Nationalist Reconstruction Rural Health in Nationalist China, 1928-1937</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Hypre" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-6714cbdf71d2" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Hypre</span></button></div><ul class="tree-children" id="folder-6714cbdf71d2" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Linux%20Environment%20for%20GPTune.html"><span class="page-number"></span><span>Linux Environment for GPTune</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/List%20of%20All%20Proof%20(Learning%20to%20Relax).html"><span class="page-number"></span><span>List of All Proof (Learning to Relax)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Paper.html"><span class="page-number"></span><span>Paper</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Paper%20Notes.html"><span class="page-number"></span><span>Paper Notes</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Relevant%20Proof.html"><span class="page-number"></span><span>Relevant Proof</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Setup-Solve%20Phases%20RL%20design.html"><span class="page-number"></span><span>Setup-Solve Phases RL design</span></a></li></ul></li><li class="folder-node" data-folder="content/research/IllustrateTNG Simulation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-43d0b979f227" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>IllustrateTNG Simulation</span></button></div><ul class="tree-children" id="folder-43d0b979f227" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/IllustrateTNG%20Simulation/Short%20Cut%20for%20GIST.html"><span class="page-number"></span><span>Short Cut for GIST</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/IllustrateTNG%20Simulation/Viewing%20Angle.html"><span class="page-number"></span><span>Viewing Angle</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Underdeck" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aefc9997568f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Underdeck</span></button></div><ul class="tree-children" id="folder-aefc9997568f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Design%20Logic.html"><span class="page-number"></span><span>Design Logic</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Instruction%20for%20Generic%20Underdeck%20Setting.html"><span class="page-number"></span><span>Instruction for Generic Underdeck Setting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/research/Advanced%20Lab/index.html">Advanced Lab</a><span aria-hidden="true"> / </span><a href="/notebook/content/research/Advanced%20Lab/Module%203/index.html">Module 3</a></nav><h1 id="reader-title">md</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Theory" id="theory">1 Theory</h2>
+<h3 data-original-heading="Static pressure balance" id="static-pressure-balance">1.1 Static pressure balance</h3>
+<p>Figure 1 defines the geometry used in the analysis. The tube has length <span class="math inline">\(L\)</span> and cross-sectional area <span class="math inline">\(A\)</span>. The height of the water column inside the tube is <span class="math inline">\(x(t)\)</span>, and the equilibrium value after the tube is fixed is denoted by <span class="math inline">\(y\)</span>. The lower end of the tube is open and lies a vertical distance <span class="math inline">\(d\)</span> below the free surface of the reservoir. The trapped air has pressure <span class="math inline">\(P\)</span> and volume <span class="math inline">\(V(x)=A(L-x)\)</span>.</p>
+<p>At equilibrium, the water at the bottom opening is shared by the tube and the reservoir, so the pressure <span class="math inline">\(P_{b}\)</span> there must be the same on both sides. The pressure relation from figure 1 is: <span class="math display">\[
+\begin{aligned}
+&amp; P_b=P_a+\rho g d \\
+&amp; P_b=P_{\mathrm{eq}}+\rho g y
+\end{aligned}
+\]</span> where <span class="math inline">\(P_a\)</span> is atmospheric pressure and <span class="math inline">\(\rho\)</span> is the density of water. Therefore, we have <span class="math display">\[
+P_{\mathrm{eq}}=P_a+\rho g(d-y)
+\tag{1}
+\]</span> which shows why the trapped air matters. The pressure above the internal water column is not generally equal to atmospheric pressure.</p>
+<p>%<strong>Figure 1.</strong> should be here, no need to change anything. keep it as it is.% ## Equation of motion</p>
+<p>After the tube has been reclamped, <span class="math inline">\(d\)</span> is fixed and the water column can oscillate about <span class="math inline">\(y\)</span>. The pressure at the bottom opening from the reservoir is <span class="math inline">\(P_a+\rho g d\)</span>, so the trapped air pushes upward on the water column with <span class="math display">\[F_{\mathrm{up}}=A\left(P_a+\rho g d\right)\]</span> and similarly pushes downward on the top of the water column with force <span class="math display">\[
+F_{\mathrm{down}}=A P(x)
+\]</span> Since the water column also has weight, <span class="math inline">\(F_{\text {weight }}=m g=\rho A xg\)</span>, the net force is <span class="math display">\[
+\begin{aligned}
+F_{\text {net }} &amp; =F_{\text {up }}-F_{\text {air }}-F_{\text {weight }} \\
+&amp; =A\left(P_a+\rho g d\right)-A P(x)-\rho A x g \\
+&amp; =A\left[P_a+\rho g d-P(x)-\rho g x\right] .
+\end{aligned}
+\]</span> Since <span class="math inline">\(m \ddot{x}=F_{\mathrm{net}}\)</span>, then we have a simplified equation of motion, where viscous damping and the momentum flux associated with water are neglected. <span class="math display">\[
+\rho A x \ddot{x}
+=
+A\left[P_a+\rho gd-P(x)-\rho gx\right]
+\tag{2}
+\]</span> For the isothermal model, the trapped air obeys <span class="math display">\[
+\begin{align}
+P(x)V(x) &amp; =P_{\mathrm{eq}}V_{\mathrm{eq}}\\
+P(x) &amp; =P_{\mathrm{eq}}\frac{L-y}{L-x}
+\end{align}
+\tag{3}
+\]</span> Next, we linearize around equilibrium</p>
+<p><span class="math display">\[
+P(x)=P_{\mathrm{eq}}\frac{L-y}{L-x}
+\tag{3}
+\]</span></p>
+<p>The area <span class="math inline">\(A\)</span> cancels because both the trapped-air volume and the water-column mass are proportional to <span class="math inline">\(A\)</span>.</p>
+<p>To obtain the natural frequency, write</p>
+<p><span class="math display">\[
+x(t)=y+\eta(t)
+\]</span></p>
+<p>where <span class="math inline">\(|\eta|\ll y\)</span>. Linearizing Equation (2) about <span class="math inline">\(y\)</span> and using Equation (3) gives</p>
+<p><span class="math display">\[
+\rho y \ddot{\eta}
+=
+-\left[\rho g+\frac{P_{\mathrm{eq}}}{L-y}\right]\eta
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\ddot{\eta}+\omega_{\mathrm{th}}^2\eta=0
+\]</span></p>
+<p>with</p>
+<p><span class="math display">\[
+\boxed{
+\omega_{\mathrm{th}}^2
+=
+\frac{g}{y}
++
+\frac{P_{\mathrm{eq}}}{\rho y(L-y)}
+}
+\tag{4}
+\]</span></p>
+<p>and, using Equation (1),</p>
+<p><span class="math display">\[
+\boxed{
+\omega_{\mathrm{th}}^2
+=
+\frac{g}{y}
++
+\frac{P_a+\rho g(d-y)}{\rho y(L-y)}
+}
+\tag{5}
+\]</span></p>
+<p>All lengths in Equation (5) must be expressed in SI units. The first term is the hydrostatic contribution, and the second term is the trapped-air spring contribution. The isothermal model predicts a strong dependence on the filling fraction <span class="math inline">\(y/L\)</span>, especially because the air volume <span class="math inline">\(A(L-y)\)</span> changes as the tube becomes more full.</p>
+<p>The data showed a systematic residual from the isothermal model, so we also considered the more general polytropic relation</p>
+<p><span class="math display">\[
+P(x)V(x)^\kappa=P_{\mathrm{eq}}V_{\mathrm{eq}}^\kappa
+\]</span></p>
+<p>In that case,</p>
+<p><span class="math display">\[
+P(x)=P_{\mathrm{eq}}\left(\frac{L-y}{L-x}\right)^\kappa
+\]</span></p>
+<p>and the same linearization gives</p>
+<p><span class="math display">\[
+\boxed{
+\omega_{\kappa}^2
+=
+\frac{g}{y}
++
+\frac{\kappa\left[P_a+\rho g(d-y)\right]}{\rho y(L-y)}
+}
+\tag{6}
+\]</span></p>
+<p>Equation (5) is the special case <span class="math inline">\(\kappa=1\)</span>. For air, the adiabatic limiting value is approximately <span class="math inline">\(\kappa=1.4\)</span>. In this report, <span class="math inline">\(\kappa\)</span> is treated as a fitted parameter inferred from the dataset, not as an independently known property of the apparatus.</p>
+<h3 data-original-heading="Experimental fit form" id="experimental-fit-form">1.2 Experimental fit form</h3>
+<p>The videos were analyzed by tracking the meniscus position after the tube had been reclamped. The manual recommends setting the origin at the final equilibrium meniscus position and fitting the displacement to a damped cosine.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The numerical fit used the closely related form</p>
+<p><span class="math display">\[
+z(t)=c+a e^{-bt}\cos(\omega_{\mathrm{exp}}t+\phi)
+\tag{7}
+\]</span></p>
+<p>The constant offset <span class="math inline">\(c\)</span> absorbs small residual errors in the Tracker coordinate origin and does not affect the fitted angular frequency. The fitted angular frequency <span class="math inline">\(\omega_{\mathrm{exp}}\)</span> is the parameter to be compared with Equation (5) and Equation (6).</p>
+<p>To include damping, I model the small oscillation about equilibrium as a linearly damped harmonic oscillator. After linearization, the displacement <span class="math inline">\(\eta(t)=x(t)-y\)</span> is assumed to satisfy</p>
+<p><span class="math display">\[
+\ddot{\eta}+2\lambda\dot{\eta}+\omega_\kappa^2\eta=0,
+\tag{19}
+\]</span></p>
+<p>where <span class="math inline">\(\lambda\)</span> is the exponential decay rate and <span class="math inline">\(\omega_\kappa\)</span> is the undamped natural angular frequency predicted by the polytropic model. This damping term is introduced phenomenologically at the linearized level; it is not derived from the full fluid dynamics.</p>
+<p>To solve Eq. (19), write</p>
+<p><span class="math display">\[
+\eta(t)=e^{-\lambda t}u(t).
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\dot{\eta}
+=
+e^{-\lambda t}\left(\dot{u}-\lambda u\right),
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\ddot{\eta}
+=
+e^{-\lambda t}\left(\ddot{u}-2\lambda\dot{u}+\lambda^2 u\right).
+\]</span></p>
+<p>Substituting these into Eq. (19) gives</p>
+<p><span class="math display">\[
+e^{-\lambda t}\left(\ddot{u}-2\lambda\dot{u}+\lambda^2 u\right)
++
+2\lambda e^{-\lambda t}\left(\dot{u}-\lambda u\right)
++
+\omega_\kappa^2 e^{-\lambda t}u
+=
+0.
+\]</span></p>
+<p>Factoring out <span class="math inline">\(e^{-\lambda t}\)</span> and simplifying,</p>
+<p><span class="math display">\[
+\ddot{u}-2\lambda\dot{u}+\lambda^2 u
++2\lambda\dot{u}-2\lambda^2 u
++\omega_\kappa^2 u
+=
+0,
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\ddot{u}+(\omega_\kappa^2-\lambda^2)u=0.
+\tag{20}
+\]</span></p>
+<p>This is the equation of a simple harmonic oscillator. Therefore, for underdamped motion, <span class="math inline">\(\lambda&lt;\omega_\kappa\)</span>, the solution is</p>
+<p><span class="math display">\[
+u(t)=a\cos(\omega_{\mathrm{data}}t+\phi),
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\omega_{\mathrm{data}}^2=\omega_\kappa^2-\lambda^2.
+\tag{21}
+\]</span></p>
+<p>Substituting back into <span class="math inline">\(\eta(t)=e^{-\lambda t}u(t)\)</span> gives</p>
+<p><span class="math display">\[
+\eta(t)=a e^{-\lambda t}\cos(\omega_{\mathrm{data}}t+\phi).
+\]</span></p>
+<p>Since the Tracker origin may contain a small residual offset, the fitted coordinate is written as</p>
+<p><span class="math display">\[
+z(t)=z_0+a e^{-\lambda t}\cos(\omega_{\mathrm{data}}t+\phi),
+\tag{22}
+\]</span></p>
+<p>where <span class="math inline">\(z_0\)</span> is a small constant offset.</p>
+<p>Equation (21) can be written equivalently as</p>
+<p><span class="math display">\[
+\omega_\kappa=\sqrt{\omega_{\mathrm{data}}^2+\lambda^2}.
+\tag{23}
+\]</span></p>
+<p>Combining this result with the undamped polytropic prediction,</p>
+<p><span class="math display">\[
+\omega_\kappa^2
+=
+\frac{g}{y}
++
+\frac{\kappa\left[P_a+\rho g(d-y)\right]}{\rho y(L-y)},
+\]</span></p>
+<p>gives the damped polytropic prediction for the measured angular frequency,</p>
+<p><span class="math display">\[
+\omega_{\mathrm{data},\kappa}
+=
+\sqrt{
+\frac{g}{y}
++
+\frac{\kappa\left[P_a+\rho g(d-y)\right]}{\rho y(L-y)}
+-\lambda^2
+}.
+\tag{24}
+\]</span></p>
+<p>The corresponding damped isothermal prediction is the special case <span class="math inline">\(\kappa=1\)</span>:</p>
+<p><span class="math display">\[
+\omega_{\mathrm{data,iso}}
+=
+\sqrt{
+\frac{g}{y}
++
+\frac{P_a+\rho g(d-y)}{\rho y(L-y)}
+-\lambda^2
+}.
+\tag{25}
+\]</span></p>
+<p>In the data analysis, <span class="math inline">\(\lambda\)</span> was obtained from the same damped-cosine fit used to determine <span class="math inline">\(\omega_{\mathrm{data}}\)</span>. The damping correction in Eq. (23) was then checked using the fitted values of <span class="math inline">\(\lambda\)</span>. Since this correction was much smaller than the systematic difference between the isothermal prediction and the measured frequencies, the main comparison uses <span class="math inline">\(\omega_{\mathrm{data}}\)</span> directly against the undamped theory as a first approximation.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Lab manual.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/research/Advanced%20Lab/Module%203/Module%203%20Heat%20Conduction.html"><span>Next page →</span><span>Module 3 Heat Conduction</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">md</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#theory" class="is-active" aria-current="location">1 Theory</a></li><li style="--depth:1"><a href="#static-pressure-balance">1.1 Static pressure balance</a></li><li style="--depth:1"><a href="#experimental-fit-form">1.2 Experimental fit form</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

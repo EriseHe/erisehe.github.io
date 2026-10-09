@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Julia科学计算笔记 — E.H. Notebook</title>
+<meta name="description" content="\begin{aligned} \partial_i\partial_m (T^{im} x&#39;^j x&#39;^k) &amp;= \partial_i\Big[,\partial_m(T^{im}) x&#39;^j x&#39;^k + T^{im}\partial_m(x&#39;^j x&#39;^k)\Big] \\ &amp;= \partial_i\Big[(\partial_">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Julia科学计算笔记 file hierarchy" data-sidebar-root="content/notes/理论/Julia科学计算笔记"><a class="sidebar-root is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/0%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.html"><span class="page-number">0</span><span>基本语法</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/I%20%E5%8F%98%E9%87%8F%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0.html"><span class="page-number"></span><span>I 变量、基本类型和函数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/II%20ODEs%E4%B8%8E%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6.html"><span class="page-number"></span><span>II ODEs与分子动力学</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/III%20Random%20Numbers%20%26%20Monte%20Carlo.html"><span class="page-number"></span><span>III Random Numbers &amp; Monte Carlo</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a></nav><h1 id="reader-title">Julia科学计算笔记</h1></header><div id="article-body" class="prose"><span class="math display">\[
+\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= \partial_i\Big[,\partial_m(T^{im}) x'^j x'^k
++ T^{im}\partial_m(x'^j x'^k)\Big] \\
+&amp;= \partial_i\Big[(\partial_m T^{im}) x'^j x'^k
++ T^{im}(\delta_m^{\ j}x'^k + x'^j\delta_m^{\ k})\Big] \\
+&amp;= \partial_i\Big[(\partial_m T^{im}) x'^j x'^k
++ T^{jm}x'^k + T^{km}x'^j\Big].
+\end{aligned}
+\]</span> Now apply the product rule again: $$
+<span class="math display">\[\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= (\partial_i\partial_m T^{im}) x'^j x'^k
+
+(\partial_m T^{im}),\partial_i(x'^j x'^k)
+
+\partial_i(T^{jm}x'^k)
+
+\partial_i(T^{km}x'^j) \\
+&amp;= (\partial_i\partial_m T^{im}) x'^j x'^k \\
+&amp;\quad+ (\partial_m T^{im})(\delta_i^{\ j}x'^k + x'^j\delta_i^{\ k})
+
+(\partial_i T^{jm})x'^k + T^{jm}\delta_i^{\ k} \\
+&amp;\quad+ (\partial_i T^{km})x'^j + T^{km}\delta_i^{\ j}.
+\end{aligned}\]</span>
+<span class="math display">\[
+Now perform the sums over 
+𝑖
+i:
+\]</span>
+<span class="math display">\[\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= (\partial_i\partial_m T^{im}) x'^j x'^k
+
+(\partial_m T^{jm})x'^k + (\partial_m T^{km})x'^j \
+&amp;\quad+ (\partial_i T^{jm})x'^k + T^{jk}
+
+(\partial_i T^{km})x'^j + T^{kj}.
+\end{aligned}\]</span>
+<p><sup>{km})x’</sup>j + T^{kj}. \end{aligned} $$ Because</p>
+<p>is symmetric, , and we can also rename dummy indices to combine terms: <span class="math display">\[
+\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= (\partial_i\partial_m T^{im}) x'^j x'^k
+2,\partial_m(T^{mj}x'^k + T^{mk}x'^j)
+-2T^{jk}.
+\end{aligned}
+\]</span> Rearrange this to solve for</p>
+<span class="math display">\[\begin{aligned}
+(\partial_i\partial_m T^{im}) x'^j x'^k
+&amp;= \partial_i\partial_m (T^{im} x'^j x'^k)
+-2,\partial_m(T^{mj}x'^k + T^{mk}x'^j)
++2T^{jk},
+\end{aligned}\]</span>
+<p>which is exactly the last line of eq. (33.27).</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_V \partial_0\partial_0 (T^{00}x'^j x'^k),dV
+&amp;= \int_V \partial_i\partial_m(T^{im}x'^j x'^k),dV \\
+&amp;\quad -2\int_V \partial_m(T^{mj}x'^k + T^{mk}x'^j),dV
++2\int_V T^{jk},dV.
+\end{aligned}
+\]</span></p>
+<p>I’ll go exercise by exercise and only do what each one asks, keeping the book’s notation.</p>
+<hr>
+<h2 data-original-heading="Exercise 33.2.1" id="exercise-33.2.1">Exercise 33.2.1</h2>
+<p>You want to check the last step in eq. (33.27), i.e.</p>
+<p>[ (_i _m T<sup>{im}),x’</sup>j x’^k = _i_m(T<sup>{im}x’</sup>j x’^k) -2_m(T<sup>{mj}x’</sup>k+T<sup>{mk}x’</sup>j)+2T^{jk}.]</p>
+<p>Start from the left-hand side of this proposed identity and use the product rule in the <em>reverse</em> direction.</p>
+<p>First expand the double derivative of the product:</p>
+<span class="math display">\[\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= \partial_i\Big[,\partial_m(T^{im}) x'^j x'^k
++ T^{im}\partial_m(x'^j x'^k)\Big]  \
+&amp;= \partial_i\Big[(\partial_m T^{im}) x'^j x'^k
++ T^{im}(\delta_m^{\ j}x'^k + x'^j\delta_m^{\ k})\Big] \
+&amp;= \partial_i\Big[(\partial_m T^{im}) x'^j x'^k
++ T^{jm}x'^k + T^{km}x'^j\Big].
+\end{aligned}\]</span>
+<p>. \end{aligned}</p>
+<p>Now apply the product rule again:</p>
+<span class="math display">\[\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= (\partial_i\partial_m T^{im}) x'^j x'^k
+
+* (\partial_m T^{im}),\partial_i(x'^j x'^k)
+* \partial_i(T^{jm}x'^k)
+* \partial_i(T^{km}x'^j) \
+  &amp;= (\partial_i\partial_m T^{im}) x'^j x'^k \
+  &amp;\quad+ (\partial_m T^{im})(\delta_i^{\ j}x'^k + x'^j\delta_i^{\ k})
+* (\partial_i T^{jm})x'^k + T^{jm}\delta_i^{\ k} \
+  &amp;\quad+ (\partial_i T^{km})x'^j + T^{km}\delta_i^{\ j}.
+  \end{aligned}\]</span>
+<p>tial_m T<sup>{im})(_i</sup>{&nbsp;j}x’^k + x’<sup>j_i</sup>{&nbsp;k})</p>
+<ul>
+<li>(_i T<sup>{jm})x’</sup>k + T<sup>{jm}_i</sup>{&nbsp;k}<br>
+&amp;+ (_i T<sup>{km})x’</sup>j + T<sup>{km}_i</sup>{&nbsp;j}. \end{aligned}</li>
+</ul>
+<p>Now perform the sums over (i):</p>
+<span class="math display">\[\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= (\partial_i\partial_m T^{im}) x'^j x'^k
+
+* (\partial_m T^{jm})x'^k + (\partial_m T^{km})x'^j \
+  &amp;\quad+ (\partial_i T^{jm})x'^k + T^{jk}
+* (\partial_i T^{km})x'^j + T^{kj}.
+  \end{aligned}\]</span>
+<p><sup>{km})x’</sup>j + T^{kj}. \end{aligned}</p>
+<p>Because (T^{}) is symmetric, (T<sup>{jk}=T</sup>{kj}), and we can also rename dummy indices to combine terms:</p>
+<span class="math display">\[\begin{aligned}
+\partial_i\partial_m (T^{im} x'^j x'^k)
+&amp;= (\partial_i\partial_m T^{im}) x'^j x'^k
+
+* 2,\partial_m(T^{mj}x'^k + T^{mk}x'^j)
+  -2T^{jk}.
+  \end{aligned}\]</span>
+<p>Rearrange this to solve for ((_i_m T^{im}) x’^j x’^k):</p>
+<span class="math display">\[\begin{aligned}
+(\partial_i\partial_m T^{im}) x'^j x'^k
+&amp;= \partial_i\partial_m (T^{im} x'^j x'^k)
+-2,\partial_m(T^{mj}x'^k + T^{mk}x'^j)
++2T^{jk},
+\end{aligned}\]</span>
+<p>which is exactly the last line of eq. (33.27). ✔️</p>
+<hr>
+<h2 data-original-heading="Exercise 33.2.2" id="exercise-33.2.2">Exercise 33.2.2</h2>
+<p>You’re asked to verify eq. (33.30):</p>
+<p>[ _V _0_0 (T<sup>{00}x’</sup>j x’^k),dV = 2_V T^{jk},dV. ]</p>
+<p>Start from eq. (33.27):</p>
+<p>[ _0_0 (T<sup>{00}x’</sup>j x’^k) = _i_m(T<sup>{im}x’</sup>j x’^k) -2_m(T<sup>{mj}x’</sup>k + T<sup>{mk}x’</sup>j) +2T^{jk}.]</p>
+<p>Integrate both sides over a volume (V) that completely encloses the source:</p>
+<span class="math display">\[\begin{aligned}
+\int_V \partial_0\partial_0 (T^{00}x'^j x'^k),dV
+&amp;= \int_V \partial_i\partial_m(T^{im}x'^j x'^k),dV \
+&amp;\quad -2\int_V \partial_m(T^{mj}x'^k + T^{mk}x'^j),dV
++2\int_V T^{jk},dV.
+\end{aligned}\]</span>
+<p>k},dV. \end{aligned}</p>
+<p>Use the divergence theorem in index notation (eqs. (33.28)–(33.29)):</p>
+<p>[ _V _i F^{ij},dV = _S F^{ij},dA_i.]</p>
+<p>Apply this to the first two volume integrals:</p>
+<p>[ _V _i_m(T<sup>{im}x’</sup>j x’^k),dV = _S _m(T<sup>{im}x’</sup>j x’^k),dA_i,]</p>
+<p>[ _V _m(T<sup>{mj}x’</sup>k + T<sup>{mk}x’</sup>j),dV = _S (T<sup>{mj}x’</sup>k + T<sup>{mk}x’</sup>j),dA_m.]</p>
+<p>On the surface (S) of a sufficiently large volume, (T^{}=0) (outside the source), so all these surface integrals vanish. Thus the first two volume integrals are zero, leaving</p>
+<p>[ _V _0_0 (T<sup>{00}x’</sup>j x’^k),dV = 2_V T^{jk},dV,]</p>
+<p>which is exactly eq. (33.30). ✔️</p>
+<hr>
+<h2 data-original-heading="Exercise 33.3.1" id="exercise-33.3.1">Exercise 33.3.1</h2>
+<p>Eq. (33.32) gives</p>
+<p>[ B^t = , B^x = , B^y = , B^z = . ]</p>
+<p>The Lorentz gauge condition (33.33a) is</p>
+<p>[ A^{t} = A^{z}, ]</p>
+<p>and together with symmetry (A^{} = A^{}) it implies (33.33b)</p>
+<p>[ A^{xt} = A^{xz}, A^{yt} = A^{yz}, A^{tz} = A^{zz}. ]</p>
+<p>From (A^{t} = A^{z}) and symmetry, we also get (A^{tt} = A^{zt} = A^{tz} = A^{zz}).</p>
+<p>The trace is</p>
+<p>[ A^_= -A^{tt} + A^{xx} + A^{yy} + A^{zz}.]</p>
+<h3 data-original-heading="(B^t)" id="bt">(B^t)</h3>
+<span class="math display">\[\begin{aligned}
+B^t
+&amp;= \frac{A^{tt} + \tfrac12 A^\mu{}_\mu}{2\omega} \
+&amp;= \frac{A^{tt} + \tfrac12(-A^{tt} + A^{xx} + A^{yy} + A^{zz})}{2\omega} \
+&amp;= \frac{\tfrac12A^{tt} + \tfrac12(A^{xx} + A^{yy} + A^{zz})}{2\omega}.
+\end{aligned}\]</span>
+<p>t} + (-A^{tt} + A^{xx} + A^{yy} + A^{zz})}{2}<br>
+&amp;= . \end{aligned}</p>
+<p>Replace (A<sup>{tt}=A</sup>{zz}):</p>
+<p>[ B^t = .]</p>
+<h3 data-original-heading="(B^z)" id="bz">(B^z)</h3>
+<span class="math display">\[\begin{aligned}
+B^z
+&amp;= \frac{2A^{zt} - A^{tt} - \tfrac12 A^\mu{}_\mu}{2\omega}.
+\end{aligned}\]</span>
+<p>Use (A<sup>{zt}=A</sup>{tt}=A^{zz}):</p>
+<p>[ 2A^{zt} - A^{tt} = 2A^{zz} - A^{zz} = A^{zz}.]</p>
+<p>Also</p>
+<span class="math display">\[\begin{aligned}
+-\tfrac12 A^\mu{}_\mu
+&amp;= -\tfrac12(-A^{tt} + A^{xx} + A^{yy} + A^{zz}) \
+&amp;= \tfrac12 A^{tt} - \tfrac12(A^{xx} + A^{yy} + A^{zz}) \
+&amp;\xrightarrow{A^{tt}=A^{zz}}
+-\tfrac12 A^{xx} - \tfrac12 A^{yy}.
+\end{aligned}\]</span>
+<p>{A<sup>{tt}=A</sup>{zz}} - A^{xx} -  A^{yy}. \end{aligned}</p>
+<p>Therefore the numerator is</p>
+<p>[ A^{zz} -  A^{xx} -  A^{yy},]</p>
+<p>so</p>
+<p>[ B^z = .]</p>
+<p>Thus we recover eq. (33.34):</p>
+<p>[ B^t = ,  B^z = . ]</p>
+<p>✔️</p>
+<hr>
+<h2 data-original-heading="Exercise 33.3.2" id="exercise-33.3.2">Exercise 33.3.2</h2>
+<p>Here you’re asked to check that, using eq. (33.34) in the gauge-transformation formula (33.31),</p>
+<p>[ A^{}_{TT} = A^{}</p>
+<ul>
+<li><p>k^B^- k^B^</p></li>
+<li><p>^{} k_B^,  ]</p></li>
+</ul>
+<p>you obtain</p>
+<p>[ A^{xx}<em>{TT} = -A^{yy}</em>{TT} = (A^{xx} - A^{yy}),  A^{xy}<em>{TT} = A^{yx}</em>{TT} = A^{xy}.]</p>
+<p>For a wave moving in the (+z) direction we have</p>
+<p>[ k^= (, 0, 0, ),]</p>
+<p>and with signature ((- + + +)),</p>
+<p>[ k_B^= -B^t + B^z = (-B^t + B^z).]</p>
+<p>From eq. (33.34),</p>
+<p>[ B^t = ,  B^z = .]</p>
+<p>Compute</p>
+<span class="math display">\[\begin{aligned}
+\omega(-B^t + B^z)
+&amp;= \omega\left(
+-\frac{A^{zz} + \tfrac12 A^{xx} + \tfrac12 A^{yy}}{2\omega}
+
+* \frac{A^{zz} - \tfrac12 A^{xx} - \tfrac12 A^{yy}}{2\omega}
+  \right) \
+  &amp;= \frac{-A^{xx} - A^{yy}}{2}.
+  \end{aligned}\]</span>
+<p>xx} - A^{yy}}{2}. \end{aligned}</p>
+<h3 data-original-heading="(A^{xx}_{TT})" id="axx_tt">(A^{xx}_{TT})</h3>
+<p>Use eq. (33.31) with (==x). Since (k^x=0) and (^{xx}=+1),</p>
+<p><span class="math display">\[
+A^{xx}*{TT}
+= A^{xx} + k*\alpha B^\alpha
+= A^{xx} + \frac{-A^{xx} - A^{yy}}{2}
+= \frac{A^{xx} - A^{yy}}{2}.
+\]</span></p>
+<h3 data-original-heading="(A^{yy}_{TT})" id="ayy_tt">(A^{yy}_{TT})</h3>
+<p>Similarly, with (==y),</p>
+<p><span class="math display">\[
+A^{yy}*{TT}
+= A^{yy} + k*\alpha B^\alpha
+= A^{yy} + \frac{-A^{xx} - A^{yy}}{2}
+= -\frac{A^{xx} - A^{yy}}{2}.
+\]</span></p>
+<p>Hence</p>
+<p><span class="math display">\[
+A^{xx}*{TT} = -A^{yy}*{TT}
+= \tfrac12 (A^{xx} - A^{yy}).
+\]</span></p>
+<h3 data-original-heading="(A^{xy}{TT}) and (A^{yx}{TT})" id="axytt-and-ayxtt">(A^{xy}<em>{TT}) and (A^{yx}</em>{TT})</h3>
+<p>Take (=x,=y):</p>
+<p><span class="math display">\[
+A^{xy}*{TT}
+= A^{xy} - k^x B^y - k^y B^x + \eta^{xy} k*\alpha B^\alpha.
+\]</span></p>
+<p>Here (k^x = k^y = 0) and (^{xy}=0), so</p>
+<p><span class="math display">\[
+A^{xy}_{TT} = A^{xy}.
+\]</span></p>
+<p>Since (A^{}) is symmetric, (A<sup>{yx}=A</sup>{xy}), and the same argument gives</p>
+<p>[ A^{yx}_{TT} = A^{yx} = A^{xy}.]</p>
+<p>This matches the stated results in the text. ✔️</p>
+$$
+<span class="math display">\[\begin{aligned}
+B^t
+&amp;= \frac{A^{tt} + \tfrac12 A^\mu{}_\mu}{2\omega} \\
+&amp;= \frac{A^{tt} + \tfrac12(-A^{tt} + A^{xx} + A^{yy} + A^{zz})}{2\omega} \\
+
+&amp;= \frac{\tfrac12A^{tt} + \tfrac12(A^{xx} + A^{yy} + A^{zz})}{2\omega}.
+\end{aligned}\]</span>
+<p>$$</p>
+<p><span class="math display">\[\begin{aligned}
+B^z
+&amp;= \frac{2A^{zt} - A^{tt} - \tfrac12 A^\mu{}_\mu}{2\omega}.
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+-\tfrac12 A^\mu{}_\mu
+&amp;= -\tfrac12(-A^{tt} + A^{xx} + A^{yy} + A^{zz}) \\
+&amp;= \tfrac12 A^{tt} - \tfrac12(A^{xx} + A^{yy} + A^{zz}) \\
+&amp;\xrightarrow{A^{tt}=A^{zz}}
+-\tfrac12 A^{xx} - \tfrac12 A^{yy}.
+\end{aligned}\]</span></p></div><footer class="article-footer"></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Julia科学计算笔记</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#exercise-33.2.1" class="is-active" aria-current="location">Exercise 33.2.1</a></li><li style="--depth:0"><a href="#exercise-33.2.2">Exercise 33.2.2</a></li><li style="--depth:0"><a href="#exercise-33.3.1">Exercise 33.3.1</a></li><li style="--depth:1"><a href="#bt">(B^t)</a></li><li style="--depth:1"><a href="#bz">(B^z)</a></li><li style="--depth:0"><a href="#exercise-33.3.2">Exercise 33.3.2</a></li><li style="--depth:1"><a href="#axx_tt">(A^{xx}_{TT})</a></li><li style="--depth:1"><a href="#ayy_tt">(A^{yy}_{TT})</a></li><li style="--depth:1"><a href="#axytt-and-ayxtt">(A^{xy}{TT}) and (A^{yx}{TT})</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

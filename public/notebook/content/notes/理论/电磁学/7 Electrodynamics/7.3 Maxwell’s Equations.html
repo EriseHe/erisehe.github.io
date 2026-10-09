@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>7.3 Maxwell’s Equations — E.H. Notebook</title>
+<meta name="description" content="Chapter 7.3 is the point where electrodynamics becomes a complete field theory. Before Maxwell, we had Gauss’s law, \nabla \cdot B = 0, Faraday’s law, and the old Ampère ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/index.html">7 Electrodynamics</a></nav><h1 id="reader-title">7.3 Maxwell’s Equations</h1><p class="article-meta">2026-04-09</p></header><div id="article-body" class="prose"><blockquote>
+<p>Chapter 7.3 is the point where electrodynamics becomes a complete field theory. Before Maxwell, we had Gauss’s law, <span class="math inline">\(\nabla \cdot B = 0\)</span>, Faraday’s law, and the old Ampère law. The problem was that the old Ampère law fails for time-dependent situations, especially when charge accumulates, such as in a charging capacitor. Maxwell fixed this by adding the displacement current term. The result is the full set of Maxwell’s equations.</p>
+</blockquote>
+<h2 data-original-heading="7.3.1 Electrodynamics before Maxwell" id="electrodynamics-before-maxwell">7.3.1 Electrodynamics before Maxwell</h2>
+<p>The pre-Maxwell equations were:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla \cdot E &amp;= \frac{\rho}{\epsilon_0}
+&amp;&amp;\text{(Gauss's law)},\\
+\nabla \cdot B &amp;= 0,\\
+\nabla \times E &amp;= -\frac{\partial B}{\partial t}
+&amp;&amp;\text{(Faraday's law)},\\
+\nabla \times B &amp;= \mu_0 J
+&amp;&amp;\text{(old Ampère law)}.
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="Why this is inconsistent" id="why-this-is-inconsistent">7.3.1.1 Why this is inconsistent</h3>
+<p>Take the divergence of the curl equations. For Faraday: <span class="math display">\[
+\begin{aligned}
+\nabla \cdot (\nabla \times E)
+&amp;= \nabla \cdot \left(-\frac{\partial B}{\partial t}\right)\\
+0 &amp;= -\frac{\partial}{\partial t}(\nabla \cdot B),
+\end{aligned}
+\]</span></p>
+<p>which is fine because <span class="math inline">\(\nabla \cdot B = 0\)</span>. But for old Ampère: <span class="math display">\[
+\begin{aligned}
+\nabla \cdot (\nabla \times B)
+&amp;= \mu_0 \nabla \cdot J,\\
+0 &amp;= \mu_0 \nabla \cdot J.
+\end{aligned}
+\]</span> So this would force <span class="math display">\[
+\nabla \cdot J = 0,
+\]</span> which is only true for steady currents. Hence the old Ampère law cannot be correct in general time-dependent electrodynamics.</p>
+<h3 data-original-heading="Capacitor paradox" id="capacitor-paradox">7.3.1.2 Capacitor paradox</h3>
+<p>For a charging capacitor, if we apply Ampère’s law in integral form, <span class="math display">\[
+\oint B \cdot dl = \mu_0 I_{\text{enc}},
+\]</span> then the answer depends on which surface spans the same loop:</p>
+<ul>
+<li>a flat surface cutting the wire gives <span class="math inline">\(I_{\text{enc}} = I\)</span>,</li>
+<li>a bulging surface between capacitor plates gives <span class="math inline">\(I_{\text{enc}} = 0\)</span>.</li>
+</ul>
+<p>So the old Ampère law makes <span class="math inline">\(I_{\text{enc}}\)</span> surface-dependent, which is unacceptable.</p>
+<h2 data-original-heading="7.3.2 How Maxwell fixed Ampère’s law" id="how-maxwell-fixed-ampères-law">7.3.2 How Maxwell fixed Ampère’s law</h2>
+<p>Use charge conservation: <span class="math display">\[
+\nabla \cdot J = -\frac{\partial \rho}{\partial t}.
+\]</span> Then use Gauss’s law: <span class="math display">\[
+\rho = \epsilon_0 \nabla \cdot E.
+\]</span> So <span class="math display">\[
+\begin{aligned}
+\nabla \cdot J
+&amp;= -\frac{\partial}{\partial t}(\epsilon_0 \nabla \cdot E)\\
+&amp;= -\nabla \cdot \left(\epsilon_0 \frac{\partial E}{\partial t}\right).
+\end{aligned}
+\]</span> This suggests correcting Ampère’s law by replacing <span class="math inline">\(J\)</span> with <span class="math display">\[
+J + \epsilon_0 \frac{\partial E}{\partial t}
+\]</span> Therefore the corrected equation is <span class="math display">\[
+\nabla \times B
+=
+\mu_0 J + \mu_0 \epsilon_0 \frac{\partial E}{\partial t}.
+\]</span> This extra term is called the <strong>displacement current density</strong>: <span class="math display">\[
+J_d \equiv \epsilon_0 \frac{\partial E}{\partial t}.
+\]</span> #### Integral form</p>
+<p>The corrected Ampère-Maxwell law is <span class="math display">\[
+\oint B \cdot dl
+=
+\mu_0 I_{\text{enc}}
++
+\mu_0 \epsilon_0 \int \frac{\partial E}{\partial t} \cdot da.
+\]</span> This resolves the charging capacitor paradox:</p>
+<ul>
+<li>on the wire-cutting surface, the conduction current contributes;</li>
+<li>on the balloon surface between the plates, the displacement current contributes.</li>
+</ul>
+<p>Both surfaces give the same magnetic field.</p>
+<h3 data-original-heading="Key idea" id="key-idea">7.3.2.1 Key idea</h3>
+<p>Faraday says: <span class="math display">\[
+\text{changing } B \Rightarrow \text{induces } E.
+\]</span></p>
+<p>Maxwell’s correction says: <span class="math display">\[
+\text{changing } E \Rightarrow \text{induces } B.
+\]</span></p>
+<p>This symmetry is one of the deep structural ideas of electrodynamics.</p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p>In some time-dependent situations, a nonzero conduction current can be exactly canceled by displacement current, so the magnetic field can still be zero by symmetry.</p>
+</div>
+</div>
+<h2 data-original-heading="7.3.3 Maxwell’s equations" id="maxwells-equations">7.3.3 Maxwell’s equations</h2>
+<p>The finished Maxwell equations are:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla \cdot E &amp;= \frac{\rho}{\epsilon_0},
+\\
+\nabla \cdot B &amp;= 0,
+\\
+\nabla \times E &amp;= -\frac{\partial B}{\partial t},
+\\
+\nabla \times B &amp;= \mu_0 J + \mu_0 \epsilon_0 \frac{\partial E}{\partial t}.
+\end{aligned}
+\tag{Maxwell}
+\]</span></p>
+<p>Together with the Lorentz force law, <span class="math display">\[
+F = q(E + v \times B),
+\]</span> they summarize classical electrodynamics.</p>
+<h3 data-original-heading="Continuity equation from Maxwell" id="continuity-equation-from-maxwell">7.3.3.1 Continuity equation from Maxwell</h3>
+<p>Applying <span class="math inline">\(\nabla \cdot\)</span> to Ampère-Maxwell gives <span class="math display">\[
+\begin{aligned}
+0
+&amp;= \mu_0 \nabla \cdot J + \mu_0 \epsilon_0 \frac{\partial}{\partial t}(\nabla \cdot E)\\
+&amp;= \mu_0 \nabla \cdot J + \mu_0 \frac{\partial \rho}{\partial t},
+\end{aligned}
+\]</span> hence <span class="math display">\[
+\nabla \cdot J = -\frac{\partial \rho}{\partial t}.
+\]</span></p>
+<p>So charge conservation is built into Maxwell’s equations.</p>
+<h3 data-original-heading="Alternative source-emphasizing form" id="alternative-source-emphasizing-form">7.3.3.2 Alternative source-emphasizing form</h3>
+<p>It is often conceptually cleaner to write all field terms on the left and all source terms on the right:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla \cdot E &amp;= \frac{\rho}{\epsilon_0},
+\\
+\nabla \cdot B &amp;= 0,
+\\
+\nabla \times E + \frac{\partial B}{\partial t} &amp;= 0,
+\\
+\nabla \times B - \mu_0 \epsilon_0 \frac{\partial E}{\partial t} &amp;= \mu_0 J.
+\end{aligned}
+\]</span></p>
+<p>This emphasizes that the ultimate sources are <span class="math inline">\(\rho\)</span> and <span class="math inline">\(J\)</span>.</p>
+<h2 data-original-heading="7.3.4 Magnetic charge" id="magnetic-charge">7.3.4 Magnetic charge</h2>
+<p>In vacuum, where <span class="math inline">\(\rho = 0\)</span> and <span class="math inline">\(J = 0\)</span>, Maxwell’s equations look very symmetric:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla \cdot E &amp;= 0,
+&amp;
+\nabla \times E &amp;= -\frac{\partial B}{\partial t},
+\\
+\nabla \cdot B &amp;= 0,
+&amp;
+\nabla \times B &amp;= \mu_0 \epsilon_0 \frac{\partial E}{\partial t}.
+\end{aligned}
+\]</span></p>
+<p>This suggests asking: what if magnetic charge existed? Then one would write <span class="math display">\[
+\begin{aligned}
+\nabla \cdot E &amp;= \frac{1}{\epsilon_0}\rho_e,
+\\
+\nabla \cdot B &amp;= \mu_0 \rho_m,
+\\
+\nabla \times E &amp;= -\mu_0 J_m - \frac{\partial B}{\partial t},
+\\
+\nabla \times B &amp;= \mu_0 J_e + \mu_0 \epsilon_0 \frac{\partial E}{\partial t}.
+\end{aligned}
+\]</span> Then both electric and magnetic charges would satisfy continuity equations: <span class="math display">\[
+\begin{aligned}
+\nabla \cdot J_e &amp;= -\frac{\partial \rho_e}{\partial t},
+\\
+\nabla \cdot J_m &amp;= -\frac{\partial \rho_m}{\partial t}.
+\end{aligned}
+\]</span></p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span><span class="theorem-title">Physical conclusion</span></p>
+</div>
+<div class="theorem-content">
+<p>This would be mathematically elegant, but experimentally no magnetic monopoles have been found. So, as far as classical electrodynamics goes, <span class="math display">\[
+\rho_m = 0, \qquad J_m = 0.
+\]</span> That is why electric fields have monopole sources, but magnetic fields do not.</p>
+</div>
+</div>
+<h3 data-original-heading="7.3.5 Maxwell’s equations in matter" id="maxwells-equations-in-matter">7.3.5 Maxwell’s equations in matter</h3>
+<p>Inside matter, it is useful to separate <strong>free</strong> charge/current from <strong>bound</strong> charge/current.</p>
+<h4 data-original-heading="Bound sources" id="bound-sources">7.3.4.1.1 Bound sources</h4>
+<p>Electric polarization <span class="math inline">\(P\)</span> produces bound charge density <span class="math display">\[
+\rho_b = -\nabla \cdot P.
+\]</span></p>
+<p>Magnetization <span class="math inline">\(M\)</span> produces bound current density <span class="math display">\[
+J_b = \nabla \times M.
+\]</span></p>
+<p>If the polarization changes with time, there is also a <strong>polarization current</strong> <span class="math display">\[
+J_p = \frac{\partial P}{\partial t}.
+\]</span></p>
+<p>This is important: <span class="math inline">\(J_p\)</span> is not the same thing as <span class="math inline">\(J_b\)</span>.</p>
+<ul>
+<li><span class="math inline">\(J_b\)</span> comes from magnetization,</li>
+<li><span class="math inline">\(J_p\)</span> comes from changing electric polarization.</li>
+</ul>
+<h4 data-original-heading="Total charge and current" id="total-charge-and-current">7.3.4.1.2 Total charge and current</h4>
+<p>Thus, <span class="math display">\[
+\rho = \rho_f + \rho_b = \rho_f - \nabla \cdot P,
+\]</span> and <span class="math display">\[
+J = J_f + J_b + J_p
+= J_f + \nabla \times M + \frac{\partial P}{\partial t}.
+\]</span></p>
+<h4 data-original-heading="Define D and H" id="define-d-and-h">7.3.4.1.3 Define <span class="math inline">\(D\)</span> and <span class="math inline">\(H\)</span></h4>
+<p>Introduce the auxiliary fields <span class="math display">\[
+D \equiv \epsilon_0 E + P,
+\]</span> and <span class="math display">\[
+H \equiv \frac{1}{\mu_0}B - M.
+\]</span></p>
+<p>Then Maxwell’s equations become</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla \cdot D &amp;= \rho_f,
+\\
+\nabla \cdot B &amp;= 0,
+\\
+\nabla \times E &amp;= -\frac{\partial B}{\partial t},
+\\
+\nabla \times H &amp;= J_f + \frac{\partial D}{\partial t}.
+\end{aligned}
+\]</span></p>
+<p>These are not more fundamental than the vacuum-style equations; they are just more convenient in matter because they isolate the free sources.</p>
+<h4 data-original-heading="Linear media" id="linear-media">7.3.4.1.4 Linear media</h4>
+<p>For linear materials, <span class="math display">\[
+P = \epsilon_0 \chi_e E,
+\qquad
+M = \chi_m H.
+\]</span></p>
+<p>Therefore, <span class="math display">\[
+D = \epsilon E,
+\qquad
+H = \frac{1}{\mu} B,
+\]</span> where <span class="math display">\[
+\epsilon = \epsilon_0(1+\chi_e),
+\qquad
+\mu = \mu_0(1+\chi_m).
+\]</span></p>
+<p>In this context, one also writes the displacement current as <span class="math display">\[
+J_d \equiv \frac{\partial D}{\partial t}.
+\]</span></p>
+<h2 data-original-heading="7.3.6 Boundary conditions" id="boundary-conditions">7.3.6 Boundary conditions</h2>
+<p>At an interface between two media, or across a surface carrying free surface charge density <span class="math inline">\(\sigma_f\)</span> or free surface current density <span class="math inline">\(K_f\)</span>, the fields may jump.</p>
+<p>Notation:</p>
+<ul>
+<li><span class="math inline">\(\perp\)</span> means component normal to the boundary,</li>
+<li><span class="math inline">\(\parallel\)</span> means component tangent to the boundary,</li>
+<li>“above” and “below” refer to the two sides of the interface,</li>
+<li><span class="math inline">\(\hat n\)</span> is the unit normal pointing from below to above.</li>
+</ul>
+<h3 data-original-heading="General boundary conditions" id="general-boundary-conditions">7.3.6.1 General boundary conditions</h3>
+<p>From Maxwell’s equations in matter: $$ <span class="math display">\[\begin{align}
+D_{\perp}^{\text{above}} - D_{\perp}^{\text{below}}  &amp; = \sigma_f \\
+
+B_{\perp}^{\text{above}} - B_{\perp}^{\text{below}}  &amp; = 0\\
+
+E_{\parallel}^{\text{above}} - E_{\parallel}^{\text{below}}  &amp; = 0 \\
+
+H_{\parallel}^{\text{above}} - H_{\parallel}^{\text{below}}  &amp; = K_f \times \hat n.
+\end{align}\]</span> $$ These are the basic jump conditions.</p>
+<h3 data-original-heading="In linear media" id="in-linear-media">7.3.6.2 In linear media</h3>
+<p>Using <span class="math inline">\(D=\epsilon E\)</span> and <span class="math inline">\(H=B/\mu\)</span>, these become</p>
+<p><span class="math display">\[
+\begin{align}
+\epsilon_{\text{above}} E_{\perp}^{\text{above}}
+-
+\epsilon_{\text{below}} E_{\perp}^{\text{below}}
+ &amp; =
+\sigma_f, \\
+B_{\perp}^{\text{above}} - B_{\perp}^{\text{below}} &amp;  = 0, \\
+E_{\parallel}^{\text{above}} - E_{\parallel}^{\text{below}}  &amp; = 0, \\
+\frac{1}{\mu_{\text{above}}}B_{\parallel}^{\text{above}}
+-
+\frac{1}{\mu_{\text{below}}}B_{\parallel}^{\text{below}}
+ &amp; =
+K_f \times \hat n.
+\end{align}
+\]</span></p>
+<h4 data-original-heading="If there is no free surface charge or current" id="if-there-is-no-free-surface-charge-or-current">7.3.6.2.1 If there is no free surface charge or current</h4>
+<p>If <span class="math inline">\(\sigma_f = 0\)</span> and <span class="math inline">\(K_f = 0\)</span>, then</p>
+<p><span class="math display">\[
+\epsilon_{\text{above}} E_{\perp}^{\text{above}}
+=
+\epsilon_{\text{below}} E_{\perp}^{\text{below}},
+\]</span></p>
+<p><span class="math display">\[
+B_{\perp}^{\text{above}} = B_{\perp}^{\text{below}},
+\]</span></p>
+<p><span class="math display">\[
+E_{\parallel}^{\text{above}} = E_{\parallel}^{\text{below}},
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{\mu_{\text{above}}}B_{\parallel}^{\text{above}}
+=
+\frac{1}{\mu_{\text{below}}}B_{\parallel}^{\text{below}}.
+\]</span></p>
+<p>These are the boundary conditions used later for reflection and refraction.</p>
+<hr>
+<h2 data-original-heading="What to remember most" id="what-to-remember-most">7.3.7 What to remember most</h2>
+<h3 data-original-heading="1. The old Ampère law fails in time-dependent situations" id="the-old-ampère-law-fails-in-time-dependent-situations">1. The old Ampère law fails in time-dependent situations</h3>
+<p>The inconsistency is <span class="math display">\[
+\nabla \cdot (\nabla \times B) = 0
+\quad \text{but} \quad
+\nabla \cdot J \neq 0
+\]</span> in general.</p>
+<h3 data-original-heading="2. Maxwell’s correction is" id="maxwells-correction-is">2. Maxwell’s correction is</h3>
+<p><span class="math display">\[
+\mu_0 \epsilon_0 \frac{\partial E}{\partial t}.
+\]</span></p>
+<h3 data-original-heading="3. The full Maxwell system is" id="the-full-maxwell-system-is">3. The full Maxwell system is</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla \cdot E &amp;= \frac{\rho}{\epsilon_0},
+\\
+\nabla \cdot B &amp;= 0,
+\\
+\nabla \times E &amp;= -\frac{\partial B}{\partial t},
+\\
+\nabla \times B &amp;= \mu_0 J + \mu_0 \epsilon_0 \frac{\partial E}{\partial t}.
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="4. In matter, use" id="in-matter-use">4. In matter, use</h3>
+<p><span class="math display">\[
+D = \epsilon_0 E + P,
+\qquad
+H = \frac{1}{\mu_0}B - M.
+\]</span></p>
+<h3 data-original-heading="5. In matter, Maxwell becomes" id="in-matter-maxwell-becomes">5. In matter, Maxwell becomes</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla \cdot D &amp;= \rho_f,
+\\
+\nabla \cdot B &amp;= 0,
+\\
+\nabla \times E &amp;= -\frac{\partial B}{\partial t},
+\\
+\nabla \times H &amp;= J_f + \frac{\partial D}{\partial t}.
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="6. Boundary conditions are indispensable" id="boundary-conditions-are-indispensable">6. Boundary conditions are indispensable</h3>
+<p>They tell you exactly which components jump and by how much at interfaces.</p>
+<hr>
+<h2 data-original-heading="One-line intuition" id="one-line-intuition">7.3.8 One-line intuition</h2>
+<p>Electrostatics and magnetostatics are not separate worlds anymore. In full electrodynamics,</p>
+<p><span class="math display">\[
+\text{changing } B \leftrightarrow \text{induces } E,
+\qquad
+\text{changing } E \leftrightarrow \text{induces } B,
+\]</span></p>
+<p>and Maxwell’s equations are the compact mathematical statement of that mutual coupling.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span>← Previous page</span><span>7.2 Electromagnetic Induction</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span>Next page →</span><span>7.4 The Field of a Rotating Magnet</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">7.3 Maxwell’s Equations</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#electrodynamics-before-maxwell" class="is-active" aria-current="location">7.3.1 Electrodynamics before Maxwell</a></li><li style="--depth:1"><a href="#why-this-is-inconsistent">7.3.1.1 Why this is inconsistent</a></li><li style="--depth:1"><a href="#capacitor-paradox">7.3.1.2 Capacitor paradox</a></li><li style="--depth:0"><a href="#how-maxwell-fixed-amp%C3%A8res-law">7.3.2 How Maxwell fixed Ampère’s law</a></li><li style="--depth:1"><a href="#key-idea">7.3.2.1 Key idea</a></li><li style="--depth:0"><a href="#maxwells-equations">7.3.3 Maxwell’s equations</a></li><li style="--depth:1"><a href="#continuity-equation-from-maxwell">7.3.3.1 Continuity equation from Maxwell</a></li><li style="--depth:1"><a href="#alternative-source-emphasizing-form">7.3.3.2 Alternative source-emphasizing form</a></li><li style="--depth:0"><a href="#magnetic-charge">7.3.4 Magnetic charge</a></li><li style="--depth:1"><a href="#maxwells-equations-in-matter">7.3.5 Maxwell’s equations in matter</a></li><li style="--depth:2"><a href="#bound-sources">7.3.4.1.1 Bound sources</a></li><li style="--depth:2"><a href="#total-charge-and-current">7.3.4.1.2 Total charge and current</a></li><li style="--depth:2"><a href="#define-d-and-h">7.3.4.1.3 Define D and H</a></li><li style="--depth:2"><a href="#linear-media">7.3.4.1.4 Linear media</a></li><li style="--depth:0"><a href="#boundary-conditions">7.3.6 Boundary conditions</a></li><li style="--depth:1"><a href="#general-boundary-conditions">7.3.6.1 General boundary conditions</a></li><li style="--depth:1"><a href="#in-linear-media">7.3.6.2 In linear media</a></li><li style="--depth:2"><a href="#if-there-is-no-free-surface-charge-or-current">7.3.6.2.1 If there is no free surface charge or current</a></li><li style="--depth:0"><a href="#what-to-remember-most">7.3.7 What to remember most</a></li><li style="--depth:1"><a href="#the-old-amp%C3%A8re-law-fails-in-time-dependent-situations">1. The old Ampère law fails in time-dependent situations</a></li><li style="--depth:1"><a href="#maxwells-correction-is">2. Maxwell’s correction is</a></li><li style="--depth:1"><a href="#the-full-maxwell-system-is">3. The full Maxwell system is</a></li><li style="--depth:1"><a href="#in-matter-use">4. In matter, use</a></li><li style="--depth:1"><a href="#in-matter-maxwell-becomes">5. In matter, Maxwell becomes</a></li><li style="--depth:1"><a href="#boundary-conditions-are-indispensable">6. Boundary conditions are indispensable</a></li><li style="--depth:0"><a href="#one-line-intuition">7.3.8 One-line intuition</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

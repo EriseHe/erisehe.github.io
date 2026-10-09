@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>6. Error Bounds and Householder QR — E.H. Notebook</title>
+<meta name="description" content="Source: Professor’s Lecture 06.pdf, pp. 1-9. The course schedule associates this PDF with September 23, 2026; the PDF itself does not print a lecture date. Page reference">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">6. Error Bounds and Householder QR</h1></header><div id="article-body" class="prose"><p><strong>Source:</strong> Professor’s <em>Lecture 06.pdf</em>, pp.&nbsp;1-9. The course schedule associates this PDF with September 23, 2026; the PDF itself does not print a lecture date. Page references below refer to the PDF. Clarifications expand compressed arguments or correct notation in the handwritten source.</p>
+<p>Let <span class="math inline">\(A\in\mathbb K^{m\times n}\)</span>, where <span class="math inline">\(\mathbb K=\mathbb R\)</span> or <span class="math inline">\(\mathbb C\)</span>, and usually <span class="math inline">\(m\ge n\)</span>. Write <span class="math inline">\(A=[a_1\ \cdots\ a_n]\)</span> and use <span class="math inline">\(*\)</span> for conjugate transpose. For real matrices, <span class="math inline">\(*=T\)</span>. The sign-based Householder construction is first stated over <span class="math inline">\(\mathbb R\)</span>.</p>
+<h2 data-original-heading="6.1 Review of Least Squares and Gram-Schmidt" id="review-of-least-squares-and-gram-schmidt">6.1 Review of Least Squares and Gram-Schmidt</h2>
+<p><em>Source: p.&nbsp;1.</em></p>
+<p>The previous lecture connected rectangular systems, orthogonal projection, and the factorization <span class="math inline">\(A=QR\)</span>.</p>
+<ul>
+<li>For an overdetermined system, <span class="math inline">\(m&gt;n\)</span>, minimize <span class="math inline">\(\|Ax-b\|_2\)</span>. The closest vector to <span class="math inline">\(b\)</span> in <span class="math inline">\(\operatorname{range}(A)\)</span> is its orthogonal projection onto that column space.</li>
+<li>For an underdetermined consistent system, <span class="math inline">\(m&lt;n\)</span>, one may select the solution minimizing <span class="math inline">\(\|x\|_2\)</span> subject to <span class="math inline">\(Ax=b\)</span>.</li>
+<li>If <span class="math inline">\(A\)</span> has independent columns, Gram-Schmidt constructs <span class="math inline">\(Q=[q_1\ \cdots\ q_n]\)</span> with <span class="math inline">\(Q^*Q=I_n\)</span> and an upper triangular <span class="math inline">\(R\in\mathbb K^{n\times n}\)</span>.</li>
+</ul>
+<p>For least squares, the reduced QR factorization gives</p>
+<p><span class="math display">\[
+Rx=Q^*b,
+\qquad
+Ax=QQ^*b,
+\qquad
+b-Ax=(I-QQ^*)b.
+\]</span></p>
+<p>The <span class="math inline">\(q_i\)</span> form orthonormal coordinate directions in the column space. Unlike the original columns <span class="math inline">\(a_i\)</span>, their inner products with <span class="math inline">\(b\)</span> directly give the coordinates of its projection.</p>
+<h3 data-original-heading="6.1.1 Classical and Modified Gram-Schmidt" id="classical-and-modified-gram-schmidt">6.1.1 Classical and Modified Gram-Schmidt</h3>
+<p>Both algorithms start the <span class="math inline">\(j\)</span>th column with a working vector <span class="math inline">\(v=a_j\)</span>, remove components along previously computed <span class="math inline">\(q_i\)</span>, and normalize the result.</p>
+<p><strong>Classical Gram-Schmidt (CGS):</strong></p>
+<pre class="text"><code>for j = 1,...,n:
+    v = a_j
+    for i = 1,...,j-1:
+        r[i,j] = q_i* a_j
+        v = v - r[i,j] q_i
+    r[j,j] = norm(v, 2)
+    q_j = v / r[j,j]</code></pre>
+<p><strong>Modified Gram-Schmidt (MGS):</strong></p>
+<pre class="text"><code>for j = 1,...,n:
+    v = a_j
+    for i = 1,...,j-1:
+        r[i,j] = q_i* v
+        v = v - r[i,j] q_i
+    r[j,j] = norm(v, 2)
+    q_j = v / r[j,j]</code></pre>
+<p>Here <code>q_i* v</code> means the scalar inner product <span class="math inline">\(q_i^*v\)</span>. The important difference is the vector used in that inner product: CGS uses the original <span class="math inline">\(a_j\)</span>; MGS uses the successively updated residual <span class="math inline">\(v\)</span>.</p>
+<p>In exact arithmetic the two versions agree, since <span class="math inline">\(q_i\)</span> is orthogonal to all the directions removed before it. In floating-point arithmetic those orthogonality relations are imperfect, so the order matters. The product viewpoint below helps explain why the conditioning of the transformations is relevant.</p>
+<blockquote>
+<p><strong>Clarification.</strong> These basic algorithms assume <span class="math inline">\(r_{jj}\ne0\)</span>. Exact rank deficiency produces a zero residual and requires a separate choice of orthonormal completion; see Lecture 7. Numerical rank detection requires a tolerance rather than an exact equality test.</p>
+</blockquote>
+<h3 data-original-heading="6.1.2 The Pivot-Growth Example in the Recap" id="the-pivot-growth-example-in-the-recap">6.1.2 The Pivot-Growth Example in the Recap</h3>
+<p>The recap also recalls the partial-pivoting example</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;1\\
+-1&amp;1&amp;0&amp;1\\
+-1&amp;-1&amp;1&amp;1\\
+-1&amp;-1&amp;-1&amp;1
+\end{pmatrix}.
+\]</span></p>
+<p>If ties in partial pivoting keep the current row, all elimination multipliers are <span class="math inline">\(-1\)</span>. The last column of <span class="math inline">\(U\)</span> grows to <span class="math inline">\(1,2,4,8\)</span>:</p>
+<p><span class="math display">\[
+L=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;0\\
+-1&amp;1&amp;0&amp;0\\
+-1&amp;-1&amp;1&amp;0\\
+-1&amp;-1&amp;-1&amp;1
+\end{pmatrix},
+\qquad
+U=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;1\\
+0&amp;1&amp;0&amp;2\\
+0&amp;0&amp;1&amp;4\\
+0&amp;0&amp;0&amp;8
+\end{pmatrix},
+\qquad A=LU.
+\]</span></p>
+<p>Small individual multipliers therefore do not prevent large entries from developing during elimination. This will matter when we examine the inverse of <span class="math inline">\(L\)</span>.</p>
+<h2 data-original-heading="6.2 Gram-Schmidt as a Product of Matrices" id="gram-schmidt-as-a-product-of-matrices">6.2 Gram-Schmidt as a Product of Matrices</h2>
+<p><em>Source: pp.&nbsp;2-3.</em></p>
+<blockquote>
+<p>Gaussian elimination transforms a matrix by row operations. Can orthogonalization be described by matrix multiplication too?</p>
+</blockquote>
+<h3 data-original-heading="6.2.1 Left and Right Multiplication" id="left-and-right-multiplication">6.2.1 Left and Right Multiplication</h3>
+<p>For LU, elementary elimination matrices act on the <strong>left</strong>, changing rows:</p>
+<p><span class="math display">\[
+E_p\cdots E_1 A=U.
+\]</span></p>
+<p>For Gram-Schmidt, elementary upper triangular matrices act on the <strong>right</strong>, changing columns:</p>
+<p><span class="math display">\[
+AS_1S_2\cdots S_n=Q.
+\]</span></p>
+<p>Thus the two procedures have complementary goals:</p>
+<ul>
+<li>LU: use triangular row operations to obtain a triangular matrix.</li>
+<li>Gram-Schmidt: use triangular column operations to obtain orthonormal columns.</li>
+</ul>
+<p>Because products and inverses of nonsingular upper triangular matrices remain upper triangular,</p>
+<p><span class="math display">\[
+A=QR,
+\qquad
+R=(S_1S_2\cdots S_n)^{-1}.
+\]</span></p>
+<p>Here <span class="math inline">\(Q\)</span> may be rectangular: “orthonormal” means its columns are orthonormal, not that it is necessarily a square orthogonal matrix.</p>
+<h3 data-original-heading="6.2.2 The First Orthogonalization Step" id="the-first-orthogonalization-step">6.2.2 The First Orthogonalization Step</h3>
+<p>Set</p>
+<p><span class="math display">\[
+r_{11}=\|a_1\|_2,
+\qquad q_1=\frac{a_1}{r_{11}},
+\qquad r_{1j}=q_1^*a_j\quad (j&gt;1).
+\]</span></p>
+<p>The first step normalizes column 1 and removes its component from every later column:</p>
+<p><span class="math display">\[
+AS_1=
+\begin{pmatrix}
+q_1&amp;a_2-q_1r_{12}&amp;\cdots&amp;a_n-q_1r_{1n}
+\end{pmatrix},
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+S_1=
+\begin{pmatrix}
+1/r_{11}&amp;-r_{12}/r_{11}&amp;\cdots&amp;-r_{1n}/r_{11}\\
+0&amp;1&amp;&amp;0\\
+\vdots&amp;&amp;\ddots&amp;\\
+0&amp;0&amp;&amp;1
+\end{pmatrix}.
+\]</span></p>
+<p>For example, the new <span class="math inline">\(j\)</span>th column is</p>
+<p><span class="math display">\[
+a_j-a_1\frac{r_{1j}}{r_{11}}
+=a_j-q_1r_{1j}.
+\]</span></p>
+<blockquote>
+<p><strong>Clarification.</strong> The entries of the handwritten right-multiplication matrix are schematic. A single right factor acting on the unnormalized <span class="math inline">\(a_1\)</span> needs both the minus sign and the division by <span class="math inline">\(r_{11}\)</span> in its off-diagonal entries, as shown here.</p>
+</blockquote>
+<h3 data-original-heading="6.2.3 The General Step" id="the-general-step">6.2.3 The General Step</h3>
+<p>Suppose the first <span class="math inline">\(k-1\)</span> columns have been orthonormalized:</p>
+<p><span class="math display">\[
+A^{(k-1)}=
+\begin{pmatrix}
+q_1&amp;\cdots&amp;q_{k-1}&amp;a_k^{(k-1)}&amp;\cdots&amp;a_n^{(k-1)}
+\end{pmatrix}.
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+r_{kk}=\|a_k^{(k-1)}\|_2,
+\qquad
+q_k=\frac{a_k^{(k-1)}}{r_{kk}},
+\qquad
+r_{kj}=q_k^*a_j^{(k-1)}\quad (j&gt;k).
+\]</span></p>
+<p>For all <span class="math inline">\(j&gt;k\)</span>, update</p>
+<p><span class="math display">\[
+a_j^{(k)}=a_j^{(k-1)}-q_kr_{kj}.
+\]</span></p>
+<p>This is</p>
+<p><span class="math display">\[
+A^{(k)}=A^{(k-1)}S_k,
+\]</span></p>
+<p>where <span class="math inline">\(S_k\)</span> equals the identity except in row <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[
+(S_k)_{kk}=\frac1{r_{kk}},
+\qquad
+(S_k)_{kj}=-\frac{r_{kj}}{r_{kk}}\quad(j&gt;k).
+\]</span></p>
+<p>The result is</p>
+<p><span class="math display">\[
+A^{(k)}=
+\begin{pmatrix}
+q_1&amp;\cdots&amp;q_k&amp;a_{k+1}^{(k)}&amp;\cdots&amp;a_n^{(k)}
+\end{pmatrix}.
+\]</span></p>
+<p>This is the column-update form of MGS: each newly formed <span class="math inline">\(q_k\)</span> is immediately removed from the remaining columns. It is equivalent in exact arithmetic to the column-by-column pseudocode in Section 6.1.</p>
+<p><strong>Interpretation.</strong> The triangular factors may contain large coefficients if a residual norm <span class="math inline">\(r_{kk}\)</span> is small. Orthogonalizing nearly dependent columns can therefore involve poorly conditioned transformations, even though the desired final columns have norm 1.</p>
+<h2 data-original-heading="6.3 Error Amplification in Matrix Products" id="error-amplification-in-matrix-products">6.3 Error Amplification in Matrix Products</h2>
+<p><em>Source: p.&nbsp;4.</em></p>
+<p>Suppose an algorithm consists of steps</p>
+<p><span class="math display">\[
+A_k=X_kA_{k-1}.
+\]</span></p>
+<p>To understand one step, consider multiplication by a fixed nonsingular square matrix <span class="math inline">\(X\)</span>. Let <span class="math inline">\(u\)</span> denote the floating-point unit roundoff, and ignore higher-order terms initially. A standard normwise model is</p>
+<p><span class="math display">\[
+\widehat B=\operatorname{fl}(XA)=XA+E,
+\qquad
+\|E\|_2\le c\,u\,\|X\|_2\|A\|_2+O(u^2).
+\]</span></p>
+<p>The constant <span class="math inline">\(c\)</span> depends on the dimensions and implementation. The <span class="math inline">\(O(u)\)</span> notation suppresses that dependence; it is not a dimension-free bound.</p>
+<h3 data-original-heading="6.3.1 Turning a Local Error into a Backward Error" id="turning-a-local-error-into-a-backward-error">6.3.1 Turning a Local Error into a Backward Error</h3>
+<p>To regard the computed answer as exact multiplication of perturbed input data, write</p>
+<p><span class="math display">\[
+\widehat B=X(A+F),
+\qquad
+F=X^{-1}E.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\|F\|_2
+&amp;\le \|X^{-1}\|_2\|E\|_2\\
+&amp;\le c\,u\,\|X^{-1}\|_2\|X\|_2\|A\|_2+O(u^2).
+\end{aligned}
+\]</span></p>
+<p><strong>Definition.</strong> The spectral-norm condition number is</p>
+<p><span class="math display">\[
+\kappa_2(X)=\|X\|_2\|X^{-1}\|_2.
+\]</span></p>
+<p>Therefore</p>
+<p><span class="math display">\[
+\boxed{\frac{\|F\|_2}{\|A\|_2}
+\le c\,u\,\kappa_2(X)+O(u^2).}
+\]</span></p>
+<p>The backward error with respect to <span class="math inline">\(A\)</span> can be amplified by the condition number of the transformation.</p>
+<blockquote>
+<p><strong>Clarification.</strong> Page 4 alternates between <span class="math inline">\(\operatorname{fl}(AX)\)</span> and <span class="math inline">\(XA\)</span>. The derivation shown is for <span class="math inline">\(XA\)</span>, and its final absolute-error bound needs the factor <span class="math inline">\(\|A\|_2\)</span>. For right multiplication, the analogous identity is <span class="math inline">\(\operatorname{fl}(AX)=(A+F)X\)</span> with <span class="math inline">\(F=EX^{-1}\)</span>, giving the same relative bound.</p>
+</blockquote>
+<h3 data-original-heading="6.3.2 Why Orthogonal Factors Are Attractive" id="why-orthogonal-factors-are-attractive">6.3.2 Why Orthogonal Factors Are Attractive</h3>
+<p>If <span class="math inline">\(X\)</span> is orthogonal or unitary, then</p>
+<p><span class="math display">\[
+X^{-1}=X^*,
+\qquad
+\|X\|_2=\|X^{-1}\|_2=1,
+\qquad
+\kappa_2(X)=1.
+\]</span></p>
+<p>Such a factor does not amplify norms when converting a local error into an input perturbation. Products of exact unitary matrices remain unitary.</p>
+<p><strong>Expanded interpretation.</strong> If <span class="math inline">\(P_k=X_k\cdots X_1\)</span>, a local error <span class="math inline">\(E_k\)</span> inserted at step <span class="math inline">\(k\)</span> is pulled back to the original input through <span class="math inline">\(P_k^{-1}\)</span>. For unitary factors, <span class="math inline">\(\|P_k^{-1}E_k\|_2=\|E_k\|_2\)</span>. Roundoff still accumulates over many operations, but it is not enlarged by a large condition number of the transformation products.</p>
+<p>This motivates triangularizing <span class="math inline">\(A\)</span> using orthogonal transformations instead of obtaining orthogonality through triangular transformations.</p>
+<blockquote>
+<p><strong>Clarification.</strong> This argument explains the mechanism of stability. It is not, by itself, a complete floating-point error proof for an implementation, because the computed transformations also contain rounding errors.</p>
+</blockquote>
+<h2 data-original-heading="6.4 Why Bounded Elimination Multipliers Are Not Enough" id="why-bounded-elimination-multipliers-are-not-enough">6.4 Why Bounded Elimination Multipliers Are Not Enough</h2>
+<p><em>Source: p.&nbsp;5.</em></p>
+<p>With partial row pivoting, the multipliers in the unit lower triangular factor satisfy</p>
+<p><span class="math display">\[
+|l_{ij}|\le1\quad(i&gt;j).
+\]</span></p>
+<p>Thus <span class="math inline">\(L\)</span> itself has a modest norm. For an <span class="math inline">\(m\times m\)</span> matrix of this form,</p>
+<p><span class="math display">\[
+\|L\|_2\le\|L\|_F
+\le\sqrt{\frac{m(m+1)}2}
+\le m.
+\]</span></p>
+<p>The board gives the looser polynomial bound <span class="math inline">\(\|L\|_2\le m^2\)</span>. Either bound leaves the same question:</p>
+<blockquote>
+<p>What about <span class="math inline">\(\|L^{-1}\|_2\)</span>?</p>
+</blockquote>
+<h3 data-original-heading="6.4.1 An Exponentially Large Inverse" id="an-exponentially-large-inverse">6.4.1 An Exponentially Large Inverse</h3>
+<p>Consider</p>
+<p><span class="math display">\[
+L_m=
+\begin{pmatrix}
+1&amp;0&amp;\cdots&amp;0\\
+-1&amp;1&amp;\ddots&amp;\vdots\\
+\vdots&amp;\ddots&amp;\ddots&amp;0\\
+-1&amp;\cdots&amp;-1&amp;1
+\end{pmatrix}.
+\]</span></p>
+<p>The inverse has entries</p>
+<p><span class="math display">\[
+(L_m^{-1})_{ij}=
+\begin{cases}
+0,&amp;i&lt;j,\\
+1,&amp;i=j,\\
+2^{i-j-1},&amp;i&gt;j.
+\end{cases}
+\]</span></p>
+<p>For example,</p>
+<p><span class="math display">\[
+L_4^{-1}=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;0\\
+1&amp;1&amp;0&amp;0\\
+2&amp;1&amp;1&amp;0\\
+4&amp;2&amp;1&amp;1
+\end{pmatrix}.
+\]</span></p>
+<p><strong>Derivation.</strong> To compute the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(L_m^{-1}\)</span>, solve <span class="math inline">\(L_mz=e_j\)</span>. For <span class="math inline">\(i&gt;j\)</span>,</p>
+<p><span class="math display">\[
+z_i-\sum_{t=j}^{i-1}z_t=0.
+\]</span></p>
+<p>Starting from <span class="math inline">\(z_j=1\)</span>, this gives <span class="math inline">\(z_{j+1}=1\)</span>, <span class="math inline">\(z_{j+2}=2\)</span>, <span class="math inline">\(z_{j+3}=4\)</span>, and so on. Each new value is the sum of all preceding nonzero values, so it doubles after the first step.</p>
+<p>In particular, for <span class="math inline">\(m\ge2\)</span>,</p>
+<p><span class="math display">\[
+\|L_m^{-1}\|_2\ge |(L_m^{-1})_{m1}|=2^{m-2}.
+\]</span></p>
+<p>Thus the inverse norm can grow exponentially with dimension despite every entry of <span class="math inline">\(L_m\)</span> having magnitude at most 1.</p>
+<blockquote>
+<p><strong>Clarification.</strong> The board’s powers of 2 express exponential growth but are shifted relative to an <span class="math inline">\(m\times m\)</span> matrix. The indexed formula above fixes the exponent; <span class="math inline">\(\|L_m^{-1}\|_2\ge2^m\)</span> is not a valid literal bound for this matrix.</p>
+</blockquote>
+<h3 data-original-heading="6.4.2 Connection to Growth in the Upper Factor" id="connection-to-growth-in-the-upper-factor">6.4.2 Connection to Growth in the Upper Factor</h3>
+<p>Since</p>
+<p><span class="math display">\[
+U=L^{-1}A,
+\]</span></p>
+<p>large values in <span class="math inline">\(L^{-1}\)</span> can create large values in <span class="math inline">\(U\)</span>. In the recap example, the last column of <span class="math inline">\(A\)</span> is the all-ones vector, so</p>
+<p><span class="math display">\[
+L_4^{-1}
+\begin{pmatrix}1\\1\\1\\1\end{pmatrix}
+=
+\begin{pmatrix}1\\2\\4\\8\end{pmatrix}.
+\]</span></p>
+<p>This directly reproduces the pivot-growth pattern.</p>
+<p>The triangular factors used in Gram-Schmidt can also have large norms or large inverse norms. Boundedness or triangular structure alone does not give the norm preservation enjoyed by orthogonal transformations.</p>
+<h2 data-original-heading="6.5 Householder Triangularization" id="householder-triangularization">6.5 Householder Triangularization</h2>
+<p><em>Source: pp.&nbsp;6-7.</em></p>
+<p>We now seek square orthogonal transformations <span class="math inline">\(H_1,H_2,\ldots\)</span> that eliminate entries below the diagonal:</p>
+<p><span class="math display">\[
+H_n\cdots H_2H_1A=
+\begin{pmatrix}R_1\\0\end{pmatrix}
+=:R_{\mathrm{full}}.
+\]</span></p>
+<p>Here <span class="math inline">\(R_1\in\mathbb R^{n\times n}\)</span> is upper triangular and <span class="math inline">\(R_{\mathrm{full}}\in\mathbb R^{m\times n}\)</span> is upper trapezoidal. Consequently,</p>
+<p><span class="math display">\[
+A=Q_{\mathrm{full}}R_{\mathrm{full}},
+\qquad
+Q_{\mathrm{full}}=(H_n\cdots H_1)^{-1}.
+\]</span></p>
+<p>The first transformation clears the first column below its top entry. The second acts only on rows <span class="math inline">\(2:m\)</span> and clears column 2 below row 2. This continues without destroying the zeros already created.</p>
+<h3 data-original-heading="6.5.1 What the First Transformation Must Do" id="what-the-first-transformation-must-do">6.5.1 What the First Transformation Must Do</h3>
+<p>For <span class="math inline">\(x=a_1\ne0\)</span>, the target is a multiple of <span class="math inline">\(e_1\)</span>. Norm preservation forces</p>
+<p><span class="math display">\[
+H_1x=\pm\|x\|_2e_1.
+\]</span></p>
+<p>Both signs are valid in exact arithmetic. A reflection across a hyperplane can exchange <span class="math inline">\(x\)</span> with either target.</p>
+<h3 data-original-heading="6.5.2 The Householder Reflector" id="the-householder-reflector">6.5.2 The Householder Reflector</h3>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Householder reflector</span></p>
+</div>
+<div class="theorem-content">
+<p>For <span class="math inline">\(v\ne0\)</span>, define <span class="math display">\[
+H(v)=I-2\frac{vv^*}{v^*v}.
+\]</span> The matrix fixes every vector perpendicular to <span class="math inline">\(v\)</span> and reverses the component parallel to <span class="math inline">\(v\)</span>.</p>
+</div>
+</div>
+<p>To see the geometry, decompose any <span class="math inline">\(z\)</span> as</p>
+<p><span class="math display">\[
+z=z_{\perp}+\alpha v,
+\qquad v^*z_{\perp}=0.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+H(v)z=z_{\perp}-\alpha v.
+\]</span></p>
+<p>In particular,</p>
+<p><span class="math display">\[
+v^*z=0\Longrightarrow H(v)z=z,
+\qquad
+z\in\operatorname{span}(v)\Longrightarrow H(v)z=-z.
+\]</span></p>
+<p>For real vectors, the fixed subspace is the hyperplane normal to <span class="math inline">\(v\)</span>.</p>
+<p><strong>Expanded algebraic verification.</strong> Let</p>
+<p><span class="math display">\[
+P=\frac{vv^*}{v^*v}.
+\]</span></p>
+<p>Then <span class="math inline">\(P^*=P\)</span> and <span class="math inline">\(P^2=P\)</span>. Therefore</p>
+<p><span class="math display">\[
+H^*=H,
+\qquad
+H^2=(I-2P)^2=I-4P+4P^2=I.
+\]</span></p>
+<p>Hence</p>
+<p><span class="math display">\[
+\boxed{H^{-1}=H^*=H.}
+\]</span></p>
+<p>A Householder reflector is both self-adjoint and unitary; over <span class="math inline">\(\mathbb R\)</span>, it is symmetric and orthogonal.</p>
+<h3 data-original-heading="6.5.3 Choosing the Hyperplane" id="choosing-the-hyperplane">6.5.3 Choosing the Hyperplane</h3>
+<p>For real <span class="math inline">\(x\)</span>, choose a target <span class="math inline">\(y=\alpha e_1\)</span> with <span class="math inline">\(\alpha=\pm\|x\|_2\)</span>, and let</p>
+<p><span class="math display">\[
+v=x-y.
+\]</span></p>
+<p>Provided <span class="math inline">\(x\ne y\)</span>, this produces <span class="math inline">\(H(v)x=y\)</span>.</p>
+<p><strong>Expanded derivation.</strong> Since <span class="math inline">\(\|x\|_2=\|y\|_2\)</span> and both vectors are real,</p>
+<p><span class="math display">\[
+\begin{aligned}
+v^Tx&amp;=\|x\|_2^2-y^Tx,\\
+v^Tv&amp;=\|x-y\|_2^2
+=2\bigl(\|x\|_2^2-y^Tx\bigr).
+\end{aligned}
+\]</span></p>
+<p>Thus</p>
+<p><span class="math display">\[
+H(v)x=x-2v\frac{v^Tx}{v^Tv}=x-v=y.
+\]</span></p>
+<p>The vector <span class="math inline">\(x-y\)</span> is normal to the reflecting hyperplane. The geometric sketch in the source shows that reflection taking <span class="math inline">\(x\)</span> to the coordinate axis.</p>
+<h2 data-original-heading="6.6 Choosing the Sign for Numerical Stability" id="choosing-the-sign-for-numerical-stability">6.6 Choosing the Sign for Numerical Stability</h2>
+<p><em>Source: p.&nbsp;8.</em></p>
+<p>If <span class="math inline">\(x\)</span> nearly points along <span class="math inline">\(+e_1\)</span>, the choice</p>
+<p><span class="math display">\[
+v=x-\|x\|_2e_1
+\]</span></p>
+<p>subtracts nearly equal numbers in its first component. The resulting vector can be tiny relative to <span class="math inline">\(x\)</span>, so rounding errors in the subtraction can dominate it.</p>
+<p>Instead choose the target with the opposite sign to <span class="math inline">\(x_1\)</span>:</p>
+<p><span class="math display">\[
+\alpha=-\operatorname{sign}(x_1)\|x\|_2,
+\qquad
+\boxed{v=x+\operatorname{sign}(x_1)\|x\|_2e_1.}
+\]</span></p>
+<p>Use the convention <span class="math inline">\(\operatorname{sign}(0)=1\)</span> for this construction. Then</p>
+<p><span class="math display">\[
+|v_1|=|x_1|+\|x\|_2,
+\]</span></p>
+<p>so the first component is formed by adding quantities with the same sign rather than subtracting nearly equal quantities. The result satisfies</p>
+<p><span class="math display">\[
+H(v)x=-\operatorname{sign}(x_1)\|x\|_2e_1.
+\]</span></p>
+<p>The sign of the diagonal entry of <span class="math inline">\(R\)</span> is not prescribed by this stable construction. It can be adjusted later if a positive diagonal is desired.</p>
+<blockquote>
+<p><strong>Clarification.</strong> If <span class="math inline">\(x=0\)</span>, no elimination is needed: use the identity transformation and do not divide by <span class="math inline">\(v_1\)</span> or <span class="math inline">\(v^*v\)</span>. If <span class="math inline">\(x_1=0\)</span> but <span class="math inline">\(x\ne0\)</span>, the convention <span class="math inline">\(\operatorname{sign}(0)=1\)</span> prevents an invalid zero sign.</p>
+</blockquote>
+<p><strong>Complex version, for completeness.</strong> For <span class="math inline">\(x\in\mathbb C^p\)</span>, replace the real sign by the phase</p>
+<p><span class="math display">\[
+s=\begin{cases}x_1/|x_1|,&amp;x_1\ne0,\\1,&amp;x_1=0.\end{cases}
+\]</span></p>
+<p>Then <span class="math inline">\(v=x+s\|x\|_2e_1\)</span> gives <span class="math inline">\(H(v)x=-s\|x\|_2e_1\)</span>. The real sign diagrams in the source should not be read as a definition of the sign of a general complex number.</p>
+<h2 data-original-heading="6.7 The Householder QR Algorithm" id="the-householder-qr-algorithm">6.7 The Householder QR Algorithm</h2>
+<p><em>Source: p.&nbsp;9.</em></p>
+<h3 data-original-heading="6.7.1 Acting Only on the Trailing Rows" id="acting-only-on-the-trailing-rows">6.7.1 Acting Only on the Trailing Rows</h3>
+<p>At step <span class="math inline">\(k\)</span>, let</p>
+<p><span class="math display">\[
+x=A^{(k-1)}[k:m,k]\in\mathbb R^{m-k+1}.
+\]</span></p>
+<p>Construct a reflector <span class="math inline">\(F_k\)</span> for this shorter vector, then embed it as</p>
+<p><span class="math display">\[
+H_k=
+\begin{pmatrix}
+I_{k-1}&amp;0\\
+0&amp;F_k
+\end{pmatrix}.
+\]</span></p>
+<p>The first <span class="math inline">\(k-1\)</span> rows are untouched. In the previous columns, all entries in rows <span class="math inline">\(k:m\)</span> are already zero, so applying <span class="math inline">\(F_k\)</span> cannot recreate nonzeros there.</p>
+<p>The only block that needs updating is</p>
+<p><span class="math display">\[
+B=A^{(k-1)}[k:m,k:n].
+\]</span></p>
+<p>Apply the reflector without forming the dense matrix <span class="math inline">\(F_k\)</span>:</p>
+<p><span class="math display">\[
+\boxed{B\leftarrow B-v\left(\frac{2}{v^*v}v^*B\right).}
+\]</span></p>
+<p>This is a matrix-vector product followed by a rank-one update.</p>
+<h3 data-original-heading="6.7.2 Scaling and Compact Storage" id="scaling-and-compact-storage">6.7.2 Scaling and Compact Storage</h3>
+<p>Multiplying <span class="math inline">\(v\)</span> by any nonzero scalar leaves its reflector unchanged:</p>
+<p><span class="math display">\[
+\frac{(\gamma v)(\gamma v)^*}{(\gamma v)^*(\gamma v)}
+=\frac{vv^*}{v^*v}.
+\]</span></p>
+<p>We can therefore divide <span class="math inline">\(v\)</span> by its first component so that <span class="math inline">\(v_1=1\)</span>. The leading 1 need not be stored. After applying the reflector, store the remaining entries of <span class="math inline">\(v\)</span> below the diagonal in column <span class="math inline">\(k\)</span> of the same array.</p>
+<p>The final array contains two different objects:</p>
+<ul>
+<li>On and above the diagonal: the upper triangular factor <span class="math inline">\(R_1\)</span>.</li>
+<li>Below the diagonal: the tails of the Householder vectors, which represent <span class="math inline">\(Q\)</span> implicitly.</li>
+</ul>
+<p>Those below-diagonal stored values are metadata for the reflectors, not nonzero entries of the mathematical <span class="math inline">\(R_{\mathrm{full}}\)</span>.</p>
+<h3 data-original-heading="6.7.3 Pseudocode with the Edge Cases Made Explicit" id="pseudocode-with-the-edge-cases-made-explicit">6.7.3 Pseudocode with the Edge Cases Made Explicit</h3>
+<p>The following is a clarified real-valued version of the board algorithm. The scalar <span class="math inline">\(\tau_k\)</span> is stored to make an identity step explicit.</p>
+<pre class="text"><code>Input: A, an m-by-n real matrix with m &gt;= n
+
+for k = 1,...,n:
+    x = copy(A[k:m, k])
+    rho = norm(x, 2)
+
+    if rho == 0:
+        tau[k] = 0
+        continue
+
+    s = 1 if x[1] &gt;= 0 else -1
+    alpha = -s * rho
+    v = x
+    v[1] = v[1] - alpha
+    v = v / v[1]                 # the first entry is now 1
+    tau[k] = 2 / (v* v)
+
+    B = A[k:m, k:n]
+    B = B - v * (tau[k] * (v* B))
+    A[k:m, k:n] = B
+    A[k, k] = alpha
+    A[k+1:m, k] = v[2:end]       # store only the tail
+
+R1 = upper_triangle(A[1:n, 1:n])
+Return the packed array A and tau</code></pre>
+<p>The empty tail at the final step of a square matrix causes no problem. In practical floating-point software, the norm should be computed with scaling to avoid unnecessary overflow or underflow.</p>
+<blockquote>
+<p><strong>Clarification.</strong> The board’s storage line writes <span class="math inline">\(v\)</span> into <span class="math inline">\(A[k+1:m,k]\)</span>. Those lengths do not match: the intended assignment is the tail <span class="math inline">\(v[2:\mathrm{end}]\)</span>. The first component is implicit. Also, <span class="math inline">\(x\)</span> must be taken from the current transformed matrix, not from the original input.</p>
+</blockquote>
+<p>Since each reflector is its own inverse,</p>
+<p><span class="math display">\[
+H_n\cdots H_1A=R_{\mathrm{full}}
+\quad\Longrightarrow\quad
+\boxed{A=H_1\cdots H_nR_{\mathrm{full}}.}
+\]</span></p>
+<p>Thus <span class="math inline">\(Q_{\mathrm{full}}=H_1\cdots H_n\)</span>. The next lecture explains how to apply this implicit <span class="math inline">\(Q\)</span> and <span class="math inline">\(Q^*\)</span> efficiently.</p>
+<h2 data-original-heading="6.8 Source Clarifications and Study Checklist" id="source-clarifications-and-study-checklist">6.8 Source Clarifications and Study Checklist</h2>
+<p><strong>Source clarifications.</strong> The principal corrections are the scaling of the triangular right factors (pp.&nbsp;2-3), consistent multiplication order and the missing <span class="math inline">\(\|A\|_2\)</span> factor in the error bound (p.&nbsp;4), indexing of the exponential inverse example (p.&nbsp;5), and correct reflector-tail storage and zero handling (p.&nbsp;9). Expanded proofs above make the algebra in the handwritten diagrams explicit; they are not claims about additional material covered on another date.</p>
+<p>Before moving on, be able to:</p>
+<ol type="1">
+<li>Write the right-multiplication matrix that performs one Gram-Schmidt step.</li>
+<li>Derive <span class="math inline">\(F=X^{-1}E\)</span> and the relative backward-error factor <span class="math inline">\(\kappa_2(X)\)</span>.</li>
+<li>Explain why <span class="math inline">\(|l_{ij}|\le1\)</span> does not control <span class="math inline">\(\|L^{-1}\|_2\)</span>.</li>
+<li>Prove <span class="math inline">\(H(v)^*=H(v)\)</span> and <span class="math inline">\(H(v)^2=I\)</span>.</li>
+<li>Derive the stable sign choice and identify the cancellation avoided.</li>
+<li>Explain why a trailing-block reflector preserves earlier zeros.</li>
+<li>Distinguish the upper-triangular factor from reflector data in the packed array.</li>
+</ol></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span>← Previous page</span><span>5. Least Squares and Gram-Schmidt</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span>Next page →</span><span>7. Orthogonal Transformations and QR</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">6. Error Bounds and Householder QR</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#review-of-least-squares-and-gram-schmidt" class="is-active" aria-current="location">6.1 Review of Least Squares and Gram-Schmidt</a></li><li style="--depth:1"><a href="#classical-and-modified-gram-schmidt">6.1.1 Classical and Modified Gram-Schmidt</a></li><li style="--depth:1"><a href="#the-pivot-growth-example-in-the-recap">6.1.2 The Pivot-Growth Example in the Recap</a></li><li style="--depth:0"><a href="#gram-schmidt-as-a-product-of-matrices">6.2 Gram-Schmidt as a Product of Matrices</a></li><li style="--depth:1"><a href="#left-and-right-multiplication">6.2.1 Left and Right Multiplication</a></li><li style="--depth:1"><a href="#the-first-orthogonalization-step">6.2.2 The First Orthogonalization Step</a></li><li style="--depth:1"><a href="#the-general-step">6.2.3 The General Step</a></li><li style="--depth:0"><a href="#error-amplification-in-matrix-products">6.3 Error Amplification in Matrix Products</a></li><li style="--depth:1"><a href="#turning-a-local-error-into-a-backward-error">6.3.1 Turning a Local Error into a Backward Error</a></li><li style="--depth:1"><a href="#why-orthogonal-factors-are-attractive">6.3.2 Why Orthogonal Factors Are Attractive</a></li><li style="--depth:0"><a href="#why-bounded-elimination-multipliers-are-not-enough">6.4 Why Bounded Elimination Multipliers Are Not Enough</a></li><li style="--depth:1"><a href="#an-exponentially-large-inverse">6.4.1 An Exponentially Large Inverse</a></li><li style="--depth:1"><a href="#connection-to-growth-in-the-upper-factor">6.4.2 Connection to Growth in the Upper Factor</a></li><li style="--depth:0"><a href="#householder-triangularization">6.5 Householder Triangularization</a></li><li style="--depth:1"><a href="#what-the-first-transformation-must-do">6.5.1 What the First Transformation Must Do</a></li><li style="--depth:1"><a href="#the-householder-reflector">6.5.2 The Householder Reflector</a></li><li style="--depth:1"><a href="#choosing-the-hyperplane">6.5.3 Choosing the Hyperplane</a></li><li style="--depth:0"><a href="#choosing-the-sign-for-numerical-stability">6.6 Choosing the Sign for Numerical Stability</a></li><li style="--depth:0"><a href="#the-householder-qr-algorithm">6.7 The Householder QR Algorithm</a></li><li style="--depth:1"><a href="#acting-only-on-the-trailing-rows">6.7.1 Acting Only on the Trailing Rows</a></li><li style="--depth:1"><a href="#scaling-and-compact-storage">6.7.2 Scaling and Compact Storage</a></li><li style="--depth:1"><a href="#pseudocode-with-the-edge-cases-made-explicit">6.7.3 Pseudocode with the Edge Cases Made Explicit</a></li><li style="--depth:0"><a href="#source-clarifications-and-study-checklist">6.8 Source Clarifications and Study Checklist</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

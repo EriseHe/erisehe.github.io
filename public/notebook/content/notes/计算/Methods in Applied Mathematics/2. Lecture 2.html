@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>2. Lecture 2 — E.H. Notebook</title>
+<meta name="description" content="2.1 Regular and Singular PerturbationsAssume throughout that 0 \le \varepsilon \ll 1. 2.2 Example 1: Regular PerturbationConsider x^2 + 2\varepsilon x - 1 = 0. Assume a r">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Methods in Applied Mathematics file hierarchy" data-sidebar-root="content/notes/计算/Methods in Applied Mathematics"><a class="sidebar-root" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/Methods%20in%20Applied%20Mathematics/index.html">Methods in Applied Mathematics</a><ul class="notes-tree"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/Methods%20in%20Applied%20Mathematics/2.%20Lecture%202.html"><span class="page-number">2</span><span>Lecture 2</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/index.html">计算</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/Methods%20in%20Applied%20Mathematics/index.html">Methods in Applied Mathematics</a></nav><h1 id="reader-title">2. Lecture 2</h1><p class="article-meta">2026-09-09</p></header><div id="article-body" class="prose"><h2 data-original-heading="2.1 Regular and Singular Perturbations" id="regular-and-singular-perturbations">2.1 Regular and Singular Perturbations</h2>
+<p>Assume throughout that</p>
+<p><span class="math display">\[
+0 \le \varepsilon \ll 1.
+\]</span></p>
+<hr>
+<h2 data-original-heading="2.2 Example 1: Regular Perturbation" id="example-1-regular-perturbation">2.2 Example 1: Regular Perturbation</h2>
+<p>Consider</p>
+<p><span class="math display">\[
+x^2 + 2\varepsilon x - 1 = 0.
+\]</span></p>
+<p>Assume a regular perturbation expansion</p>
+<p><span class="math display">\[
+x(\varepsilon)
+=
+x_0 + \varepsilon x_1 + \varepsilon^2 x_2 + \cdots.
+\]</span></p>
+<p>This is a <strong>regular perturbation</strong> expansion: the solution is expanded in integer powers of <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>The two branches behave as</p>
+<p><span class="math display">\[
+x(\varepsilon)
+\sim
+\pm 1 - \varepsilon \pm \frac{\varepsilon^2}{2} + \cdots.
+\]</span></p>
+<hr>
+<h2 data-original-heading="2.3 Example 2: Singular Perturbation" id="example-2-singular-perturbation">2.3 Example 2: Singular Perturbation</h2>
+<p>Consider</p>
+<p><span class="math display">\[
+\varepsilon x^2 + 2x - 1 = 0.
+\]</span></p>
+<p>A regular expansion is not sufficient for all solution branches. One possibility is to rescale the variable.</p>
+<p>Let</p>
+<p><span class="math display">\[
+X = \varepsilon x.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+x = \frac{X}{\varepsilon},
+\]</span></p>
+<p>and the equation becomes</p>
+<p><span class="math display">\[
+X^2 + 2X - \varepsilon = 0.
+\]</span></p>
+<p>Alternatively, use a singular perturbation expansion of the form</p>
+<p><span class="math display">\[
+x
+=
+\frac{1}{\varepsilon}x_{-1}
++
+x_0
++
+\varepsilon x_1
++
+\cdots.
+\]</span></p>
+<p>Thus the solution may contain a leading term of order <span class="math inline">\(1/\varepsilon\)</span>, rather than order <span class="math inline">\(1\)</span>.</p>
+<hr>
+<h2 data-original-heading="2.4 Example 3: Failure of an Integer-Power Expansion" id="example-3-failure-of-an-integer-power-expansion">2.4 Example 3: Failure of an Integer-Power Expansion</h2>
+<p>Consider</p>
+<p><span class="math display">\[
+(1-\varepsilon)x^2 - 2x + 1 = 0.
+\]</span></p>
+<p>At <span class="math inline">\(\varepsilon = 0\)</span>,</p>
+<p><span class="math display">\[
+x_0^2 - 2x_0 + 1 = 0,
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+x_0 = 1
+\]</span></p>
+<p>is a <strong>double root</strong>.</p>
+<h3 data-original-heading="2.4.1 Attempt 1: Ordinary perturbation series" id="attempt-1-ordinary-perturbation-series">2.4.1 Attempt 1: Ordinary perturbation series</h3>
+<p>One might try</p>
+<p><span class="math display">\[
+x(\varepsilon)
+=
+x_0
++
+\varepsilon x_1
++
+\varepsilon^2 x_2
++
+\cdots.
+\]</span></p>
+<p>But this approach <strong>fails</strong>.</p>
+<p>From the exact solution,</p>
+<p><span class="math display">\[
+x(\varepsilon)
+=
+\frac{1}{1-\varepsilon}
+\pm
+\frac{\sqrt{\varepsilon}}{1-\varepsilon},
+\]</span></p>
+<p>and hence</p>
+<p><span class="math display">\[
+x(\varepsilon)
+\sim
+1 \pm \sqrt{\varepsilon} + O(\varepsilon).
+\]</span></p>
+<p>The leading correction is therefore of order <span class="math inline">\(\sqrt{\varepsilon}\)</span> rather than <span class="math inline">\(\varepsilon\)</span>.</p>
+<hr>
+<h2 data-original-heading="2.5 Generalized Perturbation Ansatz" id="generalized-perturbation-ansatz">2.5 Generalized Perturbation Ansatz</h2>
+<p>Try instead</p>
+<p><span class="math display">\[
+x
+\sim
+x_0
++
+\varepsilon^\alpha x_\alpha
++
+\varepsilon x_1
++
+\cdots,
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+0 &lt; \alpha &lt; 1.
+\]</span></p>
+<p>Substitute this into</p>
+<p><span class="math display">\[
+(1-\varepsilon)x^2 - 2x + 1 = 0.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+(1-\varepsilon)
+\left(
+x_0+\varepsilon^\alpha x_\alpha+\varepsilon x_1
+\right)^2
+-
+2
+\left(
+x_0+\varepsilon^\alpha x_\alpha+\varepsilon x_1
+\right)
++
+1
+\sim 0.
+\]</span></p>
+<p>Expanding and grouping powers of <span class="math inline">\(\varepsilon\)</span> gives</p>
+<p><span class="math display">\[
+x_0^2 - 2x_0 + 1
+\]</span></p>
+<p><span class="math display">\[
++ \varepsilon^\alpha
+\left(
+2x_0x_\alpha - 2x_\alpha
+\right)
+\]</span></p>
+<p><span class="math display">\[
++ \varepsilon
+\left(
+-x_0^2 + 2x_0x_1 - 2x_1
+\right)
+\]</span></p>
+<p><span class="math display">\[
++ \varepsilon^{2\alpha}x_\alpha^2
++\cdots
+\sim 0.
+\]</span></p>
+<hr>
+<h3 data-original-heading="2.5.1 Order O(1)" id="order-o1">2.5.1 Order <span class="math inline">\(O(1)\)</span></h3>
+<p>We obtain</p>
+<p><span class="math display">\[
+x_0^2 - 2x_0 + 1 = 0,
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\boxed{x_0 = 1}.
+\]</span></p>
+<hr>
+<h3 data-original-heading="2.5.2 Order O(\varepsilon^\alpha)" id="order-ovarepsilonalpha">2.5.2 Order <span class="math inline">\(O(\varepsilon^\alpha)\)</span></h3>
+<p>We obtain</p>
+<p><span class="math display">\[
+2x_\alpha(x_0-1)=0.
+\]</span></p>
+<p>Since <span class="math inline">\(x_0=1\)</span>,</p>
+<p><span class="math display">\[
+2x_\alpha(x_0-1)=0
+\]</span></p>
+<p>is satisfied for <strong>all values of <span class="math inline">\(\alpha\)</span></strong>.</p>
+<p>Therefore, the <span class="math inline">\(O(\varepsilon^\alpha)\)</span> equation does not determine <span class="math inline">\(\alpha\)</span>.</p>
+<hr>
+<h2 data-original-heading="2.6 Higher-Order Balance" id="higher-order-balance">2.6 Higher-Order Balance</h2>
+<p>We need to look at the higher-order terms.</p>
+<p>The two relevant orders are</p>
+<p><span class="math display">\[
+\varepsilon
+\qquad\text{and}\qquad
+\varepsilon^{2\alpha}.
+\]</span></p>
+<p>For these terms to balance,</p>
+<p><span class="math display">\[
+2\alpha = 1,
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\boxed{\alpha = \frac12}.
+\]</span></p>
+<p>Therefore</p>
+<p><span class="math display">\[
+\varepsilon^{2\alpha} = \varepsilon.
+\]</span></p>
+<p>At order <span class="math inline">\(O(\varepsilon)\)</span>,</p>
+<p><span class="math display">\[
+-x_0^2
++
+2x_0x_1
+-
+2x_1
++
+x_\alpha^2
+=
+0.
+\]</span></p>
+<p>Using <span class="math inline">\(x_0=1\)</span>,</p>
+<p><span class="math display">\[
+-1 + 2x_1 - 2x_1 + x_\alpha^2 = 0,
+\]</span></p>
+<p>hence</p>
+<p><span class="math display">\[
+x_\alpha^2 = 1.
+\]</span></p>
+<p>Therefore</p>
+<p><span class="math display">\[
+\boxed{x_\alpha = \pm 1}.
+\]</span></p>
+<p>Since <span class="math inline">\(\alpha=\frac12\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+x(\varepsilon)
+\sim
+1 \pm \sqrt{\varepsilon} + \cdots
+}.
+\]</span></p>
+<hr>
+<h2 data-original-heading="2.7 Main Takeaway" id="main-takeaway">2.7 Main Takeaway</h2>
+<p>A typical outcome in singular perturbation problems is that we may need to consider a <strong>higher-order balance to determine the leading-order perturbation</strong>.</p>
+<p>In particular, the correction does not necessarily occur at an integer power of <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Here, the double root at <span class="math inline">\(\varepsilon=0\)</span> causes the usual expansion</p>
+<p><span class="math display">\[
+x=x_0+\varepsilon x_1+\cdots
+\]</span></p>
+<p>to fail, and the correct leading perturbation instead scales as</p>
+<p><span class="math display">\[
+\varepsilon^{1/2}.
+\]</span></p>
+<p><span class="math display">\[
+\begin{align} 
+&amp;\underbrace{ f(\epsilon)=\sum^{\infty}_{n=0}a_{n} \epsilon^{n} }_{ \text{power series} } \qquad\longrightarrow\qquad \underbrace{ f(\epsilon) \sim \sum^{N}_{n=0} a_{n}\delta_{n}(\epsilon) }_{  \text{asymtotic series} }
+\end{align}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(N\)</span> is finite (<span class="math inline">\(N=1\)</span> or <span class="math inline">\(N=2\)</span> is )</li>
+<li>no notion of continuity as <span class="math inline">\(N\to \infty\)</span>. In fact, typically the symtotpic series diverges as <span class="math inline">\(N \to \infty\)</span></li>
+<li>exceptionally accurate as <span class="math inline">\(\epsilon&gt;0\)</span></li>
+</ul>
+<p>What qualifies as asymptotic function sequence <span class="math inline">\(\delta_{0}(\epsilon), \delta_{1}(\epsilon),\dots,\delta_{N}(\epsilon)\)</span></p>
+<p><span class="math display">\[
+\lim_{ \epsilon \to 0 } \frac{\delta_{n+1}(\epsilon)}{\delta_{n}(\epsilon)} = 0
+\]</span> well ordered expansion.</p>
+<p>examples: $$ <span class="math display">\[\begin{align}
+\delta_{0}=1, \delta_{1}=\epsilon, \delta_{2}=\epsilon^{2} \\
+\delta_{0}=\frac{1}{2}, \delta_{1}=1, \delta_{2}=\epsilon\\ 
+\delta_{1}=\frac{1}{2}, \delta_{1}=\sqrt{ \epsilon }, \delta_{2}=\epsilon\\
+
+\end{align}\]</span> $$ Compute <span class="math inline">\(a_{n}\)</span>:</p>
+<p><span class="math display">\[
+a_{0} = \lim_{ \epsilon \to \infty }  \frac{f(\epsilon)}{\delta_{0}(\epsilon)}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+\lim_{ \epsilon \to \infty }  \frac{f(\epsilon)}{\delta_{0}(\epsilon)}  &amp; = \sum^{N}_{n=0} a_{n} \frac{\delta_{n}(\epsilon)}{\delta_{0}(\epsilon)} \\
+ &amp; =a_{0}
+\end{align}
+\]</span> <span class="math display">\[
+a_{n+1}=\lim_{ \epsilon \to \infty } \frac{ \delta(\epsilon) - \sum_{k=1}^{n} a_{k}\delta_{k}(\epsilon)}{\delta_{n+1}(\epsilon)}
+\]</span> Remark.</p>
+<p><strong>The expansion is successful if not all of the <span class="math inline">\(a_{n}\)</span> are zero, and none are infinite.</strong></p>
+<p>The same function <span class="math inline">\(f(\epsilon)\)</span> has many different asymptotic expansions.</p>
+<p>Examples.</p>
+<p><span class="math display">\[
+\begin{align}
+e^{\epsilon} \sim  &amp; 1 + \epsilon + \frac{\epsilon^{2}}{2} \\ &amp;  1 + \sin\epsilon + \frac{6}{12} \sin ^{2}(\epsilon)
+\end{align}
+\]</span> but the coefficients <span class="math inline">\(a_n\)</span> are uniquely determined once <span class="math inline">\(\delta_0,\delta_1,\ldots,\delta_n\)</span> have been chosen.</p>
+<p>Historically this was often used to approximate integrals</p>
+<p>Examples. <span class="math display">\[
+\text{eft}(x) = \frac{2}{\sqrt{ \pi }} \int_{0}^{x} e^{-s^{2}} ds\quad \text{where} \quad \text{erf}(\infty)= 1
+\]</span> What to do if <span class="math inline">\(x\)</span> is large but finite? Taylor series can be integrated term by term for finite <span class="math inline">\(X\)</span>, but convergence is very slow.</p>
+<p>Much better results by using integration by parts.</p>
+<p><span class="math display">\[
+\text{erf(x)} = 1 - \underbrace{ \frac{2}{\sqrt{ \pi }}\int_{x}^{\infty} e^{-s^{2}}ds }_{ \text{erfc}(x) }
+\]</span> Then we have</p>
+<p><span class="math display">\[\begin{align}
+\operatorname{erfc}(x)
+&amp;= \frac{1}{\sqrt{\pi}}
+\int_{x^2}^{\infty} e^{-q}\frac{dq}{\sqrt{q}} \\
+&amp;= \frac{1}{\sqrt{\pi}}
+\left(
+\left.-\frac{e^{-q}}{\sqrt{q}}\right|_{x^2}^{\infty}
+-\frac{1}{2}\int_{x^2}^{\infty} e^{-q}\frac{dq}{q^{3/2}}
+\right) \\
+&amp;= \frac{1}{\sqrt{\pi}}\frac{e^{-x^2}}{x}
+- \text{h.o.t.}
+\end{align}\]</span></p>
+<p>So we have</p>
+<p><span class="math display">\[
+\operatorname{erf}(x)
+\sim
+1- \frac{1}{\sqrt{\pi}}\frac{e^{-x^2}}{x},
+\qquad x\to\infty.
+\]</span></p>
+<h3 data-original-heading="Good News? About Linear ODEs" id="good-news-about-linear-odes">2.7.1 Good News? About Linear ODEs</h3>
+<p>For <span class="math inline">\(y(x)\)</span>, consider</p>
+<p><span class="math display">\[
+(1-\epsilon)y''-2y'+y=0.
+\]</span></p>
+<p>Solve by trying <span class="math display">\[
+y=e^{\lambda x}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[\begin{align}
+y' &amp;= \lambda e^{\lambda x}=\lambda y, \\
+y'' &amp;= \lambda^2 e^{\lambda x}=\lambda^2 y.
+\end{align}\]</span></p>
+<p>Substituting into the ODE gives</p>
+<p><span class="math display">\[
+(1-\epsilon)\lambda^2-2\lambda+1=0.
+\]</span></p>
+<p>This is the problem we looked at in the first lecture!</p>
+<h3 data-original-heading="Nonlinear ODEs" id="nonlinear-odes">2.7.2 Nonlinear ODEs</h3>
+<p>Example. <span class="math display">\[
+y(t) := \frac{dy}{dt} + y - \epsilon y^{2}=0
+\]</span></p>
+<p>Initial value problem. <span class="math inline">\(t\geq 0\)</span></p></div><footer class="article-footer"></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">2. Lecture 2</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#regular-and-singular-perturbations" class="is-active" aria-current="location">2.1 Regular and Singular Perturbations</a></li><li style="--depth:0"><a href="#example-1-regular-perturbation">2.2 Example 1: Regular Perturbation</a></li><li style="--depth:0"><a href="#example-2-singular-perturbation">2.3 Example 2: Singular Perturbation</a></li><li style="--depth:0"><a href="#example-3-failure-of-an-integer-power-expansion">2.4 Example 3: Failure of an Integer-Power Expansion</a></li><li style="--depth:1"><a href="#attempt-1-ordinary-perturbation-series">2.4.1 Attempt 1: Ordinary perturbation series</a></li><li style="--depth:0"><a href="#generalized-perturbation-ansatz">2.5 Generalized Perturbation Ansatz</a></li><li style="--depth:1"><a href="#order-o1">2.5.1 Order O(1)</a></li><li style="--depth:1"><a href="#order-ovarepsilonalpha">2.5.2 Order O(\varepsilon^\alpha)</a></li><li style="--depth:0"><a href="#higher-order-balance">2.6 Higher-Order Balance</a></li><li style="--depth:0"><a href="#main-takeaway">2.7 Main Takeaway</a></li><li style="--depth:1"><a href="#good-news-about-linear-odes">2.7.1 Good News? About Linear ODEs</a></li><li style="--depth:1"><a href="#nonlinear-odes">2.7.2 Nonlinear ODEs</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>3.1 Finite Difference of 1D Problem — E.H. Notebook</title>
+<meta name="description" content="3.1.1 Analytic SolutionConsider 1D Diffusion-convection problem with dirichlet boundary \left\{\begin{array}{l} -\mu u^{\prime \prime}+\beta u^{\prime}=0, \quad \mu \geq ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768"><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/index.html">数值PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></nav><h1 id="reader-title">3.1 Finite Difference of 1D Problem</h1></header><div id="article-body" class="prose"><h2 data-original-heading="3.1.1 Analytic Solution" id="analytic-solution">3.1.1 Analytic Solution</h2>
+<p>Consider 1D Diffusion-convection problem with dirichlet boundary</p>
+<p><span class="math display">\[
+\left\{\begin{array}{l}
+-\mu u^{\prime \prime}+\beta u^{\prime}=0, \quad \mu \geq 0 \\
+u(0)=0 \quad \text { and } \quad u(1)=1
+\end{array}\right.
+\]</span></p>
+<p>Then, the analytic solution is <span class="math display">\[
+\boxed{u = \frac{e^{\beta/\mu x}-1}{e^{\beta/\mu}-1}}
+\]</span></p>
+<h2 data-original-heading="3.1.2 Finite Difference Discretization" id="finite-difference-discretization">3.1.2 Finite Difference Discretization</h2>
+<p>For complex real-world problems, we discretize the continuous equation into a grid of points for computer to solve it algebraically.</p>
+<p>By Taylor expansion on the neighboring points of <span class="math inline">\(u_{i}\)</span>, we obtain <span class="math display">\[
+\begin{aligned}
+&amp; u_{i+1}=u_i+h u_i^{\prime}+\frac{h^2}{2} u_i^{\prime \prime}+\frac{h^3}{6} u_i^{\prime \prime \prime}+\mathcal{O}\left(h^4\right) \\
+&amp; u_{i-1}=u_i-h u_i^{\prime}+\frac{h^2}{2} u_i^{\prime \prime}-\frac{h^3}{6} u_i^{\prime \prime \prime}+\mathcal{O}\left(h^4\right)
+\end{aligned}
+\]</span> Then, we first derive the second-derivative diffusion term: <span class="math display">\[
+\begin{align}
+u_{i+1} + u_{i-1}  &amp; = 2u_{i} + h^{2}u''_{i}   &amp;  &amp; + \mathcal{O}(h^4) \\ 
+h^{2}u''_{i}  &amp; =u_{i+1} -2u_{i} + u_{i-1}  &amp;  &amp; + \mathcal{O(h^4)}\\
+u''_{i}  &amp; =\frac{u_{i+1}-2u_{i} + u_{i+1} }{h^{2}} &amp;  &amp; +\mathcal{O}(h^{2})
+\end{align}
+\]</span> we next derive the first-derivative convection term: <span class="math display">\[
+\begin{align}
+u_{i+1}-u_{i-1} &amp; =2 h u_i^{\prime}+\frac{h^3}{3} u_i^{\prime \prime \prime} &amp;  &amp; +\mathcal{O}\left(h^4\right) \\
+2 h u_i^{\prime} &amp; =u_{i+1}-u_{i-1}-\frac{h^3}{3} u_i^{\prime \prime \prime} &amp;  &amp; +\mathcal{O}\left(h^4\right) \\
+u_i^{\prime} &amp; =\frac{u_{i+1}-u_{i-1}}{2 h}-\frac{h^2}{6} u_i^{\prime \prime \prime} &amp;  &amp; +\mathcal{O}\left(h^3\right) \\
+u_i^{\prime} &amp; =\frac{u_{i+1}-u_{i-1}}{2 h} &amp;  &amp; +\mathcal{O}\left(h^2\right)
+\end{align}
+\]</span> Finally, we obtain the discretization: <span class="math display">\[
+\begin{aligned}
+-\mu\underbrace{ \left(\frac{u_{i+1}-2 u_i+u_{i-1}}{h^{2}} \right) }_{ u^{\prime \prime}  \sim \mathcal{O}(h^{2})}+ \beta\underbrace{ \left(\frac{u_{i+1}-u_{i-1}}{2 h} \right)  }_{ u' \sim\mathcal{O}(h^{2})}&amp; = 0 
+\end{aligned}
+\]</span></p>
+<h2 data-original-heading="3.1.2 Stability and physical reliability" id="stability-and-physical-reliability">3.1.2 Stability and physical reliability</h2>
+<p>To solve this for all grid points, we group the coefficients associated with each specific point (<span class="math inline">\(u_{i+1}, u_i, u_{i-1}\)</span>) from the last formula:</p>
+<p><span class="math display">\[
+\begin{align}
+\left(-\frac{\mu}{h^2} u_{i+1}+\frac{2 \mu}{h^2} u_i-\frac{\mu}{h^2} u_{i-1}\right)+\left(\frac{\beta}{2 h} u_{i+1}-\frac{\beta}{2 h} u_{i-1}\right) &amp; =0\\
+\underbrace{\left(\frac{\mu}{h^2}-\frac{\beta}{2 h}\right)}_a u_{i+1}-\underbrace{\frac{2 \mu}{h^2}}_b u_i+\underbrace{\left(\frac{\mu}{h^2}+\frac{\beta}{2 h}\right)}_c u_{i-1} &amp; =0
+\end{align}
+\]</span></p>
+<p>with boundary conditions <span class="math inline">\(u_0=0\)</span> and <span class="math inline">\({} u_N=1\)</span>.</p>
+<blockquote>
+<p>this turns into a second-order difference equation, which allows us to find the “roots” of the characteristic equation to see if solution stays smooth or oscillate.</p>
+</blockquote>
+<hr>
+<p>We then have a characteristic equation, <span class="math display">\[
+\begin{align}
+ &amp;   a \rho^2+b \rho+c=0\\
+ &amp; a=\frac{\mu}{h^2}-\frac{\beta}{2 h}, \quad b=-\frac{2 \mu}{h^2}, \quad c=\frac{\mu}{h^2}+\frac{\beta}{2 h}
+\end{align}
+\]</span> where we obtain the solution as <span class="math display">\[
+\rho_1=1, \quad \rho_2=\frac{c}{a}=\frac{\mu / h^2+\beta /(2 h)}{\mu / h^2-\beta /(2 h)}=\frac{1+\frac{\beta h}{2 \mu}}{1-\frac{\beta h}{2 \mu}}
+\]</span> The behavior of this numerical solution depends the sign of <span class="math inline">\(\rho\)</span>. To ensure it is <strong>physically realistic</strong> (smooth), we observe <span class="math display">\[
+\begin{aligned}
+&amp; \frac{\beta h}{2 \mu}&lt;1 \Longrightarrow \rho_2&gt;0 \quad \Longrightarrow\;\; \text { no sign-flip oscillation } \\
+&amp; \frac{\beta h}{2 \mu}&gt;1 \Longrightarrow \rho_2&lt;0 \quad \Longrightarrow \;\;\text { zig-zag oscillation. }
+\end{aligned}
+\]</span> From here, we obtain the Pèclet Number <span class="math inline">\(\left(\mathbb{P}_e\right)\)</span> by this condition:</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Péclet number</span></p>
+</div>
+<div class="theorem-content">
+<p>For the 1D convection-diffusion problem, <span class="math inline">\(-\mu u''+\beta u'=0\)</span>, the <strong>Cell Péclet number</strong> is defined by <span class="math display">\[
+\mathbb{P}_e=\frac{|\beta|\,h}{2\mu}
+\]</span></p>
+</div>
+</div>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p>Péclet number measures the relative strength of <strong>convection</strong> to <strong>diffusion</strong> on one mesh cell: <span class="math display">\[
+\begin{align}
+\mathbb{P}_e &amp; \ll 1 \;\Rightarrow\; \text{diffusion-dominated}\\
+\mathbb{P}_e &amp; \gg 1 \;\Rightarrow\; \text{convection-dominated}
+\end{align}
+\]</span></p>
+<p>For the centered finite-difference scheme, the standard non-oscillation condition is <span class="math display">\[
+\mathbb{P}_e\le 1.
+\]</span></p>
+</div>
+</div>
+<p>Problem: If <span class="math inline">\(\frac{\mu}{\beta}=10^{-6}\)</span>, since we require step size: <span class="math display">\[
+\frac{\beta h}{2 \mu}&lt;1 \Longrightarrow h&lt;\frac{2 \mu}{\beta} 
+\]</span> then we would need over 1 million points…</p>
+<h2 data-original-heading="3.1.3 Upwind Scheme" id="upwind-scheme">3.1.3 Upwind Scheme</h2>
+<blockquote>
+<p>The centered difference scheme forces us to use a tiny grid size. Can we have a better scheme?</p>
+</blockquote>
+<p>Yes, the famous workaround is <strong>upwind scheme</strong> that breaks the symmetry.</p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p>Information travels with the wind.</p>
+</div>
+</div>
+<p>If the wind is blowing from left to right (<span class="math inline">\(\beta &gt; 0\)</span>), what happens at point <span class="math inline">\(i\)</span> is mostly influenced by what is coming from behind it (point <span class="math inline">\(i-1\)</span>). So, we approximate the advection term using only a backward difference:<span class="math display">\[\boxed{\beta u' \approx \beta \frac{u_i - u_{i-1}}{h}}\]</span></p>
+<ol type="1">
+<li>accuracy drops from <span class="math inline">\(\mathcal{O}(h^2)\)</span> to <span class="math inline">\(\mathcal{O}(h)\)</span></li>
+<li>mathematically sacrifice, but *physically consistent</li>
+</ol>
+<h3 data-original-heading="3.1.3.1 Stability" id="stability">3.1.3.1 Stability</h3>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>upwind scheme</strong> guarantees that the solution never oscillate, regardless of grid size <span class="math inline">\(h\)</span> or wind speed <span class="math inline">\(\beta\)</span>.</p>
+</div>
+</div>
+<h3 data-original-heading="Proof." id="proof.">3.1.3.2 <strong>Proof.</strong></h3>
+<p><strong>PART 1</strong>. We start with the definition of the upwind derivative <span class="math display">\[
+\begin{align}
+\beta  \frac{{u_{i}-u_{i-1}}}{h }  &amp; = \frac{\beta}{2h}(2u_{i}-2u_{i-1}) \\
+ &amp;   =   \frac{\beta}{2h}(u_{i+1}-u_{i-1}-u_{i-1}+2u_{i}-u_{i-1}) \\
+  &amp;  = \beta  \underbrace{ \frac{{u_{i+1}-u_{i-1}}}{2h}  }_{ u'_{\text{center}} }- \frac{\beta h}{2} \underbrace{ \left( \frac{{u_{i-1} -2u_{i}+u_{i-1}}}{h^2} \right) }_{ u'' } \\ 
+\end{align}
+\]</span> That is, <span class="math display">\[
+\beta u'_{\text{\scriptsize UPW}}= \beta u'_{\text{center}} - \frac{\beta h}{2}u''
+\]</span> <strong>PART 2.</strong> Next, we plug back to the original equation to get a <em>perturbed upwind problem</em>:</p>
+<p><span class="math display">\[
+\begin{align}
+  -\mu u''  &amp;     + \beta u'_{\text{\scriptsize UPW}}   &amp;    = 0 \\
+  -\mu u'' &amp;   + \beta  \left( u'_{\text{center}} - \frac{ h}{2}u'' \right)   &amp;     =0     \\
+  -\left( \mu +\frac{\beta h}{2} \right)u'' &amp;   + \beta u'_{\text{center}}   &amp;     =0 
+\end{align}
+\]</span> Here, recall that <span class="math display">\[
+\mathbb{P}_{e} = \frac{\beta h}{2\mu} \quad \Longrightarrow \quad\mu\mathbb{P}_{e} = \frac{\beta h}{2}
+\]</span> So substitute into, we have</p>
+<p><span class="math display">\[
+\begin{align}
+  -\left( \mu +\mu \mathbb{P}_{e} \right)u'' + \beta u'_{\text{center}}   &amp;    =0  \\
+  -\underbrace{ \mu\left( 1 + \mathbb{P}_{e} \right) }_{ \mu' }u'' + \beta u'_{\text{center}}  &amp; =0
+\end{align}
+\]</span> Hence, the Peclet number of the problems under upwind scheme becomes: <span class="math display">\[
+\mathbb{P}^{\text{\scriptsize UPW}}_{e}=\mathbb{P}^{*}_{e} = \frac{\beta h}{2\mu^{*}}= \frac{\beta h}{2\mu(1+\mathbb{P}_{e})} = \frac{\mathbb{P}_{e}}{1+\mathbb{P}_{e}}&lt;1
+\]</span> since <span class="math inline">\(\mathbb{P}_{e } &gt; 0\)</span> is always true.</p>
+<p align="right">
+■.
+</p>
+<h3 data-original-heading="3.1.3.2 Consistency" id="consistency">3.1.3.2 Consistency</h3>
+<p>We discovered that using the upwind scheme is mathematically identical to using the centered scheme on a “perturbed” physical problem.</p>
+<blockquote>
+<p>Is this method consistent?</p>
+</blockquote>
+<p>Yes, notice that the slight perturbation depends on grid size <span class="math inline">\(h\)</span>, so <span class="math display">\[
+\lim _{h \rightarrow 0}\left(\mu+\frac{\beta h}{2}\right)=\mu+0=\mu
+\]</span> which returns to the original problem. Since upwind is both stable and consistent, <em>Lax’s Equivalence Theorem</em> guarantees that the numerical solution would converge to the true physical solution!</p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\text { upwind }=\operatorname{centered}\left(\mu\left(1+\mathbb{P}_e\right)\right)
+\]</span></p>
+</div>
+</div>
+<h3 data-original-heading="3.1.4 Second-order Upwind" id="second-order-upwind">3.1.4 Second-order Upwind</h3>
+<p>We build a “smarter” upwind scheme. Usin Taylor’s expansion to design a second order approximation of <span class="math inline">\(u_i^{\prime}\)</span>, using only <span class="math inline">\(u_{i-2}\)</span> and <span class="math inline">\(u_{i-1}\)</span>.</p>
+<p>The standard upwind scheme only looks one step behind (<span class="math inline">\(u_{i-1}\)</span>), which gives you poor, first-order accuracy <span class="math inline">\(\mathcal{O}(h)\)</span>. We can design a scheme that reaches <strong>two steps behind</strong> (<span class="math inline">\(u_{i-1}\)</span> and <span class="math inline">\(u_{i-2}\)</span>) to achieve second-order accuracy <span class="math inline">\(\mathcal{O}(h^2)\)</span>, while still preventing oscillations.</p>
+<h4 data-original-heading="3.1.4.1 Write the Taylor Expansions" id="write-the-taylor-expansions">3.1.4.1 Write the Taylor Expansions</h4>
+<p>We want to approximate the first derivative <span class="math inline">\(u'_i\)</span> at the point <span class="math inline">\(x_i\)</span>. We start by writing the Taylor series for the two upwind points, <span class="math inline">\(u_{i-1}\)</span> and <span class="math inline">\(u_{i-2}\)</span>, similarly,</p>
+<p><span class="math display">\[
+\begin{aligned}
+u_{i-1} &amp;= u_i - h u'_i + \frac{h^2}{2} u''_i - \frac{h^3}{6} u'''_i &amp;&amp;+ \mathcal{O}(h^4) \\
+u_{i-2} &amp;= u_i - (2h) u'_i + \frac{(2h)^2}{2} u''_i - \frac{(2h)^3}{6} u'''_i &amp;&amp;+ \mathcal{O}(h^4)\\
+&amp;= u_i - 2h u'_i + 2h^2 u''_i - \frac{8h^3}{6} u'''_i &amp;&amp;+ \mathcal{O}(h^4)
+\end{aligned}
+\]</span></p>
+<h4 data-original-heading="3.1.4.2 Cancel the Second Derivative" id="cancel-the-second-derivative">3.1.4.2 Cancel the Second Derivative</h4>
+<p>Now, we subtract the <span class="math inline">\(u_{i-2}\)</span> equation from our newly multiplied <span class="math inline">\(4u_{i-1}\)</span> equation: <span class="math display">\[
+\begin{aligned}
+4u_{i-1} &amp;= 4u_i - 4h u'_i + 2h^2 u''_i - \frac{4h^3}{6} u'''_i \\
+-\quad u_{i-2} &amp;= u_i - 2h u'_i + 2h^2 u''_i - \frac{8h^3}{6} u'''_i \\
+\hline
+4u_{i-1} - u_{i-2} &amp;= (4u_i - u_i) + (-4h u'_i - (-2h u'_i)) + (2h^2 u''_i - 2h^2 u''_i) + \text{Remainder}
+\end{aligned}
+\]</span></p>
+<p>Notice how the <span class="math inline">\(u''_i\)</span> terms completely vanish! The math simplifies beautifully to: <span class="math display">\[4u_{i-1} - u_{i-2} = 3u_i - 2h u'_i + \mathcal{O}(h^3)\]</span></p>
+<h4 data-original-heading="3.1.4.3 Solve for u'_i" id="solve-for-u_i">3.1.4.3 Solve for <span class="math inline">\(u'_i\)</span></h4>
+<p>Now that the second derivative is gone, we just use basic algebra to isolate the first derivative <span class="math inline">\(u'_i\)</span>. <span class="math display">\[
+\begin{align}
+2h u'_i  &amp; = 3u_i - 4u_{i-1} + u_{i-2}  &amp;  &amp; + \mathcal{O}(h^3) \\
+u'_i  &amp; = \frac{3u_i - 4u_{i-1} + u_{i-2}}{2h}  &amp;  &amp; + \frac{\mathcal{O}(h^3)}{2h}
+\end{align}
+\]</span> Here, we obtain the final <strong>Second-Order Upwind Formula</strong>: <span class="math display">\[\boxed{ u'_i = \frac{3u_i - 4u_{i-1} + u_{i-2}}{2h} + \mathcal{O}(h^2) }\]</span></p>
+<h3 data-original-heading="Why is this so powerful?" id="why-is-this-so-powerful">3.1.3.4 Why is this so powerful?</h3>
+<p>By adding just one extra node behind your current point (<span class="math inline">\(u_{i-2}\)</span>), you have successfully upgraded the accuracy from <span class="math inline">\(\mathcal{O}(h)\)</span> to <span class="math inline">\(\mathcal{O}(h^2)\)</span>.</p>
+<p>Because you are still exclusively gathering information from the “upwind” side (the side the wind is blowing from), you retain the stability of the upwind scheme and avoid those zig-zag oscillations, but your solution will no longer suffer from severe artificial smearing.</p>
+<p>Would you like to practice setting up the matrix format (<span class="math inline">\(Ax = b\)</span>) for this specific 3-point stencil to see how it changes the main diagonals?</p>
+<h3 data-original-heading="3.1.5 Backward Upwind" id="backward-upwind">3.1.5 Backward Upwind</h3>
+<p>If <span class="math inline">\(\beta&lt;0\)</span>, the wind is backward. Use</p>
+<p><span class="math display">\[
+\frac{u_{i+1}-u_i}{h} .
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span>Next page →</span><span>3.4 Reaction-Dominated Problem</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">3.1 Finite Difference of 1D Problem</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#analytic-solution" class="is-active" aria-current="location">3.1.1 Analytic Solution</a></li><li style="--depth:0"><a href="#finite-difference-discretization">3.1.2 Finite Difference Discretization</a></li><li style="--depth:0"><a href="#stability-and-physical-reliability">3.1.2 Stability and physical reliability</a></li><li style="--depth:0"><a href="#upwind-scheme">3.1.3 Upwind Scheme</a></li><li style="--depth:1"><a href="#stability">3.1.3.1 Stability</a></li><li style="--depth:1"><a href="#proof.">3.1.3.2 Proof.</a></li><li style="--depth:1"><a href="#consistency">3.1.3.2 Consistency</a></li><li style="--depth:1"><a href="#second-order-upwind">3.1.4 Second-order Upwind</a></li><li style="--depth:2"><a href="#write-the-taylor-expansions">3.1.4.1 Write the Taylor Expansions</a></li><li style="--depth:2"><a href="#cancel-the-second-derivative">3.1.4.2 Cancel the Second Derivative</a></li><li style="--depth:2"><a href="#solve-for-u_i">3.1.4.3 Solve for u&#39;_i</a></li><li style="--depth:1"><a href="#why-is-this-so-powerful">3.1.3.4 Why is this so powerful?</a></li><li style="--depth:1"><a href="#backward-upwind">3.1.5 Backward Upwind</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

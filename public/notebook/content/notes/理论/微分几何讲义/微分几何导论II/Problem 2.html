@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Problem 2 — E.H. Notebook</title>
+<meta name="description" content="1 Problem 2Statement. Let M be a smooth n-manifold, let X be a vector field on M, and let \varphi \in \Lambda(M). Prove Cartan’s magic formula L_X \varphi = i_X d\varphi ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="微分几何讲义 file hierarchy" data-sidebar-root="content/notes/理论/微分几何讲义"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/Frederic P Schuller讲义" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4588f86aeacf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Frederic P Schuller讲义</span></button></div><ul class="tree-children" id="folder-4588f86aeacf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC3%E8%AE%B2%20%E5%A4%9A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html"><span class="page-number"></span><span>第3讲 多线性代数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC4%E8%AE%B2%20%E5%8F%AF%E5%BE%AE%E6%B5%81%E5%BD%A2.html"><span class="page-number"></span><span>第4讲 可微流形</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-244bccca26dc" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论I</span></button></div><ul class="tree-children" id="folder-244bccca26dc" hidden><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第一部分 曲线与曲面" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f23833b55fc8" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一部分 曲线与曲面</span></button></div><ul class="tree-children" id="folder-f23833b55fc8" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/1.%20Overview%20of%20Differential%20Geometry.html"><span class="page-number">1</span><span>Overview of Differential Geometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/2.%20Parametrized%20Curves%20%26%20Surfaces.html"><span class="page-number">2</span><span>Parametrized Curves &amp; Surfaces</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vector%20on%20Surface%20(from%20Lecture).html"><span class="page-number">3</span><span>Tangent Vector on Surface (from Lecture)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vectors%20and%20Orientability%20(From%20Notes).html"><span class="page-number">3</span><span>Tangent Vectors and Orientability (From Notes)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/4.%20First%20Fundamental%20Form.html"><span class="page-number">4</span><span>First Fundamental Form</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/5.%20Pushforward%2C%20Pullback%2C%20and%20Local%20Isometry.html"><span class="page-number">5</span><span>Pushforward, Pullback, and Local Isometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/6.%20Normal%20%26%20Geodesic%20Curvature.html"><span class="page-number">6</span><span>Normal &amp; Geodesic Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/7.%20Gauss%20Map%2C%20Shape%20Operator%2C%20and%20Curvatures.html"><span class="page-number">7</span><span>Gauss Map, Shape Operator, and Curvatures</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/8.%20Gauss%20Map%20Area%2C%20Principal%20Curvatures%2C%20Mean%20Curvature%20%26%20Geodesics.html"><span class="page-number">8</span><span>Gauss Map Area, Principal Curvatures, Mean Curvature &amp; Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/9.%20Geodesic%20Normal%20Coordinates%2C%20Exponential%20Map.html"><span class="page-number">9</span><span>Geodesic Normal Coordinates, Exponential Map</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/10.%20Geodesic%20Polar%20Coordinates%2C%20Local%20Length%20Minimizers%2C%20and%20Gauss%E2%80%99s%20Theorema%20Egregium.html"><span class="page-number">10</span><span>Geodesic Polar Coordinates, Local Length Minimizers, and Gauss’s Theorema Egregium</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/12.%20Geodesic%20Triangle%20and%20Euler's%20Characteristics.html"><span class="page-number">12</span><span>Geodesic Triangle and Euler&#39;s Characteristics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第二部分 黎曼几何" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-61e3399769bc" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第二部分 黎曼几何</span></button></div><ul class="tree-children" id="folder-61e3399769bc" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/13.%20Smooth%20Functions%2C%20Tangent%20and%20Cotangent%20Vectors%2C%20Metrics.html"><span class="page-number">13</span><span>Smooth Functions, Tangent and Cotangent Vectors, Metrics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/14.%20Tensors%2C%20Connections%2C%20Lie%20bracket.html"><span class="page-number">14</span><span>Tensors, Connections, Lie bracket</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/15.%20Riemannian%20Connection%2C%20Geodesics%2C%20and%20Parallel%20Transport.html"><span class="page-number">15</span><span>Riemannian Connection, Geodesics, and Parallel Transport</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/16.%20Exponential%20Map%2C%20Normal%20Coordinates%2C%20and%20Distance.html"><span class="page-number">16</span><span>Exponential Map, Normal Coordinates, and Distance</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/17.%20Riemannian%20Distance%2C%20Variations%2C%20and%20Geodesics.html"><span class="page-number">17</span><span>Riemannian Distance, Variations, and Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/18%20Hopf%E2%80%93Rinow%20direction.html"><span class="page-number">18</span><span>Hopf–Rinow direction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/19%20Curvature%20Operator%20and%20Tensoriality.html"><span class="page-number">19</span><span>Curvature Operator and Tensoriality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/20%20Gauss%26Weingarten%20Formulas%2C%20Surfaces%2C%20and%20Sectional%20Curvature.html"><span class="page-number">20</span><span>Gauss&amp;Weingarten Formulas, Surfaces, and Sectional Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/21%20Curvature%20via%20Sectional%20Curvature%2C%20and%20Jacobi%20Fields.html"><span class="page-number">21</span><span>Curvature via Sectional Curvature, and Jacobi Fields</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/22%20Jacobi%20Fields%2C%20Constant%20Curvature%2C%20and%20Conjugate%20Points.html"><span class="page-number">22</span><span>Jacobi Fields, Constant Curvature, and Conjugate Points</span></a></li></ul></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论II" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-016769c1691a" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论II</span></button></div><ul class="tree-children" id="folder-016769c1691a"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%208.html"><span class="page-number"></span><span>Apr 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%2020.html"><span class="page-number"></span><span>Apr 20</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Course%20Content.html"><span class="page-number"></span><span>Course Content</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%202.html"><span class="page-number"></span><span>Problem 2</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span class="page-number"></span><span>Problem 3</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/problem%204.html"><span class="page-number"></span><span>problem 4</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%204%20Boundary%20Distance%20Determines%20Volume%20for%20Simple%20Metrics.html"><span class="page-number"></span><span>Problem 4 Boundary Distance Determines Volume for Simple Metrics</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/index.html">微分几何导论II</a></nav><h1 id="reader-title">Problem 2</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Problem 2" id="problem-2">1 Problem 2</h2>
+<p><strong>Statement.</strong> Let <span class="math inline">\(M\)</span> be a smooth <span class="math inline">\(n\)</span>-manifold, let <span class="math inline">\(X\)</span> be a vector field on <span class="math inline">\(M\)</span>, and let <span class="math inline">\(\varphi \in \Lambda(M)\)</span>. Prove Cartan’s magic formula <span class="math display">\[
+L_X \varphi = i_X d\varphi + d(i_X\varphi).
+\]</span></p>
+<h3 data-original-heading="Big picture / idea" id="big-picture-idea">1.1 Big picture / idea</h3>
+<p>This identity says that the Lie derivative of a differential form can be split into two simpler operations:</p>
+<ol type="1">
+<li>first differentiate the form by <span class="math inline">\(d\)</span>, then insert <span class="math inline">\(X\)</span> by <span class="math inline">\(i_X\)</span></li>
+<li>or first insert <span class="math inline">\(X\)</span>, then differentiate</li>
+</ol>
+<p>and the sum of those two is exactly the infinitesimal change of the form along the flow of <span class="math inline">\(X\)</span>.</p>
+<p>So the geometric idea is:</p>
+<ul>
+<li><span class="math inline">\(L_X\)</span> measures how the form changes as we move along the flow generated by <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(i_X\)</span> plugs the vector field <span class="math inline">\(X\)</span> into the form</li>
+<li><span class="math inline">\(d\)</span> measures infinitesimal variation of the form</li>
+</ul>
+<p>Cartan’s formula says these three operations are not independent. They are tied together by a very rigid algebraic identity.</p>
+<p>The cleanest proof is to define <span class="math display">\[
+D := i_X d + d i_X
+\]</span> and show that <span class="math inline">\(D\)</span> and <span class="math inline">\(L_X\)</span> are the <strong>same derivation</strong> on the whole exterior algebra.</p>
+<hr>
+<h3 data-original-heading="Step 1: define the operator" id="step-1-define-the-operator">1.2 Step 1: define the operator</h3>
+<p>Set <span class="math display">\[
+D := i_X d + d i_X.
+\]</span></p>
+<p>We will prove that <span class="math display">\[
+D\varphi = L_X\varphi
+\]</span> for every differential form <span class="math inline">\(\varphi\)</span>.</p>
+<hr>
+<h3 data-original-heading="Step 2: show that D is a derivation of degree 0" id="step-2-show-that-d-is-a-derivation-of-degree-0">1.3 Step 2: show that <span class="math inline">\(D\)</span> is a derivation of degree <span class="math inline">\(0\)</span></h3>
+<p>Let <span class="math inline">\(\alpha \in \Lambda^r(M)\)</span> and <span class="math inline">\(\beta \in \Lambda^s(M)\)</span>. Then <span class="math display">\[
+\begin{aligned}
+D(\alpha \wedge \beta)
+&amp;= i_X d(\alpha \wedge \beta) + d\bigl(i_X(\alpha \wedge \beta)\bigr).
+\end{aligned}
+\]</span></p>
+<p>Now use the product rules for <span class="math inline">\(d\)</span> and <span class="math inline">\(i_X\)</span>: <span class="math display">\[
+d(\alpha \wedge \beta)=d\alpha \wedge \beta + (-1)^r \alpha \wedge d\beta
+\]</span> and <span class="math display">\[
+i_X(\alpha \wedge \beta)=i_X\alpha \wedge \beta + (-1)^r \alpha \wedge i_X\beta.
+\]</span></p>
+<p>Substitute these in: <span class="math display">\[
+\begin{aligned}
+D(\alpha \wedge \beta)
+&amp;= i_X\bigl(d\alpha \wedge \beta + (-1)^r \alpha \wedge d\beta\bigr)
+   + d\bigl(i_X\alpha \wedge \beta + (-1)^r \alpha \wedge i_X\beta\bigr).
+\end{aligned}
+\]</span></p>
+<p>Now expand the first term: <span class="math display">\[
+\begin{aligned}
+i_X\bigl(d\alpha \wedge \beta + (-1)^r \alpha \wedge d\beta\bigr)
+&amp;= i_X(d\alpha \wedge \beta) + (-1)^r i_X(\alpha \wedge d\beta) \\
+&amp;= i_X d\alpha \wedge \beta + (-1)^{r+1} d\alpha \wedge i_X\beta \\
+&amp;\qquad + (-1)^r i_X\alpha \wedge d\beta + \alpha \wedge i_X d\beta.
+\end{aligned}
+\]</span></p>
+<p>Now expand the second term: <span class="math display">\[
+\begin{aligned}
+d\bigl(i_X\alpha \wedge \beta + (-1)^r \alpha \wedge i_X\beta\bigr)
+&amp;= d(i_X\alpha \wedge \beta) + (-1)^r d(\alpha \wedge i_X\beta) \\
+&amp;= d(i_X\alpha)\wedge \beta + (-1)^{r-1} i_X\alpha \wedge d\beta \\
+&amp;\qquad + (-1)^r d\alpha \wedge i_X\beta + \alpha \wedge d(i_X\beta).
+\end{aligned}
+\]</span></p>
+<p>Add the two expansions: <span class="math display">\[
+\begin{aligned}
+D(\alpha \wedge \beta)
+&amp;= \bigl(i_X d\alpha + d(i_X\alpha)\bigr)\wedge \beta
+   + \alpha \wedge \bigl(i_X d\beta + d(i_X\beta)\bigr) \\
+&amp;\qquad + \Bigl((-1)^{r+1}+(-1)^r\Bigr)d\alpha \wedge i_X\beta \\
+&amp;\qquad + \Bigl((-1)^r+(-1)^{r-1}\Bigr)i_X\alpha \wedge d\beta.
+\end{aligned}
+\]</span></p>
+<p>But <span class="math display">\[
+(-1)^{r+1}+(-1)^r = 0,
+\qquad
+(-1)^r+(-1)^{r-1}=0,
+\]</span> so the mixed terms cancel. Therefore <span class="math display">\[
+\begin{aligned}
+D(\alpha \wedge \beta)
+&amp;= \bigl(i_X d\alpha + d(i_X\alpha)\bigr)\wedge \beta
+   + \alpha \wedge \bigl(i_X d\beta + d(i_X\beta)\bigr) \\
+&amp;= D\alpha \wedge \beta + \alpha \wedge D\beta.
+\end{aligned}
+\]</span></p>
+<p>So <span class="math inline">\(D\)</span> is a derivation of degree <span class="math inline">\(0\)</span>.</p>
+<hr>
+<h3 data-original-heading="Step 3: recall that L_X is also a derivation of degree 0" id="step-3-recall-that-l_x-is-also-a-derivation-of-degree-0">1.4 Step 3: recall that <span class="math inline">\(L_X\)</span> is also a derivation of degree <span class="math inline">\(0\)</span></h3>
+<p>For the Lie derivative of forms, we have <span class="math display">\[
+L_X(\alpha \wedge \beta)=L_X\alpha \wedge \beta + \alpha \wedge L_X\beta.
+\]</span></p>
+<p>So <span class="math inline">\(L_X\)</span> is also a derivation of degree <span class="math inline">\(0\)</span>.</p>
+<p>This is the key structural point: both <span class="math inline">\(D\)</span> and <span class="math inline">\(L_X\)</span> are derivations on the exterior algebra. So to prove they are equal everywhere, it is enough to check them on generators.</p>
+<hr>
+<h3 data-original-heading="Step 4: check equality on functions" id="step-4-check-equality-on-functions">1.5 Step 4: check equality on functions</h3>
+<p>Let <span class="math inline">\(f \in C^\infty(M)=\Lambda^0(M)\)</span>. Then <span class="math display">\[
+\begin{aligned}
+Df
+&amp;= i_X(df) + d(i_X f) \\
+&amp;= i_X(df) + d(0) \\
+&amp;= df(X) \\
+&amp;= Xf.
+\end{aligned}
+\]</span></p>
+<p>But the Lie derivative of a function is just differentiation along <span class="math inline">\(X\)</span>, so <span class="math display">\[
+L_X f = Xf.
+\]</span></p>
+<p>Hence <span class="math display">\[
+Df=L_Xf
+\]</span> for all functions <span class="math inline">\(f\)</span>.</p>
+<hr>
+<h3 data-original-heading="Step 5: check equality on 1-forms" id="step-5-check-equality-on-1-forms">1.6 Step 5: check equality on <span class="math inline">\(1\)</span>-forms</h3>
+<p>Let <span class="math inline">\(\alpha\)</span> be a <span class="math inline">\(1\)</span>-form, and let <span class="math inline">\(Y\)</span> be any vector field. We compute <span class="math inline">\((D\alpha)(Y)\)</span>.</p>
+<p>By definition, <span class="math display">\[
+\begin{aligned}
+(D\alpha)(Y)
+&amp;= \bigl(i_X d\alpha + d(i_X\alpha)\bigr)(Y) \\
+&amp;= (i_X d\alpha)(Y) + d(i_X\alpha)(Y) \\
+&amp;= d\alpha(X,Y) + Y\bigl(\alpha(X)\bigr).
+\end{aligned}
+\]</span></p>
+<p>Now use the formula for <span class="math inline">\(d\alpha\)</span> on two vector fields: <span class="math display">\[
+d\alpha(X,Y)=X(\alpha(Y)) - Y(\alpha(X)) - \alpha([X,Y]).
+\]</span></p>
+<p>Substitute: <span class="math display">\[
+\begin{aligned}
+(D\alpha)(Y)
+&amp;= X(\alpha(Y)) - Y(\alpha(X)) - \alpha([X,Y]) + Y(\alpha(X)) \\
+&amp;= X(\alpha(Y)) - \alpha([X,Y]).
+\end{aligned}
+\]</span></p>
+<p>Now compute the Lie derivative of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\(Y\)</span>: <span class="math display">\[
+(L_X\alpha)(Y)=X(\alpha(Y))-\alpha(L_XY).
+\]</span></p>
+<p>Since <span class="math display">\[
+L_XY=[X,Y],
+\]</span> we get <span class="math display">\[
+\begin{aligned}
+(L_X\alpha)(Y)
+&amp;= X(\alpha(Y))-\alpha([X,Y]).
+\end{aligned}
+\]</span></p>
+<p>Therefore <span class="math display">\[
+(D\alpha)(Y)=(L_X\alpha)(Y)
+\]</span> for every vector field <span class="math inline">\(Y\)</span>, hence <span class="math display">\[
+D\alpha=L_X\alpha
+\]</span> for every <span class="math inline">\(1\)</span>-form <span class="math inline">\(\alpha\)</span>.</p>
+<hr>
+<h3 data-original-heading="Step 6: conclude for all forms" id="step-6-conclude-for-all-forms">1.7 Step 6: conclude for all forms</h3>
+<p>Every differential form is built from functions and <span class="math inline">\(1\)</span>-forms using wedge products and addition. Locally, any <span class="math inline">\(r\)</span>-form can be written as <span class="math display">\[
+\varphi=\sum_{i_1&lt;\cdots&lt;i_r} \varphi_{i_1\cdots i_r}\, dx^{i_1}\wedge\cdots\wedge dx^{i_r}.
+\]</span></p>
+<p>Since both <span class="math inline">\(D\)</span> and <span class="math inline">\(L_X\)</span> are degree-<span class="math inline">\(0\)</span> derivations, and since they agree on functions and on <span class="math inline">\(1\)</span>-forms, they must agree on all differential forms.</p>
+<p>Therefore <span class="math display">\[
+\boxed{L_X\varphi = i_X d\varphi + d(i_X\varphi).}
+\]</span></p>
+<hr>
+<h3 data-original-heading="Final comment on why this proof works" id="final-comment-on-why-this-proof-works">1.8 Final comment on why this proof works</h3>
+<p>The point is not brute-force coordinate computation. The real idea is that the exterior algebra is generated by low-degree objects:</p>
+<ul>
+<li><span class="math inline">\(0\)</span>-forms = functions</li>
+<li><span class="math inline">\(1\)</span>-forms</li>
+</ul>
+<p>Once two derivations agree on these generators, they agree on everything. So the proof reduces a statement about <strong>all forms of all degrees</strong> to a computation on just:</p>
+<ul>
+<li>functions</li>
+<li><span class="math inline">\(1\)</span>-forms</li>
+</ul>
+<p>That is the conceptual core of Cartan’s formula.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Final.html"><span>← Previous page</span><span>Final</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span>Next page →</span><span>Problem 3</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Problem 2</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#problem-2" class="is-active" aria-current="location">1 Problem 2</a></li><li style="--depth:1"><a href="#big-picture-idea">1.1 Big picture / idea</a></li><li style="--depth:1"><a href="#step-1-define-the-operator">1.2 Step 1: define the operator</a></li><li style="--depth:1"><a href="#step-2-show-that-d-is-a-derivation-of-degree-0">1.3 Step 2: show that D is a derivation of degree 0</a></li><li style="--depth:1"><a href="#step-3-recall-that-l_x-is-also-a-derivation-of-degree-0">1.4 Step 3: recall that L_X is also a derivation of degree 0</a></li><li style="--depth:1"><a href="#step-4-check-equality-on-functions">1.5 Step 4: check equality on functions</a></li><li style="--depth:1"><a href="#step-5-check-equality-on-1-forms">1.6 Step 5: check equality on 1-forms</a></li><li style="--depth:1"><a href="#step-6-conclude-for-all-forms">1.7 Step 6: conclude for all forms</a></li><li style="--depth:1"><a href="#final-comment-on-why-this-proof-works">1.8 Final comment on why this proof works</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

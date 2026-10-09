@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 21 The Einstein Equation (2) — E.H. Notebook</title>
+<meta name="description" content="1. Overview: From Newtonian Gravity to Einstein’s EquationIn Newtonian gravity, Gauss’s law for the gravitational field \vec g is \vec\nabla\cdot\vec g = -4\pi G\rho With">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 21 The Einstein Equation (2)</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1. Overview: From Newtonian Gravity to Einstein’s Equation" id="overview-from-newtonian-gravity-to-einsteins-equation">1. Overview: From Newtonian Gravity to Einstein’s Equation</h2>
+<p>In Newtonian gravity, Gauss’s law for the gravitational field <span class="math inline">\(\vec g\)</span> is <span class="math display">\[
+\vec\nabla\cdot\vec g = -4\pi G\rho
+\]</span> With <span class="math inline">\(\vec g = -\vec\nabla\Phi\)</span> this is equivalent to the Poisson equation <span class="math display">\[
+\nabla^2 \Phi = 4\pi G\rho \tag{21.1}
+\]</span> where <span class="math inline">\(\Phi\)</span> is the gravitational potential and <span class="math inline">\(\rho\)</span> is the <strong>mass density</strong>.</p>
+<p>In general relativity, we already know that the relativistic generalization of mass density is the <strong>stress-energy tensor</strong> <span class="math inline">\(T^{\mu\nu}\)</span>. So the relativistic analogue of <span class="math inline">\(\nabla^2\Phi = 4\pi G\rho\)</span> is expected to be an equation of the form <span class="math display">\[
+G^{\mu\nu} = \kappa T^{\mu\nu} \tag{21.2}
+\]</span> Here:</p>
+<ul>
+<li><span class="math inline">\(\kappa\)</span> is a scalar constant to be determined (later it will become <span class="math inline">\(8\pi G\)</span>),</li>
+<li><span class="math inline">\(G^{\mu\nu}\)</span> is some second-rank tensor built from the spacetime curvature.</li>
+</ul>
+<p>We will call <span class="math inline">\(G^{\mu\nu}\)</span> the <strong>Einstein tensor</strong>.</p>
+<div class="math-theorem definition" data-label="21.1" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 21.1</span><span class="theorem-title">Goal of the chapter</span></p>
+</div>
+<div class="theorem-content">
+<p>Construct a second-rank tensor <span class="math inline">\(G^{\mu\nu}\)</span> made from the curvature such that <span class="math inline">\(G^{\mu\nu} = \kappa T^{\mu\nu}\)</span> plays the role of the gravitational field equation and reduces to <span class="math inline">\(\nabla^2\Phi = 4\pi G\rho\)</span> in the Newtonian limit.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="2. Constraints on G^{\mu\nu}" id="constraints-on-gmunu">2. Constraints on <span class="math inline">\(G^{\mu\nu}\)</span></h2>
+<p>Physical and mathematical requirements constrain the possible form of <span class="math inline">\(G^{\mu\nu}\)</span>:</p>
+<ol type="1">
+<li><p><strong>Built from curvature</strong><br>
+<span class="math inline">\(G^{\mu\nu}\)</span> should be constructed from the Riemann tensor <span class="math inline">\(R^\alpha_{\ \beta\gamma\delta}\)</span> and the metric <span class="math inline">\(g_{\mu\nu}\)</span>, since these describe curvature.</p></li>
+<li><p><strong>Symmetry</strong><br>
+Since <span class="math inline">\(T^{\mu\nu}\)</span> is symmetric, <span class="math inline">\(G^{\mu\nu}\)</span> must also be symmetric.</p></li>
+<li><p><strong>Conservation law</strong><br>
+Local conservation of four-momentum gives <span class="math inline">\(\nabla_\nu T^{\mu\nu} = 0\)</span>. Taking the divergence of equation <span class="math inline">\((21.2)\)</span> shows we must have <span class="math display">\[
+\nabla_\nu G^{\mu\nu} = 0
+\]</span> identically.</p></li>
+<li><p><strong>Newtonian limit</strong><br>
+In the weak-field, slow-motion limit, <span class="math inline">\(G^{\mu\nu} = \kappa T^{\mu\nu}\)</span> must reduce to the Poisson equation <span class="math inline">\(\nabla^2\Phi = 4\pi G\rho\)</span>.</p></li>
+</ol>
+<p>We now try to construct such a tensor.</p>
+<hr>
+<h2 data-original-heading="3. First Guess: The Ricci Tensor" id="first-guess-the-ricci-tensor">3. First Guess: The Ricci Tensor</h2>
+<p>The simplest candidate built from the Riemann tensor is the <strong>Ricci tensor</strong>, defined by the contraction <span class="math display">\[
+R_{\beta\nu} \equiv R^\alpha_{\ \beta\alpha\nu} \tag{21.3}
+\]</span> This is the Ricci tensor with both indices down.</p>
+<p>The version with both indices raised is obtained by contracting with two copies of the inverse metric: <span class="math display">\[
+\begin{aligned}
+R^{\mu\nu}
+&amp;\equiv g^{\mu\beta} g^{\nu\sigma} R_{\beta\sigma} \\[4pt]
+&amp;= g^{\mu\beta} g^{\nu\sigma} R^\alpha_{\ \beta\alpha\sigma} \\[4pt]
+&amp;= g^{\mu\beta} g^{\nu\sigma} g^{\alpha\gamma} R_{\alpha\beta\gamma\sigma} 
+\end{aligned} \tag{21.4}
+\]</span></p>
+<p>Because the Riemann tensor has the symmetry <span class="math inline">\(R_{\alpha\beta\gamma\sigma} = R_{\gamma\sigma\alpha\beta}\)</span>, the Ricci tensor is symmetric: <span class="math display">\[
+\begin{aligned}
+R^{\nu\mu}
+&amp;= g^{\nu\beta} g^{\mu\sigma} g^{\alpha\gamma} R_{\alpha\beta\gamma\sigma} \\[4pt]
+&amp;= g^{\nu\beta} g^{\mu\sigma} g^{\alpha\gamma} R_{\gamma\sigma\alpha\beta}
+   \underbrace{=}_{\text{swap pairs using symmetry}}
+   g^{\nu\sigma} g^{\mu\beta} g^{\gamma\alpha} R_{\alpha\beta\gamma\sigma} \\[4pt]
+&amp;= g^{\mu\beta} g^{\nu\sigma} g^{\alpha\gamma} R_{\alpha\beta\gamma\sigma}
+   \equiv R^{\mu\nu}
+\end{aligned} \tag{21.5}
+\]</span></p>
+<p>So <span class="math inline">\(R^{\mu\nu}\)</span> is symmetric and built purely from curvature — good.<br>
+However, this first guess fails one requirement: <span class="math display">\[
+\nabla_\nu R^{\mu\nu} \neq 0
+\]</span> in general, so <span class="math inline">\(R^{\mu\nu}\)</span> cannot be the full <span class="math inline">\(G^{\mu\nu}\)</span>.</p>
+<hr>
+<h2 data-original-heading="4. Second Guess: Add the Curvature Scalar" id="second-guess-add-the-curvature-scalar">4. Second Guess: Add the Curvature Scalar</h2>
+<p>What else can we construct? Besides <span class="math inline">\(R^{\mu\nu}\)</span>, the only reasonable second-rank symmetric tensors that are <strong>linear</strong> in the Riemann tensor and built using the metric are:</p>
+<ul>
+<li><span class="math inline">\(R^{\mu\nu}\)</span></li>
+<li><span class="math inline">\(g^{\mu\nu}\)</span></li>
+<li><span class="math inline">\(g^{\mu\nu} R\)</span></li>
+</ul>
+<p>Here <span class="math inline">\(R\)</span> is the <strong>curvature scalar</strong>, the double contraction of the Ricci tensor: <span class="math display">\[
+\begin{aligned}
+R 
+&amp;\equiv g^{\beta\nu} R_{\beta\nu} \\[2pt]
+&amp;= g^{\beta\nu} R^\alpha_{\ \beta\alpha\nu} \\[2pt]
+&amp;= g^{\beta\nu} g^{\alpha\mu} R_{\alpha\beta\mu\nu}
+\end{aligned} \tag{21.6}
+\]</span></p>
+<p>Thus the most general linear combination with the right index structure is <span class="math display">\[
+R^{\mu\nu} + b\,g^{\mu\nu} R + \Lambda g^{\mu\nu}
+\]</span> where <span class="math inline">\(b\)</span> and <span class="math inline">\(\Lambda\)</span> are constants. We now demand that its divergence vanish: <span class="math display">\[
+\nabla_\nu \big(R^{\mu\nu} + b\,g^{\mu\nu} R + \Lambda g^{\mu\nu}\big) = 0 \tag{21.7}
+\]</span></p>
+<p>Because the metric has zero covariant derivative, and <span class="math inline">\(\Lambda\)</span> is a constant, <span class="math display">\[
+\nabla_\nu(\Lambda g^{\mu\nu}) = 0 \tag{21.8}
+\]</span> automatically. So the condition reduces to <span class="math display">\[
+\nabla_\nu \big(R^{\mu\nu} + b\,g^{\mu\nu} R\big) = 0 \tag{21.9}
+\]</span></p>
+<p>Using the (contracted) Bianchi identity, one finds this is identically satisfied <strong>if and only if</strong> <span class="math display">\[
+b = -\tfrac12
+\]</span> Therefore the combination <span class="math display">\[
+R^{\mu\nu} - \tfrac12 g^{\mu\nu} R + \Lambda g^{\mu\nu} = \kappa T^{\mu\nu} \tag{21.10}
+\]</span> has zero covariant divergence and satisfies all of our constraints.</p>
+<hr>
+<h2 data-original-heading="5. The Einstein Tensor and General Einstein Equation" id="the-einstein-tensor-and-general-einstein-equation">5. The Einstein Tensor and General Einstein Equation</h2>
+<div class="math-theorem definition" data-label="21.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 21.2</span><span class="theorem-title">Einstein tensor</span></p>
+</div>
+<div class="theorem-content">
+<p>The Einstein tensor is defined by<br>
+<span class="math display">\[
+G^{\mu\nu} \equiv R^{\mu\nu} - \tfrac12 g^{\mu\nu} R \tag{21.11}
+\]</span></p>
+</div>
+</div>
+<p>Using this definition, equation <span class="math inline">\((21.10)\)</span> becomes <span class="math display">\[
+G^{\mu\nu} + \Lambda g^{\mu\nu} = \kappa T^{\mu\nu} \tag{21.12}
+\]</span> This is the <strong>Einstein equation</strong> in its most general tensor form, including a possible cosmological constant <span class="math inline">\(\Lambda\)</span>.</p>
+<hr>
+<h2 data-original-heading="6. An Alternative Form of the Einstein Equation" id="an-alternative-form-of-the-einstein-equation">6. An Alternative Form of the Einstein Equation</h2>
+<p>We can derive a useful alternate version by taking the trace of <span class="math inline">\((21.10)\)</span>.</p>
+<p>First contract both sides with <span class="math inline">\(g_{\mu\nu}\)</span>: <span class="math display">\[
+\begin{aligned}
+g_{\mu\nu}\big(R^{\mu\nu} - \tfrac12 g^{\mu\nu} R + \Lambda g^{\mu\nu}\big)
+&amp;= g_{\mu\nu}\kappa T^{\mu\nu} \\[4pt]
+\underbrace{g_{\mu\nu}R^{\mu\nu}}_{=R}
+\;-\;
+\underbrace{\tfrac12 g_{\mu\nu}g^{\mu\nu}}_{\tfrac12\cdot 4 = 2} R
+\;+\;
+\underbrace{\Lambda g_{\mu\nu}g^{\mu\nu}}_{4\Lambda}
+&amp;= \kappa\,\underbrace{g_{\mu\nu}T^{\mu\nu}}_{T}
+\end{aligned}
+\]</span> so <span class="math display">\[
+-R + 4\Lambda = \kappa T \tag{21.13}
+\]</span> where <span class="math inline">\(T\equiv g_{\mu\nu}T^{\mu\nu} = T^\mu_{\ \mu}\)</span> is the trace of the stress-energy tensor.</p>
+<p>Now multiply both sides of <span class="math inline">\((21.13)\)</span> by <span class="math inline">\(\tfrac12 g^{\mu\nu}\)</span> and subtract from <span class="math inline">\((21.10)\)</span>: <span class="math display">\[
+\begin{aligned}
+R^{\mu\nu} - \tfrac12 g^{\mu\nu}R + \Lambda g^{\mu\nu}
+&amp;\;-\;\tfrac12 g^{\mu\nu}(-R + 4\Lambda) \\
+&amp;= \kappa T^{\mu\nu} - \tfrac12 g^{\mu\nu}\kappa T
+\end{aligned}
+\]</span> The <span class="math inline">\(R\)</span> and <span class="math inline">\(\Lambda\)</span> terms combine so that the left side simplifies to just <span class="math inline">\(R^{\mu\nu}\)</span>. Thus <span class="math display">\[
+R^{\mu\nu} = \kappa\big(T^{\mu\nu} - \tfrac12 g^{\mu\nu}T\big) + \Lambda g^{\mu\nu} \tag{21.14}
+\]</span></p>
+<div class="math-theorem remark" data-label="21.3" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 21.3</span><span class="theorem-title">Alternative form</span></p>
+</div>
+<div class="theorem-content">
+<p>Equation <span class="math inline">\((21.14)\)</span> is often more convenient in practice than <span class="math inline">\((21.12)\)</span> because it directly expresses <span class="math inline">\(R^{\mu\nu}\)</span> in terms of <span class="math inline">\(T^{\mu\nu}\)</span> and its trace.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="7. Newtonian Limit and Determination of \kappa and \Lambda" id="newtonian-limit-and-determination-of-kappa-and-lambda">7. Newtonian Limit and Determination of <span class="math inline">\(\kappa\)</span> and <span class="math inline">\(\Lambda\)</span></h2>
+<p>To fix <span class="math inline">\(\kappa\)</span> we require that the Einstein equation reproduce the Newtonian tidal-deviation equation.</p>
+<h3 data-original-heading="7.1 Relativistic vs Newtonian tidal deviation" id="relativistic-vs-newtonian-tidal-deviation">7.1 Relativistic vs Newtonian tidal deviation</h3>
+<p>From chapter 18, the Newtonian equation of tidal deviation is <span class="math display">\[
+\frac{d^2 n^i}{dt^2}
+= -\eta^{ij}[\partial_k\partial_j\Phi]\,h^k \tag{21.15}
+\]</span> (Equation <span class="math inline">\((18.4)\)</span> in the book.)</p>
+<p>The corresponding relativistic geodesic deviation equation is <span class="math display">\[
+\left(\frac{d^2 n}{d\tau^2}\right)^\alpha
+= -R^\alpha_{\ \mu\nu\sigma}u^\mu u^\nu n^\sigma \tag{21.16}
+\]</span></p>
+<p>In the <strong>Newtonian limit</strong> we impose:</p>
+<ol type="1">
+<li>The gravitational field is weak (spacetime almost flat).</li>
+<li>Test objects move slowly: speeds <span class="math inline">\(\ll 1\)</span>.</li>
+<li>The mass-energy density is dominated by <span class="math inline">\(T^{tt}=\rho\)</span>, with other components of <span class="math inline">\(T^{\mu\nu}\)</span> negligible.</li>
+</ol>
+<p>In this limit we choose nearly cartesian coordinates <span class="math inline">\((t,x,y,z)\)</span> such that the metric is close to the flat-space metric <span class="math inline">\(\eta_{\mu\nu}\)</span> and <span class="math inline">\(\tau \approx t\)</span> for slow-moving particles.</p>
+<h3 data-original-heading="7.2 Spatial components of geodesic deviation" id="spatial-components-of-geodesic-deviation">7.2 Spatial components of geodesic deviation</h3>
+<p>In this limit, the spatial components (<span class="math inline">\(\alpha=i\)</span>) of <span class="math inline">\((21.16)\)</span> become <span class="math display">\[
+\frac{d^2 n^i}{dt^2}
+= -R^i_{\ \mu\nu\sigma}u^\mu n^\nu u^\sigma
+\approx -R^i_{\ t\nu t}n^\nu
+= -R^i_{\ t k t}n^k \tag{21.17}
+\]</span> where <span class="math inline">\(i\)</span> and <span class="math inline">\(k\)</span> take only spatial values and in the last step we used that <span class="math inline">\(R^i_{\ t t t}=0\)</span> (a symmetry property of the Riemann tensor).</p>
+<p>Comparing <span class="math inline">\((21.17)\)</span> with the Newtonian tidal equation <span class="math inline">\((21.15)\)</span>, we see that in the Newtonian limit <span class="math display">\[
+\eta^{ij}(\partial_j\partial_k\Phi) \approx R^i_{\ t k t}
+\]</span> Contracting <span class="math inline">\(i\)</span> with <span class="math inline">\(k\)</span> gives <span class="math display">\[
+\begin{aligned}
+\nabla^2\Phi
+&amp;\equiv \eta^{jk}(\partial_j\partial_k\Phi)
+\approx R^k_{\ t k t}
+= R^\alpha_{\ t\alpha t}
+\equiv R_{tt}
+\end{aligned} \tag{21.18}
+\]</span></p>
+<h3 data-original-heading="7.3 Using the Einstein equation" id="using-the-einstein-equation">7.3 Using the Einstein equation</h3>
+<p>When the metric is approximately flat, raising indices with <span class="math inline">\(g^{\mu\nu}\approx \eta^{\mu\nu}\)</span> gives <span class="math display">\[
+R^t_{\ t} \equiv g^{t\mu}R_{\mu t} \approx \eta^{t\mu}R_{\mu t}
+= (-1)R_{tt}
+\]</span> so <span class="math inline">\(R^t_{\ t} \approx \nabla^2\Phi\)</span> as well.</p>
+<p>Take the <span class="math inline">\(t\)</span>–<span class="math inline">\(t\)</span> component of</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span>← Previous page</span><span>Ch. 21 The Einstein Equation</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span>Next page →</span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 21 The Einstein Equation (2)</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#overview-from-newtonian-gravity-to-einsteins-equation" class="is-active" aria-current="location">1. Overview: From Newtonian Gravity to Einstein’s Equation</a></li><li style="--depth:0"><a href="#constraints-on-gmunu">2. Constraints on G^{\mu\nu}</a></li><li style="--depth:0"><a href="#first-guess-the-ricci-tensor">3. First Guess: The Ricci Tensor</a></li><li style="--depth:0"><a href="#second-guess-add-the-curvature-scalar">4. Second Guess: Add the Curvature Scalar</a></li><li style="--depth:0"><a href="#the-einstein-tensor-and-general-einstein-equation">5. The Einstein Tensor and General Einstein Equation</a></li><li style="--depth:0"><a href="#an-alternative-form-of-the-einstein-equation">6. An Alternative Form of the Einstein Equation</a></li><li style="--depth:0"><a href="#newtonian-limit-and-determination-of-kappa-and-lambda">7. Newtonian Limit and Determination of \kappa and \Lambda</a></li><li style="--depth:1"><a href="#relativistic-vs-newtonian-tidal-deviation">7.1 Relativistic vs Newtonian tidal deviation</a></li><li style="--depth:1"><a href="#spatial-components-of-geodesic-deviation">7.2 Spatial components of geodesic deviation</a></li><li style="--depth:1"><a href="#using-the-einstein-equation">7.3 Using the Einstein equation</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

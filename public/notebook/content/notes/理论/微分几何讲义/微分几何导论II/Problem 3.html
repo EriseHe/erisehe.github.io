@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Problem 3 — E.H. Notebook</title>
+<meta name="description" content="1 Problem 3Statement. Let M be a manifold with smooth boundary \partial M. Let g be a Riemannian metric smooth on M such that \partial M is strictly convex. Prove that fo">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="微分几何讲义 file hierarchy" data-sidebar-root="content/notes/理论/微分几何讲义"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/Frederic P Schuller讲义" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4588f86aeacf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Frederic P Schuller讲义</span></button></div><ul class="tree-children" id="folder-4588f86aeacf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC3%E8%AE%B2%20%E5%A4%9A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html"><span class="page-number"></span><span>第3讲 多线性代数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC4%E8%AE%B2%20%E5%8F%AF%E5%BE%AE%E6%B5%81%E5%BD%A2.html"><span class="page-number"></span><span>第4讲 可微流形</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-244bccca26dc" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论I</span></button></div><ul class="tree-children" id="folder-244bccca26dc" hidden><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第一部分 曲线与曲面" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f23833b55fc8" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一部分 曲线与曲面</span></button></div><ul class="tree-children" id="folder-f23833b55fc8" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/1.%20Overview%20of%20Differential%20Geometry.html"><span class="page-number">1</span><span>Overview of Differential Geometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/2.%20Parametrized%20Curves%20%26%20Surfaces.html"><span class="page-number">2</span><span>Parametrized Curves &amp; Surfaces</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vector%20on%20Surface%20(from%20Lecture).html"><span class="page-number">3</span><span>Tangent Vector on Surface (from Lecture)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vectors%20and%20Orientability%20(From%20Notes).html"><span class="page-number">3</span><span>Tangent Vectors and Orientability (From Notes)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/4.%20First%20Fundamental%20Form.html"><span class="page-number">4</span><span>First Fundamental Form</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/5.%20Pushforward%2C%20Pullback%2C%20and%20Local%20Isometry.html"><span class="page-number">5</span><span>Pushforward, Pullback, and Local Isometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/6.%20Normal%20%26%20Geodesic%20Curvature.html"><span class="page-number">6</span><span>Normal &amp; Geodesic Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/7.%20Gauss%20Map%2C%20Shape%20Operator%2C%20and%20Curvatures.html"><span class="page-number">7</span><span>Gauss Map, Shape Operator, and Curvatures</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/8.%20Gauss%20Map%20Area%2C%20Principal%20Curvatures%2C%20Mean%20Curvature%20%26%20Geodesics.html"><span class="page-number">8</span><span>Gauss Map Area, Principal Curvatures, Mean Curvature &amp; Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/9.%20Geodesic%20Normal%20Coordinates%2C%20Exponential%20Map.html"><span class="page-number">9</span><span>Geodesic Normal Coordinates, Exponential Map</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/10.%20Geodesic%20Polar%20Coordinates%2C%20Local%20Length%20Minimizers%2C%20and%20Gauss%E2%80%99s%20Theorema%20Egregium.html"><span class="page-number">10</span><span>Geodesic Polar Coordinates, Local Length Minimizers, and Gauss’s Theorema Egregium</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/12.%20Geodesic%20Triangle%20and%20Euler's%20Characteristics.html"><span class="page-number">12</span><span>Geodesic Triangle and Euler&#39;s Characteristics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第二部分 黎曼几何" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-61e3399769bc" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第二部分 黎曼几何</span></button></div><ul class="tree-children" id="folder-61e3399769bc" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/13.%20Smooth%20Functions%2C%20Tangent%20and%20Cotangent%20Vectors%2C%20Metrics.html"><span class="page-number">13</span><span>Smooth Functions, Tangent and Cotangent Vectors, Metrics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/14.%20Tensors%2C%20Connections%2C%20Lie%20bracket.html"><span class="page-number">14</span><span>Tensors, Connections, Lie bracket</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/15.%20Riemannian%20Connection%2C%20Geodesics%2C%20and%20Parallel%20Transport.html"><span class="page-number">15</span><span>Riemannian Connection, Geodesics, and Parallel Transport</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/16.%20Exponential%20Map%2C%20Normal%20Coordinates%2C%20and%20Distance.html"><span class="page-number">16</span><span>Exponential Map, Normal Coordinates, and Distance</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/17.%20Riemannian%20Distance%2C%20Variations%2C%20and%20Geodesics.html"><span class="page-number">17</span><span>Riemannian Distance, Variations, and Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/18%20Hopf%E2%80%93Rinow%20direction.html"><span class="page-number">18</span><span>Hopf–Rinow direction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/19%20Curvature%20Operator%20and%20Tensoriality.html"><span class="page-number">19</span><span>Curvature Operator and Tensoriality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/20%20Gauss%26Weingarten%20Formulas%2C%20Surfaces%2C%20and%20Sectional%20Curvature.html"><span class="page-number">20</span><span>Gauss&amp;Weingarten Formulas, Surfaces, and Sectional Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/21%20Curvature%20via%20Sectional%20Curvature%2C%20and%20Jacobi%20Fields.html"><span class="page-number">21</span><span>Curvature via Sectional Curvature, and Jacobi Fields</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/22%20Jacobi%20Fields%2C%20Constant%20Curvature%2C%20and%20Conjugate%20Points.html"><span class="page-number">22</span><span>Jacobi Fields, Constant Curvature, and Conjugate Points</span></a></li></ul></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论II" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-016769c1691a" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论II</span></button></div><ul class="tree-children" id="folder-016769c1691a"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%208.html"><span class="page-number"></span><span>Apr 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%2020.html"><span class="page-number"></span><span>Apr 20</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Course%20Content.html"><span class="page-number"></span><span>Course Content</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%202.html"><span class="page-number"></span><span>Problem 2</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span class="page-number"></span><span>Problem 3</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/problem%204.html"><span class="page-number"></span><span>problem 4</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%204%20Boundary%20Distance%20Determines%20Volume%20for%20Simple%20Metrics.html"><span class="page-number"></span><span>Problem 4 Boundary Distance Determines Volume for Simple Metrics</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/index.html">微分几何导论II</a></nav><h1 id="reader-title">Problem 3</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Problem 3" id="problem-3">1 Problem 3</h2>
+<p><strong>Statement.</strong> Let <span class="math inline">\(M\)</span> be a manifold with smooth boundary <span class="math inline">\(\partial M\)</span>. Let <span class="math inline">\(g\)</span> be a Riemannian metric smooth on <span class="math inline">\(M\)</span> such that <span class="math inline">\(\partial M\)</span> is strictly convex. Prove that for <span class="math inline">\((x,v)\in \partial_+SM\setminus \partial_0SM\)</span>, the geodesic <span class="math inline">\(\gamma_{x,v}(t)\)</span> stays in <span class="math inline">\(M\)</span> for sufficiently small <span class="math inline">\(t&gt;0\)</span>.</p>
+<h3 data-original-heading="Big picture / idea" id="big-picture-idea">1.1 Big picture / idea</h3>
+<p>Near a boundary point, a manifold with boundary looks like a half-space: <span class="math display">\[
+H^n=\{(x^1,\dots,x^n)\in \mathbb{R}^n : x^n\ge 0\}.
+\]</span></p>
+<p>So locally the boundary is just the hyperplane <span class="math display">\[
+x^n=0,
+\]</span> and the interior is the region <span class="math display">\[
+x^n&gt;0.
+\]</span></p>
+<p>Now if a geodesic starts at the boundary and its initial velocity points strictly inward, then its <span class="math inline">\(x^n\)</span>-coordinate must start increasing immediately. That means for small positive time the geodesic moves into the interior, hence stays in <span class="math inline">\(M\)</span>.</p>
+<p>So the proof is really a one-variable calculus argument applied to the function <span class="math display">\[
+h(t):=\rho(\gamma(t)),
+\]</span> where <span class="math inline">\(\rho\)</span> is a boundary defining function.</p>
+<p>The important conceptual point is:</p>
+<ul>
+<li><span class="math inline">\(\rho=0\)</span> on the boundary</li>
+<li><span class="math inline">\(\rho&gt;0\)</span> in the interior</li>
+<li>if <span class="math inline">\(h'(0)&gt;0\)</span>, then <span class="math inline">\(h(t)&gt;0\)</span> for small <span class="math inline">\(t&gt;0\)</span></li>
+</ul>
+<p>That is the whole mechanism.</p>
+<hr>
+<h3 data-original-heading="Step 1: choose a boundary chart" id="step-1-choose-a-boundary-chart">1.2 Step 1: choose a boundary chart</h3>
+<p>Because <span class="math inline">\(M\)</span> is a smooth manifold with boundary, there exists a coordinate neighborhood <span class="math inline">\((U,\varphi)\)</span> around <span class="math inline">\(x\)</span> such that <span class="math display">\[
+\varphi(U)\subset H^n=\{(x^1,\dots,x^n)\in \mathbb{R}^n : x^n\ge 0\},
+\]</span> with <span class="math display">\[
+\varphi(x)=0,
+\]</span> and <span class="math display">\[
+\varphi(U\cap \partial M)=\varphi(U)\cap \{x^n=0\}.
+\]</span></p>
+<p>Thus in these coordinates:</p>
+<ul>
+<li><span class="math inline">\(M\)</span> corresponds locally to the half-space <span class="math inline">\(x^n\ge 0\)</span></li>
+<li><span class="math inline">\(\partial M\)</span> corresponds locally to <span class="math inline">\(x^n=0\)</span></li>
+<li><span class="math inline">\(\operatorname{Int}(M)\)</span> corresponds locally to <span class="math inline">\(x^n&gt;0\)</span></li>
+</ul>
+<p>Define the local boundary defining function <span class="math display">\[
+\rho := x^n \circ \varphi.
+\]</span></p>
+<p>Then on <span class="math inline">\(U\)</span> we have <span class="math display">\[
+U\cap M = \{\rho \ge 0\},
+\qquad
+U\cap \partial M = \{\rho = 0\},
+\qquad
+U\cap \operatorname{Int}(M)=\{\rho&gt;0\}.
+\]</span></p>
+<p>Also <span class="math display">\[
+d\rho \neq 0
+\qquad \text{on } U\cap \partial M.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Step 2: study the boundary defining function along the geodesic" id="step-2-study-the-boundary-defining-function-along-the-geodesic">1.3 Step 2: study the boundary defining function along the geodesic</h3>
+<p>Let <span class="math display">\[
+\gamma(t):=\gamma_{x,v}(t)
+\]</span> be the geodesic determined by <span class="math display">\[
+\gamma(0)=x,
+\qquad
+\dot\gamma(0)=v.
+\]</span></p>
+<p>Define <span class="math display">\[
+h(t):=\rho(\gamma(t)).
+\]</span></p>
+<p>This is a smooth real-valued function of <span class="math inline">\(t\)</span> for <span class="math inline">\(|t|\)</span> small, because <span class="math inline">\(\rho\)</span> and <span class="math inline">\(\gamma\)</span> are smooth.</p>
+<p>At <span class="math inline">\(t=0\)</span>, <span class="math display">\[
+\begin{aligned}
+h(0)
+&amp;= \rho(\gamma(0)) \\
+&amp;= \rho(x) \\
+&amp;= 0,
+\end{aligned}
+\]</span> since <span class="math inline">\(x\in \partial M\)</span>.</p>
+<p>Differentiate: <span class="math display">\[
+\begin{aligned}
+h'(0)
+&amp;= \frac{d}{dt}\Big|_{t=0}\rho(\gamma(t)) \\
+&amp;= d\rho_x(\dot\gamma(0)) \\
+&amp;= d\rho_x(v).
+\end{aligned}
+\]</span></p>
+<hr>
+<h3 data-original-heading="Step 3: interpret the condition (x,v)\in \partial_+SM\setminus \partial_0SM" id="step-3-interpret-the-condition-xvin-partial_smsetminus-partial_0sm">1.4 Step 3: interpret the condition <span class="math inline">\((x,v)\in \partial_+SM\setminus \partial_0SM\)</span></h3>
+<p>The set <span class="math inline">\(\partial_0SM\)</span> consists of tangent vectors at the boundary that are tangent to <span class="math inline">\(\partial M\)</span>. So <span class="math display">\[
+(x,v)\notin \partial_0SM
+\]</span> means <span class="math inline">\(v\)</span> is <strong>not tangent</strong> to the boundary.</p>
+<p>The set <span class="math inline">\(\partial_+SM\)</span> consists of boundary unit vectors pointing inward. In terms of the defining function <span class="math inline">\(\rho\)</span>, inward means <span class="math display">\[
+d\rho_x(v)&gt;0.
+\]</span></p>
+<p>Therefore, from <span class="math display">\[
+(x,v)\in \partial_+SM\setminus \partial_0SM,
+\]</span> we get <span class="math display">\[
+h'(0)=d\rho_x(v)&gt;0.
+\]</span></p>
+<p>This is the key inequality.</p>
+<hr>
+<h3 data-original-heading="Step 4: use one-variable calculus" id="step-4-use-one-variable-calculus">1.5 Step 4: use one-variable calculus</h3>
+<p>Since <span class="math inline">\(h'\)</span> is continuous and <span class="math inline">\(h'(0)&gt;0\)</span>, there exists <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math display">\[
+h'(t)&gt;\frac12 h'(0)&gt;0
+\qquad \text{for all } 0\le t\le \varepsilon.
+\]</span></p>
+<p>Now integrate from <span class="math inline">\(0\)</span> to <span class="math inline">\(t\)</span>: <span class="math display">\[
+\begin{aligned}
+h(t)-h(0)
+&amp;= \int_0^t h'(s)\,ds \\
+&amp;&gt; \int_0^t \frac12 h'(0)\,ds \\
+&amp;= \frac{t}{2}h'(0).
+\end{aligned}
+\]</span></p>
+<p>Since <span class="math inline">\(h(0)=0\)</span> and <span class="math inline">\(h'(0)&gt;0\)</span>, this gives <span class="math display">\[
+\begin{aligned}
+h(t)
+&amp;&gt; \frac{t}{2}h'(0) \\
+&amp;&gt; 0
+\end{aligned}
+\]</span> for every <span class="math inline">\(t\in (0,\varepsilon]\)</span>.</p>
+<p>Thus <span class="math display">\[
+\rho(\gamma(t))&gt;0
+\qquad \text{for } 0&lt;t\le \varepsilon.
+\]</span></p>
+<p>But <span class="math inline">\(\rho&gt;0\)</span> is exactly the local condition for being in the interior of <span class="math inline">\(M\)</span>. Therefore <span class="math display">\[
+\gamma(t)\in \operatorname{Int}(M)\subset M
+\qquad \text{for } 0&lt;t\le \varepsilon.
+\]</span></p>
+<p>Hence <span class="math display">\[
+\boxed{\gamma_{x,v}(t)\text{ stays in }M\text{ for sufficiently small }t&gt;0.}
+\]</span></p>
+<hr>
+<h3 data-original-heading="Why strict convexity is not actually used here" id="why-strict-convexity-is-not-actually-used-here">1.6 Why strict convexity is not actually used here</h3>
+<p>For the statement as written, the assumption of strict convexity is stronger than needed.</p>
+<p>The reason is simple:</p>
+<ul>
+<li>because <span class="math inline">\((x,v)\notin \partial_0SM\)</span>, the geodesic starts with a <strong>nonzero normal component</strong></li>
+<li>because <span class="math inline">\((x,v)\in \partial_+SM\)</span>, that normal component points <strong>into</strong> <span class="math inline">\(M\)</span></li>
+<li>so the first derivative <span class="math inline">\(h'(0)\)</span> is already positive, and that alone is enough</li>
+</ul>
+<p>Strict convexity becomes important in the harder borderline case <span class="math display">\[
+(x,v)\in \partial_0SM,
+\]</span> where the initial velocity is tangent to the boundary. In that case <span class="math display">\[
+h'(0)=0,
+\]</span> so one must look at the second derivative <span class="math inline">\(h''(0)\)</span>, and strict convexity is exactly what controls that sign.</p>
+<p>So for this problem, the proof is actually more elementary than the hypotheses might suggest.</p>
+<hr></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%202.html"><span>← Previous page</span><span>Problem 2</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/problem%204.html"><span>Next page →</span><span>problem 4</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Problem 3</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#problem-3" class="is-active" aria-current="location">1 Problem 3</a></li><li style="--depth:1"><a href="#big-picture-idea">1.1 Big picture / idea</a></li><li style="--depth:1"><a href="#step-1-choose-a-boundary-chart">1.2 Step 1: choose a boundary chart</a></li><li style="--depth:1"><a href="#step-2-study-the-boundary-defining-function-along-the-geodesic">1.3 Step 2: study the boundary defining function along the geodesic</a></li><li style="--depth:1"><a href="#step-3-interpret-the-condition-xvin-partial_smsetminus-partial_0sm">1.4 Step 3: interpret the condition (x,v)\in \partial_+SM\setminus \partial_0SM</a></li><li style="--depth:1"><a href="#step-4-use-one-variable-calculus">1.5 Step 4: use one-variable calculus</a></li><li style="--depth:1"><a href="#why-strict-convexity-is-not-actually-used-here">1.6 Why strict convexity is not actually used here</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

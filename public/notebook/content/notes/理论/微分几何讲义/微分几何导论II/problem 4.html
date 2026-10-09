@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>problem 4 — E.H. Notebook</title>
+<meta name="description" content="1.1 Problem 4: Boundary Distance Determines Volume for Simple Metrics1.1.1 StatementLet M be a compact manifold with smooth boundary \partial M. Let g_1 and g_2 be two si">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="微分几何讲义 file hierarchy" data-sidebar-root="content/notes/理论/微分几何讲义"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/Frederic P Schuller讲义" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4588f86aeacf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Frederic P Schuller讲义</span></button></div><ul class="tree-children" id="folder-4588f86aeacf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC3%E8%AE%B2%20%E5%A4%9A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html"><span class="page-number"></span><span>第3讲 多线性代数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC4%E8%AE%B2%20%E5%8F%AF%E5%BE%AE%E6%B5%81%E5%BD%A2.html"><span class="page-number"></span><span>第4讲 可微流形</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-244bccca26dc" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论I</span></button></div><ul class="tree-children" id="folder-244bccca26dc" hidden><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第一部分 曲线与曲面" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f23833b55fc8" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一部分 曲线与曲面</span></button></div><ul class="tree-children" id="folder-f23833b55fc8" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/1.%20Overview%20of%20Differential%20Geometry.html"><span class="page-number">1</span><span>Overview of Differential Geometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/2.%20Parametrized%20Curves%20%26%20Surfaces.html"><span class="page-number">2</span><span>Parametrized Curves &amp; Surfaces</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vector%20on%20Surface%20(from%20Lecture).html"><span class="page-number">3</span><span>Tangent Vector on Surface (from Lecture)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vectors%20and%20Orientability%20(From%20Notes).html"><span class="page-number">3</span><span>Tangent Vectors and Orientability (From Notes)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/4.%20First%20Fundamental%20Form.html"><span class="page-number">4</span><span>First Fundamental Form</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/5.%20Pushforward%2C%20Pullback%2C%20and%20Local%20Isometry.html"><span class="page-number">5</span><span>Pushforward, Pullback, and Local Isometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/6.%20Normal%20%26%20Geodesic%20Curvature.html"><span class="page-number">6</span><span>Normal &amp; Geodesic Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/7.%20Gauss%20Map%2C%20Shape%20Operator%2C%20and%20Curvatures.html"><span class="page-number">7</span><span>Gauss Map, Shape Operator, and Curvatures</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/8.%20Gauss%20Map%20Area%2C%20Principal%20Curvatures%2C%20Mean%20Curvature%20%26%20Geodesics.html"><span class="page-number">8</span><span>Gauss Map Area, Principal Curvatures, Mean Curvature &amp; Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/9.%20Geodesic%20Normal%20Coordinates%2C%20Exponential%20Map.html"><span class="page-number">9</span><span>Geodesic Normal Coordinates, Exponential Map</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/10.%20Geodesic%20Polar%20Coordinates%2C%20Local%20Length%20Minimizers%2C%20and%20Gauss%E2%80%99s%20Theorema%20Egregium.html"><span class="page-number">10</span><span>Geodesic Polar Coordinates, Local Length Minimizers, and Gauss’s Theorema Egregium</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/12.%20Geodesic%20Triangle%20and%20Euler's%20Characteristics.html"><span class="page-number">12</span><span>Geodesic Triangle and Euler&#39;s Characteristics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第二部分 黎曼几何" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-61e3399769bc" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第二部分 黎曼几何</span></button></div><ul class="tree-children" id="folder-61e3399769bc" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/13.%20Smooth%20Functions%2C%20Tangent%20and%20Cotangent%20Vectors%2C%20Metrics.html"><span class="page-number">13</span><span>Smooth Functions, Tangent and Cotangent Vectors, Metrics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/14.%20Tensors%2C%20Connections%2C%20Lie%20bracket.html"><span class="page-number">14</span><span>Tensors, Connections, Lie bracket</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/15.%20Riemannian%20Connection%2C%20Geodesics%2C%20and%20Parallel%20Transport.html"><span class="page-number">15</span><span>Riemannian Connection, Geodesics, and Parallel Transport</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/16.%20Exponential%20Map%2C%20Normal%20Coordinates%2C%20and%20Distance.html"><span class="page-number">16</span><span>Exponential Map, Normal Coordinates, and Distance</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/17.%20Riemannian%20Distance%2C%20Variations%2C%20and%20Geodesics.html"><span class="page-number">17</span><span>Riemannian Distance, Variations, and Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/18%20Hopf%E2%80%93Rinow%20direction.html"><span class="page-number">18</span><span>Hopf–Rinow direction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/19%20Curvature%20Operator%20and%20Tensoriality.html"><span class="page-number">19</span><span>Curvature Operator and Tensoriality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/20%20Gauss%26Weingarten%20Formulas%2C%20Surfaces%2C%20and%20Sectional%20Curvature.html"><span class="page-number">20</span><span>Gauss&amp;Weingarten Formulas, Surfaces, and Sectional Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/21%20Curvature%20via%20Sectional%20Curvature%2C%20and%20Jacobi%20Fields.html"><span class="page-number">21</span><span>Curvature via Sectional Curvature, and Jacobi Fields</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/22%20Jacobi%20Fields%2C%20Constant%20Curvature%2C%20and%20Conjugate%20Points.html"><span class="page-number">22</span><span>Jacobi Fields, Constant Curvature, and Conjugate Points</span></a></li></ul></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论II" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-016769c1691a" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论II</span></button></div><ul class="tree-children" id="folder-016769c1691a"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%208.html"><span class="page-number"></span><span>Apr 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%2020.html"><span class="page-number"></span><span>Apr 20</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Course%20Content.html"><span class="page-number"></span><span>Course Content</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%202.html"><span class="page-number"></span><span>Problem 2</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span class="page-number"></span><span>Problem 3</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/problem%204.html"><span class="page-number"></span><span>problem 4</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%204%20Boundary%20Distance%20Determines%20Volume%20for%20Simple%20Metrics.html"><span class="page-number"></span><span>Problem 4 Boundary Distance Determines Volume for Simple Metrics</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/index.html">微分几何导论II</a></nav><h1 id="reader-title">problem 4</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1.1 Problem 4: Boundary Distance Determines Volume for Simple Metrics" id="problem-4-boundary-distance-determines-volume-for-simple-metrics">1.1 Problem 4: Boundary Distance Determines Volume for Simple Metrics</h2>
+<h3 data-original-heading="1.1.1 Statement" id="statement">1.1.1 Statement</h3>
+<p>Let <span class="math inline">\(M\)</span> be a compact manifold with smooth boundary <span class="math inline">\(\partial M\)</span>. Let <span class="math inline">\(g_1\)</span> and <span class="math inline">\(g_2\)</span> be two simple Riemannian metrics on <span class="math inline">\(M\)</span>. Assume <span class="math display">\[
+d_{g_1}(x,y)=d_{g_2}(x,y)
+\qquad
+\text{for all }x,y\in\partial M
+\]</span> Prove <span class="math display">\[
+\operatorname{Vol}(M,g_1)=\operatorname{Vol}(M,g_2)
+\]</span></p>
+<h2 data-original-heading="1.2 Definitions and setup" id="definitions-and-setup">1.2 Definitions and setup</h2>
+<h3 data-original-heading="1.2.1 Boundary distance function" id="boundary-distance-function">1.2.1 Boundary distance function</h3>
+<p>For a Riemannian metric <span class="math inline">\(g\)</span>, the boundary distance function is the restriction of the Riemannian distance function to boundary points: <span class="math display">\[
+d_g|_{\partial M\times\partial M}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+d_g(x,y)=\inf_{\gamma:x\to y}\ell_g(\gamma)
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\ell_g(\gamma)=\int |\dot\gamma(t)|_g\,dt
+\]</span></p>
+<p>So the hypothesis means that the two metrics give the same distance between every pair of boundary points.</p>
+<hr>
+<h3 data-original-heading="1.2.2 Simple metric" id="simple-metric">1.2.2 Simple metric</h3>
+<p>A metric <span class="math inline">\(g\)</span> on <span class="math inline">\(M\)</span> is called simple if:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+&amp;\text{the boundary }\partial M\text{ is strictly convex}\\
+&amp;\text{the metric is non-trapping}\\
+&amp;\text{there are no conjugate points}
+\end{aligned}
+}
+\]</span></p>
+<p>For this problem, the important consequences are:</p>
+<p><span class="math display">\[
+\boxed{
+\text{simple}
+\Longrightarrow
+\text{each inward boundary vector gives one clean boundary-to-boundary geodesic}
+}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\boxed{
+\text{simple}
+\Longrightarrow
+\text{Santaló's formula applies}
+}
+\]</span></p>
+<hr>
+<h3 data-original-heading="1.2.3 Unit sphere bundle" id="unit-sphere-bundle">1.2.3 Unit sphere bundle</h3>
+<p>For a metric <span class="math inline">\(g\)</span>, define</p>
+<p><span class="math display">\[
+SM=\{(x,v):x\in M,\ v\in T_xM,\ |v|_g=1\}
+\]</span></p>
+<p>The boundary of <span class="math inline">\(SM\)</span> is</p>
+<p><span class="math display">\[
+\partial SM=\{(x,v)\in SM:x\in\partial M\}
+\]</span></p>
+<p>Let <span class="math inline">\(\nu\)</span> be the inward-pointing unit normal vector field on <span class="math inline">\(\partial M\)</span>.</p>
+<p>Define</p>
+<p><span class="math display">\[
+\mu(x,v):=\langle v,\nu(x)\rangle_g
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\partial_+SM=\{(x,v)\in\partial SM:\langle v,\nu(x)\rangle_g\ge 0\}
+\]</span></p>
+<p>is the inward-pointing boundary of <span class="math inline">\(SM\)</span>.</p>
+<p>Similarly,</p>
+<p><span class="math display">\[
+\partial_-SM=\{(x,v)\in\partial SM:\langle v,\nu(x)\rangle_g\le 0\}
+\]</span></p>
+<p>is the outward-pointing boundary of <span class="math inline">\(SM\)</span>.</p>
+<hr>
+<h3 data-original-heading="1.2.4 Geodesic flow and exit time" id="geodesic-flow-and-exit-time">1.2.4 Geodesic flow and exit time</h3>
+<p>For <span class="math inline">\((x,v)\in SM\)</span>, let</p>
+<p><span class="math display">\[
+\gamma_{x,v}(t)
+\]</span></p>
+<p>be the unit-speed geodesic satisfying</p>
+<p><span class="math display">\[
+\gamma_{x,v}(0)=x,
+\qquad
+\dot\gamma_{x,v}(0)=v
+\]</span></p>
+<p>The geodesic flow is</p>
+<p><span class="math display">\[
+\phi_t(x,v)=\bigl(\gamma_{x,v}(t),\dot\gamma_{x,v}(t)\bigr)
+\]</span></p>
+<p>For <span class="math inline">\((x,v)\in\partial_+SM\)</span>, define the exit time</p>
+<p><span class="math display">\[
+\tau_g(x,v)
+\]</span></p>
+<p>by</p>
+<p><span class="math display">\[
+\gamma_{x,v}(\tau_g(x,v))\in\partial M
+\]</span></p>
+<p>So <span class="math inline">\(\tau_g(x,v)\)</span> is the travel time of the geodesic starting at the boundary in the inward direction and returning to the boundary.</p>
+<hr>
+<h3 data-original-heading="1.2.5 Lens data" id="lens-data">1.2.5 Lens data</h3>
+<p>The lens data of <span class="math inline">\((M,g)\)</span> is</p>
+<p><span class="math display">\[
+\boxed{
+\left(\tau_g|_{\partial_+SM},\alpha_g\right)
+}
+\]</span></p>
+<p>where <span class="math inline">\(\alpha_g\)</span> is the scattering relation</p>
+<p><span class="math display">\[
+\alpha_g(x,v)=\phi_{\tau_g(x,v)}(x,v)
+\]</span></p>
+<p>For Problem 4, we only need the exit time part:</p>
+<p><span class="math display">\[
+\tau_g|_{\partial_+SM}
+\]</span></p>
+<hr>
+<h2 data-original-heading="1.3 The textbook facts we are allowed to use" id="the-textbook-facts-we-are-allowed-to-use">1.3 The textbook facts we are allowed to use</h2>
+<h3 data-original-heading="1.3.1 Fact 1: Boundary distance determines the boundary metric" id="fact-1-boundary-distance-determines-the-boundary-metric">1.3.1 Fact 1: Boundary distance determines the boundary metric</h3>
+<p>If</p>
+<p><span class="math display">\[
+d_{g_1}=d_{g_2}
+\qquad
+\text{on }\partial M\times\partial M
+\]</span></p>
+<p>then, after a boundary-fixing diffeomorphism, one may assume</p>
+<p><span class="math display">\[
+g_1|_{\partial M}=g_2|_{\partial M}
+\]</span></p>
+<p>Since volume is invariant under pullback by a diffeomorphism, this gauge change does not change the conclusion.</p>
+<p>So from now on, assume</p>
+<p><span class="math display">\[
+\boxed{
+g_1|_{\partial M}=g_2|_{\partial M}
+}
+\]</span></p>
+<p>This implies that the boundary unit sphere bundles agree:</p>
+<p><span class="math display">\[
+\boxed{
+\partial_+SM_{g_1}=\partial_+SM_{g_2}
+}
+\]</span></p>
+<p>and the boundary measures agree:</p>
+<p><span class="math display">\[
+\boxed{
+\mu_1\,d\Sigma^{2n-2}_{1}
+=
+\mu_2\,d\Sigma^{2n-2}_{2}
+}
+\]</span></p>
+<p>We denote this common boundary measure by</p>
+<p><span class="math display">\[
+d\mu=\mu\,d\Sigma^{2n-2}
+\]</span></p>
+<hr>
+<h3 data-original-heading="1.3.2 Fact 2: Boundary distance determines exit time for simple metrics" id="fact-2-boundary-distance-determines-exit-time-for-simple-metrics">1.3.2 Fact 2: Boundary distance determines exit time for simple metrics</h3>
+<p>For simple metrics,</p>
+<p><span class="math display">\[
+d_{g_1}=d_{g_2}
+\qquad
+\text{on }\partial M\times\partial M
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+g_1|_{\partial M}=g_2|_{\partial M}
+\]</span></p>
+<p>imply equality of lens data:</p>
+<p><span class="math display">\[
+\alpha_{g_1}=\alpha_{g_2},
+\qquad
+\tau_{g_1}|_{\partial_+SM}
+=
+\tau_{g_2}|_{\partial_+SM}
+\]</span></p>
+<p>For Problem 4, the needed part is</p>
+<p><span class="math display">\[
+\boxed{
+\tau_{g_1}(x,v)=\tau_{g_2}(x,v)
+\qquad
+\text{for all }(x,v)\in\partial_+SM
+}
+\]</span></p>
+<p>Geometrically, this is because in a simple manifold, an inward boundary vector determines a unique geodesic from one boundary point to another, and its length is exactly the boundary distance between the endpoints.</p>
+<hr>
+<h3 data-original-heading="1.3.3 Fact 3: Santaló’s formula" id="fact-3-santalós-formula">1.3.3 Fact 3: Santaló’s formula</h3>
+<p>For a compact non-trapping manifold with strictly convex boundary,</p>
+<p><span class="math display">\[
+\boxed{
+\int_{SM} f\,d\Sigma^{2n-1}
+=
+\int_{\partial_+SM}
+\int_0^{\tau(x,v)}
+f(\phi_t(x,v))\,dt
+\,
+\mu(x,v)\,d\Sigma^{2n-2}
+}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\mu(x,v)=\langle v,\nu(x)\rangle_g
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+d\mu=\mu\,d\Sigma^{2n-2}
+\]</span></p>
+<p>so Santaló becomes</p>
+<p><span class="math display">\[
+\boxed{
+\int_{SM} f\,d\Sigma^{2n-1}
+=
+\int_{\partial_+SM}
+\int_0^{\tau(x,v)}
+f(\phi_t(x,v))\,dt
+\,d\mu(x,v)
+}
+\]</span></p>
+<hr>
+<h2 data-original-heading="1.4 Apply Santaló with f\equiv 1" id="apply-santaló-with-fequiv-1">1.4 Apply Santaló with <span class="math inline">\(f\equiv 1\)</span></h2>
+<p>For each metric <span class="math inline">\(g_i\)</span>, <span class="math inline">\(i=1,2\)</span>, apply Santaló’s formula to</p>
+<p><span class="math display">\[
+f\equiv 1
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_{SM_i}1\,d\Sigma^{2n-1}_i
+&amp;=
+\int_{\partial_+SM_i}
+\int_0^{\tau_i(x,v)}
+1\,dt
+\,d\mu_i(x,v) \\
+&amp;=
+\int_{\partial_+SM_i}
+\tau_i(x,v)\,d\mu_i(x,v)
+\end{aligned}
+\]</span></p>
+<p>Thus</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Vol}(SM_i,g_i)
+=
+\int_{\partial_+SM_i}
+\tau_i(x,v)\,d\mu_i(x,v)
+}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\tau_i=\tau_{g_i}
+\]</span></p>
+<hr>
+<h2 data-original-heading="1.5 Compare the two metrics" id="compare-the-two-metrics">1.5 Compare the two metrics</h2>
+<p>Because the boundary distance functions agree, the boundary metrics agree after gauge, so</p>
+<p><span class="math display">\[
+\partial_+SM_1=\partial_+SM_2
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+d\mu_1=d\mu_2=d\mu
+\]</span></p>
+<p>Because the metrics are simple, boundary distance determines exit time:</p>
+<p><span class="math display">\[
+\tau_1=\tau_2
+\qquad
+\text{on }\partial_+SM
+\]</span></p>
+<p>Therefore</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Vol}(SM_1,g_1)
+&amp;=
+\int_{\partial_+SM_1}\tau_1(x,v)\,d\mu_1(x,v) \\
+&amp;=
+\int_{\partial_+SM}\tau_1(x,v)\,d\mu(x,v) \\
+&amp;=
+\int_{\partial_+SM}\tau_2(x,v)\,d\mu(x,v) \\
+&amp;=
+\int_{\partial_+SM_2}\tau_2(x,v)\,d\mu_2(x,v) \\
+&amp;=
+\operatorname{Vol}(SM_2,g_2)
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Vol}(SM_1,g_1)
+=
+\operatorname{Vol}(SM_2,g_2)
+}
+\]</span></p>
+<hr>
+<h2 data-original-heading="1.6 Relate \operatorname{Vol}(SM,g) to \operatorname{Vol}(M,g)" id="relate-operatornamevolsmg-to-operatornamevolmg">1.6 Relate <span class="math inline">\(\operatorname{Vol}(SM,g)\)</span> to <span class="math inline">\(\operatorname{Vol}(M,g)\)</span></h2>
+<p>The unit sphere bundle is fibered over <span class="math inline">\(M\)</span>:</p>
+<p><span class="math display">\[
+SM=\bigcup_{x\in M}S_xM
+\]</span></p>
+<p>For each <span class="math inline">\(x\in M\)</span>,</p>
+<p><span class="math display">\[
+S_xM=\{v\in T_xM:|v|_g=1\}
+\]</span></p>
+<p>is an <span class="math inline">\((n-1)\)</span>-dimensional unit sphere.</p>
+<p>Let</p>
+<p><span class="math display">\[
+\sigma_{n-1}=\operatorname{Vol}(S^{n-1})
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Vol}(SM,g)
+&amp;=
+\int_{SM}1\,d\Sigma^{2n-1} \\
+&amp;=
+\int_M\int_{S_xM}1\,dS_x\,dV_g(x) \\
+&amp;=
+\int_M \sigma_{n-1}\,dV_g(x) \\
+&amp;=
+\sigma_{n-1}\operatorname{Vol}(M,g)
+\end{aligned}
+\]</span></p>
+<p>So for <span class="math inline">\(i=1,2\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Vol}(SM_i,g_i)
+=
+\sigma_{n-1}\operatorname{Vol}(M,g_i)
+}
+\]</span></p>
+<hr>
+<h2 data-original-heading="1.7 Final conclusion" id="final-conclusion">1.7 Final conclusion</h2>
+<p>From Step 4,</p>
+<p><span class="math display">\[
+\operatorname{Vol}(SM_1,g_1)
+=
+\operatorname{Vol}(SM_2,g_2)
+\]</span></p>
+<p>Using Step 5,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma_{n-1}\operatorname{Vol}(M,g_1)
+&amp;=
+\sigma_{n-1}\operatorname{Vol}(M,g_2)
+\end{aligned}
+\]</span></p>
+<p>Since</p>
+<p><span class="math display">\[
+\sigma_{n-1}&gt;0
+\]</span></p>
+<p>we divide by <span class="math inline">\(\sigma_{n-1}\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Vol}(M,g_1)=\operatorname{Vol}(M,g_2)
+}
+\]</span></p>
+<p>This proves the claim.</p>
+<hr>
+<h2 data-original-heading="1.8 Compact derivation for oral presentation" id="compact-derivation-for-oral-presentation">1.8 Compact derivation for oral presentation</h2>
+<p><span class="math display">\[
+\begin{aligned}
+d_{g_1}|_{\partial M\times\partial M}
+=
+d_{g_2}|_{\partial M\times\partial M}
+&amp;\Longrightarrow
+g_1|_{\partial M}=g_2|_{\partial M}
+&amp;&amp;\text{boundary determination} \\
+&amp;\Longrightarrow
+d\mu_1=d\mu_2
+&amp;&amp;\text{same boundary metric} \\
+&amp;\Longrightarrow
+\tau_{g_1}|_{\partial_+SM}
+=
+\tau_{g_2}|_{\partial_+SM}
+&amp;&amp;\text{simple metrics determine lens data}
+\end{aligned}
+\]</span></p>
+<p>By Santaló with <span class="math inline">\(f\equiv 1\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Vol}(SM_i,g_i)
+&amp;=
+\int_{SM_i}1\,d\Sigma^{2n-1}_i \\
+&amp;=
+\int_{\partial_+SM_i}
+\int_0^{\tau_i(x,v)}
+1\,dt
+\,d\mu_i(x,v) \\
+&amp;=
+\int_{\partial_+SM_i}
+\tau_i(x,v)\,d\mu_i(x,v)
+\end{aligned}
+\]</span></p>
+<p>Hence</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Vol}(SM_1,g_1)
+&amp;=
+\int_{\partial_+SM}\tau_1\,d\mu \\
+&amp;=
+\int_{\partial_+SM}\tau_2\,d\mu \\
+&amp;=
+\operatorname{Vol}(SM_2,g_2)
+\end{aligned}
+\]</span></p>
+<p>Finally,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Vol}(SM_i,g_i)
+&amp;=
+\int_M\int_{S_xM}1\,dS_x\,dV_{g_i}(x) \\
+&amp;=
+\sigma_{n-1}\operatorname{Vol}(M,g_i)
+\end{aligned}
+\]</span></p>
+<p>Therefore</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Vol}(M,g_1)=\operatorname{Vol}(M,g_2)
+}
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span>← Previous page</span><span>Problem 3</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%204%20Boundary%20Distance%20Determines%20Volume%20for%20Simple%20Metrics.html"><span>Next page →</span><span>Problem 4 Boundary Distance Determines Volume for Simple Metrics</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">problem 4</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#problem-4-boundary-distance-determines-volume-for-simple-metrics" class="is-active" aria-current="location">1.1 Problem 4: Boundary Distance Determines Volume for Simple Metrics</a></li><li style="--depth:1"><a href="#statement">1.1.1 Statement</a></li><li style="--depth:0"><a href="#definitions-and-setup">1.2 Definitions and setup</a></li><li style="--depth:1"><a href="#boundary-distance-function">1.2.1 Boundary distance function</a></li><li style="--depth:1"><a href="#simple-metric">1.2.2 Simple metric</a></li><li style="--depth:1"><a href="#unit-sphere-bundle">1.2.3 Unit sphere bundle</a></li><li style="--depth:1"><a href="#geodesic-flow-and-exit-time">1.2.4 Geodesic flow and exit time</a></li><li style="--depth:1"><a href="#lens-data">1.2.5 Lens data</a></li><li style="--depth:0"><a href="#the-textbook-facts-we-are-allowed-to-use">1.3 The textbook facts we are allowed to use</a></li><li style="--depth:1"><a href="#fact-1-boundary-distance-determines-the-boundary-metric">1.3.1 Fact 1: Boundary distance determines the boundary metric</a></li><li style="--depth:1"><a href="#fact-2-boundary-distance-determines-exit-time-for-simple-metrics">1.3.2 Fact 2: Boundary distance determines exit time for simple metrics</a></li><li style="--depth:1"><a href="#fact-3-santal%C3%B3s-formula">1.3.3 Fact 3: Santaló’s formula</a></li><li style="--depth:0"><a href="#apply-santal%C3%B3-with-fequiv-1">1.4 Apply Santaló with f\equiv 1</a></li><li style="--depth:0"><a href="#compare-the-two-metrics">1.5 Compare the two metrics</a></li><li style="--depth:0"><a href="#relate-operatornamevolsmg-to-operatornamevolmg">1.6 Relate \operatorname{Vol}(SM,g) to \operatorname{Vol}(M,g)</a></li><li style="--depth:0"><a href="#final-conclusion">1.7 Final conclusion</a></li><li style="--depth:0"><a href="#compact-derivation-for-oral-presentation">1.8 Compact derivation for oral presentation</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

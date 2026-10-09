@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Score Matching — E.H. Notebook</title>
+<meta name="description" content="1 What is the “Score”?1.1 Definition of Score[!definition] Score The score of a probability distribution is the gradient of its log-likelihood: s(x) = \nabla_x \log p(x) ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/index.html">隐藏变量模型</a></nav><h1 id="reader-title">Score Matching</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1 What is the “Score”?" id="what-is-the-score">1 What is the “Score”?</h2>
+<h3 data-original-heading="1.1 Definition of Score" id="definition-of-score">1.1 Definition of Score</h3>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Score</span></p>
+</div>
+<div class="theorem-content">
+<p>The <strong>score</strong> of a probability distribution is the <strong>gradient of its log-likelihood</strong>: <span class="math display">\[
+s(x) = \nabla_x \log p(x)
+\]</span></p>
+</div>
+</div>
+<blockquote>
+<p>It tells us the <strong>direction in which <span class="math inline">\(p(x)\)</span> increases the fastest</strong> — that is, the direction pointing <strong>toward regions of higher data density</strong>.</p>
+</blockquote>
+<h3 data-original-heading="1.2 Intuition of Score function" id="intuition-of-score-function">1.2 Intuition of Score function</h3>
+<p>The score function <span class="math inline">\(s(x)\)</span>:</p>
+<ul>
+<li>points <strong>toward more likely samples</strong>.<br>
+</li>
+<li>shows how to “move” a noisy sample back to data.</li>
+</ul>
+<p>In diffusion models, the network learns to approximate this function. Knowing <span class="math inline">\(s(x)\)</span> is almost as good as knowing <span class="math inline">\(p(x)\)</span> itself. We can:</p>
+<ul>
+<li>infer the <strong>geometry</strong> and <strong>shape</strong> of the data distribution even without explicitly computing <span class="math inline">\(p(x)\)</span></li>
+<li>and also (implicitly) recover the underlying probability density <span class="math display">\[
+\boxed{\nabla_x \log p(x) = s(x)
+\quad \Rightarrow \quad
+\log p(x) = \int s(x) \, dx + C}
+\]</span></li>
+</ul>
+<h3 data-original-heading="1.3 Sampling from the Implicit Distribution" id="sampling-from-the-implicit-distribution">1.3 Sampling from the Implicit Distribution</h3>
+<p>If we know the true score <span class="math inline">\(s(x)\)</span>, we can <strong>generate new samples</strong> from the corresponding distribution by following the <strong>reverse of the diffusion (noising) process</strong> - or equivalently, by running a <strong>Langevin dynamics</strong> update:</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Langevin Dynamics</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+x_{i+1} = x_i + \epsilon \, \nabla_x \log p(x_i) + \sqrt{2\epsilon}\, z_i,
+\quad z_i \sim {N}(0, I)
+\]</span> where</p>
+<ul>
+<li><span class="math inline">\(\epsilon\)</span>: small step size (learning rate)<br>
+</li>
+<li><span class="math inline">\(z_i\)</span>: Gaussian noise (same dimension as <span class="math inline">\(x\)</span>)</li>
+</ul>
+</div>
+</div>
+<p><img src="https://calvinyluo.com/assets/images/diffusion/score_3d.jpeg" alt="Langevin|840x840" loading="lazy" decoding="async"> <img src="https://calvinyluo.com/assets/images/diffusion/score_sample.webp" alt="2D" loading="lazy" decoding="async"></p>
+<h2 data-original-heading="2 Why Estimate the Score Instead of the Probability Density?" id="why-estimate-the-score-instead-of-the-probability-density">2 Why Estimate the Score Instead of the Probability Density?</h2>
+<h3 data-original-heading="2.1 Density Functions Are Hard to Model" id="density-functions-are-hard-to-model">2.1 Density Functions Are Hard to Model</h3>
+<p>Probability density can be complex, high-dimensional, and multimodal, so directly parameterizing <span class="math inline">\(p(x)\)</span> is hard in high dimension because we always need:</p>
+<ol type="1">
+<li>positive everywhere</li>
+<li>integrate to 1 (for normalization) <span class="math display">\[\int p(x) d x=1\]</span> For example, notice that the <strong>partition function</strong> for energy-based model <span class="math inline">\(E_{\theta}(x)\)</span>, <span class="math display">\[
+Z=\int e^{-E_\theta(x)}dx
+\]</span> is intractable for high dimensional <span class="math inline">\(x \in R^D\)</span>. However, the gradients of the log-density cancel <span class="math inline">\(Z\)</span>: <span class="math display">\[
+\nabla_x \log p_\theta(x) = \nabla_x\big(-E_\theta(x)-\log Z\big)
+= -\nabla_x E_\theta(x).
+\]</span> Hence learning the score avoids normalizing constants.</li>
+</ol>
+<h3 data-original-heading="2.2 The Score Is Simpler and Unconstrained" id="the-score-is-simpler-and-unconstrained">2.2 The Score Is Simpler and Unconstrained</h3>
+<p>The <strong>score function</strong> <span class="math display">\[
+s(x) = \nabla_x \log p(x)
+\]</span> only depends on <strong>relative changes</strong> in <span class="math inline">\(p(x)\)</span>, not on its absolute scale.</p>
+<ul>
+<li>tells us <strong>where</strong> and <strong>how fast</strong> <span class="math inline">\(p(x)\)</span> increases or decreases.<br>
+</li>
+<li><strong>no need</strong> to ensure normalization or positivity.<br>
+</li>
+<li>“score” can take <strong>any real value</strong> <span class="math inline">\(\to\)</span> much easier for a neural network to approximate.</li>
+</ul>
+<p><img src="https://yang-song.net/assets/img/score/smld.jpg" alt="Score" loading="lazy" decoding="async"> # 3 How to Estimate the Score?</p>
+<h3 data-original-heading="3.1 The Idea of Score Matching" id="the-idea-of-score-matching">3.1 The Idea of “Score Matching”</h3>
+<p>We want the learned score network to approximate the true score <span class="math inline">\(\nabla_x \log p(x)\)</span>. <span class="math display">\[s_\theta(x)\approx \underbrace{\nabla_x \log p(x)}_{\text{true score}}\]</span> Formally, we simply minimize the difference between them <span class="math display">\[
+\boxed{\text { minimize the expected 
+squared error } \quad\Longrightarrow\quad \min _\theta \mathbb{E}_{x \sim p(x)}\left[\left\|s_\theta(x)-\nabla_x \log p(x)\right\|^2\right]}
+\]</span> However, the term <span class="math inline">\(\nabla_x \log p(x)\)</span> is <strong>NOT computable</strong> directly, so we have to find another surrogate objective (computed using data samples <span class="math inline">\(\left\{x_i\right\}_{i=1}^n\)</span> only). To do this, we introduce the noisy version of this matching, <strong>Denoising Score Matching (DSM)</strong>.</p>
+<h3 data-original-heading="3.2 Using noisy score instead of the true data score" id="using-noisy-score-instead-of-the-true-data-score">3.2 Using <em>noisy</em> score instead of the <em>true</em> data score</h3>
+<p>Given that we want a network <span class="math inline">\(s_\theta(x)\)</span> to approximate the score of the real data distribution, <strong>what should the loss be?</strong> <span class="math display">\[
+\;\mathcal L_{\text{SM}}(\theta)
+= \mathbb E_{x\sim p_{\text{data}}}\big\|s_\theta(x)-\nabla_x\log p_{\text{data}}(x)\big\|_2^2\
+\]</span> ### 3.2.1 Problem on the data manifold</p>
+<p>However, here <span class="math inline">\(\min_\theta\; \mathbb E_{x\sim p_{\text{data}}}\big\|s_\theta(x)-\nabla_x\log p_{\text{data}}(x)\big\|^2\)</span> is ill-defined because <span class="math inline">\(p_{\text{data}}\)</span> is supported on a thin manifold (score is undefined off-manifold).</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+p_{\text {data }}(x)=0 \quad\Longleftrightarrow\quad\text { outside of manifold }
+\]</span></p>
+</div>
+</div>
+<p>Therefore, this means <span class="math inline">\(\log p_{\text {data }}=\text { undefined }\)</span>, which is problematic.</p>
+<h3 data-original-heading="3.3 Solution: Denoise" id="solution-denoise">3.3 Solution: Denoise</h3>
+<p>We introduce Gaussian corruption: <span class="math display">\[
+\boxed{\tilde x = x+\sigma\varepsilon,\quad\text{where } \varepsilon\sim\mathcal N(0,I)}
+\]</span> and hence we have <span class="math display">\[ \quad\boxed{p_\sigma(\tilde x\mid x)=\mathcal N(x,\sigma^2 I)}\]</span> This process corresponds to <strong>convolving</strong> the data density: <span class="math display">\[
+p_\sigma(\tilde x)=\int p_{\text{data}}(x)\,\underbrace{p_\sigma(\tilde x\mid x)}_{ \mathcal N(\tilde x\mid x,\sigma^2 I)}\,dx
+\]</span> which has <strong>full support</strong> (non-zero almost everywhere). We cannot compute <span class="math inline">\(p_\sigma(\tilde x)\)</span> in closed form(why?), but <span class="math inline">\(p_\sigma(\tilde x\mid x)\)</span> <strong>is</strong> tractable and will be enough. Then <span class="math display">\[
+\begin{align}
+\log p_\sigma(\tilde x\mid x)= &amp; C - \frac{\|\tilde x-x\|^2}{2\sigma^2}\\
+\Longrightarrow \quad\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)= &amp;  -\frac{\tilde x-x}{\sigma^2}
+ \\
+ = &amp;  -\frac{\varepsilon }{\sigma}
+\end{align}
+\]</span> The <strong>noisy</strong> regression form: <span class="math display">\[
+\boxed{\;
+\mathbb E_{x,\tilde x}\big\|s_\theta(\tilde x)-\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\big\|_2^2 + C
+= \mathbb E_{x,\varepsilon}\Big\|s_\theta(x+\sigma\varepsilon)+\tfrac{\varepsilon}{\sigma}\Big\|_2^2 + C\;}
+\]</span></p>
+<h3 data-original-heading="3.4 Relation Between Marginal and Conditional Scores" id="relation-between-marginal-and-conditional-scores">3.4 Relation Between Marginal and Conditional Scores</h3>
+<p>If we smooth the data with Gaussian corruption <span class="math display">\[
+p_\sigma(\tilde x)=\int \underbrace{p(x)}_{\text{intractable}}\,\underbrace{p_\sigma(\tilde x\mid x)}_{\mathcal N(x,\sigma^2 I).}\,dx
+\]</span> then, notice <span class="math inline">\(p(x)\)</span> is independent of <span class="math inline">\(\tilde x\)</span>, hence <span class="math display">\[
+\begin{aligned}
+\boxed{\nabla_{\tilde x}\log p_\sigma(\tilde x)}
+&amp;=\frac{ \nabla_{\tilde x} p_\sigma(\tilde x)}{ p_\sigma(\tilde x)}
+=\frac{1}{\;p_\sigma(\tilde x)\;}
+   \int p(x)\;
+        \underbrace{\nabla_{\tilde x} p_\sigma(\tilde x\mid x)}_{\text{(use } \nabla u = u \nabla \log u\text{)}}\,dx \\[6pt]
+&amp;=\frac{1}{p_\sigma(\tilde x)} \int p(x)\;
+        \underparen{p_\sigma(\tilde x\mid x)\,
+        \nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)}dx \\[10pt]
+&amp;=\frac{1}{p_\sigma(\tilde x)}
+   \int \underbrace{p(x)\,p_\sigma(\tilde x\mid x)}_{\text{joint }p(x,\tilde x)}\;
+        \nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\,dx \\[8pt]
+&amp;=\cancel{\frac{1}{p_\sigma(\tilde x)}}
+   \int \underbrace{p(x, \tilde{x})}_{\substack{\text{Bayes: }\\
+        p(x,\tilde x)=p(x\mid\tilde x)\,\cancel{p_\sigma(\tilde x)}}}\;
+        \nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\,dx \\[6pt]
+&amp;=\int \underbrace{p(x\mid \tilde x)}_{\text{posterior weight}}\;
+        \underbrace{\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)}_{\text{local score}}\,dx \\[4pt]
+&amp;=\boxed{\ \mathbb E_{x\sim p(x\mid \tilde x)}
+          \big[\,\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\,\big]\ }
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="3.5 Gaussian check" id="gaussian-check">3.5 Gaussian check</h3>
+<p>For <span class="math inline">\(p_\sigma(\tilde x\mid x)=\mathcal N(x,\sigma^2 I)\)</span>, we have <span class="math display">\[
+\underbrace{\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)}_{\text{score of the conditional}}
+= -\frac{\tilde x-x}{\sigma^2}.
+\]</span> Therefore, <span class="math display">\[
+\nabla_{\tilde x}\log p_\sigma(\tilde x)
+= \mathbb E_{x\mid \tilde x}\!\left[-\frac{\tilde x-x}{\sigma^2}\right]
+= \frac{\mathbb E[x\mid \tilde x]-\tilde x}{\sigma^2},
+\]</span> which also implies Tweedie’s denoising identity (idk what this is) <span class="math display">\[\ \mathbb E[x\mid \tilde x]=\tilde x+\sigma^2\nabla_{\tilde x}\log p_\sigma(\tilde x)\]</span></p>
+<h3 data-original-heading="3.6 Expanding the ideal loss and isolating the constant" id="expanding-the-ideal-loss-and-isolating-the-constant">3.6 Expanding the ideal loss and isolating the constant</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\boxed{L_{\text{ideal}}(\theta)}
+&amp;=\mathbb{E}_{\tilde x\sim p_\sigma}\!\left[\left\|\,s_\theta(\tilde x)
+    -\nabla_{\tilde x}\log p_\sigma(\tilde x)\,\right\|^2\right] \\[6pt]
+&amp;=\mathbb{E}_{\tilde x}\!\left[\left\|\,s_\theta(\tilde x)
+   -\underbrace{\mathbb{E}_{x\sim p(x\mid \tilde x)}
+     \big[\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\big]}_{\text{posterior expectation identity}}\right\|^2\right] \\[6pt]
+&amp;\overset{\|a-b\|^2}{=}
+\mathbb{E}_{\tilde x}\!\Big[\|s_\theta(\tilde x)\|^2
+-2\,s_\theta(\tilde x)^\top \mathbb{E}_{x\mid \tilde x}\![\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)]
++\big\|\mathbb{E}_{x\mid \tilde x}\![\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)]\big\|^2\Big] \\[6pt]
+&amp;=\underbrace{\mathbb{E}_{\tilde x}\!\left[\|s_\theta(\tilde x)\|^2\right]}_{\text{depends on }\theta}
+-2\,\underbrace{\mathbb{E}_{x,\tilde x}\!\left[s_\theta(\tilde x)^\top \nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\right]}_{\text{swap } \mathbb{E}_{\tilde x}\mathbb{E}_{x\mid\tilde x}}
++\underbrace{\color{red}{\mathbb{E}_{\tilde x}\!\left[\left\|\mathbb{E}_{x\mid \tilde x}\![\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)]\right\|^2\right]}}_{\text{no }\theta} \\[6pt]
+&amp;=\mathbb{E}_{x,\tilde x}\!\left[\|s_\theta(\tilde x)\|^2-2\,s_\theta(\tilde x)^\top \nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\right]
++\color{red}{C_0} \\[4pt]
+\overset{\substack{\text{complete-}\\\text{the-square}}}{\Rightarrow}\;&amp;=\mathbb{E}_{x,\tilde x}\!\left[\|s_\theta(\tilde x)-\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\|^2\right]
++\underbrace{\Big(\color{red}{C_0}-\mathbb{E}_{x,\tilde x}\!\left[\|\nabla_{\tilde x}\log p_\sigma(\tilde x\mid x)\|^2\right]\Big)}_{\displaystyle \color{red}{=:C}\ \text{no }\theta} \\[6pt]
+&amp;\equiv \boxed{L_{\text{DSM}}(\theta)}+\color{red}{C}
+\end{aligned}
+\]</span> where on line (3) you may recall that <span class="math display">\[
+\begin{align}
+\|a-b\|^2 &amp; =(a+b)^\top(a-b) \\ 
+ &amp; =a^Ta-2a^\top b+b^Tb\\
+ &amp; =\|a\|^2-2a^\top b+\|b\|^2
+\end{align}
+\]</span> which gives the same constant <span class="math inline">\(C\)</span> as above. Therefore, eventually we have: <span class="math display">\[\boxed{L_{D S M}(\theta)=\mathbb{E}_{x, \widetilde{x}}\left[\left\|s_\theta(\widetilde{x})-\nabla_{\widetilde{x}} \log p(\widetilde{x} \mid x)\right\|^2\right] }\]</span></p>
+<h3 data-original-heading="3.7 Final denoising score matching (DSM) objective" id="final-denoising-score-matching-dsm-objective">3.7 Final denoising score matching (DSM) objective</h3>
+<p>For Gaussian noise <span class="math inline">\(p(\widetilde{x}\mid x) = {N}(\widetilde{x}; x, \sigma^2 I)\)</span>, <span class="math display">\[
+\nabla_{\widetilde{x}}\log p(\widetilde{x}\mid x)
+= -\frac{\widetilde{x}-x}{\sigma^2}
+\]</span> which gives the standard <strong>denoising score matching</strong> loss: <span class="math display">\[
+\boxed{
+{L}_{DSM}(\theta)
+=
+\mathbb{E}_{x,\epsilon}
+\left[
+\left\|\, s_\theta(x + \sigma \epsilon)
++ \frac{\epsilon}{\sigma}\, \right\|^2
+\right],
+\quad \epsilon \sim {N}(0, I)
+}
+\]</span></p>
+<h2 data-original-heading="4 Side note: relation to DDPM" id="side-note-relation-to-ddpm">4 Side note: relation to DDPM</h2>
+<p>In DDPM, for each noise level <span class="math inline">\(t\)</span>, <span class="math display">\[
+x_t=\sqrt{\bar\alpha_t}\,x_0+\sqrt{1-\bar\alpha_t}\,\varepsilon, \qquad
+\varepsilon\sim\mathcal N(0,I),
+\]</span> and training often minimizes <span class="math display">\[
+\mathbb E\big\|\varepsilon_\theta(x_t,t)-\varepsilon\big\|_2^2,
+\]</span> which is equivalent to DSM at scale <span class="math inline">\(\sigma_t=\sqrt{1-\bar\alpha_t}\)</span> via <span class="math display">\[
+s_\theta(x_t,t)\;\approx\;-\frac{1}{\sigma_t}\,\varepsilon_\theta(x_t,t)
+\quad(\text{up to known weights}).
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span>← Previous page</span><span>Normalizing Flows (NF)</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span>Next page →</span><span>VAE</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Score Matching</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#what-is-the-score" class="is-active" aria-current="location">1 What is the “Score”?</a></li><li style="--depth:1"><a href="#definition-of-score">1.1 Definition of Score</a></li><li style="--depth:1"><a href="#intuition-of-score-function">1.2 Intuition of Score function</a></li><li style="--depth:1"><a href="#sampling-from-the-implicit-distribution">1.3 Sampling from the Implicit Distribution</a></li><li style="--depth:0"><a href="#why-estimate-the-score-instead-of-the-probability-density">2 Why Estimate the Score Instead of the Probability Density?</a></li><li style="--depth:1"><a href="#density-functions-are-hard-to-model">2.1 Density Functions Are Hard to Model</a></li><li style="--depth:1"><a href="#the-score-is-simpler-and-unconstrained">2.2 The Score Is Simpler and Unconstrained</a></li><li style="--depth:1"><a href="#the-idea-of-score-matching">3.1 The Idea of Score Matching</a></li><li style="--depth:1"><a href="#using-noisy-score-instead-of-the-true-data-score">3.2 Using noisy score instead of the true data score</a></li><li style="--depth:1"><a href="#solution-denoise">3.3 Solution: Denoise</a></li><li style="--depth:1"><a href="#relation-between-marginal-and-conditional-scores">3.4 Relation Between Marginal and Conditional Scores</a></li><li style="--depth:1"><a href="#gaussian-check">3.5 Gaussian check</a></li><li style="--depth:1"><a href="#expanding-the-ideal-loss-and-isolating-the-constant">3.6 Expanding the ideal loss and isolating the constant</a></li><li style="--depth:1"><a href="#final-denoising-score-matching-dsm-objective">3.7 Final denoising score matching (DSM) objective</a></li><li style="--depth:0"><a href="#side-note-relation-to-ddpm">4 Side note: relation to DDPM</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

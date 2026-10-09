@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 35 Gravitomagnetism — E.H. Notebook</title>
+<meta name="description" content="1. IntroductionThis chapter studies gravitomagnetism: the magnetic–like effects that appear in the weak-field limit of general relativity.Key ideas:Start from the weak-fi">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 35 Gravitomagnetism</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1. Introduction" id="introduction">1. Introduction</h2>
+<p>This chapter studies <strong>gravitomagnetism</strong>: the magnetic–like effects that appear in the weak-field limit of general relativity.</p>
+<p>Key ideas:</p>
+<ul>
+<li>Start from the <strong>weak-field approximation</strong> to Einstein’s equation.</li>
+<li>Show that the field equations closely resemble <strong>Maxwell’s equations</strong>.</li>
+<li>Define <strong>gravitoelectric</strong> and <strong>gravitomagnetic</strong> fields.</li>
+<li>Apply the analogy to gyroscopes, the <strong>Lense–Thirring precession</strong>, and to the <strong>Gravity Probe B</strong> experiment.</li>
+</ul>
+<hr>
+<h2 data-original-heading="2. Review of the Weak-Field Limit" id="review-of-the-weak-field-limit">2. Review of the Weak-Field Limit</h2>
+<p>We assume the spacetime metric is a small perturbation of flat Minkowski spacetime</p>
+<p><span class="math display">\[
+g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}, 
+\qquad
+h_{\mu\nu} = h_{\nu\mu},
+\qquad
+|h_{\mu\nu}| \ll 1
+\]</span></p>
+<p>We impose the coordinate (gauge) condition</p>
+<p><span class="math display">\[
+0 = \eta^{\rho\mu}\!\left(\partial_\rho h_{\mu\nu} - \tfrac12 \partial_\nu h_{\rho\mu}\right)
+\tag{35.1}
+\]</span></p>
+<p>This is equivalent to the Lorentz gauge condition from earlier chapters.</p>
+<p>Under this gauge, the Einstein equation linearizes to</p>
+<p><span class="math display">\[
+\partial^\alpha\partial_\alpha h^{\mu\nu}
+=
+\left(-\frac{\partial^2}{\partial t^2}+\nabla^2\right)h^{\mu\nu}
+=
+-16\pi G\!\left(T^{\mu\nu}-\tfrac12\eta^{\mu\nu}T\right)
+\tag{35.2}
+\]</span></p>
+<p>So the metric perturbation <span class="math inline">\(h^{\mu\nu}\)</span> behaves like a field on flat spacetime sourced by <span class="math inline">\(T^{\mu\nu}-\tfrac12\eta^{\mu\nu}T\)</span>.</p>
+<hr>
+<h2 data-original-heading="3. Solving the Einstein Equation (Retarded Solution)" id="solving-the-einstein-equation-retarded-solution">3. Solving the Einstein Equation (Retarded Solution)</h2>
+<p>Equation (35.2) has the same form as the wave equation for the electromagnetic potential.<br>
+By analogy with the retarded potential in electromagnetism, the solution is</p>
+<p><span class="math display">\[
+h^{\mu\nu}(t,\vec R)
+=
+4G
+\int_{\text{src}}
+\frac{
+T^{\mu\nu}(t-s,\vec r)
+-
+\tfrac12\eta^{\mu\nu}T(t-s,\vec r)
+}{s}\,dV
+\tag{35.3}
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\vec R\)</span> is the field point,</li>
+<li><span class="math inline">\(\vec r\)</span> is a source point,</li>
+<li><span class="math inline">\(s \equiv |\vec R - \vec r|\)</span> is the separation,</li>
+<li>the argument <span class="math inline">\((t-s)\)</span> accounts for the <strong>light-travel time delay</strong>.</li>
+</ul>
+<hr>
+<h2 data-original-heading="4. Slow-Source Approximation" id="slow-source-approximation">4. Slow-Source Approximation</h2>
+<p>Now assume the source is a <strong>non-relativistic perfect fluid</strong>:</p>
+<ul>
+<li>Energy density <span class="math inline">\(\rho_0\)</span></li>
+<li>Pressure <span class="math inline">\(p_0\)</span>, with <span class="math inline">\(p_0 \ll \rho_0\)</span></li>
+<li>Fluid four-velocity <span class="math inline">\(u^\alpha\)</span> with <span class="math inline">\(u^t \approx 1\)</span> and <span class="math inline">\(u^i \approx v^i \ll 1\)</span></li>
+</ul>
+<p>The perfect-fluid stress–energy tensor is</p>
+<p><span class="math display">\[
+T^{\mu\nu} = (\rho_0 + p_0)u^\mu u^\nu + p_0 g^{\mu\nu}
+\]</span></p>
+<p>In the slow-source limit (keeping only lowest order in <span class="math inline">\(u^i\)</span>), the components become</p>
+<p><span class="math display">\[
+\begin{aligned}
+T^{tt} &amp;\approx \rho_0 u^t u^t \approx \rho_0 &amp;&amp;\text{(rest energy density)} \\[4pt]
+T^{ti} = T^{it} &amp;\approx \rho_0 u^t u^i \approx \rho_0 v^i &amp;&amp;\text{(energy current)} \\[4pt]
+T^{ij} &amp;\approx \rho_0 u^i u^j \approx 0 &amp;&amp;\text{(second order in }u^i)
+\end{aligned}
+\tag{35.4a–c}
+\]</span></p>
+<p>The trace is</p>
+<p><span class="math display">\[
+\begin{aligned}
+T 
+&amp;\equiv \eta_{\alpha\beta}T^{\alpha\beta} \\[4pt]
+&amp;\approx
+\underbrace{\eta_{tt}T^{tt}}_{\eta_{tt}=-1}
++ 0 + 0 + 0 \\[4pt]
+&amp;= (-1)\rho_0 = -\rho_0
+\end{aligned}
+\]</span></p>
+<p>Therefore</p>
+$$
+<span class="math display">\[\begin{aligned}
+T^{tt} - \tfrac12\eta^{tt}T
+&amp;\approx
+\rho_0 - \tfrac12(-1)(-\rho_0)
+= \tfrac12\rho_0
+
+\\[4pt]
+T^{ti} - \tfrac12\eta^{ti}T
+&amp;\approx
+\rho_0 u^t u^i + 0
+\approx \rho_0 v^i
+
+\\[4pt]
+T^{ij} - \tfrac12\eta^{ij}T
+&amp;\approx
+0
+-\tfrac12\eta^{ij}(-\rho_0)
+\approx
++\tfrac12\eta^{ij}\rho_0
+\end{aligned}\]</span>
+<p>$$</p>
+<p>Plugging these into the retarded solution (35.3), we get the dominant metric components</p>
+<p><span class="math display">\[
+h^{tt}(t,\vec R)
+\equiv h^{xx} = h^{yy} = h^{zz}
+=
+2G
+\int_{\text{src}}
+\frac{\rho_0(t-s,\vec r)}{s}\,dV
+\tag{35.6a}
+\]</span></p>
+<p><span class="math display">\[
+h^{ti}(t,\vec R) = h^{it}(t,\vec R)
+=
+4G
+\int_{\text{src}}
+\frac{J^i(t-s,\vec r)}{s}\,dV
+\tag{35.6b}
+\]</span></p>
+<p>where the <strong>mass current density</strong> is</p>
+<p><span class="math display">\[
+\vec J \equiv \rho_0\vec v
+\]</span></p>
+<p>All other components of <span class="math inline">\(h^{\mu\nu}\)</span> are negligible in this approximation.</p>
+<hr>
+<h2 data-original-heading="5. Gravitational Potentials and Fields" id="gravitational-potentials-and-fields">5. Gravitational Potentials and Fields</h2>
+<h3 data-original-heading="5.1 Gravitational Scalar and Vector Potentials" id="gravitational-scalar-and-vector-potentials">5.1 Gravitational Scalar and Vector Potentials</h3>
+<p>We define gravitational potentials in analogy with the electromagnetic scalar and vector potentials:</p>
+<p><span class="math display">\[
+\Phi_G \equiv -\tfrac12 h^{tt}
+= -\int_{\text{src}}\frac{G\rho_0}{s}\,dV
+\tag{35.7a}
+\]</span></p>
+<p><span class="math display">\[
+A_G^i \equiv -\tfrac14 h^{ti}
+= -\int_{\text{src}}\frac{GJ^i}{s}\,dV
+\tag{35.7b}
+\]</span></p>
+<div class="math-theorem definition" data-label="35.1" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 35.1</span><span class="theorem-title">Gravitational scalar and vector potentials</span></p>
+</div>
+<div class="theorem-content">
+<p>The <strong>gravitational scalar potential</strong> <span class="math inline">\(\Phi_G\)</span> and <strong>gravitational vector potential</strong> <span class="math inline">\(\vec A_G\)</span> are defined from the weak-field metric components by (35.7a–b).</p>
+</div>
+</div>
+<p>The coordinate condition (35.1) becomes a relation between the potentials:</p>
+<p><span class="math display">\[
+\vec\nabla\cdot\vec A_G
+= -\frac{\partial\Phi_G}{\partial t}
+\tag{35.8}
+\]</span></p>
+<p>This is the Lorentz-like gauge condition for the gravitational potentials.</p>
+<h3 data-original-heading="5.2 Gravitoelectric and Gravitomagnetic Fields" id="gravitoelectric-and-gravitomagnetic-fields">5.2 Gravitoelectric and Gravitomagnetic Fields</h3>
+<p>Define fields in direct analogy with <span class="math inline">\(\vec E\)</span> and <span class="math inline">\(\vec B\)</span>:</p>
+<p><span class="math display">\[
+\vec E_G \equiv -\vec\nabla\Phi_G - \frac{\partial\vec A_G}{\partial t},
+\qquad
+\vec B_G \equiv \vec\nabla\times\vec A_G
+\tag{35.9}
+\]</span></p>
+<div class="math-theorem definition" data-label="35.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 35.2</span><span class="theorem-title">Gravitoelectric and gravitomagnetic fields</span></p>
+</div>
+<div class="theorem-content">
+<p>The <strong>gravitoelectric field</strong> <span class="math inline">\(\vec E_G\)</span> and <strong>gravitomagnetic field</strong> <span class="math inline">\(\vec B_G\)</span> are defined in terms of the gravitational potentials by (35.9).</p>
+</div>
+</div>
+<h3 data-original-heading="5.3 Gravitational Maxwell Equations" id="gravitational-maxwell-equations">5.3 Gravitational Maxwell Equations</h3>
+<p>Using the linearized Einstein equation together with the above definitions, one finds that <span class="math inline">\(\vec E_G\)</span> and <span class="math inline">\(\vec B_G\)</span> satisfy Maxwell-like equations:</p>
+<p><span class="math display">\[
+\vec\nabla\cdot\vec E_G = -4\pi G\rho_0
+\tag{35.10a}
+\]</span></p>
+<p><span class="math display">\[
+\vec\nabla\times\vec B_G - \frac{\partial\vec E_G}{\partial t} = -4\pi G\vec J
+\tag{35.10b}
+\]</span></p>
+<p><span class="math display">\[
+\vec\nabla\cdot\vec B_G = 0
+\tag{35.10c}
+\]</span></p>
+<p><span class="math display">\[
+\vec\nabla\times\vec E_G + \frac{\partial\vec B_G}{\partial t} = 0
+\tag{35.10d}
+\]</span></p>
+<div class="math-theorem theorem" data-label="35.3" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 35.3</span><span class="theorem-title">Gravitational Maxwell equations</span></p>
+</div>
+<div class="theorem-content">
+<p>In the weak-field, slow-source limit, the gravitoelectric and gravitomagnetic fields obey equations (35.10a–d), which are <strong>identical in form</strong> to Maxwell’s equations, except:</p>
+<ul>
+<li>The Coulomb constant <span class="math inline">\(k\)</span> is replaced by <span class="math inline">\(G\)</span>.</li>
+<li>Mass density <span class="math inline">\(\rho_0\)</span> and mass current <span class="math inline">\(\vec J\)</span> replace charge and charge current.</li>
+<li>The first two equations carry an extra minus sign, reflecting that gravity is attractive (like charges in electromagnetism repel).</li>
+</ul>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="6. Test-Particle Motion and Gravitational Lorentz Force" id="test-particle-motion-and-gravitational-lorentz-force">6. Test-Particle Motion and Gravitational Lorentz Force</h2>
+<p>Assume the field is <strong>static</strong> so all time derivatives of the field quantities vanish.<br>
+For a particle with non-relativistic velocity <span class="math inline">\(\vec V\)</span>, the geodesic equation (from chapter 22) simplifies to</p>
+<p><span class="math display">\[
+\frac{d^2 x^i}{dt^2}
+\approx
+\tfrac12\eta^{ij}\partial_j h_{tt}
++
+\eta^{ij}(\partial_k h_{tj} - \partial_j h_{tk})V^k
+\tag{35.11}
+\]</span></p>
+<p>Using the definitions of <span class="math inline">\(\Phi_G\)</span>, <span class="math inline">\(\vec A_G\)</span>, and the fields <span class="math inline">\(\vec E_G\)</span>, <span class="math inline">\(\vec B_G\)</span>, we can rewrite this as a <strong>force law</strong></p>
+<p><span class="math display">\[
+\vec F_G
+\equiv
+m\frac{d^2\vec x}{dt^2}
+=
+m\left(\vec E_G + \vec V\times 4\vec B_G\right)
+\tag{35.12}
+\]</span></p>
+<div class="math-theorem proposition" data-label="35.4" data-callout="proposition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Proposition 35.4</span><span class="theorem-title">Gravitational Lorentz force</span></p>
+</div>
+<div class="theorem-content">
+<p>In the static, weak-field limit, a test mass <span class="math inline">\(m\)</span> moves under a force (35.12) that is analogous to the electromagnetic Lorentz force, with:</p>
+<ul>
+<li><span class="math inline">\(m\)</span> replacing the electric charge <span class="math inline">\(q\)</span></li>
+<li>A factor of <span class="math inline">\(4\)</span> multiplying the <span class="math inline">\(\vec V\times \vec B_G\)</span> term</li>
+</ul>
+</div>
+</div>
+<p>So gravity behaves <strong>almost</strong> like electromagnetism, but with stronger gravitomagnetic coupling.</p>
+<hr>
+<h2 data-original-heading="7. Gravitomagnetic Effects on a Gyroscope" id="gravitomagnetic-effects-on-a-gyroscope">7. Gravitomagnetic Effects on a Gyroscope</h2>
+<p>In electromagnetism:</p>
+<ul>
+<li>A current loop of area <span class="math inline">\(A\)</span> carrying current <span class="math inline">\(i\)</span> has a magnetic moment <span class="math inline">\(\vec\mu\)</span> of magnitude <span class="math inline">\(\mu = iA\)</span>, perpendicular to the loop’s plane.</li>
+<li>In a magnetic field <span class="math inline">\(\vec B\)</span>, the loop experiences a torque <span class="math display">\[
+\vec\tau = \vec\mu\times\vec B
+\]</span></li>
+</ul>
+<p>A spinning object (gyroscope) has an analogous <strong>gravitomagnetic moment</strong></p>
+<p><span class="math display">\[
+\vec\mu_G = \tfrac12\vec s
+\]</span></p>
+<p>where <span class="math inline">\(\vec s\)</span> is the gyroscope’s total spin angular momentum.</p>
+<p>In a gravitomagnetic field <span class="math inline">\(\vec B_G\)</span>, the gyroscope feels a torque</p>
+<p><span class="math display">\[
+\vec\tau
+=
+\vec\mu_G\times 4\vec B_G
+=
+\vec s\times 2\vec B_G
+\tag{35.13}
+\]</span></p>
+<p>This torque causes the spin axis to <strong>precess</strong> about the direction of <span class="math inline">\(\vec B_G\)</span> with angular velocity</p>
+<p><span class="math display">\[
+\vec\Omega_{LT} = -2\vec B_G
+\tag{35.14}
+\]</span></p>
+<p>The direction of <span class="math inline">\(\vec\Omega_{LT}\)</span> is chosen so that your right thumb points along <span class="math inline">\(\vec\Omega_{LT}\)</span> when your fingers curl in the direction of the precession.</p>
+<div class="math-theorem definition" data-label="35.5" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 35.5</span><span class="theorem-title">Lense–Thirring precession</span></p>
+</div>
+<div class="theorem-content">
+<p>The precession of a gyroscope’s spin axis in a gravitomagnetic field, with angular velocity given by (35.14), is called <strong>Lense–Thirring precession</strong>.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="8. Lense–Thirring Precession Near a Spinning Object" id="lensethirring-precession-near-a-spinning-object">8. Lense–Thirring Precession Near a Spinning Object</h2>
+<p>From electromagnetic theory, a steadily spinning, spherically symmetric charged object with total magnetic moment <span class="math inline">\(\vec\mu\)</span> creates a dipole magnetic field</p>
+<p><span class="math display">\[
+\vec B(\vec r)
+=
+\frac{\mu_0}{4\pi r^3}
+\left[3(\vec\mu\cdot\hat r)\hat r - \vec\mu\right]
+\tag{35.15}
+\]</span></p>
+<p>By analogy, a spinning star or planet with total spin angular momentum <span class="math inline">\(\vec S\)</span> produces a gravitomagnetic field</p>
+<p><span class="math display">\[
+\vec B_G(\vec r)
+=
+-\frac{G}{r^3}
+\left[3(\vec\mu_G\cdot\hat r)\hat r - \vec\mu_G\right]
+=
+\frac{G}{2r^3}
+\left[3(\vec S\cdot\hat r)\hat r - \vec S\right]
+\tag{35.16}
+\]</span></p>
+<p>The extra factor of <span class="math inline">\(2\)</span> comes from <span class="math inline">\(\vec\mu_G = \tfrac12\vec S\)</span>, and the overall minus sign indicates the reversed sense of the field compared to the electromagnetic case.</p>
+<hr>
+<h2 data-original-heading="9. Lense–Thirring Precession Around the Earth" id="lensethirring-precession-around-the-earth">9. Lense–Thirring Precession Around the Earth</h2>
+<p>Consider a gyroscope in an <strong>equatorial orbit</strong> around the Earth:</p>
+<ul>
+<li>Earth’s spin angular momentum <span class="math inline">\(\vec S\)</span> is perpendicular to the equatorial plane.</li>
+<li>For a point in the equatorial plane, <span class="math inline">\(\vec S\cdot\hat r = 0\)</span>.</li>
+<li>On that plane, <span class="math inline">\(\vec B_G = \vec G S / (2r^3)\)</span>, parallel to <span class="math inline">\(\vec S\)</span>.</li>
+</ul>
+<p>If the gyroscope’s spin <span class="math inline">\(\vec s\)</span> lies in the equatorial plane (perpendicular to <span class="math inline">\(\vec S\)</span>), the precession is easiest to observe.<br>
+Using (35.14) and (35.16), the precession rate is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Omega_{LT}
+&amp;= 2B_G
+= 2\left(\frac{GS}{2r^3}\right)
+= \frac{GS}{r^3} \\[4pt]
+&amp;=
+\frac{GI\omega}{r^3}
+\end{aligned}
+\tag{35.17}
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(I\)</span> is the Earth’s moment of inertia</li>
+<li><span class="math inline">\(\omega\)</span> is Earth’s spin angular speed (<span class="math inline">\(2\pi/\text{day}\)</span>)</li>
+</ul>
+<h3 data-original-heading="9.1 Approximating Earth’s Moment of Inertia" id="approximating-earths-moment-of-inertia">9.1 Approximating Earth’s Moment of Inertia</h3>
+<p>For an axially symmetric body,</p>
+<p><span class="math display">\[
+I = \alpha M R^2
+\tag{35.18}
+\]</span></p>
+<p>where <span class="math inline">\(M\)</span> is its mass, <span class="math inline">\(R\)</span> its radius, and <span class="math inline">\(0 &lt; \alpha \le 1\)</span> depends on internal mass distribution.</p>
+<ul>
+<li>Uniform sphere: <span class="math inline">\(\alpha = 2/5\)</span></li>
+<li>Earth is denser toward the center, so <span class="math inline">\(\alpha\)</span> is smaller</li>
+<li>Detailed studies give <span class="math inline">\(\alpha \approx 0.33\)</span></li>
+</ul>
+<p>Substituting <span class="math inline">\(I = \alpha MR^2\)</span> into (35.17) yields</p>
+<p><span class="math display">\[
+\Omega_{LT}
+=
+\frac{G(\alpha MR^2)\omega}{r^3}
+=
+0.33\,\frac{GM}{R}
+\left(\frac{R}{r}\right)^3\omega
+\tag{35.19}
+\]</span></p>
+<p>For a low-Earth orbit, <span class="math inline">\(r \approx R \approx 6380\ \text{km}\)</span>, so</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Omega_{LT}
+&amp;\approx
+\frac{0.33(4.45\times 10^{-3}\,\eta)}{6{,}380{,}000\,\eta}
+\left(\frac{2\pi\ \text{rad}}{\text{day}}\right)
+\left(\frac{365.25\ \text{day}}{\text{y}}\right) \\[4pt]
+&amp;\approx 5.4\times 10^{-7}\ \text{rad}/\text{y}
+\end{aligned}
+\tag{35.20}
+\]</span></p>
+<p>This corresponds to approximately <span class="math inline">\(0.11\)</span> arcseconds per year — extremely small and difficult to measure.</p>
+<hr>
+<h2 data-original-heading="10. Geodetic Precession" id="geodetic-precession">10. Geodetic Precession</h2>
+<p>There is another effect: even if the central body did <strong>not</strong> spin, a gyroscope orbiting in curved spacetime will precess.</p>
+<p>This is <strong>geodetic precession</strong> and is not a gravitomagnetic effect.</p>
+<p>For an equatorial orbit with the gyroscope’s spin in the orbital plane, the angle of geodetic precession per orbit is approximately</p>
+<p><span class="math display">\[
+\Delta\phi_{gd} \approx \frac{3\pi GM}{R}
+\quad\text{per orbit}
+\tag{35.21}
+\]</span></p>
+<p>A near-Earth orbit has period <span class="math inline">\(T \approx 85\ \text{min}\)</span>, giving a precession rate</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Omega_{gd}
+&amp;\equiv \frac{\Delta\phi_{gd}}{T} \\[4pt]
+&amp;\approx
+\frac{3\pi(4.45\times 10^{-3}\,\eta)}
+{(85\ \text{min})(6{,}380{,}000\,\eta)}
+\left(\frac{1\ \text{min}}{60\ \text{s}}\right)
+\left(\frac{3.16\times 10^7\ \text{s}}{1\ \text{y}}\right) \\[4pt]
+&amp;\approx 4.1\times 10^{-5}\ \text{rad}/\text{y}
+\end{aligned}
+\tag{35.22}
+\]</span></p>
+<p>This is almost <strong>two orders of magnitude larger</strong> than the Lense–Thirring precession for a gyroscope in low-Earth orbit, making geodetic precession easier to measure.</p>
+<hr>
+<h2 data-original-heading="11. Gravity Probe B" id="gravity-probe-b">11. Gravity Probe B</h2>
+<p><strong>Gravity Probe B</strong> was a satellite mission launched on 20 April 2004 to measure both:</p>
+<ol type="1">
+<li>The <strong>geodetic precession</strong> of a gyroscope in Earth orbit<br>
+</li>
+<li>The <strong>Lense–Thirring (frame-dragging) precession</strong></li>
+</ol>
+<p>Mission features:</p>
+<ul>
+<li>Four extremely round quartz-sphere gyroscopes (among the most perfect spheres ever made).</li>
+<li>Each spin axis monitored relative to the direction of a distant guide star.</li>
+<li>Nearly polar orbit at radius <span class="math inline">\(\approx 7000\ \text{km}\)</span> to separate geodetic and gravitomagnetic effects.</li>
+<li>One gyroscope used as a “proof mass” to keep the spacecraft on a geodesic; thrusters fired to keep the craft centered on it.</li>
+</ul>
+<p>Early data showed unexpectedly large noise due to stray electrostatic torques from patchy surface charge on the spheres. This increased the uncertainty by factors of <span class="math inline">\(\sim 20\)</span>–<span class="math inline">\(30\)</span> over design expectations, but careful modeling and calibration eventually allowed extraction of the desired signals.</p>
+<p>Final results (Everitt et al., <em>Phys. Rev.&nbsp;Lett.</em> <strong>106</strong>, 221101 (2011)):</p>
+<ul>
+<li>Measured <strong>geodetic precession</strong>: <span class="math display">\[
+6602 \pm 18\ \text{mas}/\text{y}
+\]</span> compared with the GR prediction <span class="math display">\[
+6606\ \text{mas}/\text{y}
+\]</span></li>
+<li>Measured <strong>Lense–Thirring precession</strong>: <span class="math display">\[
+37.2 \pm 7.2\ \text{mas}/\text{y}
+\]</span> compared with the GR prediction <span class="math display">\[
+39.2\ \text{mas}/\text{y}
+\]</span></li>
+</ul>
+<p>The geodetic effect is currently measured to about <span class="math inline">\(0.3\%\)</span> precision — the most precise such measurement.<br>
+The Lense–Thirring effect is measured to about <span class="math inline">\(\pm 19\%\)</span>, limited by residual systematics from stray charge.</p>
+<p>Gravity Probe B therefore provides <strong>direct experimental confirmation</strong> of both geodetic and gravitomagnetic precession, and a striking test of general relativity in the weak-field, Earth-orbit regime.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span>← Previous page</span><span>Ch. 33 Gemini</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span>Next page →</span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 35 Gravitomagnetism</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#introduction" class="is-active" aria-current="location">1. Introduction</a></li><li style="--depth:0"><a href="#review-of-the-weak-field-limit">2. Review of the Weak-Field Limit</a></li><li style="--depth:0"><a href="#solving-the-einstein-equation-retarded-solution">3. Solving the Einstein Equation (Retarded Solution)</a></li><li style="--depth:0"><a href="#slow-source-approximation">4. Slow-Source Approximation</a></li><li style="--depth:0"><a href="#gravitational-potentials-and-fields">5. Gravitational Potentials and Fields</a></li><li style="--depth:1"><a href="#gravitational-scalar-and-vector-potentials">5.1 Gravitational Scalar and Vector Potentials</a></li><li style="--depth:1"><a href="#gravitoelectric-and-gravitomagnetic-fields">5.2 Gravitoelectric and Gravitomagnetic Fields</a></li><li style="--depth:1"><a href="#gravitational-maxwell-equations">5.3 Gravitational Maxwell Equations</a></li><li style="--depth:0"><a href="#test-particle-motion-and-gravitational-lorentz-force">6. Test-Particle Motion and Gravitational Lorentz Force</a></li><li style="--depth:0"><a href="#gravitomagnetic-effects-on-a-gyroscope">7. Gravitomagnetic Effects on a Gyroscope</a></li><li style="--depth:0"><a href="#lensethirring-precession-near-a-spinning-object">8. Lense–Thirring Precession Near a Spinning Object</a></li><li style="--depth:0"><a href="#lensethirring-precession-around-the-earth">9. Lense–Thirring Precession Around the Earth</a></li><li style="--depth:1"><a href="#approximating-earths-moment-of-inertia">9.1 Approximating Earth’s Moment of Inertia</a></li><li style="--depth:0"><a href="#geodetic-precession">10. Geodetic Precession</a></li><li style="--depth:0"><a href="#gravity-probe-b">11. Gravity Probe B</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

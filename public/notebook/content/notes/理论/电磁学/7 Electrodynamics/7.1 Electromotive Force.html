@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>7.1 Electromotive Force — E.H. Notebook</title>
+<meta name="description" content="7.1.1 Chapter 7.1 — Exam Notes7.1.1 Ohm’s Law7.1.2 Electromotive Force7.1.3 Motional Emf7.1.1.4 Big pictureChapter 7.1 answers one practical question:What actually drives">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/index.html">7 Electrodynamics</a></nav><h1 id="reader-title">7.1 Electromotive Force</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Chapter 7.1 — Exam Notes" id="chapter-7.1-exam-notes">7.1.1 Chapter 7.1 — Exam Notes</h2>
+<h3 data-original-heading="7.1.1 Ohm’s Law" id="ohms-law">7.1.1 Ohm’s Law</h3>
+<h3 data-original-heading="7.1.2 Electromotive Force" id="electromotive-force">7.1.2 Electromotive Force</h3>
+<h3 data-original-heading="7.1.3 Motional Emf" id="motional-emf">7.1.3 Motional Emf</h3>
+<h3 data-original-heading="Big picture" id="big-picture">7.1.1.4 Big picture</h3>
+<p>Chapter 7.1 answers one practical question:</p>
+<blockquote>
+<p>What actually drives charges around a circuit?</p>
+</blockquote>
+<p>The structure is:</p>
+<ol type="1">
+<li><strong>Local material response</strong>: how current density <span class="math inline">\(\mathbf J\)</span> responds to force per unit charge <span class="math inline">\(\mathbf f\)</span></li>
+<li><strong>Circuit-level driving</strong>: how a source produces an emf <span class="math inline">\(\mathcal E\)</span></li>
+<li><strong>Motion in a magnetic field</strong>: how moving conductors generate emf even when the “source” is magnetic</li>
+</ol>
+<p>For exams, the main skill is to know <strong>which formula belongs to which physical mechanism</strong>.</p>
+<hr>
+<h3 data-original-heading="7.1.1 Ohm’s Law" id="ohms-law-1">7.1.1 Ohm’s Law</h3>
+<h4 data-original-heading="Core formulas" id="core-formulas">7.1.1.5.1 Core formulas</h4>
+<h5 data-original-heading="Most general local form in this section" id="most-general-local-form-in-this-section">7.1.1.5.1.1 Most general local form in this section</h5>
+<p><span class="math display">\[
+\mathbf J=\sigma \mathbf f
+\]</span></p>
+<p>Meaning:</p>
+<ul>
+<li><span class="math inline">\(\mathbf J\)</span> = current density</li>
+<li><span class="math inline">\(\sigma\)</span> = conductivity</li>
+<li><span class="math inline">\(\mathbf f\)</span> = <strong>force per unit charge</strong></li>
+</ul>
+<p>This is the real starting point.</p>
+<hr>
+<h5 data-original-heading="Electromagnetic driving force" id="electromagnetic-driving-force">7.1.1.5.1.2 Electromagnetic driving force</h5>
+<p><span class="math display">\[
+\mathbf J=\sigma(\mathbf E+\mathbf v\times \mathbf B)
+\]</span></p>
+<p>Use this when the current is driven by electromagnetic forces and the charges may be moving through a magnetic field.</p>
+<hr>
+<h5 data-original-heading="Ordinary Ohm’s law" id="ordinary-ohms-law">7.1.1.5.1.3 Ordinary Ohm’s law</h5>
+<p><span class="math display">\[
+\mathbf J=\sigma \mathbf E
+\]</span></p>
+<p>Use this when the magnetic term is negligible, which is the standard case in ordinary conductors/circuits.</p>
+<p>This is the formula most problems mean by “Ohm’s law,” but the book emphasizes that it is really a <strong>special case</strong> of the more general relation above.</p>
+<hr>
+<h5 data-original-heading="Resistivity" id="resistivity">7.1.1.5.1.4 Resistivity</h5>
+<p><span class="math display">\[
+\rho=\frac{1}{\sigma}
+\]</span></p>
+<p>Be careful:</p>
+<ul>
+<li>here <span class="math inline">\(\rho\)</span> means <strong>resistivity</strong></li>
+<li>not charge density</li>
+</ul>
+<hr>
+<h5 data-original-heading="Circuit form of Ohm’s law" id="circuit-form-of-ohms-law">7.1.1.5.1.5 Circuit form of Ohm’s law</h5>
+<p><span class="math display">\[
+V=IR
+\]</span></p>
+<p>This is the global/circuit version.</p>
+<p>Meaning:</p>
+<ul>
+<li><span class="math inline">\(V\)</span> = potential difference between electrodes/ends</li>
+<li><span class="math inline">\(I\)</span> = total current</li>
+<li><span class="math inline">\(R\)</span> = resistance</li>
+</ul>
+<hr>
+<h5 data-original-heading="Current from current density" id="current-from-current-density">7.1.1.5.1.6 Current from current density</h5>
+<p><span class="math display">\[
+I=\int \mathbf J\cdot d\mathbf a
+\]</span></p>
+<p>Use this whenever the current density is known, or when symmetry makes <span class="math inline">\(\mathbf J\)</span> easy to integrate.</p>
+<hr>
+<h5 data-original-heading="Resistance of a uniform cylindrical resistor" id="resistance-of-a-uniform-cylindrical-resistor">7.1.1.5.1.7 Resistance of a uniform cylindrical resistor</h5>
+<p>For a resistor of length <span class="math inline">\(L\)</span>, cross-sectional area <span class="math inline">\(A\)</span>, conductivity <span class="math inline">\(\sigma\)</span>: <span class="math display">\[
+I=\sigma \frac{A}{L}V
+\]</span> so <span class="math display">\[
+R=\frac{L}{\sigma A}
+\]</span></p>
+<p>This is the standard “wire resistor” formula.</p>
+<p>Use when:</p>
+<ul>
+<li>material is homogeneous</li>
+<li>cross section is constant</li>
+<li>field/current is uniform along the wire</li>
+</ul>
+<hr>
+<h5 data-original-heading="Resistance of coaxial cylindrical geometry" id="resistance-of-coaxial-cylindrical-geometry">7.1.1.5.1.8 Resistance of coaxial cylindrical geometry</h5>
+<p>For two coaxial cylinders of radii <span class="math inline">\(a,b\)</span>, length <span class="math inline">\(L\)</span>, conductivity <span class="math inline">\(\sigma\)</span>: <span class="math display">\[
+I=\frac{2\pi \sigma L}{\ln(b/a)}V
+\]</span> so <span class="math display">\[
+R=\frac{\ln(b/a)}{2\pi \sigma L}
+\]</span></p>
+<p>Use when current flows <strong>radially</strong> through the material between coaxial conductors.</p>
+<p>This is an exam favorite because it tests whether you recognize that the area for current flow changes with radius.</p>
+<hr>
+<h5 data-original-heading="Steady current in uniform ohmic medium" id="steady-current-in-uniform-ohmic-medium">7.1.1.5.1.9 Steady current in uniform ohmic medium</h5>
+<p>For steady currents and uniform conductivity, <span class="math display">\[
+\nabla\cdot \mathbf E=\frac{1}{\sigma}\nabla\cdot \mathbf J=0
+\]</span></p>
+<p>So inside a homogeneous ohmic material carrying steady current:</p>
+<ul>
+<li><span class="math inline">\(\nabla\cdot \mathbf E=0\)</span></li>
+<li>charge density in the bulk is zero</li>
+<li>any excess charge lives on the surface</li>
+</ul>
+<p>Hence the potential satisfies Laplace’s equation: <span class="math display">\[
+\nabla^2 V=0
+\]</span></p>
+<p>This is extremely important for solving conductor/current problems with boundary conditions.</p>
+<hr>
+<h5 data-original-heading="Joule heating law" id="joule-heating-law">7.1.1.5.1.10 Joule heating law</h5>
+<p><span class="math display">\[
+P=VI=I^2R
+\]</span></p>
+<p>Also, <span class="math display">\[
+P=\frac{V^2}{R}
+\]</span></p>
+<p>Use this whenever the problem asks about:</p>
+<ul>
+<li>heat dissipated</li>
+<li>power delivered to a resistor</li>
+<li>energy loss in a resistive element</li>
+</ul>
+<hr>
+<h4 data-original-heading="What Ohm’s law means physically" id="what-ohms-law-means-physically">7.1.1.5.2 What Ohm’s law means physically</h4>
+<p>A constant electric field does <strong>not</strong> make the current grow forever because charges collide repeatedly inside the material.</p>
+<p>So:</p>
+<ul>
+<li>microscopic motion is accelerated between collisions</li>
+<li>macroscopic result is a steady <strong>drift velocity</strong></li>
+<li>therefore <span class="math inline">\(\mathbf J\)</span> can be proportional to <span class="math inline">\(\mathbf E\)</span></li>
+</ul>
+<p>The book’s rough Drude-style estimate gives <span class="math display">\[
+\mathbf J
+=
+\left(
+\frac{nf\lambda q^2}{2mv_{\text{thermal}}}
+\right)\mathbf E
+\]</span></p>
+<p>Do <strong>not</strong> usually use this formula computationally unless explicitly asked. What it is good for:</p>
+<ul>
+<li>explaining why conductivity increases with charge-carrier density</li>
+<li>explaining why conductivity typically decreases as temperature rises</li>
+</ul>
+<hr>
+<h4 data-original-heading="What to do on an exam" id="what-to-do-on-an-exam">7.1.1.5.3 What to do on an exam</h4>
+<p>If you see a conduction problem, ask:</p>
+<h5 data-original-heading="Case 1: Is this a local-material law problem?" id="case-1-is-this-a-local-material-law-problem">7.1.1.5.3.1 Case 1: Is this a local-material law problem?</h5>
+<p>Then start from <span class="math display">\[
+\mathbf J=\sigma \mathbf E
+\]</span> or <span class="math display">\[
+\mathbf J=\sigma(\mathbf E+\mathbf v\times \mathbf B)
+\]</span></p>
+<h5 data-original-heading="Case 2: Is this a geometry-to-resistance problem?" id="case-2-is-this-a-geometry-to-resistance-problem">7.1.1.5.3.2 Case 2: Is this a geometry-to-resistance problem?</h5>
+<p>Then:</p>
+<ol type="1">
+<li>find <span class="math inline">\(\mathbf E\)</span> or <span class="math inline">\(V\)</span></li>
+<li>get <span class="math inline">\(\mathbf J=\sigma \mathbf E\)</span></li>
+<li>compute <span class="math display">\[
+I=\int \mathbf J\cdot d\mathbf a
+\]</span></li>
+<li>identify <span class="math display">\[
+R=\frac{V}{I}
+\]</span></li>
+</ol>
+<h5 data-original-heading="Case 3: Is this a steady-current boundary value problem?" id="case-3-is-this-a-steady-current-boundary-value-problem">7.1.1.5.3.3 Case 3: Is this a steady-current boundary value problem?</h5>
+<p>Then use:</p>
+<ul>
+<li><span class="math inline">\(\nabla\cdot \mathbf J=0\)</span></li>
+<li>uniform <span class="math inline">\(\sigma \Rightarrow \nabla\cdot \mathbf E=0\)</span></li>
+<li><span class="math inline">\(\mathbf E=-\nabla V\)</span></li>
+<li>therefore <span class="math display">\[
+\nabla^2 V=0
+\]</span></li>
+</ul>
+<p>This lets you use all the Chapter 3 Laplace-equation machinery.</p>
+<hr>
+<h4 data-original-heading="Example logic you should remember" id="example-logic-you-should-remember">7.1.1.5.4 Example logic you should remember</h4>
+<h5 data-original-heading="Example 7.1: uniform cylindrical resistor" id="example-7.1-uniform-cylindrical-resistor">7.1.1.5.4.1 Example 7.1: uniform cylindrical resistor</h5>
+<p>Because the ends are equipotentials and the geometry is uniform, the field inside is uniform: <span class="math display">\[
+\mathbf E=-\frac{V_0}{L}\hat{\mathbf z}
+\]</span> and so <span class="math display">\[
+I=\sigma \frac{A}{L}V
+\]</span></p>
+<h5 data-original-heading="Example 7.2: coaxial cylinders" id="example-7.2-coaxial-cylinders">7.1.1.5.4.2 Example 7.2: coaxial cylinders</h5>
+<p>Use radial electrostatic field and integrate current across a cylindrical surface: <span class="math display">\[
+I=\int \mathbf J\cdot d\mathbf a
+\]</span> Then relate <span class="math inline">\(\lambda\)</span> to <span class="math inline">\(V\)</span> using the potential difference.</p>
+<h5 data-original-heading="Example 7.3: proving the field is uniform" id="example-7.3-proving-the-field-is-uniform">7.1.1.5.4.3 Example 7.3: proving the field is uniform</h5>
+<p>Technique:</p>
+<ol type="1">
+<li>use <span class="math display">\[
+\nabla^2 V=0
+\]</span></li>
+<li>impose boundary conditions on the ends and side wall</li>
+<li>guess the simple linear solution</li>
+<li>invoke uniqueness theorem</li>
+</ol>
+<p>That is a very exam-worthy solution style.</p>
+<hr>
+<h3 data-original-heading="7.1.2 Electromotive Force" id="electromotive-force-1">7.1.2 Electromotive Force</h3>
+<h4 data-original-heading="Core idea" id="core-idea">7.1.1.6.1 Core idea</h4>
+<p>In a real circuit, current is uniform all the way around, even though the obvious “source” may only be inside the battery.</p>
+<p>Why?</p>
+<p>Because charge pileups create an electrostatic field that rapidly adjusts the flow until the current becomes uniform.</p>
+<p>So there are <strong>two forces per unit charge</strong> in the circuit: <span class="math display">\[
+\mathbf f=\mathbf f_s+\mathbf E
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\mathbf f_s\)</span> = source force per unit charge</li>
+<li><span class="math inline">\(\mathbf E\)</span> = electrostatic force per unit charge from redistributed charge</li>
+</ul>
+<hr>
+<h4 data-original-heading="Definition of emf" id="definition-of-emf">7.1.1.6.2 Definition of emf</h4>
+<p><span class="math display">\[
+\mathcal E \equiv \oint \mathbf f\cdot d\mathbf l
+=
+\oint \mathbf f_s\cdot d\mathbf l
+\]</span></p>
+<p>Why can we replace <span class="math inline">\(\mathbf f\)</span> by <span class="math inline">\(\mathbf f_s\)</span>?</p>
+<p>Because for electrostatic fields, <span class="math display">\[
+\oint \mathbf E\cdot d\mathbf l=0
+\]</span></p>
+<p>So only the non-electrostatic source part contributes to the loop integral.</p>
+<hr>
+<h4 data-original-heading="What emf means" id="what-emf-means">7.1.1.6.3 What emf means</h4>
+<p><span class="math inline">\(\mathcal E\)</span> is <strong>not</strong> a force.</p>
+<p>It is:</p>
+<ul>
+<li>line integral of force per unit charge around the circuit</li>
+<li>often interpreted as work done per unit charge by the source</li>
+</ul>
+<p>So dimensions: <span class="math display">\[
+[\mathcal E]=\text{volts}
+\]</span></p>
+<p>not newtons.</p>
+<hr>
+<h4 data-original-heading="Ideal source relation" id="ideal-source-relation">7.1.1.6.4 Ideal source relation</h4>
+<p>Inside an ideal source, such as an ideal battery, the net force on charges is zero, so <span class="math display">\[
+\mathbf E=-\mathbf f_s
+\]</span></p>
+<p>Then the terminal voltage is <span class="math display">\[
+V=-\int_a^b \mathbf E\cdot d\mathbf l
+=
+\int_a^b \mathbf f_s\cdot d\mathbf l
+=
+\oint \mathbf f_s\cdot d\mathbf l
+=
+\mathcal E
+\]</span></p>
+<p>So for an <strong>ideal battery</strong>: <span class="math display">\[
+V=\mathcal E
+\]</span></p>
+<p>That is the clean relation to remember.</p>
+<hr>
+<h4 data-original-heading="Meaning in circuit language" id="meaning-in-circuit-language">7.1.1.6.5 Meaning in circuit language</h4>
+<p>A battery does two things:</p>
+<ol type="1">
+<li>inside the battery, non-electrostatic forces push charges “uphill” in potential</li>
+<li>outside the battery, the electrostatic field drives current through the rest of the circuit</li>
+</ol>
+<p>So:</p>
+<ul>
+<li>inside source: <span class="math inline">\(\mathbf f_s\)</span> is essential</li>
+<li>outside source: <span class="math inline">\(\mathbf E\)</span> usually does the pushing</li>
+</ul>
+<hr>
+<h4 data-original-heading="Exam traps" id="exam-traps">7.1.1.6.6 Exam traps</h4>
+<h5 data-original-heading="Trap 1: emf is not the same thing as electric field" id="trap-1-emf-is-not-the-same-thing-as-electric-field">7.1.1.6.6.1 Trap 1: emf is not the same thing as electric field</h5>
+<p><span class="math inline">\(\mathcal E\)</span> is a loop integral. <span class="math inline">\(\mathbf E\)</span> is a field.</p>
+<p>Do not confuse <span class="math display">\[
+\mathcal E
+\quad \text{with} \quad
+\mathbf E
+\]</span></p>
+<hr>
+<h5 data-original-heading="Trap 2: current uniformity comes from small surface charge rearrangements" id="trap-2-current-uniformity-comes-from-small-surface-charge-rearrangements">7.1.1.6.6.2 Trap 2: current uniformity comes from small surface charge rearrangements</h5>
+<p>If a problem asks &gt; Why is the current the same everywhere in the loop?</p>
+<p>the answer is:</p>
+<ul>
+<li>transient charge buildup creates an electrostatic field</li>
+<li>that field redistributes the driving so the current equalizes</li>
+</ul>
+<hr>
+<h5 data-original-heading="Trap 3: a purely electrostatic arrangement does not produce emf around a closed loop" id="trap-3-a-purely-electrostatic-arrangement-does-not-produce-emf-around-a-closed-loop">7.1.1.6.6.3 Trap 3: a purely electrostatic arrangement does not produce emf around a closed loop</h5>
+<p>Because <span class="math display">\[
+\oint \mathbf E\cdot d\mathbf l=0
+\]</span></p>
+<p>So if a loop is partly inside a capacitor field and partly outside, the net emf around the whole closed loop is still <span class="math display">\[
+\mathcal E=0
+\]</span></p>
+<p>This is exactly the kind of “trick question” the book warns about.</p>
+<hr>
+<h4 data-original-heading="How to use emf on an exam" id="how-to-use-emf-on-an-exam">7.1.1.6.7 How to use emf on an exam</h4>
+<p>If the problem asks for emf from a battery/source:</p>
+<ol type="1">
+<li>identify the non-electrostatic driving region</li>
+<li>compute <span class="math display">\[
+\mathcal E=\oint \mathbf f_s\cdot d\mathbf l
+\]</span></li>
+<li>if resistance is given, then use circuit Ohm’s law <span class="math display">\[
+I=\frac{\mathcal E}{R}
+\]</span></li>
+</ol>
+<p>For an ideal battery, you can usually jump directly to: <span class="math display">\[
+V=\mathcal E
+\]</span></p>
+<hr>
+<h3 data-original-heading="7.1.3 Motional Emf" id="motional-emf-1">7.1.3 Motional Emf</h3>
+<h4 data-original-heading="Core idea" id="core-idea-1">7.1.1.7.1 Core idea</h4>
+<p>A conductor moving through a magnetic field can develop an emf.</p>
+<p>This is the generator idea.</p>
+<p>The charges in the moving conductor feel magnetic force, which separates charge and drives current.</p>
+<hr>
+<h4 data-original-heading="Basic motional-emf formula" id="basic-motional-emf-formula">7.1.1.7.2 Basic motional-emf formula</h4>
+<p><span class="math display">\[
+\mathcal E=\oint \mathbf f_{\text{mag}}\cdot d\mathbf l
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf f_{\text{mag}}\)</span> is the magnetic force <strong>per unit charge</strong> on the mobile charges.</p>
+<p>In simple rigid-wire problems, <span class="math display">\[
+\mathbf f_{\text{mag}}=\mathbf v\times \mathbf B
+\]</span> for the moving segment.</p>
+<p>More generally, if the charge has actual velocity <span class="math inline">\(\mathbf w\)</span>, <span class="math display">\[
+\mathbf f_{\text{mag}}=\mathbf w\times \mathbf B
+\]</span></p>
+<hr>
+<h4 data-original-heading="Standard rectangular-loop result" id="standard-rectangular-loop-result">7.1.1.7.3 Standard rectangular-loop result</h4>
+<p>For a bar/segment of length <span class="math inline">\(h\)</span> moving with speed <span class="math inline">\(v\)</span> perpendicular to a uniform <span class="math inline">\(B\)</span>: <span class="math display">\[
+\mathcal E=vBh
+\]</span></p>
+<p>Use this immediately when:</p>
+<ul>
+<li>one segment of length <span class="math inline">\(h\)</span> cuts magnetic field lines</li>
+<li>motion is perpendicular to both the wire segment and <span class="math inline">\(\mathbf B\)</span></li>
+</ul>
+<hr>
+<h4 data-original-heading="Magnetic flux" id="magnetic-flux">7.1.1.7.4 Magnetic flux</h4>
+<p><span class="math display">\[
+\Phi\equiv \int \mathbf B\cdot d\mathbf a
+\]</span></p>
+<hr>
+<h4 data-original-heading="Flux rule for motional emf" id="flux-rule-for-motional-emf">7.1.1.7.5 Flux rule for motional emf</h4>
+<p><span class="math display">\[
+\mathcal E=-\frac{d\Phi}{dt}
+\]</span></p>
+<p>This is the major shortcut formula.</p>
+<p>Use it when:</p>
+<ul>
+<li>there is a <strong>single, well-defined loop</strong></li>
+<li>the loop moves, rotates, stretches, or distorts continuously</li>
+<li>you can compute the changing magnetic flux more easily than the magnetic force integral</li>
+</ul>
+<hr>
+<h4 data-original-heading="Sign convention" id="sign-convention">7.1.1.7.6 Sign convention</h4>
+<p>There are two sign choices:</p>
+<ul>
+<li>direction around loop in <span class="math inline">\(\oint \cdots d\mathbf l\)</span></li>
+<li>orientation of <span class="math inline">\(d\mathbf a\)</span> in the flux</li>
+</ul>
+<p>They must be connected by the right-hand rule:</p>
+<ul>
+<li>fingers curl in positive loop direction</li>
+<li>thumb gives positive area direction</li>
+</ul>
+<p>If you compute <span class="math display">\[
+\mathcal E&lt;0
+\]</span> it means the current flows opposite to your chosen positive loop direction.</p>
+<hr>
+<h4 data-original-heading="Extremely important conceptual point" id="extremely-important-conceptual-point">7.1.1.7.7 Extremely important conceptual point</h4>
+<p>The magnetic force sets up the emf, but</p>
+<p><span class="math display">\[
+\text{magnetic forces do no work}
+\]</span></p>
+<p>So who supplies the energy?</p>
+<p>The <strong>external agent</strong> pulling the loop.</p>
+<p>That is why generators require mechanical work input.</p>
+<hr>
+<h4 data-original-heading="Work/emf subtlety" id="workemf-subtlety">7.1.1.7.8 Work/emf subtlety</h4>
+<p>The book stresses a subtle but important distinction:</p>
+<h5 data-original-heading="To compute emf" id="to-compute-emf">7.1.1.7.8.1 To compute emf</h5>
+<p>you integrate around the loop <strong>at one instant of time</strong> <span class="math display">\[
+\mathcal E=\oint \mathbf f_{\text{mag}}\cdot d\mathbf l
+\]</span></p>
+<h5 data-original-heading="To compute actual work done on a charge" id="to-compute-actual-work-done-on-a-charge">7.1.1.7.8.2 To compute actual work done on a charge</h5>
+<p>you follow the charge around its true path</p>
+<p>These are not the same path.</p>
+<p>Yet in the rectangular-loop example, the work per unit charge done by the external pulling force turns out to equal the emf.</p>
+<p>This is exam-worthy as a conceptual explanation.</p>
+<hr>
+<h4 data-original-heading="Standard rectangular-loop formulas" id="standard-rectangular-loop-formulas">7.1.1.7.9 Standard rectangular-loop formulas</h4>
+<p>If the loop width inside the field is <span class="math inline">\(x\)</span>, height is <span class="math inline">\(h\)</span>, and field is uniform <span class="math inline">\(B\)</span>, then <span class="math display">\[
+\Phi=Bhx
+\]</span></p>
+<p>As the loop moves out of the field, <span class="math display">\[
+\frac{d\Phi}{dt}=-Bhv
+\]</span></p>
+<p>So <span class="math display">\[
+\mathcal E=-\frac{d\Phi}{dt}=vBh
+\]</span></p>
+<p>If the total circuit resistance is <span class="math inline">\(R\)</span>, then <span class="math display">\[
+I=\frac{\mathcal E}{R}=\frac{vBh}{R}
+\]</span></p>
+<hr>
+<h4 data-original-heading="Faraday disk / Faraday dynamo" id="faraday-disk-faraday-dynamo">7.1.1.7.10 Faraday disk / Faraday dynamo</h4>
+<p>For a rotating conducting disk of radius <span class="math inline">\(a\)</span>, angular speed <span class="math inline">\(\omega\)</span>, in uniform vertical field <span class="math inline">\(B\)</span>: <span class="math display">\[
+v=\omega s
+\]</span> so <span class="math display">\[
+\mathbf f_{\text{mag}}=\mathbf v\times \mathbf B=\omega sB\,\hat{\mathbf s}
+\]</span></p>
+<p>Then <span class="math display">\[
+\mathcal E=\int_0^a f_{\text{mag}}\,ds
+=
+\omega B\int_0^a s\,ds
+=
+\frac{\omega B a^2}{2}
+\]</span></p>
+<p>Hence <span class="math display">\[
+I=\frac{\mathcal E}{R}
+=
+\frac{\omega B a^2}{2R}
+\]</span></p>
+<p>This example matters because:</p>
+<ul>
+<li>it <strong>does</strong> have motional emf</li>
+<li>but the flux rule is not convenient/directly applicable, since current spreads over the disk and there is no single simple wire path</li>
+</ul>
+<p>So this is a classic example of:</p>
+<blockquote>
+<p>use direct motional-emf integral, not flux rule</p>
+</blockquote>
+<hr>
+<h4 data-original-heading="When the flux rule is safe" id="when-the-flux-rule-is-safe">7.1.1.7.11 When the flux rule is safe</h4>
+<p>Use <span class="math display">\[
+\mathcal E=-\frac{d\Phi}{dt}
+\]</span> when the current path is a single loop and remains well defined.</p>
+<hr>
+<h4 data-original-heading="When the flux rule is dangerous" id="when-the-flux-rule-is-dangerous">7.1.1.7.12 When the flux rule is dangerous</h4>
+<p>Be cautious if there are:</p>
+<ul>
+<li>switches</li>
+<li>sliding contacts</li>
+<li>multiple possible current paths</li>
+<li>extended conductors where current spreads through a 2D region</li>
+<li>strange geometries like the Faraday disk</li>
+</ul>
+<p>The book explicitly warns that flux can change without there being a motional emf, if no conductor is actually moving through the magnetic field in the required way.</p>
+<hr>
+<h3 data-original-heading="One-page exam checklist" id="one-page-exam-checklist">7.1.1.8 One-page exam checklist</h3>
+<h4 data-original-heading="If you see a resistor/material problem" id="if-you-see-a-resistormaterial-problem">7.1.1.8.1 If you see a resistor/material problem</h4>
+<p>Start from <span class="math display">\[
+\mathbf J=\sigma\mathbf E
+\]</span> then use <span class="math display">\[
+I=\int \mathbf J\cdot d\mathbf a
+\]</span> and <span class="math display">\[
+V=IR
+\]</span></p>
+<hr>
+<h4 data-original-heading="If you see a “why is current the same everywhere?” question" id="if-you-see-a-why-is-current-the-same-everywhere-question">7.1.1.8.2 If you see a “why is current the same everywhere?” question</h4>
+<p>Answer with:</p>
+<ul>
+<li>transient surface charge buildup</li>
+<li>induced electrostatic field</li>
+<li>self-correcting redistribution until <span class="math inline">\(\nabla\cdot \mathbf J=0\)</span></li>
+</ul>
+<hr>
+<h4 data-original-heading="If you see a battery/source problem" id="if-you-see-a-batterysource-problem">7.1.1.8.3 If you see a battery/source problem</h4>
+<p>Use <span class="math display">\[
+\mathcal E=\oint \mathbf f_s\cdot d\mathbf l
+\]</span> and for an ideal battery <span class="math display">\[
+V=\mathcal E
+\]</span></p>
+<hr>
+<h4 data-original-heading="If you see a moving rod/loop in a magnetic field" id="if-you-see-a-moving-rodloop-in-a-magnetic-field">7.1.1.8.4 If you see a moving rod/loop in a magnetic field</h4>
+<p>First think: <span class="math display">\[
+\mathcal E=\oint \mathbf f_{\text{mag}}\cdot d\mathbf l
+\]</span> If geometry is simple: <span class="math display">\[
+\mathcal E=vBh
+\]</span> If flux is easier: <span class="math display">\[
+\mathcal E=-\frac{d\Phi}{dt}
+\]</span></p>
+<hr>
+<h4 data-original-heading="If you see a power/heating question" id="if-you-see-a-powerheating-question">7.1.1.8.5 If you see a power/heating question</h4>
+<p>Use <span class="math display">\[
+P=VI=I^2R=\frac{V^2}{R}
+\]</span></p>
+<hr>
+<h3 data-original-heading="High-yield distinctions to memorize" id="high-yield-distinctions-to-memorize">7.1.1.9 High-yield distinctions to memorize</h3>
+<h4 data-original-heading="1. Local vs circuit Ohm’s law" id="local-vs-circuit-ohms-law">1. Local vs circuit Ohm’s law</h4>
+<p>Local: <span class="math display">\[
+\mathbf J=\sigma\mathbf E
+\]</span> Circuit: <span class="math display">\[
+V=IR
+\]</span></p>
+<h4 data-original-heading="2. emf vs voltage" id="emf-vs-voltage">2. emf vs voltage</h4>
+<ul>
+<li><strong>Voltage</strong> = potential difference between two points</li>
+<li><strong>emf</strong> = loop integral of source force per unit charge</li>
+</ul>
+<p>For an ideal battery they are equal: <span class="math display">\[
+V=\mathcal E
+\]</span></p>
+<h4 data-original-heading="3. Electrostatic emf vs motional emf" id="electrostatic-emf-vs-motional-emf">3. Electrostatic emf vs motional emf</h4>
+<ul>
+<li>Electrostatic field alone satisfies <span class="math display">\[
+\oint \mathbf E\cdot d\mathbf l=0
+\]</span></li>
+<li>Motional emf comes from moving conductors in magnetic field: <span class="math display">\[
+\mathcal E=\oint \mathbf f_{\text{mag}}\cdot d\mathbf l
+\]</span></li>
+</ul>
+<h4 data-original-heading="4. Magnetic force vs energy transfer" id="magnetic-force-vs-energy-transfer">4. Magnetic force vs energy transfer</h4>
+<ul>
+<li>magnetic force establishes charge separation/current direction</li>
+<li>external mechanical agent supplies the energy</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span>Next page →</span><span>7.2 Electromagnetic Induction</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">7.1 Electromotive Force</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#chapter-7.1-exam-notes" class="is-active" aria-current="location">7.1.1 Chapter 7.1 — Exam Notes</a></li><li style="--depth:1"><a href="#ohms-law">7.1.1 Ohm’s Law</a></li><li style="--depth:1"><a href="#electromotive-force">7.1.2 Electromotive Force</a></li><li style="--depth:1"><a href="#motional-emf">7.1.3 Motional Emf</a></li><li style="--depth:1"><a href="#big-picture">7.1.1.4 Big picture</a></li><li style="--depth:1"><a href="#ohms-law-1">7.1.1 Ohm’s Law</a></li><li style="--depth:2"><a href="#core-formulas">7.1.1.5.1 Core formulas</a></li><li style="--depth:3"><a href="#most-general-local-form-in-this-section">7.1.1.5.1.1 Most general local form in this section</a></li><li style="--depth:3"><a href="#electromagnetic-driving-force">7.1.1.5.1.2 Electromagnetic driving force</a></li><li style="--depth:3"><a href="#ordinary-ohms-law">7.1.1.5.1.3 Ordinary Ohm’s law</a></li><li style="--depth:3"><a href="#resistivity">7.1.1.5.1.4 Resistivity</a></li><li style="--depth:3"><a href="#circuit-form-of-ohms-law">7.1.1.5.1.5 Circuit form of Ohm’s law</a></li><li style="--depth:3"><a href="#current-from-current-density">7.1.1.5.1.6 Current from current density</a></li><li style="--depth:3"><a href="#resistance-of-a-uniform-cylindrical-resistor">7.1.1.5.1.7 Resistance of a uniform cylindrical resistor</a></li><li style="--depth:3"><a href="#resistance-of-coaxial-cylindrical-geometry">7.1.1.5.1.8 Resistance of coaxial cylindrical geometry</a></li><li style="--depth:3"><a href="#steady-current-in-uniform-ohmic-medium">7.1.1.5.1.9 Steady current in uniform ohmic medium</a></li><li style="--depth:3"><a href="#joule-heating-law">7.1.1.5.1.10 Joule heating law</a></li><li style="--depth:2"><a href="#what-ohms-law-means-physically">7.1.1.5.2 What Ohm’s law means physically</a></li><li style="--depth:2"><a href="#what-to-do-on-an-exam">7.1.1.5.3 What to do on an exam</a></li><li style="--depth:3"><a href="#case-1-is-this-a-local-material-law-problem">7.1.1.5.3.1 Case 1: Is this a local-material law problem?</a></li><li style="--depth:3"><a href="#case-2-is-this-a-geometry-to-resistance-problem">7.1.1.5.3.2 Case 2: Is this a geometry-to-resistance problem?</a></li><li style="--depth:3"><a href="#case-3-is-this-a-steady-current-boundary-value-problem">7.1.1.5.3.3 Case 3: Is this a steady-current boundary value problem?</a></li><li style="--depth:2"><a href="#example-logic-you-should-remember">7.1.1.5.4 Example logic you should remember</a></li><li style="--depth:3"><a href="#example-7.1-uniform-cylindrical-resistor">7.1.1.5.4.1 Example 7.1: uniform cylindrical resistor</a></li><li style="--depth:3"><a href="#example-7.2-coaxial-cylinders">7.1.1.5.4.2 Example 7.2: coaxial cylinders</a></li><li style="--depth:3"><a href="#example-7.3-proving-the-field-is-uniform">7.1.1.5.4.3 Example 7.3: proving the field is uniform</a></li><li style="--depth:1"><a href="#electromotive-force-1">7.1.2 Electromotive Force</a></li><li style="--depth:2"><a href="#core-idea">7.1.1.6.1 Core idea</a></li><li style="--depth:2"><a href="#definition-of-emf">7.1.1.6.2 Definition of emf</a></li><li style="--depth:2"><a href="#what-emf-means">7.1.1.6.3 What emf means</a></li><li style="--depth:2"><a href="#ideal-source-relation">7.1.1.6.4 Ideal source relation</a></li><li style="--depth:2"><a href="#meaning-in-circuit-language">7.1.1.6.5 Meaning in circuit language</a></li><li style="--depth:2"><a href="#exam-traps">7.1.1.6.6 Exam traps</a></li><li style="--depth:3"><a href="#trap-1-emf-is-not-the-same-thing-as-electric-field">7.1.1.6.6.1 Trap 1: emf is not the same thing as electric field</a></li><li style="--depth:3"><a href="#trap-2-current-uniformity-comes-from-small-surface-charge-rearrangements">7.1.1.6.6.2 Trap 2: current uniformity comes from small surface charge rearrangements</a></li><li style="--depth:3"><a href="#trap-3-a-purely-electrostatic-arrangement-does-not-produce-emf-around-a-closed-loop">7.1.1.6.6.3 Trap 3: a purely electrostatic arrangement does not produce emf around a closed loop</a></li><li style="--depth:2"><a href="#how-to-use-emf-on-an-exam">7.1.1.6.7 How to use emf on an exam</a></li><li style="--depth:1"><a href="#motional-emf-1">7.1.3 Motional Emf</a></li><li style="--depth:2"><a href="#core-idea-1">7.1.1.7.1 Core idea</a></li><li style="--depth:2"><a href="#basic-motional-emf-formula">7.1.1.7.2 Basic motional-emf formula</a></li><li style="--depth:2"><a href="#standard-rectangular-loop-result">7.1.1.7.3 Standard rectangular-loop result</a></li><li style="--depth:2"><a href="#magnetic-flux">7.1.1.7.4 Magnetic flux</a></li><li style="--depth:2"><a href="#flux-rule-for-motional-emf">7.1.1.7.5 Flux rule for motional emf</a></li><li style="--depth:2"><a href="#sign-convention">7.1.1.7.6 Sign convention</a></li><li style="--depth:2"><a href="#extremely-important-conceptual-point">7.1.1.7.7 Extremely important conceptual point</a></li><li style="--depth:2"><a href="#workemf-subtlety">7.1.1.7.8 Work/emf subtlety</a></li><li style="--depth:3"><a href="#to-compute-emf">7.1.1.7.8.1 To compute emf</a></li><li style="--depth:3"><a href="#to-compute-actual-work-done-on-a-charge">7.1.1.7.8.2 To compute actual work done on a charge</a></li><li style="--depth:2"><a href="#standard-rectangular-loop-formulas">7.1.1.7.9 Standard rectangular-loop formulas</a></li><li style="--depth:2"><a href="#faraday-disk-faraday-dynamo">7.1.1.7.10 Faraday disk / Faraday dynamo</a></li><li style="--depth:2"><a href="#when-the-flux-rule-is-safe">7.1.1.7.11 When the flux rule is safe</a></li><li style="--depth:2"><a href="#when-the-flux-rule-is-dangerous">7.1.1.7.12 When the flux rule is dangerous</a></li><li style="--depth:1"><a href="#one-page-exam-checklist">7.1.1.8 One-page exam checklist</a></li><li style="--depth:2"><a href="#if-you-see-a-resistormaterial-problem">7.1.1.8.1 If you see a resistor/material problem</a></li><li style="--depth:2"><a href="#if-you-see-a-why-is-current-the-same-everywhere-question">7.1.1.8.2 If you see a “why is current the same everywhere?” question</a></li><li style="--depth:2"><a href="#if-you-see-a-batterysource-problem">7.1.1.8.3 If you see a battery/source problem</a></li><li style="--depth:2"><a href="#if-you-see-a-moving-rodloop-in-a-magnetic-field">7.1.1.8.4 If you see a moving rod/loop in a magnetic field</a></li><li style="--depth:2"><a href="#if-you-see-a-powerheating-question">7.1.1.8.5 If you see a power/heating question</a></li><li style="--depth:1"><a href="#high-yield-distinctions-to-memorize">7.1.1.9 High-yield distinctions to memorize</a></li><li style="--depth:2"><a href="#local-vs-circuit-ohms-law">1. Local vs circuit Ohm’s law</a></li><li style="--depth:2"><a href="#emf-vs-voltage">2. emf vs voltage</a></li><li style="--depth:2"><a href="#electrostatic-emf-vs-motional-emf">3. Electrostatic emf vs motional emf</a></li><li style="--depth:2"><a href="#magnetic-force-vs-energy-transfer">4. Magnetic force vs energy transfer</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

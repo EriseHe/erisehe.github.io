@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>5.1 The Lorentz Force Law — E.H. Notebook</title>
+<meta name="description" content="5.1.1 Magnetic FieldsThe basic problem of classical electrodynamics is calculating the force that a collection of source charges (q_1, q_2, \dots) exerts on a test charge">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/index.html">5 Magnetostatics</a></nav><h1 id="reader-title">5.1 The Lorentz Force Law</h1></header><div id="article-body" class="prose"><h2 data-original-heading="5.1.1 Magnetic Fields" id="magnetic-fields">5.1.1 Magnetic Fields</h2>
+<p>The basic problem of classical electrodynamics is calculating the force that a collection of “source” charges (<span class="math inline">\(q_1, q_2, \dots\)</span>) exerts on a “test” charge <span class="math inline">\(Q\)</span>. While <strong>Electrostatics</strong> deals with source charges at rest, <strong>Magnetostatics</strong> addresses the forces between charges in motion.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title"><strong>The Origin of Magnetic Fields</strong></span></p>
+</div>
+<div class="theorem-content">
+<p>A stationary charge produces only an electric field <span class="math inline">\(\mathbf{E}\)</span> in the space around it. However, a <strong>moving charge</strong> generates, in addition, a <strong>magnetic field <span class="math inline">\(\mathbf{B}\)</span></strong>.</p>
+</div>
+</div>
+<h3 data-original-heading="The Demonstration: Parallel and Antiparallel Currents" id="the-demonstration-parallel-and-antiparallel-currents">5.1.1.1 The Demonstration: Parallel and Antiparallel Currents</h3>
+<p>To illustrate the unique nature of magnetic forces, consider two parallel wires hanging from a ceiling. The force between them depends on the relative direction of the currents:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 48%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Current Configuration</th>
+<th style="text-align: left;">Physical Result</th>
+<th style="text-align: left;">Interaction Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Opposite Directions</strong></td>
+<td style="text-align: left;">The wires jump apart (Fig. 5.1a).</td>
+<td style="text-align: left;"><strong>Repulsion</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Same Direction</strong></td>
+<td style="text-align: left;">The wires move together (Fig. 5.1b).</td>
+<td style="text-align: left;"><strong>Attraction</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span><span class="theorem-title"><strong>Crucial Concept: Electrical Neutrality</strong></span></p>
+</div>
+<div class="theorem-content">
+<p>This force is <strong>not electrostatic</strong> in nature. The wires are electrically neutral because there are just as many stationary positive charges (atomic nuclei) as there are moving negative charges (electrons) in any given segment. A stationary test charge <span class="math inline">\(Q\)</span> held near these wires would feel <strong>no force</strong>. The magnetic force only acts on charges that are also in motion.</p>
+</div>
+</div>
+<h3 data-original-heading="The Geometry of the B-Field" id="the-geometry-of-the-b-field">5.1.1.2 The Geometry of the B-Field</h3>
+<p>Unlike the electric field of a point charge (which points radially toward or away from the source), the magnetic field of a wire <strong>circles around</strong> it (Fig. 5.2). <img src="https://cdn.mathpix.com/snip/images/v7YTUfURRa8YV5ML7gdsjqp8L5JuuVY0o4UOWW1-O14.original.fullsize.png" alt="|673x717" loading="lazy" decoding="async"></p>
+<p><strong>The Right-Hand Rule (RHR) for Fields:</strong> To determine the direction of the field:</p>
+<ol type="1">
+<li>Point your right <strong>thumb</strong> in the direction of the current <span class="math inline">\(I\)</span>.</li>
+<li>Your <strong>fingers</strong> will curl around the wire in the direction of the magnetic field <span class="math inline">\(\mathbf{B}\)</span>.</li>
+</ol>
+<h3 data-original-heading="The Direction of Magnetic Force" id="the-direction-of-magnetic-force">5.1.1.3 The Direction of Magnetic Force</h3>
+<p>The direction of the resulting force <span class="math inline">\(\mathbf{F}\)</span> is often counterintuitive. For two parallel wires carrying current in the same direction (upward):</p>
+<ol type="1">
+<li><strong>Field Generation</strong>: Wire 1 creates a magnetic field <span class="math inline">\(\mathbf{B}\)</span> that points <strong>into the page</strong> at the location of Wire 2.</li>
+<li><strong>Force Result</strong>: Despite the current being upward and the field being “into” the page, the resulting force <span class="math inline">\(\mathbf{F}\)</span> on Wire 2 points <strong>to the left</strong> (toward Wire 1), as seen in Fig. 5.3.</li>
+</ol>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span><span class="theorem-title"><strong>Detecting Magnetic Fields</strong></span></p>
+</div>
+<div class="theorem-content">
+<p>In practice, magnetic fields are easily detected using a compass. The needle aligns itself with the local magnetic field <span class="math inline">\(\mathbf{B}\)</span>. While it ordinarily points North due to the Earth’s field, laboratory fields are often strong enough to dominate the compass response.</p>
+</div>
+</div>
+<h3 data-original-heading="Trajectories in a Uniform Magnetic Field" id="trajectories-in-a-uniform-magnetic-field">5.1.1.4 Trajectories in a Uniform Magnetic Field</h3>
+<p>Depending on the entry angle of the particle, the magnetic force creates distinct geometric paths.</p>
+<h4 data-original-heading="1. Cyclotron Motion (\mathbf{v} \perp \mathbf{B})" id="cyclotron-motion-mathbfv-perp-mathbfb">1. Cyclotron Motion (<span class="math inline">\(\mathbf{v} \perp \mathbf{B}\)</span>)</h4>
+<p>If the velocity is perpendicular to the field, the magnetic force acts as a constant centripetal force, resulting in <strong>circular motion</strong>.</p>
+<p>[Image of cyclotron motion in a uniform magnetic field]</p>
+<p>Cyclotron Radius and Frequency Equating the magnetic force to the centripetal force (<span class="math inline">\(QvB = \frac{mv^2}{R}\)</span>),</p>
+<h2 data-original-heading="5.1.2 Magnetic Forces" id="magnetic-forces">5.1.2 Magnetic Forces</h2>
+<p>In this section, we transition from the qualitative observations of wires and compasses to the formal mathematical “law of the land” for magnetic interactions. While the electric force is a simple push or pull, the magnetic force is inherently linked to <strong>velocity</strong> and <strong>three-dimensional geometry</strong>.</p>
+<h3 data-original-heading="The Lorentz Force Law" id="the-lorentz-force-law">5.1.2.1 The Lorentz Force Law</h3>
+<p>The magnetic force <span class="math inline">\(\mathbf{F}_{\text{mag}}\)</span> on a charge <span class="math inline">\(Q\)</span>, moving with velocity <span class="math inline">\(\mathbf{v}\)</span> in a magnetic field <span class="math inline">\(\mathbf{B}\)</span>, is defined by the vector cross product.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Lorentz Force Law</span></p>
+</div>
+<div class="theorem-content">
+<p>The <strong>total force</strong> on a charge <span class="math inline">\(Q\)</span> in the presence of both electric and magnetic fields is: <span class="math display">\[\boxed{\mathbf{F} = Q[\mathbf{E} + (\mathbf{v} \times \mathbf{B})]}\]</span></p>
+</div>
+</div>
+<ul>
+<li><strong>The Cross Product</strong>: The force is always perpendicular to both the velocity <span class="math inline">\(\mathbf{v}\)</span> and the magnetic field <span class="math inline">\(\mathbf{B}\)</span>.</li>
+<li><strong>Stationary Charges</strong>: If <span class="math inline">\(\mathbf{v} = 0\)</span>, the magnetic part of the force vanishes. Magnetic fields “ignore” stationary charges.</li>
+<li><strong>Sign of Charge</strong>: For a negative charge (like an electron), the force direction is exactly opposite to the result of the standard Right-Hand Rule (use the back of your hand).</li>
+</ul>
+<h3 data-original-heading="Magnetic Forces Do No Work" id="magnetic-forces-do-no-work">5.1.2.2 Magnetic Forces Do No Work</h3>
+<p>This is the most famous conceptual “trap” in magnetostatics. Because the magnetic force is always perpendicular to the direction of motion, it can change a particle’s <strong>direction</strong>, but never its <strong>speed</strong> or <strong>kinetic energy</strong>.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Magnetic Work</span></p>
+</div>
+<div class="theorem-content">
+<p>Magnetic forces may alter the direction in which a particle moves, but they cannot speed it up or slow it down. The work done is: <span class="math display">\[\boxed{dW_{\text{mag}} = 0}\]</span></p>
+</div>
+</div>
+<p><strong>Mathematical Proof:</strong></p>
+<ol type="1">
+<li>Work is defined as <span class="math inline">\(dW = \mathbf{F} \cdot d\mathbf{l}\)</span>.</li>
+<li>Displacement <span class="math inline">\(d\mathbf{l}\)</span> can be written as <span class="math inline">\(\mathbf{v} dt\)</span>.</li>
+<li>Substitute the magnetic force: <span class="math inline">\(dW_{\text{mag}} = Q(\mathbf{v} \times \mathbf{B}) \cdot \mathbf{v} dt\)</span>.</li>
+<li>Since <span class="math inline">\((\mathbf{v} \times \mathbf{B})\)</span> is perpendicular to <span class="math inline">\(\mathbf{v}\)</span> by definition of the cross product, their dot product is <strong>zero</strong>.</li>
+</ol>
+<h2 data-original-heading="5.1.3 Currents" id="currents">5.1.3 Currents</h2>
+<h3 data-original-heading="1. Definition of Current (I)" id="definition-of-current-i">1. Definition of Current (<span class="math inline">\(I\)</span>)</h3>
+<p>Current is defined as the <strong>charge per unit time</strong> passing a given point in a wire.</p>
+<ul>
+<li><strong>Units</strong>: Measured in Amperes (A), where <span class="math inline">\(1\text{ A} = 1\text{ C/s}\)</span>.</li>
+<li><strong>Sign Convention</strong>: Positive charges moving to the right count the same as negative charges moving to the left. In practice, electrons (negative) move opposite to the direction of the “electric current” <span class="math inline">\(I\)</span>.</li>
+<li><strong>Line Charge Current</strong>: If a line charge with density <span class="math inline">\(\lambda\)</span> travels down a wire at speed <span class="math inline">\(v\)</span>, the current <span class="math inline">\(I\)</span> is:</li>
+</ul>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Electric Current (<span class="math inline">\(I\)</span>)</span></p>
+</div>
+<div class="theorem-content">
+<p>The current <span class="math inline">\(I\)</span> in a wire is the charge per unit time passing a given point. It is measured in Amperes (A).<span class="math display">\[1\text{ A} = 1\text{ C/s}\]</span> For a line charge density <span class="math inline">\(\lambda\)</span> moving at velocity <span class="math inline">\(\mathbf{v}\)</span>, the current is:<span class="math display">\[\mathbf{I} = \lambda \mathbf{v}\]</span></p>
+</div>
+</div>
+<h3 data-original-heading="2. Magnetic Force on a Line Current" id="magnetic-force-on-a-line-current">2. Magnetic Force on a Line Current</h3>
+<p>To find the force on a segment of wire, we integrate the Lorentz force over all the charge elements in that segment.</p>
+<p><strong>Derivation of the Force on a Wire:</strong> <span class="math display">\[\begin{aligned}
+\mathbf{F}_{\text{mag}} &amp;= \int (\mathbf{v} \times \mathbf{B}) dq &amp;&amp; \text{\scriptsize Lorentz force law} \\
+&amp;= \int (\mathbf{v} \times \mathbf{B}) \lambda dl &amp;&amp; \scriptsize  dq = \lambda dl \text{ for line charges} \\
+&amp;= \int (\underbrace{\lambda \mathbf{v}}_{\mathbf{I}} \times \mathbf{B}) dl &amp;&amp;  \\
+&amp;= \int I (d\mathbf{l} \times \mathbf{B}) &amp;&amp; \scriptsize\text{ since } \mathbf{I} dl = I d\mathbf{l} \text{  (Eq. 5.16)} \\
+&amp;= I \int (d\mathbf{l} \times \mathbf{B}) &amp;&amp;
+\end{aligned}\]</span></p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Force on a Wire</span></p>
+</div>
+<div class="theorem-content">
+<p>For a wire carrying a constant current <span class="math inline">\(I\)</span>, the total magnetic force is:<span class="math display">\[\boxed{\mathbf{F}_{\text{mag}} = I \int (d\mathbf{l} \times \mathbf{B})}\]</span></p>
+</div>
+</div>
+<h3 data-original-heading="3. Surface Current Density (\mathbf{K})" id="surface-current-density-mathbfk">3. Surface Current Density (<span class="math inline">\(\mathbf{K}\)</span>)</h3>
+<p>When charge flows over a surface (like a sheet of metal), we use the <strong>surface current density <span class="math inline">\(\mathbf{K}\)</span></strong>.</p>
+<ul>
+<li><strong>Definition</strong>: The current per unit width-perpendicular-to-flow (<span class="math inline">\(dl_{\perp}\)</span>). <span class="math display">\[\mathbf{K} \equiv \frac{d\mathbf{I}}{dl_{\perp}}\]</span></li>
+<li><strong>Relation to Velocity</strong>: If <span class="math inline">\(\sigma\)</span> is the surface charge density, then <span class="math inline">\(\boxed{\mathbf{K} = \sigma \mathbf{v}}\)</span>.</li>
+</ul>
+<p><strong>Magnetic Force on a Surface Current:</strong> <span class="math display">\[\begin{aligned}
+\mathbf{F}_{\text{mag}} &amp;= \int (\mathbf{v} \times \mathbf{B}) \sigma da &amp;&amp; \text{\scriptsize force on charge element } \sigma da \\
+&amp;= \int (\underbrace{\sigma \mathbf{v}}_{\mathbf{K}} \times \mathbf{B}) da  \\
+&amp;= \int (\mathbf{K} \times \mathbf{B}) da &amp;&amp; \text{\scriptsize final integral over the surface area (Eq. 5.24)}
+\end{aligned}\]</span></p>
+<hr>
+<h3 data-original-heading="4. Volume Current Density (\mathbf{J})" id="volume-current-density-mathbfj">4. Volume Current Density (<span class="math inline">\(\mathbf{J}\)</span>)</h3>
+<p>When charge is distributed throughout a 3D region, we use the <strong>volume current density <span class="math inline">\(\mathbf{J}\)</span></strong>.</p>
+<ul>
+<li><strong>Definition</strong>: The current per unit area-perpendicular-to-flow (<span class="math inline">\(da_{\perp}\)</span>). <span class="math display">\[\mathbf{J} \equiv \frac{d\mathbf{I}}{da_{\perp}}\]</span></li>
+<li><strong>Relation to Velocity</strong>: If <span class="math inline">\(\rho\)</span> is the volume charge density, then <span class="math inline">\(\boxed{\mathbf{J} = \rho \mathbf{v}}\)</span>.</li>
+</ul>
+<p><strong>Magnetic Force on a Volume Current:</strong> <span class="math display">\[\begin{aligned}
+\mathbf{F}_{\text{mag}} &amp;= \int (\mathbf{v} \times \mathbf{B}) \rho d\tau &amp;&amp; \text{\scriptsize force on charge element } \rho d\tau \\
+&amp;= \int (\underbrace{\rho \mathbf{v}}_{\mathbf{J}} \times \mathbf{B}) d\tau  \\
+&amp;= \int (\mathbf{J} \times \mathbf{B}) d\tau &amp;&amp; \text{\scriptsize final integral over the volume (Eq. 5.27)}
+\end{aligned}\]</span></p>
+<h3 data-original-heading="5. The Continuity Equation" id="the-continuity-equation">5. The Continuity Equation</h3>
+<p>This equation is the mathematical statement of <strong>Local Charge Conservation</strong>. It states that if charge is leaving a volume (outward flow of <span class="math inline">\(\mathbf{J}\)</span>), the charge density <span class="math inline">\(\rho\)</span> inside must be decreasing.</p>
+<p><strong>Derivation of the Continuity Equation:</strong> <span class="math display">\[\begin{aligned}
+\oint_{\mathcal{S}} \mathbf{J} \cdot d\mathbf{a} &amp;= \int_{\mathcal{V}} (\nabla \cdot \mathbf{J}) d\tau &amp;&amp; \text{\scriptsize applying the Divergence Theorem} \\
+&amp;= -\frac{d}{dt} Q_{\text{enc}} &amp;&amp; \text{\scriptsize conservation: flow out = decrease in charge} \\
+&amp;= -\frac{d}{dt} \int_{\mathcal{V}} \rho d\tau &amp;&amp; \text{\scriptsize expressing enclosed charge via density } \rho \\
+\int_{\mathcal{V}} (\nabla \cdot \mathbf{J}) d\tau &amp;= \int_{\mathcal{V}} \left( -\frac{\partial \rho}{\partial t} \right) d\tau &amp;&amp; \text{\scriptsize equating the two volume integrals}
+\end{aligned}\]</span></p>
+<p>Since this must hold for any volume, we get the <strong>Continuity Equation (Eq. 5.29)</strong>: <span class="math display">\[\boxed{\nabla \cdot \mathbf{J} = -\frac{\partial \rho}{\partial t}}\]</span></p>
+<ul>
+<li><strong>In Magnetostatics</strong>: Charges do not pile up anywhere (<span class="math inline">\(\partial \rho / \partial t = 0\)</span>), so the divergence of current is zero: <span class="math inline">\(\boxed{\nabla \cdot \mathbf{J} = 0}\)</span>.</li>
+</ul>
+<hr>
+<h3 data-original-heading="Appendix: The Dictionary for Review" id="appendix-the-dictionary-for-review">5.1.3.6 Appendix: The “Dictionary” for Review</h3>
+<p>Use this table to translate equations from point charges to continuous distributions</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 42%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Distribution</th>
+<th style="text-align: left;">Charge Element</th>
+<th style="text-align: left;">Force Integral</th>
+<th style="text-align: left;">Current Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Point</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\sum q_i\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\sum q_i (\mathbf{v}_i \times \mathbf{B})\)</span></td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Line</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\lambda dl\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\int I(d\mathbf{l} \times \mathbf{B})\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{I} = \lambda \mathbf{v}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Surface</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\sigma da\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\int (\mathbf{K} \times \mathbf{B}) da\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{K} = \sigma \mathbf{v}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Volume</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\rho d\tau\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\int (\mathbf{J} \times \mathbf{B}) d\tau\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{J} = \rho \mathbf{v}\)</span></td>
+</tr>
+</tbody>
+</table></div></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span>Next page →</span><span>5.2 The Biot–Savart Law</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">5.1 The Lorentz Force Law</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#magnetic-fields" class="is-active" aria-current="location">5.1.1 Magnetic Fields</a></li><li style="--depth:1"><a href="#the-demonstration-parallel-and-antiparallel-currents">5.1.1.1 The Demonstration: Parallel and Antiparallel Currents</a></li><li style="--depth:1"><a href="#the-geometry-of-the-b-field">5.1.1.2 The Geometry of the B-Field</a></li><li style="--depth:1"><a href="#the-direction-of-magnetic-force">5.1.1.3 The Direction of Magnetic Force</a></li><li style="--depth:1"><a href="#trajectories-in-a-uniform-magnetic-field">5.1.1.4 Trajectories in a Uniform Magnetic Field</a></li><li style="--depth:2"><a href="#cyclotron-motion-mathbfv-perp-mathbfb">1. Cyclotron Motion (\mathbf{v} \perp \mathbf{B})</a></li><li style="--depth:0"><a href="#magnetic-forces">5.1.2 Magnetic Forces</a></li><li style="--depth:1"><a href="#the-lorentz-force-law">5.1.2.1 The Lorentz Force Law</a></li><li style="--depth:1"><a href="#magnetic-forces-do-no-work">5.1.2.2 Magnetic Forces Do No Work</a></li><li style="--depth:0"><a href="#currents">5.1.3 Currents</a></li><li style="--depth:1"><a href="#definition-of-current-i">1. Definition of Current (I)</a></li><li style="--depth:1"><a href="#magnetic-force-on-a-line-current">2. Magnetic Force on a Line Current</a></li><li style="--depth:1"><a href="#surface-current-density-mathbfk">3. Surface Current Density (\mathbf{K})</a></li><li style="--depth:1"><a href="#volume-current-density-mathbfj">4. Volume Current Density (\mathbf{J})</a></li><li style="--depth:1"><a href="#the-continuity-equation">5. The Continuity Equation</a></li><li style="--depth:1"><a href="#appendix-the-dictionary-for-review">5.1.3.6 Appendix: The Dictionary for Review</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

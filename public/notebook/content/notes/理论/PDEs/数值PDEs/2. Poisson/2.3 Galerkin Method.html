@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>2.3 Galerkin Method — E.H. Notebook</title>
+<meta name="description" content="2.3 Galerkin MethodsSet-Up \left\{ \begin{aligned} -\Delta u&amp;=f \\ u(\partial\Omega)&amp;=0 \end{aligned} \right. Weak formulation: Find u s.t. \int_{\Omega}\nabla u\nabla v\">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768"><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/index.html">数值PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/index.html">2. Poisson</a></nav><h1 id="reader-title">2.3 Galerkin Method</h1></header><div id="article-body" class="prose"><h2 data-original-heading="2.3 Galerkin Methods" id="galerkin-methods">2.3 Galerkin Methods</h2>
+<p><strong>Set-Up</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+-\Delta u&amp;=f \\
+u(\partial\Omega)&amp;=0
+\end{aligned}
+\right.
+\]</span></p>
+<p>Weak formulation: Find <span class="math inline">\(u\)</span> s.t.</p>
+<p><span class="math display">\[
+\int_{\Omega}\nabla u\nabla v\,dx=\int_{\Omega}fv\,dx
+\qquad
+\forall\, v\ \text{s.t.}\ v(\partial\Omega)=0.
+\]</span></p>
+<p><strong>Requirements</strong> <span class="math inline">\(\nabla u\in L^2,\ \nabla v\in L^2\Longrightarrow u,v\in H_0^1,\)</span> and <span class="math inline">\(f\in H^{-1}\)</span> (dual of <span class="math inline">\(H_0^1\)</span>, functional applied to <span class="math inline">\(H_0^1\)</span>.)</p>
+<div class="math-theorem lemma" data-callout="lemma">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Lemma 2.1 Max-Milgram Lemma (Sufficient Condition)</strong> Consider the problem <span class="math inline">\(a(u,v)=F(v)\)</span>, where <span class="math inline">\(u,v\in X\)</span>. If</p>
+<ul>
+<li><p><span class="math inline">\(a(\cdot,\cdot)\)</span> is a bilinear form,</p></li>
+<li><p>bounded: <span class="math inline">\(\exists\, M&gt;0\)</span> s.t. <span class="math inline">\(|a(u,v)|\le M\|u\|_X\|v\|_X\)</span>,</p></li>
+<li><p>coercivity: <span class="math inline">\(a(u,u)\ge \alpha\|u\|_X^2\ \forall\, u\in X\)</span>, and</p></li>
+<li><p><span class="math inline">\(F(\cdot)\)</span> is a continuous linear functional: <span class="math inline">\(\|F(v)\|_X\le \gamma\|v\|_X\ \forall\, v\in X\)</span>,</p></li>
+</ul>
+<p>then, the problem is well-posed. i.e., ①②③④ <span class="math inline">\(\Longrightarrow\)</span> well-posedness (sufficient but not necessary).</p>
+</div>
+</div>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Theorem 2.3.2</strong></p>
+<p>Poisson equation is well-posed.</p>
+</div>
+</div>
+<p><strong>Proof 1.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+-\Delta u&amp;=f \\
+u(\partial\Omega)&amp;=0
+\end{aligned}
+\right.
+\Longrightarrow
+\forall\, v\in H_0^1,\ \text{find }u\in H_0^1\ \text{s.t.}\ 
+\underbrace{\int_{\Omega}\nabla u\nabla v}_{a(u,v)}
+-
+\underbrace{\int_{\Omega}fv}_{F(v)}
+=0.
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\|u\|_{H^1}^2=\|u\|_{L^2}^2+\|\nabla u\|_{L^2}^2\)</span></p></li>
+<li><p><span class="math display">\[
+\left|\int_{\Omega}fv\right|\le \|f\|_{L^2}\|v\|_{L^2}\le \|f\|_{H^1}\|v\|_{H^1}
+\]</span></p></li>
+<li><p><span class="math inline">\(\forall\, u\in X=H_0^1\)</span>,</p>
+<p><span class="math display">\[
+\int_{\Omega}|\nabla u|^2=a(u,u)\ge \alpha\|u\|_X^2.
+\]</span></p></li>
+</ul>
+<p>By Poincaré Inequality,</p>
+<p><span class="math display">\[
+\begin{aligned}
+C_p\int_{\Omega}u^2&amp;\le \int_{\Omega}|\nabla u|^2 \\
+C_p\|u\|_{L^2}^2&amp;\le \|\nabla u\|_{L^2}^2=\underbrace{|u|_{H^1}^2}_{semi\text{-}norm} \\
+\|u\|_{H^1}^2
+&amp;=\int_{\Omega}u^2+\int_{\Omega}\nabla u^2
+\le \left(\frac{1}{C_p}+1\right)\int_{\Omega}|\nabla u|^2.
+\end{aligned}
+\]</span></p>
+<p>So, we have coercivity.</p>
+<p>By Lax-Milgram Lemma, Poisson equation is WP.<br>
+Q.E.D. <span class="math inline">\(\blacksquare\)</span></p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Remark.</strong> <span class="math inline">\(a(u,v)=\int_{\Omega}\nabla u\nabla v\)</span> is a scalar product in <span class="math inline">\(H_0^1\)</span>:</p>
+<ul>
+<li><p>symmetric, and</p></li>
+<li><p>non-negativity (by coercivity).</p></li>
+</ul>
+<p>The norm induced by <span class="math inline">\(a(u,u)=\|u\|_a^2\)</span> is equivalent to <span class="math inline">\(\|u\|_{H^1}^2\)</span>:</p>
+<p><span class="math display">\[
+C\|u\|_{H^1}^2\le a(u,u)\le \|u\|_{H^1}^2.
+\]</span></p>
+</div>
+</div>
+<p>If we change the problem and the space:</p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+-\Delta u&amp;=f \\
+\nabla u\cdot n&amp;=0 \qquad \text{on }\partial\Omega \quad (\text{Neumann})
+\end{aligned}
+\right.
+\]</span></p>
+<p><span class="math display">\[
+\Longrightarrow\ \ \text{Find }u\in H^1\ \text{s.t.}\ \ \forall\, v\in H^1:
+\qquad
+\int_{\Omega}\nabla u\nabla v=\int_{\Omega}fv.
+\]</span></p>
+<p>Now, we don’t have Poincaré Inequality anymore, and <span class="math inline">\(a(u,v)\)</span> is not coercive. We cannot apply LM Lemma. In fact, the problem is not WP. Any <span class="math inline">\((u+\text{constant})\)</span> will be a solution.</p>
+<p>Hw to make the problem WP?</p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+-\Delta u+\sigma u&amp;=f,\qquad \sigma&gt;0 \\
+\nabla u\cdot n&amp;=0 \qquad \text{on }\partial\Omega
+\end{aligned}
+\right.
+\]</span></p>
+<p><span class="math display">\[
+\Longrightarrow\ \ \int_{\Omega}\nabla u\nabla v+\sigma\int_{\Omega}uv=\int_{\Omega}fv
+\qquad
+\underbrace{}_{a(u,v)}
+\]</span></p>
+<p><span class="math display">\[
+|a(u,v)|\le \max(\sigma,1)\|u\|_{H^1}\|v\|_{H^1},
+\qquad
+\min(1,\sigma)\|u\|_{H^1}^2\le a(u,v).
+\]</span></p>
+<p><span class="math inline">\(\Longrightarrow\)</span> <span class="math inline">\(a(u,v)\)</span> is coercive, and the problem is WP.</p>
+<p>Now, let’s consider mixed boundary conditions (i.e., Robin conditions).</p>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+-\Delta u&amp;=f \\
+u(\Gamma_D)&amp;=0 \\
+\nabla u\cdot n|_{\Gamma_N}&amp;=0,
+\end{aligned}
+\right.
+\qquad
+\text{where }\Gamma_D\cup\Gamma_N=\partial\Omega,\ \text{and measure}(\Gamma_D\cap\Gamma_N)=0.
+\]</span></p>
+<p><span class="math display">\[
+-\int_{\Omega}\Delta u\cdot v
+=
+-\underbrace{\int_{\Gamma_N}\nabla u\cdot n\,v}_{=0}
++\underbrace{\int_{\Gamma_D}\nabla u\cdot n\,v}_{=0}
++\int_{\Omega}\nabla u\nabla v.
+\]</span></p>
+<p>Problem: Find <span class="math inline">\(u\in H_{\Gamma_D}^1\)</span> s.t. <span class="math inline">\(\forall\, v\in H_{\Gamma_D}^1\)</span> s.t.</p>
+<p><span class="math display">\[
+\int_{\Omega}\nabla u\nabla v=\int_{\Omega}fv.
+\]</span></p>
+<p>This problem is WP because we have Poicaré on <span class="math inline">\(H_{\Gamma_D}^1\)</span>.</p>
+<p>Now, consider the true problem: Find <span class="math inline">\(u\in X=H_0^1\)</span> s.t.</p>
+<p><span class="math display">\[
+\int_{\Omega}\nabla u\nabla v=\int_{\Omega}fv
+\qquad
+\forall\, v\in X
+\Longrightarrow
+a(u,v)=F(v).
+\]</span></p>
+<p><strong>Assumption</strong> <span class="math inline">\(a(u,v)=a(v,u)\)</span> (symmetry) and all LM assumptions.</p>
+<p>The Galerkin Methods solve the numerical problem in <span class="math inline">\(X_N\subset X\)</span>: Find <span class="math inline">\(u_N\in X_N\)</span> s.t.</p>
+<p><span class="math display">\[
+a(u_N,v_N)=F(v_N),
+\qquad
+\forall\, v_N\in X_N.
+\]</span></p>
+<p>This problem is WP, which can be trivially proven by LM assumptions.</p>
+<div class="math-theorem proposition" data-callout="proposition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Proposition</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Proposition 2.3</strong> <em>This problem is strongly consistent (consistency error is 0).</em></p>
+</div>
+</div>
+<p><strong>Proof 2.</strong> Note that <span class="math inline">\(a(u,v)=F(v)\)</span> and <span class="math inline">\(a(u_N,v_N)=F(v_N)\)</span>. Then,</p>
+<p><span class="math display">\[
+a(u,v_N)=F(v_N)
+\qquad
+\text{because }X_N\subset X.
+\]</span></p>
+<p>The consistence error is 0. So, the problem is strongly consistent. We could also show</p>
+<p><span class="math display">\[
+a(u-u_N,v_N)=0
+\qquad
+\forall\, v_N\in X_N.
+\]</span></p>
+<p>Q.E.D. <span class="math inline">\(\blacksquare\)</span></p>
+<div class="math-theorem proposition" data-callout="proposition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Proposition</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Proposition 2.4</strong> <em>This problem is stable.</em></p>
+</div>
+</div>
+<p><strong>Proof 3.</strong></p>
+<p><span class="math display">\[
+\alpha\|u_N\|_{H^1}^2\le a(u_N,u_N)\le \|f\|\cdot \|u_N\|_{H^1}.
+\]</span></p>
+<p>So, it is clearly stable.<br>
+Q.E.D. <span class="math inline">\(\blacksquare\)</span></p>
+<div class="math-theorem lemma" data-callout="lemma">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Lemma 2.5 Cèa Lemma</strong></p>
+<p><span class="math display">\[
+\|u-u_N\|_{H^1}\le K\inf_{w_N\in X_N}\|u-w_N\|_{H^1}.
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof 4.</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+\alpha\|u-u_N\|_{H^1}^2
+&amp;\le a(u-u_N,u-u_N) \\
+&amp;=a(u-u_N,u-w_N)+a(u-u_N,w_N-u_N)
+\qquad[\text{Bilinearity, } w_N\in X_N] \\
+\alpha\|u-u_N\|_{H^1}^2
+&amp;\le a(u-u_N,u-w_N)
+\le M\|u-u_N\|_{H^1}\cdot \|u-w_N\|_{H^1}
+\qquad[\text{Continuity}] \\
+\|u-u_N\|_{H^1}
+&amp;\le \frac{M}{\alpha}\|u-w_N\|_{H^1} \\
+\|u-u_N\|_{H^1}
+&amp;\le K\|u-w_N\|_{H^1}
+\qquad \forall\, w_N\in X_N \\
+\|u-u_N\|_{H^1}
+&amp;\le K\inf_{w_N\in X_N}\|u-w_N\|_{H^1}.
+\end{aligned}
+\]</span></p>
+<p>Q.E.D. <span class="math inline">\(\blacksquare\)</span></p>
+<p>This Lemma implies that Galerkin solution is not the best one, but its <span class="math inline">\(H^1\)</span> norm error goes to 0 as quick as the best one. i.e., it has the same rate of convergence as the best approximation in <span class="math inline">\(X_N\)</span>. When</p>
+<p><span class="math display">\[
+N\to\infty,\ X_n\to X,\ \text{and}\ \inf_{w_N\in X_n}\|u-w_N\|_{H^1}\to 0.
+\]</span></p>
+<div class="math-theorem claim" data-callout="claim">
+<div class="theorem-header">
+<p><span class="theorem-badge">Claim</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Claim 2.6</strong> <span class="math inline">\(P_N:\)</span> Find <span class="math inline">\(u_N\in X_N,\ a(u_N,v_n)=F(v_N)\ \ \forall\, v_N\in X_N\)</span> is WP.</p>
+</div>
+</div>
+<p><strong>Proof 5.</strong> We can write</p>
+<p><span class="math display">\[
+u_N=\sum_{j=0}^{N-1}c_j\varphi_j(x),
+\]</span></p>
+<p>where <span class="math inline">\(\varphi_j(\cdot)\)</span> are basis functions. Then,</p>
+<p><span class="math display">\[
+X_n=\mathrm{span}\{\varphi_j\}_{j=0}^{N-1}.
+\]</span></p>
+<p>So,</p>
+<p><span class="math display">\[
+\begin{aligned}
+a(u_N,v_N)
+&amp;=a\left(\sum_{j=0}^{N-1}c_j\varphi_j(x),v_N\right)=F(v_N) \\
+\sum_{j=0}^{N-1}c_ja(\varphi_j,v_N)
+&amp;=F(v_N)
+\qquad[\text{Bilinearity}]
+\end{aligned}
+\]</span></p>
+<p>Instead of testing on <span class="math inline">\(v_N\in X_N\)</span>, as <span class="math inline">\(X_N=\mathrm{span}\{\varphi_j\}_{j=0}^{N-1}\)</span>, we just need to prove it works for all <span class="math inline">\(\varphi_i\)</span>’s.</p>
+<p><span class="math display">\[
+\sum_{j=0}^{N-1}c_ja(\varphi_j,\varphi_i)=F(\varphi_i)
+\qquad[\text{Take }v_N=\varphi_i]
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+A:=\big[a(\varphi_j,\varphi_i)\big]_{i,j},
+\qquad
+c=\big[c_j\big]_j,
+\qquad
+b=\big[F(\varphi_i)\big]_i.
+\]</span></p>
+<p>So, <span class="math inline">\(P_N\)</span> becomes</p>
+<p><span class="math display">\[
+Ac=b.
+\]</span></p>
+<div class="math-theorem claim" data-callout="claim">
+<div class="theorem-header">
+<p><span class="theorem-badge">Claim</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Claim 2.7</strong> <span class="math inline">\(A\)</span> is non-singular</p>
+</div>
+</div>
+<ul>
+<li><p><span class="math inline">\(A\)</span> is symmetric: <span class="math inline">\(a(\varphi_j,\varphi_i)=a(\varphi_i,\varphi_j)\qquad[\text{symmetry}]\)</span></p></li>
+<li><p><span class="math inline">\(A\)</span> is positive-definite: Assume <span class="math inline">\(c\ne 0\)</span>, then</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+c^\top Ac
+&amp;=\sum_{i,j} c_jA_{ij}c_i
+=\sum_{i,j} c_j a(\varphi_j,\varphi_i)c_i \\
+&amp;=\sum_{i,j} a(c_j\varphi_j,c_i\varphi_i)
+\qquad[\text{bilinearity}] \\
+&amp;=a\left(\sum_{j=0}^{N-1}c_j\varphi_j,\sum_{i=0}^{N-1}c_i\varphi_i\right)
+\qquad[\text{bilinearity}] \\
+&amp;=a(u_N,u_N)
+\qquad\left[u_N=\sum_{i=0}^{N-1}c_i\varphi_i\right] \\
+&amp;\ge \alpha\|u_N\|_{H^1}^2\ge 0
+\qquad[\text{coercivity}]
+\end{aligned}
+\]</span></p>
+<p>So, <span class="math inline">\(A\)</span> is SPD, and thus <span class="math inline">\(A\)</span> is non-singular. <span class="math inline">\(\Longrightarrow\ P_N\)</span> is WP.<br>
+Q.E.D. <span class="math inline">\(\blacksquare\)</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span>← Previous page</span><span>2.2 Finite Difference</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span>Next page →</span><span>2.4 Finite Element</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">2.3 Galerkin Method</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#galerkin-methods" class="is-active" aria-current="location">2.3 Galerkin Methods</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

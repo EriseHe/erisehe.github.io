@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>III Random Numbers &amp; Monte Carlo — E.H. Notebook</title>
+<meta name="description" content="1 Module 3Big picture. Randomness is a computational resource. By letting algorithms make random choices we can: (i) generate synthetic data, (ii) solve otherwise intract">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Julia科学计算笔记 file hierarchy" data-sidebar-root="content/notes/理论/Julia科学计算笔记"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/0%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.html"><span class="page-number">0</span><span>基本语法</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/I%20%E5%8F%98%E9%87%8F%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0.html"><span class="page-number"></span><span>I 变量、基本类型和函数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/II%20ODEs%E4%B8%8E%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6.html"><span class="page-number"></span><span>II ODEs与分子动力学</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/III%20Random%20Numbers%20%26%20Monte%20Carlo.html"><span class="page-number"></span><span>III Random Numbers &amp; Monte Carlo</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a></nav><h1 id="reader-title">III Random Numbers &amp; Monte Carlo</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Module 3" id="module-3">1 Module 3</h2>
+<blockquote>
+<p><strong>Big picture.</strong> Randomness is a <em>computational resource</em>. By letting algorithms make random choices we can: (i) generate synthetic data, (ii) solve otherwise intractable integrals in high dimensions (Monte Carlo), and (iii) sample equilibrium distributions in statistical physics (Metropolis–Hastings / MCMC). This module moves from <strong>pseudorandom number generators</strong> → <strong>Monte Carlo integration</strong> → <strong>importance sampling</strong> → <strong>Markov chains</strong> → <strong>Metropolis(-Hastings)</strong> → <strong>Ising &amp; Lennard–Jones case studies</strong>.</p>
+</blockquote>
+<hr>
+<h3 data-original-heading="11. Pseudorandomness &amp; Monte Carlo Integration" id="pseudorandomness-monte-carlo-integration">11. Pseudorandomness &amp; Monte Carlo Integration</h3>
+<h4 data-original-heading="11.1 Pseudorandom Number Generators (PRNGs)" id="pseudorandom-number-generators-prngs">11.1 Pseudorandom Number Generators (PRNGs)</h4>
+<p><strong>Goal.</strong> Produce a reproducible stream of numbers that <em>statistically</em> look like draws from <span class="math inline">\(\mathrm{Unif}[0,1)\)</span> (and related distributions).</p>
+<h5 data-original-heading="11.1.1 Linear Congruential Generator (LCG)" id="linear-congruential-generator-lcg">11.1.1 Linear Congruential Generator (LCG)</h5>
+<p>Recurrence: <span class="math display">\[
+X_{n+1} = (a X_n + c)\bmod m.\tag{11.1}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(X_n\)</span> is the internal state; <span class="math inline">\(a,c,m\)</span> are parameters.</li>
+<li>Poor choices of <span class="math inline">\(a,c,m\)</span> cause visible correlations (e.g., even/odd patterns modulo small integers).</li>
+</ul>
+<p><strong>Reference implementation (for pedagogy, not research):</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mutable struct</span> LCG</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    state<span class="op">::</span><span class="dt">UInt32</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    a<span class="op">::</span><span class="dt">UInt32</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    c<span class="op">::</span><span class="dt">UInt32</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">LCG</span>()</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    seed <span class="op">=</span> <span class="fu">time_ns</span>() <span class="op">&amp;</span> <span class="bn">0xFFFF_FFFF</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Example parameters (modulus is 2^32 implicitly via overflow)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">LCG</span>(<span class="fu">UInt32</span>(seed), <span class="bn">0x01010101</span>, <span class="bn">0xB3E6_3C93</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">rand_uint!</span>(rng<span class="op">::</span><span class="dt">LCG</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    rng.state <span class="op">=</span> rng.a <span class="op">*</span> rng.state <span class="op">+</span> rng.c</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">Int</span>(rng.state)           <span class="co"># in [0, 2^32)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">rand_real!</span>(rng<span class="op">::</span><span class="dt">LCG</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    rng.state <span class="op">=</span> rng.a <span class="op">*</span> rng.state <span class="op">+</span> rng.c</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">Float64</span>(rng.state) <span class="op">/</span> <span class="fu">Float64</span>(<span class="fu">typemax</span>(<span class="dt">UInt32</span>))  <span class="co"># in [0,1)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<blockquote>
+<p><strong>Practice.</strong> Never “roll your own” RNG in production. Use vetted libraries (e.g., <code>Xoshiro256++</code> in Julia) unless you <em>study</em> RNGs.</p>
+</blockquote>
+<h5 data-original-heading="11.1.2 Reproducibility &amp; seeding" id="reproducibility-seeding">11.1.2 Reproducibility &amp; seeding</h5>
+<p>Determinism is a feature: record the seed, language/runtime version.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">123321</span>)          <span class="co"># guarantees identical streams on this version</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">5</span>)                   <span class="co"># same numbers every run with the same seed</span></span></code></pre></div>
+<h5 data-original-heading="11.1.3 Sampling non‑uniform distributions" id="sampling-nonuniform-distributions">11.1.3 Sampling non‑uniform distributions</h5>
+<p><strong>Inverse transform sampling.</strong> If CDF <span class="math inline">\(P(x)\)</span> is invertible and <span class="math inline">\(y\sim \mathrm{Unif}[0,1]\)</span>, then <span class="math inline">\(x=P^{-1}(y)\)</span> has the desired PDF <span class="math inline">\(p(x)=P'(x)\)</span>.</p>
+<p><em>Example (exponential):</em> <span class="math inline">\(p(x;\lambda)=\lambda e^{-\lambda x},\ x\ge 0\)</span>. CDF <span class="math inline">\(P(x)=1-e^{-\lambda x}\Rightarrow x=-\tfrac{1}{\lambda}\ln(1-y)\)</span>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">rand_exp</span>(λ)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="fu">rand</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">-log</span>(<span class="fl">1</span> <span class="op">-</span> y)<span class="op">/</span>λ</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p><em>Gaussian (no simple inverse CDF):</em> use <strong>Box–Muller</strong> (variable transform) or <strong>rejection sampling</strong>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">randn_pair</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    u1, u2 <span class="op">=</span> <span class="fu">rand</span>(), <span class="fu">rand</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="fu">sqrt</span>(<span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="fu">log</span>(u1))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    θ <span class="op">=</span> <span class="fl">2</span>π <span class="op">*</span> u2</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">r*cos</span>(θ), <span class="fu">r*sin</span>(θ)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<hr>
+<h4 data-original-heading="11.2 Monte Carlo (MC) Integration" id="monte-carlo-mc-integration">11.2 Monte Carlo (MC) Integration</h4>
+<p><strong>Motivation.</strong> Deterministic quadrature deteriorates with dimension (curse of dimensionality). MC maintains <strong>dimension‑independent</strong> convergence rate.</p>
+<h5 data-original-heading="11.2.1 Throwing darts (1D)" id="throwing-darts-1d">11.2.1 Throwing darts (1D)</h5>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx \approx (b-a)\,\frac{1}{N}\sum_{i=1}^N f(x_i),\qquad x_i\sim \mathrm{Unif}[a,b].\tag{11.5}
+\]</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">mc_integrate</span>(f, a, b, N)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> a <span class="op">+</span> (b<span class="op">-</span>a)<span class="fu">*rand</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        s <span class="op">+=</span> <span class="fu">f</span>(x)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (b<span class="op">-</span>a) <span class="op">*</span> s<span class="op">/</span>N</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p><strong>Error scaling.</strong> For IID samples, <span class="math inline">\(\mathrm{RMSE}\propto N^{-1/2}\)</span> (independent of dimension). In contrast, a grid with <span class="math inline">\(n\)</span> points/axis in <span class="math inline">\(d\)</span>D uses <span class="math inline">\(N=n^d\)</span> points and typical error <span class="math inline">\(\sim n^{-2}\)</span> ⇒ <span class="math inline">\(N^{-2/d}\)</span>. For <span class="math inline">\(d\gtrsim 4\)</span>, MC often wins.</p>
+<h5 data-original-heading="11.2.2 Importance sampling" id="importance-sampling">11.2.2 Importance sampling</h5>
+<p>Goal: reduce variance by biasing samples toward regions where <span class="math inline">\(|f|\)</span> is large. <span class="math display">\[
+I = \int f(x)\,dx = \int \frac{f(x)}{p(x)}\,p(x)\,dx \approx \frac{1}{N}\sum_{i=1}^N \frac{f(x_i)}{p(x_i)},\quad x_i\sim p.\tag{11.8}
+\]</span> Optimal (unattainable) <span class="math inline">\(p\)</span>: <span class="math inline">\(p_{\text{ideal}}(x) \propto |f(x)|\)</span>. In practice choose a simple <span class="math inline">\(p\)</span> roughly matching the shape of <span class="math inline">\(f\)</span>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">mc_importance</span>(f, p, draw_p, N)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="fu">draw_p</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        s <span class="op">+=</span> <span class="fu">f</span>(x)<span class="op">/</span><span class="fu">p</span>(x)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s<span class="op">/</span>N</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p><strong>Bridge to physics.</strong> For a system with microstate <span class="math inline">\(\mu\)</span> and energy <span class="math inline">\(E(\mu)\)</span>, the Boltzmann distribution <span class="math display">\[
+\pi(\mu) = \frac{1}{Z} e^{-\beta E(\mu)},\qquad \beta=(k_B T)^{-1},\ Z=\sum_{\mu}e^{-\beta E(\mu)}
+\]</span> plays the role of an <strong>importance</strong> distribution—but we can’t sample it directly nor compute <span class="math inline">\(Z\)</span> for large systems. Enter <strong>MCMC</strong>.</p>
+<hr>
+<h3 data-original-heading="12. Markov Chains &amp; Metropolis–Hastings (MCMC)" id="markov-chains-metropolishastings-mcmc">12. Markov Chains &amp; Metropolis–Hastings (MCMC)</h3>
+<h4 data-original-heading="12.1 Stationarity, balance, reversibility" id="stationarity-balance-reversibility">12.1 Stationarity, balance, reversibility</h4>
+<p>A Markov chain with transition matrix <span class="math inline">\(T\)</span> evolves distributions <span class="math inline">\(\mathbf{p}^{(t+1)} = T\,\mathbf{p}^{(t)}\)</span>. A <strong>stationary</strong> distribution <span class="math inline">\(\boldsymbol{\pi}\)</span> satisfies <span class="math inline">\(\boldsymbol{\pi}=T\boldsymbol{\pi}\)</span>.</p>
+<ul>
+<li><strong>Global balance:</strong> <span class="math inline">\(\sum_i T_{ij}\,\pi_i = \pi_j\)</span>.<br>
+</li>
+<li><strong>Detailed balance (reversibility):</strong> <span class="math inline">\(T_{ij}\,\pi_i = T_{ji}\,\pi_j\)</span>.<br>
+Detailed balance ⇒ global balance; many physical systems are microscopically reversible, motivating this constraint.</li>
+</ul>
+<h4 data-original-heading="12.2 Metropolis–Hastings construction" id="metropolishastings-construction">12.2 Metropolis–Hastings construction</h4>
+<p>Split transitions into <strong>proposal</strong> <span class="math inline">\(g(\mu\to\mu')\)</span> and <strong>acceptance</strong> <span class="math inline">\(A(\mu\to\mu')\)</span>: <span class="math display">\[
+T(\mu\to\mu') = g(\mu\to\mu')\,A(\mu\to\mu').
+\]</span> Impose detailed balance with target <span class="math inline">\(\pi\)</span>: <span class="math display">\[
+\frac{A(\mu\to\mu')}{A(\mu'\to\mu)} = \frac{\pi(\mu')\,g(\mu'\to\mu)}{\pi(\mu)\,g(\mu\to\mu')}\, .\tag{12.1}
+\]</span> A sufficient choice (Hastings): <span class="math display">\[
+A(\mu\to\mu') = \min\left\{1,\ \frac{\pi(\mu')\,g(\mu'\to\mu)}{\pi(\mu)\,g(\mu\to\mu')}\right\}.
+\]</span> For <strong>symmetric</strong> proposals <span class="math inline">\(g(\mu\to\mu')=g(\mu'\to\mu)\)</span>, this reduces to the <strong>Metropolis rule</strong> <span class="math display">\[
+A(\mu\to\mu') = \min\{1,\ \pi(\mu')/\pi(\mu)\}.\tag{12.2}
+\]</span> With Boltzmann <span class="math inline">\(\pi\)</span>, the ratio is <span class="math inline">\(\exp(-\beta\Delta E)\)</span>, and the (unknown) partition function cancels.</p>
+<p><strong>Algorithm (physics form).</strong></p>
+<ol type="1">
+<li>Start at state <span class="math inline">\(\mu\)</span> with energy <span class="math inline">\(E(\mu)\)</span>.<br>
+</li>
+<li>Propose <span class="math inline">\(\mu'\sim g(\mu\to\cdot)\)</span>.<br>
+</li>
+<li>Compute <span class="math inline">\(\Delta E=E(\mu')-E(\mu)\)</span>.<br>
+</li>
+<li>If <span class="math inline">\(\Delta E\le0\)</span> accept; else accept with prob. <span class="math inline">\(\exp(-\beta\Delta E)\)</span>.<br>
+</li>
+<li>After <strong>burn‑in</strong>, measure observables; use block‑averaging or thinning to reduce autocorrelation.</li>
+</ol>
+<p><strong>Tuning.</strong> Adjust proposal step size for <span class="math inline">\(\approx\)</span> 20–60% acceptance; near criticality autocorrelation times grow.</p>
+<hr>
+<h3 data-original-heading="Case Study I — 2D Ising Model (NVT, no field)" id="case-study-i-2d-ising-model-nvt-no-field">1.3 Case Study I — 2D Ising Model (NVT, no field)</h3>
+<p>Hamiltonian on an <span class="math inline">\(L\times L\)</span> square lattice with periodic BC: <span class="math display">\[
+H(\mathbf{s}) = -J\sum_{\langle i,j\rangle} s_i s_j,\qquad s_i\in\{\pm 1\}.
+\]</span></p>
+<p><strong>Minimal Julia implementation.</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Ising2D</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    L<span class="op">::</span><span class="dt">Int</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    J<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    β<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">::</span><span class="dt">Matrix{Int8}   </span><span class="co"># spins ±1</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ising_init</span>(L, J, β; ordered<span class="op">=</span><span class="cn">false</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> ordered ? <span class="fu">fill</span>(<span class="fu">Int8</span>(<span class="fl">1</span>), L, L) <span class="op">:</span> <span class="fu">Int8</span>.(<span class="fu">sign</span>.(<span class="fu">rand</span>(L, L) <span class="op">.-</span> <span class="fl">0.5</span>))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">Ising2D</span>(L, J, β, s)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Periodic indexing helper</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mod1p</span>(i, L) <span class="op">=</span> i <span class="op">&lt;</span> <span class="fl">1</span> ? i <span class="op">+</span> L <span class="op">:</span> (i <span class="op">&gt;</span> L ? i <span class="op">-</span> L <span class="op">:</span> i)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Energy change for flipping one spin (i,j)</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ΔE_site</span>(m<span class="op">::</span><span class="dt">Ising2D</span>, i, j)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> m.s; L <span class="op">=</span> m.L; J <span class="op">=</span> m.J</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    nn <span class="op">=</span> s[<span class="fu">mod1p</span>(i<span class="op">-</span><span class="fl">1</span>,L), j] <span class="op">+</span> s[<span class="fu">mod1p</span>(i<span class="op">+</span><span class="fl">1</span>,L), j] <span class="op">+</span> s[i, <span class="fu">mod1p</span>(j<span class="op">-</span><span class="fl">1</span>,L)] <span class="op">+</span> s[i, <span class="fu">mod1p</span>(j<span class="op">+</span><span class="fl">1</span>,L)]</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">*</span> J <span class="op">*</span> s[i,j] <span class="op">*</span> nn</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># One Monte Carlo sweep (L^2 Metropolis updates)</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sweep!</span>(m<span class="op">::</span><span class="dt">Ising2D</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> m.L; β <span class="op">=</span> m.β</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>(L<span class="op">*</span>L)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>L); j <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>L)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        dE <span class="op">=</span> <span class="fu">ΔE_site</span>(m, i, j)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dE <span class="op">&lt;=</span> <span class="fl">0</span> <span class="op">||</span> <span class="fu">rand</span>() <span class="op">&lt;</span> <span class="fu">exp</span>(<span class="op">-</span>β<span class="op">*</span>dE)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>            m.s[i,j] <span class="op">=</span> <span class="op">-</span>m.s[i,j]</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> m</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="fu">magnetization</span>(m<span class="op">::</span><span class="dt">Ising2D</span>) <span class="op">=</span> <span class="fu">mean</span>(m.s)</span></code></pre></div>
+<p><strong>Observables.</strong> Magnetization <span class="math inline">\(m=\langle s\rangle\)</span>, energy per spin, specific heat <span class="math inline">\(C\)</span>, susceptibility <span class="math inline">\(\chi\)</span>. Handle burn‑in &amp; correlations.</p>
+<hr>
+<h3 data-original-heading="Case Study II — Lennard–Jones (LJ) Fluid (NVT)" id="case-study-ii-lennardjones-lj-fluid-nvt">1.4 Case Study II — Lennard–Jones (LJ) Fluid (NVT)</h3>
+<p>Pair potential (using reduced units): <span class="math display">\[
+U(r) = 4\varepsilon\Big[ (\sigma/r)^{12} - (\sigma/r)^6 \Big].
+\]</span> <strong>Single‑particle displacement MC</strong> with periodic boundary and minimum‑image convention.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> LJBox</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    L<span class="op">::</span><span class="dt">Float64      </span><span class="co"># box length</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    β<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    σ<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    ε<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    r<span class="op">::</span><span class="dt">Matrix{Float64}   </span><span class="co"># positions N×3</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># minimum‑image squared distance between i and j</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">r2_minimg</span>(box<span class="op">::</span><span class="dt">LJBox</span>, i, j)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    Δ <span class="op">=</span> box.r[i, <span class="op">:</span>] <span class="op">.-</span> box.r[j, <span class="op">:</span>]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> Δ[k] <span class="op">&gt;</span>  box.L<span class="op">/</span><span class="fl">2</span>; Δ[k] <span class="op">-=</span> box.L; <span class="cf">end</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> Δ[k] <span class="op">&lt;</span> <span class="op">-</span>box.L<span class="op">/</span><span class="fl">2</span>; Δ[k] <span class="op">+=</span> box.L; <span class="cf">end</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">sum</span>(Δ<span class="op">.^</span><span class="fl">2</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="pp">@inline</span> <span class="fu">lj_pair</span>(box<span class="op">::</span><span class="dt">LJBox</span>, r2) <span class="op">=</span> <span class="cf">begin</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    sr2 <span class="op">=</span> (box.σ<span class="op">^</span><span class="fl">2</span>) <span class="op">/</span> r2</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    sr6 <span class="op">=</span> sr2<span class="op">^</span><span class="fl">3</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4</span><span class="op">*</span>box.<span class="fu">ε*</span>(sr6<span class="op">^</span><span class="fl">2</span> <span class="op">-</span> sr6)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ΔE_particle</span>(box<span class="op">::</span><span class="dt">LJBox</span>, i, newpos)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    old <span class="op">=</span> <span class="fu">view</span>(box.r, i, <span class="op">:</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    ΔE <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># difference of interactions involving particle i</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(box.r, <span class="fl">1</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        j <span class="op">==</span> i <span class="op">&amp;&amp;</span> <span class="cf">continue</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># old energy</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        Δo <span class="op">=</span> old <span class="op">.-</span> box.r[j, <span class="op">:</span>]</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> Δo[k] <span class="op">&gt;</span>  box.L<span class="op">/</span><span class="fl">2</span>; Δo[k] <span class="op">-=</span> box.L; <span class="cf">end</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> Δo[k] <span class="op">&lt;</span> <span class="op">-</span>box.L<span class="op">/</span><span class="fl">2</span>; Δo[k] <span class="op">+=</span> box.L; <span class="cf">end</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        r2o <span class="op">=</span> <span class="fu">sum</span>(Δo<span class="op">.^</span><span class="fl">2</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># new energy</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        Δn <span class="op">=</span> newpos <span class="op">.-</span> box.r[j, <span class="op">:</span>]</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> Δn[k] <span class="op">&gt;</span>  box.L<span class="op">/</span><span class="fl">2</span>; Δn[k] <span class="op">-=</span> box.L; <span class="cf">end</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> Δn[k] <span class="op">&lt;</span> <span class="op">-</span>box.L<span class="op">/</span><span class="fl">2</span>; Δn[k] <span class="op">+=</span> box.L; <span class="cf">end</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>        r2n <span class="op">=</span> <span class="fu">sum</span>(Δn<span class="op">.^</span><span class="fl">2</span>)</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        ΔE <span class="op">+=</span> <span class="fu">lj_pair</span>(box, r2n) <span class="op">-</span> <span class="fu">lj_pair</span>(box, r2o)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ΔE</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="co"># One MC displacement attempt for a random particle</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">mc_move!</span>(box<span class="op">::</span><span class="dt">LJBox</span>; Δ<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="fu">size</span>(box.r, <span class="fl">1</span>)</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>N)</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>    trial <span class="op">=</span> box.r[i, <span class="op">:</span>] <span class="op">.+</span> (<span class="fu">rand</span>(<span class="fl">3</span>) <span class="op">.-</span> <span class="fl">0.5</span>) <span class="op">.*</span> (<span class="fl">2</span>Δ)  <span class="co"># uniform cube of side 2Δ</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>    dE <span class="op">=</span> <span class="fu">ΔE_particle</span>(box, i, trial)</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dE <span class="op">&lt;=</span> <span class="fl">0</span> <span class="op">||</span> <span class="fu">rand</span>() <span class="op">&lt;</span> <span class="fu">exp</span>(<span class="op">-</span>box.β <span class="op">*</span> dE)</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        box.r[i, <span class="op">:</span>] <span class="op">.=</span> trial</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="cn">true</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cn">false</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p><strong>Compare with MD.</strong> MC efficiently samples equilibrium structure (e.g., radial distribution function <span class="math inline">\(g(r)\)</span>); MD also gives dynamics. In practice, use neighbor lists/cell lists and cutoffs to reduce the <span class="math inline">\(O(N^2)\)</span> cost.</p>
+<h4 data-original-heading="Core Comparison" id="core-comparison">1.4.1 Core Comparison</h4>
+<p>Both MD and MC can simulate the same physical systems (e.g., particle fluids) and reach the same equilibrium results (same radial distribution functions, etc.).</p>
+<p>This agreement validates statistical mechanics: deterministic (MD) and stochastic (MC) microscopic dynamics converge to the same equilibrium structure.</p>
+<p>Philosophical difference</p>
+<p>MD (Molecular Dynamics):</p>
+<p>Deterministic, time-evolution based.</p>
+<p>Simulates trajectories of particles using Newton’s equations.</p>
+<p>Best for studying dynamic properties such as diffusion, viscosity, and relaxation times.</p>
+<p>Drawback: Can be slow when the system must cross large energy barriers — natural dynamics take a long time to sample the full phase space.</p>
+<p>MC (Monte Carlo):</p>
+<p>Stochastic, non-temporal.</p>
+<p>Generates a sequence of configurations without reference to real time.</p>
+<p>Cannot describe dynamics, but can efficiently explore equilibrium distributions.</p>
+<p>Advantage: Moves aren’t restricted by physical time-evolution, allowing you to design “unphysical” jumps that sample phase space much faster.</p>
+<p>Practical consequences</p>
+<p>MC is usually better for:</p>
+<p>Constructing phase diagrams</p>
+<p>Computing free energies</p>
+<p>Determining equations of state</p>
+<p>MD is better for:</p>
+<p>Understanding how systems evolve — the path between states.</p>
+<p>Final Insight</p>
+<p>MD tells you how a system gets from state A to B. MC tells you what A and B look like and their statistical weights.</p>
+<p>They’re not competitors but complementary: deterministic vs.&nbsp;probabilistic ways of uncovering the same thermodynamic truth.</p>
+<hr>
+<h3 data-original-heading="Checklist &amp; Key Takeaways" id="checklist-key-takeaways">1.5 Checklist &amp; Key Takeaways</h3>
+<ul>
+<li><em>PRNGs:</em> deterministic, reproducible; use vetted RNGs; record seeds.<br>
+</li>
+<li><em>Transforms:</em> inverse CDF; Box–Muller; rejection sampling.<br>
+</li>
+<li><em>MC integration:</em> unbiased estimator; RMSE <span class="math inline">\(\sim N^{-1/2}\)</span>; beats grids in high <span class="math inline">\(d\)</span>.<br>
+</li>
+<li><em>Importance sampling:</em> choose <span class="math inline">\(p\)</span> to reduce variance; bridge to Boltzmann.<br>
+</li>
+<li><em>MCMC:</em> detailed balance ⇒ correct stationary law; Metropolis–Hastings acceptance.<br>
+</li>
+<li><em>Ising/LJ:</em> concrete Metropolis implementations; measure, equilibrate, tune proposals.</li>
+</ul>
+<hr>
+<h4 data-original-heading="Practice Prompts (for mastery)" id="practice-prompts-for-mastery">1.5.1 Practice Prompts (for mastery)</h4>
+<ol type="1">
+<li><strong>RNG sanity checks.</strong> Plot histograms and perform serial correlation tests for your RNG; explore modulo‑small‑integer artifacts in an LCG.</li>
+<li><strong>MC vs trapezoid.</strong> Compare error vs <span class="math inline">\(N\)</span> for <span class="math inline">\(\int_0^1 e^{-x^2}\,dx\)</span> in 1D, 4D (via product measure) using both methods.</li>
+<li><strong>Importance sampling demo.</strong> Integrate a narrow Gaussian with a mismatched vs matched proposal; report variance.</li>
+<li><strong>Ising scaling.</strong> Measure magnetization vs <span class="math inline">\(\beta\)</span> on increasing <span class="math inline">\(L\)</span>; comment on critical slowing down.</li>
+<li><strong>LJ fluid.</strong> Compute <span class="math inline">\(g(r)\)</span> from MC and compare to MD at same <span class="math inline">\(T,\rho\)</span>; discuss differences.</li>
+</ol></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/II%20ODEs%E4%B8%8E%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6.html"><span>← Previous page</span><span>II ODEs与分子动力学</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">III Random Numbers &amp; Monte Carlo</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#module-3" class="is-active" aria-current="location">1 Module 3</a></li><li style="--depth:1"><a href="#pseudorandomness-monte-carlo-integration">11. Pseudorandomness &amp; Monte Carlo Integration</a></li><li style="--depth:2"><a href="#pseudorandom-number-generators-prngs">11.1 Pseudorandom Number Generators (PRNGs)</a></li><li style="--depth:3"><a href="#linear-congruential-generator-lcg">11.1.1 Linear Congruential Generator (LCG)</a></li><li style="--depth:3"><a href="#reproducibility-seeding">11.1.2 Reproducibility &amp; seeding</a></li><li style="--depth:3"><a href="#sampling-nonuniform-distributions">11.1.3 Sampling non‑uniform distributions</a></li><li style="--depth:2"><a href="#monte-carlo-mc-integration">11.2 Monte Carlo (MC) Integration</a></li><li style="--depth:3"><a href="#throwing-darts-1d">11.2.1 Throwing darts (1D)</a></li><li style="--depth:3"><a href="#importance-sampling">11.2.2 Importance sampling</a></li><li style="--depth:1"><a href="#markov-chains-metropolishastings-mcmc">12. Markov Chains &amp; Metropolis–Hastings (MCMC)</a></li><li style="--depth:2"><a href="#stationarity-balance-reversibility">12.1 Stationarity, balance, reversibility</a></li><li style="--depth:2"><a href="#metropolishastings-construction">12.2 Metropolis–Hastings construction</a></li><li style="--depth:1"><a href="#case-study-i-2d-ising-model-nvt-no-field">1.3 Case Study I — 2D Ising Model (NVT, no field)</a></li><li style="--depth:1"><a href="#case-study-ii-lennardjones-lj-fluid-nvt">1.4 Case Study II — Lennard–Jones (LJ) Fluid (NVT)</a></li><li style="--depth:2"><a href="#core-comparison">1.4.1 Core Comparison</a></li><li style="--depth:1"><a href="#checklist-key-takeaways">1.5 Checklist &amp; Key Takeaways</a></li><li style="--depth:2"><a href="#practice-prompts-for-mastery">1.5.1 Practice Prompts (for mastery)</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

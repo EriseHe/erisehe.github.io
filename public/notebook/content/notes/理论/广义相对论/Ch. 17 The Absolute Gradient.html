@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 17 The Absolute Gradient — E.H. Notebook</title>
+<meta name="description" content="17.1 OverviewIn earlier chapters we explored the Schwarzschild geometry and saw how tensor equations express physics in a coordinate–independent way.A remaining mathemati">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 17 The Absolute Gradient</h1></header><div id="article-body" class="prose"><h2 data-original-heading="17.1 Overview" id="overview">17.1 Overview</h2>
+<p>In earlier chapters we explored the Schwarzschild geometry and saw how tensor equations express physics in a coordinate–independent way.</p>
+<p>A remaining mathematical problem is:</p>
+<blockquote>
+<p>How do we take the <strong>gradient of a tensor field</strong> so that the result is again a tensor in <em>every</em> coordinate system?</p>
+</blockquote>
+<p>For scalars this is easy: the ordinary partial derivatives already transform as a covector. For vectors and higher–rank tensors, the naive gradient fails. This chapter introduces the <strong>absolute gradient</strong> (or covariant derivative), which corrects the ordinary gradient by accounting for changes in the <strong>basis vectors</strong>.</p>
+<hr>
+<h2 data-original-heading="17.2 Review: Gradient of a Scalar" id="review-gradient-of-a-scalar">17.2 Review: Gradient of a Scalar</h2>
+<p>Consider a scalar field <span class="math inline">\(\Phi(x^\sigma)\)</span> (meaning <span class="math inline">\(\Phi\)</span> can depend on all four coordinates). In chapter 6 we found that the gradient is a covector in every coordinate system.</p>
+<p>Under a change of coordinates <span class="math inline">\(x^\mu \mapsto x'^\mu\)</span>, the chain rule gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\partial'_\mu \Phi)
+&amp;\equiv \frac{\partial \Phi}{\partial x'^\mu}
+= \frac{\partial x^\nu}{\partial x'^\mu}\,\frac{\partial \Phi}{\partial x^\nu}
+= \frac{\partial x^\nu}{\partial x'^\mu}\,(\partial_\nu \Phi)
+\end{aligned}
+\]</span></p>
+<p>This transformation law coincides with that of a covector, so <span class="math inline">\(\partial_\mu \Phi\)</span> is a tensor.</p>
+<hr>
+<h2 data-original-heading="17.3 Why the Naive Gradient of a Vector Is Not a Tensor" id="why-the-naive-gradient-of-a-vector-is-not-a-tensor">17.3 Why the Naive Gradient of a Vector Is Not a Tensor</h2>
+<p>For a more complicated tensor, the naive gradient is <strong>not</strong> a tensor. Repeating the example from equation (6.14) for a vector field <span class="math inline">\(A^\mu\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\partial'_\nu A'^{\mu})
+&amp;\equiv \frac{\partial A'^{\mu}}{\partial x'^{\nu}}
+= \frac{\partial}{\partial x'^{\nu}}\!\left(\frac{\partial x'^{\mu}}{\partial x^{\alpha}}A^{\alpha}\right) \\[4pt]
+&amp;= \frac{\partial x^{\beta}}{\partial x'^{\nu}}\,
+   \frac{\partial}{\partial x^{\beta}}\!\left(\frac{\partial x'^{\mu}}{\partial x^{\alpha}}A^{\alpha}\right) \\[4pt]
+&amp;= \frac{\partial x^{\beta}}{\partial x'^{\nu}}\,
+   \frac{\partial^2 x'^{\mu}}{\partial x^{\beta}\partial x^{\alpha}} A^{\alpha}
+ + \frac{\partial x^{\beta}}{\partial x'^{\nu}}\,
+   \frac{\partial x'^{\mu}}{\partial x^{\alpha}}\,
+   \frac{\partial A^{\alpha}}{\partial x^{\beta}}
+\end{aligned}
+\]</span></p>
+<p>The <strong>second term</strong> alone would transform like a rank–2 tensor (one upper, one lower index). The <strong>first term</strong>, involving second derivatives of the coordinate transformation, is nonzero whenever the transformation is nonlinear. Its presence means <span class="math inline">\(\partial_\nu A^\mu\)</span> does <strong>not</strong> transform as a tensor.</p>
+<p>So we must modify the gradient to remove spurious contributions coming from <em>changes in the basis vectors</em>.</p>
+<hr>
+<h2 data-original-heading="17.4 Exposing the Problem With a Constant Vector Field" id="exposing-the-problem-with-a-constant-vector-field">17.4 Exposing the Problem With a Constant Vector Field</h2>
+<p>Consider a constant vector field <span class="math inline">\(A(x^\sigma)\)</span> in a flat two–dimensional space. Physically, the true gradient of such a vector field should be zero: the vector does not change as we move from place to place.</p>
+<ul>
+<li>In Cartesian coordinates the components <span class="math inline">\(A^\mu\)</span> are constant, so <span class="math inline">\(\partial_\alpha A^\mu = 0\)</span> as expected.</li>
+<li>In a general curvilinear coordinate system, the components <span class="math inline">\(A^\mu\)</span> of the <em>same</em> constant vector field need <strong>not</strong> be constant, because the basis vectors used to evaluate the components change from point to point.</li>
+</ul>
+<p>Thus <span class="math inline">\(\partial_\alpha A^\mu\)</span> mixes genuine changes in the vector with mere changes in the basis. To find the <strong>true change</strong> of the vector, we must correct <span class="math inline">\(\partial_\alpha A^\mu\)</span> for the variation in the basis vectors.</p>
+<hr>
+<h2 data-original-heading="17.5 Christoffel Symbols" id="christoffel-symbols">17.5 Christoffel Symbols</h2>
+<p>To describe how the basis vectors change, define coefficients <span class="math inline">\(\Gamma^\nu_{\mu\alpha}\)</span> at a point (or event) <span class="math inline">\(P\)</span> by</p>
+<div class="math-theorem definition" data-label="17.1" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 17.1</span><span class="theorem-title">Christoffel symbols</span></p>
+</div>
+<div class="theorem-content">
+<p>The <strong>Christoffel symbols</strong> at a point <span class="math inline">\(P\)</span> are the coefficients <span class="math inline">\(\Gamma^\nu_{\mu\alpha}\)</span> defined by<br>
+<span class="math display">\[
+\frac{\partial e_\alpha}{\partial x^\mu}
+\equiv \Gamma^\nu_{\mu\alpha} e_\nu
+\]</span></p>
+</div>
+</div>
+<p>The derivative <span class="math inline">\(\partial e_\alpha/\partial x^\mu\)</span> measures how the basis vector <span class="math inline">\(e_\alpha\)</span> changes as we move from <span class="math inline">\(P\)</span> an infinitesimal displacement <span class="math inline">\(dx^\mu\)</span> along a curve where the other coordinates are held fixed.</p>
+<p>Because the change in <span class="math inline">\(e_\alpha\)</span> is itself a vector, it can be written as a linear combination of the basis vectors <span class="math inline">\(e_\nu\)</span>, giving four coefficients <span class="math inline">\(\Gamma^\nu_{\mu\alpha}\)</span> for each choice of <span class="math inline">\(\mu,\alpha\)</span>. In four–dimensional spacetime there are <span class="math inline">\(4\times 4\times 4 = 64\)</span> Christoffel symbols for a general coordinate system.</p>
+<hr>
+<h2 data-original-heading="17.6 True Change of a Vector and the Absolute Gradient" id="true-change-of-a-vector-and-the-absolute-gradient">17.6 True Change of a Vector and the Absolute Gradient</h2>
+<p>Consider now a vector field <span class="math inline">\(A(x^\sigma)\)</span>. When we move by an infinitesimal displacement <span class="math inline">\(ds\)</span> with components <span class="math inline">\(dx^\alpha\)</span>, the <strong>true</strong> change in <span class="math inline">\(A\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+dA &amp;= d(A^\mu e_\mu) \\[4pt]
+&amp;= \left( \frac{\partial A^\mu}{\partial x^\sigma} dx^\sigma \right) e_\mu
+   + A^\mu \frac{\partial e_\mu}{\partial x^\alpha} dx^\alpha
+\end{aligned}
+\]</span></p>
+<p>Using the definition of the Christoffel symbols (equation 17.3) and renaming indices, we substitute</p>
+<p><span class="math display">\[
+\frac{\partial e_\mu}{\partial x^\alpha}
+= \Gamma^\nu_{\alpha\mu} e_\nu
+\]</span></p>
+<p>so that</p>
+<p><span class="math display">\[
+\begin{aligned}
+dA
+&amp;= \left[
+     \frac{\partial A^\mu}{\partial x^\alpha}
+     + \underbrace{\Gamma^\mu_{\alpha\nu} A^\nu}_{\text{correction for basis change}}
+   \right] e_\mu dx^\alpha \\[4pt]
+&amp;\equiv (\nabla_\alpha A^\mu) e_\mu dx^\alpha
+\end{aligned}
+\]</span></p>
+<p>This motivates the following definition.</p>
+<div class="math-theorem definition" data-label="17.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 17.2</span><span class="theorem-title">Absolute gradient of a vector field</span></p>
+</div>
+<div class="theorem-content">
+<p>For a vector field <span class="math inline">\(A^\mu(x^\sigma)\)</span>, the <strong>absolute gradient</strong> (or covariant derivative) is<br>
+<span class="math display">\[
+\nabla_\alpha A^\mu
+\equiv \frac{\partial A^\mu}{\partial x^\alpha}
+     + \Gamma^\mu_{\alpha\nu} A^\nu
+\]</span></p>
+</div>
+</div>
+<p>The term involving <span class="math inline">\(\Gamma^\mu_{\alpha\nu}\)</span> precisely corrects the partial derivative for variations in the basis vectors. Because <span class="math inline">\(dA = (\nabla_\alpha A^\mu) e_\mu dx^\alpha\)</span> must transform as a vector, <span class="math inline">\(\nabla_\alpha A^\mu\)</span> transforms as a tensor of rank 2 (one upper, one lower index). Neither <span class="math inline">\(\partial_\alpha A^\mu\)</span> alone nor <span class="math inline">\(\Gamma^\mu_{\alpha\nu}\)</span> alone is a tensor, but their combination is.</p>
+<hr>
+<h2 data-original-heading="17.7 Absolute Gradient of General Tensors" id="absolute-gradient-of-general-tensors">17.7 Absolute Gradient of General Tensors</h2>
+<h3 data-original-heading="Covector" id="covector">7.1 Covector</h3>
+<p>For a covector <span class="math inline">\(B_\mu\)</span>, one can show that its absolute gradient must be</p>
+<p><span class="math display">\[
+\nabla_\alpha B_\mu
+= \frac{\partial B_\mu}{\partial x^\alpha}
+  - \Gamma^\nu_{\alpha\mu} B_\nu
+\]</span></p>
+<p>The sign of the Christoffel term is negative because lowering an index is like multiplying by the metric and introduces the inverse transformation.</p>
+<h3 data-original-heading="General tensor" id="general-tensor">7.2 General tensor</h3>
+<div class="math-theorem definition" data-label="17.3" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 17.3</span><span class="theorem-title">Absolute gradient of a general tensor</span></p>
+</div>
+<div class="theorem-content">
+<p>For a tensor <span class="math inline">\(T^{\mu\nu}{}_{\sigma}\)</span>, the absolute gradient is<br>
+<span class="math display">\[
+\nabla_\alpha T^{\mu\nu}{}_{\sigma}
+= \frac{\partial T^{\mu\nu}{}_{\sigma}}{\partial x^\alpha}
++ \Gamma^\mu_{\alpha\beta} T^{\beta\nu}{}_{\sigma}
++ \Gamma^\nu_{\alpha\delta} T^{\mu\delta}{}_{\sigma}
+- \Gamma^\gamma_{\alpha\sigma} T^{\mu\nu}{}_{\gamma}
+\]</span> where each <strong>upper index</strong> contributes a <strong>positive</strong> Christoffel term and each <strong>lower index</strong> contributes a <strong>negative</strong> Christoffel term, summed over the repeated index.</p>
+</div>
+</div>
+<p><strong>General rule</strong></p>
+<ul>
+<li>For every <strong>upper</strong> index, add a term <span class="math inline">\(\Gamma^\text{(upper)}_{\ \text{(lower)}}\)</span> times the tensor.</li>
+<li>For every <strong>lower</strong> index, subtract a term with a Christoffel symbol contracting that lower index.</li>
+</ul>
+<p>This prescription guarantees that the absolute gradient of a tensor is again a tensor.</p>
+<hr>
+<h2 data-original-heading="17.8 Symmetry and Computation of Christoffel Symbols" id="symmetry-and-computation-of-christoffel-symbols">17.8 Symmetry and Computation of Christoffel Symbols</h2>
+<h3 data-original-heading="Symmetry" id="symmetry">8.1 Symmetry</h3>
+<div class="math-theorem remark" data-label="17.4" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 17.4</span><span class="theorem-title">Symmetry of the Christoffel symbols</span></p>
+</div>
+<div class="theorem-content">
+<p>Though not obvious from their definition, the Christoffel symbols are symmetric in their lower two indices:<br>
+<span class="math display">\[
+\Gamma^\alpha_{\mu\nu} = \Gamma^\alpha_{\nu\mu}
+\]</span></p>
+</div>
+</div>
+<p>Thus, while there are <span class="math inline">\(64\)</span> symbols, only <span class="math inline">\(40\)</span> are independent in four dimensions, because there are only 10 distinct pairs <span class="math inline">\((\mu,\nu)\)</span> with <span class="math inline">\(\mu\le\nu\)</span>.</p>
+<h3 data-original-heading="Expression in terms of the metric" id="expression-in-terms-of-the-metric">8.2 Expression in terms of the metric</h3>
+<p>By taking appropriate dot products of equation (17.3) with basis vectors and using the symmetry property, one can show that the Christoffel symbols are determined entirely by the metric:</p>
+<p><span class="math display">\[
+\Gamma^\alpha_{\mu\nu}
+= \tfrac{1}{2} g^{\alpha\sigma}
+\left[
+\partial_\mu g_{\nu\sigma}
++ \partial_\nu g_{\sigma\mu}
+- \partial_\sigma g_{\mu\nu}
+\right]
+\]</span></p>
+<p>The factor <span class="math inline">\(g^{\alpha\sigma}\)</span> (the inverse metric) raises the index, and the three terms in brackets are cyclic permutations of the last one.</p>
+<hr>
+<h2 data-original-heading="17.9 Geodesics as “Locally Straight’’ Curves" id="geodesics-as-locally-straight-curves">17.9 Geodesics as “Locally Straight’’ Curves</h2>
+<p>Previously, we defined a geodesic as the curve of extremal distance between two points. We can now give an equivalent <strong>local</strong> characterization: a geodesic is a curve whose four–velocity <span class="math inline">\(u = ds/d\tau\)</span> does not change as we move infinitesimally along the path.</p>
+<p>So for a geodesic,</p>
+<p><span class="math display">\[
+\begin{aligned}
+0
+&amp;= \frac{du}{d\tau}
+= \frac{d}{d\tau}(u^\mu e_\mu) \\[4pt]
+&amp;= \frac{du^\mu}{d\tau} e_\mu
+ + u^\mu \frac{de_\mu}{d\tau}
+\end{aligned}
+\]</span></p>
+<p>Using <span class="math inline">\(u^\mu = dx^\mu/d\tau\)</span> and the chain rule for <span class="math inline">\(de_\mu/d\tau\)</span>,</p>
+<p><span class="math display">\[
+\frac{de_\mu}{d\tau}
+= \frac{\partial e_\mu}{\partial x^\nu}\,\frac{dx^\nu}{d\tau}
+= \Gamma^\alpha_{\nu\mu} e_\alpha \frac{dx^\nu}{d\tau}
+\]</span></p>
+<p>Substitute into the previous expression:</p>
+<p><span class="math display">\[
+\begin{aligned}
+0
+&amp;= \frac{d^2 x^\mu}{d\tau^2} e_\mu
+ + \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}
+   \frac{\partial e_\mu}{\partial x^\nu} \\[4pt]
+&amp;= \frac{d^2 x^\mu}{d\tau^2} e_\mu
+ + \underbrace{\frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}
+   \Gamma^\alpha_{\nu\mu} e_\alpha}_{\text{basis change along the curve}} \\[4pt]
+&amp;= \left[
+     \frac{d^2 x^\mu}{d\tau^2}
+     + \Gamma^\mu_{\alpha\beta}
+       \frac{dx^\alpha}{d\tau} \frac{dx^\beta}{d\tau}
+   \right] e_\mu
+\end{aligned}
+\]</span></p>
+<p>Since the basis vectors <span class="math inline">\(e_\mu\)</span> are linearly independent, the coefficient of each <span class="math inline">\(e_\mu\)</span> must vanish:</p>
+<p><span class="math display">\[
+0 =
+\frac{d^2 x^\mu}{d\tau^2}
++ \Gamma^\mu_{\alpha\beta}
+  \frac{dx^\alpha}{d\tau}
+  \frac{dx^\beta}{d\tau}
+\]</span></p>
+<p>This is the familiar <strong>geodesic equation</strong> in terms of the Christoffel symbols.</p>
+<hr>
+<h2 data-original-heading="17.10 Locally Inertial Reference Frames (LIFs)" id="locally-inertial-reference-frames-lifs">17.10 Locally Inertial Reference Frames (LIFs)</h2>
+<p>We have been speaking of changes like <span class="math inline">\(dA\)</span> and <span class="math inline">\(du\)</span> as if they were well defined in a curved spacetime. Intuitively, a four–vector is an arrow with magnitude and direction defined independently of coordinates, so we can talk about differences like</p>
+<p><span class="math display">\[
+du = u(\tau + d\tau) - u(\tau)
+\]</span></p>
+<p>However, in a curved spacetime it is <strong>not</strong> legitimate to subtract components of vectors at different points, because the basis vectors at those points are different. Doing so introduces spurious changes that are merely artifacts of the coordinate system.</p>
+<p>Equation (17.5) tells us that the true change in a vector field as we move through a displacement <span class="math inline">\(ds\)</span> is</p>
+<p><span class="math display">\[
+dA = dx^\alpha (\nabla_\alpha A^\mu) e_\mu
+\]</span></p>
+<p>To interpret this physically, we introduce:</p>
+<div class="math-theorem definition" data-label="17.4" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 17.4</span><span class="theorem-title">Locally inertial reference frame (LIF)</span></p>
+</div>
+<div class="theorem-content">
+<p>At any event we can choose a <strong>locally orthogonal frame (LOF)</strong> whose metric is the flat–space metric <span class="math inline">\(\eta_{\mu\nu}\)</span> over a small region of spacetime. When the Christoffel symbols vanish at the event, the frame is called a <strong>locally inertial reference frame (LIF)</strong>.</p>
+</div>
+</div>
+<p>In a LIF:</p>
+<ul>
+<li>The metric <span class="math inline">\(g_{\mu\nu}\)</span> reduces to <span class="math inline">\(\eta_{\mu\nu}\)</span> at the event.</li>
+<li>All first derivatives of the metric vanish at the event: <span class="math display">\[
+\partial_\sigma g_{\mu\nu}(P) = 0
+\]</span></li>
+</ul>
+<p>In such coordinates, the Christoffel symbols also vanish (by equation 17.10), and the geodesic equation reduces locally to</p>
+<p><span class="math display">\[
+\frac{d^2 x^\mu}{d\tau^2} = 0
+\]</span></p>
+<p>the equation of a straight line, as expected in a locally inertial frame.</p>
+<p>Because the Christoffel symbols vanish at <span class="math inline">\(P\)</span> in a LIF, the absolute gradient there reduces to the ordinary gradient (equations 17.6–17.8). Thus a vector field is “truly’’ constant at <span class="math inline">\(P\)</span> if its ordinary gradient vanishes there in a LIF, and true differences between vectors at nearby events can be evaluated as simple coordinate differences in that LIF.</p>
+<hr>
+<h2 data-original-heading="17.11 Absolute Gradient of the Metric" id="absolute-gradient-of-the-metric">17.11 Absolute Gradient of the Metric</h2>
+<p>The LIF idea is especially useful for gradients involving the metric.</p>
+<p>Consider the absolute gradient of the metric tensor <span class="math inline">\(\nabla_\alpha g_{\mu\nu}\)</span> in an arbitrary coordinate system. In a LIF centered at any event, the absolute gradient reduces to the ordinary gradient, and because the metric equals <span class="math inline">\(\eta_{\mu\nu}\)</span> with constant components there, we have</p>
+<p><span class="math display">\[
+\nabla_\alpha g_{\mu\nu}
+= \partial_\alpha g_{\mu\nu}
+= 0
+\]</span></p>
+<div class="math-theorem proposition" data-label="17.5" data-callout="proposition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Proposition 17.5</span><span class="theorem-title">Metric compatibility</span></p>
+</div>
+<div class="theorem-content">
+<p>The equation <span class="math inline">\(\nabla_\alpha g_{\mu\nu} = 0\)</span> is a tensor equation. Since it holds in one coordinate system (any LIF), it must hold in <strong>every</strong> coordinate system. Thus the metric is covariantly constant with respect to the same connection that defines the Christoffel symbols.</p>
+</div>
+</div>
+<p>This property allows us to treat <span class="math inline">\(g_{\mu\nu}\)</span> as if it were constant in any equation written with the <strong>absolute gradient</strong>, even though its coordinate components vary in curved spacetime.</p>
+<hr>
+<h2 data-original-heading="17.12 Physics Equations in Curved Spacetime" id="physics-equations-in-curved-spacetime">17.12 Physics Equations in Curved Spacetime</h2>
+<p>Finally, we can use the equivalence principle and LIFs to extend flat–spacetime field equations to curved spacetime.</p>
+<p>In an inertial frame of flat spacetime, Maxwell’s equations at any event are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\partial_\nu F^{\mu\nu} &amp;= 4\pi k J^\mu \\[2pt]
+\partial^\mu F^{\alpha\beta}
++ \partial^\beta F^{\mu\alpha}
++ \partial^\alpha F^{\beta\mu} &amp;= 0
+\end{aligned}
+\]</span></p>
+<p>By the equivalence principle, these must also hold in a LIF centered on an event in a curved spacetime. But in that LIF we can replace ordinary derivatives by covariant derivatives without changing the form of the equations, giving the <strong>tensor</strong> equations</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla_\nu F^{\mu\nu} &amp;= 4\pi k J^\mu \\[2pt]
+\nabla^\mu F^{\alpha\beta}
++ \nabla^\beta F^{\mu\alpha}
++ \nabla^\alpha F^{\beta\mu} &amp;= 0
+\end{aligned}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\nabla^\mu \equiv g^{\mu\nu} \nabla_\nu
+\]</span></p>
+<p>Since these relations are tensor equations, they hold in <strong>every</strong> coordinate system. In this way, the absolute gradient provides the systematic rule for writing physics equations valid in curved spacetime.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span>← Previous page</span><span>Ch. 16 Black Hole Thermodynamics</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span>Next page →</span><span>Ch. 18. Geodesic Derivation</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 17 The Absolute Gradient</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#overview" class="is-active" aria-current="location">17.1 Overview</a></li><li style="--depth:0"><a href="#review-gradient-of-a-scalar">17.2 Review: Gradient of a Scalar</a></li><li style="--depth:0"><a href="#why-the-naive-gradient-of-a-vector-is-not-a-tensor">17.3 Why the Naive Gradient of a Vector Is Not a Tensor</a></li><li style="--depth:0"><a href="#exposing-the-problem-with-a-constant-vector-field">17.4 Exposing the Problem With a Constant Vector Field</a></li><li style="--depth:0"><a href="#christoffel-symbols">17.5 Christoffel Symbols</a></li><li style="--depth:0"><a href="#true-change-of-a-vector-and-the-absolute-gradient">17.6 True Change of a Vector and the Absolute Gradient</a></li><li style="--depth:0"><a href="#absolute-gradient-of-general-tensors">17.7 Absolute Gradient of General Tensors</a></li><li style="--depth:1"><a href="#covector">7.1 Covector</a></li><li style="--depth:1"><a href="#general-tensor">7.2 General tensor</a></li><li style="--depth:0"><a href="#symmetry-and-computation-of-christoffel-symbols">17.8 Symmetry and Computation of Christoffel Symbols</a></li><li style="--depth:1"><a href="#symmetry">8.1 Symmetry</a></li><li style="--depth:1"><a href="#expression-in-terms-of-the-metric">8.2 Expression in terms of the metric</a></li><li style="--depth:0"><a href="#geodesics-as-locally-straight-curves">17.9 Geodesics as “Locally Straight’’ Curves</a></li><li style="--depth:0"><a href="#locally-inertial-reference-frames-lifs">17.10 Locally Inertial Reference Frames (LIFs)</a></li><li style="--depth:0"><a href="#absolute-gradient-of-the-metric">17.11 Absolute Gradient of the Metric</a></li><li style="--depth:0"><a href="#physics-equations-in-curved-spacetime">17.12 Physics Equations in Curved Spacetime</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>自回归模型（AR） — E.H. Notebook</title>
+<meta name="description" content="An AR (autoregressive) generative model represents the joint probability of a sequence by chaining conditionals left-to-right (the chain rule P\left(w_{1: T}\right)=\prod">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a></nav><h1 id="reader-title">自回归模型（AR）</h1><p class="article-meta">2025-09-01 · AR</p></header><div id="article-body" class="prose"><p>An AR (autoregressive) generative model represents the <strong>joint probability of a sequence</strong> by chaining conditionals left-to-right (the chain rule <span class="math display">\[P\left(w_{1: T}\right)=\prod_{t=1}^T P\left(w_t \mid w_{&lt;t}\right)\]</span> ## 0. Probability Distributions (recap)</p>
+<ul>
+<li>Discrete: <span class="math inline">\(X ∈ \{1,…,K\}, \; P(X=i)=p_i, \; \sum_i p_i=1.\)</span></li>
+<li>Continuous: <span class="math inline">\(\int p(x) dx = 1, \; p(x) ≥ 0.\)</span></li>
+<li>Multivariate: <span class="math inline">\(p(\mathbf{x}) = p(x_1,…,x_d).\)</span> ## 1. Generative Modeling: Two Distinct Tasks</li>
+</ul>
+<p>A <strong>generative model</strong> is a probability distribution <span class="math inline">\(p_\theta\)</span> meant to approximate the true (unknown) data distribution <span class="math inline">\(p_{\text{data}}\)</span>.</p>
+<ul>
+<li><strong>(1) Density Estimation.</strong>
+<ul>
+<li>Input: a concrete point <span class="math inline">\(x\)</span>.</li>
+<li>Output: the model’s likelihood (or density/mass) <span class="math inline">\(p_\theta(x)\)</span>.</li>
+<li>Use cases: evaluation, model selection, anomaly detection, compression.</li>
+</ul></li>
+<li><strong>(2) Sampling / Generation.</strong>
+<ul>
+<li>Input: nothing (optionally, a prompt or random seed).</li>
+<li>Output: a new sample <span class="math inline">\(x' \sim p_\theta\)</span> that <em>looks like</em> data.</li>
+<li>Use cases: simulation, text/image/audio generation.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>Key distinction.</strong> These are <strong>different computational problems</strong>. Density estimation needs a normalized <span class="math inline">\(p_\theta(\cdot)\)</span> you can evaluate; sampling needs a way to <em>draw</em> from <span class="math inline">\(p_\theta\)</span>.</p>
+</blockquote>
+<p><strong>Explicit</strong> density models (e.g., autoregressive models) support <strong>both</strong> tasks. <strong>Implicit</strong> models (e.g., GANs) emphasize <strong>sampling</strong> but typically do not provide tractable <span class="math inline">\(p_\theta(x)\)</span>.</p>
+<h2 data-original-heading="2. Probability Recap (Notation &amp; Constraints)" id="probability-recap-notation-constraints">2. Probability Recap (Notation &amp; Constraints)</h2>
+<ul>
+<li><strong>Discrete:</strong> <span class="math inline">\(X\in\{1,\dots,K\}\)</span>, <span class="math inline">\(P(X=i)=p_i\)</span>, <span class="math inline">\(\sum_i p_i=1\)</span>.</li>
+<li><strong>Continuous:</strong> <span class="math inline">\(p(x)\ge 0\)</span>, <span class="math inline">\(\int p(x)\,dx=1\)</span>.</li>
+<li><strong>Multivariate:</strong> <span class="math inline">\(p(\mathbf{x})=p(x_1,\dots,x_d)\)</span>.</li>
+</ul>
+<p>High-dimensional joint distributions (e.g., images with <span class="math inline">\(10^5\)</span>–<span class="math inline">\(10^6\)</span> pixels) are combinatorially huge, motivating structured factorizations.</p>
+<h3 data-original-heading="2.1 Conditional Probability" id="conditional-probability">2.1 Conditional Probability</h3>
+<p>The definition of <strong>conditional probability</strong> for events is <span class="math display">\[
+\boxed{P(A \mid B)=\frac{P(A \cap B)}{P(B)}}
+\]</span> and equivalently, the “product rule”: <span class="math display">\[P(A \cap B)=P(A \mid B) P(B)=P(B \mid A) P(A)\]</span> ### 2.2 Joint distribution</p>
+<p><strong>Joint distribution</strong> can be written as the product of conditionals, that is: <span class="math display">\[
+\begin{aligned}
+p(x_1, x_2, \dots, x_n)
+&amp;= p(x_1)\, p(x_2, \dots, x_n \mid x_1) \\
+&amp;= p(x_1)\, p(x_2 \mid x_1)\, p(x_3, \dots, x_n \mid x_1, x_2) \\
+&amp;= p(x_1)\, p(x_2 \mid x_1)\, p(x_3 \mid x_1, x_2)\, p(x_4, \dots, x_n \mid x_1, x_2, x_3) \\
+&amp;\;\;\vdots \\
+&amp;= \prod_{i=1}^n p(x_i \mid x_1, \dots, x_{i-1}).
+\end{aligned}
+\]</span> ## 3. Autoregressive (AR) Factorization via the Chain Rule</p>
+<p>For a token sequence <span class="math inline">\(Y=(w_1,\dots,w_T)\)</span>, the <strong>chain rule</strong> gives <span class="math display">\[
+P(Y) \;=\; P(w_1,\dots,w_T)
+\;=\; \prod_{t=1}^{T} P\!\big(w_t \mid w_{&lt;t}\big)
+\]</span> where <span class="math inline">\(w_{&lt;t}:=(w_{1,\dots}w_{t-1})\)</span>. In other words, for any <span class="math inline">\(T \geq 2\)</span>, <span class="math display">\[
+\boxed{
+\begin{aligned}
+p\!\left(w_{1:T}\right) 
+&amp;= p\left(w_T \mid w_{&lt;T}\right)\, p\left(w_{&lt;T}\right) \\
+&amp;= p\left(w_T \mid w_{&lt;T}\right)\, p\left(w_{T-1} \mid w_{&lt;T-1}\right)\, p\left(w_{&lt;T-1}\right) \\
+&amp;\;\;\vdots \\
+&amp;= \prod_{t=1}^T p\!\left(w_t \mid w_{&lt;t}\right)
+\end{aligned}
+}
+\]</span> An <strong>autoregressive (AR) model</strong> chooses a <em>direction/order</em> (here: left-to-right) and <strong>parametrizes each conditional</strong>: <span class="math display">\[
+p_\theta\!\big(w_t \mid w_{&lt;t}\big) \;=\; \operatorname{Softmax}\!\big(Wh_{t-1}+b\big),
+\quad h_{t-1} \;=\; f_\theta(e_1,\dots,e_{t-1}),
+\]</span> where <span class="math inline">\(e_t\)</span> are token embeddings. Because each factor is a <strong>proper distribution</strong>, the product is <strong>normalized</strong>—giving an <strong>exact</strong> likelihood.</p>
+<blockquote>
+<p><strong>Order matters.</strong> AR models require a fixed order; for text we use left→right, but any total order (e.g., pixels in a raster scan) is valid. ## 4. Training = Density Estimation (Maximum Likelihood)</p>
+</blockquote>
+<h3 data-original-heading="4.1 Entropy" id="entropy">4.1 Entropy</h3>
+<p>The entropy of a probability distribution can be interpreted as a <strong>measure of uncertainty</strong>, or lack of predictability, associated with a random variable drawn from a given distribution. We can also use entropy to define the information content of a data source.</p>
+<p>Definition (<em>theoretical</em>) for population <strong>entropy (discrete)</strong> of a discrete distribution <span class="math inline">\(p\)</span> is: <span class="math display">\[
+\boxed{\begin{aligned}
+H(p) &amp;\triangleq-\sum_x p(x) \log p(x)\\&amp;=-\mathbb{E}_X\left[\log  p(X)\right]
+\end{aligned}}
+\]</span> ### 4.2 Cross-Entropy</p>
+<p>Definition (<em>theoretical</em>) for population <strong>cross-entropy</strong> between data <span class="math inline">\(p\)</span> and model <span class="math inline">\(q\)</span> is:​ <span class="math display">\[\boxed{H(p, q) \triangleq-\sum_x p(x) \log q(x)}\]</span> And the <em>empirical estimator</em> (what we compute on data <span class="math inline">\(\left\{w_1, \ldots, w_N\right\}\)</span> ) for AR model becomes <span class="math display">\[
+\boxed{H(\hat{p},q)=-\frac{1}{N} \sum_{t=1}^N \log q\left(w_t \mid w_{&lt;t}\right)}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(N\)</span>: number of tokens in the test sequence<br>
+</li>
+<li><span class="math inline">\(w_t\)</span>: the <span class="math inline">\(t\)</span>-th token<br>
+</li>
+<li><span class="math inline">\(w_{&lt;t}\)</span>: all tokens before position <span class="math inline">\(t\)</span><br>
+</li>
+<li><span class="math inline">\(q(w_t \mid w_{&lt;t})\)</span>: the probability assigned by the model</li>
+</ul>
+<p>Given a dataset <span class="math inline">\(\mathcal D=\{Y^{(n)}\}_{n=1}^N\)</span>, <strong>maximum likelihood estimation (MLE)</strong> maximizes <span class="math display">\[
+\mathcal{L}(\theta)
+= \sum_{n=1}^N \log q\big(Y^{(n)}\big)
+= \sum_{n=1}^N \sum_{t=1}^{T^{(n)}} \log q\big(w^{(n)}_t \mid w^{(n)}_{&lt;t}\big).
+\]</span> Equivalently, we <strong>minimize next-token cross-entropy</strong>: <span class="math display">\[
+\underbrace{-\frac{1}{N}\sum_{n,t} \log q\big(w^{(n)}_t \mid w^{(n)}_{&lt;t}\big)}_{\text{empirical NLL}}
+\quad\Longleftrightarrow\quad
+\text{CrossEntropy}(p, q).
+\]</span> ### 4.3 Kullback–Leibler divergence For a true next-token data distribution <span class="math inline">\(p\)</span> and model prediction <span class="math inline">\(q\)</span>, the definition for <strong>KL divergence</strong> is: <span class="math display">\[
+\boxed{D_{\mathrm{KL}}\left(p \| q\right)=\sum_x p(x) \log \frac{p(x)}{q(x)} \geq 0}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(H(p)\)</span> : <em>entropy</em> of the true distribution (constant w.r.t. the model)</li>
+<li><span class="math inline">\(D_{\mathrm{KL}}(p \| q)\)</span> : <em>penalty</em> for how far <span class="math inline">\(q\)</span> is from <span class="math inline">\(p\)</span></li>
+</ul>
+<p>and <span class="math inline">\(D_{KL} =0 \Longleftrightarrow p=q \text { (almost everywhere) }\)</span>. The <strong>identity</strong> linking all three is: <span class="math display">\[
+\boxed{H(p,q) \;=\; H(p) + D_{\mathrm{KL}}(p\!\parallel q)}
+\]</span> Since <span class="math inline">\(H(p)\)</span> is independent of <span class="math inline">\(q\)</span>, minimizing cross-entropy (and perplexity) is equivalent to minimizing <span class="math inline">\(D_{\mathrm{KL}}(p\parallel q)\)</span>. ### 4.4 Perplexity <strong>Perplexity (PP)</strong> of a model is the <em>exponential</em> of the cross-entropy: <span class="math display">\[
+\boxed{\text{PP}(q) = \exp\!\Big(H(p,q)\Big)
+= \exp\!\left(-\frac{1}{N}\sum_{t=1}^N \log q(w_t \mid w_{&lt;t})\right)}
+\]</span></p>
+<ul>
+<li>Perplexity can be understood as the <strong>effective average branching factor</strong> of the model.<br>
+</li>
+<li>A <strong>lower perplexity</strong> means the model is less “perplexed” → better predictions.<br>
+</li>
+<li>A <strong>higher perplexity</strong> means the model is more “confused” → worse predictions.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Perfect model → <span class="math inline">\(\text{PP} = 1\)</span><br>
+</li>
+<li>Uniform distribution over <span class="math inline">\(V\)</span> tokens → <span class="math inline">\(\text{PP} = V\)</span> ## 5. Inference = Sampling / Generation (Left-to-Right)</li>
+</ul>
+<p>To <strong>generate</strong> text:</p>
+<ol type="1">
+<li>Start from a beginning-of-sequence token <span class="math inline">\(\langle\mathrm{bos}\rangle\)</span> (or a prompt).</li>
+<li>For <span class="math inline">\(t=1,2,\dots\)</span>: draw <span class="math inline">\(w_t \sim p_\theta(\cdot \mid w_{&lt;t})\)</span>.</li>
+<li>Stop at <span class="math inline">\(\langle\mathrm{eos}\rangle\)</span> or a length limit.</li>
+</ol>
+<h3 data-original-heading="5.1 Decoding Strategies" id="decoding-strategies">5.1 Decoding Strategies</h3>
+<ul>
+<li><strong>Greedy (argmax):</strong> <span class="math inline">\(w_t=\arg\max_v p_\theta(v\mid w_{&lt;t})\)</span>. Deterministic; can be bland.</li>
+<li><strong>Random sampling:</strong> sample from <span class="math inline">\(p_\theta(\cdot\mid\cdot)\)</span> directly.</li>
+<li><strong>Temperature:</strong> rescale logits/probabilities by <span class="math inline">\(1/T\)</span> before sampling; <span class="math inline">\(T&lt;1\)</span> sharper, <span class="math inline">\(T&gt;1\)</span> more diverse.</li>
+<li><strong>Top-<span class="math inline">\(k\)</span>:</strong> restrict to the <span class="math inline">\(k\)</span> most probable tokens, renormalize, then sample.</li>
+<li><strong>Nucleus (top-<span class="math inline">\(p\)</span>):</strong> choose the smallest set <span class="math inline">\(S\)</span> such that <span class="math inline">\(\sum_{v\in S} p_\theta(v\mid\cdot)\ge p\)</span>; sample within <span class="math inline">\(S\)</span>.</li>
+<li><strong>Beam search:</strong> approximate <span class="math inline">\(\arg\max_Y p_\theta(Y)\)</span> by expanding the <span class="math inline">\(B\)</span> best partial hypotheses.</li>
+</ul>
+<hr>
+<h2 data-original-heading="6. Why AR Models are Attractive" id="why-ar-models-are-attractive">6. Why AR Models are Attractive</h2>
+<ul>
+<li><strong>Exact likelihood.</strong> Each conditional is normalized → tractable training and evaluation (perplexity, NLL).</li>
+<li><strong>Simple sampling.</strong> Left-to-right draws match the factorization.</li>
+<li><strong>Flexible function class.</strong> Conditionals <span class="math inline">\(p_\theta(w_t\mid w_{&lt;t})\)</span> can be parameterized by RNNs, LSTMs/GRUs, Transformers, etc.</li>
+</ul>
+<p><strong>Trade-off:</strong> Sampling is <strong>sequential</strong>—inherently less parallel than feed-forward decoders (but see practical accelerations such as speculative decoding; beyond this lecture’s scope).</p>
+<hr>
+<h3 data-original-heading="6.1 AR vs.&nbsp;Other Generative Families" id="ar-vs.-other-generative-families">6.1 AR vs.&nbsp;Other Generative Families</h3>
+<ul>
+<li><strong>AR (explicit):</strong> exact likelihood; slow sampling.</li>
+<li><strong>Normalizing flows (explicit):</strong> exact likelihood; fast sampling; invertibility constraints.</li>
+<li><strong>VAEs (explicit latent):</strong> tractable <strong>lower bounds</strong> on likelihood; amortized inference.</li>
+<li><strong>GANs (implicit):</strong> high-fidelity samples; no tractable likelihood (density estimation not available). ## 9. Minimal Derivations (Collected)</li>
+</ul>
+<h3 data-original-heading="9.1 Chain Rule for Sequences" id="chain-rule-for-sequences">9.1 Chain Rule for Sequences</h3>
+<p><span class="math display">\[
+\begin{aligned}
+P(w_1,\dots,w_T)
+&amp;= P(w_1)\,P(w_2\mid w_1)\cdots P(w_T\mid w_{&lt;T}) \\
+&amp;= \prod_{t=1}^T P(w_t\mid w_{&lt;t}).
+\end{aligned}
+\]</span></p></div><footer class="article-footer"></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">自回归模型（AR）</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#probability-recap-notation-constraints" class="is-active" aria-current="location">2. Probability Recap (Notation &amp; Constraints)</a></li><li style="--depth:1"><a href="#conditional-probability">2.1 Conditional Probability</a></li><li style="--depth:1"><a href="#entropy">4.1 Entropy</a></li><li style="--depth:1"><a href="#decoding-strategies">5.1 Decoding Strategies</a></li><li style="--depth:0"><a href="#why-ar-models-are-attractive">6. Why AR Models are Attractive</a></li><li style="--depth:1"><a href="#ar-vs.-other-generative-families">6.1 AR vs. Other Generative Families</a></li><li style="--depth:1"><a href="#chain-rule-for-sequences">9.1 Chain Rule for Sequences</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>习题 — E.H. Notebook</title>
+<meta name="description" content="1 Problem 1: Finite-Difference SolutionWe wish to discretize and solve the boundary-value problem-\mu\frac{d^2u}{dx^2} + \beta\frac{du}{dx} = f(x),\quad x\in(0,1),\quad u">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/index.html">Application</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/index.html">第九章</a></nav><h1 id="reader-title">习题</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Problem 1: Finite-Difference Solution" id="problem-1-finite-difference-solution">1 Problem 1: Finite-Difference Solution</h2>
+<p>We wish to discretize and solve the boundary-value problem</p>
+<p><span class="math display">\[-\mu\frac{d^2u}{dx^2} + \beta\frac{du}{dx} = f(x),\quad x\in(0,1),\quad u(0)=u(1)=0\]</span></p>
+<p>Or equivalently:</p>
+<p><span class="math display">\[\begin{cases}
+-\mu u''(x) + \beta u'(x) = f(x), &amp; 0&lt;x&lt;1,\\
+u(0)=0,\; u(1)=0.
+\end{cases}\]</span></p>
+<p>Where <span class="math inline">\(\mu&gt;0\)</span> and <span class="math inline">\(\beta\)</span> is a constant (possibly negative), and <span class="math inline">\(f\in C^0(0,1)\)</span>.</p>
+<h3 data-original-heading="1. Finite-Difference Discretization" id="finite-difference-discretization">1. Finite-Difference Discretization</h3>
+<p>Divide <span class="math inline">\([0,1]\)</span> into <span class="math inline">\(N\)</span> equal subintervals so that <span class="math inline">\(\Delta x = \frac{1}{N}\)</span>. Let</p>
+<p><span class="math display">\[x_j = j\Delta x,\quad j=0,1,2,\dots,N,\]</span></p>
+<p>so that <span class="math inline">\(x_0=0\)</span> and <span class="math inline">\(x_N=1\)</span>. We approximate <span class="math inline">\(u(x_j)\approx u_j\)</span>. The boundary conditions become <span class="math inline">\(u_0=0\)</span> and <span class="math inline">\(u_N=0\)</span>.</p>
+<h4 data-original-heading="1.1 Central Difference Scheme (for the interior points)" id="central-difference-scheme-for-the-interior-points">1.1 Central Difference Scheme (for the interior points)</h4>
+<p>A standard <strong>centered second-difference</strong> for <span class="math inline">\(u''(x)\)</span> at <span class="math inline">\(x_j\)</span> is:</p>
+<p><span class="math display">\[u''(x_j) \approx \frac{u_{j+1} - 2u_j + u_{j-1}}{(\Delta x)^2}.\]</span></p>
+<p>A standard <strong>centered first-difference</strong> for <span class="math inline">\(u'(x)\)</span> at <span class="math inline">\(x_j\)</span> is:</p>
+<p><span class="math display">\[u'(x_j) \approx \frac{u_{j+1} - u_{j-1}}{2\Delta x}.\]</span></p>
+<p>Hence, the PDE <span class="math inline">\(-\mu u''(x) + \beta u'(x)=f(x)\)</span> becomes for <span class="math inline">\(j=1,\dots,N-1\)</span>:</p>
+<p><span class="math display">\[-\mu\frac{u_{j+1} - 2u_j + u_{j-1}}{(\Delta x)^2} + \beta\frac{u_{j+1} - u_{j-1}}{2\Delta x} = f(x_j).\]</span></p>
+<p>We impose <span class="math inline">\(u_0 = 0\)</span> and <span class="math inline">\(u_N=0\)</span>.</p>
+<h3 data-original-heading="2. Local Truncation Error" id="local-truncation-error">2. Local Truncation Error</h3>
+<ul>
+<li>The second-order central difference for <span class="math inline">\(u''\)</span> is <span class="math inline">\(O((\Delta x)^2)\)</span> accurate.</li>
+<li>The central difference for <span class="math inline">\(u'\)</span> is also <span class="math inline">\(O((\Delta x)^2)\)</span> accurate.</li>
+</ul>
+<p>Hence the <strong>local truncation error</strong> of the combined scheme is <span class="math inline">\(O((\Delta x)^2)\)</span>.</p>
+<h3 data-original-heading="3. Matrix Form" id="matrix-form">3. Matrix Form</h3>
+<p>Collect unknowns <span class="math inline">\(u_1,u_2,\dots,u_{N-1}\)</span> into a vector <span class="math inline">\(\mathbf{u}=(u_1,\dots,u_{N-1})^T\)</span>. The boundary values <span class="math inline">\(u_0=0\)</span> and <span class="math inline">\(u_N=0\)</span> are known.</p>
+<p>Rewrite the finite-difference equation for an interior index <span class="math inline">\(j\)</span>:</p>
+<p><span class="math display">\[-\mu\frac{u_{j+1} - 2u_j + u_{j-1}}{(\Delta x)^2} + \beta\frac{u_{j+1} - u_{j-1}}{2\Delta x} = f(x_j).\]</span></p>
+<p>We can factor out coefficients:</p>
+<ul>
+<li>Let <span class="math inline">\(\alpha \equiv \frac{\mu}{(\Delta x)^2}\)</span>.</li>
+<li>Let <span class="math inline">\(\gamma \equiv \frac{\beta}{2\Delta x}\)</span>.</li>
+</ul>
+<p>Then the coefficient of <span class="math inline">\(u_j\)</span> is <span class="math inline">\(2\alpha\)</span>, the coefficient of <span class="math inline">\(u_{j+1}\)</span> is <span class="math inline">\(-\alpha + \gamma\)</span>, and the coefficient of <span class="math inline">\(u_{j-1}\)</span> is <span class="math inline">\(-\alpha - \gamma\)</span>. Thus, in matrix form:</p>
+<p><span class="math display">\[\begin{pmatrix}
+2\alpha &amp; -\alpha+\gamma &amp; 0 &amp; \cdots &amp; 0\\
+-\alpha-\gamma &amp; 2\alpha &amp; -\alpha+\gamma &amp; \cdots &amp; 0\\
+0 &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots\\
+\vdots &amp; &amp; -\alpha-\gamma &amp; 2\alpha &amp; -\alpha+\gamma\\
+0 &amp; \cdots &amp; 0 &amp; -\alpha-\gamma &amp; 2\alpha
+\end{pmatrix}
+\begin{pmatrix}
+u_1\\ u_2\\ \vdots \\ u_{N-2}\\ u_{N-1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+f(x_1)\\ f(x_2)\\ \vdots \\ f(x_{N-2})\\ f(x_{N-1})
+\end{pmatrix}.\]</span></p>
+<p>This is a tridiagonal linear system, solvable by standard methods (e.g., Thomas algorithm).</p>
+<h3 data-original-heading="4. Quality of the Solution vs.&nbsp;\beta/\mu" id="quality-of-the-solution-vs.-betamu">4. Quality of the Solution vs.&nbsp;<span class="math inline">\(\beta/\mu\)</span></h3>
+<p>The ratio <span class="math inline">\(\frac{\beta}{\mu}\)</span> often plays the role of a <strong>Péclet-type number</strong> in advection-diffusion problems.</p>
+<ul>
+<li>If <span class="math inline">\(\frac{\beta}{\mu}\)</span> is small (diffusion-dominated), the solution is usually smooth and well-behaved under central differencing.</li>
+<li>If <span class="math inline">\(\frac{\beta}{\mu}\)</span> is large (advection-dominated), pure central differences may produce <strong>spurious oscillations</strong> unless <span class="math inline">\(\Delta x\)</span> is refined or <strong>upwinding</strong> techniques are used to stabilize the discrete solution.</li>
+</ul>
+<h3 data-original-heading="5. Upwind Method (First Order) for \beta<0" id="upwind-method-first-order-for-beta0">5. Upwind Method (First Order) for <span class="math inline">\(\beta&lt;0\)</span></h3>
+<p>When <span class="math inline">\(\beta&lt;0\)</span>, the “flow” is from right to left, so an <strong>upwind difference</strong> for the first derivative <span class="math inline">\(\beta u'(x)\)</span> uses values on the “right” side at each <span class="math inline">\(j\)</span>. Concretely, for <span class="math inline">\(\beta&lt;0\)</span>, we replace:</p>
+<p><span class="math display">\[u'(x_j) \approx \frac{u_{j+1} - u_j}{\Delta x} \quad \text{(a "backward" upwind if flow is leftward)}.\]</span></p>
+<p>Hence, the difference equation becomes:</p>
+<p><span class="math display">\[-\mu\frac{u_{j+1} - 2u_j + u_{j-1}}{(\Delta x)^2} + \beta\frac{u_{j+1} - u_j}{\Delta x} = f(x_j), \quad j=1,\dots,N-1.\]</span></p>
+<p>(This replaces the central difference in the advective term by a one-sided upwind difference.)</p>
+<h4 data-original-heading="5.1 No Spurious Oscillations" id="no-spurious-oscillations">5.1 No Spurious Oscillations</h4>
+<p>The first-order upwind scheme for linear advection-diffusion is known to be <strong>monotone</strong> for any <span class="math inline">\(\Delta x&gt;0\)</span> when <span class="math inline">\(\beta&lt;0\)</span> (or, more generally, for any sign of <span class="math inline">\(\beta\)</span> if we choose the correct upwind direction). Monotonicity prevents nonphysical oscillations. In short:</p>
+<ul>
+<li>Central difference can oscillate if <span class="math inline">\(|\beta|\)</span> is large relative to <span class="math inline">\(\mu\)</span>.</li>
+<li>Upwind difference sacrifices some accuracy (only first order in <span class="math inline">\(\Delta x\)</span> for the advective term) but <strong>remains stable</strong> and <strong>nonoscillatory</strong> for any step size <span class="math inline">\(\Delta x\)</span>.</li>
+</ul>
+<p>Thus, with <span class="math inline">\(\beta&lt;0\)</span>, the upwind approach <span class="math inline">\(u'(x_j)\approx (u_{j+1}-u_j)/\Delta x\)</span> ensures a stable, physically plausible solution without oscillations.</p>
+<h3 data-original-heading="6. Summary" id="summary">6. Summary</h3>
+<ol type="1">
+<li><p><strong>Equation &amp; Discretization</strong><br>
+<span class="math display">\[-\mu u'' + \beta u' = f(x), \quad u(0)=u(1)=0 \longrightarrow \begin{cases}
+-\mu\frac{u_{j+1}-2u_j+u_{j-1}}{(\Delta x)^2} +\beta\frac{u_{j+1}-u_{j-1}}{2\Delta x} = f(x_j),\\
+u_0=0,\;u_N=0.
+\end{cases}\]</span></p></li>
+<li><p><strong>Local Truncation Error</strong> is <span class="math inline">\(O((\Delta x)^2)\)</span> for the centered scheme.</p></li>
+<li><p><strong>Matrix Form</strong>: A standard tridiagonal system with bands <span class="math inline">\(-\alpha\mp \gamma\)</span>, <span class="math inline">\(2\alpha\)</span>, <span class="math inline">\(-\alpha\pm \gamma\)</span>.</p></li>
+<li><p><strong>Effect of <span class="math inline">\(\beta/\mu\)</span></strong>: If <span class="math inline">\(|\beta|\)</span> is large relative to <span class="math inline">\(\mu\)</span>, central differences can produce oscillatory solutions; upwind methods help.</p></li>
+<li><p><strong>Upwind Method</strong> (for <span class="math inline">\(\beta&lt;0\)</span>): <span class="math display">\[-\mu\frac{u_{j+1}-2u_j+u_{j-1}}{(\Delta x)^2} + \beta\frac{u_{j+1}-u_j}{\Delta x} = f(x_j)\]</span> prevents oscillations for any <span class="math inline">\(\Delta x\)</span>.</p></li>
+</ol>
+<h2 data-original-heading="Problem 2" id="problem-2">2 Problem 2</h2>
+<p><strong>Solution Outline</strong></p>
+<p>We have the linear advection equation</p>
+<p><span class="math display">\[\frac{\partial u}{\partial t} \;+\; a\,\frac{\partial u}{\partial x} \;=\; 0,\quad x\in \mathbb{R},\;t&gt;0,\]</span> with initial condition <span class="math inline">\(u(x,0) = u_0(x)\)</span>. We wish to:</p>
+<ol type="1">
+<li><strong>Derive the Lax–Wendroff scheme</strong> for this PDE.</li>
+<li><strong>Determine the CFL condition</strong> for stability, i.e.&nbsp;find the condition on <span class="math inline">\(\displaystyle \frac{|a|\Delta t}{\Delta x}\)</span>.</li>
+</ol>
+<hr>
+<h3 data-original-heading="1) Derivation of the Lax–Wendroff Scheme" id="derivation-of-the-laxwendroff-scheme">2.1 1) Derivation of the Lax–Wendroff Scheme</h3>
+<p>A succinct way to derive Lax–Wendroff is via a <strong>second-order Taylor expansion</strong> in time about <span class="math inline">\(t^n\)</span>:</p>
+<p><span class="math display">\[u^{n+1}_i \;\approx\; u(x_i,\,t_n + \Delta t)
+\;=\;
+u(x_i,t_n)
+\;+\;\Delta t\,\frac{\partial u}{\partial t}
+\;+\;\tfrac{(\Delta t)^2}{2}\,\frac{\partial^2 u}{\partial t^2}\;\bigg|_{(x_i,t_n)}.\]</span></p>
+<p>From the PDE <span class="math inline">\(\partial_t u = -\,a\,\partial_x u\)</span>, we can replace time-derivatives by spatial derivatives:</p>
+<ul>
+<li><p>First derivative in time: <span class="math display">\[\frac{\partial u}{\partial t} 
+\;=\;
+-\,a\,\frac{\partial u}{\partial x}.\]</span></p></li>
+<li><p>Second derivative in time: <span class="math display">\[\frac{\partial^2 u}{\partial t^2}
+\;=\;
+\frac{\partial}{\partial t}\Bigl(-\,a\,\frac{\partial u}{\partial x}\Bigr)
+\;=\;
+-\,a\,\frac{\partial}{\partial x}\Bigl(\frac{\partial u}{\partial t}\Bigr)
+\;=\;
+-\,a\,\frac{\partial}{\partial x}\Bigl(-\,a\,\frac{\partial u}{\partial x}\Bigr)
+\;=\;
+a^2\,\frac{\partial^2 u}{\partial x^2}.\]</span></p></li>
+</ul>
+<p>Hence,</p>
+<p><span class="math display">\[u^{n+1}_i
+\;\approx\;
+u^{n}_i
+\;-\;
+a\,\Delta t \,\frac{\partial u}{\partial x}
+\;+\;
+\frac{a^2(\Delta t)^2}{2}\,\frac{\partial^2 u}{\partial x^2}
+\;\Bigg|_{(x_i,t_n)}.\]</span></p>
+<h4 data-original-heading="Discretizing the spatial derivatives" id="discretizing-the-spatial-derivatives">2.1.1 Discretizing the spatial derivatives</h4>
+<p>We replace the first and second spatial derivatives by standard centered finite differences:</p>
+<p><span class="math display">\[\frac{\partial u}{\partial x}\bigg|_{x_i}
+\approx 
+\frac{u_{i+1}^n - u_{i-1}^n}{2\,\Delta x},
+\qquad
+\frac{\partial^2 u}{\partial x^2}\bigg|_{x_i}
+\approx 
+\frac{u_{i+1}^n - 2\,u_i^n + u_{i-1}^n}{(\Delta x)^2}.\]</span></p>
+<p>Putting this all together:</p>
+<p><span class="math display">\[u_{i}^{n+1}
+\;=\;
+u_{i}^{n}
+\;-\;
+a\,\Delta t \,\frac{u_{i+1}^{n} - u_{i-1}^{n}}{2\,\Delta x}
+\;+\;
+\frac{a^2\,(\Delta t)^2}{2}\,
+\frac{u_{i+1}^{n} - 2\,u_{i}^{n} + u_{i-1}^{n}}{(\Delta x)^2}.\]</span></p>
+<p>It is common to set <span class="math inline">\(\displaystyle \nu \;=\;\frac{a\,\Delta t}{\Delta x}\)</span>. Then the scheme reads</p>
+<p><span class="math display">\[\boxed{
+u_{i}^{n+1}
+\;=\;
+u_{i}^{n}
+\;-\;\frac{\nu}{2}\,\bigl(u_{i+1}^{n} - u_{i-1}^{n}\bigr)
+\;+\;\frac{\nu^{2}}{2}\,
+\bigl(u_{i+1}^{n} \;-\;2\,u_{i}^{n} \;+\;u_{i-1}^{n}\bigr).
+}\]</span></p>
+<p>This is the <strong>Lax–Wendroff scheme</strong> for the linear advection equation.</p>
+<hr>
+<h3 data-original-heading="2) The CFL Stability Condition" id="the-cfl-stability-condition">2.2 2) The CFL Stability Condition</h3>
+<p>A standard von Neumann (Fourier) stability analysis, or the usual Lax–Richtmyer theory for hyperbolic PDEs, shows that <strong>Lax–Wendroff is stable if and only if</strong> the Courant number satisfies</p>
+<p><span class="math display">\[\bigl|\,\nu\,\bigr|
+\;=\;
+\biggl|\frac{a\,\Delta t}{\Delta x}\biggr|
+\;\le\;
+1.\]</span></p>
+<p>Therefore among the multiple-choice options, the correct condition is</p>
+<p><span class="math display">\[\boxed{\;\; \bigl|\tfrac{a\,\Delta t}{\Delta x}\bigr| \;\le\; 1.}\]</span></p>
+<hr>
+<h3 data-original-heading="3) Motivation" id="motivation">2.3 3) Motivation</h3>
+<ul>
+<li><p><strong>Domain of dependence argument.</strong> For the PDE <span class="math inline">\(\partial_t u + a\,\partial_x u = 0,\)</span> characteristics travel with speed <span class="math inline">\(a\)</span>. Numerically, we must ensure that information from these characteristics is captured on the grid from one time step to the next; that is the essence of the CFL condition. If <span class="math inline">\(|a|\Delta t &gt; \Delta x\)</span>, the method “jumps over” grid cells and fails to remain stable.</p></li>
+<li><p><strong>Von Neumann analysis.</strong> Substituting <span class="math inline">\(u_i^n = \lambda^n e^{ikx_i}\)</span> into the scheme shows that the amplification factor <span class="math inline">\(|\lambda|\)</span> is <span class="math inline">\(\le 1\)</span> if and only if <span class="math inline">\(\bigl|\frac{a\Delta t}{\Delta x}\bigr|\le 1.\)</span></p></li>
+</ul>
+<p>Hence the short answer is:</p>
+<ol type="1">
+<li>Lax–Wendroff has the form <span class="math display">\[u_{i}^{n+1}
+=
+u_{i}^{n}
+-
+\frac{\nu}{2}\,(u_{i+1}^{n} - u_{i-1}^{n})
++
+\frac{\nu^{2}}{2}\,(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}),\]</span></li>
+<li>The method is stable <strong>if and only if</strong> <span class="math inline">\(\displaystyle \bigl|\frac{a\Delta t}{\Delta x}\bigr|\le 1.\)</span></li>
+<li>This condition is exactly the usual CFL requirement ensuring the numerical domain of dependence covers the PDE’s domain of dependence.</li>
+</ol>
+<h2 data-original-heading="Problem 3" id="problem-3">3 Problem 3</h2>
+<p>Below is a fairly detailed derivation and discussion of the Crank–Nicolson (CN) method (the <span class="math inline">\(\theta\)</span>-method with <span class="math inline">\(\theta = \tfrac12\)</span>) for the heat equation</p>
+<p><span class="math display">\[\frac{\partial u}{\partial t}\;-\;\frac{\partial^2 u}{\partial x^2}\;=\;f,
+\quad x\in(0,1),\;t&gt;0,
+\quad
+u(0,t) \;=\;u(1,t)\;=\;0,
+\quad
+u(x,0)\;=\;u_0(x).\]</span></p>
+<p>Since the PDE can be written as <span class="math display">\[u_t \;=\; u_{xx} + f,\]</span> we will discretize in both space and time.</p>
+<hr>
+<h3 data-original-heading="1. The Crank–Nicolson Discretization" id="the-cranknicolson-discretization">1. The Crank–Nicolson Discretization</h3>
+<p>Let <span class="math inline">\(\Delta x = \frac{1}{M}\)</span> partition <span class="math inline">\([0,1]\)</span> into <span class="math inline">\(M+1\)</span> grid points <span class="math inline">\(x_i = i\,\Delta x\)</span>, <span class="math inline">\(i=0,\dots,M\)</span>, and let <span class="math inline">\(\Delta t\)</span> be a time step, so <span class="math inline">\(t^n = n\,\Delta t\)</span>. We write <span class="math inline">\(u_i^n\approx u(x_i,t^n)\)</span>. The standard second‐order central difference for <span class="math inline">\(u_{xx}\)</span> is</p>
+<p><span class="math display">\[u_{xx}(x_i,t^n)
+\;\approx\;
+\frac{u_{i+1}^n - 2\,u_i^n + u_{i-1}^n}{(\Delta x)^2}.\]</span></p>
+<p>A <span class="math inline">\(\theta\)</span>‐method (also called the <span class="math inline">\(\theta\)</span>-scheme) for <span class="math inline">\(u_t = u_{xx} + f\)</span> in time is:</p>
+<p><span class="math display">\[\frac{u_i^{n+1} - u_i^n}{\Delta t}
+\;=\;
+\theta\Bigl[\underbrace{\tfrac{u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}}{(\Delta x)^2} \;+\; f_i^{n+1}}_{\text{“implicit” part}}\Bigr]
+\;+\;
+\bigl(1-\theta\bigr)\Bigl[\underbrace{\tfrac{u_{i+1}^{n} - 2u_i^{n} + u_{i-1}^{n}}{(\Delta x)^2}\;+\; f_i^{n}}_{\text{“explicit” part}}\Bigr].\]</span></p>
+<p><strong>Crank–Nicolson</strong> is the special case <span class="math inline">\(\theta = \tfrac12\)</span>. Substituting <span class="math inline">\(\theta=\tfrac12\)</span>, we get</p>
+<p><span class="math display">\[\frac{u_i^{n+1} - u_i^n}{\Delta t}
+\;=\;
+\tfrac12\Bigl[\tfrac{u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}}{(\Delta x)^2} + f_i^{n+1}\Bigr]
+\;+\;
+\tfrac12\Bigl[\tfrac{u_{i+1}^{n} - 2u_i^{n} + u_{i-1}^{n}}{(\Delta x)^2} + f_i^n\Bigr].\]</span></p>
+<p>Rearranging terms gives <span class="math display">\[u_i^{n+1} 
+\;-\;
+\frac{\Delta t}{2\,(\Delta x)^2}\,\bigl(u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}\bigr)
+\;=\;
+u_i^{n}
+\;+\;
+\frac{\Delta t}{2\,(\Delta x)^2}\,\bigl(u_{i+1}^{n} - 2u_i^n + u_{i-1}^{n}\bigr)
+\;+\;
+\frac{\Delta t}{2}\,\bigl(f_i^{n+1} + f_i^n\bigr).\]</span> One may think of this as the linear system <span class="math display">\[\bigl[I + \tfrac{\Delta t}{2\,(\Delta x)^2}\,A\bigr]\,\mathbf{u}^{n+1}
+\;=\;
+\bigl[I - \tfrac{\Delta t}{2\,(\Delta x)^2}\,A\bigr]\,\mathbf{u}^{n}
+\;+\;\frac{\Delta t}{2}\,\bigl(\mathbf{f}^{n+1} + \mathbf{f}^n\bigr),\]</span> where <span class="math inline">\(A\)</span> is the usual tridiagonal matrix corresponding to the second‐difference operator (and where <span class="math inline">\(\mathbf{u}^n\)</span> is the vector of <span class="math inline">\(u_i^n\)</span>). After applying boundary conditions <span class="math inline">\(u_0^n = u_M^n = 0\)</span>, one solves this tridiagonal system at each time step.</p>
+<h4 data-original-heading="Boundary Conditions" id="boundary-conditions">3.1.1 Boundary Conditions</h4>
+<p>Because <span class="math inline">\(u(0,t)=u(1,t)=0\)</span>, we set <span class="math inline">\(u_0^n=0\)</span> and <span class="math inline">\(u_M^n=0\)</span> for all <span class="math inline">\(n\)</span>. The updates are applied only for <span class="math inline">\(i=1,\dots,M-1\)</span>.</p>
+<h4 data-original-heading="Summary of the CN Update" id="summary-of-the-cn-update">3.1.2 Summary of the CN Update</h4>
+<p>In “index form,” the Crank–Nicolson scheme is: <span class="math display">\[\boxed{
+\begin{aligned}
+&amp;\text{For }i=1,\dots,M-1:\quad
+u_i^{n+1} 
+\;-\;
+\tfrac{\Delta t}{2\,(\Delta x)^2}\,\bigl(u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}\bigr)
+\\
+&amp;\qquad\quad\;=\;
+u_i^{n}
+\;+\;
+\tfrac{\Delta t}{2\,(\Delta x)^2}\,\bigl(u_{i+1}^{n} - 2u_i^n + u_{i-1}^{n}\bigr)
+\;+\;\frac{\Delta t}{2}\,\bigl(f_i^{n+1} + f_i^n\bigr).
+\end{aligned}
+}\]</span> This is solved simultaneously for all <span class="math inline">\(i\)</span>, respecting <span class="math inline">\(u_0^{n+1}=u_M^{n+1}=0\)</span>.</p>
+<hr>
+<h3 data-original-heading="2. Properties: Stability &amp; Accuracy" id="properties-stability-accuracy">2. Properties: Stability &amp; Accuracy</h3>
+<ol type="1">
+<li><strong>Stability</strong>:
+<ul>
+<li><strong>Unconditional stability</strong> for the heat equation. In other words, there is no restriction on <span class="math inline">\(\Delta t\)</span> relative to <span class="math inline">\(\Delta x\)</span> needed <em>solely</em> for stability (unlike the explicit forward‐Euler method, which requires <span class="math inline">\(\Delta t \le \tfrac12 (\Delta x)^2\)</span>).<br>
+</li>
+<li>More precisely, CN is <strong>A‐stable</strong> as an ODE solver applied to the linear diffusion operator. One can show by a von Neumann analysis or standard Lax–Richtmyer theory that errors do not grow unboundedly for any <span class="math inline">\(\Delta t&gt;0\)</span>.</li>
+</ul></li>
+<li><strong>Accuracy</strong>:
+<ul>
+<li>In <strong>time</strong>, Crank–Nicolson is <strong>second‐order accurate</strong>, because it is essentially the trapezoidal rule in time (it uses <span class="math inline">\(\frac12\)</span> of the “new” time‐level’s spatial derivative plus <span class="math inline">\(\frac12\)</span> of the “old” time‐level’s spatial derivative).<br>
+</li>
+<li>In <strong>space</strong>, if we use the standard second‐difference approximation, the scheme is also <strong>second‐order</strong> in <span class="math inline">\(\Delta x\)</span>.<br>
+</li>
+<li>Overall, we often say “CN is second‐order in both space and time (for sufficiently smooth solutions).”</li>
+</ul></li>
+</ol>
+<hr>
+<h3 data-original-heading="3. BONUS: Discontinuous Initial Condition" id="bonus-discontinuous-initial-condition">3. BONUS: Discontinuous Initial Condition</h3>
+<p>Even if <span class="math inline">\(u_0(x)\)</span> is not continuous, the <strong>heat equation</strong> itself is <em>smoothing</em>: for <span class="math inline">\(t&gt;0\)</span>, the exact solution becomes infinitely differentiable in <span class="math inline">\(x\)</span>. Numerically:</p>
+<ul>
+<li>The scheme remains stable and convergent.<br>
+</li>
+<li>Because it is a diffusion‐type PDE, any jump discontinuity in the initial data gets smoothed out instantly as <span class="math inline">\(t\)</span> increases.<br>
+</li>
+<li>Crank–Nicolson will faithfully capture that smoothing. You may see large gradients at early time steps near the discontinuity, but the method will not become unstable.</li>
+</ul>
+<p>Hence <strong>having a discontinuous initial condition does not cause instability</strong> for the heat equation with Crank–Nicolson. The scheme still converges (second‐order in both space and time) to the <em>unique smooth</em> solution that the parabolic PDE defines for <span class="math inline">\(t&gt;0\)</span>.</p>
+<h2 data-original-heading="Problem 4 求解二维拉普拉斯方程的五点差分格式" id="problem-4-求解二维拉普拉斯方程的五点差分格式">4 Problem 4 求解二维拉普拉斯方程的五点差分格式</h2>
+<p>我们考虑如下的椭圆方程（Poisson 型）： <span class="math display">\[-\,\Delta u \;=\; f, 
+\quad (x,y)\in [0,1] \times [0,1].\]</span></p>
+<p>其中 <span class="math display">\[\Delta \;=\;\frac{\partial^2}{\partial x^2} \;+\;\frac{\partial^2}{\partial y^2}\]</span> 是二维拉普拉斯算子，<span class="math inline">\(f\)</span> 是已知的函数。</p>
+<h3 data-original-heading="1. 建立网格" id="建立网格">1. 建立网格</h3>
+<p>令 <span class="math inline">\(N_x\)</span> 和 <span class="math inline">\(N_y\)</span> 分别表示在 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 方向上的网格划分数目（仅指内部节点数，不含边界），则步长为 <span class="math display">\[\delta x \;=\;\frac{1}{N_x+1}, 
+\quad
+\delta y \;=\;\frac{1}{N_y+1}.\]</span> 我们在区间 <span class="math inline">\([0,1]\times[0,1]\)</span> 内取离散网格点 <span class="math display">\[x_i \;=\; i\,\delta x, 
+\quad
+y_j \;=\; j\,\delta y,\]</span> 其中 <span class="math inline">\(i=0,1,2,\dots,N_x+1\)</span>, <span class="math inline">\(j=0,1,2,\dots,N_y+1\)</span>。</p>
+<p>在内部节点 <span class="math inline">\((x_i,y_j)\)</span> 上，我们用 <span class="math inline">\(u_{i,j}\)</span> 表示对真解 <span class="math inline">\(u(x_i,y_j)\)</span> 的数值近似。</p>
+<hr>
+<h3 data-original-heading="2. 五点差分格式" id="五点差分格式">2. 五点差分格式</h3>
+<p>方程 <span class="math inline">\(-\Delta u = f\)</span> 可写成 <span class="math display">\[-\left(
+\frac{\partial^2 u}{\partial x^2} 
+\;+\;
+\frac{\partial^2 u}{\partial y^2}
+\right)
+\;=\;
+f,\]</span> 即 <span class="math display">\[\frac{\partial^2 u}{\partial x^2} 
+\;+\;
+\frac{\partial^2 u}{\partial y^2}
+\;=\;
+-\,f.\]</span></p>
+<p>在网格上，二阶导数的<strong>中心差分</strong>近似分别为：</p>
+<ul>
+<li>在 <span class="math inline">\(x\)</span> 方向： <span class="math display">\[\frac{\partial^2 u}{\partial x^2}\bigg|_{(x_i,y_j)}
+\;\approx\;
+\frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{(\delta x)^2},\]</span></li>
+<li>在 <span class="math inline">\(y\)</span> 方向： <span class="math display">\[\frac{\partial^2 u}{\partial y^2}\bigg|_{(x_i,y_j)}
+\;\approx\;
+\frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{(\delta y)^2}.\]</span></li>
+</ul>
+<p>因此，<span class="math inline">\(\Delta u\)</span> 在离散化后可写为 <span class="math display">\[\Delta u_{i,j} 
+\;=\;
+\frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{(\delta x)^2}
+\;+\;
+\frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{(\delta y)^2}.\]</span></p>
+<p>由于方程是 <span class="math inline">\(-\Delta u = f\)</span>，则对应的五点差分格式为</p>
+<p><span class="math display">\[-\left[\,
+\frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{(\delta x)^2}
+\;+\;
+\frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{(\delta y)^2}
+\right]
+\;=\;
+f_{i,j},\]</span> 或等价地写成 <span class="math display">\[\frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{(\delta x)^2}
+\;+\;
+\frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{(\delta y)^2}
+\;=\;
+-\,f_{i,j}.\]</span></p>
+<p>这里 <span class="math inline">\(f_{i,j} = f(x_i,y_j)\)</span> 表示在网格点处的函数取值。</p>
+<hr>
+<h3 data-original-heading="3. 精度阶次" id="精度阶次">3. 精度阶次</h3>
+<p>上述中心差分格式对二阶导数在空间步长上具有 <strong>二阶精度</strong>。也就是说，如果我们将 <span class="math inline">\(\delta x\)</span> 和 <span class="math inline">\(\delta y\)</span> 同步缩小（假设网格等距），则离散解相对于真解的误差在 <span class="math inline">\(\delta x, \delta y \to 0\)</span> 时满足 <span class="math display">\[\mathcal{O}\bigl((\delta x)^2 + (\delta y)^2\bigr).\]</span></p>
+<p>简而言之，对拉普拉斯方程采用这种五点中心差分格式，<strong>在均匀网格下是二阶精度</strong>。</p>
+<hr>
+<h3 data-original-heading="4. 最终形成的线性方程组" id="最终形成的线性方程组">4. 最终形成的线性方程组</h3>
+<p>对所有内部节点 <span class="math inline">\((i,j)\)</span>（即 <span class="math inline">\(1\le i\le N_x\)</span>, <span class="math inline">\(1\le j\le N_y\)</span>）应用上述离散方程，我们便得到一个关于所有未知量 <span class="math inline">\(\{u_{i,j}\}\)</span> 的线性方程组。若再结合边界条件（例如已知边界上的 <span class="math inline">\(u_{0,j},u_{N_x+1,j},u_{i,0},u_{i,N_y+1}\)</span>），即可完全求解。</p>
+<p>在实际应用中，可以用各种<strong>迭代法</strong>（如 Jacobi、Gauss-Seidel、SOR 等）或<strong>直接法</strong>（如 LU 分解等）来求解这个离散方程组。</p>
+<hr>
+<h3 data-original-heading="5. 总结" id="总结">5. 总结</h3>
+<ol type="1">
+<li><strong>五点差分格式</strong>的离散方程（在二维情况下）是： <span class="math display">\[\frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{(\delta x)^2}
+\;+\;
+\frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{(\delta y)^2}
+\;=\;
+-\,f_{i,j}.\]</span></li>
+<li>在标准的（均匀）网格下，该方法的<strong>空间离散精度是二阶</strong>。</li>
+</ol>
+<hr></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span>← Previous page</span><span>9.4 4.1 二维（2D）偏微分方程问题</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">习题</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#problem-1-finite-difference-solution" class="is-active" aria-current="location">1 Problem 1: Finite-Difference Solution</a></li><li style="--depth:1"><a href="#finite-difference-discretization">1. Finite-Difference Discretization</a></li><li style="--depth:2"><a href="#central-difference-scheme-for-the-interior-points">1.1 Central Difference Scheme (for the interior points)</a></li><li style="--depth:1"><a href="#local-truncation-error">2. Local Truncation Error</a></li><li style="--depth:1"><a href="#matrix-form">3. Matrix Form</a></li><li style="--depth:1"><a href="#quality-of-the-solution-vs.-betamu">4. Quality of the Solution vs. \beta/\mu</a></li><li style="--depth:1"><a href="#upwind-method-first-order-for-beta0">5. Upwind Method (First Order) for \beta&lt;0</a></li><li style="--depth:2"><a href="#no-spurious-oscillations">5.1 No Spurious Oscillations</a></li><li style="--depth:1"><a href="#summary">6. Summary</a></li><li style="--depth:0"><a href="#problem-2">2 Problem 2</a></li><li style="--depth:1"><a href="#derivation-of-the-laxwendroff-scheme">2.1 1) Derivation of the Lax–Wendroff Scheme</a></li><li style="--depth:2"><a href="#discretizing-the-spatial-derivatives">2.1.1 Discretizing the spatial derivatives</a></li><li style="--depth:1"><a href="#the-cfl-stability-condition">2.2 2) The CFL Stability Condition</a></li><li style="--depth:1"><a href="#motivation">2.3 3) Motivation</a></li><li style="--depth:0"><a href="#problem-3">3 Problem 3</a></li><li style="--depth:1"><a href="#the-cranknicolson-discretization">1. The Crank–Nicolson Discretization</a></li><li style="--depth:2"><a href="#boundary-conditions">3.1.1 Boundary Conditions</a></li><li style="--depth:2"><a href="#summary-of-the-cn-update">3.1.2 Summary of the CN Update</a></li><li style="--depth:1"><a href="#properties-stability-accuracy">2. Properties: Stability &amp; Accuracy</a></li><li style="--depth:1"><a href="#bonus-discontinuous-initial-condition">3. BONUS: Discontinuous Initial Condition</a></li><li style="--depth:0"><a href="#problem-4-%E6%B1%82%E8%A7%A3%E4%BA%8C%E7%BB%B4%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E6%96%B9%E7%A8%8B%E7%9A%84%E4%BA%94%E7%82%B9%E5%B7%AE%E5%88%86%E6%A0%BC%E5%BC%8F">4 Problem 4 求解二维拉普拉斯方程的五点差分格式</a></li><li style="--depth:1"><a href="#%E5%BB%BA%E7%AB%8B%E7%BD%91%E6%A0%BC">1. 建立网格</a></li><li style="--depth:1"><a href="#%E4%BA%94%E7%82%B9%E5%B7%AE%E5%88%86%E6%A0%BC%E5%BC%8F">2. 五点差分格式</a></li><li style="--depth:1"><a href="#%E7%B2%BE%E5%BA%A6%E9%98%B6%E6%AC%A1">3. 精度阶次</a></li><li style="--depth:1"><a href="#%E6%9C%80%E7%BB%88%E5%BD%A2%E6%88%90%E7%9A%84%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84">4. 最终形成的线性方程组</a></li><li style="--depth:1"><a href="#%E6%80%BB%E7%BB%93">5. 总结</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

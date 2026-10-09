@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>3. LU Factorization and Zero Pivots — E.H. Notebook</title>
+<meta name="description" content="Numerical Methods I — Florian Schaefer. Source: Lecture 03.pdf, pp. 1–8.Schedule association: September 14, 2026 (from the course schedule, not a handwritten date stamp).">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">3. LU Factorization and Zero Pivots</h1></header><div id="article-body" class="prose"><p><em>Numerical Methods I — Florian Schaefer. Source: Lecture 03.pdf, pp.&nbsp;1–8.</em></p>
+<p>Schedule association: September 14, 2026 (from the course schedule, not a handwritten date stamp).</p>
+<h2 data-original-heading="3.1 Recap" id="recap">3.1 Recap</h2>
+<!-- Source: Lecture 03.pdf, p. 1. -->
+<p>The preceding lecture discussed array storage, the distinction between arithmetic work and memory-access cost, cache, loop ordering, and tiling. It then introduced triangular substitution and Gaussian elimination for linear systems.</p>
+<p>The question now is how to organize elimination into a factorization that can be stored and used efficiently.</p>
+<h2 data-original-heading="3.2 Elementary Gaussian Elimination" id="elementary-gaussian-elimination">3.2 Elementary Gaussian Elimination</h2>
+<!-- Source: Lecture 03.pdf, p. 2. -->
+<p>At step <span class="math inline">\(k\)</span>, let <span class="math inline">\(A\)</span> denote the current matrix after the first <span class="math inline">\(k-1\)</span> elimination steps. Its first <span class="math inline">\(k-1\)</span> columns are already zero below their diagonals. Assume <span class="math inline">\(A_{kk}\ne0\)</span>.</p>
+<p>The elementary lower-triangular matrix <span class="math inline">\(L_k\)</span> has ones on the diagonal and</p>
+<p><span class="math display">\[
+(L_k)_{ik}=-\frac{A_{ik}}{A_{kk}},\qquad i=k+1,\ldots,m,
+\]</span></p>
+<p>with all other off-diagonal entries zero. Multiplication by <span class="math inline">\(L_k\)</span> performs</p>
+<p><span class="math display">\[
+\begin{aligned}
+(L_kA)_{ik}
+&amp;=A_{ik}-\frac{A_{ik}}{A_{kk}}A_{kk}=0,
+&amp;&amp;i&gt;k,\\
+(L_kA)_{ij}
+&amp;=A_{ij}-\frac{A_{ik}}{A_{kk}}A_{kj},
+&amp;&amp;i&gt;k,\ j&gt;k.
+\end{aligned}
+\]</span></p>
+<p>This is Theorem 1 from the preceding lecture: each step creates zeros below one more diagonal entry and updates the trailing block.</p>
+<h2 data-original-heading="3.3 LU Factorization" id="lu-factorization">3.3 LU Factorization</h2>
+<!-- Source: Lecture 03.pdf, p. 3. -->
+<p>If all the required elimination steps are defined, then</p>
+<p><span class="math display">\[
+U=L_m\cdots L_1A
+\]</span></p>
+<p>is upper triangular. As in the source, the product includes a final, trivial factor <span class="math inline">\(L_m=I\)</span>. The corresponding transformed system is<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math display">\[
+\underbrace{L_m\cdots L_1A}_{U}x=L_m\cdots L_1b.
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+L=(L_m\cdots L_1)^{-1}
+=L_1^{-1}\cdots L_m^{-1}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\boxed{A=LU.}
+\]</span></p>
+<p>To make this useful, we need to show that <span class="math inline">\(L\)</span> is lower triangular and understand its entries.</p>
+<h2 data-original-heading="3.4 Algebra of Lower-Triangular Matrices" id="algebra-of-lower-triangular-matrices">3.4 Algebra of Lower-Triangular Matrices</h2>
+<!-- Source: Lecture 03.pdf, p. 4. -->
+<p>A matrix <span class="math inline">\(L\in\mathbb{K}^{m\times m}\)</span> is lower triangular when <span class="math inline">\(L_{ij}=0\)</span> for <span class="math inline">\(i&lt;j\)</span>.</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Theorem 2 — Closure properties</span></p>
+</div>
+<div class="theorem-content">
+<p>Lower-triangular matrices are closed under addition, scalar multiplication, and matrix multiplication. The inverse of a <strong>nonsingular</strong> lower-triangular matrix is also lower triangular.</p>
+</div>
+</div>
+<p>Addition and scalar multiplication preserve the zeros above the diagonal immediately.</p>
+<p>For multiplication, let <span class="math inline">\(L\)</span> and <span class="math inline">\(\widetilde{L}\)</span> be lower triangular. Then</p>
+<p><span class="math display">\[
+(L\widetilde{L})_{ij}=\sum_{k=1}^m L_{ik}\widetilde{L}_{kj}.
+\]</span></p>
+<p>A nonzero summand requires both</p>
+<p><span class="math display">\[
+L_{ik}\ne0\Longrightarrow i\ge k,
+\qquad
+\widetilde{L}_{kj}\ne0\Longrightarrow k\ge j.
+\]</span></p>
+<p>Consequently,</p>
+<p><span class="math display">\[
+L_{ik}\widetilde{L}_{kj}\ne0\Longrightarrow i\ge k\ge j.
+\]</span></p>
+<p>If <span class="math inline">\(i&lt;j\)</span>, no such <span class="math inline">\(k\)</span> exists, so <span class="math inline">\((L\widetilde{L})_{ij}=0\)</span>. Hence the product is lower triangular.</p>
+<p>The inversion property is completed after analyzing elementary lower-triangular matrices.</p>
+<h2 data-original-heading="3.5 Elementary Lower-Triangular Matrices" id="elementary-lower-triangular-matrices">3.5 Elementary Lower-Triangular Matrices</h2>
+<!-- Source: Lecture 03.pdf, pp. 4–5. -->
+<p>Write the elimination multipliers as <span class="math inline">\(\ell_{ik}\)</span> and define</p>
+<p><span class="math display">\[
+\ell_k=
+\begin{pmatrix}
+0\\
+\vdots\\
+0\\
+\ell_{k+1,k}\\
+\vdots\\
+\ell_{mk}
+\end{pmatrix},
+\qquad
+\underbrace{(\ell_k)_1=\cdots=(\ell_k)_k}_{\text{first }k\text{ entries}}=0.
+\]</span></p>
+<p>Let <span class="math inline">\(e_k\)</span> be the <span class="math inline">\(k\)</span>-th coordinate vector. The star denotes conjugate transpose, so <span class="math inline">\(e_k^*\ell_k\)</span> selects the <span class="math inline">\(k\)</span>-th entry of <span class="math inline">\(\ell_k\)</span>. Then</p>
+<p><span class="math display">\[
+L_k=I-\ell_ke_k^*,
+\qquad e_k^*\ell_k=0.
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Theorem 3 — Inverses and products of elementary factors</span></p>
+</div>
+<div class="theorem-content">
+<p>For <span class="math inline">\(L_k=I-\ell_ke_k^*\)</span> with <span class="math inline">\((\ell_k)_i=0\)</span> for <span class="math inline">\(i\le k\)</span>, <span class="math display">\[
+L_k^{-1}=I+\ell_ke_k^*.
+\]</span> Moreover, in the indicated order, <span class="math display">\[
+L_1^{-1}\cdots L_m^{-1}
+=I+\sum_{k=1}^m\ell_ke_k^*
+=\begin{pmatrix}
+1&amp;0&amp;\cdots&amp;0\\
+\ell_{21}&amp;1&amp;\ddots&amp;\vdots\\
+\vdots&amp;\ddots&amp;\ddots&amp;0\\
+\ell_{m1}&amp;\cdots&amp;\ell_{m,m-1}&amp;1
+\end{pmatrix}.
+\]</span></p>
+</div>
+</div>
+<h3 data-original-heading="3.5.1 Proof of the Inverse Formula" id="proof-of-the-inverse-formula">3.5.1 Proof of the Inverse Formula</h3>
+<p>Expand the product:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(I+\ell_ke_k^*)(I-\ell_ke_k^*)
+&amp;=I+\cancel{\ell_ke_k^*}-\cancel{\ell_ke_k^*}
+  -\ell_k\underbrace{(e_k^*\ell_k)}_{0}e_k^*\\
+&amp;=I.
+\end{aligned}
+\]</span></p>
+<p>Thus changing the signs of the multipliers gives the inverse of an elementary elimination matrix.</p>
+<h3 data-original-heading="3.5.2 Proof of the Product Formula" id="proof-of-the-product-formula">3.5.2 Proof of the Product Formula</h3>
+<p>The lecture proves the result entrywise. Consider</p>
+<p><span class="math display">\[
+\begin{aligned}
+(L_1^{-1}\cdots L_m^{-1})_{ij}
+&amp;=e_i^*(I+\ell_1e_1^*)\cdots(I+\ell_me_m^*)e_j\\
+&amp;=e_i^*(I+\ell_1e_1^*)\cdots
+  (I+\ell_{j-1}e_{j-1}^*)(e_j+\ell_j)\\
+&amp;=e_i^*(I+\ell_1e_1^*)\cdots
+  (I+\ell_{j-1}e_{j-1}^*)\ell_j+e_i^*e_j\\
+&amp;=e_i^*\ell_j+e_i^*e_j.
+\end{aligned}
+\]</span></p>
+<p>The factors with index greater than <span class="math inline">\(j\)</span> leave <span class="math inline">\(e_j\)</span> unchanged. After the <span class="math inline">\(j\)</span>-th factor produces <span class="math inline">\(e_j+\ell_j\)</span>, the factors with index less than <span class="math inline">\(j\)</span> leave both vectors unchanged, because their relevant coordinates are zero.</p>
+<p>The resulting matrix has ones on the diagonal and the multipliers <span class="math inline">\(\ell_{ij}\)</span> below it. Therefore the lower-triangular factor in <span class="math inline">\(A=LU\)</span> is obtained simply by storing these multipliers.</p>
+<h3 data-original-heading="3.5.3 Completing the Inversion Property" id="completing-the-inversion-property">3.5.3 Completing the Inversion Property</h3>
+<p>For a product of elementary factors, Theorem 3 and closure under multiplication show that its inverse is lower triangular:</p>
+<p><span class="math display">\[
+(L_m\cdots L_1)^{-1}=L_1^{-1}\cdots L_m^{-1}.
+\]</span></p>
+<p>For the general nonsingular lower-triangular matrix, the missing step can be supplied directly by forward substitution.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Solve <span class="math inline">\(Lx=e_j\)</span>. For <span class="math inline">\(i&lt;j\)</span>, the right-hand side is zero, and forward substitution gives</p>
+<p><span class="math display">\[
+x_1=\cdots=x_{j-1}=0.
+\]</span></p>
+<p>Since this solution is the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(L^{-1}\)</span>, every entry of <span class="math inline">\(L^{-1}\)</span> above its diagonal is zero. This completes Theorem 2.</p>
+<h2 data-original-heading="3.6 Computing LU in Place" id="computing-lu-in-place">3.6 Computing LU in Place</h2>
+<!-- Source: Lecture 03.pdf, p. 6. -->
+<p>Gaussian elimination transforms <span class="math inline">\(A\)</span> into <span class="math inline">\(U\)</span>. The multipliers needed for <span class="math inline">\(L\)</span> can be stored in the positions below the diagonal that elimination would otherwise set to zero.</p>
+<p>At step <span class="math inline">\(k\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+A_{ik}&amp;\leftarrow\frac{A_{ik}}{A_{kk}},
+&amp;&amp;i=k+1,\ldots,m,\\
+A_{ij}&amp;\leftarrow A_{ij}-A_{ik}A_{kj},
+&amp;&amp;i,j=k+1,\ldots,m.
+\end{aligned}
+\]</span></p>
+<p>In the second line, <span class="math inline">\(A_{ik}\)</span> is already the stored multiplier. The result overwrites <span class="math inline">\(A\)</span> with both factors:</p>
+<p><span class="math display">\[
+A_{ij}^{\text{stored}}
+=\begin{cases}
+L_{ij},&amp;i&gt;j,\\
+U_{ij},&amp;i\le j.
+\end{cases}
+\qquad L_{ii}=1.
+\]</span></p>
+<p>The diagonal of <span class="math inline">\(L\)</span> does not need to be stored.</p>
+<h3 data-original-heading="3.6.1 Algorithm: LU Factorization without Pivoting" id="algorithm-lu-factorization-without-pivoting">3.6.1 Algorithm: LU Factorization without Pivoting</h3>
+<p>The following is a Julia-style transcription of the algorithm on the sheet. The input array is assumed to be square and to have a floating-point element type. A zero-pivot check makes the algorithm’s required assumption explicit.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fu">size</span>(A, <span class="fl">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">iszero</span>(A[k, k])</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">error</span>(<span class="st">"Zero pivot in LU without pivoting."</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> (k <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>m</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        A[i, k] <span class="op">/=</span> A[k, k]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> (k <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>m</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> (k <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>m</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            A[i, j] <span class="op">-=</span> A[i, k] <span class="op">*</span> A[k, j]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>The trailing update uses <span class="math inline">\(i\)</span> as the inner-loop index, consistent with the column-oriented memory traversal discussed in Lecture 02.</p>
+<h2 data-original-heading="3.7 Zero Pivots" id="zero-pivots">3.7 Zero Pivots</h2>
+<!-- Source: Lecture 03.pdf, p. 7. -->
+<p>Does every invertible matrix admit the preceding LU factorization without pivoting? No.&nbsp;Consider</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}.
+\]</span></p>
+<p>The matrix is invertible, but the first pivot is <span class="math inline">\(A_{11}=0\)</span>, so the algorithm immediately attempts division by zero.</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Nonzero pivots and leading submatrices</span></p>
+</div>
+<div class="theorem-content">
+<p>Suppose elimination without pivoting has completed its first <span class="math inline">\(k-1\)</span> steps with nonzero pivots. If the <span class="math inline">\(k\)</span>-th pivot is zero, then the leading principal submatrix <span class="math inline">\(A[1\!:\!k,1\!:\!k]\)</span> is singular.</p>
+<p>Consequently, elimination has nonzero pivots throughout if and only if every leading principal submatrix is nonsingular.</p>
+</div>
+</div>
+<h3 data-original-heading="3.7.1 Proof" id="proof">3.7.1 Proof</h3>
+<p>The triangular structure gives the leading-block identity</p>
+<p><span class="math display">\[
+\begin{aligned}
+A[1\!:\!k,1\!:\!k]
+&amp;=L[1\!:\!k,:]\,U[:,1\!:\!k]\\
+&amp;=\underbrace{L[1\!:\!k,1\!:\!k]}_{\text{unit lower triangular}}
+  \underbrace{U[1\!:\!k,1\!:\!k]}_{\text{upper triangular}}.
+\end{aligned}
+\]</span></p>
+<p>The leading block of <span class="math inline">\(L\)</span> is nonsingular because its diagonal entries are one. The leading block of <span class="math inline">\(U\)</span> is nonsingular exactly when its first <span class="math inline">\(k\)</span> diagonal entries—the pivots—are nonzero.</p>
+<p>The same leading-block relation is available at step <span class="math inline">\(k\)</span> before dividing by the <span class="math inline">\(k\)</span>-th pivot. Given nonzero earlier pivots, a zero <span class="math inline">\(k\)</span>-th pivot makes that leading block singular. Conversely, nonsingularity of each successive leading block prevents a zero pivot and allows elimination to continue.</p>
+<h2 data-original-heading="3.8 Small Pivots Can Also Be Dangerous" id="small-pivots-can-also-be-dangerous">3.8 Small Pivots Can Also Be Dangerous</h2>
+<!-- Source: Lecture 03.pdf, p. 7. -->
+<p>Avoiding an exactly zero pivot is not enough to ensure an accurate computation. The lecture perturbs the preceding example to</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}\epsilon&amp;1\\1&amp;1\end{pmatrix},
+\qquad 0&lt;\epsilon\ll1.
+\]</span></p>
+<p>In this example, <span class="math inline">\(\epsilon\)</span> is a small matrix entry. In the next section, the lecture reuses <span class="math inline">\(\epsilon\)</span> for machine precision.</p>
+<p>The exact factors are</p>
+<p><span class="math display">\[
+L=\begin{pmatrix}1&amp;0\\\epsilon^{-1}&amp;1\end{pmatrix},
+\qquad
+U=\begin{pmatrix}\epsilon&amp;1\\0&amp;1-\epsilon^{-1}\end{pmatrix}.
+\]</span></p>
+<p>Their exact product is<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><span class="math display">\[
+\begin{aligned}
+LU
+&amp;=\begin{pmatrix}
+\epsilon&amp;1\\
+1&amp;\underbrace{\epsilon^{-1}+(1-\epsilon^{-1})}_{1}
+\end{pmatrix}\\
+&amp;=A.
+\end{aligned}
+\]</span></p>
+<p>However, if <span class="math inline">\(\epsilon^{-1}\)</span> is so large that the <span class="math inline">\(1\)</span> is lost when evaluating <span class="math inline">\(1-\epsilon^{-1}\)</span>, while the intermediate numbers remain representable, then</p>
+<p><span class="math display">\[
+\operatorname{fl}(1-\epsilon^{-1})\approx-\epsilon^{-1}.
+\]</span></p>
+<p>The cancellation in the reconstructed product can then give</p>
+<p><span class="math display">\[
+LU\ \text{computed in floating point}
+\ \approx\
+\begin{pmatrix}\epsilon&amp;1\\1&amp;0\end{pmatrix},
+\]</span></p>
+<p>rather than <span class="math inline">\(\begin{pmatrix}\epsilon&amp;1\\1&amp;1\end{pmatrix}\)</span>. The arrow toward <span class="math inline">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span> in the sheet is a schematic illustration of this floating-point failure for small <span class="math inline">\(\epsilon\)</span>, not the exact-arithmetic limit of <span class="math inline">\(LU\)</span>.</p>
+<p>The small pivot creates large multipliers and large intermediate entries whose cancellation can lose the desired result.</p>
+<h2 data-original-heading="3.9 Error Analysis: The Main Estimate" id="error-analysis-the-main-estimate">3.9 Error Analysis: The Main Estimate</h2>
+<!-- Source: Lecture 03.pdf, p. 8. -->
+<p>The lecture ends by stating an error estimate for the computed LU factors. Here <span class="math inline">\(\epsilon\)</span> denotes machine precision, and absolute values of matrices are taken entrywise.</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Componentwise LU error estimate — first-order form</span></p>
+</div>
+<div class="theorem-content">
+<p>Suppose LU factorization terminates without a zero pivot and the floating-point operations remain in the relative-error regime. For the computed factors <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>, write <span class="math display">\[
+A=LU+E.
+\]</span> To first order in machine precision, the lecture’s estimate is <span class="math display">\[
+\boxed{|E|\lesssim m\epsilon\,|L|\,|U|.}
+\]</span></p>
+</div>
+</div>
+<p>The product <span class="math inline">\(|L|\,|U|\)</span> is an ordinary matrix product of the entrywise absolute values, not the entrywise absolute value of <span class="math inline">\(LU\)</span>.</p>
+<p>The handwritten sheet writes <span class="math inline">\(|E|\le m\epsilon|L||U|\)</span>. It suppresses higher-order rounding factors; the first-order interpretation is made explicit here rather than treating the stated coefficient as an exact finite-precision bound.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>Lecture 04 develops this estimate and uses it to motivate pivoting.</p>
+<hr>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Lecture 03, p.&nbsp;3 repeats the transformed-system line from Lecture 02 without its vector <span class="math inline">\(x\)</span>. The missing vector is restored here.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Lecture 03, p.&nbsp;5 discusses the inverse of a product of elementary unit-lower-triangular matrices. That argument alone does not cover arbitrary nonsingular lower-triangular matrices. The short forward-substitution argument is an editorial completion using the method already developed in Lecture 02; it is not additional material quoted from the sheet.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Lecture 03, p.&nbsp;6 uses a vector slice to divide the entries below a pivot. The scalar loop performs the same updates. The explicit zero-pivot guard is an editorial addition; it does not choose a new pivot or change the factorization algorithm.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Lecture 03, p.&nbsp;7 displays a minus sign between the two contributions to the lower-right product entry. The factors immediately above it require <span class="math inline">\(\epsilon^{-1}+(1-\epsilon^{-1})\)</span>, not <span class="math inline">\(\epsilon^{-1}-(1-\epsilon^{-1})\)</span>. The product is corrected explicitly.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Lecture 03, p.&nbsp;8 and Lecture 04, pp.&nbsp;2–3. The derivation uses first-order rounding estimates. The transcribed statement is qualified accordingly; overflow and underflow outside a relative-error model are not covered.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span>← Previous page</span><span>2. Memory, Computational Cost, and Gaussian Elimination</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span>Next page →</span><span>4. LU Error Analysis and Row Pivoting</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">3. LU Factorization and Zero Pivots</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#recap" class="is-active" aria-current="location">3.1 Recap</a></li><li style="--depth:0"><a href="#elementary-gaussian-elimination">3.2 Elementary Gaussian Elimination</a></li><li style="--depth:0"><a href="#lu-factorization">3.3 LU Factorization</a></li><li style="--depth:0"><a href="#algebra-of-lower-triangular-matrices">3.4 Algebra of Lower-Triangular Matrices</a></li><li style="--depth:0"><a href="#elementary-lower-triangular-matrices">3.5 Elementary Lower-Triangular Matrices</a></li><li style="--depth:1"><a href="#proof-of-the-inverse-formula">3.5.1 Proof of the Inverse Formula</a></li><li style="--depth:1"><a href="#proof-of-the-product-formula">3.5.2 Proof of the Product Formula</a></li><li style="--depth:1"><a href="#completing-the-inversion-property">3.5.3 Completing the Inversion Property</a></li><li style="--depth:0"><a href="#computing-lu-in-place">3.6 Computing LU in Place</a></li><li style="--depth:1"><a href="#algorithm-lu-factorization-without-pivoting">3.6.1 Algorithm: LU Factorization without Pivoting</a></li><li style="--depth:0"><a href="#zero-pivots">3.7 Zero Pivots</a></li><li style="--depth:1"><a href="#proof">3.7.1 Proof</a></li><li style="--depth:0"><a href="#small-pivots-can-also-be-dangerous">3.8 Small Pivots Can Also Be Dangerous</a></li><li style="--depth:0"><a href="#error-analysis-the-main-estimate">3.9 Error Analysis: The Main Estimate</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

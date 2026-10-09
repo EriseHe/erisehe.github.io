@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>1. Vectors, Floating-Point Arithmetic, and Conditioning — E.H. Notebook</title>
+<meta name="description" content="Numerical Methods I — Florian Schaefer. Source: Lecture 01.pdf, pp. 1–6.Schedule association: September 2, 2026 (from the course schedule, not a handwritten date stamp).1">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">1. Vectors, Floating-Point Arithmetic, and Conditioning</h1></header><div id="article-body" class="prose"><p><em>Numerical Methods I — Florian Schaefer. Source: Lecture 01.pdf, pp.&nbsp;1–6.</em></p>
+<p>Schedule association: September 2, 2026 (from the course schedule, not a handwritten date stamp).</p>
+<h2 data-original-heading="1.1 Course Information" id="course-information">1.1 Course Information</h2>
+<!-- Source: Lecture 01.pdf, pp. 1–2. -->
+<p>The introductory sheets list Florian Schaefer as the instructor, with office hours on Wednesday, 1–2 p.m., in WWH 409. The teaching assistants are Alex Albors and Ed Chen. These are the arrangements recorded in this lecture, not a verification of subsequent course announcements.</p>
+<p>Programming assignments use Julia. LaTeX is strongly recommended for written homework.</p>
+<h3 data-original-heading="1.1.1 Assessment" id="assessment">1.1.1 Assessment</h3>
+<p>There are six equally weighted homework assignments, together worth 10% of the grade. The remaining 90% comes from examinations: 40% from the better of the written midterm and final-exam grades, and 50% from the written final exam. The notes say that exams will likely include homework questions, at least in part, and are “closed everything,” with no electronic tools.</p>
+<p><strong>Late homework receives no credit.</strong> The handwritten midterm date and one of the letter-grade labels are not sufficiently clear to treat as confirmed information.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The numerical grade bands on the sheet are:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Numerical band</th>
+<th>Letter label visible on the sheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100–93</td>
+<td>A</td>
+</tr>
+<tr>
+<td>92–90</td>
+<td>No separate label clearly visible</td>
+</tr>
+<tr>
+<td>89–87</td>
+<td>A−</td>
+</tr>
+<tr>
+<td>86–83</td>
+<td>B+</td>
+</tr>
+<tr>
+<td>82–80</td>
+<td>B</td>
+</tr>
+<tr>
+<td>79–77</td>
+<td>B−</td>
+</tr>
+<tr>
+<td>76–73</td>
+<td>C+</td>
+</tr>
+<tr>
+<td>72–65</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Below 65</td>
+<td>C−</td>
+</tr>
+</tbody>
+</table></div>
+<h3 data-original-heading="1.1.2 Collaboration and AI" id="collaboration-and-ai">1.1.2 Collaboration and AI</h3>
+<p>Discussion of lectures and homework problems is encouraged, but answers and code must be prepared independently. The homework must disclose what was discussed and with whom. The stated consequence of a violation is an F grade and a report to the dean.</p>
+<p>The lecture treats AI assistance like human collaboration: it may be used when stuck or in need of clarification, but the solution must be written independently.</p>
+<h3 data-original-heading="1.1.3 Tentative Topics" id="tentative-topics">1.1.3 Tentative Topics</h3>
+<p>The tentative topics are numerical representation of vectors and matrices; linear systems and Gaussian elimination; least-squares problems via orthogonalization; eigendecomposition; low-rank approximation; iterative methods; and structured matrices.</p>
+<h2 data-original-heading="1.2 Vectors and Matrices" id="vectors-and-matrices">1.2 Vectors and Matrices</h2>
+<!-- Source: Lecture 01.pdf, p. 3. -->
+<p>Write <span class="math inline">\(\mathbb{K}\)</span> for either <span class="math inline">\(\mathbb{R}\)</span>, the real numbers, or <span class="math inline">\(\mathbb{C}\)</span>, the complex numbers.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Vectors and matrices</span></p>
+</div>
+<div class="theorem-content">
+<p>A vector <span class="math inline">\(v\in\mathbb{K}^m\)</span> is an <span class="math inline">\(m\)</span>-tuple of elements of <span class="math inline">\(\mathbb{K}\)</span>. A matrix <span class="math inline">\(A\in\mathbb{K}^{m\times n}\)</span> is an <span class="math inline">\(m\times n\)</span> array of elements of <span class="math inline">\(\mathbb{K}\)</span>.</p>
+</div>
+</div>
+<p>A vector can represent a position or direction in an <span class="math inline">\(m\)</span>-dimensional coordinate system. A matrix can collect <span class="math inline">\(n\)</span> such vectors as its columns. For example,</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}
+A_{11} &amp; A_{12}\\
+A_{21} &amp; A_{22}\\
+A_{31} &amp; A_{32}
+\end{pmatrix}
+=
+\begin{pmatrix}a_1 &amp; a_2\end{pmatrix},
+\qquad a_1,a_2\in\mathbb{K}^3.
+\]</span></p>
+<p>We identify an <span class="math inline">\(m\times1\)</span> matrix with a vector:</p>
+<p><span class="math display">\[
+\mathbb{K}^{m\times1}\cong\mathbb{K}^m.
+\]</span></p>
+<h3 data-original-heading="1.2.1 Scalar Multiplication and Addition" id="scalar-multiplication-and-addition">1.2.1 Scalar Multiplication and Addition</h3>
+<p>For <span class="math inline">\(\delta\in\mathbb{K}\)</span> and <span class="math inline">\(A,B\in\mathbb{K}^{m\times n}\)</span>, define</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\delta A)_{ij}&amp;=\delta A_{ij},\\
+(A+B)_{ij}&amp;=A_{ij}+B_{ij}.
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="1.2.2 Matrix–Vector and Matrix–Matrix Products" id="matrixvector-and-matrixmatrix-products">1.2.2 Matrix–Vector and Matrix–Matrix Products</h3>
+<p>For</p>
+<p><span class="math display">\[
+A\in\mathbb{K}^{m\times n},
+\qquad v\in\mathbb{K}^n,
+\qquad B\in\mathbb{K}^{n\times\ell},
+\]</span></p>
+<p>define <span class="math inline">\(Av\in\mathbb{K}^m\)</span> and <span class="math inline">\(AB\in\mathbb{K}^{m\times\ell}\)</span> by</p>
+<p><span class="math display">\[
+\begin{aligned}
+(Av)_i&amp;=\sum_{k=1}^n A_{ik}v_k,\\
+(AB)_{ij}&amp;=\sum_{k=1}^n A_{ik}B_{kj}.
+\end{aligned}
+\]</span></p>
+<p>Thus <span class="math inline">\(A\)</span> represents a linear map</p>
+<p><span class="math display">\[
+A:\mathbb{K}^n\longrightarrow\mathbb{K}^m,
+\qquad v\longmapsto Av.
+\]</span></p>
+<p>Applied to a matrix, it acts on each column separately. This is the algebraic interpretation of the sketch in which a vector <span class="math inline">\(x\)</span> is mapped to <span class="math inline">\(Ax\)</span>.</p>
+<h2 data-original-heading="1.3 Representation on a Computer" id="representation-on-a-computer">1.3 Representation on a Computer</h2>
+<!-- Source: Lecture 01.pdf, p. 4. -->
+<p>To store <span class="math inline">\(v\in\mathbb{K}^m\)</span> or <span class="math inline">\(A\in\mathbb{K}^{m\times n}\)</span> in memory, we first need a representation of individual numbers. The underlying storage consists of bits:</p>
+<p><span class="math display">\[
+\mathbb{B}=\{0,1\}.
+\]</span></p>
+<h3 data-original-heading="1.3.1 Unsigned Integers" id="unsigned-integers">1.3.1 Unsigned Integers</h3>
+<p>A bit string <span class="math inline">\(d=(d_1,\ldots,d_b)\in\mathbb{B}^b\)</span> represents an unsigned integer through</p>
+<p><span class="math display">\[
+\operatorname{UInt}(d)=\sum_{i=1}^b d_i2^{i-1}.
+\]</span></p>
+<p>The representable integers range from <span class="math inline">\(0\)</span> to <span class="math inline">\(2^b-1\)</span>.</p>
+<h3 data-original-heading="1.3.2 Signed Integers" id="signed-integers">1.3.2 Signed Integers</h3>
+<p>The signed representation on the sheet is</p>
+<p><span class="math display">\[
+\operatorname{Int}(d)
+=
+\sum_{i=1}^{b-1}d_i2^{i-1}-d_b2^{b-1}.
+\]</span></p>
+<p>The last bit has a negative weight, giving the range</p>
+<p><span class="math display">\[
+-2^{b-1}\le\operatorname{Int}(d)\le2^{b-1}-1.
+\]</span></p>
+<h3 data-original-heading="1.3.3 Fixed-Point Representation" id="fixed-point-representation">1.3.3 Fixed-Point Representation</h3>
+<p>A fixed-point representation rescales the signed integer by a fixed power of two. The example in the lecture is</p>
+<p><span class="math display">\[
+\operatorname{Fixed}(d)
+=
+\operatorname{Int}(d)\,2^{-\lfloor b/2\rfloor}.
+\]</span></p>
+<p>The spacing between neighboring representable values is fixed. Covering magnitudes from a small <span class="math inline">\(s&gt;0\)</span> to <span class="math inline">\(s^{-1}\)</span> requires a number of bits growing on the order of <span class="math inline">\(\log_2(1/s)\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<h3 data-original-heading="1.3.4 Floating-Point Representation" id="floating-point-representation">1.3.4 Floating-Point Representation</h3>
+<p>Instead of fixing the scale, store the significand and exponent separately. In the lecture’s simplified model,</p>
+<p><span class="math display">\[
+(p,e)\in\mathbb{B}^{b_p}\times\mathbb{B}^{b_e},
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Float}(p,e)
+=
+\underbrace{(-1)^{p_1}}_{\text{sign}}
+\underbrace{\left(1+\sum_{i=2}^{b_p}p_i2^{-(i-1)}\right)}_{\text{significand}}
+\underbrace{2^{\operatorname{Int}(e)}}_{\text{scale}}.
+}
+\]</span></p>
+<p>This is the binary analogue of scientific notation, such as</p>
+<p><span class="math display">\[
+\pm1.123\times10^{-4}.
+\]</span></p>
+<p>The formula describes the normalized numbers in the lecture’s model; it is not a complete specification of a hardware floating-point format.</p>
+<p>A complex number <span class="math inline">\(z\in\mathbb{C}\)</span> can be represented by two floating-point numbers, one for each of its real and imaginary parts. The sheet points to Mike Overton’s book for further details, without giving a title or edition.</p>
+<h2 data-original-heading="1.4 Floating-Point Arithmetic" id="floating-point-arithmetic">1.4 Floating-Point Arithmetic</h2>
+<!-- Source: Lecture 01.pdf, p. 5. -->
+<p>The exponent encodes the scale economically: the number of exponent bits needed to cover magnitudes from <span class="math inline">\(s\)</span> to <span class="math inline">\(s^{-1}\)</span> grows on the order of <span class="math inline">\(\log_2\log_2(1/s)\)</span> as <span class="math inline">\(s\)</span> becomes small. The tradeoff is that floating-point numbers are <strong>not equally spaced</strong>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<h3 data-original-heading="1.4.1 Spacing and Relative Accuracy" id="spacing-and-relative-accuracy">1.4.1 Spacing and Relative Accuracy</h3>
+<p>In the preceding representation, let</p>
+<p><span class="math display">\[
+\epsilon=2^{-(b_p-1)}.
+\]</span></p>
+<p>The spacing is <span class="math inline">\(\epsilon\)</span> just above <span class="math inline">\(1\)</span>, <span class="math inline">\(2\epsilon\)</span> just above <span class="math inline">\(2\)</span>, and <span class="math inline">\(4\epsilon\)</span> just above <span class="math inline">\(4\)</span>. More generally, the spacing scales with the magnitude of the number.</p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span><span class="theorem-title">Relative rather than absolute accuracy</span></p>
+</div>
+<div class="theorem-content">
+<p>Floating-point representation targets relative accuracy: a comparable relative perturbation is allowed at different magnitudes, rather than a fixed absolute spacing everywhere.</p>
+</div>
+</div>
+<h3 data-original-heading="1.4.2 Arithmetic Is Not Associative" id="arithmetic-is-not-associative">1.4.2 Arithmetic Is Not Associative</h3>
+<p>Assume rounding to the nearest representable number, with ties rounded upward, as specified in the lecture. Write <span class="math inline">\(\operatorname{fl}\)</span> for this rounding operation. The expression <span class="math inline">\((1+\epsilon)+1+2\)</span> can give different results depending on its grouping:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{fl}\!\left(
+\operatorname{fl}\bigl((1+\epsilon)+1\bigr)+2
+\right)
+&amp;=\operatorname{fl}\bigl((2+2\epsilon)+2\bigr)\\
+&amp;=4+4\epsilon,\\[4pt]
+\operatorname{fl}\!\left(
+(1+\epsilon)+\operatorname{fl}(1+2)
+\right)
+&amp;=\operatorname{fl}(4+\epsilon)\\
+&amp;=4.
+\end{aligned}
+\]</span></p>
+<p>Thus changing parentheses can change the computed result, even though the corresponding real-arithmetic expressions are identical.</p>
+<h3 data-original-heading="1.4.3 Cancellation" id="cancellation">1.4.3 Cancellation</h3>
+<p>Cancellation can turn a small relative error in a large quantity into a large relative error in the result. The lecture’s example is</p>
+<p><span class="math display">\[
+\begin{aligned}
+(10^6+1)(1+\epsilon)-10^6
+&amp;=\underbrace{(10^6+1)-10^6}_{1}
+  +(10^6+1)\epsilon\\
+&amp;=1+(10^6+1)\epsilon\\
+&amp;\approx1+10^6\epsilon.
+\end{aligned}
+\]</span></p>
+<p>The exact unperturbed result is <span class="math inline">\(1\)</span>, while the perturbation in the result is approximately <span class="math inline">\(10^6\epsilon\)</span>. The last line is an approximation, not the exact equality written on the sheet.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<h2 data-original-heading="1.5 Conditioning" id="conditioning">1.5 Conditioning</h2>
+<!-- Source: Lecture 01.pdf, p. 6. -->
+<p>Consider the problem of computing</p>
+<p><span class="math display">\[
+y=f(x),\qquad f:\mathbb{R}\longrightarrow\mathbb{R}.
+\]</span></p>
+<p>The input is represented by a perturbed value <span class="math inline">\(\widehat{x}\)</span>, with a small relative error</p>
+<p><span class="math display">\[
+\frac{|\widehat{x}-x|}{|x|}\le\epsilon.
+\]</span></p>
+<p>Even exact evaluation at that perturbed input produces <span class="math inline">\(\widehat{y}=f(\widehat{x})\)</span> rather than necessarily <span class="math inline">\(f(x)\)</span>. How much can the relative input error be amplified?</p>
+<p>For <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\(f(x)\ne0\)</span>, and <span class="math inline">\(\widehat{x}\ne x\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\displaystyle\frac{|\widehat{y}-y|}{|y|}}
+     {\displaystyle\frac{|\widehat{x}-x|}{|x|}}
+&amp;=
+\frac{|f(\widehat{x})-f(x)|}{|\widehat{x}-x|}
+\frac{|x|}{|f(x)|}\\
+&amp;\longrightarrow
+\frac{|x|\,|f'(x)|}{|f(x)|}
+\qquad\text{as }\widehat{x}\to x.
+\end{aligned}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Relative condition number</span></p>
+</div>
+<div class="theorem-content">
+<p>For a differentiable scalar function <span class="math inline">\(f\)</span>, at a point with <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(f(x)\ne0\)</span>, the relative condition number used in the lecture is <span class="math display">\[
+\mathcal{K}_f(x)=\frac{|x|\,|f'(x)|}{|f(x)|}.
+\]</span> It describes the local amplification of relative input perturbations by the problem itself.</p>
+</div>
+</div>
+<p><strong>Conditioning depends on the problem, not on the algorithm.</strong></p>
+<h3 data-original-heading="1.5.1 Example: Subtracting a Large Constant" id="example-subtracting-a-large-constant">1.5.1 Example: Subtracting a Large Constant</h3>
+<p>Let</p>
+<p><span class="math display">\[
+f(x)=x-10^6.
+\]</span></p>
+<p>At <span class="math inline">\(x=10^6+1\)</span>, we have <span class="math inline">\(f(x)=1\)</span> and <span class="math inline">\(f'(x)=1\)</span>, so</p>
+<p><span class="math display">\[
+\mathcal{K}_f(10^6+1)
+=
+\frac{\underbrace{|10^6+1|}_{\text{input magnitude}}\,|1|}
+     {\underbrace{|1|}_{\text{output magnitude}}}
+=10^6+1\gg1.
+\]</span></p>
+<p>The sensitivity associated with cancellation is already present in the mathematical problem at this input.</p>
+<h2 data-original-heading="1.6 Stability" id="stability">1.6 Stability</h2>
+<!-- Source: Lecture 01.pdf, p. 6. -->
+<p>Now let <span class="math inline">\(\widehat{f}\)</span> denote the actual algorithm, and write</p>
+<p><span class="math display">\[
+\widehat{y}=\widehat{f}(\widehat{x}).
+\]</span></p>
+<p>The lecture describes an algorithm as stable when it does not amplify perturbations unnecessarily beyond the sensitivity of the underlying problem. Its informal comparison is</p>
+<p><span class="math display">\[
+\frac{\displaystyle\frac{|\widehat{y}-y|}{|y|}}
+     {\displaystyle\frac{|\widehat{x}-x|}{|x|}}
+\approx\mathcal{K}_f(x).
+\]</span></p>
+<p>This is the lecture’s schematic forward-error description, rather than a general formal definition covering every rounding-error model.</p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span><span class="theorem-title">Conditioning versus stability</span></p>
+</div>
+<div class="theorem-content">
+<p>Conditioning asks how sensitive the problem is. Stability asks whether the chosen algorithm introduces avoidable additional sensitivity.</p>
+</div>
+</div>
+<h3 data-original-heading="1.6.1 Example: An Unnecessarily Sensitive Algorithm" id="example-an-unnecessarily-sensitive-algorithm">1.6.1 Example: An Unnecessarily Sensitive Algorithm</h3>
+<p>For the well-conditioned problem</p>
+<p><span class="math display">\[
+f(x)=x,
+\]</span></p>
+<p>consider evaluating it instead through</p>
+<p><span class="math display">\[
+\widehat{f}(x)=(x+10^6)-10^6.
+\]</span></p>
+<p>The two expressions agree in exact arithmetic. In floating-point arithmetic, the intermediate addition can lose information about a small <span class="math inline">\(x\)</span>, and the final subtraction does not recover it. The algorithm has introduced a cancellation problem that was absent from <span class="math inline">\(f(x)=x\)</span> itself.</p>
+<hr>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Lecture 01, pp.&nbsp;1–2. The date begins <code>11/02/2…</code>; the final digit is unclear. The band <code>92–90</code> is present, but no separate letter beneath it can be assigned confidently. Neither item has been inferred from a different syllabus or later announcements.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Lecture 01, pp.&nbsp;4–5 writes the growth informally using <span class="math inline">\(\log(s)\)</span> and <span class="math inline">\(\log_2\log_2(s)\)</span>. Here <span class="math inline">\(0&lt;s&lt;1\)</span>, so <span class="math inline">\(1/s\)</span> is used to express the intended positive growth in the magnitude range. These are order-of-growth comparisons, not exact bit counts.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Lecture 01, pp.&nbsp;4–5 writes the growth informally using <span class="math inline">\(\log(s)\)</span> and <span class="math inline">\(\log_2\log_2(s)\)</span>. Here <span class="math inline">\(0&lt;s&lt;1\)</span>, so <span class="math inline">\(1/s\)</span> is used to express the intended positive growth in the magnitude range. These are order-of-growth comparisons, not exact bit counts.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Lecture 01, p.&nbsp;5 omits the additional <span class="math inline">\(\epsilon\)</span> from the exact expansion. The exact equality and the subsequent approximation are separated here.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span>Next page →</span><span>2. Memory, Computational Cost, and Gaussian Elimination</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">1. Vectors, Floating-Point Arithmetic, and Conditioning</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#course-information" class="is-active" aria-current="location">1.1 Course Information</a></li><li style="--depth:1"><a href="#assessment">1.1.1 Assessment</a></li><li style="--depth:1"><a href="#collaboration-and-ai">1.1.2 Collaboration and AI</a></li><li style="--depth:1"><a href="#tentative-topics">1.1.3 Tentative Topics</a></li><li style="--depth:0"><a href="#vectors-and-matrices">1.2 Vectors and Matrices</a></li><li style="--depth:1"><a href="#scalar-multiplication-and-addition">1.2.1 Scalar Multiplication and Addition</a></li><li style="--depth:1"><a href="#matrixvector-and-matrixmatrix-products">1.2.2 Matrix–Vector and Matrix–Matrix Products</a></li><li style="--depth:0"><a href="#representation-on-a-computer">1.3 Representation on a Computer</a></li><li style="--depth:1"><a href="#unsigned-integers">1.3.1 Unsigned Integers</a></li><li style="--depth:1"><a href="#signed-integers">1.3.2 Signed Integers</a></li><li style="--depth:1"><a href="#fixed-point-representation">1.3.3 Fixed-Point Representation</a></li><li style="--depth:1"><a href="#floating-point-representation">1.3.4 Floating-Point Representation</a></li><li style="--depth:0"><a href="#floating-point-arithmetic">1.4 Floating-Point Arithmetic</a></li><li style="--depth:1"><a href="#spacing-and-relative-accuracy">1.4.1 Spacing and Relative Accuracy</a></li><li style="--depth:1"><a href="#arithmetic-is-not-associative">1.4.2 Arithmetic Is Not Associative</a></li><li style="--depth:1"><a href="#cancellation">1.4.3 Cancellation</a></li><li style="--depth:0"><a href="#conditioning">1.5 Conditioning</a></li><li style="--depth:1"><a href="#example-subtracting-a-large-constant">1.5.1 Example: Subtracting a Large Constant</a></li><li style="--depth:0"><a href="#stability">1.6 Stability</a></li><li style="--depth:1"><a href="#example-an-unnecessarily-sensitive-algorithm">1.6.1 Example: An Unnecessarily Sensitive Algorithm</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

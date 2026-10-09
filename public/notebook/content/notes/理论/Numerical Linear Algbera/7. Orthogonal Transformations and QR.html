@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>7. Orthogonal Transformations and QR — E.H. Notebook</title>
+<meta name="description" content="Source: Professor’s Lecture 07.pdf, pp. 1-8. The course schedule associates this PDF with September 28, 2026, under a modified Gram-Schmidt topic, but the PDF itself deve">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">7. Orthogonal Transformations and QR</h1></header><div id="article-body" class="prose"><p><strong>Source:</strong> Professor’s <em>Lecture 07.pdf</em>, pp.&nbsp;1-8. The course schedule associates this PDF with September 28, 2026, under a modified Gram-Schmidt topic, but the PDF itself develops Householder QR, Givens rotations, and the structure of QR factorizations. Its actual contents determine these notes. This is not a reconstruction of the separate September 30 recording.</p>
+<p>Let <span class="math inline">\(A\in\mathbb K^{m\times n}\)</span> with <span class="math inline">\(m\ge n\)</span>, where <span class="math inline">\(\mathbb K=\mathbb R\)</span> or <span class="math inline">\(\mathbb C\)</span>. The symbol <span class="math inline">\(*\)</span> denotes conjugate transpose. Givens rotation formulas below are stated for real data, as in the source.</p>
+<h2 data-original-heading="7.1 Review of Householder Triangularization" id="review-of-householder-triangularization">7.1 Review of Householder Triangularization</h2>
+<p><em>Source: pp.&nbsp;1-2; the algorithm on p.&nbsp;2 repeats the last page of Lecture 6.</em></p>
+<p>The previous lecture contrasted two constructions:</p>
+<ul>
+<li>Gram-Schmidt multiplies on the right by upper triangular matrices to obtain orthonormal columns.</li>
+<li>Householder QR multiplies on the left by orthogonal transformations to obtain an upper triangular or upper trapezoidal matrix.</li>
+</ul>
+<p>The stability motivation was the bound</p>
+<p><span class="math display">\[
+\operatorname{fl}(XA)=X(A+F),
+\qquad
+\frac{\|F\|_2}{\|A\|_2}\lesssim u\,\kappa_2(X),
+\]</span></p>
+<p>to first order in the unit roundoff <span class="math inline">\(u\)</span>, with dimension-dependent constants suppressed. For orthogonal or unitary <span class="math inline">\(X\)</span>, <span class="math inline">\(\kappa_2(X)=1\)</span>.</p>
+<p>At step <span class="math inline">\(k\)</span>, a Householder reflector acts on the trailing rows:</p>
+<p><span class="math display">\[
+H_k=
+\begin{pmatrix}
+I_{k-1}&amp;0\\
+0&amp;F_k
+\end{pmatrix},
+\qquad
+F_k=I-2\frac{v_kv_k^*}{v_k^*v_k}.
+\]</span></p>
+<p>It transforms the current column segment <span class="math inline">\(x=A[k:m,k]\)</span> to a multiple of its first coordinate vector. For real nonzero <span class="math inline">\(x\)</span>, use</p>
+<p><span class="math display">\[
+v_k=x+\operatorname{sign}(x_1)\|x\|_2e_1,
+\qquad \operatorname{sign}(0)=1,
+\]</span></p>
+<p>then optionally rescale <span class="math inline">\(v_k\)</span> so its first entry is 1. The sign avoids subtracting nearly equal quantities. A zero <span class="math inline">\(x\)</span> requires no transformation.</p>
+<p>The update is</p>
+<p><span class="math display">\[
+A[k:m,k:n]\leftarrow
+A[k:m,k:n]
+-v_k\left(\frac{2}{v_k^*v_k}v_k^*A[k:m,k:n]\right).
+\]</span></p>
+<p>After all steps,</p>
+<p><span class="math display">\[
+H_n\cdots H_1A=R_{\mathrm{full}},
+\qquad
+A=Q_{\mathrm{full}}R_{\mathrm{full}},
+\qquad
+Q_{\mathrm{full}}=H_1\cdots H_n.
+\]</span></p>
+<p>The order matters even though each individual <span class="math inline">\(H_k\)</span> is its own inverse: two different reflectors generally do not commute.</p>
+<blockquote>
+<p><strong>Clarification.</strong> The recap’s absolute backward-error bound omits <span class="math inline">\(\|A\|_2\)</span>; the relative form above restores the scaling. The repeated storage line <span class="math inline">\(A[k+1:m,k]=v_k\)</span> means the tail <span class="math inline">\(v_k[2:\mathrm{end}]\)</span>, since the leading entry 1 is implicit.</p>
+</blockquote>
+<h2 data-original-heading="7.2 Using Q without Forming It" id="using-q-without-forming-it">7.2 Using Q without Forming It</h2>
+<p><em>Source: p.&nbsp;3.</em></p>
+<h3 data-original-heading="7.2.1 Implicit Storage" id="implicit-storage">7.2.1 Implicit Storage</h3>
+<p>The algorithm need not form the <span class="math inline">\(m\times m\)</span> matrix <span class="math inline">\(Q_{\mathrm{full}}\)</span>. Store only the vectors that define its reflectors. For one vector segment <span class="math inline">\(z\)</span>,</p>
+<p><span class="math display">\[
+F_kz=z-v_k\left(\frac{2}{v_k^*v_k}v_k^*z\right).
+\]</span></p>
+<p>Thus applying a reflector requires an inner product and a scaled vector subtraction. Forming <span class="math inline">\(v_kv_k^*\)</span> as a dense matrix is unnecessary.</p>
+<p>With <span class="math inline">\(v_k[1]=1\)</span>, the remaining <span class="math inline">\(m-k\)</span> entries fit below the diagonal in column <span class="math inline">\(k\)</span> of the original matrix array. The diagonal and upper triangle store <span class="math inline">\(R_1\)</span>. A scalar <span class="math inline">\(\tau_k=2/(v_k^*v_k)\)</span> can also be stored; setting <span class="math inline">\(\tau_k=0\)</span> represents an identity step.</p>
+<h3 data-original-heading="7.2.2 Applying the Adjoint" id="applying-the-adjoint">7.2.2 Applying the Adjoint</h3>
+<p>Since each reflector is self-adjoint,</p>
+<p><span class="math display">\[
+Q_{\mathrm{full}}^*=H_n\cdots H_1.
+\]</span></p>
+<p>The rightmost factor acts first, so compute <span class="math inline">\(Q_{\mathrm{full}}^*b\)</span> by applying the reflectors in <strong>forward construction order</strong>:</p>
+<pre class="text"><code>Input: b in K^m and the stored Householder vectors
+
+for k = 1,...,n:
+    v = reconstruct vector k with first entry 1
+    b[k:m] = b[k:m] - v * (tau[k] * (v* b[k:m]))
+
+Return b                       # now equal to Q_full* b</code></pre>
+<p>With no identity steps, <span class="math inline">\(\tau_k=2/(v_k^*v_k)\)</span> can be recomputed from <span class="math inline">\(v_k\)</span>.</p>
+<h3 data-original-heading="7.2.3 Applying Q" id="applying-q">7.2.3 Applying Q</h3>
+<p>To compute</p>
+<p><span class="math display">\[
+Q_{\mathrm{full}}z=H_1\cdots H_nz,
+\]</span></p>
+<p>the rightmost <span class="math inline">\(H_n\)</span> acts first. Use <strong>reverse construction order</strong>:</p>
+<pre class="text"><code>Input: z in K^m and the stored Householder vectors
+
+for k = n,n-1,...,1:
+    v = reconstruct vector k with first entry 1
+    z[k:m] = z[k:m] - v * (tau[k] * (v* z[k:m]))
+
+Return z                       # now equal to Q_full z</code></pre>
+<p><strong>Order check.</strong> With just two reflectors,</p>
+<p><span class="math display">\[
+Q=H_1H_2,
+\qquad Q^*=H_2H_1.
+\]</span></p>
+<p>To compute <span class="math inline">\(Qz\)</span>, first apply <span class="math inline">\(H_2\)</span>, then <span class="math inline">\(H_1\)</span>. To compute <span class="math inline">\(Q^*b\)</span>, first apply <span class="math inline">\(H_1\)</span>, then <span class="math inline">\(H_2\)</span>.</p>
+<h3 data-original-heading="7.2.4 What Implicit Storage Gives Us" id="what-implicit-storage-gives-us">7.2.4 What Implicit Storage Gives Us</h3>
+<p>The lecture emphasizes three consequences:</p>
+<ol type="1">
+<li><strong>In-place storage:</strong> the leading 1 of each reflector vector is implicit, and its tail occupies the space where subdiagonal entries of <span class="math inline">\(R\)</span> would be zero.</li>
+<li><strong>A full QR factorization:</strong> the product of reflectors acts on all of <span class="math inline">\(\mathbb K^m\)</span>, even though only <span class="math inline">\(n\)</span> reflector vectors are stored.</li>
+<li><strong>Orthogonality by construction:</strong> the exact matrix defined by the stored reflector vectors is a product of unitary matrices.</li>
+</ol>
+<blockquote>
+<p><strong>Clarification.</strong> “Orthogonal by definition” refers to the exact mathematical product associated with the stored vectors. Applying the reflectors or explicitly forming their product in floating-point arithmetic still introduces rounding error. An explicitly formed floating-point <span class="math inline">\(\widehat Q\)</span> is generally orthogonal to working precision, not entrywise exact in the identity <span class="math inline">\(\widehat Q^*\widehat Q=I\)</span>.</p>
+</blockquote>
+<h2 data-original-heading="7.3 Givens Rotations" id="givens-rotations">7.3 Givens Rotations</h2>
+<p><em>Source: pp.&nbsp;4-5.</em></p>
+<p>Householder transformations clear an entire column tail in one step. If a matrix is already almost upper triangular, only a few individual entries may need to be removed. A transformation acting on two rows can then be more natural.</p>
+<h3 data-original-heading="7.3.1 The Two-Dimensional Construction" id="the-two-dimensional-construction">7.3.1 The Two-Dimensional Construction</h3>
+<p>Consider a real vector</p>
+<p><span class="math display">\[
+\begin{pmatrix}a\\b\end{pmatrix},
+\qquad
+r=\sqrt{a^2+b^2}&gt;0.
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+c=\frac ar,
+\qquad
+s=\frac br,
+\qquad
+G=
+\begin{pmatrix}
+c&amp;s\\
+-s&amp;c
+\end{pmatrix}.
+\]</span></p>
+<p>Since <span class="math inline">\(c^2+s^2=1\)</span>,</p>
+<p><span class="math display">\[
+G^TG=I,
+\qquad\det G=1.
+\]</span></p>
+<p>Therefore <span class="math inline">\(G\)</span> is an orthogonal rotation. Its action is</p>
+<p><span class="math display">\[
+\begin{aligned}
+G\begin{pmatrix}a\\b\end{pmatrix}
+&amp;=\begin{pmatrix}ca+sb\\-sa+cb\end{pmatrix}\\
+&amp;=\begin{pmatrix}(a^2+b^2)/r\\(-ba+ab)/r\end{pmatrix}\\
+&amp;=\begin{pmatrix}r\\0\end{pmatrix}.
+\end{aligned}
+\]</span></p>
+<p>For the leading <span class="math inline">\(2\times2\)</span> block shown in the lecture, <span class="math inline">\(a=A_{11}\)</span> and <span class="math inline">\(b=A_{21}\)</span>. Applying <span class="math inline">\(G\)</span> to both columns rotates the first column onto the horizontal coordinate axis and applies the same rotation to the second column.</p>
+<blockquote>
+<p><strong>Clarification.</strong> In this two-dimensional sketch, <span class="math inline">\(\|a_1\|\)</span> means the norm of the two entries being rotated. In a larger matrix, the denominator for a single Givens step is <span class="math inline">\(\sqrt{A_{ik}^2+A_{jk}^2}\)</span>, not the norm of the entire column.</p>
+</blockquote>
+<p>If <span class="math inline">\(a=b=0\)</span>, choose <span class="math inline">\(c=1\)</span>, <span class="math inline">\(s=0\)</span>, so <span class="math inline">\(G=I\)</span>. For floating-point implementation, compute <span class="math inline">\(r\)</span> with a scaled Euclidean-norm or <code>hypot</code> routine rather than naively squaring numbers that might overflow or underflow.</p>
+<h3 data-original-heading="7.3.2 Embedding a Rotation in a Larger Matrix" id="embedding-a-rotation-in-a-larger-matrix">7.3.2 Embedding a Rotation in a Larger Matrix</h3>
+<p>To remove <span class="math inline">\(A_{jk}\)</span> using <span class="math inline">\(A_{ik}\)</span>, where <span class="math inline">\(i&lt;j\)</span>, embed the <span class="math inline">\(2\times2\)</span> rotation in rows and columns <span class="math inline">\(i,j\)</span> of an <span class="math inline">\(m\times m\)</span> identity matrix. Its nontrivial entries are</p>
+<p><span class="math display">\[
+G_{ii}=G_{jj}=c,
+\qquad
+G_{ij}=s,
+\qquad
+G_{ji}=-s.
+\]</span></p>
+<p>Let</p>
+<p><span class="math display">\[
+a=A_{ik},
+\qquad b=A_{jk},
+\qquad r=\sqrt{a^2+b^2}.
+\]</span></p>
+<p>Then left multiplication changes only two rows:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{new row }i&amp;=c\,\text{old row }i+s\,\text{old row }j,\\
+\text{new row }j&amp;=-s\,\text{old row }i+c\,\text{old row }j.
+\end{aligned}
+\]</span></p>
+<p>At column <span class="math inline">\(k\)</span>, the new entries are <span class="math inline">\(r\)</span> and 0. Both updates must use the old rows; overwriting one row and using it in the second update would implement a different transformation.</p>
+<h3 data-original-heading="7.3.3 QR by Repeated Givens Rotations" id="qr-by-repeated-givens-rotations">7.3.3 QR by Repeated Givens Rotations</h3>
+<p>Choose rotations that remove entries below the diagonal one at a time. A simple dense procedure is:</p>
+<pre class="text"><code>for k = 1,...,n:
+    for j = m,m-1,...,k+1:
+        a = A[k,k]
+        b = A[j,k]
+        if b == 0:
+            continue
+        r = hypot(a, b)
+        c = a/r
+        s = b/r
+        row_k = copy(A[k,k:n])
+        row_j = copy(A[j,k:n])
+        A[k,k:n] =  c*row_k + s*row_j
+        A[j,k:n] = -s*row_k + c*row_j
+        store the row pair (k,j) and the values c,s</code></pre>
+<p>This pseudocode expands the source’s instruction to “repeat until upper triangular.” At column <span class="math inline">\(k\)</span>, both rows already have zeros in columns <span class="math inline">\(1:k-1\)</span>, so the rotation preserves those earlier zeros.</p>
+<p>If the chronological sequence of rotations is <span class="math inline">\(G_1,\ldots,G_p\)</span>, then</p>
+<p><span class="math display">\[
+G_p\cdots G_1A=R_{\mathrm{full}},
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+Q_{\mathrm{full}}
+=(G_p\cdots G_1)^T
+=G_1^T\cdots G_p^T.
+\]</span></p>
+<p>Unlike a Householder reflector, a general Givens rotation is not its own inverse. Its inverse is its transpose, which changes the sign of <span class="math inline">\(s\)</span>. Storing the row indices and <span class="math inline">\(c,s\)</span> is enough to apply the transformation later.</p>
+<h3 data-original-heading="7.3.4 Householder or Givens" id="householder-or-givens">7.3.4 Householder or Givens</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr>
+<th>Transformation</th>
+<th>Entries targeted by one step</th>
+<th>Main use highlighted in the source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Householder reflector</td>
+<td>A whole subdiagonal column segment</td>
+<td>Efficient dense triangularization</td>
+</tr>
+<tr>
+<td>Givens rotation</td>
+<td>One selected subdiagonal entry</td>
+<td>Matrices with useful sparsity or already near triangular form</td>
+</tr>
+</tbody>
+</table></div>
+<p>For dense matrices, eliminating one entry at a time is generally less efficient than using Householder column operations. For some sparse or structured matrices, rotations avoid unnecessary work on a long column segment.</p>
+<blockquote>
+<p><strong>Clarification.</strong> Givens rotations are not automatically superior for every sparse matrix. Their advantage depends on the nonzero pattern and the fill created by mixing rows. The source makes the qualified statement that they are sometimes more efficient for sparse matrices.</p>
+</blockquote>
+<h2 data-original-heading="7.4 Full and Reduced QR Factorizations" id="full-and-reduced-qr-factorizations">7.4 Full and Reduced QR Factorizations</h2>
+<p><em>Source: p.&nbsp;6.</em></p>
+<h3 data-original-heading="7.4.1 Reduced QR" id="reduced-qr">7.4.1 Reduced QR</h3>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Reduced QR factorization</span></p>
+</div>
+<div class="theorem-content">
+<p>For <span class="math inline">\(A\in\mathbb K^{m\times n}\)</span> with <span class="math inline">\(m\ge n\)</span>, a reduced QR factorization is <span class="math display">\[
+A=Q_1R_1,
+\qquad
+Q_1\in\mathbb K^{m\times n},\quad Q_1^*Q_1=I_n,
+\qquad
+R_1\in\mathbb K^{n\times n}\text{ upper triangular}.
+\]</span></p>
+</div>
+</div>
+<p>Basic Gram-Schmidt directly constructs these <span class="math inline">\(n\)</span> orthonormal columns. If <span class="math inline">\(A\)</span> has full column rank, <span class="math inline">\(R_1\)</span> is nonsingular and</p>
+<p><span class="math display">\[
+\operatorname{range}(Q_1)=\operatorname{range}(A).
+\]</span></p>
+<h3 data-original-heading="7.4.2 Full QR" id="full-qr">7.4.2 Full QR</h3>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Full QR factorization</span></p>
+</div>
+<div class="theorem-content">
+<p>A full QR factorization is <span class="math display">\[
+A=Q_{\mathrm{full}}R_{\mathrm{full}},
+\qquad
+Q_{\mathrm{full}}\in\mathbb K^{m\times m},\quad Q_{\mathrm{full}}^*Q_{\mathrm{full}}=I_m,
+\qquad
+R_{\mathrm{full}}=
+\begin{pmatrix}R_1\\0\end{pmatrix}\in\mathbb K^{m\times n}.
+\]</span></p>
+</div>
+</div>
+<p>Partition the full orthogonal factor as</p>
+<p><span class="math display">\[
+Q_{\mathrm{full}}=\begin{pmatrix}Q_1&amp;Q_2\end{pmatrix},
+\qquad
+Q_2\in\mathbb K^{m\times(m-n)}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\begin{pmatrix}Q_1&amp;Q_2\end{pmatrix}
+\begin{pmatrix}R_1\\0\end{pmatrix}
+=Q_1R_1=A.
+\]</span></p>
+<p>The reduced factorization discards the complementary columns <span class="math inline">\(Q_2\)</span> and the zero block of <span class="math inline">\(R_{\mathrm{full}}\)</span>.</p>
+<p>Householder and Givens algorithms naturally represent a full orthogonal transformation as a product, but they need not explicitly build all of its columns. Reduced QR can be extracted from either method. Conversely, a reduced <span class="math inline">\(Q_1\)</span> can be extended to a full orthonormal basis.</p>
+<p>When <span class="math inline">\(m=n\)</span>, full and reduced QR have the same dimensions.</p>
+<h3 data-original-heading="7.4.3 Connection Back to Least Squares" id="connection-back-to-least-squares">7.4.3 Connection Back to Least Squares</h3>
+<p><strong>Expanded consequence of the full/reduced distinction.</strong> For full column rank, write</p>
+<p><span class="math display">\[
+Q_{\mathrm{full}}^*b=
+\begin{pmatrix}c\\d\end{pmatrix},
+\qquad c\in\mathbb K^n,
+\qquad d\in\mathbb K^{m-n}.
+\]</span></p>
+<p>Unitary invariance of the Euclidean norm gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+\|Ax-b\|_2^2
+&amp;=\|Q_{\mathrm{full}}^*(Ax-b)\|_2^2\\
+&amp;=\left\|
+\begin{pmatrix}R_1x-c\\-d\end{pmatrix}
+\right\|_2^2\\
+&amp;=\|R_1x-c\|_2^2+\|d\|_2^2.
+\end{aligned}
+\]</span></p>
+<p>Therefore the minimizer solves <span class="math inline">\(R_1x=c\)</span>, and the minimum residual norm is <span class="math inline">\(\|d\|_2\)</span>. One can compute both by applying the stored reflectors to <span class="math inline">\(b\)</span>, without explicitly forming <span class="math inline">\(Q_{\mathrm{full}}\)</span>.</p>
+<p>For full column rank, <span class="math inline">\(Q_2\)</span> spans <span class="math inline">\(\operatorname{range}(A)^\perp\)</span>, so <span class="math inline">\(d=Q_2^*b\)</span> contains the residual coordinates. This is the geometric least-squares interpretation from the earlier lectures, expressed in full orthonormal coordinates.</p>
+<h2 data-original-heading="7.5 Existence of QR" id="existence-of-qr">7.5 Existence of QR</h2>
+<p><em>Source: p.&nbsp;7.</em></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Existence of full and reduced QR</span></p>
+</div>
+<div class="theorem-content">
+<p>Every matrix <span class="math inline">\(A\in\mathbb K^{m\times n}\)</span> with <span class="math inline">\(m\ge n\)</span> has both a reduced QR factorization and a full QR factorization, including when its columns are linearly dependent.</p>
+</div>
+</div>
+<h3 data-original-heading="7.5.1 Full Column Rank" id="full-column-rank">7.5.1 Full Column Rank</h3>
+<p>Assume first that the columns <span class="math inline">\(a_1,\ldots,a_n\)</span> are linearly independent. At Gram-Schmidt step <span class="math inline">\(k\)</span>, define the residual</p>
+<p><span class="math display">\[
+\widehat q_k
+=a_k-\sum_{j=1}^{k-1}q_j(q_j^*a_k).
+\]</span></p>
+<p>If <span class="math inline">\(\widehat q_k=0\)</span>, then</p>
+<p><span class="math display">\[
+a_k\in\operatorname{span}(q_1,\ldots,q_{k-1}).
+\]</span></p>
+<p>For independent columns, Gram-Schmidt preserves the nested spans:</p>
+<p><span class="math display">\[
+\operatorname{span}(q_1,\ldots,q_{k-1})
+=\operatorname{span}(a_1,\ldots,a_{k-1}).
+\]</span></p>
+<p>Thus <span class="math inline">\(a_k\)</span> would lie in the span of its predecessors, contradicting independence. Therefore</p>
+<p><span class="math display">\[
+r_{kk}=\|\widehat q_k\|_2&gt;0,
+\qquad
+q_k=\widehat q_k/r_{kk}
+\]</span></p>
+<p>is always defined, and Gram-Schmidt gives a reduced QR factorization.</p>
+<h3 data-original-heading="7.5.2 Rank-Deficient Matrices" id="rank-deficient-matrices">7.5.2 Rank-Deficient Matrices</h3>
+<p>If the columns are dependent, a residual may be zero. A zero residual means</p>
+<p><span class="math display">\[
+a_k=\sum_{j=1}^{k-1}q_jr_{jk},
+\qquad
+r_{kk}=0.
+\]</span></p>
+<p>There is no residual direction to normalize. Instead, choose <strong>any unit vector</strong> <span class="math inline">\(q_k\)</span> orthogonal to <span class="math inline">\(q_1,\ldots,q_{k-1}\)</span>, and continue.</p>
+<p>Such a choice exists because <span class="math inline">\(k\le n\le m\)</span>, so <span class="math inline">\(k-1\)</span> orthonormal vectors cannot fill the entire <span class="math inline">\(m\)</span>-dimensional space. The equality representing column <span class="math inline">\(a_k\)</span> is unaffected, since its coefficient of <span class="math inline">\(q_k\)</span> is zero.</p>
+<p>The completed construction still has</p>
+<p><span class="math display">\[
+a_k=\sum_{j=1}^{k}q_jr_{jk}
+\quad\text{for every }k,
+\]</span></p>
+<p>and hence <span class="math inline">\(A=Q_1R_1\)</span> with <span class="math inline">\(Q_1^*Q_1=I_n\)</span> and <span class="math inline">\(R_1\)</span> upper triangular.</p>
+<blockquote>
+<p><strong>Clarification.</strong> The arbitrary replacement vector must be normalized as well as orthogonal. Also, <span class="math inline">\(r_{kk}=0\)</span> does not imply the entire <span class="math inline">\(k\)</span>th row of <span class="math inline">\(R_1\)</span> is zero: a later column may have a nonzero component along the chosen <span class="math inline">\(q_k\)</span>. For rank-deficient <span class="math inline">\(A\)</span>, the <span class="math inline">\(n\)</span> columns of <span class="math inline">\(Q_1\)</span> may include directions outside <span class="math inline">\(\operatorname{range}(A)\)</span>.</p>
+</blockquote>
+<h3 data-original-heading="7.5.3 Completing to a Full Factorization" id="completing-to-a-full-factorization">7.5.3 Completing to a Full Factorization</h3>
+<p>Extend the <span class="math inline">\(n\)</span> orthonormal columns of <span class="math inline">\(Q_1\)</span> to an orthonormal basis of <span class="math inline">\(\mathbb K^m\)</span>:</p>
+<p><span class="math display">\[
+Q_{\mathrm{full}}=\begin{pmatrix}Q_1&amp;Q_2\end{pmatrix}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+A=Q_{\mathrm{full}}
+\begin{pmatrix}R_1\\0\end{pmatrix}.
+\]</span></p>
+<p>This proves existence of a full QR factorization. The additional columns do not affect <span class="math inline">\(A\)</span>, because they multiply zero rows in the full <span class="math inline">\(R\)</span> factor.</p>
+<h2 data-original-heading="7.6 Uniqueness and the Diagonal Convention" id="uniqueness-and-the-diagonal-convention">7.6 Uniqueness and the Diagonal Convention</h2>
+<p><em>Source: p.&nbsp;8.</em></p>
+<p>The source asks whether a QR factorization is unique and distinguishes full, reduced, and rank-deficient cases. One additional hypothesis is essential: the signs or phases of the diagonal entries of <span class="math inline">\(R\)</span> must be fixed.</p>
+<h3 data-original-heading="7.6.1 Sign and Phase Ambiguity" id="sign-and-phase-ambiguity">7.6.1 Sign and Phase Ambiguity</h3>
+<p>For any diagonal matrix</p>
+<p><span class="math display">\[
+D=\operatorname{diag}(d_1,\ldots,d_n),
+\qquad |d_j|=1,
+\]</span></p>
+<p>we have</p>
+<p><span class="math display">\[
+Q_1R_1=(Q_1D)(D^*R_1).
+\]</span></p>
+<p>The columns of <span class="math inline">\(Q_1D\)</span> remain orthonormal, and <span class="math inline">\(D^*R_1\)</span> remains upper triangular. Over <span class="math inline">\(\mathbb R\)</span>, each <span class="math inline">\(d_j\)</span> can be <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span>. Thus full column rank alone does not make reduced QR unique.</p>
+<p>For example, the one-entry matrix <span class="math inline">\(A=(1)\)</span> has both factorizations</p>
+<p><span class="math display">\[
+(1)=(1)(1)=(-1)(-1).
+\]</span></p>
+<blockquote>
+<p><strong>Clarification.</strong> This one-dimensional example makes explicit the sign ambiguity missing from the handwritten theorem. Uniqueness holds after requiring every diagonal entry of <span class="math inline">\(R_1\)</span> to be positive real.</p>
+</blockquote>
+<h3 data-original-heading="7.6.2 The Correct Uniqueness Theorem" id="the-correct-uniqueness-theorem">7.6.2 The Correct Uniqueness Theorem</h3>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Uniqueness of normalized reduced QR</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(A\in\mathbb K^{m\times n}\)</span> has full column rank, then its reduced QR factorization <span class="math display">\[
+A=Q_1R_1,
+\qquad Q_1^*Q_1=I_n,
+\]</span> is unique when <span class="math inline">\(R_1\)</span> is upper triangular and all its diagonal entries are positive real.</p>
+</div>
+</div>
+<p><strong>Geometric proof, expanding the board argument.</strong> For each <span class="math inline">\(k\)</span>, set</p>
+<p><span class="math display">\[
+V_k=\operatorname{span}(a_1,\ldots,a_k).
+\]</span></p>
+<p>Full column rank implies <span class="math inline">\(\dim V_k=k\)</span>. Because <span class="math inline">\(R_1\)</span> is upper triangular with nonzero diagonal,</p>
+<p><span class="math display">\[
+V_k=\operatorname{span}(q_1,\ldots,q_k).
+\]</span></p>
+<p>Therefore <span class="math inline">\(q_k\)</span> lies in</p>
+<p><span class="math display">\[
+V_k\cap V_{k-1}^{\perp},
+\]</span></p>
+<p>which is one-dimensional. Any other valid <span class="math inline">\(\widetilde q_k\)</span> must lie along the same line:</p>
+<p><span class="math display">\[
+\widetilde q_k=\alpha_k q_k,
+\qquad |\alpha_k|=1.
+\]</span></p>
+<p>This is the content of the source’s decomposition</p>
+<p><span class="math display">\[
+\widetilde q_k=\alpha_k q_k+\sum_{j&lt;k}\gamma_j a_j.
+\]</span></p>
+<p>The difference <span class="math inline">\(\widetilde q_k-\alpha_kq_k\)</span> belongs to both <span class="math inline">\(V_{k-1}\)</span> and <span class="math inline">\(V_{k-1}^{\perp}\)</span>, so it is zero. Unit norm fixes <span class="math inline">\(|\alpha_k|=1\)</span>, but does not yet fix its sign or phase.</p>
+<p>The diagonal coefficient is</p>
+<p><span class="math display">\[
+r_{kk}=q_k^*a_k&gt;0.
+\]</span></p>
+<p>For the alternative factorization,</p>
+<p><span class="math display">\[
+\widetilde r_{kk}
+=\widetilde q_k^*a_k
+=\overline{\alpha_k}\,r_{kk}.
+\]</span></p>
+<p>Both diagonal entries are positive real, so <span class="math inline">\(\alpha_k=1\)</span>. Hence every <span class="math inline">\(q_k\)</span> is unique, and then <span class="math inline">\(R_1=Q_1^*A\)</span> is unique as well.</p>
+<p><strong>Equivalent algebraic check.</strong> If <span class="math inline">\(A=QR=\widetilde Q\widetilde R\)</span> are two normalized reduced factorizations, then</p>
+<p><span class="math display">\[
+S=Q^*\widetilde Q=R\widetilde R^{-1}
+\]</span></p>
+<p>is both unitary and upper triangular. An upper triangular unitary matrix must be diagonal with unit-modulus diagonal entries. Positivity of the diagonals of <span class="math inline">\(R\)</span> and <span class="math inline">\(\widetilde R\)</span> makes those entries 1. Thus <span class="math inline">\(S=I\)</span>, <span class="math inline">\(Q=\widetilde Q\)</span>, and <span class="math inline">\(R=\widetilde R\)</span>.</p>
+<h3 data-original-heading="7.6.3 Why Full QR Is Generally Not Unique" id="why-full-qr-is-generally-not-unique">7.6.3 Why Full QR Is Generally Not Unique</h3>
+<p>For <span class="math inline">\(m&gt;n\)</span>, even if normalized reduced QR is fixed, the complementary orthonormal basis <span class="math inline">\(Q_2\)</span> can vary. If <span class="math inline">\(W\in\mathbb K^{(m-n)\times(m-n)}\)</span> is unitary, then</p>
+<p><span class="math display">\[
+\widetilde Q_{\mathrm{full}}
+=\begin{pmatrix}Q_1&amp;Q_2W\end{pmatrix}
+\]</span></p>
+<p>is another full orthogonal factor, and</p>
+<p><span class="math display">\[
+\widetilde Q_{\mathrm{full}}
+\begin{pmatrix}R_1\\0\end{pmatrix}
+=Q_1R_1=A.
+\]</span></p>
+<p>The extra columns multiply a zero block, so their basis is not determined by <span class="math inline">\(A\)</span>.</p>
+<p>When <span class="math inline">\(m=n\)</span>, there is no complementary block. Full QR is then the same as reduced QR, and the positive-diagonal uniqueness theorem applies for nonsingular <span class="math inline">\(A\)</span>.</p>
+<h3 data-original-heading="7.6.4 Why Rank Deficiency Removes Uniqueness" id="why-rank-deficiency-removes-uniqueness">7.6.4 Why Rank Deficiency Removes Uniqueness</h3>
+<p>When a Gram-Schmidt residual vanishes, the replacement unit vector can be chosen freely in an orthogonal complement. Those choices generally lead to different factorizations. Furthermore, a rank-deficient square <span class="math inline">\(R_1\)</span> cannot have all diagonal entries strictly positive, because it is singular.</p>
+<p>The statements to remember are:</p>
+<ul>
+<li>Every <span class="math inline">\(A\)</span> with <span class="math inline">\(m\ge n\)</span> has full and reduced QR factorizations.</li>
+<li>Full column rank gives a unique <strong>reduced</strong> QR after fixing positive real diagonal entries of <span class="math inline">\(R_1\)</span>.</li>
+<li>Without a sign or phase convention, even full-rank reduced QR is not unique.</li>
+<li>When <span class="math inline">\(m&gt;n\)</span>, the extra columns in full QR are generally nonunique.</li>
+<li>For rank-deficient <span class="math inline">\(A\)</span>, QR is generally nonunique even with a nonnegative-diagonal convention.</li>
+</ul>
+<h2 data-original-heading="7.7 Source Clarifications and Study Checklist" id="source-clarifications-and-study-checklist">7.7 Source Clarifications and Study Checklist</h2>
+<p><strong>Source clarifications.</strong> These notes preserve the eight-page PDF’s content even though its schedule label mentions modified Gram-Schmidt. They restore the scaling in the error recap (p.&nbsp;1), clarify reflector-tail storage (p.&nbsp;2), distinguish exact implicit orthogonality from floating-point application (p.&nbsp;3), make the two-entry Givens norm and zero case explicit (pp.&nbsp;4-5), require unit length for a rank-deficient completion (p.&nbsp;7), and add the positive-diagonal hypothesis needed for uniqueness (p.&nbsp;8).</p>
+<p>Before moving on, be able to:</p>
+<ol type="1">
+<li>Apply stored reflectors in the correct order for <span class="math inline">\(Qb\)</span> and <span class="math inline">\(Q^*b\)</span>.</li>
+<li>Explain how a full orthogonal transformation can be represented without storing a full dense matrix.</li>
+<li>Derive <span class="math inline">\(c,s\)</span> for a Givens rotation and verify the annihilated entry is zero.</li>
+<li>Track the transpose and order when recovering <span class="math inline">\(Q\)</span> from a sequence of Givens rotations.</li>
+<li>State the dimensions of all factors in full and reduced QR.</li>
+<li>Explain why a zero Gram-Schmidt residual does not prevent existence of QR.</li>
+<li>State the complete uniqueness theorem and prove why the diagonal convention is necessary.</li>
+<li>Distinguish arbitrary complementary columns in full QR from the uniquely determined reduced factor in the full-rank, positive-diagonal case.</li>
+</ol></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span>← Previous page</span><span>6. Error Bounds and Householder QR</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span>Next page →</span><span>8. Least Squares and Normal Equations</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">7. Orthogonal Transformations and QR</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#review-of-householder-triangularization" class="is-active" aria-current="location">7.1 Review of Householder Triangularization</a></li><li style="--depth:0"><a href="#using-q-without-forming-it">7.2 Using Q without Forming It</a></li><li style="--depth:1"><a href="#implicit-storage">7.2.1 Implicit Storage</a></li><li style="--depth:1"><a href="#applying-the-adjoint">7.2.2 Applying the Adjoint</a></li><li style="--depth:1"><a href="#applying-q">7.2.3 Applying Q</a></li><li style="--depth:1"><a href="#what-implicit-storage-gives-us">7.2.4 What Implicit Storage Gives Us</a></li><li style="--depth:0"><a href="#givens-rotations">7.3 Givens Rotations</a></li><li style="--depth:1"><a href="#the-two-dimensional-construction">7.3.1 The Two-Dimensional Construction</a></li><li style="--depth:1"><a href="#embedding-a-rotation-in-a-larger-matrix">7.3.2 Embedding a Rotation in a Larger Matrix</a></li><li style="--depth:1"><a href="#qr-by-repeated-givens-rotations">7.3.3 QR by Repeated Givens Rotations</a></li><li style="--depth:1"><a href="#householder-or-givens">7.3.4 Householder or Givens</a></li><li style="--depth:0"><a href="#full-and-reduced-qr-factorizations">7.4 Full and Reduced QR Factorizations</a></li><li style="--depth:1"><a href="#reduced-qr">7.4.1 Reduced QR</a></li><li style="--depth:1"><a href="#full-qr">7.4.2 Full QR</a></li><li style="--depth:1"><a href="#connection-back-to-least-squares">7.4.3 Connection Back to Least Squares</a></li><li style="--depth:0"><a href="#existence-of-qr">7.5 Existence of QR</a></li><li style="--depth:1"><a href="#full-column-rank">7.5.1 Full Column Rank</a></li><li style="--depth:1"><a href="#rank-deficient-matrices">7.5.2 Rank-Deficient Matrices</a></li><li style="--depth:1"><a href="#completing-to-a-full-factorization">7.5.3 Completing to a Full Factorization</a></li><li style="--depth:0"><a href="#uniqueness-and-the-diagonal-convention">7.6 Uniqueness and the Diagonal Convention</a></li><li style="--depth:1"><a href="#sign-and-phase-ambiguity">7.6.1 Sign and Phase Ambiguity</a></li><li style="--depth:1"><a href="#the-correct-uniqueness-theorem">7.6.2 The Correct Uniqueness Theorem</a></li><li style="--depth:1"><a href="#why-full-qr-is-generally-not-unique">7.6.3 Why Full QR Is Generally Not Unique</a></li><li style="--depth:1"><a href="#why-rank-deficiency-removes-uniqueness">7.6.4 Why Rank Deficiency Removes Uniqueness</a></li><li style="--depth:0"><a href="#source-clarifications-and-study-checklist">7.7 Source Clarifications and Study Checklist</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

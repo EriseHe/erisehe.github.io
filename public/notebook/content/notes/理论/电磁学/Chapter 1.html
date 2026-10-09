@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Chapter 1 — E.H. Notebook</title>
+<meta name="description" content="1.1 Vector Algebra1.1.1 Core Operations on Vectors1.1.1 (i) Addition / SubtractionHead-to-tail rule defines A+BProperties A+B=B+A (A+B)+C=A+(B+C) Subtraction = add the op">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a></nav><h1 id="reader-title">Chapter 1</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1.1 Vector Algebra" id="vector-algebra">1.1 Vector Algebra</h2>
+<h3 data-original-heading="1.1.1 Core Operations on Vectors" id="core-operations-on-vectors">1.1.1 Core Operations on Vectors</h3>
+<h4 data-original-heading="(i) Addition / Subtraction" id="i-addition-subtraction">1.1.1 (i) Addition / Subtraction</h4>
+<ul>
+<li>Head-to-tail rule defines <span class="math inline">\(A+B\)</span></li>
+<li>Properties <span class="math display">\[
+A+B=B+A
+\]</span> <span class="math display">\[
+(A+B)+C=A+(B+C)
+\]</span></li>
+<li>Subtraction = add the opposite <span class="math display">\[
+A-B=A+(-B)
+\]</span></li>
+</ul>
+<h4 data-original-heading="(ii) Scalar Multiplication" id="ii-scalar-multiplication">1.1.2 (ii) Scalar Multiplication</h4>
+<ul>
+<li><span class="math inline">\(aA\)</span> scales magnitude by <span class="math inline">\(|a|\)</span> (reverses direction if <span class="math inline">\(a&lt;0\)</span>)</li>
+<li>Distributive <span class="math display">\[
+a(A+B)=aA+aB
+\]</span></li>
+</ul>
+<h4 data-original-heading="(iii) Dot Product (scalar product)" id="iii-dot-product-scalar-product">1.1.3 (iii) Dot Product (scalar product)</h4>
+<div class="math-theorem definition" data-callout="definition" data-label="1.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.1</span><span class="theorem-title">Dot product</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+A\cdot B\equiv AB\cos\theta
+\]</span> (<span class="math inline">\(\theta\)</span> is the angle between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>)</p>
+</div>
+</div>
+<p>Key facts <span class="math display">\[
+A\cdot B=B\cdot A
+\]</span> <span class="math display">\[
+A\cdot(B+C)=A\cdot B+A\cdot C
+\]</span> Special cases <span class="math display">\[
+A\cdot A=A^2
+\]</span></p>
+<ul>
+<li>parallel <span class="math inline">\(\Rightarrow A\cdot B=AB\)</span></li>
+<li>perpendicular <span class="math inline">\(\Rightarrow A\cdot B=0\)</span></li>
+</ul>
+<div class="math-theorem example" data-callout="example" data-label="1.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.1</span><span class="theorem-title">Law of cosines (from dot product)</span></p>
+</div>
+<div class="theorem-content">
+<p>Let <span class="math inline">\(C=A-B\)</span> <span class="math display">\[
+\begin{aligned}
+C^2
+&amp;=C\cdot C\\
+&amp;=(A-B)\cdot(A-B)\\
+&amp;=A\cdot A-\underbrace{A\cdot B}_{AB\cos\theta}-\underbrace{B\cdot A}_{AB\cos\theta}+B\cdot B\\
+&amp;=A^2+B^2-2AB\cos\theta
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<h4 data-original-heading="(iv) Cross Product (vector product)" id="iv-cross-product-vector-product">1.1.4 (iv) Cross Product (vector product)</h4>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2</span><span class="theorem-title">Cross product</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+A\times B\equiv AB\sin\theta\,\hat n
+\]</span> (<span class="math inline">\(\hat n\)</span> is a unit vector perpendicular to the plane of <span class="math inline">\(A,B\)</span>, direction by the right-hand rule)</p>
+</div>
+</div>
+<p>Key facts</p>
+<ul>
+<li>magnitude <span class="math inline">\(|A\times B|=AB\sin\theta\)</span> (area of parallelogram)</li>
+<li>parallel <span class="math inline">\(\Rightarrow A\times B=0\)</span></li>
+<li>in particular <span class="math display">\[
+A\times A=0
+\]</span> Distributive, not commutative <span class="math display">\[
+A\times(B+C)=(A\times B)+(A\times C)
+\]</span> <span class="math display">\[
+(B\times A)=-(A\times B)
+\]</span></li>
+</ul>
+<hr>
+<h3 data-original-heading="1.1.2 Component Form (Cartesian)" id="component-form-cartesian">1.1.2 Component Form (Cartesian)</h3>
+<p>Write vectors using basis vectors <span class="math inline">\(\hat x,\hat y,\hat z\)</span> <span class="math display">\[
+A=A_x\hat x+A_y\hat y+A_z\hat z
+\]</span> Components can be recovered by dotting with basis vectors <span class="math display">\[
+A_x=A\cdot\hat x,\qquad A_y=A\cdot\hat y,\qquad A_z=A\cdot\hat z
+\]</span></p>
+<h4 data-original-heading="(i) Addition and scaling" id="i-addition-and-scaling">1.2.1 (i) Addition and scaling</h4>
+<p><span class="math display">\[
+\begin{aligned}
+A+B&amp;=(A_x+B_x)\hat x+(A_y+B_y)\hat y+(A_z+B_z)\hat z
+\end{aligned}
+\]</span> <span class="math display">\[
+aA=(aA_x)\hat x+(aA_y)\hat y+(aA_z)\hat z
+\]</span></p>
+<h4 data-original-heading="(ii) Dot product and magnitude" id="ii-dot-product-and-magnitude">1.2.2 (ii) Dot product and magnitude</h4>
+<p>Using <span class="math display">\[
+\hat x\cdot\hat x=\hat y\cdot\hat y=\hat z\cdot\hat z=1,\qquad
+\hat x\cdot\hat y=\hat x\cdot\hat z=\hat y\cdot\hat z=0
+\]</span> we get <span class="math display">\[
+A\cdot B=A_xB_x+A_yB_y+A_zB_z
+\]</span> and <span class="math display">\[
+A\cdot A=A_x^2+A_y^2+A_z^2,\qquad
+A=\sqrt{A_x^2+A_y^2+A_z^2}
+\]</span></p>
+<h4 data-original-heading="(iii) Cross product (formula + determinant)" id="iii-cross-product-formula-determinant">1.2.3 (iii) Cross product (formula + determinant)</h4>
+<p>Basis cross products <span class="math display">\[
+\hat x\times\hat x=\hat y\times\hat y=\hat z\times\hat z=0
+\]</span> <span class="math display">\[
+\hat x\times\hat y=-\hat y\times\hat x=\hat z,\qquad
+\hat y\times\hat z=-\hat z\times\hat y=\hat x,\qquad
+\hat z\times\hat x=-\hat x\times\hat z=\hat y
+\]</span> Therefore <span class="math display">\[
+\begin{aligned}
+A\times B
+&amp;=(A_yB_z-A_zB_y)\hat x+(A_zB_x-A_xB_z)\hat y+(A_xB_y-A_yB_x)\hat z
+\end{aligned}
+\]</span> Neat determinant form <span class="math display">\[
+A\times B=
+\begin{vmatrix}
+\hat x&amp;\hat y&amp;\hat z\\
+A_x&amp;A_y&amp;A_z\\
+B_x&amp;B_y&amp;B_z
+\end{vmatrix}
+\]</span></p>
+<div class="math-theorem remark" data-callout="remark" data-label="1.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.3</span><span class="theorem-title">Right-handed convention</span></p>
+</div>
+<div class="theorem-content">
+<p>The basis cross-product signs assume a right-handed coordinate system</p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="1.1.3 Triple Products (Most-Used Identities)" id="triple-products-most-used-identities">1.1.3 Triple Products (Most-Used Identities)</h3>
+<h4 data-original-heading="(i) Scalar triple product" id="i-scalar-triple-product">1.3.1 (i) Scalar triple product</h4>
+<div class="math-theorem definition" data-callout="definition" data-label="1.4">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.4</span><span class="theorem-title">Scalar triple product</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+A\cdot(B\times C)
+\]</span></p>
+</div>
+</div>
+<p>Cyclic permutations are equal <span class="math display">\[
+A\cdot(B\times C)=B\cdot(C\times A)=C\cdot(A\times B)
+\]</span> Swap two vectors flips the sign <span class="math display">\[
+A\cdot(C\times B)=B\cdot(A\times C)=C\cdot(B\times A)
+\]</span> Component determinant <span class="math display">\[
+A\cdot(B\times C)=
+\begin{vmatrix}
+A_x&amp;A_y&amp;A_z\\
+B_x&amp;B_y&amp;B_z\\
+C_x&amp;C_y&amp;C_z
+\end{vmatrix}
+\]</span> Interchange dot/cross placement <span class="math display">\[
+A\cdot(B\times C)=(A\times B)\cdot C
+\]</span></p>
+<h4 data-original-heading="(ii) Vector triple product (BAC–CAB)" id="ii-vector-triple-product-baccab">1.3.2 (ii) Vector triple product (BAC–CAB)</h4>
+<div class="math-theorem definition" data-callout="definition" data-label="1.5">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.5</span><span class="theorem-title">Vector triple product</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+A\times(B\times C)
+\]</span></p>
+</div>
+</div>
+<p>BAC–CAB rule <span class="math display">\[
+A\times(B\times C)=B(A\cdot C)-C(A\cdot B)
+\]</span></p>
+<hr>
+<h3 data-original-heading="1.1.4 Position, Displacement, Separation (Notation to keep straight)" id="position-displacement-separation-notation-to-keep-straight">1.1.4 Position, Displacement, Separation (Notation to keep straight)</h3>
+<div class="math-theorem definition" data-callout="definition" data-label="1.6">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.6</span><span class="theorem-title">Position vector</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+r=x\hat x+y\hat y+z\hat z
+\]</span></p>
+</div>
+</div>
+<p>Magnitude and radial unit vector <span class="math display">\[
+r=\sqrt{x^2+y^2+z^2}
+\]</span> <span class="math display">\[
+\hat r=\frac{r}{r}=\frac{x\hat x+y\hat y+z\hat z}{\sqrt{x^2+y^2+z^2}}
+\]</span></p>
+<p>Infinitesimal displacement <span class="math display">\[
+dl=dx\,\hat x+dy\,\hat y+dz\,\hat z
+\]</span></p>
+<p>Separation from source point <span class="math inline">\(r'\)</span> to field point <span class="math inline">\(r\)</span> (script notation) <span class="math display">\[
+\mathscr r=r-r'
+\]</span> <span class="math display">\[
+\mathscr r=|r-r'|
+\]</span> <span class="math display">\[
+\hat{\mathscr r}=\frac{\mathscr r}{\mathscr r}=\frac{r-r'}{|r-r'|}
+\]</span></p>
+<hr>
+<h3 data-original-heading="1.1.5 What “Vector” Means (Transformation Criterion)" id="what-vector-means-transformation-criterion">1.1.5 What “Vector” Means (Transformation Criterion)</h3>
+<p>A vector is characterized by how its components change under <strong>rotation</strong> of the coordinate axes.</p>
+<p>Example: rotation by angle <span class="math inline">\(\phi\)</span> about the common <span class="math inline">\(x=\bar x\)</span> axis <span class="math display">\[
+\begin{pmatrix}
+\bar A_y\\
+\bar A_z
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos\phi&amp;\sin\phi\\
+-\sin\phi&amp;\cos\phi
+\end{pmatrix}
+\begin{pmatrix}
+A_y\\
+A_z
+\end{pmatrix}
+\]</span></p>
+<p>General 3D rotation (matrix <span class="math inline">\(R\)</span>) <span class="math display">\[
+\bar A_i=\sum_{j=1}^3 R_{ij}A_j
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.7">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.7</span><span class="theorem-title">Vector (rotation rule)</span></p>
+</div>
+<div class="theorem-content">
+<p>A vector is a set of three components that transforms the same way as <span class="math inline">\((x,y,z)\)</span> under a rotation of the coordinate axes</p>
+</div>
+</div>
+<p>(Preview) A second-rank tensor has nine components and transforms with two factors of <span class="math inline">\(R\)</span> <span class="math display">\[
+\bar T_{ij}=\sum_{k=1}^3\sum_{l=1}^3 R_{ik}R_{jl}T_{kl}
+\]</span></p>
+<h2 data-original-heading="1.2 Differential Calculus (Vector Derivatives)" id="differential-calculus-vector-derivatives">1.2 Differential Calculus (Vector Derivatives)</h2>
+<h3 data-original-heading="1.2.0 Quick Orientation (What changes, what stays)" id="quick-orientation-what-changes-what-stays">1.2.0 Quick Orientation (What changes, what stays)</h3>
+<p>A big theme of this chapter is that “vector calculus” is built to behave nicely under <strong>rotations</strong> of coordinates.<br>
+Under <strong>inversions</strong>, some objects behave “anomalously” (useful to remember later)</p>
+<div class="math-theorem remark" data-callout="remark" data-label="1.2.0">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.2.0</span><span class="theorem-title">Pseudovectors and pseudoscalars under inversion</span></p>
+</div>
+<div class="theorem-content">
+<p>The cross product of two vectors is called a <strong>pseudovector</strong> because of its behavior under inversions<br>
+The scalar triple product of three vectors is called a <strong>pseudoscalar</strong></p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="1.2.1 “Ordinary” Derivatives (One Variable)" id="ordinary-derivatives-one-variable">1.2.1 “Ordinary” Derivatives (One Variable)</h3>
+<p>Let <span class="math inline">\(f(x)\)</span> be a function of one variable.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.1</span><span class="theorem-title">Differential form of the derivative</span></p>
+</div>
+<div class="theorem-content">
+<p>The derivative <span class="math inline">\(df/dx\)</span> tells us how rapidly <span class="math inline">\(f(x)\)</span> varies when we change <span class="math inline">\(x\)</span> by a small amount <span class="math inline">\(dx\)</span> <span class="math display">\[
+df=\left(\frac{df}{dx}\right)dx
+\]</span></p>
+</div>
+</div>
+<p><strong>Geometrical interpretation</strong><br>
+<span class="math inline">\(df/dx\)</span> is the <strong>slope</strong> of the graph of <span class="math inline">\(f\)</span> versus <span class="math inline">\(x\)</span>.</p>
+<hr>
+<h3 data-original-heading="1.2.2 Gradient (Derivative of a Scalar Field)" id="gradient-derivative-of-a-scalar-field">1.2.2 Gradient (Derivative of a Scalar Field)</h3>
+<p>Now consider a function of <strong>three variables</strong>, e.g.&nbsp;a temperature field <span class="math inline">\(T(x,y,z)\)</span>.</p>
+<h4 data-original-heading="A. Total differential in 3D" id="a.-total-differential-in-3d">2.3.1 A. Total differential in 3D</h4>
+<p>A theorem on partial derivatives states <span class="math display">\[
+dT=\left(\frac{\partial T}{\partial x}\right)dx+\left(\frac{\partial T}{\partial y}\right)dy+\left(\frac{\partial T}{\partial z}\right)dz
+\]</span></p>
+<p>This is the 3D analog of <span class="math inline">\(df=(df/dx)dx\)</span><br>
+Instead of “one derivative,” we have three partial derivatives along the coordinate directions.</p>
+<h4 data-original-heading="B. Dot-product form and the definition of the gradient" id="b.-dot-product-form-and-the-definition-of-the-gradient">2.3.2 B. Dot-product form and the definition of the gradient</h4>
+<p>Recall the infinitesimal displacement vector <span class="math display">\[
+dl=dx\,\hat x+dy\,\hat y+dz\,\hat z
+\]</span></p>
+<p>Then the differential can be rewritten as <span class="math display">\[
+\begin{aligned}
+dT
+&amp;=\left(\frac{\partial T}{\partial x}\hat x+\frac{\partial T}{\partial y}\hat y+\frac{\partial T}{\partial z}\hat z\right)\cdot(dx\,\hat x+dy\,\hat y+dz\,\hat z)\\
+&amp;=(\nabla T)\cdot(dl)
+\end{aligned}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.2</span><span class="theorem-title">Gradient</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\nabla T\equiv \frac{\partial T}{\partial x}\hat x+\frac{\partial T}{\partial y}\hat y+\frac{\partial T}{\partial z}\hat z
+\]</span> <span class="math inline">\(\nabla T\)</span> is called the <strong>gradient</strong> of <span class="math inline">\(T\)</span></p>
+</div>
+</div>
+<h4 data-original-heading="C. Geometrical meaning of \nabla T" id="c.-geometrical-meaning-of-nabla-t">2.3.3 C. Geometrical meaning of <span class="math inline">\(\nabla T\)</span></h4>
+<p>Using the dot-product rule <span class="math display">\[
+dT=\nabla T\cdot dl=|\nabla T|\,|dl|\cos\theta
+\]</span> where <span class="math inline">\(\theta\)</span> is the angle between <span class="math inline">\(\nabla T\)</span> and <span class="math inline">\(dl\)</span>.</p>
+<p>Fix <span class="math inline">\(|dl|\)</span> and vary direction (vary <span class="math inline">\(\theta\)</span>). The maximum change in <span class="math inline">\(T\)</span> occurs when <span class="math inline">\(\theta=0\)</span>.<br>
+So:</p>
+<ul>
+<li><span class="math inline">\(\nabla T\)</span> points in the <strong>direction of maximum increase</strong> of <span class="math inline">\(T\)</span></li>
+<li><span class="math inline">\(|\nabla T|\)</span> is the <strong>slope</strong> (rate of increase) in that direction</li>
+</ul>
+<div class="math-theorem remark" data-callout="remark" data-label="1.2.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.2.3</span><span class="theorem-title">How to find extrema of <span class="math inline">\(T(x,y,z)\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(\nabla T=0\)</span> at <span class="math inline">\((x,y,z)\)</span>, then <span class="math inline">\(dT=0\)</span> for small displacements about that point<br>
+Such a point can be a maximum, minimum, saddle, or “shoulder”<br>
+To locate extrema, set the gradient equal to zero</p>
+</div>
+</div>
+<h4 data-original-heading="D. A key example" id="d.-a-key-example">2.3.4 D. A key example</h4>
+<div class="math-theorem example" data-callout="example" data-label="1.2.4">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.2.4</span><span class="theorem-title">Gradient of <span class="math inline">\(r=\sqrt{x^2+y^2+z^2}\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p>Find <span class="math inline">\(\nabla r\)</span> where <span class="math display">\[
+r=\sqrt{x^2+y^2+z^2}
+\]</span> Compute <span class="math display">\[
+\begin{aligned}
+\nabla r
+&amp;=\frac{\partial r}{\partial x}\hat x+\frac{\partial r}{\partial y}\hat y+\frac{\partial r}{\partial z}\hat z\\[4pt]
+&amp;=\frac12\frac{2x}{\sqrt{x^2+y^2+z^2}}\hat x+\frac12\frac{2y}{\sqrt{x^2+y^2+z^2}}\hat y+\frac12\frac{2z}{\sqrt{x^2+y^2+z^2}}\hat z\\[6pt]
+&amp;=\frac{x\hat x+y\hat y+z\hat z}{\sqrt{x^2+y^2+z^2}}\\[6pt]
+&amp;=\frac{r}{r}\\[2pt]
+&amp;=\hat r
+\end{aligned}
+\]</span> Interpretation: distance from the origin increases most rapidly in the radial direction, at rate <span class="math inline">\(1\)</span></p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="1.2.3 The Del Operator \nabla" id="the-del-operator-nabla">1.2.3 The Del Operator <span class="math inline">\(\nabla\)</span></h3>
+<p>The gradient has the formal appearance of a vector <span class="math inline">\(\nabla\)</span> “multiplying” a scalar <span class="math inline">\(T\)</span> <span class="math display">\[
+\nabla T=\left(\hat x\frac{\partial}{\partial x}+\hat y\frac{\partial}{\partial y}+\hat z\frac{\partial}{\partial z}\right)T
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.5">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.5</span><span class="theorem-title">Del operator</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\nabla=\hat x\frac{\partial}{\partial x}+\hat y\frac{\partial}{\partial y}+\hat z\frac{\partial}{\partial z}
+\]</span></p>
+</div>
+</div>
+<div class="math-theorem remark" data-callout="remark" data-label="1.2.6">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.2.6</span><span class="theorem-title"><span class="math inline">\(\nabla\)</span> is a vector operator, not a vector</span></p>
+</div>
+<div class="theorem-content">
+<p>Del is not a vector in the usual sense<br>
+It becomes meaningful only when it acts on a function<br>
+Think “differentiate what follows,” not “multiply” in the ordinary algebraic sense</p>
+</div>
+</div>
+<p>A useful viewpoint: an ordinary vector <span class="math inline">\(A\)</span> can combine with other objects in three ways</p>
+<ul>
+<li>by a scalar <span class="math inline">\(a\)</span> as <span class="math inline">\(Aa\)</span></li>
+<li>by a vector <span class="math inline">\(B\)</span> via <span class="math inline">\(A\cdot B\)</span></li>
+<li>by a vector <span class="math inline">\(B\)</span> via <span class="math inline">\(A\times B\)</span></li>
+</ul>
+<p>Correspondingly, <span class="math inline">\(\nabla\)</span> acts in three major ways (vector derivatives)</p>
+<ul>
+<li>on a scalar <span class="math inline">\(T\)</span> as <span class="math inline">\(\nabla T\)</span> (gradient)</li>
+<li>on a vector function <span class="math inline">\(v\)</span> via <span class="math inline">\(\nabla\cdot v\)</span> (divergence)</li>
+<li>on a vector function <span class="math inline">\(v\)</span> via <span class="math inline">\(\nabla\times v\)</span> (curl)</li>
+</ul>
+<hr>
+<h3 data-original-heading="1.2.4 Divergence" id="divergence">1.2.4 Divergence</h3>
+<p>Let a vector function be written in components as <span class="math display">\[
+v=v_x\hat x+v_y\hat y+v_z\hat z
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.6">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.6</span><span class="theorem-title">Divergence</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\begin{aligned}
+\nabla\cdot v
+&amp;=\left(\hat x\frac{\partial}{\partial x}+\hat y\frac{\partial}{\partial y}+\hat z\frac{\partial}{\partial z}\right)\cdot(v_x\hat x+v_y\hat y+v_z\hat z)\\
+&amp;=\frac{\partial v_x}{\partial x}+\frac{\partial v_y}{\partial y}+\frac{\partial v_z}{\partial z}
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Key point: <span class="math inline">\(\nabla\cdot v\)</span> is a <strong>scalar</strong>.</p>
+<p><strong>Geometrical meaning</strong><br>
+Divergence measures how much the vector field “spreads out” from a point</p>
+<ul>
+<li>positive divergence: a “source” or “faucet”</li>
+<li>negative divergence: a “sink” or “drain”</li>
+</ul>
+<div class="math-theorem example" data-callout="example" data-label="1.2.7">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.2.7</span><span class="theorem-title">Simple divergences</span></p>
+</div>
+<div class="theorem-content">
+<p>Let <span class="math inline">\(v_a=r=x\hat x+y\hat y+z\hat z\)</span>, <span class="math inline">\(v_b=\hat z\)</span>, and <span class="math inline">\(v_c=z\hat z\)</span> <span class="math display">\[
+\begin{aligned}
+\nabla\cdot v_a
+&amp;=\frac{\partial}{\partial x}(x)+\frac{\partial}{\partial y}(y)+\frac{\partial}{\partial z}(z)\\
+&amp;=1+1+1\\
+&amp;=3
+\end{aligned}
+\]</span> <span class="math display">\[
+\begin{aligned}
+\nabla\cdot v_b
+&amp;=\frac{\partial}{\partial x}(0)+\frac{\partial}{\partial y}(0)+\frac{\partial}{\partial z}(1)\\
+&amp;=0+0+0\\
+&amp;=0
+\end{aligned}
+\]</span> <span class="math display">\[
+\begin{aligned}
+\nabla\cdot v_c
+&amp;=\frac{\partial}{\partial x}(0)+\frac{\partial}{\partial y}(0)+\frac{\partial}{\partial z}(z)\\
+&amp;=0+0+1\\
+&amp;=1
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="1.2.5 Curl" id="curl">1.2.5 Curl</h3>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.8">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.8</span><span class="theorem-title">Curl (component form)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\nabla\times v=
+\begin{vmatrix}
+\hat x&amp;\hat y&amp;\hat z\\
+\partial/\partial x&amp;\partial/\partial y&amp;\partial/\partial z\\
+v_x&amp;v_y&amp;v_z
+\end{vmatrix}
+\]</span> Equivalently <span class="math display">\[
+\nabla\times v
+=\hat x\left(\frac{\partial v_z}{\partial y}-\frac{\partial v_y}{\partial z}\right)
++\hat y\left(\frac{\partial v_x}{\partial z}-\frac{\partial v_z}{\partial x}\right)
++\hat z\left(\frac{\partial v_y}{\partial x}-\frac{\partial v_x}{\partial y}\right)
+\]</span></p>
+</div>
+</div>
+<p>Key point: <span class="math inline">\(\nabla\times v\)</span> is a <strong>vector</strong>.</p>
+<p><strong>Geometrical meaning</strong><br>
+Curl measures how much a vector field “swirls” around a point<br>
+A region of large curl behaves like a whirlpool.</p>
+<div class="math-theorem example" data-callout="example" data-label="1.2.9">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.2.9</span><span class="theorem-title">Simple curls in the <span class="math inline">\(\hat z\)</span> direction</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(v_a=-y\hat x+x\hat y\)</span> and <span class="math inline">\(v_b=x\hat y\)</span> <span class="math display">\[
+\nabla\times v_a=
+\begin{vmatrix}
+\hat x&amp;\hat y&amp;\hat z\\
+\partial/\partial x&amp;\partial/\partial y&amp;\partial/\partial z\\
+-y&amp;x&amp;0
+\end{vmatrix}
+=2\hat z
+\]</span> <span class="math display">\[
+\nabla\times v_b=
+\begin{vmatrix}
+\hat x&amp;\hat y&amp;\hat z\\
+\partial/\partial x&amp;\partial/\partial y&amp;\partial/\partial z\\
+0&amp;x&amp;0
+\end{vmatrix}
+=\hat z
+\]</span> These curls point in the <span class="math inline">\(+z\)</span> direction</p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="1.2.6 Rules for \nabla (Linearity and Product Rules)" id="rules-for-nabla-linearity-and-product-rules">1.2.6 Rules for <span class="math inline">\(\nabla\)</span> (Linearity and Product Rules)</h3>
+<h4 data-original-heading="A. Linearity (sum rules and constants)" id="a.-linearity-sum-rules-and-constants">2.7.1 A. Linearity (sum rules and constants)</h4>
+<p>These mirror ordinary derivatives <span class="math display">\[
+\nabla(f+g)=\nabla f+\nabla g
+\]</span> <span class="math display">\[
+\nabla\cdot(A+B)=(\nabla\cdot A)+(\nabla\cdot B)
+\]</span> <span class="math display">\[
+\nabla\times(A+B)=(\nabla\times A)+(\nabla\times B)
+\]</span> <span class="math display">\[
+\nabla(cf)=c\nabla f
+\]</span> <span class="math display">\[
+\nabla\cdot(cA)=c(\nabla\cdot A)
+\]</span> <span class="math display">\[
+\nabla\times(cA)=c(\nabla\times A)
+\]</span></p>
+<h4 data-original-heading="B. Six product rules (core identities)" id="b.-six-product-rules-core-identities">2.7.2 B. Six product rules (core identities)</h4>
+<p>There are two ways to construct a scalar</p>
+<ul>
+<li><span class="math inline">\(fg\)</span> (product of two scalar functions)</li>
+<li><span class="math inline">\(A\cdot B\)</span> (dot product of two vector functions)</li>
+</ul>
+<p>and two ways to make a vector</p>
+<ul>
+<li><span class="math inline">\(fA\)</span> (scalar times vector)</li>
+<li><span class="math inline">\(A\times B\)</span> (cross product of two vectors)</li>
+</ul>
+<p>Accordingly, there are six product rules</p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.10">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.10</span><span class="theorem-title">Product rules for <span class="math inline">\(\nabla\)</span></span></p>
+</div>
+<div class="theorem-content">
+<ol type="i">
+<li>Two scalars <span class="math display">\[
+\nabla(fg)=f\nabla g+g\nabla f
+\]</span></li>
+<li>Dot product <span class="math display">\[
+\nabla(A\cdot B)=A\times(\nabla\times B)+B\times(\nabla\times A)+(A\cdot\nabla)B+(B\cdot\nabla)A
+\]</span></li>
+<li>Divergence of scalar times vector <span class="math display">\[
+\nabla\cdot(fA)=f(\nabla\cdot A)+A\cdot(\nabla f)
+\]</span></li>
+<li>Divergence of a cross product <span class="math display">\[
+\nabla\cdot(A\times B)=B\cdot(\nabla\times A)-A\cdot(\nabla\times B)
+\]</span></li>
+<li>Curl of scalar times vector <span class="math display">\[
+\nabla\times(fA)=f(\nabla\times A)-A\times(\nabla f)
+\]</span></li>
+<li>Curl of a cross product <span class="math display">\[
+\nabla\times(A\times B)=(B\cdot\nabla)A-(A\cdot\nabla)B+A(\nabla\cdot B)-B(\nabla\cdot A)
+\]</span></li>
+</ol>
+</div>
+</div>
+<p>A representative derivation worth remembering is how (iii) “looks like” the ordinary product rule <span class="math display">\[
+\begin{aligned}
+\nabla\cdot(fA)
+&amp;=\frac{\partial}{\partial x}(fA_x)+\frac{\partial}{\partial y}(fA_y)+\frac{\partial}{\partial z}(fA_z)\\
+&amp;=\underbrace{\left(\frac{\partial f}{\partial x}A_x+\frac{\partial f}{\partial y}A_y+\frac{\partial f}{\partial z}A_z\right)}_{A\cdot(\nabla f)}
++\underbrace{f\left(\frac{\partial A_x}{\partial x}+\frac{\partial A_y}{\partial y}+\frac{\partial A_z}{\partial z}\right)}_{f(\nabla\cdot A)}
+\end{aligned}
+\]</span></p>
+<h4 data-original-heading="C. Quotient rules (often used, easy to reconstruct)" id="c.-quotient-rules-often-used-easy-to-reconstruct">2.7.3 C. Quotient rules (often used, easy to reconstruct)</h4>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.11">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.11</span><span class="theorem-title">Quotient rules</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\nabla\left(\frac{f}{g}\right)=\frac{g\nabla f-f\nabla g}{g^2}
+\]</span> <span class="math display">\[
+\nabla\cdot\left(\frac{A}{g}\right)=\frac{g(\nabla\cdot A)-A\cdot(\nabla g)}{g^2}
+\]</span> <span class="math display">\[
+\nabla\times\left(\frac{A}{g}\right)=\frac{g(\nabla\times A)+A\times(\nabla g)}{g^2}
+\]</span></p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="1.2.7 Second Derivatives (Applying \nabla Twice)" id="second-derivatives-applying-nabla-twice">1.2.7 Second Derivatives (Applying <span class="math inline">\(\nabla\)</span> Twice)</h3>
+<p>Gradient, divergence, and curl are the only first derivatives we can make with <span class="math inline">\(\nabla\)</span><br>
+By applying <span class="math inline">\(\nabla\)</span> twice, we can construct five species of second derivatives</p>
+<ul>
+<li>Divergence of gradient <span class="math inline">\(\nabla\cdot(\nabla T)\)</span></li>
+<li>Curl of gradient <span class="math inline">\(\nabla\times(\nabla T)\)</span></li>
+<li>Gradient of divergence <span class="math inline">\(\nabla(\nabla\cdot v)\)</span></li>
+<li>Divergence of curl <span class="math inline">\(\nabla\cdot(\nabla\times v)\)</span></li>
+<li>Curl of curl <span class="math inline">\(\nabla\times(\nabla\times v)\)</span></li>
+</ul>
+<h4 data-original-heading="A. Laplacian (divergence of a gradient)" id="a.-laplacian-divergence-of-a-gradient">2.8.1 A. Laplacian (divergence of a gradient)</h4>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla\cdot(\nabla T)
+&amp;=\left(\hat x\frac{\partial}{\partial x}+\hat y\frac{\partial}{\partial y}+\hat z\frac{\partial}{\partial z}\right)\cdot\left(\frac{\partial T}{\partial x}\hat x+\frac{\partial T}{\partial y}\hat y+\frac{\partial T}{\partial z}\hat z\right)\\
+&amp;=\frac{\partial^2T}{\partial x^2}+\frac{\partial^2T}{\partial y^2}+\frac{\partial^2T}{\partial z^2}
+\end{aligned}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.12">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.12</span><span class="theorem-title">Laplacian of a scalar</span></p>
+</div>
+<div class="theorem-content">
+<p>This object is written as <span class="math inline">\(\nabla^2T\)</span> and is called the <strong>Laplacian</strong> of <span class="math inline">\(T\)</span> <span class="math display">\[
+\nabla^2T=\frac{\partial^2T}{\partial x^2}+\frac{\partial^2T}{\partial y^2}+\frac{\partial^2T}{\partial z^2}
+\]</span></p>
+</div>
+</div>
+<p>Sometimes we also speak of the Laplacian of a vector <span class="math inline">\(\nabla^2v\)</span> meaning “apply <span class="math inline">\(\nabla^2\)</span> to each component” <span class="math display">\[
+\nabla^2v=(\nabla^2v_x)\hat x+(\nabla^2v_y)\hat y+(\nabla^2v_z)\hat z
+\]</span></p>
+<h4 data-original-heading="B. Two always-zero identities" id="b.-two-always-zero-identities">2.8.2 B. Two always-zero identities</h4>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.13">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.13</span><span class="theorem-title">Curl of a gradient</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\nabla\times(\nabla T)=0
+\]</span></p>
+</div>
+</div>
+<p>A key reason is the equality of cross derivatives <span class="math display">\[
+\frac{\partial}{\partial x}\left(\frac{\partial T}{\partial y}\right)=\frac{\partial}{\partial y}\left(\frac{\partial T}{\partial x}\right)
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.14">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.14</span><span class="theorem-title">Divergence of a curl</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\nabla\cdot(\nabla\times v)=0
+\]</span></p>
+</div>
+</div>
+<h4 data-original-heading="C. Curl of curl identity" id="c.-curl-of-curl-identity">2.8.3 C. Curl of curl identity</h4>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.15">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.15</span><span class="theorem-title">Curl of curl</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\nabla\times(\nabla\times v)=\nabla(\nabla\cdot v)-\nabla^2v
+\]</span></p>
+</div>
+</div>
+<h4 data-original-heading="D. What’s “new” at second order" id="d.-whats-new-at-second-order">2.8.4 D. What’s “new” at second order</h4>
+<ul>
+<li><span class="math inline">\(\nabla^2T\)</span> (Laplacian) is fundamental and appears everywhere</li>
+<li><span class="math inline">\(\nabla(\nabla\cdot v)\)</span> (gradient of the divergence) occurs less often</li>
+<li>The other combinations either vanish identically or reduce to these via identities</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span>Next page →</span><span>习题集</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Chapter 1</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#vector-algebra" class="is-active" aria-current="location">1.1 Vector Algebra</a></li><li style="--depth:1"><a href="#core-operations-on-vectors">1.1.1 Core Operations on Vectors</a></li><li style="--depth:2"><a href="#i-addition-subtraction">1.1.1 (i) Addition / Subtraction</a></li><li style="--depth:2"><a href="#ii-scalar-multiplication">1.1.2 (ii) Scalar Multiplication</a></li><li style="--depth:2"><a href="#iii-dot-product-scalar-product">1.1.3 (iii) Dot Product (scalar product)</a></li><li style="--depth:2"><a href="#iv-cross-product-vector-product">1.1.4 (iv) Cross Product (vector product)</a></li><li style="--depth:1"><a href="#component-form-cartesian">1.1.2 Component Form (Cartesian)</a></li><li style="--depth:2"><a href="#i-addition-and-scaling">1.2.1 (i) Addition and scaling</a></li><li style="--depth:2"><a href="#ii-dot-product-and-magnitude">1.2.2 (ii) Dot product and magnitude</a></li><li style="--depth:2"><a href="#iii-cross-product-formula-determinant">1.2.3 (iii) Cross product (formula + determinant)</a></li><li style="--depth:1"><a href="#triple-products-most-used-identities">1.1.3 Triple Products (Most-Used Identities)</a></li><li style="--depth:2"><a href="#i-scalar-triple-product">1.3.1 (i) Scalar triple product</a></li><li style="--depth:2"><a href="#ii-vector-triple-product-baccab">1.3.2 (ii) Vector triple product (BAC–CAB)</a></li><li style="--depth:1"><a href="#position-displacement-separation-notation-to-keep-straight">1.1.4 Position, Displacement, Separation (Notation to keep straight)</a></li><li style="--depth:1"><a href="#what-vector-means-transformation-criterion">1.1.5 What “Vector” Means (Transformation Criterion)</a></li><li style="--depth:0"><a href="#differential-calculus-vector-derivatives">1.2 Differential Calculus (Vector Derivatives)</a></li><li style="--depth:1"><a href="#quick-orientation-what-changes-what-stays">1.2.0 Quick Orientation (What changes, what stays)</a></li><li style="--depth:1"><a href="#ordinary-derivatives-one-variable">1.2.1 “Ordinary” Derivatives (One Variable)</a></li><li style="--depth:1"><a href="#gradient-derivative-of-a-scalar-field">1.2.2 Gradient (Derivative of a Scalar Field)</a></li><li style="--depth:2"><a href="#a.-total-differential-in-3d">2.3.1 A. Total differential in 3D</a></li><li style="--depth:2"><a href="#b.-dot-product-form-and-the-definition-of-the-gradient">2.3.2 B. Dot-product form and the definition of the gradient</a></li><li style="--depth:2"><a href="#c.-geometrical-meaning-of-nabla-t">2.3.3 C. Geometrical meaning of \nabla T</a></li><li style="--depth:2"><a href="#d.-a-key-example">2.3.4 D. A key example</a></li><li style="--depth:1"><a href="#the-del-operator-nabla">1.2.3 The Del Operator \nabla</a></li><li style="--depth:1"><a href="#divergence">1.2.4 Divergence</a></li><li style="--depth:1"><a href="#curl">1.2.5 Curl</a></li><li style="--depth:1"><a href="#rules-for-nabla-linearity-and-product-rules">1.2.6 Rules for \nabla (Linearity and Product Rules)</a></li><li style="--depth:2"><a href="#a.-linearity-sum-rules-and-constants">2.7.1 A. Linearity (sum rules and constants)</a></li><li style="--depth:2"><a href="#b.-six-product-rules-core-identities">2.7.2 B. Six product rules (core identities)</a></li><li style="--depth:2"><a href="#c.-quotient-rules-often-used-easy-to-reconstruct">2.7.3 C. Quotient rules (often used, easy to reconstruct)</a></li><li style="--depth:1"><a href="#second-derivatives-applying-nabla-twice">1.2.7 Second Derivatives (Applying \nabla Twice)</a></li><li style="--depth:2"><a href="#a.-laplacian-divergence-of-a-gradient">2.8.1 A. Laplacian (divergence of a gradient)</a></li><li style="--depth:2"><a href="#b.-two-always-zero-identities">2.8.2 B. Two always-zero identities</a></li><li style="--depth:2"><a href="#c.-curl-of-curl-identity">2.8.3 C. Curl of curl identity</a></li><li style="--depth:2"><a href="#d.-whats-new-at-second-order">2.8.4 D. What’s “new” at second order</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

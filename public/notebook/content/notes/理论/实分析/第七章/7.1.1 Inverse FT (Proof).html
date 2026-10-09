@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>7.1.1 反函数定理（证明） — E.H. Notebook</title>
+<meta name="description" content="7.1* Implicit Function Theorem (IFT) Proof1. Recall IFTTheorem 7.1.1: Let y = f(x): A \subset \mathbb{R}^n \to \mathbb{R}^n be of class C^1. Suppose x_0 \in A with: J_f(x">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="实分析 file hierarchy" data-sidebar-root="content/notes/理论/实分析"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/实分析/Homework" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-14bb7df7f893" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Homework</span></button></div><ul class="tree-children" id="folder-14bb7df7f893" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%206.html"><span class="page-number"></span><span>Homework 6</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%207.html"><span class="page-number"></span><span>Homework 7</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%208.html"><span class="page-number"></span><span>Homework 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%209.html"><span class="page-number"></span><span>Homework 9</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2010.html"><span class="page-number"></span><span>Homework 10</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2011.html"><span class="page-number"></span><span>Homework 11</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第七章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6c1cdfa2831" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第七章</span></button></div><ul class="tree-children" id="folder-f6c1cdfa2831"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1%20Inverse%20Function%20Theorem.html"><span class="page-number">7.1</span><span>Inverse Function Theorem</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1.1%20Inverse%20FT%20(Proof).html"><span class="page-number">7.1.1</span><span>Inverse FT (Proof)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.2%20Implicit%20Function%20Theorem.html"><span class="page-number">7.2</span><span>Implicit Function Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.6%20Morse%20Lemma.html"><span class="page-number">7.6</span><span>Morse Lemma</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ba4a6565a187" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-ba4a6565a187" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Computing%20Integrals.html"><span class="page-number">9.1</span><span>Computing Integrals</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第八章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d4f2f6842523" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第八章</span></button></div><ul class="tree-children" id="folder-d4f2f6842523" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.1%20%E5%BA%A6%E9%87%8F%E7%90%86%E8%AE%BA.html"><span class="page-number">8.1</span><span>度量理论</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.2%20Criterion%20for%20Integrability.html"><span class="page-number">8.2</span><span>Criterion for Integrability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.3%20Proof%20of%20Lebesgue's%20Theorem.html"><span class="page-number">8.3</span><span>Proof of Lebesgue&#39;s Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.5%20Improper%20Integral.html"><span class="page-number">8.5</span><span>Improper Integral</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.6%20Lebesgue%20Convergence%20Theorem.html"><span class="page-number">8.6</span><span>Lebesgue Convergence Theorem</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第六章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aaca2e98953e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第六章</span></button></div><ul class="tree-children" id="folder-aaca2e98953e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.4%20Sufficient%20Conditions%20for%20Differentiability.html"><span class="page-number">6.4</span><span>Sufficient Conditions for Differentiability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.5%20The%20Chain%20Rule.html"><span class="page-number">6.5</span><span>The Chain Rule</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.6%20Product%20Rule%20and%20Gradients.html"><span class="page-number">6.6</span><span>Product Rule and Gradients</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.9%20Taylor%20Higher%20Dimentions.html"><span class="page-number">6.9</span><span>Taylor Higher Dimentions</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-6b1aa89ac58c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-6b1aa89ac58c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%8D%81%E7%AB%A0/10.1%20Fourier%20Analysis.html"><span class="page-number">10.1</span><span>Fourier Analysis</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/index.html">第七章</a></nav><h1 id="reader-title">7.1.1 反函数定理（证明）</h1></header><div id="article-body" class="prose"><h2 data-original-heading="7.1* Implicit Function Theorem (IFT) Proof" id="implicit-function-theorem-ift-proof">7.1* Implicit Function Theorem (IFT) Proof</h2>
+<h3 data-original-heading="1. Recall IFT" id="recall-ift">1. Recall IFT</h3>
+<p><strong>Theorem 7.1.1:</strong> Let <span class="math inline">\(y = f(x): A \subset \mathbb{R}^n \to \mathbb{R}^n\)</span> be of class <span class="math inline">\(C^1\)</span>. Suppose <span class="math inline">\(x_0 \in A\)</span> with: <span class="math display">\[
+J_f(x_0) = \det(Df(x_0)) \ne 0
+\]</span> Then there exist neighborhoods <span class="math inline">\(U\)</span> of <span class="math inline">\(x_0\)</span> in <span class="math inline">\(A\)</span> and <span class="math inline">\(W\)</span> of <span class="math inline">\(y_0 = f(x_0)\)</span> such that:</p>
+<ol type="1">
+<li><span class="math inline">\(f(U) = W\)</span> and <span class="math inline">\(f: U \to W\)</span> has an inverse <span class="math inline">\(f^{-1}: W \to U\)</span>.</li>
+<li><span class="math inline">\(f^{-1} \in C^1\)</span> (If <span class="math inline">\(f \in C^r\)</span>, then <span class="math inline">\(f^{-1} \in C^r\)</span>).</li>
+<li><span class="math inline">\(Df^{-1}(y) = [Df(x)]^{-1}\)</span> for <span class="math inline">\(x \in U\)</span> and <span class="math inline">\(y = f(x)\)</span>.</li>
+</ol>
+<h3 data-original-heading="2. Proof of Theorem 7.1.1" id="proof-of-theorem-7.1.1">2. Proof of Theorem 7.1.1</h3>
+<h4 data-original-heading="Step 1: Reduction" id="step-1-reduction">7.1.1.7.2.1 Step 1: Reduction</h4>
+<p>We may assume <span class="math inline">\(Df(x_0) = I\)</span> and <span class="math inline">\(x_0 = 0\)</span>, <span class="math inline">\(y_0 = f(x_0)\)</span>.</p>
+<h4 data-original-heading="Step 2: Existence of inverse" id="step-2-existence-of-inverse">7.1.1.7.2.2 Step 2: Existence of inverse</h4>
+<p>Consider the function <span class="math inline">\(g(x) = x - f(x)\)</span>.</p>
+<ul>
+<li>Using continuity of <span class="math inline">\(Dg(x)\)</span> at <span class="math inline">\(0\)</span> and Mean Value Theorem, one can show there exists <span class="math inline">\(\delta &gt; 0\)</span> such that for <span class="math inline">\(x \in B(0, \delta)\)</span>: <span class="math display">\[
+\|g(x)\| \le \frac{\delta}{2}
+\]</span></li>
+<li>Define <span class="math inline">\(g: B(0, \delta) \to B(0, \frac{\delta}{2})\)</span>.</li>
+<li>Let <span class="math inline">\(W = B(0, \frac{\delta}{2})\)</span>, and define: <span class="math display">\[
+U = \{ x \in B(0, \delta): f(x) \in W \}
+\]</span></li>
+</ul>
+<h4 data-original-heading="Step 3: Existence of f^{-1}: W \to U" id="step-3-existence-of-f-1-w-to-u">7.1.1.7.2.3 Step 3: Existence of <span class="math inline">\(f^{-1}: W \to U\)</span></h4>
+<p>Fix <span class="math inline">\(y \in W\)</span>. Apply the Contraction Mapping Principle (CMP) to: <span class="math display">\[
+g_y(x) = y + x - f(x) = y + g(x)
+\]</span> Then <span class="math inline">\(g_y(x): B(0, \delta) \to B(0, \delta)\)</span>. Thus, there exists a unique <span class="math inline">\(x \in B(0, \delta)\)</span> such that: <span class="math display">\[
+g_y(x) = x \quad \Longrightarrow \quad f(x) = y
+\]</span> Therefore, <span class="math inline">\(\exists! x \in U\)</span> such that <span class="math inline">\(f(x) = y\)</span>.</p>
+<p>Fix <span class="math inline">\(y, y_1, y_2 \in W\)</span>, let <span class="math inline">\(x_i = f^{-1}(y_i), i = 1,2\)</span>. Then: <span class="math display">\[
+\| f^{-1}(y_1) - f^{-1}(y_2) \| = \| x_1 - x_2 \|
+= \| g_{y_1}(x_1) - g_{y_2}(x_2) \|
+\]</span></p>
+<p>Since <span class="math inline">\(\| Dg(x) \| \le \frac{1}{2}\)</span> for <span class="math inline">\(x \in B(0, \delta)\)</span>, we get: <span class="math display">\[
+\| x_1 - x_2 \| \le 2 \| y_1 - y_2 \|
+\]</span></p>
+<p>Thus, <span class="math inline">\(f^{-1}\)</span> is Lipschitz continuous.</p>
+<h4 data-original-heading="Step 4: Differentiability of f^{-1}" id="step-4-differentiability-of-f-1">7.1.1.7.2.4 Step 4: Differentiability of <span class="math inline">\(f^{-1}\)</span></h4>
+<ol type="i">
+<li><strong>Observation:</strong> <span class="math inline">\([Df(x_0)]^{-1}\)</span> exists and <span class="math inline">\(Df(x)\)</span> is continuous at <span class="math inline">\(x_0\)</span>.</li>
+</ol>
+<p><span class="math display">\[ \Rightarrow \exists \delta &gt; 0 \text{ such that } [Df(x)]^{-1} \text{ exists and bounded by } M \text{, } \forall \|x\| \leq \delta \]</span> <span class="math display">\[ \| [Df(x)]^{-1} \| \leq M, \quad \forall x \in B(0, \delta) \]</span></p>
+<ol start="2" type="i">
+<li>Show <span class="math inline">\(f^{-1}\)</span> is differentiable at any <span class="math inline">\(y_* \in W\)</span> and: <span class="math display">\[
+Df^{-1}(y_0) = [Df(x_0)]^{-1}, \quad \text{where} \quad y_0 = f(x_0)
+\]</span></li>
+</ol>
+<p>Fix <span class="math inline">\(y_* \in W\)</span>. Then: <span class="math display">\[
+\frac{\| f^{-1}(y) - f^{-1}(y_*) - [Df(x_0)]^{-1}(y - y_*) \|}{\| y - y_* \|}
+\]</span> can be simplified, and as <span class="math inline">\(y \to y_*\)</span>, it tends to <span class="math inline">\(0\)</span>.</p>
+<p>Thus, in conclusion, <span class="math inline">\(f^{-1}(y)\)</span> is differentiable at <span class="math inline">\(y_* \in W\)</span> and: <span class="math display">\[
+Df^{-1}(y_*) = [Df(x_*)]^{-1}
+\]</span></p>
+<hr>
+<h4 data-original-heading="Example:" id="example">7.1.1.7.2.5 Example:</h4>
+<p>Investigate the invertibility (both local and global) for the map: <span class="math display">\[f \in C^\infty, \quad A = \mathbb{R}^2\]</span></p>
+<p><span class="math display">\[W = (u,v) = f(x,y): \mathbb{R}^2 \to \mathbb{R}^2\]</span> Given by: <span class="math display">\[
+u = e^x\cos y, \quad v = e^x\sin y\]</span></p>
+<ul>
+<li>Compute Jacobian determinant: <span class="math display">\[
+J_f(x,y) = \det(Df(x,y)) =
+\begin{vmatrix}
+e^x\cos y &amp; -e^x\sin y \\\\
+e^x\sin y &amp; e^x\cos y
+\end{vmatrix}
+= e^{2x} &gt; 0
+\]</span></li>
+</ul>
+<p>Thus, by IFT, <span class="math inline">\(f\)</span> is invertible locally at any point and: <span class="math display">\[
+Df^{-1}(u,v) = [Df(x,y)]^{-1} =
+\begin{bmatrix}
+e^x\cos y &amp; -e^x\sin y \\\\
+e^x\sin y &amp; e^x\cos y
+\end{bmatrix}^{-1}
+= \begin{bmatrix}
+e^{-x}\cos y &amp; e^{-x}\sin y \\\\
+-e^{-x}\sin y &amp; e^{-x}\cos y
+\end{bmatrix}
+\]</span></p>
+<p>However, <span class="math inline">\(f\)</span> is <strong>not globally invertible</strong> (not injective). Consider: <span class="math display">\[
+\begin{aligned}
+f(x_0, y_0 + 2\pi) &amp;= (e^{x_0}\cos(y_0 + 2\pi), e^{x_0}\sin(y_0 + 2\pi))\\\\
+&amp;= (e^{x_0}\cos y_0, e^{x_0}\sin y_0)\\\\
+&amp;= (u_0, v_0)
+\end{aligned}
+\]</span></p>
+<p>In complex notation, <span class="math inline">\(f\)</span> can be written as: <span class="math display">\[
+f(z) = e^z = e^{x+iy} = e^x e^{iy} = e^x(\cos y + i \sin y)
+\]</span> with <span class="math inline">\(u = e^x \cos y\)</span>, <span class="math inline">\(v = e^x \sin y\)</span>.</p>
+<hr>
+<h3 data-original-heading="Conclusion" id="conclusion">7.1.1.7.3 Conclusion</h3>
+<p>Since <span class="math inline">\(f(x, y)\)</span> maps points periodically in <span class="math inline">\(y\)</span>, it is not globally injective, despite being locally invertible.</p>
+<hr>
+<h3 data-original-heading="Additional Notes" id="additional-notes">7.1.1.7.4 Additional Notes</h3>
+<p>The periodic nature is reflected in the mapping: <span class="math display">\[f(x_0, y_0 + 2\pi) = f(x_0, y_0)\]</span> This demonstrates that multiple points in the domain map to the same point in the range, confirming non-injectivity.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1%20Inverse%20Function%20Theorem.html"><span>← Previous page</span><span>7.1 反函数定理</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.2%20Implicit%20Function%20Theorem.html"><span>Next page →</span><span>7.2 隐函数定理</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">7.1.1 反函数定理（证明）</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#implicit-function-theorem-ift-proof" class="is-active" aria-current="location">7.1* Implicit Function Theorem (IFT) Proof</a></li><li style="--depth:1"><a href="#recall-ift">1. Recall IFT</a></li><li style="--depth:1"><a href="#proof-of-theorem-7.1.1">2. Proof of Theorem 7.1.1</a></li><li style="--depth:2"><a href="#step-1-reduction">7.1.1.7.2.1 Step 1: Reduction</a></li><li style="--depth:2"><a href="#step-2-existence-of-inverse">7.1.1.7.2.2 Step 2: Existence of inverse</a></li><li style="--depth:2"><a href="#step-3-existence-of-f-1-w-to-u">7.1.1.7.2.3 Step 3: Existence of f^{-1}: W \to U</a></li><li style="--depth:2"><a href="#step-4-differentiability-of-f-1">7.1.1.7.2.4 Step 4: Differentiability of f^{-1}</a></li><li style="--depth:2"><a href="#example">7.1.1.7.2.5 Example:</a></li><li style="--depth:1"><a href="#conclusion">7.1.1.7.3 Conclusion</a></li><li style="--depth:1"><a href="#additional-notes">7.1.1.7.4 Additional Notes</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

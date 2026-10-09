@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>3. Dynamic RL activation and a defensible theoretical framework — E.H. Notebook</title>
+<meta name="description" content="Working theory note, 2026-09-12. This is a proposed analysis, not a claim that the current joint implementation satisfies every assumption below. No new PDE experiments w">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html">Notes</a><a href="/notebook/content/posts/index.html" aria-current="page">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="posts file hierarchy" data-sidebar-root="content/posts"><a class="sidebar-root" href="/notebook/content/posts/index.html">posts</a><ul class="notes-tree"><li class="folder-node" data-folder="content/posts/Feminism" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-a18baf466ab2" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Feminism</span></button></div><ul class="tree-children" id="folder-a18baf466ab2" hidden><li class="file-node"><a class="note-link" href="/notebook/content/posts/Feminism/Literature%20Review.html"><span class="page-number"></span><span>Literature Review</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Feminism/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/posts/Foucault" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-a055cef54f5b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Foucault</span></button></div><ul class="tree-children" id="folder-a055cef54f5b" hidden><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/Commentary%20on%20Foucault's%20The%20Order%20of%20Things.html"><span class="page-number"></span><span>Commentary on Foucault&#39;s The Order of Things</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/Commentary%20on%20the%20Collage.html"><span class="page-number"></span><span>Commentary on the Collage</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/Sex%20%26%20Sexuality.html"><span class="page-number"></span><span>Sex &amp; Sexuality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/%E5%AE%B6%E5%BA%AD%E5%BC%8F%E7%94%9F%E5%91%BD%E6%9D%83%E5%8A%9B%EF%BC%9A%E9%80%9A%E8%BF%87%E5%84%92%E5%AE%B6%E7%9A%84%E5%AE%B6%E5%9B%BD%E4%BD%93%E7%B3%BB%E9%87%8D%E8%AF%BB%E7%A6%8F%E6%9F%AF%E7%9A%84%E7%94%9F%E5%91%BD%E6%94%BF%E6%B2%BB%E7%90%86%E8%AE%BA%E5%9C%A8%E4%B8%9C%E4%BA%9A%E7%9A%84%E5%AE%9E%E8%B7%B5.html"><span class="page-number"></span><span>家庭式生命权力：通过儒家的家国体系重读福柯的生命政治理论在东亚的实践</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/%E7%A6%8F%E6%9F%AF%E8%A7%86%E8%A7%92%E4%B8%8B%E7%9A%84%E7%89%A9%E7%90%86%E5%AD%A6%E8%BD%AC%E5%8F%98%E4%BB%A5%E5%8F%8A%E6%96%B0%E8%8C%83%E5%BC%8F%E7%9A%84%E5%8F%AF%E8%83%BD.html"><span class="page-number"></span><span>福柯视角下的物理学转变以及新范式的可能</span></a></li></ul></li><li class="folder-node" data-folder="content/posts/Lacanian" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5a0b356ed1b8" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Lacanian</span></button></div><ul class="tree-children" id="folder-5a0b356ed1b8" hidden><li class="file-node"><a class="note-link" href="/notebook/content/posts/Lacanian/%E5%94%AF%E4%B8%80%E4%B9%8B%E7%88%B1%E4%B8%8E%E5%A4%8D%E6%95%B0%E6%AC%B2%E6%9C%9B%EF%BC%9A%E6%8B%89%E5%BA%B7%E4%B8%BB%E4%B9%89%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%AF%B9%E9%BD%90%E6%B3%BD%E5%85%8B%E2%80%9C%E6%BF%80%E8%BF%9B%E4%B9%8B%E7%88%B1%E2%80%9D%E7%9A%84%E4%B8%80%E4%B8%AA%E5%86%85%E9%83%A8%E8%B4%A8%E7%96%91.html"><span class="page-number"></span><span>唯一之爱与复数欲望：拉康主义框架下对齐泽克“激进之爱”的一个内部质疑</span></a></li></ul></li><li class="folder-node" data-folder="content/posts/Research" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5a58c77f3f2b" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Research</span></button></div><ul class="tree-children" id="folder-5a58c77f3f2b"><li class="file-node"><a class="note-link" href="/notebook/content/posts/Research/1.%20%E7%BB%93%E8%AE%BA%20notes.html"><span class="page-number">1</span><span>结论 notes</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Research/2.%20%E4%B9%8B%E5%89%8D%E7%9A%84Proof.html"><span class="page-number">2</span><span>之前的Proof</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/posts/Research/3.%20Dynamic%20RL%20activation%20and%20a%20defensible%20theoretical%20framework.html"><span class="page-number">3</span><span>Dynamic RL activation and a defensible theoretical framework</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Create%20Graph%20Using%20LaTex%20Code.html"><span class="page-number"></span><span>Create Graph Using LaTex Code</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Lacanian%20AI.html"><span class="page-number"></span><span>Lacanian AI</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Reading%20Response.html"><span class="page-number"></span><span>Reading Response</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/%E6%97%A5%E5%BF%97.html"><span class="page-number"></span><span>日志</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/posts/Research/index.html">Research</a></nav><h1 id="reader-title">3. Dynamic RL activation and a defensible theoretical framework</h1></header><div id="article-body" class="prose"><p>Working theory note, 2026-09-12. This is a proposed analysis, not a claim that the current joint implementation satisfies every assumption below. No new PDE experiments were run for this note.</p>
+<h2 data-original-heading="1. Experimental contract and evidence" id="experimental-contract-and-evidence">1. Experimental contract and evidence</h2>
+<p>The current main configuration uses scalar anisotropic diffusion, Canonical 8D setup context, LinUCB-v5 with structured candidate sets, and Recursive LSTDQ-v3. The corrected 60³ experiment has 5,000 problems in the total budget, with fixed-weight solve for the first 1,000 and joint learning thereafter. Setup continues learning after solve control begins. The solve configuration is weighted ℓ₁-Jacobi on the down/up sweeps, direct coarse solve (18/18/9), relative tolerance 10⁻⁶, and a 50-cycle cap. The action grid is 1, 1.05, …, 3.</p>
+<p>The corrected state encoder distinguishes the actual setup categories and maps the previous weight over its actual range. The solve representation has 35 state features and 9 action-basis features, hence 315 joint features. Its update uses the executed next action, discount 1, and trace parameter 0.8: it is a SARSA-type recursive LSTDQ(λ) control scheme.</p>
+<p>In the latest corrected five-method run, Canonical + LSTDQ averaged 209.502 ms native time versus 372.856 ms for the baseline, a 43.81% reduction. Including the reported learner/controller overhead gives 221.270 ms, a 40.66% reduction. These are different cost definitions. The native reduction agrees with the corrected three-seed range, 43.55%–44.52%; that agreement does not isolate a causal effect of the encoder repair, since timing conditions and resulting learning paths differed across runs.</p>
+<p>The previous prefix audit covered 11 experiment directories and 43 learning trajectories. These are descriptive trajectories, not 43 independent replications. In the latest Canonical staged branch, first-attempt failures in cases 1–100, 101–200, 201–400, 401–600, 601–800, and 801–1000 were respectively 76%, 39%, 5.5%, 1%, 1%, and 1.5%. All 133 prefix failures were solve nonconvergence. The full 5,000-problem run had 142 primary failures, all recovered.</p>
+<p>The audit found occasional rebounds and materially more persistent failure in advection experiments. A permanent sharp change is therefore a useful model to analyze, not an established property of all trajectories.</p>
+<p>Sources: <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/results/joint/paper_n60_canonical8d_vs_physics_linear_coarse9_staged1000_5k_tol1e6_encoderfix_terminal_20260912/screen_report.md">latest report</span>, <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/results/diagnostics/paper_convergence_prefix_audit_20260912/audit.json">prefix audit</span>, <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/results/joint/paper_final_n60_canonical8d_lstdq_v3_seed_stability_5k_encoderfix_20260912/screen_report.md">corrected seed report</span>, <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/experiments/joint/solve_control/configs/paper_n60_canonical8d_vs_physics_linear_coarse9_staged1000_5k_tol1e6_encoderfix.json">experiment configuration</span>.</p>
+<h2 data-original-heading="2. What the activation problem actually estimates" id="what-the-activation-problem-actually-estimates">2. What the activation problem actually estimates</h2>
+<p>For problem t, during the setup-only phase, define</p>
+<p><span class="math display">\[Y_t=\mathbf 1\{\text{the first primary attempt does not reach the prescribed tolerance within its budget}\}.\]</span></p>
+<p>Count failure before retry/fallback, once per problem. A recovered failure remains Y_t=1. For a general deployment, inability to construct the primary hierarchy also counts as primary unreliability; alternatively, it can be reported as a separate event while remaining in the gate’s denominator.</p>
+<p>Let <span class="math inline">\(\mathcal F_{t-1}\)</span> contain the observed learning history before the next problem is revealed, and define</p>
+<p><span class="math display">\[p_t=\mathbb E[Y_t\mid\mathcal F_{t-1}].\]</span></p>
+<p>This is the conditional failure risk of the deployed setup-selection procedure paired with the fixed solve policy. It averages over the next problem and any relevant algorithmic randomness. It is not the failure probability for every individual PDE context or every candidate action. The probability model is over problem streams/randomness; conditioning on a completely fixed deterministic benchmark and all its random seeds would not yield an empirical Bernoulli sampling model.</p>
+<p>The relevant scientific question is whether primary reliability has improved enough to enable solve-policy learning. It is not whether setup parameters, predictions, or the setup optimizer have converged.</p>
+<p>There is no distribution-free implication from an arbitrarily long successful history to low next-step risk: two processes can have identical observations through time t and different next-step failure probabilities. In particular, one can change to certain failure immediately after a data-dependent activation time. Thus a stopping rule needs an explicit target and an explicit statement of what its error control means.</p>
+<p>A fixed window is not inherently mathematically invalid. The difficulty with the current rule is its heuristic calibration and the gap between a historical rate and current/future risk. Repeatedly checking ordinary 95% binomial intervals does not supply simultaneous 95% coverage. CUSUM average-run-length control is also different from controlling the probability of any false activation.</p>
+<h2 data-original-heading="3. Recommended criterion: a mixture sequential test" id="recommended-criterion-a-mixture-sequential-test">3. Recommended criterion: a mixture sequential test</h2>
+<p>Choose, before inspecting the evaluation trajectories:</p>
+<ul>
+<li><span class="math inline">\(p_{\rm bad}\in(0,1)\)</span>: an operationally unacceptable primary-failure rate;</li>
+<li><span class="math inline">\(p_{\rm good}\in(0,p_{\rm bad})\)</span>: a design rate at which timely detection is desired;</li>
+<li><span class="math inline">\(\delta\in(0,1)\)</span>: the allowed probability of a false activation under persistent unreliability.</li>
+</ul>
+<p>The gap between the two rates is an indifference region, not a claim that risk makes a discontinuous jump. For illustration only, one might use <span class="math inline">\(p_{\rm bad}=0.05\)</span>, <span class="math inline">\(p_{\rm good}=0.01\)</span>, and <span class="math inline">\(\delta=0.05\)</span>. These numbers are not calibrated recommendations for this experiment.</p>
+<p>Define the one-step evidence factor</p>
+<p><span class="math display">\[\ell_t=
+\left(\frac{p_{\rm good}}{p_{\rm bad}}\right)^{Y_t}
+\left(\frac{1-p_{\rm good}}{1-p_{\rm bad}}\right)^{1-Y_t}.
+\tag{1}\]</span></p>
+<p>For each possible onset k, let</p>
+<p><span class="math display">\[L_{k,t}=
+\begin{cases}
+1,&amp;t&lt;k,\\
+\prod_{i=k}^{t}\ell_i,&amp;t\ge k.
+\end{cases}\]</span></p>
+<p>Choose deterministic weights <span class="math inline">\(\omega_k&gt;0\)</span> with <span class="math inline">\(\sum_{k\ge1}\omega_k=1\)</span>. A simple horizon-free choice is</p>
+<p><span class="math display">\[\omega_k=\frac1{k(k+1)}.\]</span></p>
+<p>Combine all onsets, retaining the mass assigned to as-yet-unstarted tests:</p>
+<p><span class="math display">\[M_t=\sum_{k=1}^{t}\omega_kL_{k,t}+\sum_{k&gt;t}\omega_k,
+\qquad M_0=1.
+\tag{2}\]</span></p>
+<p>The activation boundary and first RL-controlled problem are</p>
+<p><span class="math display">\[\tau=\inf\{t\ge1:M_t\ge1/\delta\},
+\qquad \text{first RL problem}=\tau+1.
+\tag{3}\]</span></p>
+<p>If the set is empty within the stream, solve remains fixed for that stream. Any imposed deadline that activates RL without crossing (3) is a separate protocol decision outside this certificate.</p>
+<p>The statistic tests every problem and accounts for every possible onset. Early failures penalize tests that started early, but do not contaminate all subsequently started tests. There is no fixed observation window or arbitrary number of passing blocks.</p>
+<p>For the displayed weights, implementation needs only a scalar accumulator:</p>
+<p><span class="math display">\[B_0=0,\qquad
+B_t=\ell_t\left(B_{t-1}+\frac1{t(t+1)}\right),
+\qquad
+M_t=B_t+\frac1{t+1}.
+\tag{4}\]</span></p>
+<p>Thus time and storage per problem are O(1). Compute in log space for numerical stability. This is an algebraic recursion, not an implemented change to the runner.</p>
+<p>For a known maximum horizon T, <span class="math inline">\(\omega_k=1/T\)</span>, k=1,…,T, is an alternative with a simpler onset penalty <span class="math inline">\(\log T\)</span>. The horizon must be chosen prospectively; extending it after observing evidence requires a new valid allocation. Other predetermined proper weights preserve validity and change detection delay. The weights represent an explicit cost of searching over unknown onset times, not an unacknowledged window length.</p>
+<h3 data-original-heading="Proposition 1: control of false activation" id="proposition-1-control-of-false-activation">3.3.1 Proposition 1: control of false activation</h3>
+<p>Suppose <span class="math inline">\(p_t\ge p_{\rm bad}\)</span> almost surely at every monitored time. Then</p>
+<p><span class="math display">\[\Pr(\tau&lt;\infty)\le\delta.
+\tag{5}\]</span></p>
+<p>More locally, if the inequality holds for t&lt;ν, with deterministic ν, then</p>
+<p><span class="math display">\[\Pr(\tau&lt;\nu)\le\delta.
+\tag{6}\]</span></p>
+<p>No independence, identical distributions, or linear realizability is required.</p>
+<p><strong>Proof.</strong> Conditional on <span class="math inline">\(\mathcal F_{t-1}\)</span>,</p>
+<p><span class="math display">\[\mathbb E[\ell_t\mid\mathcal F_{t-1}]
+=p_t\frac{p_{\rm good}}{p_{\rm bad}}
++(1-p_t)\frac{1-p_{\rm good}}{1-p_{\rm bad}}
+\le1.\]</span></p>
+<p>The expression is decreasing in p_t and equals one at <span class="math inline">\(p_t=p_{\rm bad}\)</span>. Each <span class="math inline">\(L_{k,t}\)</span> is consequently a nonnegative supermartingale starting at one under the null. Their proper mixture is also one. Ville’s inequality gives (5). Stopping the argument at ν−1 gives (6). ∎</p>
+<p>This is a direct specialization of the nonnegative-supermartingale approach to sequential inference; it is not presented as a new general statistical theorem. See <a href="https://arxiv.org/abs/1808.03204">Howard et al., time-uniform Chernoff bounds</a> and <a href="https://arxiv.org/abs/1810.08240">Howard et al., confidence sequences</a>. For related change-detection constructions and the distinction between false-alarm probabilities and average run length, see <a href="https://nejsds.nestat.org/journal/NEJSDS/article/59/text">Shin, Ramdas, and Rinaldo, E-detectors</a>.</p>
+<h3 data-original-heading="Proposition 2: finite detection delay after durable improvement" id="proposition-2-finite-detection-delay-after-durable-improvement">3.3.2 Proposition 2: finite detection delay after durable improvement</h3>
+<p>Suppose additionally that, under continued setup-only operation, <span class="math inline">\(p_t\le p_{\rm good}\)</span> almost surely for every t≥ν. Define</p>
+<p><span class="math display">\[I=D_{\rm KL}\bigl(\operatorname{Bern}(p_{\rm good})
+\Vert\operatorname{Bern}(p_{\rm bad})\bigr)&gt;0,\]</span></p>
+<p><span class="math display">\[a=\log\frac{1-p_{\rm good}}{1-p_{\rm bad}},\qquad
+b=\log\frac{p_{\rm good}}{p_{\rm bad}},\qquad
+R=a-b&gt;0.\]</span></p>
+<p>For any <span class="math inline">\(\eta\in(0,1)\)</span>, if an integer n satisfies</p>
+<p><span class="math display">\[nI-R\sqrt{\frac n2\log\frac1\eta}
+\ge \log\frac1{\delta\omega_\nu},
+\tag{7}\]</span></p>
+<p>then</p>
+<p><span class="math display">\[\Pr\{\tau&gt;\nu+n-1\}\le\eta.
+\tag{8}\]</span></p>
+<p>With the pre-change condition of Proposition 1,</p>
+<p><span class="math display">\[\Pr\{\nu\le\tau\le\nu+n-1\}\ge1-\delta-\eta.
+\tag{9}\]</span></p>
+<p><strong>Proof.</strong> The increment <span class="math inline">\(\log\ell_t=a+(b-a)Y_t\)</span> lies in [b,a]. Its conditional expectation is at least I when <span class="math inline">\(p_t\le p_{\rm good}\)</span>. Conditional Hoeffding concentration therefore gives</p>
+<p><span class="math display">\[\Pr\!\left\{
+\sum_{t=\nu}^{\nu+n-1}\log\ell_t
+&lt;nI-R\sqrt{\frac n2\log\frac1\eta}
+\right\}\le\eta.\]</span></p>
+<p>On the complementary event, (7) implies <span class="math inline">\(\omega_\nu L_{\nu,\nu+n-1}\ge1/\delta\)</span>, hence <span class="math inline">\(M_{\nu+n-1}\ge1/\delta\)</span>. Combine with (6). ∎</p>
+<p>The leading evidence requirement is <span class="math inline">\(\log(1/(\delta\omega_\nu))/I\)</span>, with the explicit finite-probability correction in (7). This is a scale calculation, not an exact expected-delay formula or a minimax-optimality claim. With <span class="math inline">\(\omega_\nu=1/[\nu(\nu+1)]\)</span>, later onsets incur only a logarithmic additional evidence cost.</p>
+<p>For the illustrative 5%/1% choice, a success contributes about 0.04124 log-evidence and a failure −1.60944. At 1% actual failure risk the expected increment is about 0.02474. Occasional failures are therefore allowed, but a sustained low-risk run is needed. A stringent certificate need not activate earlier than 1,000 on every trajectory.</p>
+<h3 data-original-heading="Precisely what is, and is not, certified" id="precisely-what-is-and-is-not-certified">3.3.3 Precisely what is, and is not, certified</h3>
+<p>Without an assumption relating past and future risk, crossing (3) rejects the persistent-unreliability hypothesis. It does not itself prove <span class="math inline">\(p_{\tau+1}\le p_{\rm bad}\)</span>, and certainly does not prove that the newly activated RL controller has that risk.</p>
+<p>Under a permanent two-regime model, (9) has the useful interpretation that activation occurs after the reliable regime begins, with controlled early-activation probability and finite detection delay. A gradual decline with an interval between the two thresholds can be handled by distinguishing the end of the certified bad regime from the start of the good regime. No delay guarantee is promised while risk remains inside the indifference region.</p>
+<p>The actual setup policy continues exploring and can experience rebounds. Thus the paper should call this a sequential reliability-based activation rule and state the durable-improvement assumption for its readiness interpretation. It should not label the event “setup convergence” or an unconditional safety guarantee.</p>
+<p>If a single good design rate is undesirable, mix (1) over several predetermined alternatives below <span class="math inline">\(p_{\rm bad}\)</span>, with proper weights. The same proof applies. This costs a small number of scalar recursions and an additional log-weight term in the delay bound. Choosing an alternative retrospectively without a mixture or multiplicity correction is not covered.</p>
+<h2 data-original-heading="4. Stronger current-risk statements require a drift model" id="stronger-current-risk-statements-require-a-drift-model">4. Stronger current-risk statements require a drift model</h2>
+<p>A complementary formulation makes the missing assumption especially visible. For every suffix [k,t], let n=t−k+1 and</p>
+<p><span class="math display">\[\widehat p_{k,t}=\frac1n\sum_{i=k}^tY_i,\qquad
+\bar p_{k,t}=\frac1n\sum_{i=k}^tp_i.\]</span></p>
+<p>Allocate <span class="math inline">\(\delta_{k,n}=\delta/[k(k+1)n(n+1)]\)</span>. Conditional Hoeffding concentration and a union bound yield, simultaneously for all k and t, with probability at least 1−δ,</p>
+<p><span class="math display">\[\bar p_{k,t}\le
+\widehat p_{k,t}+
+\sqrt{\frac{\log(k(k+1)n(n+1)/\delta)}{2n}}.
+\tag{10}\]</span></p>
+<p>If a known, valid drift envelope satisfies</p>
+<p><span class="math display">\[p_{t+1}\le p_i+d_{i,t+1}\quad\text{for every }i\le t,\]</span></p>
+<p>then a current-risk upper bound is</p>
+<p><span class="math display">\[U_t=\min\left\{1,\ \min_{1\le k\le t}
+\left[
+\widehat p_{k,t}
++\sqrt{\frac{\log(k(k+1)n(n+1)/\delta)}{2n}}
++\frac1n\sum_{i=k}^td_{i,t+1}
+\right]\right\}.
+\tag{11}\]</span></p>
+<p>The stopping time <span class="math inline">\(\tau_U=\inf\{t:U_t\le p_{\rm tol}\}\)</span> satisfies</p>
+<p><span class="math display">\[\Pr\{\tau_U&lt;\infty,\ p_{\tau_U+1}&gt;p_{\rm tol}\}\le\delta,
+\tag{12}\]</span></p>
+<p>for the continued fixed-solve process. Formula (10) alone only concerns averages of historical conditional means; it cannot be substituted directly into (12).</p>
+<p>For nonincreasing risk one can set d=0. For a known one-step upward drift bound <span class="math inline">\(p_{j+1}-p_j\le v\)</span>, the correction is <span class="math inline">\(v(n+1)/2\)</span>. The minimization in (11) then selects a history length through an explicit tradeoff between sampling error and drift. Neither monotonicity nor a suitably small v follows from ordinary LinUCB updates or from a smoothed plot.</p>
+<p>This version is stronger in its target but stronger in assumptions and computational cost. The Hoeffding bound is intentionally elementary and can be conservative for rare failures. A sharper Bernoulli/martingale bound can replace it after the target and drift assumption have been settled.</p>
+<h2 data-original-heading="5. Setup regret and payback: what can be proved for which algorithm" id="setup-regret-and-payback-what-can-be-proved-for-which-algorithm">5. Setup regret and payback: what can be proved for which algorithm</h2>
+<p>Fix the downstream solve and recovery policy. Let <span class="math inline">\(C_t\)</span> be the candidate set available before the current cost observation, let <span class="math inline">\(\phi_t(a)\in\mathbb R^d\)</span>, and assume</p>
+<p><span class="math display">\[\mu_t(a)=\phi_t(a)^\top\theta_\star,\qquad
+Y_t^{\rm cost}=\mu_t(a_t)+\xi_t,\]</span></p>
+<p>with bounded features and parameter norm and conditionally sub-Gaussian, mean-zero noise. Use a new notation <span class="math inline">\(Y_t^{\rm cost}\)</span> to distinguish cost from the binary gate observation.</p>
+<p>For <span class="math inline">\(V_t=\lambda I+\sum_{i=1}^t\phi_i(a_i)\phi_i(a_i)^\top\)</span>, a valid simultaneous radius has the familiar form</p>
+<p><span class="math display">\[\beta_t=
+\sigma\sqrt{2\log
+\frac{\det(V_t)^{1/2}}{\det(\lambda I)^{1/2}\delta}}
++\sqrt{\lambda}\,\|\theta_\star\|_{\rm bound}.
+\tag{13}\]</span></p>
+<p>An LCB policy using this radius and minimizing over <span class="math inline">\(C_t\)</span> has candidate-set pseudo-regret <span class="math inline">\(\widetilde O(d\sqrt T)\)</span>, under the standard boundedness/scaling conditions. History-dependent candidate generation is allowed; the current noise cannot be used to define the candidate set. This is an application of existing linear-bandit theory, not a new general regret result. See <a href="https://proceedings.neurips.cc/paper/2011/file/e1d5be1c7f2f456670de3d53c7b54f4a-Paper.pdf">Abbasi-Yadkori, Pál, and Szepesvári (2011)</a>.</p>
+<p>The implemented structured-512 path enables alpha decay, and v5 inherits v4’s coefficient <span class="math inline">\(\alpha_t=\alpha_0/\sqrt{t+1}\)</span>, up to indexing/burn-in. It is not (13). See <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/experiments/joint/solve_control/setup_aware_compare_common.py:933">construction</span> and <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/setup/learners/linucb/SharedLinUCB_AMG_v4.py:676">coefficient</span>.</p>
+<p>A useful deterministic inequality exposes the exact extra requirement. On the confidence event, put <span class="math inline">\(u_t(a)=\|\phi_t(a)\|_{V_{t-1}^{-1}}\)</span> and <span class="math inline">\(a_t^\star\in\arg\min_{a\in C_t}\mu_t(a)\)</span>. The implemented LCB choice satisfies</p>
+<p><span class="math display">\[\mu_t(a_t)-\mu_t(a_t^\star)
+\le(\beta_{t-1}+\alpha_t)u_t(a_t)
++(\beta_{t-1}-\alpha_t)_+u_t(a_t^\star).
+\tag{14}\]</span></p>
+<p><strong>Proof.</strong> Use confidence bounds on the chosen and oracle actions, with <span class="math inline">\(\widehat\mu_t(a_t)-\alpha_tu_t(a_t)
+\le\widehat\mu_t(a_t^\star)-\alpha_tu_t(a_t^\star)\)</span>. ∎</p>
+<p>The first sum in (14) admits the usual elliptical-potential control. The second is a coverage deficit and is not automatically sublinear. One possible sufficient condition is <span class="math inline">\(\lambda_{\min}(V_t|_{\mathcal S})\ge\kappa t\)</span> eventually on the identifiable feature span <span class="math inline">\(\mathcal S\)</span>; it gives <span class="math inline">\(u_t(a_t^\star)=O(t^{-1/2})\)</span>. This is a substantial persistent-excitation assumption, not a consequence of sampling 512 candidate actions. Only executed actions enter V. Using the feature span matters because Canonical 8D contains a redundant common-scale feature.</p>
+<p>Forced initial-guess rounds must be accounted for separately; a fixed number contributes only a bounded additive term when per-round regret is bounded.</p>
+<p>Thus there are two honest routes: analyze a confidence-calibrated variant, or retain the existing algorithm and supply assumptions controlling the second term in (14). Do not silently identify the current decay rule with the textbook confidence policy.</p>
+<p>The theorem also needs an exact cost contract. If the regression target includes recovery or controller time, the oracle must use the same quantity. Correlated suffix-cost labels from several recovery decisions do not automatically form one unbiased bandit observation per problem. Warmup is included in the total problem budget.</p>
+<p>Full-action-space regret additionally contains <span class="math inline">\(\sum_t[\min_{a\in C_t}\mu_t(a)-\min_{a\in\mathcal A}\mu_t(a)]\)</span>. Candidate-set regret alone does not control it.</p>
+<p>Once RL changes the downstream solve policy, setup costs become policy-dependent. Fixed-downstream realizability does not establish stationary realizability for the joint run. The gate does not remove this issue. A joint guarantee would need a drift/tracking term, a suitable changing-parameter model, or a separately justified restriction.</p>
+<p>For payback, define the candidate oracle’s cumulative advantage <span class="math inline">\(G_T\)</span>, the learner’s candidate regret <span class="math inline">\(R_T\)</span>, and overhead <span class="math inline">\(H_T\)</span>, without counting the same cost twice. The expected/pseudo accounting identity is</p>
+<p><span class="math display">\[\operatorname{Savings}(T)=G_T-R_T-H_T.\]</span></p>
+<p>If <span class="math inline">\(G_T\ge gT-B_G\)</span>, <span class="math inline">\(H_T\le hT+B_H\)</span>, <span class="math inline">\(g&gt;h\)</span>, and <span class="math inline">\(R_T=o(T)\)</span>, eventual positive savings follows. For a quantitative payback bound, solve <span class="math inline">\((g-h)T&gt;R_T+B_G+B_H\)</span>. Positive average oracle advantage by itself is insufficient when overhead consumes it. An assertion about realized savings holding for every sufficiently large T additionally requires a uniform stochastic bound or an appropriate strong law. This is naturally a corollary.</p>
+<h2 data-original-heading="6. Nonstationary relaxation: repair and strengthen the solver result" id="nonstationary-relaxation-repair-and-strengthen-the-solver-result">6. Nonstationary relaxation: repair and strengthen the solver result</h2>
+<p>For a fixed nonsingular system A and fixed hierarchy, write error propagation as <span class="math inline">\(e^+=E_H(w)e\)</span>. Residual propagation is <span class="math inline">\(r^+=AE_H(w)A^{-1}r\)</span>; the spectral radius is unchanged, while finite-tolerance norm behavior need not be.</p>
+<p>The proposed spectral-rate inequality does not imply that the periodic policy beats every fixed weight for every initial residual. For example, with equal cycle costs,</p>
+<p><span class="math display">\[E_L=\operatorname{diag}(0.9,0.1),\qquad
+E_H=\operatorname{diag}(0.1,0.9),\]</span></p>
+<p>the periodic product is <span class="math inline">\(0.09I\)</span>, with better worst-case asymptotic rate than either fixed action. But on <span class="math inline">\(e_0=(0,1)^\top\)</span>, fixed L contracts by 0.1 per step and is asymptotically faster than the periodic policy’s 0.3 per-step rate.</p>
+<h3 data-original-heading="Proposition 3: a correct worst-case asymptotic comparison" id="proposition-3-a-correct-worst-case-asymptotic-comparison">3.6.1 Proposition 3: a correct worst-case asymptotic comparison</h3>
+<p>Let the action set be finite, as in the implemented 41-weight grid. Assume fixed positive per-cycle costs, fixed linear operators, and <span class="math inline">\(0&lt;\rho(E_H(w))&lt;1\)</span> for the fixed-action comparators. For a period σ let <span class="math inline">\(P_\sigma=E_H(w_p)\cdots E_H(w_1)\)</span>, <span class="math inline">\(c_\sigma=\sum_i\tau_H(w_i)\)</span>, and <span class="math inline">\(0&lt;\rho(P_\sigma)&lt;1\)</span>.</p>
+<p>Define fixed-policy time by the first iterate whose induced residual-propagation norm is at most ε, and define periodic time using period-end iterates. Then</p>
+<p><span class="math display">\[\lim_{\epsilon\downarrow0}
+\frac{T_w^{\rm wc}(\epsilon)}{\log(1/\epsilon)}
+=\frac{\tau_H(w)}{-\log\rho(E_H(w))},\]</span></p>
+<p><span class="math display">\[\lim_{\epsilon\downarrow0}
+\frac{T_\sigma^{\rm wc}(\epsilon)}{\log(1/\epsilon)}
+=\frac{c_\sigma}{-\log\rho(P_\sigma)}.
+\tag{15}\]</span></p>
+<p>Consequently a strict gap in the proposed spectral contraction per unit cost yields a uniform small-tolerance advantage over the finite set of fixed comparators, in this worst-case sense.</p>
+<p><strong>Proof sketch.</strong> For a stable matrix B, <span class="math inline">\(\rho(B)^n\le\|B^n\|\)</span>, while for each <span class="math inline">\(r&gt;\rho(B)\)</span> there is a constant C_r with <span class="math inline">\(\|B^n\|\le C_rr^n\)</span>. These give matching leading hitting-time bounds as ε→0 and r↓ρ(B). Similarity by fixed A changes the norm constants but not the leading rate. A finite comparator set permits one common sufficiently small tolerance. Stopping inside a period can only improve the periodic method’s time. ∎</p>
+<p>A continuum of comparators requires a corresponding uniform argument. Unstable fixed comparators cannot meet arbitrarily strict worst-case tolerances. Nilpotent/zero-radius operators require a separate finite-termination statement. Actual finite-tolerance performance also depends on transient amplification, starting residuals, failure caps, and timing variability.</p>
+<h3 data-original-heading="Constructive witness inside an idealized two-grid model" id="constructive-witness-inside-an-idealized-two-grid-model">3.6.2 Constructive witness inside an idealized two-grid model</h3>
+<p>There is a more informative result than merely assuming that a superior product exists. Consider</p>
+<p><span class="math display">\[A=\begin{pmatrix}2/3&amp;-1/3\\-1/3&amp;2/3\end{pmatrix},
+\qquad D_{\ell_1}=I,
+\qquad
+P=\frac12\begin{pmatrix}\sqrt3-1\\\sqrt3+1\end{pmatrix}.\]</span></p>
+<p>Use one weighted ℓ₁-Jacobi pre-sweep and one identical post-sweep, <span class="math inline">\(S(w)=I-wA\)</span>, with exact Galerkin coarse correction <span class="math inline">\(C=I-P(P^\top AP)^{-1}P^\top A\)</span>. The two-grid error operator is <span class="math inline">\(E(w)=S(w)CS(w)\)</span>.</p>
+<p>In A-energy coordinates and the eigenbasis of A, C becomes the projection onto <span class="math inline">\(u=(1,1)^\top/\sqrt2\)</span>, so</p>
+<p><span class="math display">\[\widetilde E(w)=v(w)v(w)^\top,\qquad
+v(w)=\frac1{\sqrt2}(1-w/3,\ 1-w)^\top.\]</span></p>
+<p>Hence, over all <span class="math inline">\(w\in[1,3]\)</span>,</p>
+<p><span class="math display">\[\min_w\rho(E(w))
+=\min_w\frac{(1-w/3)^2+(1-w)^2}{2}
+=\frac15,
+\quad w_{\rm best}=\frac65.
+\tag{16}\]</span></p>
+<p>For <span class="math inline">\(w_L=1\)</span> and <span class="math inline">\(w_H=2.9=29/10\)</span>, both on the experimental action grid,</p>
+<p><span class="math display">\[v(w_H)^\top v(w_L)=\frac1{90},\qquad
+\rho(E(w_H)E(w_L))=\frac1{8100}.
+\tag{17}\]</span></p>
+<p>With equal per-cycle costs, the periodic effective spectral factor is therefore <span class="math inline">\(1/90&lt;1/5\)</span>, strictly better than every fixed weight. Meanwhile <span class="math inline">\(\rho(E(2.9))=65/36&gt;1\)</span>: the high-weight cycle alone is unstable. The strict gap is robust to sufficiently small perturbations of this finite-dimensional model. The limiting pair 1 and 3 even has a zero two-cycle product, but the nonzero-radius example (17) avoids relying on exact annihilation.</p>
+<p>Each fixed operator in this example is self-adjoint in energy coordinates, giving the uniform bound <span class="math inline">\(\|E(w)^n\|_A\ge5^{-n}\)</span>. If <span class="math inline">\(F=E(2.9)E(1)\)</span>, its rank-one form gives <span class="math inline">\(F^n=\rho(F)^{n-1}F\)</span>. These two identities directly supply the eventual norm-based time advantage, including uniformity over the continuum of fixed weights.</p>
+<p>This is an existence theorem for a precisely specified two-grid model sharing weighted ℓ₁-Jacobi and exact coarse correction. It does not assert that the observed 60³ BoomerAMG hierarchies realize these matrices or that a particular high–low pair is optimal there.</p>
+<p>Nonstationary relaxation has a substantial existing numerical-analysis literature. The manuscript should distinguish this solver mechanism from any novelty of learning a hierarchy- and residual-dependent feedback policy. Relevant primary sources include <a href="https://arxiv.org/abs/1607.03712">Adsuara et al., scheduled relaxation and Richardson</a> and <a href="https://arxiv.org/abs/2202.08830">Lottes, optimal polynomial smoothers for multigrid V-cycles</a>. Whole AMG-cycle operators are not automatically polynomials in a single matrix.</p>
+<h2 data-original-heading="7. What the LSTDQ statements can establish" id="what-the-lstdq-statements-can-establish">7. What the LSTDQ statements can establish</h2>
+<h3 data-original-heading="Representability" id="representability">3.7.1 Representability</h3>
+<p>Writing <span class="math inline">\(Q_\theta(s,w)=b(w)^\top\Theta x(s)\)</span> shows state–action interactions. A pairwise preference reversal is expressible when the relevant action-basis rows and history features distinguish the two cases. Merely listing last-weight and residual features is not a proof that arbitrary policies or true value functions are representable.</p>
+<p>For the actual normalized compact-RBF basis, a concrete endpoint construction is available. Let <span class="math inline">\(b_1,b_9\)</span> denote the basis components centered at weights 1 and 3, and set <span class="math inline">\(g(w)=b_9(w)-b_1(w)\)</span>. On the current grid, g has its unique minimum at 1 and maximum at 3. The endpoint basis components have disjoint support; normalization makes each attain its unique maximum at its own endpoint. With the encoded previous weight <span class="math inline">\(z=(w_{\rm last}-2)\)</span>, the class contains</p>
+<p><span class="math display">\[Q(s,w)=c+z\,g(w).\]</span></p>
+<p>Minimizing Q chooses 3 after previous weight 1 and chooses 1 after previous weight 3. The constant c can make all values nonnegative. This proves expressibility of a nonconstant alternating policy over the full grid, not that training finds it or that it is optimal.</p>
+<p>The same action-scoring class could also be used by a history-augmented contextual bandit. Sequential credit assignment comes from action-dependent solver dynamics and the multi-step cost target, not from representability alone.</p>
+<h3 data-original-heading="Conditional preservation of a fixed-policy advantage" id="conditional-preservation-of-a-fixed-policy-advantage">3.7.2 Conditional preservation of a fixed-policy advantage</h3>
+<p>Use a finite horizon K, including an absorbing terminal state and a consistently defined failure/recovery terminal cost. Let <span class="math inline">\(Q_h^{\pi^\star}\)</span> be cost-to-go for a reference policy, and suppose uniformly over relevant histories/states and actions that</p>
+<p><span class="math display">\[|\widehat Q_h-Q_h^{\pi^\star}|\le\varepsilon_Q.\]</span></p>
+<p>If <span class="math inline">\(\widehat\pi_h\)</span> minimizes <span class="math inline">\(\widehat Q_h\)</span>, then</p>
+<p><span class="math display">\[J(\widehat\pi)\le J(\pi^\star)+2K\varepsilon_Q.
+\tag{18}\]</span></p>
+<p>Therefore <span class="math inline">\(2K\varepsilon_Q&lt;\Delta_{\rm fix}\)</span> preserves strict superiority to the best fixed comparator under the same initial-state distribution and cost definition.</p>
+<p><strong>Proof.</strong> Approximate greediness gives <span class="math inline">\(Q_h^{\pi^\star}(s,\widehat\pi_h(s))-V_h^{\pi^\star}(s)\le2\varepsilon_Q\)</span>. The finite-horizon performance-difference identity sums these advantages along trajectories of <span class="math inline">\(\widehat\pi\)</span>. ∎</p>
+<p>The reference need not be globally optimal. This is a generic approximate-policy-improvement proposition, not yet an LSTDQ estimation theorem. See <a href="https://jmlr.org/papers/volume4/lagoudakis03a/lagoudakis03a.pdf">Lagoudakis and Parr, LSPI</a> for the broader policy-evaluation/improvement framework.</p>
+<p>The actual policy uses an uncertainty bonus, clipping, and epsilon exploration. If its conditional mean selection slack in estimated Q is at most <span class="math inline">\(\zeta_h\)</span>, (18) becomes</p>
+<p><span class="math display">\[J(\widehat\pi_{\rm deployed})
+\le J(\pi^\star)+2K\varepsilon_Q+
+\mathbb E\sum_{h=0}^{K-1}\zeta_h.
+\tag{19}\]</span></p>
+<p>Any controller cost omitted from Q must also be added when comparing wall time. The real cycle cap can provide K; an informal effective horizon cannot replace a termination assumption.</p>
+<p>The 35-dimensional encoder has not been shown to be Markov-sufficient. Use full solver states or histories for the theorem, then state the approximation assumption for their encoded representation. Equal residual norms do not identify equal residual directions.</p>
+<p>For a prospective LSTDQ-specific bridge, the deterministic identity</p>
+<p><span class="math display">\[\widehat\theta_N-\theta_\star
+=A_N^{-1}\left[
+\sum_{i=1}^Nz_i(c_i-v_i^\top\theta_\star)
+-\lambda_{\rm ridge}\theta_\star
+\right],
+\quad v_i=\psi_i-\gamma\psi_{i+1},
+\tag{20}\]</span></p>
+<p>separates Bellman approximation/bias, moment concentration, and conditioning of <span class="math inline">\(A_N\)</span>. Under an appropriate fixed-policy moment model, bounded moments, and a nondegenerate normalized A_N, this provides a route to parameter and uniform Q bounds. The evolving joint behavior policy does not automatically satisfy those fixed-policy assumptions.</p>
+<h3 data-original-heading="Recursive equals batch" id="recursive-equals-batch">3.7.3 Recursive equals batch</h3>
+<p>For the same committed transitions, executed next actions, terminal indicators, trace resets, discount, trace parameter, and ridge,</p>
+<p><span class="math display">\[z_i=\gamma\lambda_{\rm trace}z_{i-1}+\psi_i,\quad
+A_N=\lambda_{\rm ridge}I+\sum_i z_i(\psi_i-\gamma\psi_{i+1})^\top,\quad
+b_N=\sum_i z_ic_i.\]</span></p>
+<p>If every required prefix A_i is nonsingular and the inverse updates are valid, Sherman–Morrison gives <span class="math inline">\(\theta_N^{\rm rec}=A_N^{-1}b_N\)</span> in exact arithmetic. This is equivalence to a batch accumulation of the same historical estimating equations, not to LSPI recomputing every target under a newly chosen single policy.</p>
+<p>Positive ridge alone does not guarantee nonsingularity for this nonsymmetric estimating matrix. The implementation’s pseudoinverse safeguards and floating-point behavior need separate qualification when the nonsingularity assumption fails. See <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/solve/controllers/recursive_lstdq/v1.py:103">recursive mean update</span>.</p>
+<h3 data-original-heading="Optional covariance analysis" id="optional-covariance-analysis">3.7.4 Optional covariance analysis</h3>
+<p>Episode clustering addresses dependence within solves, but does not itself establish confidence coverage. V3 accumulates episode scores evaluated at different historical post-fit parameters. Consistency would require an appropriate parameter limit, negligible historical-parameter evaluation error, a nonsingular limiting estimating matrix, moment/Lindeberg conditions, and either cross-episode martingale orthogonality or a covariance estimator accounting for cross-episode dependence. Fixed-policy asymptotic intervals would still not be anytime-valid exploration bounds. This can remain outside the principal theorem claims.</p>
+<h2 data-original-heading="8. Suggested paper scope and genuinely necessary validation" id="suggested-paper-scope-and-genuinely-necessary-validation">8. Suggested paper scope and genuinely necessary validation</h2>
+<p>A coherent three-part theory is:</p>
+<ol type="1">
+<li>Candidate-set cost learning, with payback as a corollary and an explicit distinction between the confidence-calibrated and implemented decay rules.</li>
+<li>Sequential reliability activation, with false-activation control and detection delay under a stated durable-improvement model.</li>
+<li>Constructive nonstationary solver advantage, followed by conditional preservation under sufficiently accurate action-value estimates.</li>
+</ol>
+<p>Representability and recursive equivalence are supporting propositions. These are conditional modules; they do not constitute an end-to-end guarantee for the adaptive joint learner merely by being placed in sequence.</p>
+<p>The immediate work can remain theoretical. Existing histories suffice to compute the proposed activation statistic and audit what it would have observed, without new PDE solves. Such a replay would describe the gate only; it would not reconstruct the changed trajectory caused by earlier RL activation. No gate replay or calibration was performed for this note.</p>
+<p>Two additional empirical checks become necessary only if the corresponding stronger claims enter the paper:</p>
+<ul>
+<li>“The deployed dynamic-start method improves on fixed-1000”: this requires prospective runs with the gate fixed before evaluation, since activation changes both learners’ future data.</li>
+<li>“The learned feedback policy outperforms the best fixed or predetermined periodic relaxation on these AMG systems”: this requires matched systems, hierarchies, initial residuals, stopping rules, and timing definitions. The current default-weight comparison does not establish the positive <span class="math inline">\(\Delta_{\rm fix}\)</span> premise. A fixed-periodic comparator is needed for a claim about feedback’s advantage over scheduling.</li>
+</ul>
+<p>Neither a proof of the conditional propositions nor the constructive two-grid witness requires another broad experiment sweep. The critical next theoretical decisions are the operational risk target, the meaning of the regime assumption, the exact cost contract, and which algorithm the regret statement describes.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/posts/Research/2.%20%E4%B9%8B%E5%89%8D%E7%9A%84Proof.html"><span>← Previous page</span><span>2. 之前的Proof</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">3. Dynamic RL activation and a defensible theoretical framework</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#experimental-contract-and-evidence" class="is-active" aria-current="location">1. Experimental contract and evidence</a></li><li style="--depth:0"><a href="#what-the-activation-problem-actually-estimates">2. What the activation problem actually estimates</a></li><li style="--depth:0"><a href="#recommended-criterion-a-mixture-sequential-test">3. Recommended criterion: a mixture sequential test</a></li><li style="--depth:1"><a href="#proposition-1-control-of-false-activation">3.3.1 Proposition 1: control of false activation</a></li><li style="--depth:1"><a href="#proposition-2-finite-detection-delay-after-durable-improvement">3.3.2 Proposition 2: finite detection delay after durable improvement</a></li><li style="--depth:1"><a href="#precisely-what-is-and-is-not-certified">3.3.3 Precisely what is, and is not, certified</a></li><li style="--depth:0"><a href="#stronger-current-risk-statements-require-a-drift-model">4. Stronger current-risk statements require a drift model</a></li><li style="--depth:0"><a href="#setup-regret-and-payback-what-can-be-proved-for-which-algorithm">5. Setup regret and payback: what can be proved for which algorithm</a></li><li style="--depth:0"><a href="#nonstationary-relaxation-repair-and-strengthen-the-solver-result">6. Nonstationary relaxation: repair and strengthen the solver result</a></li><li style="--depth:1"><a href="#proposition-3-a-correct-worst-case-asymptotic-comparison">3.6.1 Proposition 3: a correct worst-case asymptotic comparison</a></li><li style="--depth:1"><a href="#constructive-witness-inside-an-idealized-two-grid-model">3.6.2 Constructive witness inside an idealized two-grid model</a></li><li style="--depth:0"><a href="#what-the-lstdq-statements-can-establish">7. What the LSTDQ statements can establish</a></li><li style="--depth:1"><a href="#representability">3.7.1 Representability</a></li><li style="--depth:1"><a href="#conditional-preservation-of-a-fixed-policy-advantage">3.7.2 Conditional preservation of a fixed-policy advantage</a></li><li style="--depth:1"><a href="#recursive-equals-batch">3.7.3 Recursive equals batch</a></li><li style="--depth:1"><a href="#optional-covariance-analysis">3.7.4 Optional covariance analysis</a></li><li style="--depth:0"><a href="#suggested-paper-scope-and-genuinely-necessary-validation">8. Suggested paper scope and genuinely necessary validation</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

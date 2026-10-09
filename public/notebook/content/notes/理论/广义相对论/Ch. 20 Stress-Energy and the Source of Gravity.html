@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 20 Stress-Energy and the Source of Gravity — E.H. Notebook</title>
+<meta name="description" content="20.1 Newtonian Gauss Laws and Local Field EquationsIn electrostatics, Gauss’s law relates the electric field \vec E to the charge density \rho that creates it: \vec\nabla">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 20 Stress-Energy and the Source of Gravity</h1></header><div id="article-body" class="prose"><h2 data-original-heading="20.1 Newtonian Gauss Laws and Local Field Equations" id="newtonian-gauss-laws-and-local-field-equations">20.1 Newtonian Gauss Laws and Local Field Equations</h2>
+<p>In electrostatics, Gauss’s law relates the electric field <span class="math inline">\(\vec E\)</span> to the charge density <span class="math inline">\(\rho\)</span> that creates it: <span class="math display">\[
+\vec\nabla\cdot\vec E = 4\pi k\rho
+\tag{20.1}
+\]</span></p>
+<p>Applied to the external field of a motionless spherical charge distribution of total charge <span class="math inline">\(Q\)</span>, this yields Coulomb’s law <span class="math display">\[
+\vec E = \frac{kQ}{r^2}\,\hat r
+\]</span> where <span class="math inline">\(\hat r\)</span> is the outward radial unit vector.</p>
+<p>The <strong>analogous Newtonian law for gravity</strong> relates the gravitational field vector <span class="math inline">\(\vec g = -\vec\nabla\Phi\)</span> (with <span class="math inline">\(\Phi\)</span> the gravitational potential) to the <strong>mass density</strong> <span class="math inline">\(\rho\)</span>: <span class="math display">\[
+\begin{aligned}
+-\vec\nabla\cdot\vec g
+&amp;= -\vec\nabla\cdot(-\vec\nabla\Phi) \\
+&amp;= \nabla^2\Phi \\
+&amp;= 4\pi G\rho
+\end{aligned}
+\tag{20.2}
+\]</span></p>
+<p>When applied to the external field of a motionless spherical mass distribution of total mass <span class="math inline">\(M\)</span>, this reproduces the familiar result <span class="math display">\[
+\vec g = \left(-\frac{GM}{r^2}\right)\hat r
+\]</span> (the sign difference with Coulomb’s law simply reflects that gravity is attractive for positive masses).</p>
+<p>Even though in practice we often use <span class="math inline">\(\vec g = (-GM/r^2)\hat r\)</span>, equation (20.2) is conceptually <strong>better</strong>: it is a <em>local field equation</em>. It links derivatives of the field <strong>at a point</strong> to the presence of sources <strong>at that same point</strong>, and it does not build in instantaneous action at a distance. This makes it compatible with relativity and makes it easier to generalize to arbitrary coordinates.</p>
+<p>Our strategy for general relativity will mirror what we already did for electromagnetism in chapter 7:</p>
+<ul>
+<li>The left-hand side of (20.2) will generalize to something involving the Riemann tensor (next chapter).</li>
+<li>In <strong>this</strong> chapter, we find the correct relativistic generalization of the <em>mass density</em> <span class="math inline">\(\rho\)</span> that appears on the right-hand side.</li>
+</ul>
+<h2 data-original-heading="20.2 The Source of Gravity Is Relativistic Energy" id="the-source-of-gravity-is-relativistic-energy">20.2 The Source of Gravity Is Relativistic Energy</h2>
+<p>The first conceptual question: in the Newtonian equation (20.2), does <span class="math inline">\(\rho\)</span> represent <strong>mass density</strong> or <strong>relativistic energy density</strong>?</p>
+<p>In the Newtonian limit these coincide numerically, but relativity allows energy to move between rest mass, kinetic energy, radiation, etc. If gravity coupled only to <em>mass</em>, one could imagine converting mass to other forms of energy and thereby changing gravitational effects without changing the true energy content. A simple argument (box 20.1) shows that we could then create energy “from nothing’’ using an object whose gravity is controlled only by its mass. This paradox vanishes if the <strong>source of gravity is energy</strong>, not just rest mass.</p>
+<p>So the relativistic source term should be an <strong>energy-type quantity</strong>, not merely mass density.</p>
+<h2 data-original-heading="20.3 The Stress-Energy of “Dust’’" id="the-stress-energy-of-dust">20.3 The Stress-Energy of “Dust’’</h2>
+<p>We now ask: is the relevant energy density <span class="math inline">\(\rho\)</span> a relativistic scalar, or is it a component of some tensor?</p>
+<p>In chapter 7, we argued that charge density is the time component of the <strong>current-density four-vector</strong> <span class="math inline">\(J^\mu\)</span>. Here we will argue analogously that energy density <span class="math inline">\(\rho\)</span> is the <span class="math inline">\(tt\)</span> component of a second-rank tensor <span class="math inline">\(T^{\mu\nu}\)</span> called the <strong>stress-energy tensor</strong>.</p>
+<div class="math-theorem definition" data-label="20.1" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 20.1</span><span class="theorem-title">Dust</span></p>
+</div>
+<div class="theorem-content">
+<p><em>Dust</em> is a technical term for a fluid whose constituent particles in a neighborhood are essentially all at rest with respect to one another (no random thermal motion). Each small region has a well-defined bulk four-velocity <span class="math inline">\(u^\mu\)</span>.</p>
+</div>
+</div>
+<p>At every event for dust, we can find a locally inertial frame (LIF) where the particles in a small volume are all at rest.</p>
+<p>Consider <span class="math inline">\(N\)</span> identical particles, each of mass <span class="math inline">\(m\)</span>, at rest inside a tiny box of volume <span class="math inline">\(V_0\)</span> in such an LIF <span class="math inline">\(S'\)</span> (figure 20.1a). The number density in <span class="math inline">\(S'\)</span> is <span class="math display">\[
+n_0 = \frac{N}{V_0}
+\]</span> and, since each particle’s energy is <span class="math inline">\(m\)</span>, the <strong>rest-frame energy density</strong> is <span class="math display">\[
+\rho_0 = n_0 m
+\]</span></p>
+<p>Now look at the same box in another LIF <span class="math inline">\(S\)</span> in which the box (and its particles) move with velocity <span class="math inline">\(\vec v\)</span> (figure 20.1b). The box still contains <span class="math inline">\(N\)</span> particles, but its length in the direction of motion is Lorentz-contracted, so its volume is <span class="math display">\[
+V = \frac{V_0}{\sqrt{1-v^2}}
+\]</span> Thus the number density in <span class="math inline">\(S\)</span> is <span class="math display">\[
+n = \frac{N}{V} = \frac{N}{V_0\sqrt{1-v^2}} = \frac{n_0}{\sqrt{1-v^2}}
+\]</span></p>
+<p>The fluid’s four-velocity <span class="math inline">\(u^\alpha\)</span> in <span class="math inline">\(S\)</span> is <span class="math display">\[
+u^\alpha =
+\begin{bmatrix}
+1/\sqrt{1-v^2}\\[4pt]
+v_x/\sqrt{1-v^2}\\[4pt]
+v_y/\sqrt{1-v^2}\\[4pt]
+v_z/\sqrt{1-v^2}
+\end{bmatrix}
+\equiv
+\begin{bmatrix}
+u^t\\ u^x\\ u^y\\ u^z
+\end{bmatrix}
+\tag{20.3}
+\]</span> Since we are in a LIF, the metric is just the flat-space metric <span class="math inline">\(\eta_{\mu\nu}\)</span>.</p>
+<p>Using <span class="math inline">\(u^t = 1/\sqrt{1-v^2}\)</span>, we can write the number density as <span class="math display">\[
+n \equiv \frac{N}{V} = \frac{N}{V_0\sqrt{1-v^2}} = n_0 u^t
+\tag{20.4}
+\]</span></p>
+<p>Each particle’s energy in <span class="math inline">\(S\)</span> is <span class="math inline">\(p^t \equiv m u^t\)</span>, so the total energy density in <span class="math inline">\(S\)</span> is <span class="math display">\[
+\begin{aligned}
+\rho
+&amp;\equiv n p^t \\
+&amp;= (n_0 u^t)(m u^t) \\
+&amp;= (n_0 m) u^t u^t \\
+&amp;= \rho_0 u^t u^t
+\end{aligned}
+\tag{20.5}
+\]</span></p>
+<p>The rest-frame energy density <span class="math inline">\(\rho_0\)</span> of the dust in its own LIF is a <strong>frame-independent scalar</strong>, because all observers can identify that LIF and agree on what it measures. Equation (20.5) shows <span class="math inline">\(\rho\)</span> as a scalar times the product of two time components of four-vectors.</p>
+<p>We interpret this as the <span class="math inline">\(t\!-\!t\)</span> component of a second-rank tensor:</p>
+<div class="math-theorem definition" data-label="20.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 20.2</span><span class="theorem-title">Stress-energy tensor of dust</span></p>
+</div>
+<div class="theorem-content">
+<p>For dust, <span class="math display">\[
+T^{\mu\nu} \equiv \rho_0 u^\mu u^\nu
+\tag{20.6}
+\]</span> This tensor is symmetric: <span class="math inline">\(T^{\mu\nu} = T^{\nu\mu}\)</span>.</p>
+</div>
+</div>
+<p>So for dust, <span class="math inline">\(\rho = T^{tt}\)</span> in any frame.</p>
+<h2 data-original-heading="20.4 Physical Meaning of Stress-Energy Components" id="physical-meaning-of-stress-energy-components">20.4 Physical Meaning of Stress-Energy Components</h2>
+<p>By construction, <span class="math inline">\(T^{tt}\)</span> is the <strong>energy density</strong> in any frame. What about the other components?</p>
+<p>Consider <span class="math display">\[
+\begin{aligned}
+T^{xt}
+&amp;= \rho_0 u^x u^t \\
+&amp;= (n_0 m) u^x u^t \\
+&amp;= (n_0 u^t)(m u^x) \\[2pt]
+&amp;= n p^x
+\end{aligned}
+\tag{20.7}
+\]</span> Since <span class="math inline">\(p^x\)</span> is each particle’s relativistic <span class="math inline">\(x\)</span>-momentum, <span class="math inline">\(T^{xt}\)</span> is the <strong><span class="math inline">\(x\)</span>-momentum density</strong>. Similarly, <span class="math inline">\(T^{yt}\)</span> and <span class="math inline">\(T^{zt}\)</span> are <span class="math inline">\(y\)</span>- and <span class="math inline">\(z\)</span>-momentum densities. Because <span class="math inline">\(T^{\mu\nu}\)</span> is symmetric, <span class="math inline">\(T^{tx}\)</span>, <span class="math inline">\(T^{ty}\)</span>, and <span class="math inline">\(T^{tz}\)</span> have the same meanings.</p>
+<p>We can also reinterpret <span class="math inline">\(T^{xt}\)</span> in terms of <strong>energy flux</strong>. Using <span class="math inline">\(u^x = u^t v_x\)</span>: <span class="math display">\[
+\begin{aligned}
+T^{xt}
+&amp;= \rho_0 u^t u^x \\
+&amp;= \rho_0 u^t (u^t v_x) \\
+&amp;= n p^t v_x \\
+&amp;= \frac{n A v_x dt\,p^t}{A dt}
+\end{aligned}
+\tag{20.8}
+\]</span> Here <span class="math inline">\(A v_x dt\)</span> is the volume that flows through an area <span class="math inline">\(A\)</span> (perpendicular to <span class="math inline">\(x\)</span>) during time <span class="math inline">\(dt\)</span>. Thus the numerator <span class="math inline">\(n A v_x dt\,p^t\)</span> is the <strong>total energy</strong> crossing that area in time <span class="math inline">\(dt\)</span>, and <span class="math inline">\(T^{xt}\)</span> is:</p>
+<ul>
+<li><strong>energy per unit area per unit time</strong> flowing in the <span class="math inline">\(+x\)</span> direction,</li>
+</ul>
+<p>i.e.&nbsp;the <strong><span class="math inline">\(x\)</span>-flux of energy</strong>.</p>
+<p>Analogously:</p>
+<ul>
+<li><span class="math inline">\(T^{yt}\)</span> and <span class="math inline">\(T^{zt}\)</span> are the <span class="math inline">\(y\)</span>- and <span class="math inline">\(z\)</span>-fluxes of energy.</li>
+<li>More generally, <span class="math inline">\(T^{it}\)</span> is the <span class="math inline">\(i\)</span>-flux of energy, and by symmetry <span class="math inline">\(T^{ti}\)</span> is the same.</li>
+</ul>
+<div class="math-theorem remark" data-label="20.1" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 20.1</span><span class="theorem-title">Summary of meanings</span></p>
+</div>
+<div class="theorem-content">
+<p>Roughly,</p>
+<ul>
+<li><span class="math inline">\(T^{tt}\)</span>: energy density<br>
+</li>
+<li><span class="math inline">\(T^{it}\)</span>: <span class="math inline">\(i\)</span>-momentum density and <span class="math inline">\(i\)</span>-flux of energy<br>
+</li>
+<li><span class="math inline">\(T^{ij}\)</span>: <span class="math inline">\(i\)</span>-flux of <span class="math inline">\(j\)</span>-momentum (stresses, including pressure and shear)</li>
+</ul>
+</div>
+</div>
+<p>A plate placed in the path of the dust and absorbing particles interprets <span class="math inline">\(T^{ix}\)</span> as <strong>force per unit area</strong> in the <span class="math inline">\(i\)</span>-direction on the plate. This is why <span class="math inline">\(T^{\mu\nu}\)</span> is a “stress-energy’’ tensor: it simultaneously encodes energy density and the stresses (forces per unit area) carried by the fluid.</p>
+<h2 data-original-heading="20.5 Conservation Law for Dust" id="conservation-law-for-dust">20.5 Conservation Law for Dust</h2>
+<p>Just as <span class="math inline">\(\partial_\mu J^\mu = 0\)</span> expresses charge conservation in special relativity, the tensor equation <span class="math display">\[
+\nabla_\mu T^{\mu\nu} = 0
+\tag{20.9}
+\]</span> expresses conservation of energy and momentum for a fluid in arbitrary coordinates.</p>
+<p>We can see this explicitly for dust in a LIF (so that <span class="math inline">\(\nabla_\mu\)</span> reduces to <span class="math inline">\(\partial_\mu\)</span> and <span class="math inline">\(g_{\mu\nu} = \eta_{\mu\nu}\)</span>).</p>
+<p>Consider an infinitesimal rectangular box of dimensions <span class="math inline">\(dx, dy, dz\)</span> centered on an event (figure 20.3). The dust with four-velocity <span class="math inline">\(u^\mu\)</span> flows through it.</p>
+<p>During time <span class="math inline">\(dt\)</span> the particles move distance <span class="math inline">\(v_x dt\)</span> in <span class="math inline">\(x\)</span>-direction, so the total energy flowing into the left face is <span class="math display">\[
+\rho_0 u^t u^x\,dt\,dy\,dz
+= T^{xt}\,dt\,dy\,dz
+\tag{20.10}
+\]</span> Energy flowing out of the right face is <span class="math inline">\((T^{xt})_{\text{right}} dt\,dy\,dz\)</span>. The net energy gain due to the <span class="math inline">\(x\)</span>-flow is <span class="math display">\[
+[(T^{xt})_{\text{left}} - (T^{xt})_{\text{right}}]\,dt\,dy\,dz
+= \left(-\frac{\partial T^{xt}}{\partial x}dx\right) dt\,dy\,dz
+= -\frac{\partial T^{xt}}{\partial x} dt\,dx\,dy\,dz
+\tag{20.11}
+\]</span></p>
+<p>Doing the same for <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span>-flows, the total energy change inside the box due to fluxes during <span class="math inline">\(dt\)</span> is <span class="math display">\[
+dE_{\text{net}}
+=
+\left[
+-\frac{\partial T^{xt}}{\partial x}
+-\frac{\partial T^{yt}}{\partial y}
+-\frac{\partial T^{zt}}{\partial z}
+\right] dt\,dx\,dy\,dz
+\tag{20.12}
+\]</span></p>
+<p>But energy inside the box is <span class="math inline">\(T^{tt}\)</span> times its volume, so the change in internal energy is <span class="math display">\[
+dE_{\text{tot}}
+= \frac{\partial T^{tt}}{\partial t} dt\,dx\,dy\,dz
+\tag{20.13}
+\]</span></p>
+<p>Conservation of energy demands <span class="math inline">\(dE_{\text{tot}} = dE_{\text{net}}\)</span>, hence <span class="math display">\[
+0
+=
+\left[
+\frac{\partial T^{tt}}{\partial t}
++ \frac{\partial T^{xt}}{\partial x}
++ \frac{\partial T^{yt}}{\partial y}
++ \frac{\partial T^{zt}}{\partial z}
+\right] dt\,dx\,dy\,dz
+\quad\Rightarrow\quad
+\partial_\mu T^{\mu t} = 0
+\tag{20.14}
+\]</span></p>
+<p>So <span class="math inline">\(\partial_\mu T^{\mu t} = 0\)</span> expresses conservation of <strong>energy</strong> for the fluid. Repeating the same argument for <span class="math inline">\(\nu = x,y,z\)</span> yields conservation of <strong>momentum</strong> in each spatial direction: <span class="math display">\[
+\partial_\mu T^{\mu\nu} = 0 \quad (\nu = x,y,z)
+\]</span></p>
+<p>Because we can always construct such a LIF at each event in curved spacetime, the covariant equation <span class="math display">\[
+\nabla_\mu T^{\mu\nu} = 0
+\]</span> must hold in all coordinate systems as the statement of total conservation of energy-momentum for the fluid.</p>
+<h2 data-original-heading="20.6 Stress-Energy of a Perfect Fluid" id="stress-energy-of-a-perfect-fluid">20.6 Stress-Energy of a Perfect Fluid</h2>
+<p>Realistic fluids typically have significant random thermal motions even in a frame where the fluid as a whole is at rest. We call a fluid <strong>perfect</strong> when:</p>
+<ul>
+<li>random motions are significant but</li>
+<li>particles remain essentially non-interacting (no viscosity, no heat conduction, etc.).</li>
+</ul>
+<p>An ideal gas is a classic example of a perfect fluid.</p>
+<p>Let <span class="math inline">\(\rho_0\)</span> and <span class="math inline">\(p_0\)</span> be the energy density and pressure of a perfect fluid as measured in a LIF at rest with respect to the fluid. In that frame, the components of the stress-energy tensor are <span class="math display">\[
+T^{\mu\nu} =
+\begin{bmatrix}
+\rho_0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; p_0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; p_0 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; p_0
+\end{bmatrix}
+\quad
+\text{(for a perfect fluid at rest in a LIF)}
+\tag{20.15}
+\]</span></p>
+<p>In GR units, time is measured in meters, energy density (kg·m<span class="math inline">\(^2\)</span>/m<span class="math inline">\(^2\)</span>)/m<span class="math inline">\(^3\)</span> and pressure (kg·m/m<span class="math inline">\(^2\)</span>)/m both have units of kg/m<span class="math inline">\(^3\)</span>, so the diagonal entries are dimensionally consistent.</p>
+<p>We now want the <strong>general tensor expression</strong> for a perfect fluid in arbitrary coordinates and arbitrary motion. It must:</p>
+<ol type="1">
+<li>Reduce to (20.15) in the rest LIF.</li>
+<li>Be built from tensorial quantities that describe the fluid: <span class="math inline">\(\rho_0\)</span>, <span class="math inline">\(p_0\)</span>, <span class="math inline">\(u^\mu\)</span>, and <span class="math inline">\(g^{\mu\nu}\)</span>.</li>
+</ol>
+<p>The unique simple choice that works is</p>
+<div class="math-theorem definition" data-label="20.3" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 20.3</span><span class="theorem-title">Stress-energy of a perfect fluid</span></p>
+</div>
+<div class="theorem-content">
+<p>For a perfect fluid in arbitrary coordinates, <span class="math display">\[
+T^{\mu\nu} \equiv (\rho_0 + p_0) u^\mu u^\nu + p_0 g^{\mu\nu}
+\tag{20.16}
+\]</span> In the fluid’s rest LIF this reduces to (20.15). The tensor is symmetric: <span class="math inline">\(T^{\mu\nu} = T^{\nu\mu}\)</span>.</p>
+</div>
+</div>
+<p>Because figure 20.2 shows that this form correctly reproduces the dust stress-energy when <span class="math inline">\(p_0 = 0\)</span>, and because <span class="math inline">\(\nabla_\mu T^{\mu\nu} = 0\)</span> holds for each dust-like subset of the fluid, it must also hold for the whole perfect fluid.</p>
+<h2 data-original-heading="20.7 Fluid Equations from the Conservation Law" id="fluid-equations-from-the-conservation-law">20.7 Fluid Equations from the Conservation Law</h2>
+<p>Applying the conservation law to the perfect-fluid stress-energy (20.16) yields the fluid’s equations of motion in an arbitrary LIF: <span class="math display">\[
+\partial_\mu(\rho_0 u^\mu) + p_0 \partial_\mu u^\mu = 0
+\quad\text{(equation of continuity)}
+\tag{20.17}
+\]</span> <span class="math display">\[
+(\rho_0 + p_0)(\partial_\mu u^\mu) u^\nu
+= -(\eta^{\mu\nu} + u^\mu u^\nu)\partial_\mu p_0
+\quad\text{(equation of motion)}
+\tag{20.18}
+\]</span></p>
+<p>To connect with Newtonian fluid dynamics, consider a LIF in which the fluid moves slowly so that <span class="math inline">\(v^2 \ll 1\)</span> and <span class="math display">\[
+u^\mu \approx [1, v_x, v_y, v_z]
+\]</span> If random thermal motions are non-relativistic, then <span class="math inline">\(p \ll \rho\)</span> and we can ignore the distinction between <span class="math inline">\((\rho_0,p_0)\)</span> in the rest frame and <span class="math inline">\((\rho,p)\)</span> in the LIF.</p>
+<p>In this non-relativistic limit, equation (20.17) becomes <span class="math display">\[
+\partial_\mu(\rho u^\mu) = 0
+\quad\Rightarrow\quad
+0 = \frac{\partial\rho}{\partial t} + \vec\nabla\cdot(\rho\vec v)
+\tag{20.19}
+\]</span> which is the familiar <strong>continuity equation</strong> expressing mass (or energy) conservation.</p>
+<p>The spatial components of (20.18) reduce to <span class="math display">\[
+\rho\left(\frac{\partial\vec v}{\partial t}
++ \vec v\cdot\vec\nabla\,\vec v\right)
+= -\vec\nabla p
+\tag{20.20}
+\]</span> which is Euler’s equation—the Newtonian equation of motion for a perfect fluid.</p>
+<p>Those who know classical fluid dynamics will recognize (20.19) and (20.20) as the standard equations describing how fluid elements move in response to internal pressure gradients. The key conceptual point is:</p>
+<div class="math-theorem remark" data-label="20.2" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 20.2</span><span class="theorem-title">Role of <span class="math inline">\(\nabla_\mu T^{\mu\nu}=0\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p>The single tensor equation <span class="math inline">\(\nabla_\mu T^{\mu\nu} = 0\)</span> compactly encodes <strong>all</strong> of the local conservation and force laws determining the motion of a relativistic fluid.</p>
+</div>
+</div>
+<p>In later chapters, this stress-energy tensor <span class="math inline">\(T^{\mu\nu}\)</span> will serve as the <strong>source term</strong> on the right-hand side of the Einstein equation, providing the bridge from matter and energy to spacetime curvature.</p>
+<p>Using the normalization <span class="math inline">\(u^\mu u_\mu=-1\)</span> one can show <span class="math inline">\(u_\mu\nabla_\nu u^\mu=0\)</span>, which implies <span class="math inline">\(u^\mu\nabla_\nu u^\nu = -u_\nu\nabla_\mu u^\nu u^\mu\)</span> and cancels against part of the first term when projected along <span class="math inline">\(u_\mu\)</span>.</p>
+<p>Now take the <span class="math inline">\(\mu=r\)</span> component. For our static configuration:</p>
+<p><span class="math inline">\(u^r=0\)</span>, <span class="math inline">\(u^\nu\)</span> has only <span class="math inline">\(t\)</span> component</p>
+<p><span class="math inline">\(p=p(r)\)</span> so <span class="math inline">\(\partial_\nu p = \frac{dp}{dr},\delta^r_\nu\)</span></p>
+<p><span class="math inline">\(g^{rr} = 1/B\)</span></p>
+<p>Thus the <span class="math inline">\(r\)</span>-component becomes</p>
+<p>Let’s keep using the book’s notation <span class="math inline">\(p,\rho,m(r)\)</span> and <span class="math inline">\(A,B\)</span>.</p>
+<hr>
+<h2 data-original-heading="1. Newtonian limit of the Oppenheimer–Volkoff equation" id="newtonian-limit-of-the-oppenheimervolkoff-equation">1. Newtonian limit of the Oppenheimer–Volkoff equation</h2>
+<p>Start from equation (23.49)</p>
+<p><span class="math display">\[
+\frac{dp}{dr}
+= -\frac{\rho + p}{r^2}
+\left[\frac{4\pi G p r^3 + Gm(r)}{1 - 2Gm(r)/r}\right]
+\tag{23.49}
+\]</span></p>
+<p>In the Newtonian limit (chapter 21) we assume</p>
+<ol type="1">
+<li><p><strong>Weak field</strong> <span class="math inline">\(2Gm(r)/r \ll 1\)</span></p></li>
+<li><p><strong>Non-relativistic matter</strong> <span class="math inline">\(p \ll \rho\)</span> (pressure much smaller than energy density)</p></li>
+<li><p><strong>Newtonian mass</strong> The gravitational mass <span class="math inline">\(m(r)\)</span> coincides with the Newtonian enclosed mass <span class="math inline">\(M(r)\)</span>, and the pressure is just <span class="math inline">\(P=p\)</span>.</p></li>
+</ol>
+<p>Apply these approximations step by step:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{dp}{dr}
+&amp;= -\frac{\rho + p}{r^2}
+\left[\frac{4\pi G p r^3 + Gm(r)}{1 - 2Gm(r)/r}\right] [4pt]
+&amp;\approx -\frac{\rho}{r^2}
+\left[\frac{\underbrace{4\pi G p r^3}*{\text{small if }p\ll\rho} + Gm(r)}{\underbrace{1 - 2Gm(r)/r}*{\approx 1}}\right] [6pt]
+&amp;\approx -\frac{\rho}{r^2},Gm(r)
+\end{aligned}
+\]</span></p>
+<p>Identifying <span class="math inline">\(P \equiv p\)</span> and <span class="math inline">\(M(r) \equiv m(r)\)</span> in this limit, we get</p>
+<p><span class="math display">\[
+\boxed{
+\frac{dP}{dr} = -\frac{G M(r)\rho}{r^2}
+}
+\]</span></p>
+<p>which is exactly the usual Newtonian hydrostatic equilibrium equation.</p>
+<hr>
+<h2 data-original-heading="2. Behavior when r < 2GM and gravitational collapse" id="behavior-when-r-2gm-and-gravitational-collapse">2. Behavior when <span class="math inline">\(r &lt; 2GM\)</span> and gravitational collapse</h2>
+<p>Now look qualitatively at equation (23.49) when the radius of the star becomes smaller than its Schwarzschild radius <span class="math inline">\(R = 2GM\)</span>.</p>
+<p>For “normal” matter we have</p>
+<ul>
+<li><span class="math inline">\(\rho &gt; 0\)</span></li>
+<li><span class="math inline">\(p &gt; 0\)</span></li>
+<li><span class="math inline">\(m(r) &gt; 0\)</span></li>
+</ul>
+<p>so the <strong>numerator</strong> in the square brackets is always positive</p>
+<p><span class="math display">\[
+4\pi G p r^3 + Gm(r) &gt; 0
+\]</span></p>
+<p>The <strong>denominator</strong> is</p>
+<p><span class="math display">\[
+1 - \frac{2Gm(r)}{r}
+\]</span></p>
+<ul>
+<li><p>For a stable neutron star with radius <span class="math inline">\(R &gt; 2GM\)</span>, we have <span class="math inline">\(2Gm(r)/r &lt; 1\)</span> everywhere, so the denominator is positive. Then the bracket is positive, and the overall minus sign gives</p>
+<p><span class="math display">\[
+\frac{dp}{dr} &lt; 0
+\]</span></p>
+<p>so pressure decreases outward. This is the usual hydrostatic situation: higher pressure at smaller <span class="math inline">\(r\)</span> supports the star against gravity.</p></li>
+<li><p>As the star contracts toward its Schwarzschild radius, the outer layers approach <span class="math inline">\(r \simeq 2GM\)</span> with <span class="math inline">\(m(r)\simeq M\)</span>. At <span class="math inline">\(r = 2GM\)</span> the denominator in (23.49) tends to zero</p>
+<p><span class="math display">\[
+1-\frac{2GM}{r} \to 0^+
+\]</span></p>
+<p>but the numerator stays positive. Therefore</p>
+<p><span class="math display">\[
+\left|\frac{dp}{dr}\right| \to \infty
+\]</span></p>
+<p>An <strong>infinite</strong> pressure gradient would be required to keep a static configuration. No realistic equation of state can provide this, so a static neutron-star solution ceases to exist once the star shrinks close to <span class="math inline">\(R = 2GM\)</span>.</p></li>
+<li><p>Once the radius passes inside its Schwarzschild radius, <span class="math inline">\(r &lt; 2GM\)</span>, the denominator is <strong>negative</strong></p>
+<p><span class="math display">\[
+1-\frac{2Gm(r)}{r} &lt; 0
+\]</span></p>
+<p>while the numerator is still positive. Thus the square bracket becomes negative, and the overall minus sign makes</p>
+<p><span class="math display">\[
+\frac{dp}{dr} &gt; 0
+\]</span></p>
+<p>i.e.&nbsp;the pressure <strong>increases</strong> outward rather than inward.</p></li>
+</ul>
+<p>This behavior is qualitatively disastrous for hydrostatic support:</p>
+<ul>
+<li>When <span class="math inline">\(r&gt;2GM\)</span> pressure is largest at the center and falls outward (<span class="math inline">\(dp/dr&lt;0\)</span>), pushing <strong>against</strong> gravity.</li>
+<li>When <span class="math inline">\(r&lt;2GM\)</span> (23.49) demands <span class="math inline">\(dp/dr&gt;0\)</span>, so pressure is smaller at the center and larger at some larger radius, meaning the pressure gradient actually goes in the <strong>same direction</strong> as gravity instead of opposing it. There is no way to arrange a static, self-supporting fluid configuration.</li>
+</ul>
+<p>So as soon as the star’s radius crosses its Schwarzschild radius, the Oppenheimer–Volkoff equation itself tells us that <strong>no static solution is possible</strong>: any configuration must keep collapsing. In full general relativity, this continued collapse leads (classically) to a pointlike singular mass at <span class="math inline">\(r=0\)</span>, with the exterior geometry remaining the Schwarzschild solution of mass <span class="math inline">\(M\)</span>.</p>
+<p>Thus, the behavior of equation (23.49) for <span class="math inline">\(r&lt;2GM\)</span> is entirely consistent with the picture that a sufficiently massive neutron star cannot find a new hydrostatic equilibrium and instead collapses to a point mass (a black-hole singularity), modulo whatever quantum-gravity effects might eventually modify the innermost physics.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span>← Previous page</span><span>Ch. 19 Riemman Tensor</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span>Next page →</span><span>Ch. 21 The Einstein Equation</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 20 Stress-Energy and the Source of Gravity</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#newtonian-gauss-laws-and-local-field-equations" class="is-active" aria-current="location">20.1 Newtonian Gauss Laws and Local Field Equations</a></li><li style="--depth:0"><a href="#the-source-of-gravity-is-relativistic-energy">20.2 The Source of Gravity Is Relativistic Energy</a></li><li style="--depth:0"><a href="#the-stress-energy-of-dust">20.3 The Stress-Energy of “Dust’’</a></li><li style="--depth:0"><a href="#physical-meaning-of-stress-energy-components">20.4 Physical Meaning of Stress-Energy Components</a></li><li style="--depth:0"><a href="#conservation-law-for-dust">20.5 Conservation Law for Dust</a></li><li style="--depth:0"><a href="#stress-energy-of-a-perfect-fluid">20.6 Stress-Energy of a Perfect Fluid</a></li><li style="--depth:0"><a href="#fluid-equations-from-the-conservation-law">20.7 Fluid Equations from the Conservation Law</a></li><li style="--depth:0"><a href="#newtonian-limit-of-the-oppenheimervolkoff-equation">1. Newtonian limit of the Oppenheimer–Volkoff equation</a></li><li style="--depth:0"><a href="#behavior-when-r-2gm-and-gravitational-collapse">2. Behavior when r &lt; 2GM and gravitational collapse</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

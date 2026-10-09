@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated) — E.H. Notebook</title>
+<meta name="description" content="Notation (matches your notes):Forward (noising) Markov chain q: q(x_t\mid x_{t-1})=\mathcal N\!\big(\sqrt{\alpha_t}\,x_{t-1},\,(1-\alpha_t)I\big), with 0&lt;\alpha_t&lt;1. \bet">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/index.html">隐藏变量模型</a></nav><h1 id="reader-title">Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</h1></header><div id="article-body" class="prose"><blockquote>
+<p><strong>Notation (matches your notes):</strong></p>
+<ul>
+<li>Forward (noising) Markov chain <span class="math inline">\(q\)</span>:<br>
+<span class="math inline">\(q(x_t\mid x_{t-1})=\mathcal N\!\big(\sqrt{\alpha_t}\,x_{t-1},\,(1-\alpha_t)I\big)\)</span>, with <span class="math inline">\(0&lt;\alpha_t&lt;1\)</span>.<br>
+<span class="math inline">\(\beta_t:=1-\alpha_t\)</span>, <span class="math inline">\(\ \bar\alpha_t:=\prod_{s=1}^t\alpha_s\)</span>.<br>
+Marginal: <span class="math inline">\(q(x_t\mid x_0)=\mathcal N\!\big(\sqrt{\bar\alpha_t}\,x_0,\,(1-\bar\alpha_t)I\big)\)</span>.</li>
+<li>Reverse (denoising) model <span class="math inline">\(p_\theta\)</span>: <span class="math inline">\(p_\theta(x_{t-1}\mid x_t)\)</span> Gaussian.<br>
+</li>
+<li>Prior: <span class="math inline">\(p(x_T)=\mathcal N(0,I)\)</span>.<br>
+</li>
+<li>Your notation <span class="math inline">\(s_\theta(x_t,t)\)</span> denotes <strong>predicted noise</strong> (i.e., <span class="math inline">\(s_\theta\equiv\varepsilon_\theta\)</span>).</li>
+</ul>
+</blockquote>
+<p>Our goal is a tight, readable derivation of the ELBO, the Gaussian posterior <span class="math inline">\(q(x_{t-1}\!\mid x_t,x_0)\)</span>, and the reduction to the standard noise-prediction MSE loss.</p>
+<hr>
+<h2 data-original-heading="1) ELBO via Jensen" id="elbo-via-jensen">1 1) ELBO via Jensen</h2>
+<p>We start by inserting the forward chain as an importance distribution and applying Jensen’s inequality:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\log p_\theta(x_0)
+&amp;=\log \int \frac{p_\theta(x_{0:T})}{q(x_{1:T}\mid x_0)}\,q(x_{1:T}\mid x_0)\,dx_{1:T} \\
+&amp;\ge \mathbb E_{q(x_{1:T}\mid x_0)}\!\left[ \log p_\theta(x_{0:T})-\log q(x_{1:T}\mid x_0)\right].
+\end{aligned}
+\]</span></p>
+<p>Factorize the Markov chains (your “Markov chain” line):</p>
+<p><span class="math display">\[
+\begin{aligned}
+p_\theta(x_{0:T})
+&amp;=p(x_T)\,\prod_{t=T}^{2} p_\theta(x_{t-1}\mid x_t)\,\cdot p_\theta(x_0\mid x_1),\\
+q(x_{1:T}\mid x_0)
+&amp;=\prod_{t=1}^{T} q(x_t\mid x_{t-1}).
+\end{aligned}
+\]</span> Expanding the logs:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{ELBO}
+&amp;= \mathbb E_q\Big[
+\log p(x_T) + \sum_{t=2}^T \log p_\theta(x_{t-1}\mid x_t) + \log p_\theta(x_0\mid x_1)
+- \sum_{t=1}^T \log q(x_t\mid x_{t-1})
+\Big].
+\end{aligned}
+\]</span> ### 1.a) The “<span class="math inline">\(B\)</span>” telescoping (your blue block)</p>
+<p><strong>Key identity (Bayes on the forward chain):</strong> <span class="math display">\[
+\boxed{ \log q(x_{t-1}\mid x_t,x_0)-\log q(x_t\mid x_{t-1})
+= \log q(x_{t-1}\mid x_0) - \log q(x_t\mid x_0). }
+\]</span></p>
+<p><strong>Why:</strong> From <span class="math inline">\(q(x_{t-1}\mid x_t,x_0)\,q(x_t\mid x_0)=q(x_t\mid x_{t-1})\,q(x_{t-1}\mid x_0)\)</span>.</p>
+<p>Insert and subtract <span class="math inline">\(\sum_{t=2}^T \log q(x_{t-1}\mid x_t,x_0)\)</span> inside ELBO, then apply the identity and <strong>sum from <span class="math inline">\(t=2\)</span> to <span class="math inline">\(T\)</span></strong>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{t=2}^T \big(\log q(x_{t-1}\mid x_t,x_0)-\log q(x_t\mid x_{t-1})\big)
+&amp;= \sum_{t=2}^T \big(\log q(x_{t-1}\mid x_0) - \log q(x_t\mid x_0)\big) \\
+&amp;= \log q(x_1\mid x_0) - \log q(x_T\mid x_0) 
+\end{aligned}
+\]</span></p>
+<p>Use this to cancel the <span class="math inline">\(-\log q(x_1\mid x_0)\)</span> coming from <span class="math inline">\(-\sum_{t=1}^T \log q(x_t\mid x_{t-1})\)</span>. The ELBO becomes</p>
+<p>$$ <span class="math display">\[\begin{align}
+\text{ELBO}=&amp;
+\mathbb E_q\!\left[
+\underbrace{\log p(x_T)-\log q(x_T\mid x_0)}_{\displaystyle -\mathrm{KL}(q(x_T\mid x_0)\,\|\,p(x_T))}
+\;+\;
+\sum_{t=2}^T \log \frac{p_\theta(x_{t-1}\mid x_t)}{q(x_{t-1}\mid x_t,x_0)}
+\;+\;
+\log p_\theta(x_0\mid x_1)
+\right]\\
+
+=&amp;
+-\mathbb E_q\,\mathrm{KL}\!\big(q(x_T\mid x_0)\,\|\,p(x_T)\big)
+-\sum_{t=2}^T \mathbb E_q\,\mathrm{KL}\!\big(q(x_{t-1}\mid x_t,x_0)\,\|\,p_\theta(x_{t-1}\mid x_t)\big)
+-\mathbb E_q\,\mathrm{KL}\!\big(q(x_0\mid x_1)\,\|\,p_\theta(x_0\mid x_1)\big)
+\end{align}\]</span> $$</p>
+<p>Equivalently, as a <strong>sum of KLs</strong> (your red/blue <span class="math inline">\(A,B\)</span> decomposition):</p>
+<blockquote>
+<p><strong>Practical notes (matching your margin comments):</strong></p>
+<ul>
+<li>With <span class="math inline">\(p(x_T)=\mathcal N(0,I)\)</span> and large <span class="math inline">\(T\)</span>, <span class="math inline">\(q(x_T\mid x_0)\approx \mathcal N(0,I)\)</span>, so the <strong>terminal KL</strong> <span class="math inline">\(\to 0\)</span>.<br>
+</li>
+<li>The <strong>reconstruction</strong> term at <span class="math inline">\(t=1\)</span> is often dropped or replaced by a simple decoder loss.<br>
+</li>
+<li>Training focuses on <span class="math inline">\(\sum_{t=2}^T\)</span> KLs.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 data-original-heading="2) The forward posterior q(x_{t-1}\mid x_t,x_0) (your “part A”)" id="the-forward-posterior-qx_t-1mid-x_tx_0-your-part-a">2 2) The forward posterior <span class="math inline">\(q(x_{t-1}\mid x_t,x_0)\)</span> (your “part A”)</h2>
+<p>We combine two Gaussians in <span class="math inline">\(x_{t-1}\)</span>: <span class="math display">\[
+q(x_{t-1}\mid x_0)=\mathcal N\!\big(\sqrt{\bar\alpha_{t-1}}\,x_0,\ (1-\bar\alpha_{t-1})I\big),
+\quad
+q(x_t\mid x_{t-1})=\mathcal N\!\big(\sqrt{\alpha_t}\,x_{t-1},\ (1-\alpha_t)I\big).
+\]</span></p>
+<p>Up to a constant, <span class="math display">\[
+q(x_{t-1}\mid x_t,x_0)\ \propto\ q(x_t\mid x_{t-1})\,q(x_{t-1}\mid x_0).
+\]</span></p>
+<p><strong>Collect quadratic terms in <span class="math inline">\(x_{t-1}\)</span></strong> (your <span class="math inline">\(A,b\)</span> line):</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;-\frac{1}{2(1-\bar\alpha_{t-1})}\|x_{t-1}-\sqrt{\bar\alpha_{t-1}}x_0\|^2
+-\frac{1}{2(1-\alpha_t)}\|x_t-\sqrt{\alpha_t}x_{t-1}\|^2
+\\
+&amp;= -\frac12\,x_{t-1}^\top
+\underbrace{\Big(\tfrac{1}{1-\bar\alpha_{t-1}}+\tfrac{\alpha_t}{1-\alpha_t}\Big)}_{A}\,x_{t-1}
+\ +\
+x_{t-1}^\top
+\underbrace{\Big(\tfrac{\sqrt{\bar\alpha_{t-1}}}{1-\bar\alpha_{t-1}}x_0
++\tfrac{\sqrt{\alpha_t}}{1-\alpha_t}x_t\Big)}_{b}
+\ +\ \text{const}.
+\end{aligned}
+\]</span></p>
+<p>Thus the posterior is Gaussian with precision <span class="math inline">\(A I\)</span> and mean <span class="math inline">\(A^{-1}b\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+q(x_{t-1}\mid x_t,x_0)=\mathcal N\!\big(\tilde\mu_t(x_t,x_0),\ \tilde\sigma_t^2 I\big),\qquad
+\tilde\sigma_t^2=A^{-1}=\frac{(1-\alpha_t)(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}=\frac{1-\bar\alpha_{t-1}}{1-\bar\alpha_t}\,\beta_t.
+}
+\]</span></p>
+<p>For the mean, simplify <span class="math inline">\(A^{-1}b\)</span> to the standard closed form:</p>
+<p><span class="math display">\[
+\boxed{
+\tilde\mu_t(x_t,x_0)
+= \frac{\sqrt{\alpha_t}\,(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\,x_t
+\;+\;
+\frac{\sqrt{\bar\alpha_{t-1}}\,\beta_t}{1-\bar\alpha_t}\,x_0.
+}
+\]</span></p>
+<hr>
+<h3 data-original-heading="2.a) Equivalent “\varepsilon” form (your boxed conversion)" id="a-equivalent-varepsilon-form-your-boxed-conversion">2.a) Equivalent “<span class="math inline">\(\varepsilon\)</span>” form (your boxed conversion)</h3>
+<p>Introduce the <strong>reparameterization</strong> (forward marginal): <span class="math display">\[
+x_t=\sqrt{\bar\alpha_t}\,x_0 + \sqrt{1-\bar\alpha_t}\,\varepsilon,\qquad \varepsilon\sim\mathcal N(0,I).
+\]</span></p>
+<p>Algebra gives an equivalent expression you used on the right board:</p>
+<p><span class="math display">\[
+\boxed{
+\tilde\mu_t(x_t,x_0)
+= \frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{\beta_t}{\sqrt{1-\bar\alpha_t}}\,\varepsilon\right).
+}
+\]</span></p>
+<p>(Verify by substituting <span class="math inline">\(x_t\)</span> and collecting terms in <span class="math inline">\(x_0\)</span> and <span class="math inline">\(\varepsilon\)</span>.)</p>
+<hr>
+<h2 data-original-heading="3) Turning each KL into a noise-MSE (your red box “Because same variance”)" id="turning-each-kl-into-a-noise-mse-your-red-box-because-same-variance">3 3) Turning each KL into a noise-MSE (your red box “Because same variance”)</h2>
+<p>Assume the reverse conditional uses the <strong>same variance</strong> as the true posterior:</p>
+<p><span class="math display">\[
+p_\theta(x_{t-1}\mid x_t)=\mathcal N\!\big(\mu_\theta(x_t,t),\ \tilde\sigma_t^2 I\big),
+\]</span></p>
+<p>and parameterize its <strong>mean</strong> via predicted noise (your <span class="math inline">\(s_\theta\)</span>):</p>
+<p><span class="math display">\[
+\boxed{
+\mu_\theta(x_t,t)=\frac{1}{\sqrt{\alpha_t}}
+\left(x_t-\frac{\beta_t}{\sqrt{1-\bar\alpha_t}}\,s_\theta(x_t,t)\right),
+\qquad s_\theta \approx \varepsilon.
+}
+\]</span></p>
+<p>For Gaussians with equal covariance <span class="math inline">\(\Sigma=\tilde\sigma_t^2 I\)</span>,</p>
+<p><span class="math display">\[
+\mathrm{KL}\big(\mathcal N(m_1,\Sigma)\,\|\,\mathcal N(m_2,\Sigma)\big)
+=\frac{1}{2}\,(m_1-m_2)^\top \Sigma^{-1}(m_1-m_2).
+\]</span></p>
+<p>Here <span class="math inline">\(m_1=\tilde\mu_t(x_t,x_0)\)</span>, <span class="math inline">\(m_2=\mu_\theta(x_t,t)\)</span>. Using the <span class="math inline">\(\varepsilon\)</span>-form above,</p>
+$$
+<span class="math display">\[\begin{aligned}
+\tilde\mu_t - \mu_\theta
+&amp;= \frac{1}{\sqrt{\alpha_t}}
+\left(
+x_t-\frac{\beta_t}{\sqrt{1-\bar\alpha_t}}\varepsilon
+-\;x_t + \frac{\beta_t}{\sqrt{1-\bar\alpha_t}}s_\theta
+\right)
+\\
+&amp;=\frac{\beta_t}{\sqrt{\alpha_t(1-\bar\alpha_t)}}\left(s_\theta-\varepsilon\right).
+\end{aligned}\]</span>
+<p>$$</p>
+<p>Therefore each KL term becomes a <strong>weighted MSE on the noise</strong>:</p>
+<p><span class="math display">\[
+\boxed{
+\mathrm{KL}\!\left(q(x_{t-1}\mid x_t,x_0)\,\|\,p_\theta(x_{t-1}\mid x_t)\right)
+=\underbrace{\frac{1}{2\tilde\sigma_t^2}\cdot\frac{\beta_t^2}{\alpha_t(1-\bar\alpha_t)}}_{\displaystyle \lambda_t}
+\,\big\|s_\theta(x_t,t)-\varepsilon\big\|^2.
+}
+\]</span></p>
+<p>With <span class="math inline">\(\tilde\sigma_t^2=\dfrac{\beta_t(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\)</span>, this simplifies to</p>
+<p><span class="math display">\[
+\boxed{
+\lambda_t
+=\frac{\beta_t}{2\,\alpha_t\,(1-\bar\alpha_{t-1})}.
+}
+\]</span></p>
+<blockquote>
+<p>Many implementations use the <strong>“simple loss”</strong> by dropping <span class="math inline">\(\lambda_t\)</span> and minimizing an unweighted MSE (or a different schedule weighting); that matches your note “in practice only evaluate this”.</p>
+</blockquote>
+<hr>
+<h2 data-original-heading="4) Final training objective (your gray box)" id="final-training-objective-your-gray-box">4 4) Final training objective (your gray box)</h2>
+<p>Sampling <span class="math inline">\(x_0\sim\text{data}\)</span>, <span class="math inline">\(t\sim\mathrm{Uniform}\{1,\dots,T\}\)</span>, <span class="math inline">\(\varepsilon\sim\mathcal N(0,I)\)</span>, form <span class="math inline">\(x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\,\varepsilon\)</span>. Then</p>
+<p><span class="math display">\[
+\boxed{
+\mathcal L_{\text{simple}}(\theta)
+=\mathbb E\big[\;\|\,\varepsilon - s_\theta(x_t,t)\,\|^2\;\big]
+\quad\text{(common practical loss)}
+}
+\]</span></p>
+<p>and the exact ELBO-consistent, equal-variance objective is</p>
+<p><span class="math display">\[
+\boxed{
+\mathcal L_{\text{ELBO}}(\theta)
+=\sum_{t=2}^T \mathbb E\big[\,\lambda_t\,\|\,\varepsilon - s_\theta(x_t,t)\,\|^2\big]
+\;+\; \underbrace{\text{(terminal KL)}_{\approx 0}}_{\mathrm{KL}(q(x_T\mid x_0)\,\|\,p(x_T))}
+\;+\; \underbrace{\text{(reconstruction at }t=1\text{)}}_{\mathrm{KL}(q(x_0\mid x_1)\,\|\,p_\theta(x_0\mid x_1))}.
+}
+\]</span></p>
+<hr>
+<h2 data-original-heading="5) One-line score-matching connection (your last page)" id="one-line-score-matching-connection-your-last-page">5 5) One-line score-matching connection (your last page)</h2>
+<p>Because <span class="math inline">\(x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\,\varepsilon\)</span>, predicting <span class="math inline">\(\varepsilon\)</span> is equivalent (up to known scalings) to predicting the <strong>score</strong> <span class="math inline">\(\nabla_{x_t}\log q_t(x_t)\)</span>. This links DDPM training to denoising score matching and to continuous-time score-based SDE formulations.</p>
+<hr>
+<h3 data-original-heading="(Everything above matches your A/B blocks, the telescoping identity, the A^{-1}b,A^{-1} posterior derivation, the \varepsilon substitution, and the final KL→MSE reduction with the explicit weight \lambda_t.)" id="everything-above-matches-your-ab-blocks-the-telescoping-identity-the-a-1ba-1-posterior-derivation-the-varepsilon-substitution-and-the-final-klmse-reduction-with-the-explicit-weight-lambda_t.">5.1 (Everything above matches your A/B blocks, the telescoping identity, the <span class="math inline">\(A^{-1}b,A^{-1}\)</span> posterior derivation, the <span class="math inline">\(\varepsilon\)</span> substitution, and the final KL→MSE reduction with the explicit weight <span class="math inline">\(\lambda_t\)</span>.)</h3></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span>Next page →</span><span>GANs</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#elbo-via-jensen" class="is-active" aria-current="location">1 1) ELBO via Jensen</a></li><li style="--depth:0"><a href="#the-forward-posterior-qx_t-1mid-x_tx_0-your-part-a">2 2) The forward posterior q(x_{t-1}\mid x_t,x_0) (your “part A”)</a></li><li style="--depth:1"><a href="#a-equivalent-varepsilon-form-your-boxed-conversion">2.a) Equivalent “\varepsilon” form (your boxed conversion)</a></li><li style="--depth:0"><a href="#turning-each-kl-into-a-noise-mse-your-red-box-because-same-variance">3 3) Turning each KL into a noise-MSE (your red box “Because same variance”)</a></li><li style="--depth:0"><a href="#final-training-objective-your-gray-box">4 4) Final training objective (your gray box)</a></li><li style="--depth:0"><a href="#one-line-score-matching-connection-your-last-page">5 5) One-line score-matching connection (your last page)</a></li><li style="--depth:1"><a href="#everything-above-matches-your-ab-blocks-the-telescoping-identity-the-a-1ba-1-posterior-derivation-the-varepsilon-substitution-and-the-final-klmse-reduction-with-the-explicit-weight-lambda_t.">5.1 (Everything above matches your A/B blocks, the telescoping identity, the A^{-1}b,A^{-1} posterior derivation, the \varepsilon substitution, and the final KL→MSE reduction with the explicit weight \lambda_t.)</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

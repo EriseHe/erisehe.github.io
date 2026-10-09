@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 18. Geodesic Derivation — E.H. Notebook</title>
+<meta name="description" content="18.1 Physical Picture of Tidal EffectsEuclid’s axiom for flat space says that parallel lines never meet. In spacetime, we learned earlier that the tidal effects of gravit">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 18. Geodesic Derivation</h1></header><div id="article-body" class="prose"><h2 data-original-heading="18.1 Physical Picture of Tidal Effects" id="physical-picture-of-tidal-effects">18.1 Physical Picture of Tidal Effects</h2>
+<p>Euclid’s axiom for flat space says that <strong>parallel lines never meet</strong>. In spacetime, we learned earlier that the <strong>tidal effects of gravity</strong> cause worldlines that are initially parallel to accelerate relative to each other, so their geodesics do <strong>not</strong> remain parallel.</p>
+<p>This failure of initially parallel geodesics to remain parallel is therefore a fundamental indicator that the spacetime around a gravitating object is <strong>curved</strong>.</p>
+<p>Our ultimate goal in this chapter is to construct a tensor, the <strong>Riemann tensor</strong>, that quantifies this relative acceleration of initially parallel geodesics:</p>
+<ul>
+<li>In flat space(time), initially parallel geodesics remain parallel, so the Riemann tensor will be <strong>zero everywhere</strong>.</li>
+<li>In curved space(time), they do not remain parallel, so the Riemann tensor is <strong>nonzero</strong>.</li>
+</ul>
+<p>Thus the Riemann tensor provides a foolproof way to distinguish flat from curved space(time).</p>
+<p>To build this tensor, we first review <strong>geodesic deviation</strong> in Newtonian gravity and then repeat the analysis in general relativity.</p>
+<hr>
+<h2 data-original-heading="18.2 Newtonian Tidal Effects" id="newtonian-tidal-effects">18.2 Newtonian Tidal Effects</h2>
+<h3 data-original-heading="18.2.1 Qualitative Description" id="qualitative-description">18.2.1 Qualitative Description</h3>
+<p>Imagine a frame floating in deep space and four test balls initially at rest in that frame.<br>
+If no forces act, the balls remain at rest relative to the frame and their worldlines are straight, parallel lines in a spacetime diagram.</p>
+<p>Now imagine instead a frame that is <strong>freely falling near the earth</strong>:</p>
+<ul>
+<li>The center of the frame accelerates downward toward the earth’s center.</li>
+<li>Balls closer to the earth experience a <strong>slightly larger</strong> gravitational acceleration.</li>
+<li>Balls farther from the earth experience a <strong>slightly smaller</strong> acceleration.</li>
+<li>Balls on the sides experience gravitational acceleration that has a slight <strong>inward horizontal component</strong> toward the earth’s center.</li>
+</ul>
+<p>From the point of view of an observer freely falling with this frame, the frame’s center is “at rest,” but the balls acquire small accelerations <strong>relative to the frame</strong>:</p>
+<ul>
+<li>Balls above and below accelerate away from the center.</li>
+<li>Balls on the sides accelerate toward the center.</li>
+</ul>
+<p>If we plot the balls’ worldlines in a spacetime diagram, they start out parallel but gradually curve toward or away from each other. This relative motion is the <strong>tidal effect</strong> of the earth’s gravitational field.</p>
+<p>The same physics explains the tides (figure 18.2): the earth and its oceans are freely falling in the moon’s gravitational field, so different parts of the oceans experience slightly different accelerations, producing the familiar bulges.</p>
+<hr>
+<h3 data-original-heading="18.2.2 Gravitational Field and Potential" id="gravitational-field-and-potential">18.2.2 Gravitational Field and Potential</h3>
+<p>In Newtonian mechanics, we can describe gravity either by a <strong>gravitational field vector</strong> <span class="math inline">\(\vec g\)</span> or by a <strong>gravitational potential</strong> <span class="math inline">\(\Phi\)</span>:</p>
+<ul>
+<li><span class="math inline">\(\vec F_g\)</span> is the gravitational force on a test mass <span class="math inline">\(m\)</span>.</li>
+<li>Gravitational field: <span class="math inline">\(\vec g \equiv \vec F_g/m\)</span>.</li>
+<li>Gravitational potential: <span class="math inline">\(\Phi \equiv V_g/m\)</span>, where <span class="math inline">\(V_g\)</span> is the gravitational potential energy.</li>
+</ul>
+<p>For a spherical object of mass <span class="math inline">\(M\)</span>, at a distance <span class="math inline">\(r\)</span> in empty space,</p>
+<p><span class="math display">\[
+\vec g = \left(-\frac{GM}{r^2}\right)\hat r
+\]</span></p>
+<p>(where <span class="math inline">\(\hat r\)</span> is the radial unit vector) and</p>
+<p><span class="math display">\[
+\Phi = -\frac{GM}{r}
+\]</span></p>
+<p>Just as in electrostatics, field and potential are related by</p>
+<p><span class="math display">\[
+\vec g = -\vec\nabla \Phi
+\]</span></p>
+<p>To make the analogy with GR closer, we express things in terms of <span class="math inline">\(\Phi\)</span>.<br>
+According to Newton’s second law, the acceleration of a freely falling particle is</p>
+<p><span class="math display">\[
+\vec a
+= \frac{\vec F_g}{m}
+\equiv \vec g
+= -\vec\nabla \Phi
+\]</span></p>
+<p>In index notation (using Latin indices <span class="math inline">\(i,j\)</span> only for <strong>spatial</strong> components, and letting <span class="math inline">\(\eta^{ij}\)</span> denote the spatial components of the flat-space metric),</p>
+<p><span class="math display">\[
+\frac{d^2 x^i}{dt^2}
+= -\eta^{ij} \frac{\partial \Phi}{\partial x^j}
+\equiv -\eta^{ij} [\partial_j \Phi]_{\vec x}
+\tag{18.1}
+\]</span></p>
+<p>The notation <span class="math inline">\([\partial_j\Phi]_{\vec x}\)</span> reminds us that this derivative is evaluated at the particle’s position <span class="math inline">\(\vec x\)</span>.</p>
+<hr>
+<h3 data-original-heading="18.2.3 Two Freely Falling Particles and the Separation Vector" id="two-freely-falling-particles-and-the-separation-vector">18.2.3 Two Freely Falling Particles and the Separation Vector</h3>
+<p>Now consider:</p>
+<ul>
+<li>A <strong>reference particle</strong> falling according to equation (18.1).</li>
+<li>A second particle initially a small displacement <span class="math inline">\(\vec n(t)\)</span> away, with position <span class="math inline">\(x^i(t) + n^i(t)\)</span>.</li>
+</ul>
+<p>The vector <span class="math inline">\(\vec n(t)\)</span> is the <strong>separation vector</strong> between the particles at time <span class="math inline">\(t\)</span>.</p>
+<p>The <strong>relative acceleration</strong> we are interested in (the Newtonian tidal effect) is</p>
+<p><span class="math display">\[
+\frac{d^2 n^i}{dt^2}
+\]</span></p>
+<p>How do we compute this?</p>
+<p>By Newton’s second law, the acceleration of the second particle is</p>
+<p><span class="math display">\[
+\frac{d^2 (x^i + n^i)}{dt^2}
+= -\eta^{ij} [\partial_j \Phi]_{\vec x + \vec n}
+\tag{18.2}
+\]</span></p>
+<p>The derivative is evaluated at the <strong>second</strong> particle’s position <span class="math inline">\(\vec x + \vec n\)</span>.</p>
+<p>We now expand <span class="math inline">\([\partial_j\Phi]_{\vec x + \vec n}\)</span> in a Taylor series around the reference particle’s position <span class="math inline">\(\vec x\)</span>:</p>
+<p><span class="math display">\[
+[\partial_j\Phi]_{\vec x + \vec n}
+= [\partial_j\Phi]_{\vec x}
++ n^k \left( \frac{\partial}{\partial x^k}[\partial_j\Phi] \right)_{\vec x}
++ \dots
+\tag{18.3}
+\]</span></p>
+<p>If <span class="math inline">\(\vec n\)</span> is small compared to the scale over which the potential changes, we can neglect the higher-order terms.</p>
+<p>Substituting equation (18.3) into (18.2) and subtracting equation (18.1) from both sides, we obtain</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{d^2(x^i + n^i)}{dt^2}
+-\frac{d^2 x^i}{dt^2}
+&amp;\approx
+-\eta^{ij}\Big(
+[\partial_j\Phi]_{\vec x}
++ n^k[\partial_k\partial_j\Phi]_{\vec x}
+\Big)
++ \eta^{ij}[\partial_j\Phi]_{\vec x} \\[4pt]
+&amp;=
+\underbrace{
+-\eta^{ij}[\partial_j\Phi]_{\vec x}
++ \eta^{ij}[\partial_j\Phi]_{\vec x}
+}_{\text{cancels by (18.1)}}
+-\eta^{ij}[\partial_k\partial_j\Phi]_{\vec x} n^k
+\end{aligned}
+\]</span></p>
+<p>Since the left-hand side is just <span class="math inline">\(d^2 n^i/dt^2\)</span>, we have the <strong>Newtonian tidal deviation equation</strong></p>
+<p><span class="math display">\[
+\frac{d^2 n^i}{dt^2}
+\approx
+-\eta^{ij}[\partial_k\partial_j\Phi]_{\vec x} n^k
+= -\eta^{ij} \frac{\partial^2 \Phi}{\partial x^k \partial x^j} n^k
+\tag{18.4}
+\]</span></p>
+<div class="math-theorem definition" data-label="18.1" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 18.1</span><span class="theorem-title">Newtonian tidal deviation equation</span></p>
+</div>
+<div class="theorem-content">
+<p>For two nearby freely falling particles in Newtonian gravity with separation vector <span class="math inline">\(n^i\)</span>, the relative acceleration is<br>
+<span class="math display">\[
+\frac{d^2 n^i}{dt^2}
+= -\eta^{ij} \frac{\partial^2 \Phi}{\partial x^k \partial x^j} n^k
+\]</span></p>
+</div>
+</div>
+<p>All derivatives here are evaluated at the reference particle’s position.</p>
+<hr>
+<h3 data-original-heading="18.2.4 Example: Near a Spherical Mass" id="example-near-a-spherical-mass">18.2.4 Example: Near a Spherical Mass</h3>
+<p>Near a spherical object we can choose the <span class="math inline">\(z\)</span> coordinate to be <strong>radially outward</strong>.<br>
+Then equation (18.4) implies (see box 18.1 in the text)</p>
+<p><span class="math display">\[
+\frac{d^2 n^x}{dt^2} = -\frac{GM}{r^3} n^x,
+\qquad
+\frac{d^2 n^y}{dt^2} = -\frac{GM}{r^3} n^y,
+\qquad
+\frac{d^2 n^z}{dt^2} = +\frac{2GM}{r^3} n^z
+\tag{18.5}
+\]</span></p>
+<p>Particles separated vertically (in the radial direction) accelerate <strong>away</strong> from the reference particle, whereas particles horizontally displaced from it accelerate <strong>toward</strong> it. This matches the picture in figure 18.1c and the familiar behavior of tides.</p>
+<hr>
+<h2 data-original-heading="18.3 Einsteinian Analysis of Geodesic Deviation" id="einsteinian-analysis-of-geodesic-deviation">18.3 Einsteinian Analysis of Geodesic Deviation</h2>
+<h3 data-original-heading="18.3.1 Curvature as the Source of Relative Acceleration" id="curvature-as-the-source-of-relative-acceleration">18.3.1 Curvature as the Source of Relative Acceleration</h3>
+<p>In general relativity, freely falling particles follow <strong>geodesics</strong>. There is no gravitational “force” in the Newtonian sense. If freely falling particles accelerate relative to each other, it is because their geodesics <strong>curve relative to each other</strong>.</p>
+<p>This relative curvature is a manifestation of the underlying <strong>spacetime curvature</strong>, and it is independent of the coordinate system.</p>
+<p>Our goal is to derive a <strong>tensor equation</strong> for the relative acceleration of nearby geodesics, valid in arbitrary coordinates.</p>
+<hr>
+<h3 data-original-heading="18.3.2 Setup: Two Neighboring Geodesics" id="setup-two-neighboring-geodesics">18.3.2 Setup: Two Neighboring Geodesics</h3>
+<p>Consider two free particles following neighboring geodesics (figure 18.3):</p>
+<ul>
+<li>Reference particle with worldline <span class="math inline">\(x^\alpha(\tau)\)</span>.</li>
+<li>Second particle with worldline <span class="math display">\[
+\bar x^\alpha(\tau) \equiv x^\alpha(\tau) + n^\alpha(\tau)
+\]</span> where <span class="math inline">\(\tau\)</span> is the proper time measured by the reference particle.</li>
+</ul>
+<p>The four-vector <span class="math inline">\(n^\alpha(\tau)\)</span> is the <strong>infinitesimal separation four-vector</strong> connecting the two particles at each <span class="math inline">\(\tau\)</span>.</p>
+<p>If the paths are infinitesimally close together and parallel at <span class="math inline">\(\tau=0\)</span>, then <span class="math inline">\(\tau\)</span> also closely matches the proper time of the second particle. (The difference between their proper times is of higher order in the separation.)</p>
+<p>The condition that these geodesics remain parallel is that the separation four-vector has <strong>zero absolute second derivative</strong>:</p>
+<p><span class="math display">\[
+\left(\frac{d^2 n}{d\tau^2}\right)^\alpha = 0
+\]</span></p>
+<p>Our aim is to compute an expression for <span class="math inline">\(\left(d^2 n/d\tau^2\right)^\alpha\)</span> in terms of spacetime curvature.</p>
+<hr>
+<h3 data-original-heading="18.3.3 Geodesic Equations for Each Particle" id="geodesic-equations-for-each-particle">18.3.3 Geodesic Equations for Each Particle</h3>
+<p>Each particle obeys the geodesic equation.</p>
+<p>For the reference particle:</p>
+<p><span class="math display">\[
+0 = \frac{d^2 x^\alpha}{d\tau^2}
+  + \Gamma^\alpha_{\mu\nu} \frac{dx^\mu}{d\tau}\frac{dx^\nu}{d\tau}
+\]</span></p>
+<p>For the second particle:</p>
+<p><span class="math display">\[
+0 = \frac{d^2 \bar x^\alpha}{d\tau^2}
+  + \bar\Gamma^\alpha_{\mu\nu}
+    \frac{d\bar x^\mu}{d\tau}\frac{d\bar x^\nu}{d\tau}
+\tag{18.6}
+\]</span></p>
+<p>Here:</p>
+<ul>
+<li><span class="math inline">\(\Gamma^\alpha_{\mu\nu}\)</span> is evaluated at <span class="math inline">\(x^\alpha(\tau)\)</span>,</li>
+<li><span class="math inline">\(\bar\Gamma^\alpha_{\mu\nu}\)</span> is the same function evaluated at <span class="math inline">\(\bar x^\alpha(\tau)\)</span>.</li>
+</ul>
+<p>As in the Newtonian analysis, the Christoffel symbols at the second particle’s position can be approximated by a <strong>Taylor expansion</strong> around the first particle’s position:</p>
+<p><span class="math display">\[
+\bar\Gamma^\alpha_{\mu\nu}\big|_{\bar x(\tau)}
+\simeq
+\Gamma^\alpha_{\mu\nu}\big|_{x(\tau)}
++ n^\rho \big[\partial_\rho \Gamma^\alpha_{\mu\nu}\big]_{x(\tau)}
+\tag{18.7}
+\]</span></p>
+<p>Now substitute <span class="math inline">\(\,\bar x^\alpha = x^\alpha + n^\alpha\,\)</span> and equation (18.7) into the second geodesic equation in (18.6), and subtract the first geodesic equation. Dropping all terms that are second order or higher in <span class="math inline">\(n^\alpha\)</span> and its derivatives, you obtain</p>
+<p><span class="math display">\[
+0
+= \frac{d^2 n^\alpha}{d\tau^2}
++ \Big[
+   \Gamma^\alpha_{\mu\nu}
+ + n^\rho (\partial_\rho\Gamma^\alpha_{\mu\nu})
+  \Big]
+  \frac{dx^\mu}{d\tau}\frac{dx^\nu}{d\tau}
++ \Gamma^\alpha_{\mu\nu}
+  \left(
+    \frac{dx^\mu}{d\tau}\frac{dn^\nu}{d\tau}
+  + \frac{dn^\mu}{d\tau}\frac{dx^\nu}{d\tau}
+  \right)
+\tag{18.8}
+\]</span></p>
+<p>Introduce the reference particle’s four-velocity</p>
+<p><span class="math display">\[
+u^\mu \equiv \frac{dx^\mu}{d\tau}
+\]</span></p>
+<p>Then equation (18.8) can be written as</p>
+<p><span class="math display">\[
+0
+= \frac{d^2 n^\alpha}{d\tau^2}
++ 2\Gamma^\alpha_{\mu\nu} u^\mu \frac{dn^\nu}{d\tau}
++ n^\rho (\partial_\rho\Gamma^\alpha_{\mu\nu}) u^\mu u^\nu
+\tag{18.9}
+\]</span></p>
+<hr>
+<h3 data-original-heading="18.3.4 Absolute Derivatives of the Separation Vector" id="absolute-derivatives-of-the-separation-vector">18.3.4 Absolute Derivatives of the Separation Vector</h3>
+<p>The separation vector <span class="math inline">\(n^\alpha\)</span> is itself a four-vector, so its <strong>absolute first derivative</strong> along the reference geodesic is</p>
+<p><span class="math display">\[
+\left(\frac{dn}{d\tau}\right)^\alpha
+= \frac{dn^\alpha}{d\tau}
++ \Gamma^\alpha_{\mu\nu} u^\mu n^\nu
+\tag{18.10}
+\]</span></p>
+<p>Since this is also a four-vector, its absolute derivative gives the <strong>absolute second derivative</strong> of <span class="math inline">\(n^\alpha\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left(\frac{d^2 n}{d\tau^2}\right)^\alpha
+&amp;\equiv
+\left(\frac{d}{d\tau}\left[\frac{dn}{d\tau}\right]\right)^\alpha \\[4pt]
+&amp;=
+\frac{d}{d\tau}
+\left(
+\frac{dn^\alpha}{d\tau}
++ \Gamma^\alpha_{\mu\nu} u^\mu n^\nu
+\right)
++ \Gamma^\alpha_{\sigma\rho} u^\sigma
+\left(
+\frac{dn^\rho}{d\tau}
++ \Gamma^\rho_{\beta\gamma} u^\beta n^\gamma
+\right)
+\end{aligned}
+\tag{18.11}
+\]</span></p>
+<p>The Christoffel symbols depend on <span class="math inline">\(\tau\)</span> only through <span class="math inline">\(x^\alpha(\tau)\)</span>, so</p>
+<p><span class="math display">\[
+\frac{d\Gamma^\alpha_{\mu\nu}}{d\tau}
+= \frac{dx^\sigma}{d\tau}\,\partial_\sigma\Gamma^\alpha_{\mu\nu}
+= u^\sigma\,\partial_\sigma\Gamma^\alpha_{\mu\nu}
+\tag{18.12}
+\]</span></p>
+<p>Substituting equation (18.12) into (18.11) and collecting terms, we can express the absolute second derivative in the form</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left(\frac{d^2 n}{d\tau^2}\right)^\alpha
+&amp;=
+\frac{d^2 n^\alpha}{d\tau^2}
++ (\partial_\sigma\Gamma^\alpha_{\mu\nu})u^\sigma u^\mu n^\nu
++ \Gamma^\alpha_{\mu\nu} \frac{du^\mu}{d\tau} n^\nu \\[4pt]
+&amp;\quad
++ 2\Gamma^\alpha_{\mu\nu} u^\mu \frac{dn^\nu}{d\tau}
++ \Gamma^\alpha_{\sigma\nu}\Gamma^\sigma_{\beta\mu} u^\beta u^\mu n^\nu
+\end{aligned}
+\tag{18.13}
+\]</span></p>
+<p>Now use equation (18.9) to eliminate <span class="math inline">\(d^2 n^\alpha/d\tau^2\)</span>, and use the geodesic equation for the reference particle to eliminate <span class="math inline">\(du^\mu/d\tau\)</span>:</p>
+<p><span class="math display">\[
+\frac{du^\mu}{d\tau}
+= -\Gamma^\mu_{\rho\lambda}u^\rho u^\lambda
+\]</span></p>
+<p>After these substitutions, the terms proportional to <span class="math inline">\(\frac{dn^\nu}{d\tau}\)</span> cancel, and with some index relabeling one can factor out <span class="math inline">\(u^\sigma u^\mu n^\nu\)</span> from all remaining terms to obtain</p>
+<p><span class="math display">\[
+\left(\frac{d^2 n}{d\tau^2}\right)^\alpha
+=
+\big(
+ \partial_\sigma\Gamma^\alpha_{\mu\nu}
+- \partial_\mu\Gamma^\alpha_{\sigma\nu}
++ \Gamma^\alpha_{\sigma\lambda}\Gamma^\lambda_{\mu\nu}
+- \Gamma^\alpha_{\mu\lambda}\Gamma^\lambda_{\sigma\nu}
+\big)
+u^\sigma u^\mu n^\nu
+\tag{18.14}
+\]</span></p>
+<p>Everything except the parenthesis is already a tensor, so the quantity in parentheses must also be a tensor.</p>
+<hr>
+<h3 data-original-heading="18.3.5 The Riemann Tensor and the Equation of Geodesic Deviation" id="the-riemann-tensor-and-the-equation-of-geodesic-deviation">18.3.5 The Riemann Tensor and the Equation of Geodesic Deviation</h3>
+<p>We now <strong>define</strong> the Riemann tensor to be the <strong>negative</strong> of the quantity in parentheses in equation (18.14):</p>
+<div class="math-theorem definition" data-label="18.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 18.2</span><span class="theorem-title">Riemann tensor (first definition)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+R^\alpha_{\ \mu\nu\sigma}
+\equiv
+\partial_\nu\Gamma^\alpha_{\mu\sigma}
+- \partial_\sigma\Gamma^\alpha_{\mu\nu}
++ \Gamma^\alpha_{\nu\lambda}\Gamma^\lambda_{\mu\sigma}
+- \Gamma^\alpha_{\sigma\lambda}\Gamma^\lambda_{\mu\nu}
+\]</span></p>
+</div>
+</div>
+<p>With this definition, equation (18.14) becomes simply</p>
+<p><span class="math display">\[
+\left(\frac{d^2 n}{d\tau^2}\right)^\alpha
+= - R^\alpha_{\ \mu\nu\sigma} u^\mu u^\nu n^\sigma
+\tag{18.16}
+\]</span></p>
+<div class="math-theorem theorem" data-label="18.3" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 18.3</span><span class="theorem-title">Equation of geodesic deviation</span></p>
+</div>
+<div class="theorem-content">
+<p>For two neighboring geodesics with separation four-vector <span class="math inline">\(n^\sigma\)</span> and reference four-velocity <span class="math inline">\(u^\mu\)</span>, the absolute relative acceleration is<br>
+<span class="math display">\[
+\left(\frac{d^2 n}{d\tau^2}\right)^\alpha
+= - R^\alpha_{\ \mu\nu\sigma} u^\mu u^\nu n^\sigma
+\]</span> The Riemann tensor encodes the curvature of spacetime: if <span class="math inline">\(R^\alpha_{\ \mu\nu\sigma} = 0\)</span> everywhere, initially parallel timelike geodesics remain parallel and spacetime is flat.</p>
+</div>
+</div>
+<p>Thus:</p>
+<ul>
+<li>If the Riemann tensor vanishes, all initially parallel geodesics remain parallel <span class="math inline">\(\Rightarrow\)</span> spacetime is flat.</li>
+<li>If it does not vanish, nearby geodesics accelerate relative to each other <span class="math inline">\(\Rightarrow\)</span> spacetime is curved.</li>
+</ul>
+<p>The Riemann tensor, which involves <strong>second derivatives of the metric</strong>, plays the same role in equation (18.16) that the combination <span class="math inline">\(\eta^{ij}\partial_k\partial_j\Phi\)</span> plays in the Newtonian tidal deviation equation (18.4).</p>
+<hr>
+<h3 data-original-heading="18.3.6 A Mnemonic for the Riemann Tensor" id="a-mnemonic-for-the-riemann-tensor">18.3.6 A Mnemonic for the Riemann Tensor</h3>
+<p>It is often helpful to rewrite the definition of the Riemann tensor with indices ordered more systematically:</p>
+<p><span class="math display">\[
+R^\alpha_{\ \beta\mu\nu}
+\equiv
+\partial_\mu\Gamma^\alpha_{\beta\nu}
+- \partial_\nu\Gamma^\alpha_{\beta\mu}
++ \Gamma^\alpha_{\gamma\mu}\Gamma^\gamma_{\beta\nu}
+- \Gamma^\alpha_{\gamma\nu}\Gamma^\gamma_{\beta\mu}
+\tag{18.17}
+\]</span></p>
+<div class="math-theorem remark" data-label="18.4" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 18.4</span><span class="theorem-title">Mnemonic for <span class="math inline">\(R^\alpha_{\ \beta\mu\nu}\)</span></span></p>
+</div>
+<div class="theorem-content">
+<ul>
+<li>In the <strong>positive</strong> terms, the lower free indices appear in the order <span class="math inline">\(\mu,\beta,\nu\)</span> (3rd, 2nd, 4th indices of <span class="math inline">\(R^\alpha_{\ \beta\mu\nu}\)</span>).<br>
+</li>
+<li>In the <strong>negative</strong> terms, the same pattern appears but with <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> (3rd and 4th indices) swapped.<br>
+</li>
+<li>In the product terms, the summed (internal) index is the one that appears twice “inside,” i.e., the nearest pair of indices on the two Christoffel symbols.</li>
+</ul>
+</div>
+</div>
+<p>A mnemonic: “<strong>3 to 4 is positive; 4 to 3 is not. Twins bond inside.</strong>”<br>
+Here “3 to 4” refers to the ordering of the 3rd and 4th indices (<span class="math inline">\(\mu,\nu\)</span>) in the positive versus negative terms, and “twins bond inside’’ refers to the repeated (summed) index in the product terms.</p>
+<hr>
+<p>These results complete the derivation of the <strong>equation of geodesic deviation</strong> and introduce the <strong>Riemann tensor</strong>, which quantitatively encodes spacetime curvature and determines how freely falling geodesics deviate from one another.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span>← Previous page</span><span>Ch. 17 The Absolute Gradient</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span>Next page →</span><span>Ch. 16</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 18. Geodesic Derivation</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#physical-picture-of-tidal-effects" class="is-active" aria-current="location">18.1 Physical Picture of Tidal Effects</a></li><li style="--depth:0"><a href="#newtonian-tidal-effects">18.2 Newtonian Tidal Effects</a></li><li style="--depth:1"><a href="#qualitative-description">18.2.1 Qualitative Description</a></li><li style="--depth:1"><a href="#gravitational-field-and-potential">18.2.2 Gravitational Field and Potential</a></li><li style="--depth:1"><a href="#two-freely-falling-particles-and-the-separation-vector">18.2.3 Two Freely Falling Particles and the Separation Vector</a></li><li style="--depth:1"><a href="#example-near-a-spherical-mass">18.2.4 Example: Near a Spherical Mass</a></li><li style="--depth:0"><a href="#einsteinian-analysis-of-geodesic-deviation">18.3 Einsteinian Analysis of Geodesic Deviation</a></li><li style="--depth:1"><a href="#curvature-as-the-source-of-relative-acceleration">18.3.1 Curvature as the Source of Relative Acceleration</a></li><li style="--depth:1"><a href="#setup-two-neighboring-geodesics">18.3.2 Setup: Two Neighboring Geodesics</a></li><li style="--depth:1"><a href="#geodesic-equations-for-each-particle">18.3.3 Geodesic Equations for Each Particle</a></li><li style="--depth:1"><a href="#absolute-derivatives-of-the-separation-vector">18.3.4 Absolute Derivatives of the Separation Vector</a></li><li style="--depth:1"><a href="#the-riemann-tensor-and-the-equation-of-geodesic-deviation">18.3.5 The Riemann Tensor and the Equation of Geodesic Deviation</a></li><li style="--depth:1"><a href="#a-mnemonic-for-the-riemann-tensor">18.3.6 A Mnemonic for the Riemann Tensor</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>1. 结论 notes — E.H. Notebook</title>
+<meta name="description" content="1.1 基于当前代码结构和已有数据，我会把论文主线定为： \boxed{\text{Shared LinUCB for setup}+\text{Optimistic Recursive LSTDQ for solve}} 但要准确表述为：LSTDQ 是目前最有希望的 solve controller，而不是已经证明的端到端冠军。我不建议">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html">Notes</a><a href="/notebook/content/posts/index.html" aria-current="page">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="posts file hierarchy" data-sidebar-root="content/posts"><a class="sidebar-root" href="/notebook/content/posts/index.html">posts</a><ul class="notes-tree"><li class="folder-node" data-folder="content/posts/Feminism" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-a18baf466ab2" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Feminism</span></button></div><ul class="tree-children" id="folder-a18baf466ab2" hidden><li class="file-node"><a class="note-link" href="/notebook/content/posts/Feminism/Literature%20Review.html"><span class="page-number"></span><span>Literature Review</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Feminism/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/posts/Foucault" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-a055cef54f5b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Foucault</span></button></div><ul class="tree-children" id="folder-a055cef54f5b" hidden><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/Commentary%20on%20Foucault's%20The%20Order%20of%20Things.html"><span class="page-number"></span><span>Commentary on Foucault&#39;s The Order of Things</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/Commentary%20on%20the%20Collage.html"><span class="page-number"></span><span>Commentary on the Collage</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/Sex%20%26%20Sexuality.html"><span class="page-number"></span><span>Sex &amp; Sexuality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/%E5%AE%B6%E5%BA%AD%E5%BC%8F%E7%94%9F%E5%91%BD%E6%9D%83%E5%8A%9B%EF%BC%9A%E9%80%9A%E8%BF%87%E5%84%92%E5%AE%B6%E7%9A%84%E5%AE%B6%E5%9B%BD%E4%BD%93%E7%B3%BB%E9%87%8D%E8%AF%BB%E7%A6%8F%E6%9F%AF%E7%9A%84%E7%94%9F%E5%91%BD%E6%94%BF%E6%B2%BB%E7%90%86%E8%AE%BA%E5%9C%A8%E4%B8%9C%E4%BA%9A%E7%9A%84%E5%AE%9E%E8%B7%B5.html"><span class="page-number"></span><span>家庭式生命权力：通过儒家的家国体系重读福柯的生命政治理论在东亚的实践</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Foucault/%E7%A6%8F%E6%9F%AF%E8%A7%86%E8%A7%92%E4%B8%8B%E7%9A%84%E7%89%A9%E7%90%86%E5%AD%A6%E8%BD%AC%E5%8F%98%E4%BB%A5%E5%8F%8A%E6%96%B0%E8%8C%83%E5%BC%8F%E7%9A%84%E5%8F%AF%E8%83%BD.html"><span class="page-number"></span><span>福柯视角下的物理学转变以及新范式的可能</span></a></li></ul></li><li class="folder-node" data-folder="content/posts/Lacanian" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5a0b356ed1b8" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Lacanian</span></button></div><ul class="tree-children" id="folder-5a0b356ed1b8" hidden><li class="file-node"><a class="note-link" href="/notebook/content/posts/Lacanian/%E5%94%AF%E4%B8%80%E4%B9%8B%E7%88%B1%E4%B8%8E%E5%A4%8D%E6%95%B0%E6%AC%B2%E6%9C%9B%EF%BC%9A%E6%8B%89%E5%BA%B7%E4%B8%BB%E4%B9%89%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%AF%B9%E9%BD%90%E6%B3%BD%E5%85%8B%E2%80%9C%E6%BF%80%E8%BF%9B%E4%B9%8B%E7%88%B1%E2%80%9D%E7%9A%84%E4%B8%80%E4%B8%AA%E5%86%85%E9%83%A8%E8%B4%A8%E7%96%91.html"><span class="page-number"></span><span>唯一之爱与复数欲望：拉康主义框架下对齐泽克“激进之爱”的一个内部质疑</span></a></li></ul></li><li class="folder-node" data-folder="content/posts/Research" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5a58c77f3f2b" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Research</span></button></div><ul class="tree-children" id="folder-5a58c77f3f2b"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/posts/Research/1.%20%E7%BB%93%E8%AE%BA%20notes.html"><span class="page-number">1</span><span>结论 notes</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Research/2.%20%E4%B9%8B%E5%89%8D%E7%9A%84Proof.html"><span class="page-number">2</span><span>之前的Proof</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Research/3.%20Dynamic%20RL%20activation%20and%20a%20defensible%20theoretical%20framework.html"><span class="page-number">3</span><span>Dynamic RL activation and a defensible theoretical framework</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Create%20Graph%20Using%20LaTex%20Code.html"><span class="page-number"></span><span>Create Graph Using LaTex Code</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Lacanian%20AI.html"><span class="page-number"></span><span>Lacanian AI</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/Reading%20Response.html"><span class="page-number"></span><span>Reading Response</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/posts/%E6%97%A5%E5%BF%97.html"><span class="page-number"></span><span>日志</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/posts/Research/index.html">Research</a></nav><h1 id="reader-title">1. 结论 notes</h1></header><div id="article-body" class="prose"><h2 data-original-heading="" id="section">1.1 </h2>
+<p>基于当前代码结构和已有数据，我会把论文主线定为：</p>
+<p><span class="math display">\[ \boxed{\text{Shared LinUCB for setup}+\text{Optimistic Recursive LSTDQ for solve}} \]</span></p>
+<p>但要准确表述为：</p>
+<blockquote>
+<p>LSTDQ 是目前最有希望的 solve controller，而不是已经证明的端到端冠军。</p>
+</blockquote>
+<p>我不建议为了让公式看起来更对称，把 setup 的 LinUCB 换成 RLS-sandwich-LCB；也不建议当前就把 solve 主线换成 LSVI-UCB。</p>
+<h2 data-original-heading="数据真正证明了什么" id="数据真正证明了什么">1.2 数据真正证明了什么</h2>
+<p>60³、4K 正式实验中：</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Solve 方法</th>
+<th>Native solve</th>
+<th>Controller</th>
+<th>End-to-end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed <span class="math inline">\(w=1.6\)</span></td>
+<td>176.33 ms</td>
+<td>0</td>
+<td><strong>304.81 ms</strong></td>
+</tr>
+<tr>
+<td>PPO</td>
+<td>178.45 ms</td>
+<td>7.88 ms</td>
+<td>317.25 ms</td>
+</tr>
+<tr>
+<td>Recursive MC-LCB</td>
+<td>173.85 ms</td>
+<td>11.01 ms</td>
+<td>309.92 ms</td>
+</tr>
+<tr>
+<td>Recursive LSTDQ-LCB</td>
+<td><strong>161.58 ms</strong></td>
+<td>15.51 ms</td>
+<td>307.52 ms</td>
+</tr>
+</tbody>
+</table></div>
+<p>LSTDQ 相对 fixed 的 native solve 提升为 <span class="math inline">\(8.37\%\)</span>，95% CI 为 <span class="math inline">\([7.53\%,9.18\%]\)</span>，这是目前最强、最可信的 solve-side 信号。但 controller overhead 吃掉了收益，因此端到端仍比 fixed 慢 <span class="math inline">\(0.89\%\)</span>。完整数据在<span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/results/joint/online_linear_lcb_v2/run_logs/joint_online_recursive_lcb_ppo_joint4k_n60_w1to3_step005_recovery_v2_20260720/README.md">正式 60³/4K 记录</span>。</p>
+<p>另外还有两个限制：</p>
+<ul>
+<li>各方法的 LinUCB 独立更新，LSTDQ 与 fixed 在 4000 个 case 中只有 26 个 exact same-setup matches，最后 500 个为零。因此 8.37% 是“联合系统轨迹”的优势，尚不是纯 solve-controller 因果效应。<span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/results/joint/online_linear_lcb_v2/run_logs/joint_online_recursive_lcb_ppo_joint4k_n60_w1to3_step005_recovery_v2_20260720/same_setup_audit.json">same-setup audit</span></li>
+<li>在固定 setup 的 500-case post-fit 诊断里，LSTDQ native total 为 272.43 ms，fixed 为 270.42 ms，没有表现出明确优势。<span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/results/diagnostics/lstdq_recovery_cost/controlled500_postfit/result.json">controlled result</span></li>
+</ul>
+<p>所以现在最准确的判断是：</p>
+<p><span class="math display">\[ \boxed{\text{LSTDQ 已证明会学到更快的在线 solve 轨迹，但尚未证明它是纯控制器和端到端上的最终赢家。}} \]</span></p>
+<h2 data-original-heading="为什么 LSTDQ 特别适合当前 BoomerAMG" id="为什么-lstdq-特别适合当前-boomeramg">1.3 为什么 LSTDQ 特别适合当前 BoomerAMG</h2>
+<p>你的状态已经包含 cycle position、residual gap、recent contraction、last cycle time、last weight、PDE coefficients 和 setup parameters，<span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/SolvePhase/algorithms/sarsa/online_td_lambda.py:204">状态编码器 (line 204)</span>因此不同 cycle 的 dynamics 可以通过状态区分，不一定需要 50 套完全独立的 <span class="math inline">\(Q_h\)</span>。</p>
+<p>Recursive LSTDQ 则让所有 cycle 共同学习一个 288 维 value model，并通过 eligibility trace 快速传播 terminal/recovery cost。<span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/SolvePhase/algorithms/lcb/controllers.py:548">当前 LSTDQ 实现 (line 548)</span></p>
+<p>这与 BoomerAMG 的结构很契合：</p>
+<ul>
+<li>episode 长度可变；</li>
+<li>后期 cycle 样本稀少；</li>
+<li>residual dynamics 跨 cycle 有大量可共享结构；</li>
+<li>要求每个 instance 都在线更新；</li>
+<li>controller wall time必须计入目标。</li>
+</ul>
+<p>而现有 LSVI 将预算分给 50 个独立 stage。旧 2K checkpoint 中，前十个 stage 各约 2007 个样本，stage 20 只有 1160，stage 30 只有 122，最后几个 stage 只有 7 个左右，却仍分别拟合 160 维模型。现有实验中 LSVI native solve 为 51.61 ms、E2E 为 108.71 ms，都弱于当时的 LSTDQ；虽然协议较旧，不能当成最终裁决，但它揭示了真实的 stage sparsity 问题。<span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/results/joint/online_linear_lcb_v1/run_logs/joint_online_recursive_lcb_suite_2kplus2k_canonical_20260718/summary_2000.md">LSVI 对照结果</span></p>
+<p>经典 LSVI-UCB 的理论吸引力来自有限时域 linear MDP 假设和 elliptical bonus；但“<span class="math inline">\(Q\)</span> 可以近似线性”并不意味着 BoomerAMG transition kernel 满足 linear-MDP 假设。<a href="https://proceedings.mlr.press/v125/jin20a.html">LSVI-UCB 原论文</a></p>
+<h2 data-original-heading="Setup bandit 不应为了对称而换掉" id="setup-bandit-不应为了对称而换掉">1.4 Setup bandit 不应为了对称而换掉</h2>
+<p>现在的 setup LinUCB 已经是 recursive least squares mean estimator；所谓 RLS-sandwich-LCB 并不会改变 mean model，只会把 uncertainty 从</p>
+<p><span class="math display">\[ \sqrt{\phi^\top V^{-1}\phi} \]</span></p>
+<p>换成</p>
+<p><span class="math display">\[ \sqrt{\phi^\top V^{-1}MV^{-T}\phi}. \]</span></p>
+<p>当前 LinUCB 借助共享 context-action features，在 288 万个 mixed BoomerAMG configurations 之间泛化；编码包含数值平方、pairwise interaction、categorical one-hot 和 mixed interactions。<span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/SetupPhase/learners/common/action_features.py:239">action encoder (line 239)</span> <span class="unresolved-link" title="target not published or missing: /Users/erisehe/Documents/GitHub/RLTune-BoomerAMG/SetupPhase/learners/linucb/SharedLinUCB_AMG_v4.py:374">LinUCB scoring (line 374)</span></p>
+<p>而 setup residual 会同时混合：</p>
+<ul>
+<li>solve controller 持续学习造成的 target drift；</li>
+<li>hierarchy/model misspecification；</li>
+<li>failure/fallback shock；</li>
+<li>runtime noise。</li>
+</ul>
+<p>把这些再写进 sandwich covariance，可能复制 LSTDQ 曾经出现的污染问题，却没有明确收益。现有 LinUCB 已把 default end-to-end 从 388.85 ms 降到约 307 ms，因此应当保留为主方法。</p>
+<p>论文中只需说两边对齐的是决策原则，而不是 covariance 公式：</p>
+<p><span class="math display">\[ \begin{aligned} \text{Setup: }&amp;\arg\min_a\bigl(\hat c(x,a)-\alpha u_{\rm setup}(x,a)\bigr),\\ \text{Solve: }&amp;\arg\min_a\bigl(\hat Q_c(s,a)-\beta u_{\rm solve}(s,a)\bigr). \end{aligned} \]</span></p>
+<p>这就是统一的 optimistic cost minimization。</p>
+<h2 data-original-heading="哪些方法可能超过当前 LSTDQ" id="哪些方法可能超过当前-lstdq">1.5 哪些方法可能超过当前 LSTDQ</h2>
+<p>我的机制性排序是：</p>
+<ol type="1">
+<li><p><strong>改进 confidence 和 overhead 的共享 Recursive LSTDQ</strong></p>
+<p>最可能超过当前结果。特别值得比较 current post-fit sandwich、UCLS-derived confidence、单独 coverage matrix，以及无 confidence bonus。UCLS 已经研究过 LSTD action-value 的 context-dependent confidence，并明确指出在线控制中 TD-error proxy 可能过于保守、early errors 会影响 covariance，因此你的论文不能把 “LSTD + confidence” 本身当作新算法。<a href="https://papers.nips.cc/paper_files/paper/2018/hash/f516dfb84b9051ed85b89cdc3a8ab7f5-Abstract.html">UCLS 原论文</a></p></li>
+<li><p><strong>共享参数的 fitted-Q / structured model-based controller</strong></p>
+<p>这是长期最有可能真正超过 LSTDQ的新路线：显式学习</p>
+<p><span class="math display">\[ (\text{residual state},w)\rightarrow (\text{next contraction},\text{cycle time}) \]</span></p>
+<p>再规划 time-to-tolerance。它利用了 solver dynamics 的物理结构，可能更可解释、sample-efficient，也可能更低开销。但目前没有本地证据。</p></li>
+<li><p><strong>重新校准后的 LSVI-UCB</strong></p>
+<p>它可以成为强 baseline，但在相同 4K online budget 下，我认为超过共享 LSTDQ 的概率较低。要公平重跑，至少要修正 60³ 的 value scale、使用当前 recovery protocol，并处理 stage sparsity。它更可能在大量 offline data 或更强 cycle-position nonstationarity 下获胜。</p></li>
+<li><p><strong>重新训练的 PPO</strong></p>
+<p>PPO 可能在 frozen deployment 的 native solve 上超过 LSTDQ，但需要在当前 60³、当前 setup distribution 和 <span class="math inline">\([1,3]\)</span> action range 上重训。那回答的是“有离线训练预算时谁最好”，而不是“learn-as-you-solve 谁最好”。</p></li>
+<li><p><strong>Recursive MC-LCB</strong></p>
+<p>在短 online budget 下最不看好。完整 return 的方差高、credit assignment 慢，当前数据也只带来很小的 native gain。</p></li>
+</ol>
+<h2 data-original-heading="最有论文价值的故事" id="最有论文价值的故事">1.6 最有论文价值的故事</h2>
+<p>不要把论文写成：</p>
+<blockquote>
+<p>We invented LSTDQ-LCB.</p>
+</blockquote>
+<p>LSTDQ 是经典方法，<a href="https://jmlr.org/papers/v4/lagoudakis03a.html">LSPI/LSTDQ 原论文</a>；LSTD confidence exploration 也已有 UCLS。更强的贡献叙事是：</p>
+<blockquote>
+<p>A phase-aware, fully online BoomerAMG control system uses shared LinUCB to navigate a mixed combinatorial hierarchy space and recursive LSTDQ to learn state-dependent multicycle relaxation policies, while accounting for failures, recovery, learning overhead, and end-to-end wall time.</p>
+</blockquote>
+<p>这相对 <em>Learning to Relax</em> 的一维 SOR 参数 bandit，问题结构明显更丰富：你既选择 multilevel hierarchy，又进行 cycle-level sequential control。<a href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/8fcc228e94aa7e4773a27c6c2d886243-Abstract-Conference.html">Learning to Relax</a></p>
+<p>现在最关键的五个实验是：</p>
+<ol type="1">
+<li>固定同一批 <code>(instance, setup)</code>，比较 best fixed sweep、open-loop cycle schedule、frozen greedy LSTDQ 和正确缩放的 LSVI。</li>
+<li>加 cycle-only schedule baseline，证明 LSTDQ 的收益来自 residual/state feedback，而不只是学到了一个固定的 <span class="math inline">\(w_1,w_2,\ldots\)</span> schedule。</li>
+<li>用当前已优化的 LSTDQ hot path重跑正式计时；现有 4K 数字尚未衡量最新精确优化。</li>
+<li>比较 no bonus、post-fit sandwich、UCLS/coverage-style confidence，并报告 calibration 与 failure rate。</li>
+<li>至少 3–5 seeds，加 held-out matrix families 和多个 grid sizes，同时分别报告 online cumulative cost 与 frozen deployment performance。</li>
+</ol>
+<p>如果这些实验以后 LSTDQ仍然胜出，那么结论会很强：不是“LSTDQ碰巧跑得快”，而是：</p>
+<p><span class="math display">\[ \boxed{\text{在有限在线预算下，跨 cycle 共享的递归价值学习，比 stage-wise value iteration 更适合 BoomerAMG。}} \]</span></p>
+<hr>
+<p>扫描结果已经出现一个很重要的事实：相对于 HYPRE 的 <code>default setup + default solve</code>，learned setup 通常把 setup 时间砍掉 55%–65%，但代价是产生更便宜、较弱的 hierarchy，所以 solve 部分反而比 default solve 慢。也就是说，最优秀的 joint 结果不是“setup 和 solve 都分别更快”，而是 setup 的巨大节省超过了 solve 的增加；LSTDQ 的价值是把这部分 solve penalty 尽量追回来。现在我在区分 canonical recovery-v2、已被替代的 recovery-v1，以及短窗口峰值。</p>
+<hr>
+<p>LSTDQ 不只是优化一个固定 hierarchy 上的 relaxation；它能够与 setup bandit共同适应，在廉价但多样的 BoomerAMG hierarchies 上学习不同的动态 relaxation strategy。</p>
+<ul>
+<li>Setup：<code>84.069 → 34.916 ms</code>，快 <strong>58.47%</strong></li>
+<li>Native solve：<code>36.291 → 57.003 ms</code>，反而慢 <strong>57.07%</strong></li>
+<li>Bandit overhead：<code>7.099 ms</code></li>
+<li>最终仍净省 <code>21.343 ms/case</code></li>
+</ul>
+<p>因此优化 bandit 的目标很明确：保持便宜的 setup，同时选择收敛质量更好的 hierarchy，降低那部分 <code>+20.712 ms</code> 的 solve 退化。这个实验同时表明，default setup组建了非常好的hierarchy，本身收敛很快。这意味着cycle数量少，于是LSTDQ 的学习收益不足以摊平控制开销；但是，因为LinUCB 产生了更动态、部分更难的 setup，有更多的cycle数量，LSTDQ 的逐 cycle adaptation 价值更大。</p>
+<hr>
+<p>对，你看得很准。不过更准确的描述不是“从第 10 个 cycle 开始一直使用高 <span class="math inline">\(w\)</span>”，而是：</p>
+<blockquote>
+<p>两个 learner 都学出了一个接近第 9 个 AMG cycle 的强 over-relaxation 脉冲，随后根据状态在高、低 <span class="math inline">\(w\)</span> 之间切换。</p>
+</blockquote>
+<p>图里的纵坐标从 0 开始，所以亮带出现在 <span class="math inline">\(y\approx8\)</span>，实际对应第 9 个 cycle。</p>
+<p>在最后 1000 个、策略基本稳定的 instances 中：</p>
+<ul>
+<li>LinUCB v4：第 9 cycle 有 87.5% 使用 <span class="math inline">\(w\ge2.75\)</span>，主要是 <span class="math inline">\(w=2.8\)</span>，并不是通常用 3.0。</li>
+<li>LinUCB v5：第 9 cycle 有 89.5% 使用 <span class="math inline">\(w\ge2.75\)</span>，其中 88.7% 直接使用 <span class="math inline">\(w=3.0\)</span>。</li>
+<li>两者在同一个 instance 上同时选择高 <span class="math inline">\(w\)</span> 的比例达到 79.6%。</li>
+</ul>
+<p>所以这条亮黄色横带确实是非常稳定的共同策略，不只是视觉巧合。</p>
+<p>但第 10 cycle 之后并非持续高 <span class="math inline">\(w\)</span>。例如第 10 cycle：</p>
+<ul>
+<li>v4：约 39.7% 选择高 <span class="math inline">\(w\)</span>，47.3% 选择低 <span class="math inline">\(w\le1.25\)</span>。</li>
+<li>v5：约 40.9% 选择高 <span class="math inline">\(w\)</span>，52.1% 选择低 <span class="math inline">\(w\le1.25\)</span>。</li>
+</ul>
+<p>也就是说，策略更像：</p>
+<p><span class="math display">\[ \text{前期中等 }w \;\rightarrow\; \text{第9 cycle 强力 }w \;\rightarrow\; \text{根据 residual 状态进行高/低修正} \]</span></p>
+<p>这有点像一种“脉冲式 over-relaxation”或近似 bang-bang controller。尤其有意思的是，v4 和 v5 的 setup context 不同，但 solve learner 仍然发现了相同的宏观结构，说明第 9 cycle 附近进行一次激进修正很可能是这个 PDE/solver 组合本身的稳定特征。</p>
+<p>不过两者也有区别：v4 后面仍然更频繁地在 <span class="math inline">\(1.2\)</span> 和 <span class="math inline">\(2.8\)</span> 两端摆动；v5 在脉冲之后逐渐更多采用 <span class="math inline">\(w\approx2.05\)</span> 的中间值。这可能与 v5 后期 cycle 更少、速度更快有关，但目前只能说相关，还不能证明因果。</p>
+<p>另外，第 9 cycle 时这批 instance 基本都还没有结束，所以这条亮带并不是“只有难题活到后面”造成的 survivor bias——它确实是一个很强的学习结果。</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/posts/Research/2.%20%E4%B9%8B%E5%89%8D%E7%9A%84Proof.html"><span>Next page →</span><span>2. 之前的Proof</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">1. 结论 notes</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#section" class="is-active" aria-current="location">1.1 </a></li><li style="--depth:0"><a href="#%E6%95%B0%E6%8D%AE%E7%9C%9F%E6%AD%A3%E8%AF%81%E6%98%8E%E4%BA%86%E4%BB%80%E4%B9%88">1.2 数据真正证明了什么</a></li><li style="--depth:0"><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88-lstdq-%E7%89%B9%E5%88%AB%E9%80%82%E5%90%88%E5%BD%93%E5%89%8D-boomeramg">1.3 为什么 LSTDQ 特别适合当前 BoomerAMG</a></li><li style="--depth:0"><a href="#setup-bandit-%E4%B8%8D%E5%BA%94%E4%B8%BA%E4%BA%86%E5%AF%B9%E7%A7%B0%E8%80%8C%E6%8D%A2%E6%8E%89">1.4 Setup bandit 不应为了对称而换掉</a></li><li style="--depth:0"><a href="#%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E5%8F%AF%E8%83%BD%E8%B6%85%E8%BF%87%E5%BD%93%E5%89%8D-lstdq">1.5 哪些方法可能超过当前 LSTDQ</a></li><li style="--depth:0"><a href="#%E6%9C%80%E6%9C%89%E8%AE%BA%E6%96%87%E4%BB%B7%E5%80%BC%E7%9A%84%E6%95%85%E4%BA%8B">1.6 最有论文价值的故事</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

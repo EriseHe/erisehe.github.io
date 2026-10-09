@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>1.2 Functional Analysis — E.H. Notebook</title>
+<meta name="description" content="This section covers basic concepts in functional analysis, such as Lebesgue Spaces, Distributions, Sobolev SpacesSince a PDE can be viewed as an operator mapping data to ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768"><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/index.html">数值PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/index.html">1. Functional Analysis</a></nav><h1 id="reader-title">1.2 Functional Analysis</h1></header><div id="article-body" class="prose"><blockquote>
+<p>This section covers basic concepts in functional analysis, such as Lebesgue Spaces, Distributions, Sobolev Spaces</p>
+</blockquote>
+<p>Since a PDE can be viewed as an <strong>operator</strong> mapping <strong>data</strong> to <strong>solution</strong>, numeric replaces the infinite-dimensional space by a finite-dimensional subspace, so we need:</p>
+<ul>
+<li>notions of <strong>size</strong> (norm),</li>
+<li>notions of <strong>closeness</strong> (metric),</li>
+<li>notions of <strong>limits</strong> (completeness),</li>
+<li>notions of <strong>orthogonality/projection</strong> (Hilbert),</li>
+<li>and generalized derivatives (distributions) to make sense of weak solutions.</li>
+</ul>
+<p>In PDE, we need the weak (variational) formulation because the <em>classical</em> formulation asks for derivatives that often don’t exist, and because numerics (especially FEM) naturally lives in an integral/inner-product world. In the following notes, we will build the <strong>language</strong> used to write PDEs in a weak/variational form, and use them to analyze numerical methods (FEM, DG, FV) later.</p>
+<h2 data-original-heading="0.1 Basics of Functional Analysis" id="basics-of-functional-analysis">0.1 Basics of Functional Analysis</h2>
+<p>In previous section, we think of PDE as a “problem operator” <span class="math display">\[
+P:\ d \longmapsto u = P(d),
+\]</span> where <span class="math inline">\(d\)</span> is the data (forcing term, boundary values, initial condition, coefficients) and <span class="math inline">\(u\)</span> is the solution. Functional analysis provides the right spaces <span class="math inline">\(X\)</span> where this <strong>mapping</strong> is <em>well-defined</em> and <em>stable</em>.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.1</span><span class="theorem-title">Functional</span></p>
+</div>
+<div class="theorem-content">
+<p>A functional is <span class="math inline">\(\mathcal{F}(\cdot): X \to \mathbb{R}\)</span>. Let <span class="math inline">\(f(x), g(x) \in X\)</span>. A functional is <strong>linear</strong> if <span class="math display">\[
+\mathcal{F}(\lambda f(x) + \mu g(x)) = \lambda \mathcal{F}(f(x)) + \mu \mathcal{F}(g(x))
+\]</span></p>
+</div>
+</div>
+<p><strong>Interpretation.</strong> A functional takes a <em>function</em> and returns a <em>number</em> (think: “measurement”). Linearity means the measurement respects superposition.</p>
+<div class="math-theorem example" data-callout="example" data-label="1.2.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.2.2</span><span class="theorem-title">A functional</span></p>
+</div>
+<div class="theorem-content">
+<p>For example, <span class="math display">\[
+\int_a^b f(x)\,dx
+\]</span> is a functional.</p>
+</div>
+</div>
+<p><strong>Why it matters.</strong> Weak formulations are built out of integrals of the solution against test functions; those are functionals.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.3</span><span class="theorem-title">Form</span></p>
+</div>
+<div class="theorem-content">
+<p>A form is <span class="math inline">\(a(\cdot,\cdot): X \times X \to \mathbb{R}\)</span>, where <span class="math inline">\(f, g \in X\)</span>. A form is <strong>bilinear</strong> if</p>
+<ul>
+<li><span class="math inline">\(a(\lambda f_1 + \mu f_2, g) = \lambda a(f_1,g) + \mu a(f_2,g)\)</span></li>
+<li><span class="math inline">\(a(f, \lambda g_1 + \mu g_2) = \lambda a(f,g_1) + \mu a(f,g_2)\)</span></li>
+</ul>
+</div>
+</div>
+<p><strong>Remark.</strong> A bilinear form takes two functions and returns a number.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.4">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.4</span><span class="theorem-title">Space</span></p>
+</div>
+<div class="theorem-content">
+<p>A space is a set with operations defined. If <span class="math inline">\(X\)</span> is a space, then</p>
+<ul>
+<li><span class="math inline">\(f \in X \Longrightarrow \lambda f \in X\)</span></li>
+<li><span class="math inline">\(f,g \in X \Longrightarrow \lambda f + \mu g \in X\)</span></li>
+</ul>
+</div>
+</div>
+<p><strong>Remark.</strong> This is the “closed under linear combinations” property (vector space idea).<br>
+It’s needed so we can add trial functions, scale solutions, etc.</p>
+<hr>
+<h2 data-original-heading="0.2 Metrics, completeness, and norms" id="metrics-completeness-and-norms">0.2 Metrics, completeness, and norms</h2>
+<h3 data-original-heading="0.2.1 Why do we need a distance?" id="why-do-we-need-a-distance">0.2.1 Why do we need a distance?</h3>
+<p>To talk about convergence of numerical methods, we need a notion of “<span class="math inline">\(u_h \to u\)</span>”. That requires a <strong>distance</strong> or <strong>metric</strong>, and usually we obtain it from a norm.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.5">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.5</span><span class="theorem-title">Distance</span></p>
+</div>
+<div class="theorem-content">
+<p>A distance is <span class="math inline">\(d(\cdot,\cdot): X \times X \to \mathbb{R}\)</span> such that <span class="math inline">\(\forall\, f,g,w \in X\)</span></p>
+<ul>
+<li><span class="math inline">\(d(f,g) = d(g,f)\)</span> <strong>[symmetry]</strong></li>
+<li><span class="math inline">\(d(f,g) \ge 0\)</span> and <span class="math inline">\(d(f,g)=0 \Longleftrightarrow f=g\)</span></li>
+<li><span class="math inline">\(d(f,g) \le d(f,w) + d(w,g)\)</span> <strong>[triangle inequality]</strong></li>
+</ul>
+<p>A space with a distance is a <strong>metric space</strong>.</p>
+</div>
+</div>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.6">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.6</span><span class="theorem-title">Completeness</span></p>
+</div>
+<div class="theorem-content">
+<p>Let <span class="math inline">\((X,d)\)</span> be a metric space. Let <span class="math inline">\(f_n\)</span> be a sequence in <span class="math inline">\(X\)</span> and <span class="math inline">\(f\)</span> be a candidate limit.</p>
+<ol type="1">
+<li>The sequence is <strong>convergent</strong> if <span class="math inline">\(d(f_n,f)\to 0\)</span> as <span class="math inline">\(n\to +\infty\)</span></li>
+<li>The sequence is <strong>Cauchy</strong> if <span class="math inline">\(d(f_n,f_m)\to 0\)</span> as <span class="math inline">\(n,m\to +\infty\)</span></li>
+</ol>
+<p>In general, <span class="math inline">\(1 \Longrightarrow 2\)</span>, but <span class="math inline">\(2 \not\Longrightarrow 1\)</span>. Indeed, <span class="math display">\[
+d(f_n,f_m) \le d(f_n,f) + d(f,f_m)
+\]</span> by triangle inequality.</p>
+<p>If in a metric space, <span class="math inline">\(1 \Longleftrightarrow 2\)</span>, then the metric space is <strong>complete</strong>.</p>
+</div>
+</div>
+<p><strong>Why completeness matters in PDE.</strong> If a method produces a Cauchy sequence of approximations, completeness guarantees a limit <em>exists in the same space</em>. That’s crucial for existence arguments and for convergence proofs.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.7">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.7</span><span class="theorem-title">Norm</span></p>
+</div>
+<div class="theorem-content">
+<p>A norm is <span class="math inline">\(\|\cdot\|_X: X \to \mathbb{R}\)</span> such that</p>
+<ul>
+<li><span class="math inline">\(\|f\|_X \ge 0\)</span> and <span class="math inline">\(\|f\|_X = 0 \Longleftrightarrow f=0\)</span></li>
+<li><span class="math inline">\(\|\lambda f\|_X = \lambda \|f\|_X\)</span></li>
+<li><span class="math inline">\(\|f+g\|_X \le \|f\|_X + \|g\|_X\)</span></li>
+</ul>
+<p>A space is <strong>normed</strong> if a norm is defined.<br>
+A normed space is also a metric space: <span class="math display">\[
+d(f,g) = \|f-g\|_X
+\]</span></p>
+</div>
+</div>
+<p><strong>Comment.</strong> Most numerical error estimates are statements like <span class="math inline">\(\|u-u_h\|_X \le C h^p\)</span>.<br>
+That only makes sense after we choose a norm <span class="math inline">\(\|\cdot\|_X\)</span>.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.8">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.8</span><span class="theorem-title">Banach Space</span></p>
+</div>
+<div class="theorem-content">
+<p>A Banach space is a complete normed space.</p>
+</div>
+</div>
+<p><strong>Comment.</strong> Banach spaces are the natural setting for fixed-point theorems and stability results.</p>
+<hr>
+<h2 data-original-heading="0.3 Inner products, Hilbert spaces, and orthogonality" id="inner-products-hilbert-spaces-and-orthogonality">0.3 Inner products, Hilbert spaces, and orthogonality</h2>
+<h3 data-original-heading="0.3.1 Why inner products show up in FEM" id="why-inner-products-show-up-in-fem">0.3.1 Why inner products show up in FEM</h3>
+<p>Galerkin methods are built from orthogonality conditions like <span class="math inline">\((u-u_h, v_h)=0\)</span>.<br>
+That requires an inner product structure.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.9">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.9</span><span class="theorem-title">Scalar Product</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\((\cdot,\cdot)_X: X \times X \to \mathbb{R}\)</span> is a symmetric bilinear form such that</p>
+<ul>
+<li><span class="math inline">\((f,g)_X = (g,f)_X\)</span></li>
+<li><span class="math inline">\((f,f)_X \ge 0\)</span> and <span class="math inline">\((f,f)_X = 0 \Longleftrightarrow f=0\)</span></li>
+<li><span class="math inline">\(\left|(f_1,f_2)_X\right| \le (f_1,f_1)_X^{1/2}(f_2,f_2)_X^{1/2}\)</span> <strong>[Cauchy-Schwarz Inequality]</strong></li>
+</ul>
+<p>A scalar product induces a norm: <span class="math display">\[
+\|f\|_X^2 = (f,f)_X
+\]</span> So, a space with a scalar product is automatically normed.</p>
+</div>
+</div>
+<p><strong>Key point.</strong> Inner product <span class="math inline">\(\Rightarrow\)</span> norm <span class="math inline">\(\Rightarrow\)</span> metric <span class="math inline">\(\Rightarrow\)</span> talk about convergence.</p>
+<h3 data-original-heading="0.3.2 Example 1.2.10" id="example-1.2.10">0.3.2 Example 1.2.10</h3>
+<div class="math-theorem example" data-callout="example" data-label="1.2.10">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.2.10</span><span class="theorem-title">A standard estimate from the scalar product</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\begin{aligned}
+(f_1+f_2,f_1+f_2)_X
+&amp;= (f_1,f_1)_X + 2(f_1,f_2)_X + (f_2,f_2)_X \\
+&amp;\le \|f_1\|_X^2 + 2\|f_1\|_X\|f_2\|_X + \|f_2\|_X^2 \\
+&amp;= (\|f_1\|_X + \|f_2\|_X)^2
+\end{aligned}
+\]</span> (Here the inequality step uses Cauchy–Schwarz on <span class="math inline">\((f_1,f_2)_X\)</span>.) Taking square-roots yields <span class="math inline">\(\|f_1+f_2\|_X \le \|f_1+f_2\|_X+\|f_2\|_X\)</span>.</p>
+</div>
+</div>
+<p><strong>Note (typo fix in words only).</strong> The last line should read: <span class="math display">\[
+\|f_1+f_2\|_X \le \|f_1\|_X + \|f_2\|_X,
+\]</span> which is exactly the triangle inequality for the induced norm.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.11">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.11</span><span class="theorem-title">Hilbert Space</span></p>
+</div>
+<div class="theorem-content">
+<p>A Hilbert space is a Banach space equipped with a scalar product.</p>
+</div>
+</div>
+<p><strong>Practical takeaway.</strong> Hilbert = “complete + inner product”.<br>
+Most FEM theory lives in Hilbert spaces (especially <span class="math inline">\(L^2\)</span>, <span class="math inline">\(H^1\)</span>, <span class="math inline">\(H_0^1\)</span>).</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.12">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.12</span><span class="theorem-title">Orthogonality</span></p>
+</div>
+<div class="theorem-content">
+<p>The angle between two functions is defined as <span class="math display">\[
+\angle(f_1,f_2):\ \cos(\varphi) = \frac{(f_1,f_2)}{\|f_1\|\|f_2\|} = \frac{(f_1,f_2)}{(f_1,f_1)^{1/2}(f_2,f_2)^{1/2}}
+\]</span> Two functions are orthogonal to each other <span class="math inline">\(\Longleftrightarrow (f,g)=0\)</span>. We denote <span class="math inline">\(f \perp g\)</span>.</p>
+</div>
+</div>
+<p><strong>Interpretation.</strong> Orthogonality means “no component in that direction,” just like vectors in <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+<hr>
+<h2 data-original-heading="0.4 Orthogonal Projection (Galerkin principle)" id="orthogonal-projection-galerkin-principle">0.4 Orthogonal Projection (Galerkin principle)</h2>
+<p>When we approximate in a subspace <span class="math inline">\(X_L\)</span>, the <em>best</em> approximation is obtained by <strong>orthogonal projection</strong> (in a Hilbert space). This is the geometric heart of the Galerkin method.</p>
+<h3 data-original-heading="0.4.1 Find the Best Approximation" id="find-the-best-approximation">0.4.1 Find the Best Approximation</h3>
+<p>Let <span class="math inline">\(X_L \subset X\)</span>, where <span class="math inline">\(X_L\)</span> is “small.” <span class="math inline">\(X_L\)</span> and <span class="math inline">\(X\)</span> are both Hilbert spaces.</p>
+<p>We want to find the best approximation <span class="math inline">\(f_L\)</span> of <span class="math inline">\(f\)</span> in <span class="math inline">\(X_L\)</span>. So, we need to find <span class="math inline">\(f_L\)</span> s.t. <span class="math display">\[
+(f - f_L, v_L) = 0 \quad \forall\, v_L \in X_L
+\]</span></p>
+<p><strong>What this condition means.</strong></p>
+<ul>
+<li><span class="math inline">\(f-f_L\)</span> is the <strong>error</strong>.</li>
+<li>The condition says the error is orthogonal to the whole approximation space <span class="math inline">\(X_L\)</span>.</li>
+<li>This uniquely characterizes <span class="math inline">\(f_L\)</span> as the orthogonal projection of <span class="math inline">\(f\)</span> onto <span class="math inline">\(X_L\)</span>.</li>
+</ul>
+<p>This is an extension of the Pythagorean Theorem. If <span class="math inline">\(g_L \in X_L\)</span>: <span class="math display">\[
+\begin{aligned}
+\|f-g_L\|^2
+&amp;= (f-g_L,f-g_L) \\
+&amp;= (f-f_L + f_L-g_L,\ f-f_L + f_L-g_L) \\
+&amp;= \|f-f_L\|^2 + 2(f-f_L,f_L-g_L) + \|f_L-g_L\|^2 \\
+&amp;= \|f-f_L\|^2 + \underbrace{2(f-f_L,f_L-g_L)}_{=0,\ \text{orthogonality}} + \|f_L-g_L\|^2 \\
+&amp;= \|f-f_L\|^2 + \|f_L-g_L\|^2 \\
+&amp;\ge \|f-f_L\|^2
+\end{aligned}
+\]</span></p>
+<p><strong>Conclusion.</strong> Among all <span class="math inline">\(g_L \in X_L\)</span>, the minimizer of <span class="math inline">\(\|f-g_L\|\)</span> is <span class="math inline">\(f_L\)</span>.<br>
+So “best approximation” = “orthogonal projection”.</p>
+<hr>
+<h2 data-original-heading="0.5 Lebesgue Integration and L^p spaces" id="lebesgue-integration-and-lp-spaces">0.5 Lebesgue Integration and <span class="math inline">\(L^p\)</span> spaces</h2>
+<h3 data-original-heading="0.5.1 Why we switch to L^p" id="why-we-switch-to-lp">0.5.1 Why we switch to <span class="math inline">\(L^p\)</span></h3>
+<p>Many PDE solutions are not classically smooth. We need spaces that:</p>
+<ul>
+<li>allow functions with limited regularity,</li>
+<li>still make integrals meaningful,</li>
+<li>provide norms used in stability/error estimates.</li>
+</ul>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.13">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.13</span><span class="theorem-title"><span class="math inline">\(L^p\)</span> Spaces</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+L^p(a,b) = \left\{\, f:\ (L)\int_a^b f^p\,dx &lt; +\infty \right\}, \quad \text{with } p=1,2,\ldots,\in \mathbb{N}
+\]</span> Here, <span class="math inline">\((L)\)</span> indicates that the integration is done in Lebesgue sense. <span class="math inline">\(L^p(a,b)\)</span> is the collection of functions that can be integrated in interval <span class="math inline">\((a,b)\)</span> in the Lebesgue sense without blowing up.</p>
+</div>
+</div>
+<p>These are Banach spaces with the norm <span class="math display">\[
+\|f\|_p = \left(\int_a^b |f|^p\,dx\right)^{1/p}
+\]</span></p>
+<p><strong>Interpretation.</strong></p>
+<ul>
+<li><span class="math inline">\(L^1\)</span>: integrable functions (area under curve finite).</li>
+<li><span class="math inline">\(L^2\)</span>: square-integrable (energy finite) — the most common in PDE/FEM.</li>
+</ul>
+<p>Similarly, <span class="math display">\[
+L^\infty(a,b) = \left\{\, f:\ \text{bounded (up to all-measurable intervals) in }(a,b)\right\}
+\]</span> is also a Banach space with norm <span class="math display">\[
+\|f\|_\infty = \max_{(a,b)} |f|
+\]</span></p>
+<p><strong>Comment.</strong> Strictly speaking, <span class="math inline">\(L^\infty\)</span> uses the <em>essential supremum</em> (ignores measure-zero sets), but the above matches the typical intuition.</p>
+<p>Specially, <span class="math inline">\(L^2(a,b)\)</span> or <span class="math inline">\(L^2(\Omega)\)</span> with <span class="math inline">\(\Omega \subset \mathbb{R}\)</span> is a Hilbert space: <span class="math display">\[
+\begin{aligned}
+(f,g) &amp;= \int_a^b f g\,dx \\
+\|f\|_2 &amp;= \left(\int_a^b f^2\,dx\right)^{1/2} = (f,f)^{1/2}
+\end{aligned}
+\]</span></p>
+<p><strong>Why <span class="math inline">\(L^2\)</span> is special.</strong> It has an inner product, so we get orthogonality/projection tools.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.14">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.14</span><span class="theorem-title">Conjugate Spaces</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(L^p\)</span> and <span class="math inline">\(L^q\)</span> are called conjugated spaces if we have the function <span class="math inline">\(f\in L^p(a,b)\)</span> and <span class="math inline">\(g\in L^q(a,b)\)</span> with <span class="math display">\[
+\frac{1}{p}+\frac{1}{q}=1
+\]</span> We then have <span class="math display">\[
+(L)\int_a^b f g\,dx &lt; +\infty \quad \text{or}\quad f g \in L^1(a,b)
+\]</span></p>
+</div>
+</div>
+<p><strong>Context.</strong> This is the setup for Hölder’s inequality and for defining dual pairings <span class="math inline">\(L^q = (L^p)'\)</span> (for <span class="math inline">\(1&lt;p&lt;\infty\)</span>).</p>
+<div class="math-theorem remark" data-callout="remark" data-label="1.2.14">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.2.14</span><span class="theorem-title"><span class="math inline">\(L^2\)</span> is conjugate with itself</span></p>
+</div>
+<div class="theorem-content">
+<p>We have <span class="math display">\[
+|(f,g)_{L^2}| \le \|f\|_2\|g\|_2
+\]</span></p>
+</div>
+</div>
+<p><strong>Comment.</strong> This is exactly Cauchy–Schwarz in <span class="math inline">\(L^2\)</span>.</p>
+<hr>
+<h2 data-original-heading="0.6 Distributions and weak derivatives" id="distributions-and-weak-derivatives">0.6 Distributions and weak derivatives</h2>
+<h3 data-original-heading="0.6.1 Motivation: derivatives that still exist when functions are not smooth" id="motivation-derivatives-that-still-exist-when-functions-are-not-smooth">0.6.1 Motivation: derivatives that still exist when functions are not smooth</h3>
+<p>In PDE, solutions may have jumps, corners, or only be <span class="math inline">\(L^2\)</span>.<br>
+Classical derivatives may not exist, but we still want a “derivative” compatible with integration by parts (weak form).<br>
+Distributions are the clean framework.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.15">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.15</span><span class="theorem-title">Dual Spaces</span></p>
+</div>
+<div class="theorem-content">
+<p>The set of linear bounded functionals obtained on a space <span class="math inline">\(X\)</span> is per se a functional space, that we call <strong>dual space</strong> and denote as <span class="math inline">\(X'\)</span> <span class="math display">\[
+X' = \left\{\mathcal{F}(f)\ \text{for } f\in X,\ \text{linear and s.t.}\ \|\mathcal{F}(f)\|\le c\|f\|_X\right\}
+\]</span></p>
+</div>
+</div>
+<p><strong>Interpretation.</strong> Elements of <span class="math inline">\(X'\)</span> are “bounded measurements” on <span class="math inline">\(X\)</span>.<br>
+Boundedness (<span class="math inline">\(\|\mathcal{F}(f)\|\le c\|f\|_X\)</span>) is what makes the functional continuous and stable.</p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.16">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.16</span><span class="theorem-title">Riesz Representation Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p>In <span class="math inline">\(L^2\)</span>, the dual of <span class="math inline">\(L^2\)</span> is isometric to <span class="math inline">\(L^2\)</span>.<br>
+<em>(This means that any linear and continuous functional in <span class="math inline">\(L^2\)</span> corresponds to an element within <span class="math inline">\(L^2\)</span> itself.)</em></p>
+</div>
+</div>
+<p><strong>Practical meaning.</strong> Every bounded linear functional on <span class="math inline">\(L^2\)</span> can be written as an <span class="math inline">\(L^2\)</span> inner product with some <span class="math inline">\(g\in L^2\)</span>: <span class="math display">\[
+\mathcal{F}(f) = (g,f)_{L^2}.
+\]</span> (You don’t need the full proof here; you use it later when deriving weak forms.)</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.17">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.17</span><span class="theorem-title">Support</span></p>
+</div>
+<div class="theorem-content">
+<p>The support of a function is where the function <span class="math inline">\(\ne 0\)</span> on the interval or region of the domain of definition. In particular, if the support is closed and bounded region, we say the function has <strong>compact support</strong>.</p>
+</div>
+</div>
+<p><strong>Why compact support matters.</strong> It kills boundary terms in integration by parts (no “leakage” at infinity).</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.18">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.18</span><span class="theorem-title">The Space <span class="math inline">\(\mathcal{D}\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\mathcal{D} = \{\text{functions in } C^\infty(\mathbb{R}^n)\ (n\ge 1)\ \text{with compact support}\}
+\]</span></p>
+<p>The dual space of <span class="math inline">\(\mathcal{D}\)</span>, <span class="math inline">\(\mathcal{D}'\)</span> is defined in the following notion: <span class="math display">\[
+\mathcal{D}':\ \langle T,f\rangle_{\mathcal{D}} \in \mathbb{R},\ \text{where } T\in\mathcal{D}'\ \text{is linear and continuous and } f\in\mathcal{D}
+\]</span></p>
+<p><span class="math inline">\(T\)</span> to be continuous is defined in the following sense: Let <span class="math inline">\(\mathrm{supp}(f_n)\subseteq K\)</span> and <span class="math inline">\(f_n\to f\)</span> and <span class="math inline">\(n\to\infty\)</span>. Then, <span class="math inline">\(T\)</span> is continuous if <span class="math display">\[
+\langle T,f_n\rangle \to \langle T,f\rangle
+\]</span></p>
+</div>
+</div>
+<p><strong>Interpretation.</strong></p>
+<ul>
+<li><span class="math inline">\(\mathcal{D}\)</span> = smooth test functions that vanish outside a bounded set.</li>
+<li><span class="math inline">\(\mathcal{D}'\)</span> = all continuous linear functionals acting on <span class="math inline">\(\mathcal{D}\)</span>. These are the “generalized functions”.</li>
+</ul>
+<div class="math-theorem example" data-callout="example" data-label="1.2.19">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.2.19</span><span class="theorem-title">A distribution coming from a step function</span></p>
+</div>
+<div class="theorem-content">
+<p>Let <span class="math inline">\(H(x)\)</span> be the step function <span class="math display">\[
+H(x)=
+\begin{cases}
+0 &amp; \text{for } x\le 0 \\
+1 &amp; \text{for } x&gt;0
+\end{cases}
+\]</span> Then <span class="math display">\[
+\langle T,f\rangle = \int_{-\infty}^{+\infty} H f\,dx = \int_0^{+\infty} f\,dx
+\]</span> The functional <span class="math inline">\(\langle T_0,f\rangle = f(0)\)</span> belongs to <span class="math inline">\(\mathcal{D}'\)</span> <span class="math display">\[
+|\langle T_0,f\rangle| \le \max_{x\in\mathbb{R}} |f(x)|
+\]</span></p>
+</div>
+</div>
+<p><strong>Comment.</strong> Two important examples of distributions:</p>
+<ul>
+<li><span class="math inline">\(f \mapsto \int_0^\infty f\)</span> (integration against a possibly discontinuous function <span class="math inline">\(H\)</span>),</li>
+<li><span class="math inline">\(f \mapsto f(0)\)</span> (evaluation at a point), which is not continuous on many <span class="math inline">\(L^p\)</span> spaces but <em>is</em> meaningful on <span class="math inline">\(\mathcal{D}\)</span>.</li>
+</ul>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.20">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.20</span><span class="theorem-title">Distributions</span></p>
+</div>
+<div class="theorem-content">
+<p>The objects of <span class="math inline">\(\mathcal{D}'\)</span> are called <strong>distributions</strong> or generalized functions.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="0.7 Weak derivative" id="weak-derivative">0.7 Weak derivative</h2>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.21">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.21</span><span class="theorem-title">Distributional derivative identity</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\langle T', f\rangle = -\langle T, f'\rangle
+\]</span></p>
+</div>
+</div>
+<p><strong>Meaning.</strong> In the distribution sense, differentiating <span class="math inline">\(T\)</span> is defined so that integration by parts is always true (with no boundary term due to compact support of <span class="math inline">\(f\)</span>).</p>
+<p><strong>Proof 1.</strong> Let <span class="math inline">\(g\in L^2\)</span>. Then <span class="math display">\[
+\begin{aligned}
+\langle g', f\rangle
+&amp;= \int_{\mathbb{R}} g' f \\
+&amp;= \underbrace{\big[g f\big]_{-\infty}^{+\infty}}_{=0\ \text{since } f\ \text{has compact support}} - \int_{\mathbb{R}} g f' \\
+&amp;= -\langle g, f'\rangle
+\end{aligned}
+\]</span> Note that <span class="math inline">\(\big[g f\big]_{-\infty}^{+\infty}=0\)</span> because <span class="math inline">\(\lim_{x\to\infty} f=0\)</span>, and <span class="math inline">\(f\)</span> has compact support.</p>
+<div class="math-theorem example" data-callout="example" data-label="1.2.22">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example 1.2.22</span><span class="theorem-title">Differentiating the step function gives the Dirac impulse</span></p>
+</div>
+<div class="theorem-content">
+<p>Consider <span class="math display">\[
+H(x)=
+\begin{cases}
+0 &amp; \text{for } x\le 0 \\
+1 &amp; \text{for } x&gt;0
+\end{cases}
+\]</span> Then, we can differentiate <span class="math inline">\(H\)</span> <span class="math display">\[
+\begin{aligned}
+\int_{-\infty}^{+\infty} H' f
+&amp;= -\int_{-\infty}^{+\infty} H f' \\
+&amp;= -\int_0^{+\infty} f' \\
+&amp;= -[f]_0^{+\infty} \\
+&amp;= f(0) \\
+&amp;= \langle T_0, f\rangle
+\end{aligned}
+\]</span> <span class="math inline">\(T_0\)</span> is called the Dirac-<span class="math inline">\(\delta\)</span> and it is the mathematical description of an impulse. It is not a function in the traditional sense.</p>
+</div>
+</div>
+<p><strong>Interpretation.</strong> <span class="math inline">\(H\)</span> has a jump at <span class="math inline">\(0\)</span>. Its classical derivative is “zero everywhere except at 0”, which is captured by <span class="math inline">\(\delta\)</span>.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.23">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.23</span><span class="theorem-title">Dirac-<span class="math inline">\(\delta\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p>Dirac-<span class="math inline">\(\delta\)</span> is the element in <span class="math inline">\(\mathcal{D}'\)</span> such that <span class="math display">\[
+\langle \delta,f\rangle = f(0)
+\]</span> We know that <span class="math inline">\(H'=\delta\)</span>.</p>
+</div>
+</div>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.24">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.24</span><span class="theorem-title">Inclusion into <span class="math inline">\(\mathcal{D}'\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+L^2 \subset \mathcal{D}'
+\]</span></p>
+</div>
+</div>
+<p><strong>Comment.</strong> Any <span class="math inline">\(g\in L^2\)</span> defines a distribution by <span class="math display">\[
+\langle g, f\rangle := \int_{\mathbb{R}} g f\,dx,
+\]</span> so functions can be viewed as a special case of distributions.</p>
+<hr>
+<h2 data-original-heading="0.8 Sobolev spaces (the PDE workhorse)" id="sobolev-spaces-the-pde-workhorse">0.8 Sobolev spaces (the PDE workhorse)</h2>
+<h3 data-original-heading="0.8.1 Measuring derivatives in L^2" id="measuring-derivatives-in-l2">0.8.1 Measuring derivatives in <span class="math inline">\(L^2\)</span></h3>
+<p><strong>Sobolev spaces</strong> encode “how many derivatives exist in a weak sense” and how large they are. This is exactly what we need for:</p>
+<ul>
+<li>weak formulations (existence/uniqueness),</li>
+<li>regularity,</li>
+<li>FEM error estimates.</li>
+</ul>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.25">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.25</span><span class="theorem-title">Sobolev Spaces</span></p>
+</div>
+<div class="theorem-content">
+<p>Space <span class="math inline">\(H^k(a,b)\)</span> (or <span class="math inline">\(H^k(\Omega)\)</span>) is the space of functions <span class="math inline">\(f\)</span> s.t. it belongs to <span class="math inline">\(L^2\)</span> together with all the derivatives up to the order <span class="math inline">\(k\)</span> <span class="math display">\[
+H^k(a,b)=\left\{\, f\ \text{s.t.}\ f,f',\ldots,f^{(k)}\in L^2 = H^0 \right\}
+\]</span></p>
+<p>In multiple dimensions, the derivatives are all the derivatives of order <span class="math inline">\(k\)</span> <span class="math display">\[
+\frac{\partial^{\alpha_1+\alpha_2+\cdots+\alpha_m} f}{\partial x_1^{\alpha_1}\partial x_2^{\alpha_2}\cdots \partial x_m^{\alpha_m}}
+\in L^2
+\quad \text{with}\quad \sum_i \alpha_i = k
+\]</span></p>
+<p>These spaces are called Sobolev spaces. A more generalized definition <span class="math display">\[
+W^{k,p}=\left\{\, f\ \text{s.t.}\ f,f',\ldots,f^{(k)}\in L^p \right\}
+\]</span> So, <span class="math inline">\(H^k = W^{k,2}\)</span>.</p>
+</div>
+</div>
+<p><strong>Interpretation.</strong></p>
+<ul>
+<li><span class="math inline">\(H^0 = L^2\)</span>.</li>
+<li><span class="math inline">\(H^1\)</span> means <span class="math inline">\(f\in L^2\)</span> and its weak derivative <span class="math inline">\(f'\in L^2\)</span>.</li>
+<li>Higher <span class="math inline">\(k\)</span> means more (weak) smoothness.</li>
+</ul>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.26">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.26</span><span class="theorem-title">Properties of <span class="math inline">\(H^k\)</span></span></p>
+</div>
+<div class="theorem-content">
+<ul>
+<li><span class="math inline">\(H^k(a,b)\)</span> is a Hilbert space with the scalar product <span class="math display">\[
+(f,g)_{H^k} = \sum_{i=0}^k (f^{(i)},g^{(i)})_{L^2}
+\]</span></li>
+<li><span class="math inline">\(H^1(a,b)\)</span> has the norm <span class="math display">\[
+\|f\|_{H^1}^2 = \|f\|_{L^2}^2 + \|f'\|_{L^2}^2
+\]</span></li>
+<li><span class="math inline">\(H^1 \subset L^2\)</span>. So, <span class="math display">\[
+\|f\|_{H^1}^2 \ge \|f\|_{L^2}^2
+\]</span></li>
+<li>In general, <span class="math display">\[
+H^{k+1} \subset H^k \subset \cdots \subset L^2
+\]</span></li>
+</ul>
+</div>
+</div>
+<p><strong>Why this nesting matters.</strong> More derivatives in <span class="math inline">\(L^2\)</span> implies stronger control on the function, hence a “smaller” space.</p>
+<hr>
+<h2 data-original-heading="0.9 Boundary values and trace (why H^1 is subtle)" id="boundary-values-and-trace-why-h1-is-subtle">0.9 Boundary values and trace (why <span class="math inline">\(H^1\)</span> is subtle)</h2>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.27">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.27</span><span class="theorem-title">Trace Operator</span></p>
+</div>
+<div class="theorem-content">
+<p>Trace is an operator that maps a function in <span class="math inline">\(H^k\)</span> to its value of the boundary, and, in general, reduces regularity. <span class="math display">\[
+\gamma:\ H^k(\Omega)\to H^{k-\frac{1}{2}}(\partial\Omega)
+\]</span> is the (continuous) trace operator.</p>
+</div>
+</div>
+<p><strong>Interpretation.</strong></p>
+<ul>
+<li>Functions in <span class="math inline">\(H^1(\Omega)\)</span> may not be classically continuous, yet they have a well-defined boundary value in an appropriate sense.</li>
+<li>The trace map “costs” a half-derivative of regularity.</li>
+</ul>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.28">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.28</span><span class="theorem-title">The Space <span class="math inline">\(H_0^1\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p>The space <span class="math inline">\(H_0^1(\Omega)\)</span> is the space of <span class="math inline">\(H^1\)</span> functions with null trace on <span class="math inline">\(\partial\Omega\)</span>.</p>
+</div>
+</div>
+<p><strong>Practical meaning.</strong> This is the natural space for homogeneous Dirichlet boundary conditions <span class="math inline">\(u=0\)</span> on <span class="math inline">\(\partial\Omega\)</span>.</p>
+<hr>
+<h2 data-original-heading="0.10 Poincaré inequality and equivalent norms (the energy norm idea)" id="poincaré-inequality-and-equivalent-norms-the-energy-norm-idea">0.10 Poincaré inequality and equivalent norms (the energy norm idea)</h2>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.29">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.29</span><span class="theorem-title">Poincare Inequality</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\exists\, c&gt;0\)</span> s.t. for <span class="math inline">\(f\in H_0^1(\Omega)\)</span> <span class="math display">\[
+\|f\|_{L^2} \le c\|\nabla f\|_{L^2}
+\]</span> Therefore, <span class="math display">\[
+\begin{aligned}
+\|\nabla f\|_{L^2}^2
+&amp;\le \underbrace{\|f\|_{L^2}^2 + \|\nabla f\|_{L^2}^2}_{\|f\|_{H_0^1}^2}
+\le (1+c^2)\|\nabla f\|_{L^2}^2
+\end{aligned}
+\]</span> Hence, in <span class="math inline">\(H_0^1(\Omega)\)</span>, the norm of <span class="math inline">\(\nabla f\)</span> in <span class="math inline">\(L^2\)</span> and of <span class="math inline">\(f\)</span> in <span class="math inline">\(H^1\)</span> are equivalent. This is also true if the function has only a realization of the boundary (with measure <span class="math inline">\(&gt;0\)</span>) where it vanishes.</p>
+</div>
+</div>
+<p><strong>Interpretation.</strong></p>
+<ul>
+<li>On <span class="math inline">\(H_0^1(\Omega)\)</span>, controlling <span class="math inline">\(\|\nabla f\|_{L^2}\)</span> automatically controls <span class="math inline">\(\|f\|_{L^2}\)</span>.</li>
+<li>So the “energy seminorm” <span class="math inline">\(\|\nabla f\|_{L^2}\)</span> is effectively a full norm on <span class="math inline">\(H_0^1\)</span>.</li>
+</ul>
+<div class="math-theorem remark" data-callout="remark" data-label="1.2.29">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.2.29</span><span class="theorem-title">Equivalent norms (abstract form)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\alpha\|u\|_F \le \|u\|_S \le \beta\|u\|_F
+\]</span> implies that <span class="math inline">\(\|\cdot\|_F\)</span> and <span class="math inline">\(\|\cdot\|_S\)</span> are equivalent.</p>
+</div>
+</div>
+<p><strong>Why we care.</strong> Equivalent norms define the same notion of convergence and stability. In PDE, we often switch between norms that are easier to estimate.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2.30">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2.30</span><span class="theorem-title">Dual of <span class="math inline">\(H_0^1\)</span>: <span class="math inline">\(H^{-1}\)</span></span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+H_0^1 \subset L^2 \subset H^{-1}
+\]</span></p>
+</div>
+</div>
+<p><strong>Interpretation.</strong></p>
+<ul>
+<li><span class="math inline">\(H^{-1}\)</span> is the dual space of <span class="math inline">\(H_0^1\)</span> (in a standard identification).</li>
+<li>Many PDE data terms (like forcing <span class="math inline">\(f\)</span>) naturally live in <span class="math inline">\(H^{-1}\)</span> when solutions live in <span class="math inline">\(H_0^1\)</span>.</li>
+</ul>
+<hr>
+<h2 data-original-heading="0.11 Space–time function spaces (for time-dependent PDE)" id="spacetime-function-spaces-for-time-dependent-pde">0.11 Space–time function spaces (for time-dependent PDE)</h2>
+<h3 data-original-heading="0.11.1 Space-Time Functional Spaces" id="space-time-functional-spaces">0.11.1 Space-Time Functional Spaces</h3>
+<p>For time-dependent problems, we have spaces that describe the two dependencies. For instance <span class="math display">\[
+L^p(0,T;H^k(\Omega))
+\]</span> is the space of functions s.t. <span class="math inline">\(\|f\|_{H^k}(t)\in L^p(0,T)\)</span>.</p>
+<p><strong>Interpretation.</strong> You measure spatial regularity in <span class="math inline">\(H^k\)</span>, but that <span class="math inline">\(H^k\)</span>-norm is a function of time, and you require it to be <span class="math inline">\(L^p\)</span> in time.</p>
+<p>In short, we denote it as <span class="math inline">\(L^p(H^k)\)</span>. We will use <span class="math inline">\(L^2(H_0^1)\)</span> and <span class="math inline">\(L^\infty(L^2)\)</span>.</p>
+<hr>
+<h2 data-original-heading="0.12 Sobolev embeddings (turn derivatives into integrability/continuity)" id="sobolev-embeddings-turn-derivatives-into-integrabilitycontinuity">0.12 Sobolev embeddings (turn derivatives into integrability/continuity)</h2>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.31">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.31</span><span class="theorem-title">Embedding Theorems</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(u\in H^s\)</span> and <span class="math inline">\(\Omega\subset \mathbb{R}^n\)</span></p>
+<ul>
+<li><span class="math inline">\(0&lt;2s&lt;n:\ H^s\subset L^q\)</span>, where <span class="math inline">\(1\le q\le q^*=\dfrac{2n}{n-2s}\)</span> <strong>[continuous embedding]</strong></li>
+<li><span class="math inline">\(2s=n:\ H^s\subset L^q\ \ \forall\, q:\ 1\le q&lt;+\infty\)</span></li>
+<li><span class="math inline">\(2s&gt;n:\ H^s\subset C^0(\overline{\Omega})\)</span></li>
+</ul>
+<p>Also, <span class="math inline">\(H^s\subset C^n(\overline{\Omega})\)</span> if <span class="math inline">\(s&gt;n+\dfrac{n}{2}\)</span>.</p>
+</div>
+</div>
+<p><strong>Interpretation.</strong></p>
+<ul>
+<li>Enough Sobolev regularity forces better integrability (<span class="math inline">\(L^q\)</span>) and eventually continuity.</li>
+<li>This is how “weak derivatives” translate into classical-looking properties.</li>
+</ul>
+<div class="math-theorem remark" data-callout="remark" data-label="1.2.31">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.2.31</span><span class="theorem-title">A boundary constraint can break linear-space structure</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(H^1(\Omega)=\{f\in H^1,\ f(\partial\Omega)=1\}\)</span> is not a space. In fact <span class="math display">\[
+f_1,f_2\in H^1 \Longrightarrow f_1+f_2\notin H^1
+\]</span></p>
+</div>
+</div>
+<p><strong>Reason (intuition).</strong> If <span class="math inline">\(f_1|_{\partial\Omega}=1\)</span> and <span class="math inline">\(f_2|_{\partial\Omega}=1\)</span>, then <span class="math inline">\((f_1+f_2)|_{\partial\Omega}=2\)</span>, violating the constraint. So affine constraints (fixed nonzero boundary values) create an affine set, not a vector space.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span>← Previous page</span><span>1.1 Data and Solution</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span>Next page →</span><span>1.3 Solving Linear System</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">1.2 Functional Analysis</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#basics-of-functional-analysis" class="is-active" aria-current="location">0.1 Basics of Functional Analysis</a></li><li style="--depth:0"><a href="#metrics-completeness-and-norms">0.2 Metrics, completeness, and norms</a></li><li style="--depth:1"><a href="#why-do-we-need-a-distance">0.2.1 Why do we need a distance?</a></li><li style="--depth:0"><a href="#inner-products-hilbert-spaces-and-orthogonality">0.3 Inner products, Hilbert spaces, and orthogonality</a></li><li style="--depth:1"><a href="#why-inner-products-show-up-in-fem">0.3.1 Why inner products show up in FEM</a></li><li style="--depth:1"><a href="#example-1.2.10">0.3.2 Example 1.2.10</a></li><li style="--depth:0"><a href="#orthogonal-projection-galerkin-principle">0.4 Orthogonal Projection (Galerkin principle)</a></li><li style="--depth:1"><a href="#find-the-best-approximation">0.4.1 Find the Best Approximation</a></li><li style="--depth:0"><a href="#lebesgue-integration-and-lp-spaces">0.5 Lebesgue Integration and L^p spaces</a></li><li style="--depth:1"><a href="#why-we-switch-to-lp">0.5.1 Why we switch to L^p</a></li><li style="--depth:0"><a href="#distributions-and-weak-derivatives">0.6 Distributions and weak derivatives</a></li><li style="--depth:1"><a href="#motivation-derivatives-that-still-exist-when-functions-are-not-smooth">0.6.1 Motivation: derivatives that still exist when functions are not smooth</a></li><li style="--depth:0"><a href="#weak-derivative">0.7 Weak derivative</a></li><li style="--depth:0"><a href="#sobolev-spaces-the-pde-workhorse">0.8 Sobolev spaces (the PDE workhorse)</a></li><li style="--depth:1"><a href="#measuring-derivatives-in-l2">0.8.1 Measuring derivatives in L^2</a></li><li style="--depth:0"><a href="#boundary-values-and-trace-why-h1-is-subtle">0.9 Boundary values and trace (why H^1 is subtle)</a></li><li style="--depth:0"><a href="#poincar%C3%A9-inequality-and-equivalent-norms-the-energy-norm-idea">0.10 Poincaré inequality and equivalent norms (the energy norm idea)</a></li><li style="--depth:0"><a href="#spacetime-function-spaces-for-time-dependent-pde">0.11 Space–time function spaces (for time-dependent PDE)</a></li><li style="--depth:1"><a href="#space-time-functional-spaces">0.11.1 Space-Time Functional Spaces</a></li><li style="--depth:0"><a href="#sobolev-embeddings-turn-derivatives-into-integrabilitycontinuity">0.12 Sobolev embeddings (turn derivatives into integrability/continuity)</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

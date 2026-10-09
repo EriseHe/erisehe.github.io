@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>2.4 Finite Element — E.H. Notebook</title>
+<meta name="description" content="2.4.1 Finite Element: One Possible Choice of X_N[!remark] Remark. What if the problem is non-linear? -\Delta u + u^3 = f \quad\Longrightarrow\quad \int_\Omega \nabla u \n">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768"><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/index.html">数值PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/index.html">2. Poisson</a></nav><h1 id="reader-title">2.4 Finite Element</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Finite Element: One Possible Choice of X_N" id="finite-element-one-possible-choice-of-x_n">2.4.1 Finite Element: One Possible Choice of <span class="math inline">\(X_N\)</span></h2>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Remark.</strong> What if the problem is non-linear?</p>
+<p><span class="math display">\[
+-\Delta u + u^3 = f
+\quad\Longrightarrow\quad
+\int_\Omega \nabla u \nabla v + \int_\Omega u^3 v = f.
+\]</span></p>
+<ul>
+<li><p>This problem is WP (although we don’t have symmetry).</p></li>
+<li><p>Solving: linearize, then discretize:</p>
+<p><span class="math display">\[
+\int_\Omega \nabla u^{(k+1)} \nabla v + \int_\Omega \big(u^{(k)}\big)^2 u^{(k+1)} v = f
+\]</span></p>
+<p>We can use root finding. For example, Newton’s method.</p></li>
+<li><p>Solving: discretize, then linearize</p>
+<p><span class="math display">\[
+u_N = \sum_{j=0}^{N-1} c_j \varphi_j,
+\qquad
+X_N = \mathrm{span}\{\varphi\}_{j=0}^{N-1}.
+\]</span></p>
+<p>Then, we form a non-linear equation <span class="math inline">\(F(c)=0\)</span>. We can also use Newton’s method.</p></li>
+</ul>
+</div>
+</div>
+<h3 data-original-heading="2.4 Finite Element: One Possible Choice of X_N" id="finite-element-one-possible-choice-of-x_n-1">2.4 Finite Element: One Possible Choice of <span class="math inline">\(X_N\)</span></h3>
+<p>Recall: we need to compute <span class="math display">\[
+a(\varphi_j,\varphi_i)=\int_\Omega \nabla\varphi_j \nabla\varphi_i.
+\]</span> So, we want functions that are easy to differentiate and integrate. <span class="math inline">\(\Longrightarrow\)</span> <strong>Polynomials!</strong></p>
+<div class="math-theorem example" data-callout="example">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Example 2.4.1 Runge Counterexample</strong></p>
+<p>Consider the function <span class="math inline">\(f=\dfrac{1}{x^2+1}\)</span>, <span class="math inline">\(\quad x\in[-5,5]\)</span>.</p>
+<p>If we interpolate <span class="math inline">\(f(x)\)</span> with euispaced points and polynomials,</p>
+<p><span class="math display">\[
+\inf \|u-w_N\|\xrightarrow{N\to\infty}0
+\]</span></p>
+<p>will not be held.</p>
+<p>Solutions:</p>
+<ul>
+<li>Optimize the position of nodes: Gaussian interpolation, Chebysev nodes.</li>
+<li>Piecewise interpolation: locally fit piecewise polynomial.</li>
+</ul>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="2.4.1 Finite Element in 1D" id="finite-element-in-1d">2.4.1 Finite Element in 1D</h2>
+<p><span class="math display">\[
+-u''=f
+\quad\Longrightarrow\quad
+\int_0^1 u'v'=\int_0^1 fv
+\]</span></p>
+<p>with <span class="math inline">\(u(0)=u(1)=v(0)=v(1)=0\)</span>, where</p>
+<p><span class="math display">\[
+X_N=\{u_h \mid u_h\in C([0,1])\ \text{and}\ u_h\in \mathbb{P}^1(I_h)\},
+\]</span></p>
+<p>where <span class="math inline">\(\mathbb{P}^1\)</span> denotes polynomial of order 1. So, <span class="math inline">\(X_N^1\subset H_0^1(0,1)\)</span>, and <span class="math inline">\(\dim(X_N)=N-1=\dfrac{1}{h}-1\)</span>. So, when <span class="math inline">\(N\to +\infty\)</span>, <span class="math inline">\(h\to 0\)</span>, and <span class="math inline">\(\dim(X_N)\to +\infty\)</span>.</p>
+<p>[figure omitted]</p>
+<p>When doing interpolation, let <span class="math inline">\(y=f(x)\)</span> be the true function, and <span class="math inline">\(y_i=f(x_i)\)</span> be the interpolant. There are many ways to construct the interpolant. Finite Element will use the <strong>Lagrange Polynomial (Hat functions)</strong>:</p>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+\varphi_k(x)=
+\begin{cases}
+\dfrac{x-x_{k-1}}{x_k-x_{k-1}}=\dfrac{x-x_{k-1}}{h}, &amp; x\in[x_{k-1},x_k],\\[6pt]
+\dfrac{x_{k+1}-x}{x_{k+1}-x_k}=\dfrac{x_{k+1}-x}{h}, &amp; x\in[x_k,x_{k+1}],\\[6pt]
+0, &amp; \text{o/w.}
+\end{cases}
+\]</span></p>
+<p>Note that <span class="math display">\[
+\varphi_j(x_k)=\delta_{ik}=
+\begin{cases}
+1, &amp; i=k\\
+0, &amp; i\ne k
+\end{cases}
+\]</span> is the Kronecker-<span class="math inline">\(\delta\)</span> function. So, if <span class="math inline">\(v_N=\sum_{i=0}^{N-1} y_i\varphi_i\)</span>, we have <span class="math display">\[
+v_N(x_k)=\sum_{i=0}^{N-1} y_i\varphi_i(x_k)=y_k.
+\]</span></p>
+<p><strong>F.E. In Practice</strong> We will set everything up on a reference interval <span class="math inline">\([0,1]\)</span> with <span class="math inline">\(\hat\varphi_0=1-\hat x\)</span> and <span class="math inline">\(\hat\varphi_1=\hat x\)</span>. We will use the bijection <span class="math inline">\(x=\mathrm{map}(\hat x)=a\hat x+b\)</span> such that <span class="math inline">\(\mathrm{map}(0)=x_{j-1}\)</span> and <span class="math inline">\(\mathrm{map}(1)=x_j\)</span>. Then,</p>
+<p><span class="math display">\[
+\varphi_j=
+\begin{cases}
+\mathrm{map}(\hat\varphi_0) &amp; \text{in}\ (x_{j-1},x_j)\\
+\mathrm{map}(\hat\varphi_1) &amp; \text{in}\ (x_j,x_{j+1}).
+\end{cases}
+\]</span></p>
+<p>Also, <span class="math display">\[
+\hat x=\frac{x-b}{a}=\frac{x-x_{j-1}}{h}.
+\]</span></p>
+<h3 data-original-heading="Convergence Theorem and Its Application" id="convergence-theorem-and-its-application">2.4.1.1 Convergence Theorem and Its Application</h3>
+<p>Let <span class="math inline">\(u(x)\in C^0([0,1])\)</span>. Denote <span class="math inline">\(\Pi_u^1(x)\in X_h^1\)</span> as</p>
+<p><span class="math display">\[
+\Pi_u^1(x)=\{\text{continuous function, linear s.t. on }I_k=[x_k,x_{k+1}],\ \Pi_u^1(I_k)\in\mathbb{P}^1\},
+\]</span></p>
+<p>where <span class="math inline">\(\mathbb{P}^1\)</span> denotes polynomial of order 1. Then,</p>
+<p><span class="math display">\[
+\Pi_u^1(x)=\sum_{j=0}^{N} u(x_j)\varphi_j(x_j).
+\]</span></p>
+<p>To measure error, consider the following norms:</p>
+<p><span class="math display">\[
+\|u-\Pi_u^1\|_{L^2}
+\quad\text{and}\quad
+\|\nabla(u-\Pi_u^1)\|_{L^2}=|u-\Pi_u^1|_{H^1}
+\ \ \text{(semi-norm)}.
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Theorem 2.4.2</strong></p>
+<p>If <span class="math inline">\(u\in H^2([0,1])\)</span>, then</p>
+<p><span class="math display">\[
+\|u-\Pi_u^1\|_{L^2}\le C_0\|u\|_{H^2}h^2=C\|u''\|_{L^2}h^2
+\]</span> <span class="math display">\[
+|u-\Pi_u^1|_{H^1}\le C_1\|u''\|_{L^2}h
+\]</span> <span class="math display">\[
+\Longrightarrow\ \ \|u-\Pi_u^1\|_{H^1}\le C\|u''\|_{L^2}h.
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof 1.</strong> <span class="math inline">\(u\in H^2([0,1])\ \Rightarrow\ u\in C^1([0,1])\)</span>.</p>
+<ul>
+<li><p>Let’s work locally on the interval <span class="math inline">\([x_j,x_{j+1}]\)</span>. Denote that <span class="math display">\[
+e=u-\Pi_u^1,\qquad e(x_j)=0,\qquad \text{and }e(x_{j+1})=0.
+\]</span></p>
+<p>By Rolle’s Theorem, <span class="math inline">\(\exists\,\xi_j\)</span> s.t. <span class="math inline">\(e'(\xi_j)=0\)</span>. By Fundamental Theorem of Calculus,</p>
+<p><span class="math display">\[
+e'(x)=\int_{\xi_j}^{x} e''(x)\,dx=\int_{\xi_j}^{x} u''(x)\,dx
+\qquad[(\Pi_u^1)''=0]
+\]</span></p>
+<p><span class="math display">\[
+|e'(x)|\le\left|\int_{x_j}^{x_{j+1}} u''(x)\,dx\right|
+\]</span></p>
+<p><span class="math display">\[
+\le \left(\int_{x_j}^{x_{j+1}} 1^2\right)^{1/2}
+   \left(\int_{x_j}^{x_{j+1}} (u'')^2\right)^{1/2}
+=h^{1/2}\|u''\|_{L^2(I_j)}.
+\qquad[\text{Cauchy-Schwarz}]
+\]</span></p>
+<p><span class="math display">\[
+\Longrightarrow\ \ \|e'(x)\|_{L^2(I_j)}^2=\int_{x_j}^{x_{j+1}} |e'(x)|^2
+\le h\cdot \|u''\|_{L^2(I_j)}^2
+=h^2\|u''\|_{L^2(I_j)}^2.
+\]</span></p></li>
+</ul>
+<p>Now, let’s move to global:</p>
+<p><span class="math display">\[
+\|e'\|_{L^2(I)}^2=\sum_j \|e'\|_{L^2(I_j)}^2 \le h^2\|u''\|_{L^2(I)}^2.
+\]</span></p>
+<p><span class="math display">\[
+|e|_{H^1}=\|e'\|_{L^2}\le Ch\|u''\|_{L^2}=Ch|u|_{H^2}\sim O(h).
+\]</span></p>
+<ul>
+<li>Let’s repeat the same argument:</li>
+</ul>
+<p><span class="math display">\[
+|e(x)|=\left|\int_{x_j}^{x} e'\,dx\right|
+\le\left(\int_{x_j}^{x_{j+1}} 1^2\right)^{1/2}
+   \left(\int_{x_j}^{x_{j+1}} (e')^2\right)^{1/2}
+\]</span></p>
+<p><span class="math display">\[
+e^2(x)=(e(x))^2\le h\|e'\|_{L^2(I_j)}
+\]</span></p>
+<p><span class="math display">\[
+\int_{x_j}^{x_{j+1}} e^2(x)\le h^2\|e'\|_{L^2(I_j)}^2
+\le h^4\|u''\|_{L^2(I_j)}^2
+\qquad[\text{Use conclusion from ①}]
+\]</span></p>
+<p>Globally,</p>
+<p><span class="math display">\[
+\|e\|_{L^2}^2=\sum_j \|e\|_{L^2(I_j)}^2\le h^4\|u''\|_{L^2(I)}
+\]</span></p>
+<p><span class="math display">\[
+\Longrightarrow\ \ \|e\|_{L^2}\le Ch^2\|u''\|_{L^2}\sim O(h^2).
+\]</span></p>
+<p>Q.E.D. <span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>Applications of Theorem 2.4.2:</strong></p>
+<ul>
+<li><p>Consider FE problem <span class="math inline">\(a(u_h,v_h)=F(v_h)\)</span>. For <span class="math inline">\(u_h\in X_h^1\)</span>, we have</p>
+<p><span class="math display">\[
+\|u-u_h\|_{H^1}\le \frac{M}{\alpha}\inf_{w_h\in X_h^1}\|u-w_h\|_{H^1}
+\qquad[\text{Cea Lemma}]
+\]</span></p>
+<p><span class="math display">\[
+\le \frac{M}{\alpha}\|u-\Pi_{u,h}^1\|_{H^1}
+\qquad[\text{Theorem 2.4.2}]
+\]</span></p>
+<p><span class="math display">\[
+\le \frac{M}{\alpha}h\|u''\|_{H^2}
+\]</span></p>
+<p><span class="math display">\[
+\|u-u_h\|_{L^2}\le O(h^2).
+\]</span></p></li>
+<li><p>If we know the error is bad locally, we can locally refine <span class="math inline">\(h\)</span> to get better error.</p></li>
+</ul>
+<h3 data-original-heading="Advection-Reaction Problem, Local Assembly, and Global Assembly" id="advection-reaction-problem-local-assembly-and-global-assembly">2.4.1.2 Advection-Reaction Problem, Local Assembly, and Global Assembly</h3>
+<p><span class="math display">\[
+\begin{cases}
+-u''+\sigma u=f,\qquad \sigma&gt;0\\
+u(0)=u(1)=0.
+\end{cases}
+\]</span></p>
+<p>Weak formulation:</p>
+<p><span class="math display">\[
+\int_0^1 u'v'+\int_0^1 \sigma uv=\int_0^1 fv
+\quad \forall\, v\in H_0^1.
+\]</span></p>
+<ul>
+<li><strong>Matris A:</strong></li>
+</ul>
+<p><span class="math display">\[
+A_{ij}=a(\varphi_i,\varphi_j)
+=\int_0^1 \varphi_j'\varphi_i' + \int_0^1 \sigma\varphi_j\varphi_i
+\qquad\text{(mass matrix)}
+\]</span></p>
+<p><span class="math display">\[
+b_i=\int_0^1 f\varphi_i
+\]</span></p>
+<p>How to integrate numerically? We do it interval by interval. Suppose we have first order Lagrange polynomials. Then,</p>
+<p><span class="math display">\[
+\int_0^1 \sum_j \int_{I_j},
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\int_{I_k}=\int_{I_k}\varphi_i'\varphi_j' + \int_{I_k}\sigma\varphi_i\varphi_j.
+\qquad\text{(constant)}
+\]</span></p>
+<p>Note that</p>
+<p><span class="math display">\[
+\int_{I_k}\varphi_\ell'\varphi_r'=0
+\quad\text{if}\quad
+\ell,r\ne k,k+1.
+\]</span></p>
+<p>So, the matrix will be tridiagonal, and</p>
+<p><span class="math display">\[
+A_{ij}=\int_0^1 \varphi_j'\varphi_i' + \int_0^1 \sigma\varphi_j\varphi_i
+=\int_{x_{j-1}}^{x_{j+1}} \varphi_j'\varphi_i' + \int_{x_{j-1}}^{x_{j+1}} \varphi_j\varphi_i.
+\]</span></p>
+<p>Let’s only consider the first interval:</p>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+A_{00}=\int_{x_0}^{x_1}\varphi_0'\varphi_0' + \sigma\int_{x_0}^{x_1}\varphi_0\varphi_0
+\]</span></p>
+<p><span class="math display">\[
+A_{01}=\int_{x_0}^{x_1} x_1\varphi_0'\varphi_1' + \sigma\int_{x_0}^{x_1}\varphi_0\varphi_1
+\]</span></p>
+<p><span class="math display">\[
+A_{11}=\int_{x_0}^{x_2}\varphi_1'\varphi_1' + \sigma\int_{x_0}^{x_2}\varphi_1\varphi_1
+=\underbrace{\int_{x_0}^{x_1}\varphi_1'\varphi_1' + \sigma\int_{x_0}^{x_1}\varphi_1\varphi_1}_{=:A_{11}^*}
++\int_{x_1}^{x_2}\varphi_1'\varphi_1' + \sigma\int_{x_1}^{x_2}\varphi_1\varphi_1
+\]</span></p>
+<p>will be calculated in the next interval</p>
+<p><span class="math display">\[
+A_{10}=\int_{x_0}^{x_1}\varphi_1'\varphi_0' + \sigma\int_{x_0}^{x_1}\varphi_1\varphi_0 = A_{01}.
+\]</span></p>
+<p>We will get the rest of <span class="math inline">\(A_{11}\)</span> in the second interval.</p>
+<ul>
+<li><strong>Local assembly:</strong> we will form the <span class="math inline">\(2\times 2\)</span> matrix locally:</li>
+</ul>
+<p><span class="math display">\[
+a_{00}=a(\hat\varphi_0,\hat\varphi_0)_{\mathrm{local}}
+\]</span> <span class="math display">\[
+a_{10}=a(\hat\varphi_0,\hat\varphi_1)_{\mathrm{local}}=a_{01}
+\]</span> <span class="math display">\[
+a_{11}=a(\hat\varphi_1,\hat\varphi_1)_{\mathrm{local}}
+\]</span></p>
+<p>We can compute the integrals on a reference interval <span class="math inline">\([0,1]\)</span>:</p>
+<p><span class="math display">\[
+a_{ii}=\int_{x_i}^{x_{i+1}} \varphi_i'\varphi_i' + \sigma\int_{x_i}^{x_{i+1}} \varphi_i\varphi_i
+\]</span></p>
+<p>Consider the map: <span class="math inline">\(x=h\hat x + x_i \in [0,1]\)</span>.</p>
+<p><span class="math display">\[
+\frac{\partial\varphi_i}{\partial x}
+=
+\frac{\partial\hat\varphi_i}{\partial\hat x}\cdot\frac{\partial\hat x}{\partial x},
+\qquad
+\frac{dx}{d\hat x}=h.
+\]</span></p>
+<p>Then,</p>
+<p><span class="math display">\[
+a_{ii}
+=\int_0^1 \frac{\partial\hat\varphi_i}{\partial\hat x}\cdot\frac{\partial\hat x}{\partial x}\cdot
+      \frac{\partial\hat\varphi_i}{\partial\hat x}\cdot\frac{\partial\hat x}{\partial x}\,h\,d\hat x
++ \sigma\int_0^1 \hat\varphi_i\hat\varphi_i\,h\,d\hat x.
+\]</span></p>
+<p>Now, everything is pre-computable. To compute these integrals efficiently, we will use <em>Gaussian Quadrature</em>.</p>
+<ul>
+<li><strong>Global assembly:</strong> additivity of integrals.</li>
+<li><strong>Treatment of the boundary conditions:</strong> after global assembly, we will impose the BCs.</li>
+</ul>
+<h3 data-original-heading="Use Quadratic Functions Instead" id="use-quadratic-functions-instead">2.4.1.3 Use Quadratic Functions Instead</h3>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+\varphi_i=\frac{(x-x_{i+1})(x-x_{i+1/2})}{(x_i-x_{i+1})(x_i-x_{i+1/2})}
+\]</span></p>
+<p><span class="math display">\[
+\varphi_{i+1/2}=\frac{(x-x_i)(x-x_{i+1})}{(x_{i+1/2}-x_i)(x_{i+1/2}-x_{i+1})}
+\]</span></p>
+<p><span class="math display">\[
+\varphi_{i+1}=\frac{(x-x_i)(x-x_{i+1/2})}{(x_{i+1}-x_i)(x_{i+1}-x_{i+1/2})}
+\]</span></p>
+<ul>
+<li>Local assembly: <span class="math inline">\(3\times 3\)</span> matrices.</li>
+<li>Global assembly: pena-diagonal (five diagonal entries):</li>
+</ul>
+<p>[figure omitted]</p>
+<h3 data-original-heading="Convergence and Error" id="convergence-and-error">2.4.1.4 Convergence and Error</h3>
+<p><span class="math display">\[
+\mathbb{P}^1:\quad e_{H^1}\sim O(h)\qquad e_{L^2}\sim O(h^2)
+\]</span> <span class="math display">\[
+\mathbb{P}^2:\quad e_{H^1}\sim O(h^2)\qquad e_{L^2}\sim O(h^3)
+\]</span> <span class="math display">\[
+\mathbb{P}^3:\quad e_{H^1}\sim O(h^3)\qquad e_{L^2}\sim O(h^4)
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Theorem 2.4.3 Convergence of FE in 1D</strong></p>
+<p>Suppose <span class="math inline">\(u\in H^{s+1}(0,1)\)</span> with <span class="math inline">\(s\ge 1\)</span>. For FE, we work in <span class="math inline">\(X_h^q\)</span>. Then,</p>
+<p><span class="math display">\[
+\|e\|_{H^1}\le C\|u\|_{H^{\min(q,s)}}h^{\min(q,s)}
+\]</span> <span class="math display">\[
+\|e\|_{L^2}\le C\|u\|_{H^{\min(q,s)}}h^{\min(q,s)+1}.
+\]</span></p>
+</div>
+</div>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Remark.</strong> This implies that increasing the degree of polynomials in FE makes sense only when the solution is regular enough.</p>
+</div>
+</div>
+<p><strong>Table 1: Summary of Rate of Convergence in <span class="math inline">\(H^1\)</span>, Given Different <span class="math inline">\(q\)</span> and <span class="math inline">\(s\)</span></strong></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th style="text-align: right;"><span class="math inline">\(q\backslash s\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(1\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(2\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(3\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(4\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(5\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\cdots\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Optimal choices:</em> with the regularity we have (<span class="math inline">\(s\)</span>), take the minimal optimal polynomial degree (<span class="math inline">\(q\)</span>).<br>
+There are two ways to reduce error: (1) reduce <span class="math inline">\(h\)</span>, and (2) increase <span class="math inline">\(q\)</span>.</p>
+<h3 data-original-heading="Reusing Matrices" id="reusing-matrices">2.4.1.5 Reusing Matrices</h3>
+<p><strong>Set-up</strong> We have built linear FE matrices</p>
+<p><span class="math display">\[
+A_L u_L=b_L.
+\]</span></p>
+<p><strong>Goal</strong> Set up quadratic FE <span class="math inline">\((A_Q u_Q=b_Q)\)</span> from reusing <span class="math inline">\(A_L\)</span></p>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+\varphi_0=1-\hat x
+\qquad
+\varphi_1=\hat x
+\qquad\Longrightarrow\qquad
+\varphi_{H,2}=\varphi_0\varphi_1=(1-\hat x)\hat x
+\]</span></p>
+<p><strong>Conclusion: What is a Finite Element?</strong> We have an interval <span class="math inline">\(I\)</span>. A finite element is built on <span class="math inline">\(K\in \mathcal{P}(I)\)</span>, some partition of <span class="math inline">\(I\)</span>. On each <span class="math inline">\(K\)</span>, we build basis polynomials of degree <span class="math inline">\(q\)</span>. i.e., <span class="math inline">\(u(K)\in\mathbb{P}^q\)</span>.</p>
+<hr>
+<h2 data-original-heading="2.4.2 Finite Elements in Multiple Dimension" id="finite-elements-in-multiple-dimension">2.4.2 Finite Elements in Multiple Dimension</h2>
+<p>Let’s divide the region into triangles:</p>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+\Omega=\bigcup_{k=1}^N T_k,
+\]</span></p>
+<p>though this relationship could be false in reality.</p>
+<p>Triangle = Vertex + Edge</p>
+<p>[figure omitted]</p>
+<p><strong>Requirement</strong> Vertices are not on edges of another triangle</p>
+<p>[figure omitted]</p>
+<p><strong>Property</strong> If <span class="math inline">\(v\in C^0(\overline{\Omega})\)</span> and <span class="math inline">\(v\in H^k(T_k)\)</span>, then <span class="math inline">\(v\in H^k(\Omega)\)</span></p>
+<p><strong>How large is the mesh?</strong> We have two measurements:</p>
+<ul>
+<li><p><span class="math inline">\(h=\max |x_1-x_2|\)</span> for <span class="math inline">\(x_1,x_2\in T_k\)</span></p></li>
+<li><p><span class="math inline">\(\dfrac{h_k}{\rho_k}&lt;\delta\)</span>, independent of <span class="math inline">\(k\)</span>.</p></li>
+</ul>
+<p>[figure omitted]</p>
+<p>Recall the problem:</p>
+<p><span class="math display">\[
+\begin{cases}
+-\Delta u=f\\
+u(\partial\Omega)=0
+\end{cases}
+\quad\Longrightarrow\quad
+\int \nabla u\nabla\varphi=\int f\varphi,
+\]</span></p>
+<p>we aim to build</p>
+<p><span class="math display">\[
+\Omega=\bigcup_{k=1}^{N} T_k
+\qquad\text{and}\qquad
+X_k^h=\{v_n\in H^1:\ v_h(T_k)\in\mathbb{P}^k\}.
+\]</span></p>
+<h3 data-original-heading="Linear Polynomial" id="linear-polynomial">2.4.2.1 Linear Polynomial</h3>
+<p><span class="math display">\[
+ax+by+c
+\qquad
+\left(x=\begin{bmatrix}x_0\\x_1\end{bmatrix}\right).
+\]</span></p>
+<p>We could rewrite</p>
+<p><span class="math display">\[
+P_k(x)-P_k(P_j)=c_j,
+\]</span></p>
+<p>which will give us a “tent” function.</p>
+<p>[figure omitted]</p>
+<p>We will work on a reference interval:</p>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+\hat\varphi_0=1-\hat x-\hat y,\qquad
+\hat\varphi_1=\hat x,\qquad
+\hat\varphi_2=\hat y.
+\]</span></p>
+<p><span class="math display">\[
+x=B_k\hat x + c_k
+\]</span></p>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+x(\hat x,\hat y)=
+\begin{cases}
+x(0,0)=x_0\\
+x(1,0)=x_1\\
+x(0,1)=x_2.
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+x=x_0\hat\varphi_0(\hat x,\hat y)+x_1\hat\varphi_1(\hat x,\hat y)+x_2\hat\varphi_2(\hat x,\hat y)
+\]</span></p>
+<p><span class="math display">\[
+y=y_0\hat\varphi_0(\hat x,\hat y)+y_1\hat\varphi_1(\hat x,\hat y)+y_2\hat\varphi_2(\hat x,\hat y)
+\]</span></p>
+<p>Then, we can build the matrix by</p>
+<p><span class="math display">\[
+A_{ij}=\int_\Omega \nabla\varphi_j\nabla\varphi_i=\sum_k \int_{T_k}\nabla\varphi_j\nabla\varphi_i.
+\]</span></p>
+<p>This matrix is symmetric, but we don’t have clear pattern.</p>
+<div class="math-theorem example" data-callout="example">
+<div class="theorem-header">
+<p><span class="theorem-badge">Example</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Example 2.4.4</strong></p>
+<p>Node 12 sees nodes 1, 8, 7, 5, 3, and 24. With a different mesh generation and numbering, we have a different matrix structure.</p>
+</div>
+</div>
+<h3 data-original-heading="\mathbb{P}^2 Functions" id="mathbbp2-functions">2.4.2.2 <span class="math inline">\(\mathbb{P}^2\)</span> Functions</h3>
+<p>[figure omitted]</p>
+<p><span class="math display">\[
+ax^2+bxy+cy^2+dx+ey+f
+\]</span></p>
+<p><span class="math display">\[
+\hat\varphi_0=2(1-\hat x-\hat y)\left(\frac12-\hat x-\hat y\right)
+\]</span></p>
+<p><span class="math display">\[
+\hat\varphi_1=2\hat x\left(\hat x-\frac12\right)
+\]</span></p>
+<p><span class="math display">\[
+\hat\varphi_2=2\hat y\left(\hat y-\frac12\right)
+\]</span></p>
+<p><span class="math display">\[
+\hat\varphi_3=4(1-\hat x-\hat y)\hat x
+\]</span></p>
+<p><span class="math display">\[
+\hat\varphi_4=4\hat x\hat y
+\]</span></p>
+<p><span class="math display">\[
+\hat\varphi_5=4(1-\hat x-\hat y)\hat y
+\]</span></p>
+<p>On a general element, <span class="math inline">\(x=B_k\hat x + c_k\)</span>. Transforming the Integral using Chain rule:</p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+\frac{\partial\varphi}{\partial x}
+&amp;=
+\frac{\partial\hat\varphi}{\partial\hat x}\cdot\frac{\partial\hat x}{\partial x}
++
+\frac{\partial\hat\varphi}{\partial\hat y}\cdot\frac{\partial\hat y}{\partial x}\\[6pt]
+\frac{\partial\varphi}{\partial y}
+&amp;=
+\frac{\partial\hat\varphi}{\partial\hat x}\cdot\frac{\partial\hat x}{\partial y}
++
+\frac{\partial\hat\varphi}{\partial\hat y}\cdot\frac{\partial\hat y}{\partial y}
+\end{aligned}
+\right\}
+\qquad
+\nabla_{x,y}\varphi=B_k^{-1}\nabla_{\hat x,\hat y}\hat\varphi.
+\]</span></p>
+<p>Since <span class="math inline">\(x=B_k\hat x+c\)</span>, we have <span class="math inline">\(\hat x=B_k^{-1}x+d\)</span>. So,</p>
+<p><span class="math display">\[
+\frac{\partial\hat x}{\partial x}=(B_k^{-1})_{1,1},
+\qquad
+\frac{\partial\hat x}{\partial y}=(B_k^{-1})_{1,2}.
+\]</span></p>
+<p><span class="math display">\[
+\int_K \nabla\varphi_j\cdot\nabla\varphi_i\,dx
+=
+\int_{\hat K\Delta} \nabla_{\hat x,\hat y}\hat\varphi_j\,J_k^{-1}\,
+\nabla_{\hat x,\hat y}\hat\varphi_i\,J_k^{-1}\,|J_k|\,d\hat x
+\]</span></p>
+<p><span class="math display">\[
+=
+\int_{\hat K\Delta}
+\left(B_k^{-1}\nabla_{\hat x,\hat y}\hat\varphi_i\right)
+\left(B_k^{-1}\nabla_{\hat x,\hat y}\hat\varphi_j\right)
+|\det(B_k)|\,d\hat x
+\]</span></p>
+<p>We can also transform the semi-norm:</p>
+<p><span class="math display">\[
+\int_K (\nabla u)^2\,dx=\int_{\hat K} (B_k^{-1}\widehat{\nabla}u)^2\,|\det B_k|\,d\hat x
+\]</span></p>
+<p><span class="math display">\[
+|u|_{H^1(K)}^2\le \|B_k^{-1}\|^2|\det B_k|\,|u|_{H^1(\hat K)}^2
+\]</span></p>
+<p><span class="math display">\[
+|u|_{H^1(K)}\le \|B_k^{-1}\|\,|\det B_k|^{1/2}|u|_{H^1(\hat K)}
+\]</span></p>
+<p><span class="math display">\[
+|u|_{H^1(\hat K)}\le \|B_k\|\,|\det B_k|^{-1/2}|u|_{H^1(K)}
+\qquad
+[\text{semi-norms in }H^1(K)\text{ and in }H^1(\hat K)\text{ are equivalent}]
+\]</span></p>
+<p><span class="math display">\[
+|u|_{H^m(K)}\le \|B_k^{-1}\|^m|\det B_k|^{1/2}|u|_{H^m(\hat K)}.
+\]</span></p>
+<p>Bounding <span class="math inline">\(\|B_k\|\)</span>: <span class="math inline">\(\hat x\to x\)</span>:</p>
+<p><span class="math display">\[
+\|B_k\|=\sup_{\|\xi\|=\hat\rho}\frac{\|B\xi\|}{\hat\rho}\le \frac{h_k}{\hat\rho}
+\]</span></p>
+<p><span class="math display">\[
+\|B_k^{-1}\|\le \cdots \le \frac{\hat\rho}{\rho_k}=\frac{\sqrt2}{\delta_k}.
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Theorem 2.4.5 Convergence of FE in Multiple Dimension</strong></p>
+<p>Suppose <span class="math inline">\(u\in H^{s+1}\)</span> and <span class="math inline">\(u_h\in \mathbb{P}^p=X_h^p\)</span>. The error is given by</p>
+<p><span class="math display">\[
+\|u-u_h\|_{H^1}\le Ch^q|u|_{H^{q+1}},
+\]</span></p>
+<p>where <span class="math inline">\(q=\min(p,s)\)</span>.</p>
+</div>
+</div>
+<p><strong>Proof 2.</strong> Strategies:</p>
+<ol type="1">
+<li>Global <span class="math inline">\(\to\)</span> Local: <span class="math inline">\(K\)</span><br>
+</li>
+<li><span class="math inline">\(K\to\hat K\)</span><br>
+</li>
+<li>Error in <span class="math inline">\(\hat K\)</span><br>
+</li>
+<li>Go back to <span class="math inline">\(\hat K\)</span> use previous inequalities<br>
+</li>
+<li><span class="math inline">\(K\to \Omega=\bigcup_{k=1}^{\infty} T_k\)</span></li>
+</ol>
+<p>Recall some results: Cèa Lemma:</p>
+<p><span class="math display">\[
+\|u-u_h\|\le C\inf_{w_h\in V_h}\|u-w_h\|\le C\|u-\Pi_h^p u\|,
+\]</span></p>
+<p>where <span class="math inline">\(\Pi_h^p\)</span> is the polynomial interpolation of order <span class="math inline">\(p\)</span>. To move from ② <span class="math inline">\(\to\)</span> ③ in our strategy:</p>
+<p><span class="math display">\[
+\int_K (\nabla u-\nabla\Pi_u^p u)^2\,dx \to \int_{\hat K} (\widehat{\nabla}\hat u-\widehat{\nabla}\Pi_h^p\hat u)^2\,d\hat x
+\]</span></p>
+<p><strong>Lemma 2.6 Bramble-Hilbert</strong> <span class="math inline">\(u\in H^{r+1}\)</span>, <span class="math inline">\(\mathcal{L}(u):H^{r+1}\to H^m\)</span>, <span class="math inline">\(\mathcal{L}(p)=0\ \ \forall\,p\in\mathbb{P}^r\)</span>. Then,</p>
+<p><span class="math display">\[
+\|\mathcal{L}(v)\|_{H^m}\le C\inf_{p\in\mathbb{P}^r}\|u+p\|_{H^{r+1}}
+\]</span></p>
+<p><em>Proof.</em></p>
+<p><span class="math display">\[
+\|\mathcal{L}(v)\|\le \|\mathcal{L}\|\cdot\|v\|
+\]</span></p>
+<p>Since <span class="math inline">\(\mathcal{L}(p)=0\)</span>, we know that</p>
+<p><span class="math display">\[
+\|\mathcal{L}(v+p)\|\le \|\mathcal{L}\|\cdot\|v+p\|
+\le \|\mathcal{L}\|\inf_{p\in\mathbb{P}^r}\|v+p\|.
+\]</span></p>
+<p><strong>Lemma 2.7 Deny-Lions</strong></p>
+<p><span class="math display">\[
+\inf \|u+p\|_{H^{r+1}}\le C|u|_{H^{r+1}}.
+\]</span></p>
+<p>So, on <span class="math inline">\(\hat K\)</span>, we have</p>
+<p><span class="math display">\[
+|u-\hat u_h|_{H^m(\hat K)}\le C|u|_{H^{r+1}(\hat K)}.
+\]</span></p>
+<p>Let’s go to <span class="math inline">\(K\)</span>: Recall that</p>
+<p><span class="math display">\[
+|u|_{H^{r+1}(\hat K)}\le \|B_k\|\cdot|\det B_k|^{-1/2}|u|_{H^{r+1}(K)}
+\]</span></p>
+<p><span class="math display">\[
+|u|_{H^{r+1}(K)}\le \|B_k^{-1}\|\cdot|\det B_k|^{1/2}|u|_{H^{r+1}(\hat K)}.
+\]</span></p>
+<p>So,</p>
+<p><span class="math display">\[
+|e|_{H^m(K)}
+\le C\|B_k^{-1}\|^m|\det B_k|^{1/2}\|B_k\|^{r+1}|\det B_k|^{-1/2}|u|_{H^{r+1}(K)}.
+\]</span></p>
+<p>Note that</p>
+<p><span class="math display">\[
+\|B_k^{-1}\|\le \frac{h_k}{\rho_k}
+\qquad\text{and}\qquad
+\|B_k\|\le \frac{h_k}{\hat\rho}.
+\]</span></p>
+<p>we have that</p>
+<p><span class="math display">\[
+|e|_{H^m(K)}
+\le C\left(\frac{h_k}{\rho_k}\right)^m h_k^{r+1-m}|u|_{H^{r+1}(K)}
+\qquad
+[\text{Assumption: mesh is regular, so }\frac{h_k}{\rho_k}&lt;\delta\ \ (\perp k)]
+\]</span></p>
+<p><span class="math display">\[
+\le C\delta^m h_k^{r+1-m}|u|_{H^{r+1}(K)}
+\]</span></p>
+<p><span class="math display">\[
+=\tilde C\,h_k^{r+1-m}|u|_{H^{r+1}(K)}.
+\]</span></p>
+<ul>
+<li>If <span class="math inline">\(m=1\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+|e|_{H^1(K)}\le Ch^r|u|_{H^{r+1}(K)}.
+\]</span></p>
+<ul>
+<li>If <span class="math inline">\(m=0\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+|e|_{L^2(K)}\le Ch^{r+1}|u|_{H^{r+1}(K)}.
+\]</span></p>
+<p>Q.E.D. <span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>Proposition 2.8</strong></p>
+<p><span class="math display">\[
+\|e_{FEM}\|_{L^2}\le Ch^{r+1}|u|_{H^{r+1}}.
+\]</span></p>
+<p><strong>Proof 3.</strong> Introduce the auxiliary problem (Aubin-Nitsche Trick):</p>
+<p><span class="math display">\[
+\begin{cases}
+-\Delta u=f\\
+u(\partial\Omega)=0
+\end{cases}
+\quad\Longrightarrow\quad
+\begin{cases}
+-\Delta\varphi=e\\
+\varphi(\partial\Omega)=0.
+\end{cases}
+\]</span></p>
+<p>Elliptic regularity:</p>
+<p><span class="math display">\[
+\begin{cases}
+-\Delta u=f\in L^2\\
+u(\partial\Omega)=0
+\end{cases}
+\quad\Longrightarrow\quad
+\|u\|_{H^2\cap H_0^1}\le C\|f\|_{L^2}
+\ \ (\|u\|_{H^2}\le C\|\Delta u\|_{L^2}).
+\]</span></p>
+<p>In weak formulation, <span class="math inline">\(a(\varphi,v)=(e_h,v)\)</span>. So,</p>
+<p><span class="math display">\[
+\|e_h\|^2=a(\varphi,e_h)=a(e_h,\varphi)=a(e_h,\varphi-\varphi_h)
+\]</span></p>
+<p><span class="math display">\[
+\|e_h\|_{L^2}^2\le Ch|\varphi|_{H^2}\|e_h\|_{H^1}
+\qquad[\text{Interpolation error, }\|\varphi-\varphi_h\|_{H^1}\le Ch|\varphi|_{H^2}]
+\]</span></p>
+<p><span class="math display">\[
+\le \|e_h\|_{L^2}\|e_h\|_{H^1}
+\qquad[-\Delta\varphi=e_h\Longrightarrow |\varphi|_{H^2}\le C\|e_h\|_{L^2}]
+\]</span></p>
+<p><span class="math display">\[
+\|e_h\|_{L^2}\le h\|e_h\|_{H^1}.
+\]</span></p>
+<p>Q.E.D. <span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>Proposition 2.9</strong> <em>The matrix <span class="math inline">\(A\)</span> is SPD, sparse, and <span class="math inline">\(\mathrm{cond}_2(A)\sim O(h^{-2})\)</span>.</em></p>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p><strong>Remark.</strong> Since <span class="math inline">\(A\)</span> is SPD, solving <span class="math inline">\(Ax=b\)</span> is equivalent to</p>
+<p><span class="math display">\[
+\min \ \frac12 x^\top Ax - b^\top x.
+\]</span></p>
+</div>
+</div>
+<div class="math-theorem remark" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark</span></p>
+</div>
+<div class="theorem-content">
+<p>We could solve using CG:</p>
+<p><span class="math display">\[
+\|e_{CG}^{(k+1)}\|
+\le
+\frac{\sqrt{\mathrm{cond}_2(A)}-1}{\sqrt{\mathrm{cond}_2(A)}+1}\,
+\|e_{CG}^{(k)}\|.
+\]</span></p>
+<p>To accelerate convergence, use pre-conditioner <span class="math inline">\(P^{-1}\)</span> s.t.</p>
+<p><span class="math display">\[
+\mathrm{cond}_2(P^{-1}A)\ll \mathrm{cond}_2(A).
+\]</span></p>
+<p>We solve <span class="math inline">\(P^{-1}Ax=P^{-1}b\)</span> instead.</p>
+</div>
+</div>
+<p><strong>Proof 4. (of Proposition 2.9)</strong></p>
+<p><span class="math display">\[
+\mathrm{cond}_2(A)=\frac{\lambda_{\max}}{\lambda_{\min}}
+\]</span></p>
+<p>In Rayleigh coefficient form, eigenvalues are</p>
+<p><span class="math display">\[
+\frac{x^\top Ax}{x^\top x}=\frac{x^\top(\lambda x)}{x^\top x}=\lambda,
+\]</span></p>
+<p>where <span class="math inline">\(x^\top Ax=a(v_h,v_h)\)</span>. Note that <span class="math inline">\(v_h=\sum_i x_i\varphi_i\)</span>. Let <span class="math inline">\(d\)</span> denote the dimension of the problem. Then,</p>
+<p><span class="math display">\[
+\alpha_1 h^d x^\top x \le \|v_h\|_{L^2}^2 \le \alpha_2 h^2 x^\top x
+\qquad (1)
+\]</span></p>
+<p>Also, inverse inequality gives</p>
+<p><span class="math display">\[
+c_1\|v_h\|\le \|\nabla v_h\|_{L^2}\le ch^{-1}\|v_h\|_{L^2}
+\qquad (2)
+\]</span></p>
+<p>Combine the two inequalities,</p>
+<p><span class="math display">\[
+c_1\frac{h^d\cdot \|v_h\|_{H^2}^2}{\|v_h\|_{L^2}^2}
+\le
+\frac{a(v_h,v_h)}{x^\top x}
+\le
+c_2\frac{h^d\|v_h\|_{H^1}^2}{\|v_h\|_{L^2}^2}
+\]</span></p>
+<p>So,</p>
+<p><span class="math display">\[
+c_1 h^d \le \underbrace{\frac{a(v_h,v_h)}{x^\top x}}_{\text{eigenvalue}} \le c_2 h^{d-2}.
+\]</span></p>
+<p>So, <span class="math inline">\(\lambda_{\min}=c_1 h^d\)</span> and <span class="math inline">\(\lambda_{\max}=c_2 h^{d-2}\)</span>. Then,</p>
+<p><span class="math display">\[
+\mathrm{cond}_2(A)=\frac{\lambda_{\max}}{\lambda_{\min}}
+=\frac{c_2 h^{d-2}}{c_1 h^d}
+=ch^{-2}.
+\]</span></p>
+<p>Q.E.D. <span class="math inline">\(\blacksquare\)</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span>← Previous page</span><span>2.3 Galerkin Method</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span>Next page →</span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">2.4 Finite Element</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#finite-element-one-possible-choice-of-x_n" class="is-active" aria-current="location">2.4.1 Finite Element: One Possible Choice of X_N</a></li><li style="--depth:1"><a href="#finite-element-one-possible-choice-of-x_n-1">2.4 Finite Element: One Possible Choice of X_N</a></li><li style="--depth:0"><a href="#finite-element-in-1d">2.4.1 Finite Element in 1D</a></li><li style="--depth:1"><a href="#convergence-theorem-and-its-application">2.4.1.1 Convergence Theorem and Its Application</a></li><li style="--depth:1"><a href="#advection-reaction-problem-local-assembly-and-global-assembly">2.4.1.2 Advection-Reaction Problem, Local Assembly, and Global Assembly</a></li><li style="--depth:1"><a href="#use-quadratic-functions-instead">2.4.1.3 Use Quadratic Functions Instead</a></li><li style="--depth:1"><a href="#convergence-and-error">2.4.1.4 Convergence and Error</a></li><li style="--depth:1"><a href="#reusing-matrices">2.4.1.5 Reusing Matrices</a></li><li style="--depth:0"><a href="#finite-elements-in-multiple-dimension">2.4.2 Finite Elements in Multiple Dimension</a></li><li style="--depth:1"><a href="#linear-polynomial">2.4.2.1 Linear Polynomial</a></li><li style="--depth:1"><a href="#mathbbp2-functions">2.4.2.2 \mathbb{P}^2 Functions</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

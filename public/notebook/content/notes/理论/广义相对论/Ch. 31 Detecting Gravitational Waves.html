@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 31 Detecting Gravitational Waves — E.H. Notebook</title>
+<meta name="description" content="31.1 Weak-Field Gravitational Waves and Lorentz GaugeWe work in the weak-field limit, where the metric is written as a small perturbation on flat spacetime and we use Lor">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 31 Detecting Gravitational Waves</h1></header><div id="article-body" class="prose"><h2 data-original-heading="31.1 Weak-Field Gravitational Waves and Lorentz Gauge" id="weak-field-gravitational-waves-and-lorentz-gauge">31.1 Weak-Field Gravitational Waves and Lorentz Gauge</h2>
+<p>We work in the weak-field limit, where the metric is written as a small perturbation on flat spacetime and we use <strong>Lorentz gauge</strong>.<br>
+The trace–reversed metric perturbation is denoted by <span class="math inline">\(H^{\mu\nu}\)</span>.</p>
+<p>In empty space the linearized Einstein equation becomes a simple wave equation subject to a gauge condition:</p>
+<p><span class="math display">\[
+\partial^\alpha\partial_\alpha H^{\mu\nu}=0
+\quad\text{with}\quad
+\partial_\mu H^{\mu\nu}=0
+\tag{31.1}
+\]</span></p>
+<p>Even after fixing Lorentz gauge, there remains residual gauge freedom: if <span class="math inline">\(H^{\mu\nu}\)</span> is a solution of (31.1), then so is</p>
+<p><span class="math display">\[
+\begin{aligned}
+H'^{\mu\nu}
+&amp;=H^{\mu\nu}
+ -\partial^\mu\xi^\nu
+ -\partial^\nu\xi^\mu
+ +\eta^{\mu\nu}\partial_\alpha\xi^\alpha
+\end{aligned}
+\]</span></p>
+<p>provided the gauge vector <span class="math inline">\(\xi^\mu\)</span> itself satisfies the homogeneous wave equation</p>
+<p><span class="math display">\[
+\partial^\alpha\partial_\alpha \xi^\mu = 0
+\tag{31.2}
+\]</span></p>
+<p>This residual freedom will be used to reach the <strong>transverse–traceless (TT) gauge</strong>.</p>
+<hr>
+<h2 data-original-heading="31.2 Plane-Wave Solutions" id="plane-wave-solutions">31.2 Plane-Wave Solutions</h2>
+<p>Because (31.1) is just the usual wave equation, we look for plane-wave solutions of the form</p>
+<p><span class="math display">\[
+H^{\mu\nu}(t,x,y,z)
+= A^{\mu\nu}\cos(k_\sigma x^\sigma)
+= A^{\mu\nu}\cos(\vec k\cdot\vec r-\omega t)
+\tag{31.3}
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(A^{\mu\nu}\)</span> is a constant matrix (the <strong>amplitude tensor</strong>),<br>
+</li>
+<li><span class="math inline">\(k_\sigma=[-\omega,k_x,k_y,k_z]\)</span> is the wave four–vector.</li>
+</ul>
+<p>The symmetry of <span class="math inline">\(H^{\mu\nu}\)</span> (inherited from <span class="math inline">\(h^{\mu\nu}\)</span>), Lorentz gauge, and the Einstein equation together imply</p>
+$$
+<span class="math display">\[\begin{aligned}
+\text{Einstein equation} &amp;\Rightarrow k^\sigma k_\sigma = 0
+\\[3pt]
+\text{Lorentz gauge} &amp;\Rightarrow k_\mu A^{\mu\nu}=0
+\\[3pt]
+\text{Symmetry} &amp;\Rightarrow A^{\mu\nu}=A^{\nu\mu}
+
+\end{aligned}\]</span>
+<p>$$</p>
+<h3 data-original-heading="31.2.1 Wave Speed" id="wave-speed">31.2.1 Wave Speed</h3>
+<p>The first condition gives the <strong>dispersion relation</strong>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+0
+&amp;=k^\sigma k_\sigma
+ =k_\beta k_\gamma \eta^{\beta\gamma}\\[3pt]
+&amp;=\underbrace{(-\omega)^2\eta^{tt}}_{=-\omega^2}
+  +\underbrace{k^2\eta^{zz}}_{=+k^2}
+\end{aligned}
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\begin{aligned}
+0
+&amp;=-\omega^2+k^2
+\\[3pt]
+&amp;\Rightarrow \omega^2=k^2
+\Rightarrow \omega = k
+\Rightarrow v \equiv \frac{\omega}{k}=1
+\end{aligned}
+\tag{31.5}
+\]</span></p>
+<p>Thus <strong>gravitational waves propagate at the speed of light</strong> <span class="math inline">\(v=1\)</span> (in GR units).</p>
+<hr>
+<h2 data-original-heading="31.3 Transverse–Traceless (TT) Gauge" id="transversetraceless-tt-gauge">31.3 Transverse–Traceless (TT) Gauge</h2>
+<p>We now use the residual gauge freedom (31.2) to further simplify <span class="math inline">\(H^{\mu\nu}\)</span>.</p>
+<p>Consider a gauge transformation with</p>
+<p><span class="math display">\[
+\xi^\mu = B^\mu\sin(k_\sigma x^\sigma)
+\tag{31.6}
+\]</span></p>
+<p>where <span class="math inline">\(B^\mu\)</span> is a constant vector and <span class="math inline">\(k_\sigma\)</span> is the same wave vector as in (31.3). Then</p>
+<p><span class="math display">\[
+\partial^\sigma\partial_\sigma \xi^\mu
+=
+\partial^\sigma\partial_\sigma\bigl(B^\mu\sin(k_\sigma x^\sigma)\bigr)
+=
+-\,k^\sigma k_\sigma B^\mu\sin(k_\sigma x^\sigma)
+=0
+\tag{31.7}
+\]</span></p>
+<p>since <span class="math inline">\(k^\sigma k_\sigma=0\)</span> from (31.4a).<br>
+So this transformation preserves Lorentz gauge.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="31.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 31.1</span><span class="theorem-title">Transverse–traceless (TT) gauge</span></p>
+</div>
+<div class="theorem-content">
+<p>By an appropriate choice of the constants <span class="math inline">\(B^\mu\)</span>, one can use the gauge transformation (31.6) to impose <span class="math display">\[
+A^\mu{}_\mu = 0
+\quad\text{and}\quad
+A^\mu{}_0 = 0
+\tag{31.8}
+\]</span> i.e.&nbsp;the trace of the amplitude tensor vanishes and all time–components are zero. A plane-wave solution satisfying (31.1) and (31.8) is said to be in <strong>transverse–traceless gauge</strong> and is denoted by <span class="math inline">\(H^{\mu\nu}_{TT}\)</span>.</p>
+</div>
+</div>
+<p>In TT gauge the trace of <span class="math inline">\(h_{\mu\nu}\)</span> vanishes, so the trace–reversed perturbation coincides with the original one:</p>
+<p><span class="math display">\[
+h^{TT}_{\mu\nu}
+\equiv
+\left(H^{TT}\right)_{\mu\nu}
+-\tfrac12\eta_{\mu\nu} h^{TT}
+=
+\left(H^{TT}\right)_{\mu\nu}
+\tag{31.9}
+\]</span></p>
+<p>This is a very convenient gauge: <span class="math inline">\(h^{TT}_{\mu\nu}\)</span> itself obeys the simple wave equation and is purely spatial and traceless.</p>
+<hr>
+<h2 data-original-heading="31.4. Wave Propagating in the +z Direction" id="wave-propagating-in-the-z-direction">31.4. Wave Propagating in the <span class="math inline">\(+z\)</span> Direction</h2>
+<p>To make things concrete, consider a wave moving in the <span class="math inline">\(+z\)</span> direction.<br>
+A suitable wave four–vector is</p>
+<p><span class="math display">\[
+k_\sigma=[-\omega,0,0,\omega]
+\tag{31.10}
+\]</span></p>
+<p>where <span class="math inline">\(\omega\)</span> is the angular frequency.</p>
+<p>In this case, the Lorentz–gauge condition <span class="math inline">\(k_\mu A^{\mu\nu}=0\)</span> gives</p>
+<p><span class="math display">\[
+0=k_\mu A^{\mu\nu} = -\omega A^{t\nu} + \omega A^{z\nu}
+\quad\Rightarrow\quad
+A^{t\nu}=A^{z\nu}
+\]</span></p>
+<p>Using this, plus symmetry <span class="math inline">\(A^{\mu\nu}=A^{\nu\mu}\)</span> and the TT conditions <span class="math inline">\(A^\mu{}_0=0\)</span>, <span class="math inline">\(A^\mu{}_\mu=0\)</span>, one finds that</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\text{TT gauge and symmetry:} &amp;&amp;A^{t\nu}=A^{z\nu}=0
+\\[3pt]
+&amp;\text{TT gauge and symmetry:} &amp;&amp;A^{\nu t}=A^{\nu z}=0
+\\[3pt]
+&amp;\text{TT gauge:} &amp;&amp;A^{xx}+A^{yy}=0
+\end{aligned}
+\tag{31.11}
+\]</span></p>
+<p>Thus only the purely spatial transverse components survive, with</p>
+<ul>
+<li><span class="math inline">\(A^{xx}\equiv A_+\)</span>,<br>
+</li>
+<li><span class="math inline">\(A^{yy}=-A_+\)</span>,<br>
+</li>
+<li><span class="math inline">\(A^{xy}=A^{yx}\equiv A_\times\)</span>,</li>
+</ul>
+<p>and all other components zero. The most general TT plane wave moving in the <span class="math inline">\(+z\)</span> direction therefore has</p>
+<p><span class="math display">\[
+A^{\mu\nu}
+=
+A_+
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; -1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}
++
+A_\times
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}
+\tag{31.12}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="31.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 31.2</span><span class="theorem-title">Gravitational-wave polarizations</span></p>
+</div>
+<div class="theorem-content">
+<p>For a wave propagating in the <span class="math inline">\(+z\)</span> direction:</p>
+<ul>
+<li><span class="math inline">\(A_+\)</span> corresponds to the <strong>“upright” or “plus” polarization</strong>,</li>
+<li><span class="math inline">\(A_\times\)</span> corresponds to the <strong>“diagonal” or “cross” polarization</strong>. Any plane wave is a linear combination of these two independent polarizations.</li>
+</ul>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="31.5 Physical Effects of a TT Wave" id="physical-effects-of-a-tt-wave">31.5 Physical Effects of a TT Wave</h2>
+<p>To interpret the wave physically, it is convenient to work directly with the metric perturbation <span class="math inline">\(h^{TT}_{\mu\nu}=H^{TT}_{\mu\nu}\)</span>.<br>
+In TT gauge the total metric is</p>
+<p><span class="math display">\[
+g_{\mu\nu} = \eta_{\mu\nu} + h^{TT}_{\mu\nu}
+\]</span></p>
+<p>For a wave traveling in the <span class="math inline">\(+z\)</span> direction, only the spatial transverse components <span class="math inline">\(h^{TT}_{ij}\)</span> (<span class="math inline">\(i,j=x,y\)</span>) are nonzero.</p>
+<p>Consider a test particle initially at rest. To leading order its four–velocity is</p>
+<p><span class="math display">\[
+u^\alpha = [( -g_{tt})^{1/2},0,0,0] \approx [1,0,0,0]
+\]</span></p>
+<p>Using the geodesic equation (linearized in the perturbation) one can show that, in TT coordinates,</p>
+<p><span class="math display">\[
+\frac{d^2 x^\alpha}{d\tau^2}
+= -\Gamma^\alpha_{\mu\nu}u^\mu u^\nu
+\approx 0
+\tag{31.13}
+\]</span></p>
+<p>This seems to say “the wave has no effect,” but the catch is: <strong>TT coordinates are comoving with the free particles</strong>. Their coordinate positions stay fixed, while the physical distances between them change because the spatial metric itself oscillates.</p>
+<p>So to see the real effect of the wave, we must compute proper separations using the metric.</p>
+<hr>
+<h2 data-original-heading="31.6. Ring of Particles in the Transverse Plane" id="ring-of-particles-in-the-transverse-plane">31.6. Ring of Particles in the Transverse Plane</h2>
+<p>Imagine a ring of freely–falling particles in the <span class="math inline">\(xy\)</span>–plane (<span class="math inline">\(z=0\)</span>) with center at the origin. Before the wave arrives, the ring has radius <span class="math inline">\(R\)</span> and particles are at angles <span class="math inline">\(\theta\)</span> with Cartesian coordinates</p>
+<p><span class="math display">\[
+\Delta x = R\cos\theta,
+\qquad
+\Delta y = R\sin\theta
+\]</span></p>
+<p>These <strong>coordinate</strong> displacements remain fixed in TT gauge, but the <strong>physical</strong> distance <span class="math inline">\(\Delta s\)</span> from each particle to the center oscillates.</p>
+<p>The spatial line element in the transverse plane, for small perturbations, is</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\Delta s)^2
+&amp;=\bigl[\delta_{ij}+h^{TT}_{ij}(t)\bigr]\Delta x^i\Delta x^j
+\\[3pt]
+&amp;=
+\Delta x^2 + \Delta y^2
++ h^{TT}_{xx}\Delta x^2
++ 2 h^{TT}_{xy}\Delta x\Delta y
++ h^{TT}_{yy}\Delta y^2
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="31.6.1 Plus polarization (A_\times=0)" id="plus-polarization-a_times0">31.6.1 Plus polarization (<span class="math inline">\(A_\times=0\)</span>)</h3>
+<p>For a purely “upright” or “plus” wave (<span class="math inline">\(A_\times=0\)</span>)</p>
+<p><span class="math display">\[
+h^{TT}_{xx}=A_+\cos\omega t,
+\qquad
+h^{TT}_{yy}=-A_+\cos\omega t,
+\qquad
+h^{TT}_{xy}=0
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\Delta s)^2
+&amp;= R^2
+ + A_+\cos\omega t\,
+   \bigl(\Delta x^2 - \Delta y^2\bigr)\\[4pt]
+&amp;= R^2
+ + A_+\cos\omega t\,
+   R^2\bigl(\cos^2\theta - \sin^2\theta\bigr)\\[4pt]
+&amp;= R^2
+\Bigl[1 + A_+\cos\omega t\cos 2\theta\Bigr]
+\end{aligned}
+\]</span></p>
+<p>For small amplitudes <span class="math inline">\(|A_+|\ll1\)</span>, we can expand the square root:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Delta s
+&amp;= R\sqrt{1 + A_+\cos\omega t\cos 2\theta}\\[4pt]
+&amp;\approx
+R\Bigl[1
++ \underbrace{\tfrac12 A_+\cos\omega t\cos 2\theta}_{\text{first-order in }A_+}\Bigr]
+\end{aligned}
+\tag{31.14a}
+\]</span></p>
+<p>So the ring is periodically stretched along one axis and squeezed along the orthogonal axis, as shown in the textbook’s “upright (plus) polarization” diagrams.</p>
+<h3 data-original-heading="31.6.2 Cross polarization (A_+=0)" id="cross-polarization-a_0">31.6.2 Cross polarization (<span class="math inline">\(A_+=0\)</span>)</h3>
+<p>For a purely “diagonal” or “cross” wave (<span class="math inline">\(A_+=0\)</span>)</p>
+<p><span class="math display">\[
+h^{TT}_{xx}=h^{TT}_{yy}=0,
+\qquad
+h^{TT}_{xy}=h^{TT}_{yx}=A_\times\cos\omega t
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\Delta s)^2
+&amp;= R^2
+ + 2A_\times\cos\omega t\,\Delta x\Delta y\\[4pt]
+&amp;= R^2
+ + 2A_\times\cos\omega t\,
+   R^2\cos\theta\sin\theta\\[4pt]
+&amp;= R^2\Bigl[1 + A_\times\cos\omega t\sin 2\theta\Bigr]
+\end{aligned}
+\]</span></p>
+<p>Again expanding to first order,</p>
+<p><span class="math display">\[
+\Delta s
+\approx
+R\Bigl[1
++ \tfrac12 A_\times\cos\omega t\sin 2\theta\Bigr]
+\tag{31.14b}
+\]</span></p>
+<p>The ring is now distorted along lines at <span class="math inline">\(45^\circ\)</span> to the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axes (the “diagonal (cross) polarization” in the figure).</p>
+<div class="math-theorem remark" data-callout="remark" data-label="31.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 31.3</span><span class="theorem-title">Polarization as a quadrupolar strain</span></p>
+</div>
+<div class="theorem-content">
+<p>Both polarizations correspond to a <strong>quadrupolar</strong> stretching and squeezing of space in directions transverse to the wave’s motion.<br>
+The plus mode acts along the coordinate axes; the cross mode acts along directions rotated by <span class="math inline">\(45^\circ\)</span>.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="31.7. Typical Astrophysical Amplitudes" id="typical-astrophysical-amplitudes">31.7. Typical Astrophysical Amplitudes</h2>
+<p>Astrophysical sources typically produce very small dimensionless amplitudes <span class="math inline">\(A_+\)</span> and <span class="math inline">\(A_\times\)</span> at the Earth, often in the range</p>
+<p><span class="math display">\[
+A_+,A_\times \sim 10^{-22} \text{ to } 10^{-18}
+\]</span></p>
+<p>For example, two free particles separated by <span class="math inline">\(R\sim10^6\ \text{m}\)</span> (about <span class="math inline">\(1000\ \text{km}\)</span>) would be driven to oscillate with physical amplitudes of order</p>
+<p><span class="math display">\[
+\Delta s \sim A_+ R \sim 10^{-14}\ \text{m}
+\]</span></p>
+<p>for <span class="math inline">\(A_+\sim10^{-20}\)</span> — about the size of a large atomic nucleus.<br>
+Even though such a wave can carry substantial energy flux, the effect on matter is extremely tiny, which is why gravitational waves are so hard to detect.</p>
+<p>Even a dramatic event like the sun being swallowed by a solar-mass black hole might produce waves with <span class="math inline">\(A_+,A_\times\sim10^{-8}\)</span> at Earth, still far too small for you to feel directly.</p>
+<hr>
+<h2 data-original-heading="31.8. Gravitational-Wave Detectors (Interferometers)" id="gravitational-wave-detectors-interferometers">31.8. Gravitational-Wave Detectors (Interferometers)</h2>
+<p>Despite the minute strains, it is possible to detect gravitational waves by measuring changes in the separation of widely separated test masses with <strong>laser interferometry</strong>.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="31.4">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 31.4</span><span class="theorem-title">Basic interferometric detector idea</span></p>
+</div>
+<div class="theorem-content">
+<ul>
+<li>Use widely separated “floating masses” (mirrors), isolated from environmental noise.<br>
+</li>
+<li>Send laser beams back and forth along long perpendicular arms (forming an L–shaped interferometer).<br>
+</li>
+<li>A passing gravitational wave slightly changes the relative arm lengths, shifting the interference pattern of the recombined light.</li>
+</ul>
+</div>
+</div>
+<p>The LIGO (Laser Interferometer Gravitational-wave Observatory) facilities in Washington and Louisiana use <span class="math inline">\(4\ \text{km}\)</span>-long arms. The mirrors are suspended and the entire interferometer is in high vacuum to minimize disturbances. LIGO is designed to be sensitive to strains as small as <span class="math inline">\(\sim10^{-22}\)</span> over frequencies from tens to hundreds of Hz.</p>
+<p>Future space-based detectors (such as LISA / NGO) plan to use spacecraft separated by millions of kilometers as proof masses, aiming at lower-frequency gravitational waves.</p>
+<hr>
+<h2 data-original-heading="31.9. Conceptual Summary" id="conceptual-summary">31.9. Conceptual Summary</h2>
+<ul>
+<li>In Lorentz gauge, the weak-field Einstein equation reduces to a simple wave equation for <span class="math inline">\(H^{\mu\nu}\)</span>.</li>
+<li>Plane-wave solutions exist with wave four-vector <span class="math inline">\(k_\sigma\)</span> satisfying <span class="math inline">\(k^\sigma k_\sigma=0\)</span>, so gravitational waves move at <span class="math inline">\(v=1\)</span>.</li>
+<li>Residual gauge freedom allows us to choose the <strong>transverse–traceless gauge</strong> where <span class="math inline">\(H^{\mu\nu}\)</span> is purely spatial, transverse to the propagation direction, and traceless.</li>
+<li>For a wave moving in the <span class="math inline">\(+z\)</span> direction, only two independent components remain, corresponding to the <strong>plus</strong> (<span class="math inline">\(A_+\)</span>) and <strong>cross</strong> (<span class="math inline">\(A_\times\)</span>) polarizations.</li>
+<li>These polarizations describe quadrupolar oscillations of spatial distances in the transverse plane. A ring of particles is periodically distorted into ellipses whose orientation depends on the polarization.</li>
+<li>Astrophysical strains at Earth are tiny, but precision laser interferometers (like LIGO and future space missions) can in principle measure them, opening a new observational window on the universe.</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span>← Previous page</span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span>Next page →</span><span>Ch. 32 Gravitational Wave Energy</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 31 Detecting Gravitational Waves</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#weak-field-gravitational-waves-and-lorentz-gauge" class="is-active" aria-current="location">31.1 Weak-Field Gravitational Waves and Lorentz Gauge</a></li><li style="--depth:0"><a href="#plane-wave-solutions">31.2 Plane-Wave Solutions</a></li><li style="--depth:1"><a href="#wave-speed">31.2.1 Wave Speed</a></li><li style="--depth:0"><a href="#transversetraceless-tt-gauge">31.3 Transverse–Traceless (TT) Gauge</a></li><li style="--depth:0"><a href="#wave-propagating-in-the-z-direction">31.4. Wave Propagating in the +z Direction</a></li><li style="--depth:0"><a href="#physical-effects-of-a-tt-wave">31.5 Physical Effects of a TT Wave</a></li><li style="--depth:0"><a href="#ring-of-particles-in-the-transverse-plane">31.6. Ring of Particles in the Transverse Plane</a></li><li style="--depth:1"><a href="#plus-polarization-a_times0">31.6.1 Plus polarization (A_\times=0)</a></li><li style="--depth:1"><a href="#cross-polarization-a_0">31.6.2 Cross polarization (A_+=0)</a></li><li style="--depth:0"><a href="#typical-astrophysical-amplitudes">31.7. Typical Astrophysical Amplitudes</a></li><li style="--depth:0"><a href="#gravitational-wave-detectors-interferometers">31.8. Gravitational-Wave Detectors (Interferometers)</a></li><li style="--depth:0"><a href="#conceptual-summary">31.9. Conceptual Summary</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

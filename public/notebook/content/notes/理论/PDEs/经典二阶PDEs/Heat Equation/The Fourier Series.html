@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>傅立叶级数 — E.H. Notebook</title>
+<meta name="description" content="1. 傅立叶级数的基本形态1.1 周期在经历了周期T后，重新获得原值的函数为周期函数： \varphi(t+T)=\varphi 1.2 正弦型量正弦型量形如：y(t)=Asin(\omega t+\alpha) where \omega = \cfrac{2\pi}{T} is the frequency.Notice that for">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665"><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/index.html">经典二阶PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></nav><h1 id="reader-title">傅立叶级数</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1. 傅立叶级数的基本形态" id="傅立叶级数的基本形态">1. 傅立叶级数的基本形态</h2>
+<h3 data-original-heading="1.1 周期" id="周期">1.1 周期</h3>
+<p>在经历了周期<span class="math inline">\(T\)</span>后，重新获得原值的函数为<strong>周期函数：</strong></p>
+<p><span class="math display">\[
+\varphi(t+T)=\varphi
+\]</span></p>
+<h3 data-original-heading="1.2 正弦型量" id="正弦型量">1.2 正弦型量</h3>
+<p>正弦型量形如：</p>
+<blockquote>
+<p><span class="math inline">\(y(t)=Asin(\omega t+\alpha)\)</span> where <span class="math inline">\(\omega = \cfrac{2\pi}{T}\)</span> is the <strong>frequency.</strong></p>
+</blockquote>
+<p>Notice that for values <span class="math inline">\(s.t.\)</span>:</p>
+<p><span class="math display">\[
+y_0 = A_0, \ y_1=A_1\sin(\omega t + \alpha_1), \  y_2=A_2\sin(2\omega t + \alpha_2), \ y_3=A_3\sin(3\omega t + \alpha_3) ...
+\]</span></p>
+<p>we have frequency as the multiple of the smallest frequency with their period:</p>
+<p><span class="math inline">\(\omega\)</span>, <span class="math inline">\(2\omega\)</span>, <span class="math inline">\(3\omega\)</span>…</p>
+<p><span class="math inline">\(T\)</span>, <span class="math inline">\(\frac{1}{2}T\)</span>, <span class="math inline">\(\frac{1}{3}T\)</span>…</p>
+<p><img src="/notebook/public/docs/Fourier%20Series.png" class="wikilink" alt="Fourier Series.png" loading="lazy" decoding="async"></p>
+<p>If we add them together, we get…</p>
+<h3 data-original-heading="1.3.1 三角级数 - \varphi(t)函数" id="三角级数---varphit函数">1.3.1 三角级数 - <span class="math inline">\(\varphi(t)\)</span>函数</h3>
+<aside>
+<p>💡 <strong>It is possible to represent any periodic function with finite or infinite summations of sin functions:</strong></p>
+<p><span class="math display">\[
+\varphi(t)=A_0 + \sum_{n=1}^{\infty}A_n\sin(n\omega t+ \alpha_n)
+\]</span></p>
+<p>where <span class="math inline">\(A_n, \alpha_n\)</span> are constants</p>
+<ul>
+<li><span class="math inline">\(\varphi(t)\)</span>可以被分解成无数个<strong>调和震动</strong></li>
+<li>每一项称之为<strong>调和素</strong></li>
+<li>对<span class="math inline">\(\varphi(t)\)</span>进行分解的手法被称之为<strong>调和分析</strong></li>
+</ul>
+</aside>
+<h3 data-original-heading="1.3.2 三角级数 - 最终展开式" id="三角级数---最终展开式">1.3.2 三角级数 - 最终展开式</h3>
+<blockquote>
+<p>注意ppt里的公式是不一样的换元，<span class="math inline">\(x=\frac{2Lt}{T}\)</span>，所以<span class="math inline">\(\frac{\pi}{L}\)</span>被抽出来了。这里我们会用正常的逻辑换元推导，等到后面需要计算generic interval，才重新换一个<span class="math inline">\(L\)</span>进去***</p>
+</blockquote>
+<p>当我们用<span class="math inline">\(x=\omega t = \frac{2\pi t}{T}\)</span> 来<strong>换元</strong> <span class="math inline">\(s.t.\)</span> <span class="math inline">\(f(x)=\varphi(t) = \varphi(\frac{x}{\omega})\)</span> ，我们用三角正弦公式展开：</p>
+<p><span class="math display">\[
+\begin{align}f(x)&amp;= A_0 + \sum_{n=1}^{\infty}A_n\sin(nx+ \alpha_n)\\  &amp;=A_0 + \sum_{n=1}^{\infty}A_n(\cos nx\sin \alpha_n+ \sin nx \cos \alpha_n) \\\end{align}
+\]</span></p>
+<blockquote>
+<p>正弦公式：<span class="math inline">\(\sin(a+b)=\cos a\sin b + \sin a\cos b\)</span> 展开</p>
+</blockquote>
+<p><span class="math display">\[
+f(x)=A_0+\sum_{n=1}^{\infty}[(A_n\sin \alpha_n)\cos nx+ (A_n \cos \alpha_n)\sin nx )]
+\]</span></p>
+<p>并令 <span class="math inline">\(A_0=a_0, \ A_n\sin\alpha_n = b_n, \  A_n\cos\alpha_n = b_n\)</span></p>
+<aside>
+<p>💡 于是我们就有了会有三角级数的<strong>最终展开形态</strong>：</p>
+<p><span class="math display">\[
+f(x)=a_0 + \sum_{n=1}^{\infty}(a_n\cos nx+ b_n\sin nx)
+\]</span></p>
+<ul>
+<li><strong>the period for <span class="math inline">\(f\)</span> is <span class="math inline">\(2\pi\)</span></strong> due to our definition of new independent variable <span class="math inline">\(x\)</span></li>
+</ul>
+</aside>
+<h2 data-original-heading="2. 傅立叶级数的系数" id="傅立叶级数的系数">2. 傅立叶级数的系数</h2>
+<h3 data-original-heading="2.1 欧拉-傅立叶公式（Euler-Fourier formula）" id="欧拉-傅立叶公式euler-fourier-formula">2.1 欧拉-傅立叶公式（Euler-Fourier formula）</h3>
+<blockquote>
+<p>这个是一个18世纪初欧拉使用的系数确定法。后面我们还学了泛函分析的inner product算系数的方法。</p>
+</blockquote>
+<p>Assuming <span class="math inline">\(f(x)\)</span> under <span class="math inline">\([-\pi,\pi]\)</span> is an integrable function, if we assume Fourier Expansion for <span class="math inline">\(f(x)\)</span> is <strong>true</strong>, then directly we have:</p>
+<p><span class="math display">\[
+\begin{align}\int_{-\pi}^{\pi} f(x) \, dx = 2\pi a_0 + \sum_{n=1}^{\infty} \left[ a_n \int_{-\pi}^{\pi} \cos nx \, dx + b_n \int_{-\pi}^{\pi} \sin nx \, dx \right]\end{align}
+\]</span></p>
+<p>obviously, the integration for <span class="math inline">\(\cos\)</span> and <span class="math inline">\(\sin\)</span> for <span class="math inline">\([-\pi,\pi]\)</span> is 0 regardless of the values, so we only left with:</p>
+<p><span class="math display">\[
+a_0= \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x) \, dx 
+\]</span></p>
+<p>next, if to find the specific value for arbitrary <span class="math inline">\(a_m\)</span> (<span class="math inline">\(m=1,2,3...\)</span>), we multiply <span class="math inline">\((3)\)</span> by <span class="math inline">\(\cos (ma)\)</span> so that the terms we needed wouldn’t cancel out, eventually we reached at:</p>
+<p><span class="math display">\[
+a_m= \frac{1}{\pi}\int_{-\pi}^{\pi} f(x) \cos(ma) \, dx 
+\]</span></p>
+<p>Similarly, multiply by <span class="math inline">\(\sin(ma)\)</span>, we derive:</p>
+<p><span class="math display">\[
+b_m= \frac{1}{\pi}\int_{-\pi}^{\pi} f(x) \sin(ma) \, dx 
+\]</span></p>
+<p>这些公式被称之为<strong>欧拉-傅立叶公式（Euler-Fourier formula），</strong>而他们算出来的数值被称为已给函数的<strong>傅立叶系数（Fourier Coefficient）。</strong></p>
+<h3 data-original-heading="2.2* 狄利克雷积分（Dirichlet integral）" id="狄利克雷积分dirichlet-integral">2.2* 狄利克雷积分（<strong>Dirichlet integral</strong>）</h3>
+<blockquote>
+<p>通过傅立叶展开的一个定点<span class="math inline">\(x=x_0\)</span>的性质，获得的重要积分：</p>
+</blockquote>
+<p>$$ s_n(x_0) =  _{0}^{}  , dt</p>
+<p>$$</p>
+<p>e.x. <a href="https://www.bilibili.com/video/BV1XE411p7ZN/">https://www.bilibili.com/video/BV1XE411p7ZN/</a></p>
+<h2 data-original-heading="3*. 广义形态的傅立叶级数和系数公式" id="广义形态的傅立叶级数和系数公式">3 3*. 广义形态的傅立叶级数和系数公式</h2>
+<h3 data-original-heading="3.1 任意区间的情况" id="任意区间的情况">3.1 任意区间的情况</h3>
+<aside>
+<p>💡 We can separate out a <span class="math inline">\(\frac{1}{2}\)</span> from the original <span class="math inline">\(a_0\)</span> coefficient, so the first term becomes a special case for <span class="math inline">\(n=0\)</span>.</p>
+</aside>
+<p>在任意<span class="math inline">\(2L\)</span>大小的区间 <span class="math inline">\((-L,L]\)</span> 上，我们可以使用变换：<span class="math inline">\(x=\frac{Ly}{\pi} (-\pi&lt;y\leq\pi)\)</span> 使得<span class="math inline">\(f(x)\rightarrow f(\frac{Ly}{\pi})\)</span> 。于是，我们根据公式获得：</p>
+<p><span class="math display">\[
+f\left( \frac{Ly}{\pi} \right) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos ny + b_n \sin ny \right)
+\]</span></p>
+<p>以及其系数：</p>
+<p><span class="math display">\[
+a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f\left( \frac{y}{\pi} \right) \cos ny \, dy \quad (n = 0, 1, 2, \ldots)
+\]</span></p>
+<p>$$</p>
+<p>b_n =  _{-}^{} f(  ) ny , dy (n = 1, 2, ) $$</p>
+<p>当我们重新变换回去，即使得<span class="math inline">\(y = \cfrac{\pi x}{L}\)</span>，那么我们就会获得一个广义上的傅立叶展开！</p>
+<aside>
+<p>💡 The general form of <strong>Fourier Expansion</strong>:</p>
+<p><span class="math display">\[
+\begin{align}f(x)=\frac{A_0}{2} + \sum_{n=1}^{\infty} \left( A_n \cos \frac{n\pi x}{L} + B_n \sin \frac{n\pi x}{L} \right) \end{align} 
+\]</span></p>
+<p>Here, <span class="math inline">\(x\)</span> is no longer the angle, but the integer multiples of <span class="math inline">\(\frac{\pi x}{L}\)</span>, such that the <strong>Fourier Coefficient</strong> for generic interval <span class="math inline">\([-L,L]\)</span> are:</p>
+<p>$$ <span class="math display">\[\begin{align} A_n \equiv \frac{1}{L} \int_{-L}^{L} f(x) \cos\left(\frac{n\pi x}{L}\right) dx, \quad n = 0, 1, 2, \ldots 
+\\
+B_n \equiv \frac{1}{L} \int_{-L}^{L} f(x) \sin\left(\frac{n\pi x}{L}\right) dx, \quad n = 1, 2, 3, \ldots \end{align}\]</span></p>
+<p>$$</p>
+</aside>
+<h3 data-original-heading="3.2 菜就多练，给爷展" id="菜就多练给爷展">3.2 菜就多练，给爷展</h3>
+<ol type="1">
+<li><p><span class="math inline">\(f(x)=e^{ax}\)</span>, <span class="math inline">\(a\neq0\)</span> on the interval of <span class="math inline">\((-\pi,\pi)\)</span></p>
+<p><a href="https://www.notion.so/2988450b6855433fb47610ada51a5416?pvs=21">答案</a></p></li>
+<li><p><span class="math inline">\(f(x)=\frac{\pi-x}{2}\)</span> on the interval of <span class="math inline">\((0,2\pi)\)</span></p>
+<p><a href="https://www.notion.so/a8c1447c44eb4ae8aab63f06f5f1740d?pvs=21">答案</a></p></li>
+<li><p><span class="math inline">\(f(x)=x^2\)</span> on the interval of <span class="math inline">\([-\pi,\pi]\)</span>, expand as cosine series.</p>
+<p><a href="https://www.notion.so/e29abaeb6f4c46068da6808500da7285?pvs=21">答案</a></p></li>
+<li><p>Two functions (<span class="math inline">\(a\)</span> is assumed to be non-integers):</p>
+<ol type="1">
+<li><p><span class="math inline">\(f_1(x)=\cos(ax)\)</span> on the interval of <span class="math inline">\([-\pi,\pi]\)</span>, expand as cosine series.</p>
+<p><a href="https://www.notion.so/c043984df343431387116d06e0cafb93?pvs=21">答案</a></p></li>
+<li><p><span class="math inline">\(f_2(x)=\sin(ax)\)</span> on the interval of <span class="math inline">\((-\pi,\pi)\)</span>, expand as sine series.</p>
+<p><a href="https://www.notion.so/8d0eb06f0b394286b1156568923bc95b?pvs=21">答案</a></p></li>
+</ol></li>
+<li><p><span class="math inline">\(f(x)=e^{ax}\)</span>, <span class="math inline">\(a\neq0\)</span> on the interval of <span class="math inline">\((0,\pi)\)</span>:</p>
+<ol type="1">
+<li>expand as cosine series</li>
+<li>expand as sine series</li>
+</ol>
+<p><a href="https://www.notion.so/4b81490b681f426cab8c726e7b93f8a3?pvs=21">答案</a></p></li>
+</ol>
+<h2 data-original-heading="4. 傅里叶级数的拓扑空间" id="傅里叶级数的拓扑空间">4. 傅里叶级数的拓扑空间</h2>
+<aside>
+<p>💡 理解傅里叶级数变换的拓扑空间的逻辑是：</p>
+<p><strong>三维空间——&nbsp;<span class="math inline">\(n\)</span>维空间——<span class="math inline">\(\infty\)</span>维空间——希尔伯特空间（<span class="math inline">\(L^2\)</span>空间）——傅立叶级数——傅立叶变换</strong></p>
+</aside>
+<h3 data-original-heading="4.1 \infty维欧式空间 - \R^{\infty}" id="infty维欧式空间---rinfty">4.1 <span class="math inline">\(\infty\)</span>维欧式空间 - <span class="math inline">\(\R^{\infty}\)</span></h3>
+<h4 data-original-heading="4.1.1 n维空间的定义- \R^{n}" id="n维空间的定义--rn">4.1.1 <span class="math inline">\(n\)</span>维空间的定义- <span class="math inline">\(\R^{n}\)</span></h4>
+<p>范数（Norm）:</p>
+<p><span class="math display">\[
+N_p(x) = \| x \|_p = \left( |x_1|^p + |x_2|^p + \cdots + |x_n|^p \right)^{\frac{1}{p}}
+\]</span></p>
+<p>单位正交向量基（standard orthogonal basis）:</p>
+<p><span class="math display">\[
+\left\{&nbsp;\begin{aligned}\vec{e}_1 &amp;= (1, 0, \ldots, 0), \\\vec{e}_2 &amp;= (0, 1, \ldots, 0), \\&amp; \vdots \\\vec{e}_n &amp;= (0, 0, \ldots, 1)\end{aligned}\right.
+\]</span></p>
+<p>因此<span class="math inline">\(n\)</span>维欧式空间的任何向量可以被直接表达成：</p>
+<p><span class="math display">\[
+\vec{a} = \sum_{i=1}^{n} a_i \vec{e}_i
+\]</span></p>
+<h4 data-original-heading="4.1.2 由此推出\infty维空间 - \R^{\infty}" id="由此推出infty维空间---rinfty">4.1.2 由此推出<span class="math inline">\(\infty\)</span>维空间 - <span class="math inline">\(\R^{\infty}\)</span></h4>
+<p>同理，当我们有无数个标准基，<span class="math inline">\(\{ \vec{e}_1 , \vec{e}_2 , \vec{e}_3 \ldots\}\)</span>，的时候，向量变成了</p>
+<p><span class="math display">\[
+\vec{a} = \sum_{i=1}^{\infty} a_i \vec{e}_i
+\]</span></p>
+<ul>
+<li>但是他们依然是<strong>离散的元素</strong></li>
+</ul>
+<h3 data-original-heading="4.2 Hilbert空间" id="hilbert空间">4.2 Hilbert空间</h3>
+<p>我们需要把离散的元素过度到连续的函数，Hilbert空间：</p>
+<ol type="1">
+<li><p>设定一个向量函数<span class="math inline">\(\vec{f}(x)\)</span></p></li>
+<li><p>并且存在一组基函数（standard orthogonal functions）</p>
+<p><span class="math inline">\(\{ \vec{\varphi}_1 , \vec{\varphi}_2 , \vec{\varphi}_3 \ldots\}\)</span> <span class="math inline">\(s.t.\)</span> we have</p>
+<p><span class="math display">\[
+ \vec{f}(x) = \sum_{i=1}^{\infty} a_i \vec{\varphi_i}(x)
+ \]</span></p></li>
+</ol>
+<p>因此，我们在Hilbert空间就有了这样的性质：</p>
+<aside>
+<p>💡 1. 函数在区间<span class="math inline">\([a,b]\)</span>上的模（norm）：</p>
+<p><span class="math display">\[
+| f(x) | = \sqrt{\int_a^b f^2(x) \, dx} ;
+\]</span></p>
+<ol type="1">
+<li>如果两个函数的正交条件（orthogonality）为其内积（inner product）为零：</li>
+</ol>
+<p><span class="math display">\[
+\int_{a}^{b} f(x) g(x) \, dx = 0
+\]</span></p>
+<ol type="1">
+<li>两者的角的余弦为</li>
+</ol>
+<p><span class="math display">\[
+\cos(\theta) = \frac{\langle f(x), g(x) \rangle}{| f(x) | \cdot | g(x) |} = \frac{\int f(x)g(x) \, dx}{\sqrt{\int f^2(x) \, dx} \sqrt{\int g^2(x) \, dx}} ;
+\]</span></p>
+</aside>
+<h3 data-original-heading="4.3 L^p 空间（Lebesgue Space）" id="lp-空间lebesgue-space">4.3 <span class="math inline">\(L^p\)</span> 空间（<strong>Lebesgue Space</strong>）</h3>
+<blockquote>
+<p>定义：Suppose <span class="math inline">\(f(x)\)</span> is measurable functions on <span class="math inline">\(E\subset R^n\)</span>.</p>
+<p>For <span class="math inline">\(0&lt;p&lt;\infty\)</span>, we denote:</p>
+<p><span class="math display">\[
+||f||_p=(\int_E|f(x)|^pdx)^{1/p}
+\]</span></p>
+</blockquote>
+<p>我们用<span class="math inline">\(L^p(E)\)</span>来表示<span class="math inline">\(||f||_p&lt;\infty\)</span>的全体函数，称其为<span class="math inline">\(L^p\)</span>空间。</p>
+<p>其范数（norm）为：</p>
+<p><span class="math display">\[
+L_p = \| \varphi \|_p = \left( \sum_{i=1}^{n} |\varphi_i|^p \right)^{\frac{1}{p}}, \quad x = (x_1, x_2, \ldots, x_n)
+\]</span></p>
+<hr>
+<p><span class="math inline">\(L^p\)</span>空间的一些基础属性：</p>
+<ul>
+<li><span class="math inline">\(L\)</span>空间里的每一个函数都是<strong>Lebesgue可积的</strong></li>
+<li>空间维度是无穷而且不可数的度量空间（Metric Space）</li>
+<li>Banach空间，或者完备赋范向量空间 (complete normed vector space)</li>
+<li><strong>当<span class="math inline">\(p=2\)</span>，<span class="math inline">\(L^2\)</span>变成了一个Hilbert空间，</strong>一个带有<strong>内积</strong>的Banach空间</li>
+</ul>
+<blockquote>
+<p>A&nbsp;<em>Hilbert space</em>&nbsp;is a&nbsp;real&nbsp;or&nbsp;complex&nbsp;inner product space&nbsp;that is also a&nbsp;complete metric space&nbsp;with respect to the distance function&nbsp;induced&nbsp;by the inner product. In every Hilbert Space, we have functions that</p>
+<p><span class="math display">\[
+\langle x, y \rangle = \sum_{k=1}^{n} \overline{x_k} y_k
+\]</span></p>
+</blockquote>
+<p><span class="math inline">\(L^2\)</span>空间的范数<strong>（norm）</strong>，根据之前的公式，我们可以得知：</p>
+<p><span class="math display">\[
+\| \varphi \|_2 = \sqrt{ \sum_{i=1}^{n} |\varphi_i|^2 }, \quad x = (x_1, x_2, \ldots, x_n)
+\]</span></p>
+<p>p.s. 以（p=2）为例，空间中到原点的欧氏距离为1的点构成了一个球面。</p>
+<p><img src="/notebook/public/docs/L-space-1.png" class="wikilink" alt="L-space-1.png" loading="lazy" decoding="async"> ## 4.4 傅里叶级数的正交函数系与规范系</p>
+<blockquote>
+<p>定义：if <span class="math inline">\(\int_{a}^{b} \varphi(x) \psi(x) \, dx = 0\)</span> for interval <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(\varphi(x), \psi(x)\)</span> are orthogonal.</p>
+</blockquote>
+<h4 data-original-heading="4.4.1 正交函数系 (orthogonal functions)" id="正交函数系-orthogonal-functions">4.4.1 正交函数系 (orthogonal functions)</h4>
+<p>当每对双函数<span class="math inline">\(\varphi_n(x), \ \varphi_m(x)\)</span> 都符合定义以下，我们称这样的函数群体为<strong>正交函数系 （orthogonal group）</strong>：</p>
+<p><span class="math display">\[
+\int_{a}^{b} \varphi_n(x) \varphi_m(x) \, dx = 0 \space \space\space\space\space\space\space\space \{n,m\in \N\ | \ n\neq m \}
+\]</span></p>
+<h4 data-original-heading="4.4.2 规范正交函数系 (orthonormal functions)" id="规范正交函数系-orthonormal-functions">4.4.2 规范正交函数系 (orthonormal functions)</h4>
+<p>若函数的 <span class="math inline">\(\lambda_n=1\)</span> <span class="math inline">\((n=1,2,3...)\)</span>, 那么这便是<strong>规范系（orthonormal group）：</strong></p>
+<p><span class="math display">\[
+\int_{a}^{b} \varphi_n^2(x) \, dx = \lambda_n 
+\]</span></p>
+<p>若不是orthogonal，则我们可以通过<span class="math inline">\(\left\{ \cfrac{\varphi_n(x)}{\sqrt{\lambda_n}} \right\}\)</span> 来进行换取新的orthogonal functions。</p>
+<h3 data-original-heading="4.5 傅里叶级数在L^2 空间的基函数" id="傅里叶级数在l2-空间的基函数">4.5 傅里叶级数在<span class="math inline">\(L^2\)</span> 空间的基函数</h3>
+<p>Notice back to this set of functions inside the interval <span class="math inline">\([-\pi,\pi]\)</span>:</p>
+<p><span class="math display">\[1, \cos(x), \sin(x), \cos(2x), \sin(2x),...\cos(nx), \sin(nx),...\]</span></p>
+<p>These are <strong>orthogonal basis functions</strong> for their vector space because we see for any two functions in this set <span class="math inline">\(\int_{-\pi}^{\pi} \cos(mx) \cdot \sin(nx) \, dx = 0.\)</span></p>
+<p>However, they are not standard, or normed, because <span class="math inline">\(\lambda_n \neq1\)</span>.</p>
+<p>我们可以通过模（norm）的定义获得他们的normalizing coefficient：</p>
+<p><span class="math display">\[\|1\| = \sqrt{\int_{-\pi}^{\pi} 1^2 \, dx} = \sqrt{2\pi}\]</span></p>
+<p><span class="math display">\[\|\cos(nx)\| = \sqrt{\int_{-\pi}^{\pi} \cos^2(nx) \, dx} = \sqrt{\pi}\]</span></p>
+<p><span class="math display">\[\|\sin(nx)\| = \sqrt{\int_{-\pi}^{\pi} \sin^2(nx) \, dx} = \sqrt{\pi}\]</span> Then, we would have a <strong>standard orthonormal functions:</strong> <span class="math display">\[\frac{1}{\sqrt{2\pi}}, \ldots, \, \frac{\cos nx}{\sqrt{\pi}}, \, \frac{\sin nx}{\sqrt{\pi}}, \, \ldots\]</span></p>
+<p>Let’s define them:</p>
+<p><span class="math display">\[\psi_0=\frac{1}{\sqrt{2\pi}}, \psi_j=\frac{1}{\sqrt{\pi}}\cos(jx),  \varphi_j=\frac{1}{\sqrt{\pi}}\sin(jx)\]</span></p>
+<p><span class="math display">\[\psi_0\equiv\sqrt L\quad \psi_j\equiv\sqrt L\cos\left ( \frac{j\pi}{L}x
+\right )\quad \varphi_j\equiv\sqrt L\sin\left ( \frac{j\pi}{L}x
+\right) \]</span></p>
+<p>such that, we obtain the coefficient for each standard basis functions needed:</p>
+<p><span class="math display">\[\begin{align} a_0 &amp;= \langle f,\psi_0\rangle=\frac{1}{\sqrt{2\pi}} \int_{-\pi}^{\pi} f(x) \, dx\\a_j &amp;=\langle f,\psi_k\rangle=\frac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \cos(jx) \, dx\\ b_j &amp;=\langle f,\varphi_k\rangle =\frac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \sin(kx) \, dx \end{align} \]</span></p>
+<p>Then, for the function <span class="math inline">\(\mathcal X\)</span> and its coffecient <span class="math inline">\(C_k\)</span> defined as</p>
+<p><span class="math display">\[
+\mathcal X_k=(
+\psi_k ,\varphi_k
+), \quad C_k=(a_j,b_j)
+\]</span></p>
+<p>we have a function space:</p>
+<p><span class="math display">\[
+\mathcal F(f)=\sum_{k=0}^\infty C_k \cdot \mathcal X_k
+\]</span></p>
+<hr>
+<p>如同<span class="math inline">\(\vec{a} = \sum_{i=1}^{n} a_i \vec{e}_i \quad\)</span>一样，我们有<span class="math inline">\(f(x) = a_0 \frac{1}{\sqrt{2\pi}} + a_1 \frac{\cos x}{\sqrt{\pi}} + b_1 \frac{\sin x}{\sqrt{\pi}} + a_2 \frac{\cos 2x}{\sqrt{\pi}} + b_2 \frac{\sin 2x}{\sqrt{\pi}} + \cdots\)</span>，或者</p>
+<p>$$</p>
+<p>f(x) = a_0  + <em>{k=1}^{} a_k  + </em>{k=1}^{} b_k  $$</p>
+<p>代入<span class="math inline">\(a_0,a_k,b_k\)</span>到上式中，我们获得：</p>
+<p><span class="math display">\[
+f(x) =  \frac{1}{\sqrt{2\pi}} \int_{-\pi}^{\pi} f(x) \, dx  \frac{1}{\sqrt{2\pi}} + \sum_{k=1}^{\infty} \frac{\cos kx}{\sqrt{\pi}}\frac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \cos kx \, dx + \sum_{k=1}^{\infty} \frac{\sin kx}{\sqrt{\pi}} \frac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \sin kx \, dx
+\]</span></p>
+<p>当我们简化之后，并且将系数项更新，我们最终有了现在的傅里叶展开式：</p>
+<p><span class="math display">\[
+f(x)=A_0 + \sum_{n=1}^{\infty}(A_n\cos nx+ B_n\sin nx)
+\]</span></p>
+<p><span class="math display">\[
+\begin{align} A_0 &amp;= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) \, dx\\A_n &amp;= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx) \, dx\\ B_n &amp;= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(nx) \, dx \end{align}
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span>← Previous page</span><span>Heat Equation Solution</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">傅立叶级数</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#%E5%82%85%E7%AB%8B%E5%8F%B6%E7%BA%A7%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BD%A2%E6%80%81" class="is-active" aria-current="location">1. 傅立叶级数的基本形态</a></li><li style="--depth:1"><a href="#%E5%91%A8%E6%9C%9F">1.1 周期</a></li><li style="--depth:1"><a href="#%E6%AD%A3%E5%BC%A6%E5%9E%8B%E9%87%8F">1.2 正弦型量</a></li><li style="--depth:1"><a href="#%E4%B8%89%E8%A7%92%E7%BA%A7%E6%95%B0---varphit%E5%87%BD%E6%95%B0">1.3.1 三角级数 - \varphi(t)函数</a></li><li style="--depth:1"><a href="#%E4%B8%89%E8%A7%92%E7%BA%A7%E6%95%B0---%E6%9C%80%E7%BB%88%E5%B1%95%E5%BC%80%E5%BC%8F">1.3.2 三角级数 - 最终展开式</a></li><li style="--depth:0"><a href="#%E5%82%85%E7%AB%8B%E5%8F%B6%E7%BA%A7%E6%95%B0%E7%9A%84%E7%B3%BB%E6%95%B0">2. 傅立叶级数的系数</a></li><li style="--depth:1"><a href="#%E6%AC%A7%E6%8B%89-%E5%82%85%E7%AB%8B%E5%8F%B6%E5%85%AC%E5%BC%8Feuler-fourier-formula">2.1 欧拉-傅立叶公式（Euler-Fourier formula）</a></li><li style="--depth:1"><a href="#%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E7%A7%AF%E5%88%86dirichlet-integral">2.2* 狄利克雷积分（Dirichlet integral）</a></li><li style="--depth:0"><a href="#%E5%B9%BF%E4%B9%89%E5%BD%A2%E6%80%81%E7%9A%84%E5%82%85%E7%AB%8B%E5%8F%B6%E7%BA%A7%E6%95%B0%E5%92%8C%E7%B3%BB%E6%95%B0%E5%85%AC%E5%BC%8F">3 3*. 广义形态的傅立叶级数和系数公式</a></li><li style="--depth:1"><a href="#%E4%BB%BB%E6%84%8F%E5%8C%BA%E9%97%B4%E7%9A%84%E6%83%85%E5%86%B5">3.1 任意区间的情况</a></li><li style="--depth:1"><a href="#%E8%8F%9C%E5%B0%B1%E5%A4%9A%E7%BB%83%E7%BB%99%E7%88%B7%E5%B1%95">3.2 菜就多练，给爷展</a></li><li style="--depth:0"><a href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E7%9A%84%E6%8B%93%E6%89%91%E7%A9%BA%E9%97%B4">4. 傅里叶级数的拓扑空间</a></li><li style="--depth:1"><a href="#infty%E7%BB%B4%E6%AC%A7%E5%BC%8F%E7%A9%BA%E9%97%B4---rinfty">4.1 \infty维欧式空间 - \R^{\infty}</a></li><li style="--depth:2"><a href="#n%E7%BB%B4%E7%A9%BA%E9%97%B4%E7%9A%84%E5%AE%9A%E4%B9%89--rn">4.1.1 n维空间的定义- \R^{n}</a></li><li style="--depth:2"><a href="#%E7%94%B1%E6%AD%A4%E6%8E%A8%E5%87%BAinfty%E7%BB%B4%E7%A9%BA%E9%97%B4---rinfty">4.1.2 由此推出\infty维空间 - \R^{\infty}</a></li><li style="--depth:1"><a href="#hilbert%E7%A9%BA%E9%97%B4">4.2 Hilbert空间</a></li><li style="--depth:1"><a href="#lp-%E7%A9%BA%E9%97%B4lebesgue-space">4.3 L^p 空间（Lebesgue Space）</a></li><li style="--depth:2"><a href="#%E6%AD%A3%E4%BA%A4%E5%87%BD%E6%95%B0%E7%B3%BB-orthogonal-functions">4.4.1 正交函数系 (orthogonal functions)</a></li><li style="--depth:2"><a href="#%E8%A7%84%E8%8C%83%E6%AD%A3%E4%BA%A4%E5%87%BD%E6%95%B0%E7%B3%BB-orthonormal-functions">4.4.2 规范正交函数系 (orthonormal functions)</a></li><li style="--depth:1"><a href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E5%9C%A8l2-%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E5%87%BD%E6%95%B0">4.5 傅里叶级数在L^2 空间的基函数</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 33 Gemini — E.H. Notebook</title>
+<meta name="description" content="1 Chapter 33: Generating Gravitational Waves1.1 Estimates and Approximations1.1.1 Crude EstimatesTo estimate the maximum strength of a gravitational wave, we consider per">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 33 Gemini</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1 Chapter 33: Generating Gravitational Waves" id="chapter-33-generating-gravitational-waves">1 Chapter 33: Generating Gravitational Waves</h2>
+<h3 data-original-heading="1.1 Estimates and Approximations" id="estimates-and-approximations">1.1 Estimates and Approximations</h3>
+<h4 data-original-heading="1.1.1 Crude Estimates" id="crude-estimates">1.1.1 Crude Estimates</h4>
+<p>To estimate the maximum strength of a gravitational wave, we consider perturbations where components of the metric have an absolute value of order 1 near the source (e.g., the event horizon of a black hole).</p>
+<div class="math-theorem remark" data-callout="remark" data-label="33.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 33.1</span><span class="theorem-title">Magnitude of Perturbation</span></p>
+</div>
+<div class="theorem-content">
+<p>Near the event horizon, the metric component is: <span class="math display">\[g_{H} = -(1-2GM/r) \approx -(1-1)\]</span> Implying a perturbation of order 1.</p>
+</div>
+</div>
+<p>For a merger of two black holes (mass <span class="math inline">\(\sim\)</span> solar masses, <span class="math inline">\(2GM \approx 10^4\)</span> m), if the amplitude <span class="math inline">\(h \approx 1\)</span> at the source radius (<span class="math inline">\(r_{src} \approx 10^4\)</span> m), the amplitude at a distance <span class="math inline">\(r_{obs}\)</span> scales as <span class="math inline">\(1/r\)</span>. For an observer at <span class="math inline">\(r_{obs} \approx 10^{24}\)</span> m (<span class="math inline">\(\approx 10^8\)</span> ly):</p>
+<p><span class="math display">\[
+h \approx 1 \cdot \frac{r_{src}}{r_{obs}} \approx \frac{10^4 \text{ m}}{10^{24} \text{ m}} = 10^{-20}
+\]</span></p>
+<p>Current detectors (like LIGO) require sensitivity around <span class="math inline">\(h \approx 10^{-21}\)</span> to <span class="math inline">\(10^{-22}\)</span>.</p>
+<h4 data-original-heading="1.1.2 The Small-Weak-Slow Source Approximation" id="the-small-weak-slow-source-approximation">1.1.2 The Small-Weak-Slow Source Approximation</h4>
+<p>To calculate radiation accurately for sources other than black hole mergers (e.g., binary stars), we utilize specific approximations.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="33.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 33.1</span><span class="theorem-title">Small-Weak-Slow Approximation</span></p>
+</div>
+<div class="theorem-content">
+<p>We assume the source satisfies three conditions:</p>
+<ol type="1">
+<li><strong>Small:</strong> The source size is small compared to the wavelength <span class="math inline">\(\lambda\)</span> and distance to observer <span class="math inline">\(R\)</span>.</li>
+<li><strong>Weak:</strong> The metric perturbation is small, <span class="math inline">\(|h_{\mu\nu}| \ll 1\)</span>, everywhere.</li>
+<li><strong>Slow:</strong> The parts of the source move at non-relativistic speeds, <span class="math inline">\(v \ll 1\)</span>.</li>
+</ol>
+</div>
+</div>
+<h3 data-original-heading="1.2 The Einstein Equation and Solution" id="the-einstein-equation-and-solution">1.2 The Einstein Equation and Solution</h3>
+<h4 data-original-heading="1.2.1 The Wave Equation" id="the-wave-equation">1.2.1 The Wave Equation</h4>
+<p>In the Lorentz gauge, the weak-field Einstein equation links the trace-reversed metric perturbation <span class="math inline">\(H^{\mu\nu}\)</span> to the stress-energy tensor <span class="math inline">\(T^{\mu\nu}\)</span>.</p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="33.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 33.1</span><span class="theorem-title">Weak-Field Wave Equation</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[\partial^{\alpha}\partial_{\alpha}H^{\mu\nu} = \left[-\frac{\partial^{2}}{{\partial t}^{2}}+\nabla^{2}\right]H^{\mu\nu} = -16\pi GT^{\mu\nu}\]</span></p>
+</div>
+</div>
+<p>This is analogous to the equation for electric potential in electrodynamics: <span class="math inline">\([-(\partial/\partial t)^{2}+\nabla^{2}]\phi = -4\pi k\rho_{c}\)</span>.</p>
+<h4 data-original-heading="1.2.2 The Retarded Solution" id="the-retarded-solution">1.2.2 The Retarded Solution</h4>
+<p>Just as the solution for the electric potential involves integrating over the charge distribution at the retarded time, the solution for the gravitational perturbation is:</p>
+<p><span class="math display">\[H^{\mu\nu}(t,\vec{R}) = 4G \int_{src} \frac{T^{\mu\nu}(t-u,\vec{r})}{u} dV\]</span></p>
+<p>where <span class="math inline">\(u \equiv |\vec{R}-\vec{r}|\)</span> is the distance from the source cell to the observer.</p>
+<h4 data-original-heading="1.2.3 Far-Field Simplification" id="far-field-simplification">1.2.3 Far-Field Simplification</h4>
+<p>Under the “Small” approximation:</p>
+<ol type="1">
+<li><strong>Distance:</strong> <span class="math inline">\(R \approx u\)</span> (source is small compared to distance).</li>
+<li><strong>Time:</strong> <span class="math inline">\(t-u \approx t-R\)</span> (source is small compared to wavelength).</li>
+</ol>
+<p>The solution simplifies to integration at the common “retarded time” <span class="math inline">\(t_{ret} = t-R\)</span>:</p>
+<p><span class="math display">\[\boxed{ H^{\mu\nu}(t,\vec{R}) = \frac{4G}{R} \left[ \int_{src} T^{\mu\nu} dV \right]_{\text{at } t-R} }\]</span></p>
+<h3 data-original-heading="1.3 The Quadrupole Moment" id="the-quadrupole-moment">1.3 The Quadrupole Moment</h3>
+<h4 data-original-heading="1.3.1 Mass and Momentum Conservation" id="mass-and-momentum-conservation">1.3.1 Mass and Momentum Conservation</h4>
+<p>For a source with center of mass at rest:</p>
+<ol type="1">
+<li><span class="math inline">\(H^{tt} = 4GM/R = \text{const}\)</span>.</li>
+<li><span class="math inline">\(H^{ti} = 0\)</span>. Thus, the “waving” components are restricted to the spatial components <span class="math inline">\(H^{jk}\)</span>.</li>
+</ol>
+<h4 data-original-heading="1.3.2 The Inertia Tensor Identity" id="the-inertia-tensor-identity">1.3.2 The Inertia Tensor Identity</h4>
+<p>Using the divergence theorem and conservation of energy-momentum, we can relate the integral of the stress-energy tensor to the dynamics of the mass distribution.</p>
+<div class="math-theorem lemma" data-callout="lemma" data-label="33.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma 33.1</span><span class="theorem-title">Stress-Energy Identity</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[\int_{src} T^{jk} dV = \frac{1}{2} \frac{d^{2}}{dt^{2}} \int_{src} \rho \, x^{j}x^{k} dV\]</span></p>
+</div>
+</div>
+<p>Substituting this into the wave solution yields:</p>
+<p><span class="math display">\[H^{jk}(t, \vec{R}) = \frac{2G}{R} \ddot{I}^{jk}(t-R)\]</span></p>
+<p>where we define the <strong>Moment of Inertia Tensor</strong>: <span class="math display">\[I^{jk} \equiv \int_{src} \rho x^{j}x^{k} dV\]</span> <em>(Note: <span class="math inline">\(\ddot{I}^{jk} \equiv d^2 I^{jk} / dt^2\)</span>)</em>.</p>
+<h4 data-original-heading="1.3.3 The Reduced Quadrupole Moment" id="the-reduced-quadrupole-moment">1.3.3 The Reduced Quadrupole Moment</h4>
+<p>It is physically significant to use the traceless part of the moment tensor.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="33.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 33.2</span><span class="theorem-title">Reduced Quadrupole Moment Tensor (<span class="math inline">\(\mathbb{I}^{jk}\)</span>)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[\mathbb{I}^{jk} = \int_{src} \rho \left(x^{j}x^{k} - \frac{1}{3}\eta^{jk}r^{2}\right) dV\]</span></p>
+</div>
+</div>
+<p>This tensor is traceless (<span class="math inline">\(\eta_{jk}\mathbb{I}^{jk} = 0\)</span>). For point-like objects (masses <span class="math inline">\(m_i\)</span> at positions <span class="math inline">\(x_i\)</span>), this integral becomes a sum:</p>
+<p><span class="math display">\[\mathbb{I}^{jk} \approx \sum_{objects~i} m_{i} \left(x_{i}^{j}x_{i}^{k} - \frac{1}{3}\eta^{jk}r_{i}^{2}\right)\]</span></p>
+<h3 data-original-heading="1.4 Transverse-Traceless (TT) Gauge" id="transverse-traceless-tt-gauge">1.4 Transverse-Traceless (TT) Gauge</h3>
+<p>Gravitational waves are physically defined by their Transverse-Traceless (TT) components.</p>
+<h4 data-original-heading="1.4.1 Waves in the +z Direction" id="waves-in-the-z-direction">1.4.1 Waves in the <span class="math inline">\(+z\)</span> Direction</h4>
+<p>For a wave propagating in the <span class="math inline">\(+z\)</span> direction, the TT components relate to the reduced quadrupole moment as follows:</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_{TT}^{xx} = -H_{TT}^{yy} &amp;= \frac{1}{2}(H^{xx} - H^{yy}) \\
+&amp;= \frac{G}{R} (\ddot{I}^{xx} - \ddot{I}^{yy}) \\
+&amp;= \boxed{\frac{G}{R} (\ddot{\mathbb{I}}^{xx} - \ddot{\mathbb{I}}^{yy})}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[\boxed{ H_{TT}^{xy} = H^{xy} = \frac{2G}{R} \ddot{\mathbb{I}}^{xy} }\]</span></p>
+<h4 data-original-heading="1.4.2 Waves in Arbitrary Direction \vec{n}" id="waves-in-arbitrary-direction-vecn">1.4.2 Waves in Arbitrary Direction <span class="math inline">\(\vec{n}\)</span></h4>
+<p>For a wave moving in direction <span class="math inline">\(\vec{n}\)</span>, we project the tensor onto the plane perpendicular to <span class="math inline">\(\vec{n}\)</span> and remove the trace.</p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="33.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 33.2</span><span class="theorem-title">General TT Projection</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[H_{TT}^{jk} = \frac{2G}{R} \ddot{\mathbb{I}}_{TT}^{jk}\]</span></p>
+<p>Where the projected quadrupole tensor is: <span class="math display">\[\ddot{\mathbb{I}}_{TT}^{jk} \equiv \left( P_{m}^{j} P_{n}^{k} - \frac{1}{2} P^{jk} P_{mn} \right) \ddot{\mathbb{I}}^{mn}\]</span> with the projection operator <span class="math inline">\(P_{m}^{j} \equiv \delta_{m}^{j} - n^{j}n_{m}\)</span>.</p>
+</div>
+</div>
+<h3 data-original-heading="1.5 Energy Flux and Luminosity" id="energy-flux-and-luminosity">1.5 Energy Flux and Luminosity</h3>
+<h4 data-original-heading="1.5.1 Energy Flux" id="energy-flux">1.5.1 Energy Flux</h4>
+<p>The energy flux (power per unit area) of a gravitational wave is proportional to the square of the time derivative of the metric perturbation. Since <span class="math inline">\(H \sim \ddot{\mathbb{I}}\)</span>, the flux depends on the third time derivative (jerk), denoted by <span class="math inline">\(\dddot{\mathbb{I}}\)</span>.</p>
+<p><span class="math display">\[\text{Flux} = \frac{G}{8\pi R^{2}} \langle \dddot{\mathbb{I}}_{TT}^{jk} \dddot{\mathbb{I}}_{jk}^{TT} \rangle\]</span></p>
+<p>Expressing this directly in terms of the source tensor <span class="math inline">\(\mathbb{I}\)</span> and direction vector <span class="math inline">\(\vec{n}\)</span>:</p>
+<p><span class="math display">\[\text{Flux} = \frac{G}{16\pi R^{2}} \left\langle 2\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} - 4n^{j}n^{k}\dddot{\mathbb{I}}_{jm}\dddot{\mathbb{I}}^{m}_{k} + n^{i}n^{j}n^{k}n^{m}\dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}_{km} \right\rangle\]</span></p>
+<h4 data-original-heading="1.5.2 Total Power Radiated (Luminosity)" id="total-power-radiated-luminosity">1.5.2 Total Power Radiated (Luminosity)</h4>
+<p>To find the total luminosity <span class="math inline">\(L_{GW} = -dE/dt\)</span>, we integrate the flux over a sphere surrounding the source.</p>
+<p><span class="math display">\[-\frac{dE}{dt} = \int_{sphere} \text{Flux} \cdot dA = \int_{0}^{\pi} \int_{0}^{2\pi} \text{Flux} \, (R^2 \sin\theta \, d\theta \, d\phi)\]</span></p>
+<p>We utilize the following angular integrals for the direction vector <span class="math inline">\(\vec{n}\)</span>:</p>
+<div class="math-theorem proposition" data-callout="proposition" data-label="33.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Proposition 33.1</span><span class="theorem-title">Angular Integrals</span></p>
+</div>
+<div class="theorem-content">
+<ol type="1">
+<li><span class="math inline">\(\int n^{j}n^{k} d\Omega = \frac{4\pi}{3}\eta^{jk}\)</span></li>
+<li><span class="math inline">\(\int n^{i}n^{j}n^{k}n^{m} d\Omega = \frac{4\pi}{15}(\eta^{ij}\eta^{km} + \eta^{ik}\eta^{jm} + \eta^{im}\eta^{jk})\)</span></li>
+</ol>
+</div>
+</div>
+<p>Substituting the flux equation and these integrals, we derive the final luminosity:</p>
+<p><span class="math display">\[
+\begin{aligned}
+-\frac{dE}{dt} 
+&amp;= \frac{G}{16\pi} \oint \left\langle 2\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} - 4n^{j}n^{k}\dddot{\mathbb{I}}_{jm}\dddot{\mathbb{I}}^{m}_{k} + n^{i}n^{j}n^{k}n^{m}\dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}_{km} \right\rangle d\Omega \\[6pt]
+&amp;= \frac{G}{16\pi} \Bigg[ 
+   \underbrace{2\langle \dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} \rangle (4\pi)}_{\text{isotropic term}} 
+   - \underbrace{4 \langle \dddot{\mathbb{I}}_{jm}\dddot{\mathbb{I}}^{m}_{k} \rangle \left(\frac{4\pi}{3}\eta^{jk}\right)}_{\text{2-index contraction}} 
+   + \underbrace{\langle \dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}_{km} \rangle \frac{4\pi}{15}(\eta^{ij}\eta^{km} + \eta^{ik}\eta^{jm} + \eta^{im}\eta^{jk})}_{\text{4-index contraction}} 
+   \Bigg] \\[6pt]
+&amp;= \frac{G}{4} \left\langle 
+   2\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} 
+   - \frac{4}{3} \dddot{\mathbb{I}}_{jm}\dddot{\mathbb{I}}^{m}_{k} \eta^{jk}
+   + \frac{1}{15} \left( \dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}_{km}\eta^{ij}\eta^{km} + \dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}_{km}\eta^{ik}\eta^{jm} + \dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}_{km}\eta^{im}\eta^{jk} \right)
+   \right\rangle \\[6pt]
+&amp;\overset{\text{traceless } \eta^{jk}\mathbb{I}_{jk}=0}{=} 
+\frac{G}{4} \left\langle 
+   2\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} 
+   - 0 
+   + \frac{1}{15} \left( 0 + \dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}^{ij} + \dddot{\mathbb{I}}_{ij}\dddot{\mathbb{I}}^{ji} \right)
+   \right\rangle \\[6pt]
+&amp;= \frac{G}{4} \left\langle 2\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} + \frac{2}{15}\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} \right\rangle \quad (\text{since } \mathbb{I}^{ij} = \mathbb{I}^{ji}) \\[6pt]
+&amp;= \frac{G}{4} \left\langle \frac{30}{15}\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} + \frac{2}{15}\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} \right\rangle \quad \text{(wait, recalculating coefficients from text Eq 33.21)} \\[6pt]
+\end{aligned}
+\]</span></p>
+<p><em>Correction based on text Eq 33.21 explicitly:</em> <span class="math display">\[
+\begin{aligned}
+-\frac{dE}{dt} 
+&amp;= \frac{G}{4 \cdot 15} \langle 30\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} - 20 \dddot{\mathbb{I}}_{ji}\dddot{\mathbb{I}}^{ij} + (\dddot{\mathbb{I}}_{ii}\dddot{\mathbb{I}}_{kk} + \dddot{\mathbb{I}}_{ik}\dddot{\mathbb{I}}^{ki} + \dddot{\mathbb{I}}_{ik}\dddot{\mathbb{I}}^{ik}) \rangle \\[6pt]
+&amp;= \frac{G}{60} \langle \underbrace{30\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} - 20\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk}}_{\text{10 terms}} + \underbrace{0}_{\text{traceless}} + \underbrace{\dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} + \dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk}}_{\text{2 terms}} \rangle \\[6pt]
+&amp;= \frac{12G}{60} \langle \dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} \rangle
+\end{aligned}
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="33.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 33.3</span><span class="theorem-title">The Quadrupole Luminosity Formula</span></p>
+</div>
+<div class="theorem-content">
+<p>The total gravitational wave luminosity is: <span class="math display">\[\boxed{ L_{GW} = -\frac{dE}{dt} = \frac{G}{5} \langle \dddot{\mathbb{I}}_{jk}\dddot{\mathbb{I}}^{jk} \rangle }\]</span></p>
+</div>
+</div></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span>← Previous page</span><span>Ch. 33 ChatGPT</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span>Next page →</span><span>Ch. 35 Gravitomagnetism</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 33 Gemini</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#chapter-33-generating-gravitational-waves" class="is-active" aria-current="location">1 Chapter 33: Generating Gravitational Waves</a></li><li style="--depth:1"><a href="#estimates-and-approximations">1.1 Estimates and Approximations</a></li><li style="--depth:2"><a href="#crude-estimates">1.1.1 Crude Estimates</a></li><li style="--depth:2"><a href="#the-small-weak-slow-source-approximation">1.1.2 The Small-Weak-Slow Source Approximation</a></li><li style="--depth:1"><a href="#the-einstein-equation-and-solution">1.2 The Einstein Equation and Solution</a></li><li style="--depth:2"><a href="#the-wave-equation">1.2.1 The Wave Equation</a></li><li style="--depth:2"><a href="#the-retarded-solution">1.2.2 The Retarded Solution</a></li><li style="--depth:2"><a href="#far-field-simplification">1.2.3 Far-Field Simplification</a></li><li style="--depth:1"><a href="#the-quadrupole-moment">1.3 The Quadrupole Moment</a></li><li style="--depth:2"><a href="#mass-and-momentum-conservation">1.3.1 Mass and Momentum Conservation</a></li><li style="--depth:2"><a href="#the-inertia-tensor-identity">1.3.2 The Inertia Tensor Identity</a></li><li style="--depth:2"><a href="#the-reduced-quadrupole-moment">1.3.3 The Reduced Quadrupole Moment</a></li><li style="--depth:1"><a href="#transverse-traceless-tt-gauge">1.4 Transverse-Traceless (TT) Gauge</a></li><li style="--depth:2"><a href="#waves-in-the-z-direction">1.4.1 Waves in the +z Direction</a></li><li style="--depth:2"><a href="#waves-in-arbitrary-direction-vecn">1.4.2 Waves in Arbitrary Direction \vec{n}</a></li><li style="--depth:1"><a href="#energy-flux-and-luminosity">1.5 Energy Flux and Luminosity</a></li><li style="--depth:2"><a href="#energy-flux">1.5.1 Energy Flux</a></li><li style="--depth:2"><a href="#total-power-radiated-luminosity">1.5.2 Total Power Radiated (Luminosity)</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

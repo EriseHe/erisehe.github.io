@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>6.1 Magnetization — E.H. Notebook</title>
+<meta name="description" content="6.1.1 Diamagnets, Paramagnets, FerromagnetsIn classical electrodynamics, all magnetic phenomena are due to electric charges in motion.[!definition] Magnetization Magnetiz">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/index.html">6 Magnetic Fields in Matter</a></nav><h1 id="reader-title">6.1 Magnetization</h1></header><div id="article-body" class="prose"><h2 data-original-heading="6.1.1 Diamagnets, Paramagnets, Ferromagnets" id="diamagnets-paramagnets-ferromagnets">6.1.1 Diamagnets, Paramagnets, Ferromagnets</h2>
+<p>In classical electrodynamics, all magnetic phenomena are due to <strong>electric charges in motion</strong>.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Magnetization</span></p>
+</div>
+<div class="theorem-content">
+<p>Magnetization is the process of inducing a net alignment of magnetic dipoles within a medium.</p>
+</div>
+</div>
+<p>If we examine magnetic materials at the atomic scale, we find “tiny currents” caused by two primary motions:</p>
+<ul>
+<li><strong>Orbital Motion:</strong> Electrons orbiting around the nuclei.</li>
+<li><strong>Spin:</strong> Electrons spinning about their own axes.</li>
+</ul>
+<h3 data-original-heading="Classification of Magnetic Materials" id="classification-of-magnetic-materials">6.1.1.1 Classification of Magnetic Materials</h3>
+<p>Unlike electric polarization (which is in the same direction as the electric field <span class="math inline">\(\mathbf{E}\)</span>), the response of a material to a magnetic field <span class="math inline">\(\mathbf{B}\)</span> depends on its internal structure. Materials are classified into three main categories:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 41%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr>
+<th>Material Type</th>
+<th>Response to Applied Field <span class="math inline">\(\mathbf{B}\)</span></th>
+<th>Key Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Paramagnets</strong></td>
+<td>magnetization <strong>parallel</strong> to <span class="math inline">\(\mathbf{B}\)</span>.</td>
+<td>caused by the torque of the external field.</td>
+</tr>
+<tr>
+<td><strong>Diamagnets</strong></td>
+<td>magnetization <strong>opposite</strong> to <span class="math inline">\(\mathbf{B}\)</span>.</td>
+<td>resulted by the changes in orbital speeds (Lenz’s law analogy).</td>
+</tr>
+<tr>
+<td><strong>Ferromagnets</strong></td>
+<td>retain magnetization even after <span class="math inline">\(\mathbf{B}\)</span> is removed.</td>
+<td>defined by the “<em>history</em>” of the object; the most complex type.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 data-original-heading="6.1.2 Torques and Forces on Magnetic Dipoles" id="torques-and-forces-on-magnetic-dipoles">6.1.2 Torques and Forces on Magnetic Dipoles</h2>
+<h3 data-original-heading="Torque on a Rectangular Loop" id="torque-on-a-rectangular-loop">6.1.2.1 Torque on a Rectangular Loop</h3>
+<p>We use a rectangular loop of sides <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> carrying current <span class="math inline">\(I\)</span> to represent a simplified model for atom for mathematical convenience.</p>
+<p>The torque <span class="math inline">\(\mathbf{N}\)</span> on , tilted at an angle <span class="math inline">\(\theta\)</span> in a uniform field <span class="math inline">\(\mathbf{B} = B \hat{\mathbf{z}}\)</span>, is derived as: <span class="math display">\[\begin{aligned}
+\mathbf{N} &amp;= {a F \sin \theta}\hat{\mathbf{x}} &amp;&amp; \text{\scriptsize lever arm $\times$ force} \\
+&amp;= a ({I b B}) \sin \theta \hat{\mathbf{x}} &amp;&amp;  \scriptsize F = IbB \text{ on vertical segments} \\
+&amp;= \underbrace{I a b}_{m} B \sin \theta \hat{\mathbf{x}} &amp;&amp;  \\
+&amp;= m B \sin \theta \hat{\mathbf{x}} &amp;&amp; \text{\scriptsize applying the magnitude of the dipole moment} \\
+&amp;= \mathbf{m} \times \mathbf{B} &amp;&amp; \text{\scriptsize vector cross product form (Eq. 6.1)}
+\end{aligned}\]</span></p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Torque on a Dipole</span></p>
+</div>
+<div class="theorem-content">
+<p>A magnetic dipole in a uniform magnetic field experiences a torque that tries to line it up <strong>parallel</strong> to the field: <span class="math display">\[\boxed{\mathbf{N} = \mathbf{m} \times \mathbf{B}}\]</span> This is mathematically identical to the electrical analog: <span class="math inline">\(\mathbf{N} = \mathbf{p} \times \mathbf{E}\)</span>.</p>
+</div>
+</div>
+<h3 data-original-heading="Qualitative Origin of Paramagnetism" id="qualitative-origin-of-paramagnetism">6.1.2.2 Qualitative Origin of Paramagnetism</h3>
+<p>The torque <span class="math inline">\(\mathbf{N}=\mathbf{m} \times \mathbf{B}\)</span> is what accounts for paramagnetism:</p>
+<ul>
+<li><strong>The Mechanism</strong>: The torque acts in such a direction as to line the dipole up parallel to the field.</li>
+<li><strong>The Constraint</strong>: While every electron is a magnetic dipole (a “tiny spinning charged sphere”), the Pauli exclusion principle usually locks electrons into pairs with opposing spins, neutralizing the torque.</li>
+<li><strong>The Result</strong>: Paramagnetism occurs primarily in atoms with an odd number of electrons, where an “extra” unpaired member is subject to the magnetic torque.</li>
+</ul>
+<h3 data-original-heading="Forces in Non-Uniform Fields" id="forces-in-non-uniform-fields">6.1.2.3 Forces in Non-Uniform Fields</h3>
+<h3 data-original-heading="3. Force on a Magnetic Dipole" id="force-on-a-magnetic-dipole">3. Force on a Magnetic Dipole</h3>
+<p>How a dipole moves linearly depends entirely on whether the external magnetic field is uniform or not.</p>
+<h4 data-original-heading="A. In a Uniform Field" id="a.-in-a-uniform-field">6.1.2.4.1 A. In a Uniform Field</h4>
+<p>If the external field <span class="math inline">\(\mathbf{B}\)</span> is constant everywhere, the net force on any closed current loop is exactly zero.</p>
+<p><strong>Proof:</strong> <span class="math display">\[
+\begin{aligned}
+\mathbf{F} &amp;= I \oint (d\mathbf{l} \times \mathbf{B}) &amp;&amp; \text{\scriptsize integrating the magnetic force around the loop} \\
+&amp;= I \left( \oint d\mathbf{l} \right) \times \mathbf{B} &amp;&amp; \text{\scriptsize pulling the constant } \mathbf{B} \text{ outside the integral} \\
+&amp;= \mathbf{0} &amp;&amp; \text{\scriptsize the net displacement of any closed loop is zero}
+\end{aligned}
+\]</span></p>
+<h4 data-original-heading="B. In a Nonuniform Field" id="b.-in-a-nonuniform-field">6.1.2.4.2 B. In a Nonuniform Field</h4>
+<p>If the external magnetic field is changing (like the fringing field at the end of a solenoid), the field lines have a radial component. This radial component exerts a net force on the loop, pulling it toward regions of stronger field.</p>
+<p><strong>Example: The Fringing Field</strong> Suppose a circular wire ring of radius <span class="math inline">\(R\)</span>, carrying a current <span class="math inline">\(I\)</span>, is suspended above a short solenoid. Because <span class="math inline">\(\mathbf{B}\)</span> flares outward, there is a net downward force on the loop: <span class="math display">\[
+\begin{aligned}
+F &amp;= \underbrace{I (2\pi R)}_{I \times \text{circumference}} B \cos \theta &amp;&amp; \text{\scriptsize Net downward force (Eq. 6.2)}
+\end{aligned}
+\]</span></p>
+<p><strong>The General Formula</strong> We can generalize this for any infinitesimal loop with dipole moment <span class="math inline">\(\mathbf{m}\)</span> in a non-uniform field <span class="math inline">\(\mathbf{B}\)</span>. The exact force is the gradient of the dot product: <span class="math display">\[
+\begin{aligned}
+\mathbf{F} &amp;= \nabla (\underbrace{\mathbf{m} \cdot \mathbf{B}}_{-U}) &amp;&amp; \text{\scriptsize Force as the negative gradient of interaction energy}
+\end{aligned}
+\]</span> &gt; [!remark] &gt; Just as in electrostatics where <span class="math inline">\(\mathbf{F} = \nabla(\mathbf{p} \cdot \mathbf{E})\)</span>, the magnetic formula tells us that the dipole seeks out the region of lowest potential energy (where <span class="math inline">\(\mathbf{m}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are parallel and <span class="math inline">\(\mathbf{B}\)</span> is strongest).</p>
+<p>For an infinitesimal loop with dipole moment <span class="math inline">\(\mathbf{m}\)</span>, the exact force is: &gt; [!definition] Force on a Dipole &gt; <span class="math display">\[\boxed{\mathbf{F} = \nabla(\mathbf{m} \cdot \mathbf{B})}\]</span> &gt; Again, this perfectly mirrors the electrical formula: <span class="math inline">\(\mathbf{F} = \nabla(\mathbf{p} \cdot \mathbf{E})\)</span>.</p>
+<h3 data-original-heading="4. The Two Models Warning: Gilbert vs.&nbsp;Ampère" id="the-two-models-warning-gilbert-vs.-ampère">4. The “Two Models” Warning: Gilbert vs.&nbsp;Ampère</h3>
+<p>Because the formulas for magnetic dipoles (<span class="math inline">\(\mathbf{m}\)</span>) so perfectly match those for electric dipoles (<span class="math inline">\(\mathbf{p}\)</span>), early physicists developed a model of magnetism that assumed it worked exactly like electricity.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">The Physical Picture</th>
+<th style="text-align: left;">Griffiths’ Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>The Gilbert Model</strong></td>
+<td style="text-align: left;">Magnetic dipoles are made of positive and negative “magnetic charges” (North and South poles) separated by a distance.</td>
+<td style="text-align: left;"><strong>Bad Physics, but Useful Math.</strong> It yields the correct field far away and the correct torque, but fails completely up close because monopoles don’t exist.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Ampère Model</strong></td>
+<td style="text-align: left;">Magnetism is strictly due to moving electric charges (current loops).</td>
+<td style="text-align: left;"><strong>Physically Correct.</strong> If you break a magnet, you just get two smaller current loops, not isolated poles.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Griffiths’ Advice:</strong> You can use the Gilbert model to get a quick intuitive “feel” for a problem by swapping <span class="math inline">\(\mathbf{p} \to \mathbf{m}\)</span>, <span class="math inline">\(1/\epsilon_0 \to \mu_0\)</span>, and <span class="math inline">\(\mathbf{E} \to \mathbf{B}\)</span>. But <strong>never rely on it for quantitative results</strong> when dealing with the close-up features of a dipole, because the two models yield strikingly different answers at the origin.</p>
+<h2 data-original-heading="6.1.3 Effect of a Magnetic Field on Atomic Orbits" id="effect-of-a-magnetic-field-on-atomic-orbits">6.1.3 Effect of a Magnetic Field on Atomic Orbits</h2>
+<p>While electrons have intrinsic <strong>spin</strong>, they also <strong>revolve</strong> around the nucleus. This orbital motion creates a second contribution to the magnetic properties of matter, known as <strong>diamagnetism</strong>.</p>
+<h3 data-original-heading="1. The Orbital Dipole Moment" id="the-orbital-dipole-moment">1. The Orbital Dipole Moment</h3>
+<p>For an electron revolving in a circle of radius <span class="math inline">\(R\)</span> with speed <span class="math inline">\(v\)</span>, the period is <span class="math inline">\(T = 2\pi R / v\)</span>. This constitutes a steady current <span class="math inline">\(I = -e/T\)</span>.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Orbital Dipole Moment</span></p>
+</div>
+<div class="theorem-content">
+<p>The magnetic dipole moment associated with this orbit is: <span class="math display">\[\mathbf{m} = I\mathbf{a} = \left( -\frac{ev}{2\pi R} \right) \pi R^2 \hat{\mathbf{z}} = \boxed{-\frac{1}{2}evR\hat{\mathbf{z}}}\]</span></p>
+</div>
+</div>
+<h3 data-original-heading="2. The Mechanism of Diamagnetism" id="the-mechanism-of-diamagnetism">2. The Mechanism of Diamagnetism</h3>
+<p>When an external magnetic field <span class="math inline">\(\mathbf{B}\)</span> is turned on, it exerts an additional force <span class="math inline">\(-e(\mathbf{v} \times \mathbf{B})\)</span> on the electron. This force doesn’t change the radius of the orbit (in this simplified classical model) but it <strong>changes the speed</strong> of the electron.</p>
+<p><strong>Derivation of the change in speed (<span class="math inline">\(\Delta v\)</span>):</strong> Suppose <span class="math inline">\(\mathbf{B}\)</span> is perpendicular to the plane of the orbit. The centripetal acceleration must now be sustained by both electrical and magnetic forces: <span class="math display">\[
+\begin{aligned}
+\frac{1}{4\pi\epsilon_0}\frac{e^2}{R^2} + e\bar{v}B &amp;= m_e \frac{\bar{v}^2}{R} &amp;&amp; \text{\scriptsize new force balance with magnetic field on} \\
+\underbrace{m_e \frac{v^2}{R}}_{F_{elec}} + e\bar{v}B &amp;= m_e \frac{\bar{v}^2}{R} &amp;&amp; \text{\scriptsize substituting the original orbital condition} \\
+e\bar{v}B &amp;= \frac{m_e}{R}(\bar{v}^2 - v^2) &amp;&amp; \text{\scriptsize rearranging to isolate the change} \\
+e\bar{v}B &amp;= \frac{m_e}{R}(\bar{v} + v)(\bar{v} - v) &amp;&amp; \text{\scriptsize factoring the difference of squares} 
+\end{aligned}
+\]</span></p>
+<p>Assuming the change <span class="math inline">\(\Delta v = \bar{v} - v\)</span> is small, we let <span class="math inline">\(\bar{v} \approx v\)</span>: <span class="math display">\[
+\begin{aligned}
+e v B &amp;\approx \frac{m_e}{R}(2v)\Delta v &amp;&amp; \text{\scriptsize applying the small-change approximation} \\
+\Delta v &amp;= \frac{eRB}{2m_e} &amp;&amp; \text{\scriptsize solving for the speed increment (Eq. 6.7)}
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="3. The Induced Dipole Moment" id="the-induced-dipole-moment">3. The Induced Dipole Moment</h3>
+<p>The change in speed leads directly to a change in the dipole moment: <span class="math display">\[
+\begin{aligned}
+\Delta \mathbf{m} &amp;= -\frac{1}{2}e(\Delta v)R\hat{\mathbf{z}} &amp;&amp; \text{\scriptsize from the definition of orbital moment} \\
+&amp;= -\frac{1}{2}e\left( \frac{eRB}{2m_e} \right)R\hat{\mathbf{z}} &amp;&amp; \text{\scriptsize substituting } \Delta v \\
+&amp;= \boxed{-\frac{e^2 R^2}{4m_e} \mathbf{B}} &amp;&amp; \text{\scriptsize (Eq. 6.8)}
+\end{aligned}
+\]</span></p>
+<div class="math-theorem important" data-callout="important">
+<div class="theorem-header">
+<p><span class="theorem-badge">Important</span><span class="theorem-title">The Core Principle of Diamagnetism</span></p>
+</div>
+<div class="theorem-content">
+<p>The change in dipole moment <span class="math inline">\(\Delta \mathbf{m}\)</span> is always <strong>opposite</strong> to the direction of <span class="math inline">\(\mathbf{B}\)</span>. This induced effect is universal to all atoms, but it is typically much weaker than paramagnetism and is only clearly observed in atoms with even numbers of electrons where paramagnetism is absent.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="6.1.4 Magnetization" id="magnetization">6.1.4 Magnetization</h2>
+<p>Now that we have analyzed the two microscopic mechanisms (spin alignment for paramagnetism and orbital speed changes for diamagnetism), we need a macroscopic variable to describe the state of magnetic polarization in a chunk of matter.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Magnetization (<span class="math inline">\(\mathbf{M}\)</span>)</span></p>
+</div>
+<div class="theorem-content">
+<p>Magnetization is defined as the magnetic dipole moment per unit volume: <span class="math display">\[\boxed{\mathbf{M} \equiv \frac{d\mathbf{m}}{d\tau}}\]</span></p>
+<ul>
+<li><strong>Units</strong>: Amperes per meter (A/m).</li>
+<li><strong>Role</strong>: It is the magnetic analog to the polarization <span class="math inline">\(\mathbf{P}\)</span> in electrostatics.</li>
+</ul>
+</div>
+</div>
+<h3 data-original-heading="Summary of Magnetic Effects in Matter" id="summary-of-magnetic-effects-in-matter">6.1.4.1 Summary of Magnetic Effects in Matter</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Effect</th>
+<th style="text-align: left;">Physical Mechanism</th>
+<th style="text-align: left;">Alignment</th>
+<th style="text-align: left;">Strength</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Paramagnetism</strong></td>
+<td style="text-align: left;">Torque on electron spins</td>
+<td style="text-align: left;">Parallel to <span class="math inline">\(\mathbf{B}\)</span></td>
+<td style="text-align: left;">Weak</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Diamagnetism</strong></td>
+<td style="text-align: left;">Change in orbital speeds</td>
+<td style="text-align: left;">Opposite to <span class="math inline">\(\mathbf{B}\)</span></td>
+<td style="text-align: left;">Very Weak</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ferromagnetism</strong></td>
+<td style="text-align: left;">Quantum domain alignment</td>
+<td style="text-align: left;">Parallel (very strong)</td>
+<td style="text-align: left;">Extreme</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Note on Strength</strong>: In a non-uniform field, paramagnets are attracted into the field, while diamagnets are repelled. However, both forces are “pitifully weak” compared to ferromagnets like iron, which can be <span class="math inline">\(10^4\)</span> to <span class="math inline">\(10^5\)</span> times stronger. This is why we can often ignore magnetization when calculating fields for ordinary copper wires.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span>Next page →</span><span>6.2 The Field of a Magnetized</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">6.1 Magnetization</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#diamagnets-paramagnets-ferromagnets" class="is-active" aria-current="location">6.1.1 Diamagnets, Paramagnets, Ferromagnets</a></li><li style="--depth:1"><a href="#classification-of-magnetic-materials">6.1.1.1 Classification of Magnetic Materials</a></li><li style="--depth:0"><a href="#torques-and-forces-on-magnetic-dipoles">6.1.2 Torques and Forces on Magnetic Dipoles</a></li><li style="--depth:1"><a href="#torque-on-a-rectangular-loop">6.1.2.1 Torque on a Rectangular Loop</a></li><li style="--depth:1"><a href="#qualitative-origin-of-paramagnetism">6.1.2.2 Qualitative Origin of Paramagnetism</a></li><li style="--depth:1"><a href="#forces-in-non-uniform-fields">6.1.2.3 Forces in Non-Uniform Fields</a></li><li style="--depth:1"><a href="#force-on-a-magnetic-dipole">3. Force on a Magnetic Dipole</a></li><li style="--depth:2"><a href="#a.-in-a-uniform-field">6.1.2.4.1 A. In a Uniform Field</a></li><li style="--depth:2"><a href="#b.-in-a-nonuniform-field">6.1.2.4.2 B. In a Nonuniform Field</a></li><li style="--depth:1"><a href="#the-two-models-warning-gilbert-vs.-amp%C3%A8re">4. The Two Models Warning: Gilbert vs. Ampère</a></li><li style="--depth:0"><a href="#effect-of-a-magnetic-field-on-atomic-orbits">6.1.3 Effect of a Magnetic Field on Atomic Orbits</a></li><li style="--depth:1"><a href="#the-orbital-dipole-moment">1. The Orbital Dipole Moment</a></li><li style="--depth:1"><a href="#the-mechanism-of-diamagnetism">2. The Mechanism of Diamagnetism</a></li><li style="--depth:1"><a href="#the-induced-dipole-moment">3. The Induced Dipole Moment</a></li><li style="--depth:0"><a href="#magnetization">6.1.4 Magnetization</a></li><li style="--depth:1"><a href="#summary-of-magnetic-effects-in-matter">6.1.4.1 Summary of Magnetic Effects in Matter</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

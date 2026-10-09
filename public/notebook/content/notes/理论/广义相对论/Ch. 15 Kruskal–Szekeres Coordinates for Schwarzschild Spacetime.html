@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime — E.H. Notebook</title>
+<meta name="description" content="1. Motivation: curing the fake singularityWe start with the Schwarzschild metric (vacuum, outside a spherical mass M): ds^2 = -\left(1-\frac{2GM}{r}\right) dt^2 + \left(1">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1. Motivation: curing the fake singularity" id="motivation-curing-the-fake-singularity">1. Motivation: curing the fake singularity</h2>
+<p>We start with the Schwarzschild metric (vacuum, outside a spherical mass <span class="math inline">\(M\)</span>):</p>
+<p><span class="math display">\[
+ds^2
+= -\left(1-\frac{2GM}{r}\right) dt^2
++ \left(1-\frac{2GM}{r}\right)^{-1} dr^2
++ r^2(d\theta^2+\sin^2\theta\,d\phi^2).
+\]</span></p>
+<p>At the Schwarzschild radius <span class="math display">\[
+r = 2GM,
+\]</span> the metric components <span class="math inline">\(g_{tt}\)</span> and <span class="math inline">\(g_{rr}\)</span> blow up or vanish, even though scalar curvature invariants remain finite. This means:</p>
+<p><span class="math display">\[
+\text{pathology at } r=2GM
+\quad\text{is due to coordinates, not geometry.}
+\]</span></p>
+<p>Goal: construct new coordinates that</p>
+<ol type="1">
+<li>describe the same spacetime,</li>
+<li>are regular at <span class="math inline">\(r=2GM\)</span>,</li>
+<li>make causal structure (light cones, horizons) transparent.</li>
+</ol>
+<p>Kruskal–Szekeres (KS) coordinates achieve this.</p>
+<hr>
+<h2 data-original-heading="2. Defining Kruskal–Szekeres coordinates" id="defining-kruskalszekeres-coordinates">2. Defining Kruskal–Szekeres coordinates</h2>
+<p>We introduce coordinates <span class="math inline">\((u,v)\)</span> by (the text’s eq. 15.8):</p>
+<p><span class="math display">\[
+\begin{aligned}
+u^2 - v^2 &amp;= \left(\frac{r}{2GM} - 1\right) e^{r/2GM},\\[4pt]
+t &amp;= 2GM \ln\left|\frac{u+v}{u-v}\right|.
+\end{aligned}
+\tag{KS-def}
+\]</span></p>
+<p>Here <span class="math inline">\(r=r(u,v)\)</span> is defined implicitly by the first equation. These transformations are designed so that:</p>
+<ul>
+<li><span class="math inline">\(r=2GM\)</span> becomes <span class="math inline">\(u^2 - v^2 = 0\)</span> — <strong>smooth null lines</strong>;</li>
+<li>radial null rays become straight lines <span class="math inline">\(u=\pm v\)</span>;</li>
+<li>the metric becomes regular at the horizon.</li>
+</ul>
+<p>We now derive the KS metric step by step.</p>
+<hr>
+<h2 data-original-heading="3. From (t,r) to (u,v): differential relations" id="from-tr-to-uv-differential-relations">3. From <span class="math inline">\((t,r)\)</span> to <span class="math inline">\((u,v)\)</span>: differential relations</h2>
+<p>We want <span class="math inline">\(dr\)</span> and <span class="math inline">\(dt\)</span> in terms of <span class="math inline">\(du,dv\)</span>, then substitute into the Schwarzschild metric.</p>
+<h3 data-original-heading="3.1 Relation from u^2 - v^2: eq. (15.17) → (15.18)" id="relation-from-u2---v2-eq.-15.17-15.18">3.1 Relation from <span class="math inline">\(u^2 - v^2\)</span>: eq. (15.17) → (15.18)</h3>
+<p>Start with (eq. 15.17):</p>
+<p><span class="math display">\[
+u^2 - v^2 = \left(\frac{r}{2GM} - 1\right) e^{r/2GM}
+\tag{15.17}
+\]</span></p>
+<p>Take differentials of both sides.</p>
+<p>Left-hand side: <span class="math display">\[
+d(u^2 - v^2)
+= 2u\,du - 2v\,dv
+= 2(u\,du - v\,dv)
+\]</span></p>
+<p>Right-hand side: <span class="math display">\[
+f(r) := \left(\frac{r}{2GM} - 1\right) e^{r/2GM}
+\]</span></p>
+<p>Using the product rule,</p>
+<p><span class="math display">\[
+\begin{aligned}
+f'(r)
+&amp;= \frac{1}{2GM}e^{r/2GM}\left(\frac{r}{2GM}-1\right)
++ e^{r/2GM}\frac{1}{2GM} \\[4pt]
+&amp;= \frac{e^{r/2GM}}{2GM}
+\underbrace{\left(\frac{r}{2GM}-1+1\right)}_{=\,\frac{r}{2GM}}
+= e^{r/2GM} \frac{r}{4G^2M^2}.
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+2(u\,du - v\,dv) = f'(r)\,dr
+= \frac{r}{4G^2M^2} e^{r/2GM} dr.
+\]</span></p>
+<p>Solve for <span class="math inline">\(dr\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+dr
+&amp;= \frac{8(GM)^2}{r} e^{-r/2GM} (u\,du - v\,dv)
+\end{aligned}
+\tag{15.18}
+\]</span></p>
+<blockquote>
+<p><strong>Exercise 15.4.1 (checked).</strong><br>
+The computation above verifies equation (15.18).</p>
+</blockquote>
+<p>We’ll reuse the compact notation <span class="math display">\[
+\boxed{dr
+= \frac{8(GM)^2}{r} e^{-r/2GM} (u\,du - v\,dv)}
+\]</span></p>
+<hr>
+<h3 data-original-heading="3.2 Relation from t(u,v): handling the absolute values" id="relation-from-tuv-handling-the-absolute-values">3.2 Relation from <span class="math inline">\(t(u,v)\)</span>: handling the absolute values</h3>
+<p>From (KS-def),</p>
+<p><span class="math display">\[
+t = 2GM\ln\left|\frac{u+v}{u-v}\right|
+= 2GM\ln|u+v| - 2GM\ln|u-v|
+\tag{15.19}
+\]</span></p>
+<p>Because of absolute values, there are four sign cases (as in the text), but <strong>the differential</strong> <span class="math inline">\(dt\)</span> is the same in all of them. For any choice of signs <span class="math inline">\(\sigma_1,\sigma_2=\pm1\)</span>,</p>
+<p><span class="math display">\[
+t 
+= 2GM\ln(\sigma_1(u+v)) - 2GM\ln(\sigma_2(u-v))
+\]</span></p>
+<p>and differentiating:</p>
+<p><span class="math display">\[
+dt
+= 2GM\left(\frac{du+dv}{u+v} - \frac{du-dv}{u-v}\right).
+\tag{15.20}
+\]</span></p>
+<p>The <span class="math inline">\(\sigma_i\)</span> cancel because <span class="math inline">\(d\ln(\sigma x) = dx/x\)</span>.</p>
+<blockquote>
+<p><strong>Exercise 15.4.2 (idea).</strong><br>
+Pick any sign case explicitly (e.g.&nbsp;<span class="math inline">\(u+v&gt;0,\,u-v&lt;0\)</span>) and repeat the derivative; you get (15.20). The same happens in all four cases, confirming that (15.20) is globally valid.</p>
+</blockquote>
+<p>We now massage (15.20) into a more symmetric form.</p>
+<hr>
+<h3 data-original-heading="3.3 Symmetric form of dt: equation (15.21)" id="symmetric-form-of-dt-equation-15.21">3.3 Symmetric form of <span class="math inline">\(dt\)</span>: equation (15.21)</h3>
+<p>Start from (15.20):</p>
+<p><span class="math display">\[
+dt
+= 2GM\left(\frac{du+dv}{u+v} - \frac{du-dv}{u-v}\right).
+\]</span></p>
+<p>Put over a common denominator <span class="math inline">\(u^2 - v^2\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+dt
+&amp;= 2GM\,
+\frac{(u-v)(du+dv) - (u+v)(du-dv)}{u^2 - v^2}.
+\end{aligned}
+\]</span></p>
+<p>Compute the numerator carefully:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(u-v)(du+dv) &amp;= u\,du + u\,dv - v\,du - v\,dv,\\
+(u+v)(du-dv) &amp;= u\,du - u\,dv + v\,du - v\,dv.
+\end{aligned}
+\]</span></p>
+<p>Subtract:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(u-v)(du+dv) - (u+v)(du-dv)
+&amp;= 2(u\,dv - v\,du).
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+\begin{aligned}
+dt
+&amp;= 2GM \cdot \frac{2(u\,dv - v\,du)}{u^2 - v^2}
+= \frac{4GM}{u^2 - v^2} (u\,dv - v\,du).
+\end{aligned}
+\]</span></p>
+<p>Now use eq. (15.17), <span class="math display">\[
+u^2 - v^2 = \left(\frac{r}{2GM} - 1\right)e^{r/2GM},
+\]</span> to rewrite:</p>
+<p><span class="math display">\[
+\boxed{
+dt
+= \frac{4GM\,e^{-r/2GM}}{\frac{r}{2GM} - 1}\,(u\,dv - v\,du).
+}
+\tag{15.21}
+\]</span></p>
+<p>This is the form we’ll plug into the metric.</p>
+<hr>
+<h2 data-original-heading="4. Constructing the Kruskal–Szekeres metric" id="constructing-the-kruskalszekeres-metric">4. Constructing the Kruskal–Szekeres metric</h2>
+<p>We now transform the <span class="math inline">\(t\)</span>-<span class="math inline">\(r\)</span> sector of the Schwarzschild metric:</p>
+<p><span class="math display">\[
+ds^2_{(t,r)}
+= -\left(1-\frac{2GM}{r}\right) dt^2
++ \left(1-\frac{2GM}{r}\right)^{-1} dr^2.
+\]</span></p>
+<p>For compactness, define</p>
+<p><span class="math display">\[
+A := 8(GM)^2 e^{-r/2GM}.
+\]</span></p>
+<p>Then from (15.18) and (15.21):</p>
+<p><span class="math display">\[
+\begin{aligned}
+dr &amp;= \frac{A}{r} (u\,du - v\,dv),\\[4pt]
+dt &amp;= \frac{A}{r-2GM} (u\,dv - v\,du),
+\end{aligned}
+\]</span> since <span class="math display">\[\frac{4GM\,e^{-r/2GM}}{\frac{r}{2GM}-1}
+= \frac{8(GM)^2 e^{-r/2GM}}{r-2GM} = \frac{A}{r-2GM}\]</span></p>
+<h3 data-original-heading="4.1 Substitute and simplify (Exercise 15.4.3)" id="substitute-and-simplify-exercise-15.4.3">4.1 Substitute and simplify (Exercise 15.4.3)</h3>
+<p>Use <span class="math inline">\(1-\frac{2GM}{r} = \frac{r-2GM}{r}\)</span>, the <strong>First term</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+-\left(1-\frac{2GM}{r}\right) dt^2
+&amp;= -\frac{r-2GM}{r}
+\left[\frac{A}{r-2GM}\right]^2 (u\,dv - v\,du)^2\\[4pt]
+&amp;= -\frac{A^2}{r(r-2GM)} (u\,dv - v\,du)^2.
+\end{aligned}
+\]</span> <strong>Second term</strong> <span class="math display">\[
+\begin{aligned}
+\left(1-\frac{2GM}{r}\right)^{-1} dr^2
+&amp;= \frac{r}{r-2GM}
+\left[\frac{A}{r}\right]^2 (u\,du - v\,dv)^2\\[4pt]
+&amp;= \frac{A^2}{r(r-2GM)} (u\,du - v\,dv)^2
+\end{aligned}\]</span></p>
+<p>Add them: <span class="math display">\[
+\begin{aligned}
+ds^2_{(t,r)}
+&amp;= \frac{A^2}{r(r-2GM)}
+\left[(u\,du - v\,dv)^2 - (u\,dv - v\,du)^2\right].
+\end{aligned}
+\]</span></p>
+<p>Now simplify the bracket:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(u\,du - v\,dv)^2 - (u\,dv - v\,du)^2
+&amp;= (u^2 - v^2)(du^2 - dv^2)\\
+&amp;= -(u^2 - v^2)(dv^2 - du^2).
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+ds^2_{(t,r)}
+= -\frac{A^2}{r(r-2GM)}
+\,(u^2 - v^2)\,(dv^2 - du^2).
+\]</span></p>
+<p>Insert <span class="math display">\[u^2 - v^2 = \left(\frac{r}{2GM} - 1\right)e^{r/2GM}= \frac{r-2GM}{2GM} e^{r/2GM}\]</span></p>
+<p>and <span class="math inline">\(A^2 = 64(GM)^4 e^{-r/GM}\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+ds^2_{(t,r)}
+&amp;= -\frac{64(GM)^4 e^{-r/GM}}{r(r-2GM)}
+\cdot \frac{r-2GM}{2GM} e^{r/2GM} (dv^2 - du^2)\\[4pt]
+&amp;= -\frac{32(GM)^3}{r} e^{-r/2GM} (dv^2 - du^2).
+\end{aligned}
+\tag{15.22}
+\]</span></p>
+<blockquote>
+<p><strong>Exercise 15.4.3 (done).</strong><br>
+The algebra above verifies equation (15.22).</p>
+</blockquote>
+<p>Finally, restore the angular part <span class="math inline">\(r^2 d\Omega^2\)</span> (which is unchanged because <span class="math inline">\(\theta,\phi\)</span> are the same):</p>
+<p><span class="math display">\[
+\boxed{
+ds^2
+= -\frac{32(GM)^3}{r} e^{-r/2GM}(dv^2 - du^2)
++ r^2\left(d\theta^2+\sin^2\theta\,d\phi^2\right),
+}
+\tag{15.9}
+\]</span> with <span class="math inline">\(r=r(u,v)\)</span> implicitly via (15.17).</p>
+<p>This is the <strong>Kruskal–Szekeres metric</strong>.</p>
+<hr>
+<h2 data-original-heading="5. Geometric meaning and KS diagram (quick guide)" id="geometric-meaning-and-ks-diagram-quick-guide">5. Geometric meaning and KS diagram (quick guide)</h2>
+<p>Using the KS metric:</p>
+<ol type="1">
+<li><p><strong>No coordinate singularity at <span class="math inline">\(r=2GM\)</span>.</strong></p>
+<p>At <span class="math inline">\(r=2GM\)</span>, the prefactor <span class="math inline">\(\frac{32(GM)^3}{r} e^{-r/2GM}\)</span> is finite and nonzero. The horizon is described by straight null lines <span class="math display">\[
+u = \pm v \quad\Longleftrightarrow\quad u^2 - v^2 = 0.
+\]</span></p></li>
+<li><p><strong>Radial null geodesics.</strong></p>
+<p>For purely radial photons, <span class="math inline">\(d\theta = d\phi=0\)</span> and <span class="math inline">\(ds^2=0\)</span> give</p></li>
+</ol>
+<p><span class="math display">\[
+dv^2 - du^2 = 0
+   \quad\Rightarrow\quad
+   du = \pm dv.
+\]</span></p>
+<p>So light rays are straight lines of slope <span class="math inline">\(\pm 1\)</span> in the <span class="math inline">\((u,v)\)</span> plane: light cones look <strong>Minkowskian</strong>, which is the entire point.</p>
+<ol start="3" type="1">
+<li><p><strong>Massive particles.</strong></p>
+<p>Timelike condition <span class="math inline">\(ds^2&lt;0\)</span> implies</p></li>
+</ol>
+<p><span class="math display">\[
+dv^2 &gt; du^2
+   \quad\Rightarrow\quad
+   |dv/du| &gt; 1.
+\]</span></p>
+<p>Worldlines of massive particles are steeper than the null lines, as in flat spacetime diagrams.</p>
+<ol start="4" type="1">
+<li><p><strong>Lines of constant <span class="math inline">\(r\)</span>.</strong></p>
+<p>From (15.17),</p></li>
+</ol>
+<p><span class="math display">\[
+u^2 - v^2 = \left(\frac{r}{2GM} - 1\right)e^{r/2GM}
+   = \text{const},
+\]</span></p>
+<p>so fixed <span class="math inline">\(r&gt;2GM\)</span> are hyperbolae in the <span class="math inline">\((u,v)\)</span> plane.<br>
+The event horizon <span class="math inline">\(r=2GM\)</span> is the pair of lines <span class="math inline">\(u=\pm v\)</span>.</p>
+<ol start="5" type="1">
+<li><p><strong>Lines of constant <span class="math inline">\(t\)</span>.</strong></p>
+<p>From (15.20), curves of constant <span class="math inline">\(t\)</span> satisfy</p></li>
+</ol>
+<p><span class="math display">\[
+\frac{t}{2GM}
+   = \ln\left|\frac{u+v}{u-v}\right|
+   = \text{const}.
+\]</span></p>
+<p>One can show that these are straight lines <span class="math inline">\(u=\pm a v\)</span> with fixed slope <span class="math inline">\(a\)</span>, as in eq. (15.10).</p>
+<hr>
+<h2 data-original-heading="6. Summary (conceptual)" id="summary-conceptual">6. Summary (conceptual)</h2>
+<ul>
+<li>Schwarzschild coordinates hide the true global structure behind a fake singularity at <span class="math inline">\(r=2GM\)</span>.</li>
+<li>Kruskal–Szekeres coordinates <span class="math inline">\((u,v)\)</span> are constructed so that:
+<ul>
+<li>the metric is finite at <span class="math inline">\(r=2GM\)</span>,</li>
+<li>radial null geodesics are straight at <span class="math inline">\(45^\circ\)</span>,</li>
+<li>the full extended geometry (black hole + white hole + two exteriors) can be drawn on a single diagram.</li>
+</ul></li>
+<li>The derivation hinges on: <span class="math display">\[
+\underbrace{u^2 - v^2 = \left(\frac{r}{2GM} -1\right)e^{r/2GM}}_{\text{encodes }r}
+\quad\text{and}\quad
+\underbrace{t = 2GM \ln\left|\frac{u+v}{u-v}\right|}_{\text{encodes }t},
+\]</span> followed by clean differential transformations (Exercises 15.4.1–15.4.3).</li>
+</ul>
+<p>Kruskal–Szekeres coordinates are not about changing physics; they are about <strong>revealing</strong> it by stripping away a bad choice of coordinates and letting the causal structure stand in plain sight.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span>← Previous page</span><span>Ch. 14 — Event Horizon</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span>Next page →</span><span>Ch. 16 Black Hole Thermodynamics</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#motivation-curing-the-fake-singularity" class="is-active" aria-current="location">1. Motivation: curing the fake singularity</a></li><li style="--depth:0"><a href="#defining-kruskalszekeres-coordinates">2. Defining Kruskal–Szekeres coordinates</a></li><li style="--depth:0"><a href="#from-tr-to-uv-differential-relations">3. From (t,r) to (u,v): differential relations</a></li><li style="--depth:1"><a href="#relation-from-u2---v2-eq.-15.17-15.18">3.1 Relation from u^2 - v^2: eq. (15.17) → (15.18)</a></li><li style="--depth:1"><a href="#relation-from-tuv-handling-the-absolute-values">3.2 Relation from t(u,v): handling the absolute values</a></li><li style="--depth:1"><a href="#symmetric-form-of-dt-equation-15.21">3.3 Symmetric form of dt: equation (15.21)</a></li><li style="--depth:0"><a href="#constructing-the-kruskalszekeres-metric">4. Constructing the Kruskal–Szekeres metric</a></li><li style="--depth:1"><a href="#substitute-and-simplify-exercise-15.4.3">4.1 Substitute and simplify (Exercise 15.4.3)</a></li><li style="--depth:0"><a href="#geometric-meaning-and-ks-diagram-quick-guide">5. Geometric meaning and KS diagram (quick guide)</a></li><li style="--depth:0"><a href="#summary-conceptual">6. Summary (conceptual)</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

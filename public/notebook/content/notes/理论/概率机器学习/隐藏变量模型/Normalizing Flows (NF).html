@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Normalizing Flows (NF) — E.H. Notebook</title>
+<meta name="description" content="1 Change of Variable Theorem1.1 CoV TheoremWe want to push the distribution from z\to x and compute the density of a transformed variable. Let x = f_\theta(z), and z = f_">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/index.html">隐藏变量模型</a></nav><h1 id="reader-title">Normalizing Flows (NF)</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1 Change of Variable Theorem" id="change-of-variable-theorem">1 Change of Variable Theorem</h2>
+<h3 data-original-heading="1.1 CoV Theorem" id="cov-theorem">1.1 CoV Theorem</h3>
+<p>We want to push the distribution from <span class="math inline">\(z\to x\)</span> and compute the <strong>density</strong> of a transformed variable. Let <span class="math inline">\(x = f_\theta(z)\)</span>, and <span class="math inline">\(z = f_\theta^{-1}(x)\)</span>, then the density transforms as: <span class="math display">\[
+\begin{aligned}
+p_X(x;\theta)
+&amp;=
+\underbrace{p_Z\big(f_\theta^{-1}(x)\big)}_{\substack{\text{density of the latent }z=f_\theta^{-1}(x)\\\text{(under the prior)}}}
+\;\cdot\;
+\underbrace{\Bigl|\det\frac{\partial f_\theta^{-1}(x)}{\partial x}\Bigr|}_{\substack{\text{Jacobian det }\text{of the inverse }f_\theta^{-1}}}
+\end{aligned}
+\]</span> Together, they define the density of <span class="math inline">\(x\)</span> under the flow.</p>
+<h4 data-original-heading="1.1.1 One-dimentaionl special case:" id="one-dimentaionl-special-case">1.1.1 <strong>One-dimentaionl special case:</strong></h4>
+<p>For 1D case, the determinant vanishes: <span class="math display">\[
+  p_X(x;\theta) = p_Z(f_\theta^{-1}(x)) \cdot \Big|\frac{d}{dx} f_\theta^{-1}(x)\Big|
+  \]</span></p>
+<p>## 1.2 Comparing Base vs.&nbsp;Transformed Distributions</p>
+<p>We start with a simple base distribution: <span class="math display">\[z \sim {N}(0,1)\]</span> and apply a linear invertible transformation <span class="math inline">\(x\to z\)</span>, where <span class="math display">\[x = f(z) = 2z + 3\]</span> By the Change of Variables Theorem: <span class="math display">\[
+p_X(x) = p_Z(f^{-1}(x)) \cdot \left|\frac{d}{dx} f^{-1}(x)\right|
+\]</span> we now plot <strong>both distributions</strong> to see how the transformation shifts and stretches the density.</p>
+<h4 data-original-heading="1.2.1 Change of Variables: Intuition" id="change-of-variables-intuition">1.2.1 Change of Variables: Intuition</h4>
+<p>Suppose the transformation:<br>
+<span class="math display">\[
+  x = \exp(z), \quad z = \ln(x), \quad x &gt; 0
+  \]</span></p>
+<p>with base distribution <span class="math inline">\(z \sim {N}(0,1)\)</span>. By the change of variables theorem:<br>
+<span class="math display">\[
+\begin{align} 
+p_X(x)  &amp; = p_Z(\ln(x)) \cdot \Big|\frac{d}{dx}\ln(x)\Big| \\
+&amp; =  p_Z(\ln(x))\cdot \frac{1}{x}
+\end{align}
+\]</span></p>
+<p>This produces a <strong>log-normal distribution</strong> for <span class="math inline">\(x\)</span>.</p>
+<h2 data-original-heading="2 Jacobian Determinant and General Functions" id="jacobian-determinant-and-general-functions">2 Jacobian Determinant and General Functions</h2>
+<h3 data-original-heading="2.1 Linear Case" id="linear-case">2.1 Linear Case</h3>
+<p>For a linear map <span class="math inline">\(f(x) = Jx\)</span>, the Jacobian is the constant matrix <span class="math inline">\(J\)</span>:</p>
+<p><span class="math display">\[
+J =
+\begin{bmatrix}
+3 &amp; 1 \\
+0 &amp; 2
+\end{bmatrix},
+\qquad
+\det(J) = 6.
+\]</span></p>
+<ul>
+<li>Every region in <span class="math inline">\(\mathbb{R}^2\)</span> is <em>stretched</em> in area by a factor <span class="math inline">\(\det(J)=6\)</span>.</li>
+<li>Mass is <em>preserved</em> during Jacobian transformation</li>
+</ul>
+<h3 data-original-heading="2.2 General Nonlinear Function" id="general-nonlinear-function">2.2 General Nonlinear Function</h3>
+<p>For a smooth function <span class="math inline">\(f:\mathbb{R}^d \to \mathbb{R}^d\)</span>, around a point <span class="math inline">\(x_0\)</span> we use the first-order Taylor expansion: <span class="math display">\[
+f(x) \;\approx\; f(x_0) + J_f(x_0)(x - x_0)
+\]</span> where <span class="math inline">\(J_f(x_0)\)</span> is the <strong>Jacobian matrix</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\(x_0\)</span>.</p>
+<ul>
+<li><span class="math inline">\(J_f(x_0)\)</span> is the local linear approximation of <span class="math inline">\(f\)</span>.<br>
+</li>
+<li><span class="math inline">\(\det J_f(x_0)\)</span> measures how <span class="math inline">\(f\)</span> locally <strong>stretches</strong> <span class="math inline">\((&gt;1\)</span>) or<br>
+<strong>compresses</strong> (<span class="math inline">\(&lt;1\)</span>) volumes near <span class="math inline">\(x_0\)</span>.<br>
+</li>
+<li>If <span class="math inline">\(\det J_f(x_0) = 0\)</span>, the map is not locally invertible.</li>
+</ul>
+<h3 data-original-heading="2.3 Change of Variables" id="change-of-variables">2.3 Change of Variables</h3>
+<div class="math-theorem theorem" data-callout="theorem" data-label="2.3.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 2.3.1</span><span class="theorem-title">Change of Variables</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(z \sim p_Z(z)\)</span> and <span class="math inline">\(x = f(z)\)</span>, then <span class="math display">\[
+p_X(x) = p_Z(f^{-1}(x)) \cdot \left|\det J_{f^{-1}}(x)\right|
+\]</span></p>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\det J_f &gt; 1\)</span>: spreads probability mass (expansion).<br>
+</li>
+<li><span class="math inline">\(0 &lt; \det J_f &lt; 1\)</span>: concentrates probability mass (compression).<br>
+</li>
+<li><span class="math inline">\(\det J_f = 0\)</span>: collapses space → (not a valid density).</li>
+</ul>
+<h2 data-original-heading="3 Interpreting the Jacobian Determinant in Probability" id="interpreting-the-jacobian-determinant-in-probability">3 Interpreting the Jacobian Determinant in Probability</h2>
+<p>The determinant of the Jacobian tells us <strong>how volumes are scaled locally</strong> by the transformation <span class="math inline">\(f\)</span>. Since probability mass is preserved under transformation:</p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="3.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 3.1</span><span class="theorem-title">probability mass conservation</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[
+\quad p_Z(z)\,dz = p_X(x)\,dx
+\]</span></p>
+</div>
+</div>
+<p>the density <span class="math inline">\(p_X(x)\)</span> must adjust according to the Jacobian determinant. ## 3.1 Geometric Meaning</p>
+<p>The <span class="math inline">\(\det J_f(x)\)</span> is the <strong>local volume scaling factor</strong>:</p>
+<ul>
+<li>If <span class="math inline">\(\det J_f(x) = 2\)</span>: a small region <em>doubles</em> in volume.<br>
+</li>
+<li>If <span class="math inline">\(\det J_f(x) = 0.5\)</span>: a small region <em>shrinks</em> to half the volume.<br>
+</li>
+<li>If <span class="math inline">\(\det J_f(x) = 0\)</span>: the region <em>collapses</em> to lower dimension (area/volume = 0)</li>
+</ul>
+<h3 data-original-heading="3.2 Effect on Probability Densities" id="effect-on-probability-densities">3.2 Effect on Probability Densities</h3>
+<p><span class="math display">\[
+\begin{align}
+|\det J_f| &gt; 1: \;\quad\text{expansion} →\qquad\; \text{stretch space} &amp; → \text{density thins out}  \\
+0 &lt; |\det J_f| &lt; 1: \;\text{compression} →\qquad \text{squeeze space}  &amp; → \text{density thickens} \\ 
+|\det J_f| = 0: \;\qquad\text{collapse} → \text{a lower dimension}  &amp; → \text{no density defined}
+\end{align}
+\]</span></p>
+<h3 data-original-heading="3.3 Example" id="example">3.3 Example</h3>
+<ol type="1">
+<li><span class="math inline">\(z \sim {N}(0,1)\)</span>.<br>
+</li>
+<li>Transform <span class="math inline">\(x = 2z\)</span>:
+<ul>
+<li><span class="math inline">\(\det J_f = 2\)</span>.<br>
+</li>
+<li>Distribution is wider and shorter (spread out).</li>
+</ul></li>
+<li>Transform <span class="math inline">\(x = 0.5z\)</span>:
+<ul>
+<li><span class="math inline">\(\det J_f = 0.5\)</span>.<br>
+</li>
+<li>Distribution is narrower and taller (more concentrated).</li>
+</ul></li>
+</ol>
+<h2 data-original-heading="4 Normalizing Flows" id="normalizing-flows">4 Normalizing Flows</h2>
+<p><strong>Definition:</strong> A Normalizing Flow is a sequence of <span class="math inline">\(K\)</span> invertible transformations: <span class="math display">\[
+\begin{align}
+f = f_K \circ f_{K-1} \circ \cdots \circ f_2 \circ f_1
+\end{align}
+\]</span> and the jacobian reads: <span class="math display">\[
+\begin{align}
+J_{f}(z) &amp; =J_{f_{k}}(z_{k-1})J_{f_{k-1}}(z_{k-2})\dots J_{1}(z_{0}) \\ \\
+ \Longrightarrow\det J_{f}(z)  &amp;  = \Pi\det (J_{f_{i}}(z_{i-1}))\\ 
+\end{align}
+\]</span> Some of the properties we have are: <span class="math display">\[
+\begin{align}
+ \det J_{f}(z)  &amp; = \frac{1}{\det J_{f^{-1}}}
+\end{align}
+\]</span></p>
+<p><img src="https://lilianweng.github.io/posts/2018-10-13-flow-models/normalizing-flow.png" alt="NF|737x222" loading="lazy" decoding="async"></p>
+<p><strong>Change of Variables (composition):</strong><br>
+If <span class="math inline">\(x = f_\theta(z)\)</span>, then: <span class="math display">\[
+  p_X(x;\theta) = p_Z\!\left(f_\theta^{-1}(x)\right)
+  \prod_{i=1}^K \left| \det \frac{\partial f_i^{-1}}{\partial z_i} \right|
+  \]</span></p>
+<p>Equivalently: <span class="math display">\[
+  p_X(x;\theta) = p_Z\!\left(f_\theta^{-1}(x)\right)
+  \prod_{i=1}^K \left| \det \frac{\partial f_i}{\partial z_{i-1}} \right|^{-1}
+  \]</span></p>
+<ul>
+<li><strong>Log-likelihood form (practical for training):</strong> <span class="math display">\[
+\log p_X(x;\theta)
+= \log p_Z(z_K)
+- \sum_{i=1}^K \log \left| \det \frac{\partial f_i}{\partial z_{i-1}} \right|
+\]</span> where <span class="math inline">\(z_K = f_\theta^{-1}(x)\)</span>.</li>
+</ul>
+<h3 data-original-heading="4.1.1 Lecture notes" id="lecture-notes">4.1.1 Lecture notes</h3>
+<p><span class="math display">\[
+\begin{align}
+y_{2} &amp; =x_{2} \cdot \exp(s(x_{1}))+t(x_{1}) \\
+ x_{2}&amp; =   \frac{y_{2} -t(y_{1})}{ \exp(s(x_{1}))}
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+J_{f} =
+\begin{bmatrix}
+I &amp; 0 \\
+\times &amp; \operatorname{diag}(\exp(s(x_i)))
+\end{bmatrix}
+\]</span> so $$ <span class="math display">\[\begin{align}
+\det J_{f} &amp; =\det I\det(\operatorname{diag}\exp(s(x_{1}))) \\
+ &amp;  = \det(\operatorname{diag} \exp(s(x_{1}))\\ 
+ &amp;  = \Pi^{w_{2}}_{i=1} \exp(s(x_{1})|_{i})
+\end{align}\]</span></p>
+<p>$$ ### 4.1.2 Key Points</p>
+<ul>
+<li>Each transformation <span class="math inline">\(f_i\)</span> must be:
+<ul>
+<li><strong>Invertible</strong></li>
+<li>Have a <strong>tractable Jacobian determinant</strong></li>
+</ul></li>
+<li>The <strong>base distribution</strong> <span class="math inline">\(p_Z\)</span> is usually simple (e.g.&nbsp;standard Gaussian).</li>
+<li>Training maximizes the <strong>exact log-likelihood</strong> of data: <span class="math display">\[
+\max_\theta \sum_{x \in {D}} \log p_X(x;\theta).
+\]</span> # 5 Neural ODEs for Continuous Flows Tutorial</li>
+</ul>
+<hr>
+<h3 data-original-heading="5.1 Background and Intuition" id="background-and-intuition">5.1 Background and Intuition</h3>
+<h4 data-original-heading="5.1.1 Normalizing Flows (NFs)" id="normalizing-flows-nfs">5.1.1 Normalizing Flows (NFs)</h4>
+<ul>
+<li><strong>Goal:</strong> Learn a transformation <span class="math inline">\(f\)</span> that maps a <strong>simple base distribution</strong> (e.g., Gaussian) to a <strong>complicated target distribution</strong>.<br>
+</li>
+<li>Idea: If <span class="math inline">\(z_0 \sim p(z_0)\)</span> and we apply an invertible transformation <span class="math inline">\(z_1 = f(z_0)\)</span>, then the new density is given by the <strong>change of variables formula</strong>: <span class="math display">\[
+\log p(z_1) = \log p(z_0) - \log \left| \det \frac{\partial f}{\partial z_0} \right|
+\]</span></li>
+</ul>
+<h4 data-original-heading="5.1.2 Limitations of Discrete Flows" id="limitations-of-discrete-flows">5.1.2 Limitations of Discrete Flows</h4>
+<ul>
+<li>Each transformation is a <em>step</em>. To build complex distributions, we often stack many transformations.<br>
+</li>
+<li>Computing the Jacobian determinant can be expensive (except for special architectures like coupling layers).</li>
+</ul>
+<h4 data-original-heading="5.1.3 Continuous Normalizing Flows (CNFs)" id="continuous-normalizing-flows-cnfs">5.1.3 Continuous Normalizing Flows (CNFs)</h4>
+<ul>
+<li>Instead of a finite stack, let’s imagine <strong>infinitely many infinitesimal transformations</strong> — this leads to a <strong>differential equation</strong>: <span class="math display">\[
+\frac{dz}{dt} = f_\theta(z(t), t).
+\]</span></li>
+<li>Here, <span class="math inline">\(f_\theta\)</span> is a neural network.<br>
+</li>
+<li>Now, the change in log-density evolves smoothly over time.<br>
+</li>
+<li>Crucial formula (from instantaneous change of variables): <span class="math display">\[
+\frac{d}{dt} \log p(z(t)) = - \text{Tr}\!\left(\frac{\partial f_\theta}{\partial z}\right).
+\]</span></li>
+</ul>
+<p>👉 This means:</p>
+<ul>
+<li>To follow how the density changes, we only need the <strong>trace of the Jacobian</strong> of <span class="math inline">\(f_\theta\)</span>, not the full determinant.<br>
+</li>
+<li>This can be approximated with <strong>Hutchinson’s trick</strong> in high dimensions.</li>
+</ul>
+<hr>
+<h3 data-original-heading="5.2 Intuition with a Picture" id="intuition-with-a-picture">5.2 Intuition with a Picture</h3>
+<p>Imagine you start with a cloud of Gaussian samples.</p>
+<ul>
+<li>As time flows (<span class="math inline">\(t=0 \to 1\)</span>), the neural ODE <strong>“pushes”</strong> each point smoothly along a vector field.<br>
+</li>
+<li>This vector field is learned so that by the end (<span class="math inline">\(t=1\)</span>) the cloud matches the target data distribution.<br>
+</li>
+<li>The flow is smooth, invertible, and volume-preserving <strong>up to the divergence term</strong> (controlled by the Jacobian trace).</li>
+</ul>
+<h2 data-original-heading="6 🌊 Flux, Net Flow, and the Divergence Theorem" id="flux-net-flow-and-the-divergence-theorem">6 🌊 Flux, Net Flow, and the Divergence Theorem</h2>
+<p>Let’s connect the concepts of <strong>flux</strong>, <strong>net flow</strong>, and <strong>probability conservation</strong> using the <strong>divergence theorem</strong> — a key result you’ve already learned in multivariable calculus.</p>
+<hr>
+<h3 data-original-heading="6.1 🔹 1. Local Flow (Flux)" id="local-flow-flux">6.1 🔹 1. Local Flow (Flux)</h3>
+<p>Consider a probability density <span class="math inline">\(p(z,t)\)</span> and a velocity field <span class="math inline">\(f_\theta(z,t)\)</span>.<br>
+The quantity <span class="math display">\[
+p(z,t)\,f_\theta(z,t)
+\]</span> is called the <strong>probability flux</strong> (or flow field).<br>
+It tells you <em>how much probability mass per unit area per unit time</em> is moving <strong>through</strong> each point and in what direction.</p>
+<ul>
+<li><span class="math inline">\(p\)</span> → how much probability is there<br>
+</li>
+<li><span class="math inline">\(f_\theta\)</span> → how fast and in what direction it moves<br>
+→ Together, <span class="math inline">\(p f_\theta\)</span> describes the local <strong>flow rate</strong>.</li>
+</ul>
+<hr>
+<h3 data-original-heading="6.2 🔹 2. Net Flow Across a Region" id="net-flow-across-a-region">6.2 🔹 2. Net Flow Across a Region</h3>
+<p>Now take any fixed region <span class="math inline">\(V\)</span> in space (with boundary surface <span class="math inline">\(\partial V\)</span>).</p>
+<p>We can ask: <em>How much total probability is leaving this region per unit time?</em></p>
+<p>That’s given by the <strong>net outward flux</strong> through the boundary: <span class="math display">\[
+\text{Net outflow from } V
+= \oint_{\partial V} (p f_\theta) \cdot n \, dS,
+\]</span> where:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> is the <strong>unit outward normal</strong> to the surface,<br>
+</li>
+<li><span class="math inline">\((p f_\theta) \cdot n\)</span> is the <strong>outward flow rate per unit area</strong>,<br>
+</li>
+<li>integrating over the boundary adds up all those local flows.</li>
+</ul>
+<p>This surface integral gives the <em>total</em> rate at which probability exits <span class="math inline">\(V\)</span>.</p>
+<hr>
+<h3 data-original-heading="6.3 🔹 3. The Divergence Theorem" id="the-divergence-theorem">6.3 🔹 3. The Divergence Theorem</h3>
+<p>The divergence theorem relates a <strong>surface integral of flux</strong> to a <strong>volume integral of divergence</strong>:</p>
+<p><span class="math display">\[
+\oint_{\partial V} (p f_\theta) \cdot n \, dS
+= \int_V \nabla_z \cdot (p f_\theta) \, dz.
+\]</span></p>
+<p>In words:</p>
+<blockquote>
+<p>The total flow <strong>leaving</strong> a region through its boundary equals the sum of all the <strong>local outflows</strong> (divergences) inside the region.</p>
+</blockquote>
+<h3 data-original-heading="6.4 Recall: Divergence" id="recall-divergence">6.4 Recall: Divergence</h3>
+<p>We denote <span class="math display">\[
+\begin{align}
+\nabla _{z}\cdot(p(f_{\theta})) &amp; =\sum \frac{\partial p(f_{\theta})}{\partial z_{i}} \\
+ &amp; = \left( \frac{\partial}{\partial z_{1}},  \frac{\partial}{\partial z_{2}},\dots \frac{\partial}{\partial z_{k}} \right) \cdot (p(f_{\theta})_{1}, p(f_{\theta})_{2}, \dots,p(f_{\theta})_{k}) \\[6pt]
+ &amp; = \operatorname{tr}(J_{pf_{\theta}}(z)) 
+\end{align}
+\]</span></p>
+<h3 data-original-heading="6.5 🔹 4. Conservation of Probability" id="conservation-of-probability">6.5 🔹 4. Conservation of Probability</h3>
+<p>Total probability inside <span class="math inline">\(V\)</span> at time <span class="math inline">\(t\)</span> is: <span class="math display">\[
+P_V(t) = \int_V p(z,t)\,dz.
+\]</span></p>
+<p>The rate of change of this probability is: <span class="math display">\[
+\frac{dP_V}{dt} = \int_V \frac{\partial p}{\partial t}\,dz.
+\]</span></p>
+<p>If probability is conserved — meaning no mass is created or destroyed —<br>
+then any decrease in <span class="math inline">\(P_V\)</span> must come from probability <em>flowing out</em> across the boundary:</p>
+<p><span class="math display">\[
+\frac{dP_V}{dt}
+= -\oint_{\partial V} (p f_\theta) \cdot n \, dS.
+\]</span></p>
+<h3 data-original-heading="6.6 🔹 5. Substituting the Divergence Theorem" id="substituting-the-divergence-theorem">6.6 🔹 5. Substituting the Divergence Theorem</h3>
+<p>Using the divergence theorem on the right-hand side:</p>
+<p><span class="math display">\[
+\int_V \frac{\partial p}{\partial t}\,dz
+= -\int_V \nabla_z \cdot (p f_\theta)\,dz.
+\]</span></p>
+<p>Since this holds for <strong>any</strong> region <span class="math inline">\(V\)</span>,<br>
+the integrands themselves must be equal at every point:</p>
+<p><span class="math display">\[
+\boxed{
+\frac{\partial p}{\partial t} + \nabla_z \cdot (p f_\theta) = 0.
+}
+\]</span></p>
+<p>This is the <strong>continuity equation</strong> — expressing <em>local conservation of probability</em>.</p>
+<hr>
+<h3 data-original-heading="6.7 🔹 6. From Density to Log-Density Along a Trajectory" id="from-density-to-log-density-along-a-trajectory">6.7 🔹 6. From Density to Log-Density Along a Trajectory</h3>
+<p>Consider a particle following the deterministic flow: <span class="math display">\[
+\frac{dz_t}{dt} = f_\theta(z_t, t).
+\]</span></p>
+<p>The total derivative of the density along that trajectory is: <span class="math display">\[
+\frac{dp(z_t,t)}{dt}
+= \frac{\partial p}{\partial t} + \frac{dz_t}{dt} \cdot \nabla_z p
+= \frac{\partial p}{\partial t} + f_\theta \cdot \nabla_z p.
+\]</span></p>
+<p>Substitute <span class="math inline">\(\frac{\partial p}{\partial t}\)</span> from the continuity equation: <span class="math display">\[
+\frac{dp(z_t,t)}{dt}
+= -p(z_t,t)\,(\nabla_z \cdot f_\theta).
+\]</span></p>
+<p>Divide both sides by <span class="math inline">\(p(z_t,t)\)</span>: <span class="math display">\[
+\frac{1}{p}\frac{dp}{dt}
+= -\nabla_z \cdot f_\theta.
+\]</span></p>
+<p>Recognize that the left-hand side is the derivative of the log-density: <span class="math display">\[
+\frac{d}{dt}\log p(z_t)
+= -\nabla_z \cdot f_\theta
+= -\operatorname{Tr}\!\left(\frac{\partial f_\theta}{\partial z_t}\right).
+\]</span></p>
+<p>✅ <strong>Final Result</strong></p>
+<p><span class="math display">\[
+\boxed{
+\frac{d}{dt}\log p(z_t)
+= -\operatorname{Tr}\!\left(\frac{\partial f_\theta}{\partial z_t}\right).
+}
+\]</span></p>
+<p>This equation tells us that the <strong>log-density</strong> decreases in proportion to how much the local flow <strong>expands</strong> (positive divergence) or <strong>contracts</strong> (negative divergence) the space.</p>
+<h4 data-original-heading="6.7.1 💬 Interpretation" id="interpretation">6.7.1 💬 Interpretation</h4>
+<ul>
+<li>If <span class="math inline">\(\nabla_z \cdot f_\theta &gt; 0\)</span>: trajectories diverge → space expands → density decreases.<br>
+</li>
+<li>If <span class="math inline">\(\nabla_z \cdot f_\theta &lt; 0\)</span>: trajectories converge → space contracts → density increases.<br>
+</li>
+<li>The trace of the Jacobian <span class="math inline">\(\operatorname{Tr}(\partial f_\theta / \partial z_t)\)</span> quantifies this local volume change.</li>
+</ul>
+<p>This is the continuous-time form of the <strong>change of variables</strong> formula used in <strong>normalizing flows</strong> and <strong>probability flow ODEs</strong> in diffusion models.</p>
+<h3 data-original-heading="6.8 Setup" id="setup">6.8 Setup</h3>
+<ul>
+<li>The latent variable evolves continuously by an ODE: <span class="math display">\[
+\frac{dz}{dt} = f(z_t, t).
+\]</span></li>
+<li>Here, <span class="math inline">\(f\)</span> is a <strong>vector field</strong>: it tells us how each point <span class="math inline">\(z_t\)</span> moves in space as time increases.</li>
+</ul>
+<h3 data-original-heading="6.9 Jacobian of the Vector Field" id="jacobian-of-the-vector-field">6.9 Jacobian of the Vector Field</h3>
+<ul>
+<li>The matrix <span class="math display">\[
+\frac{\partial f}{\partial z_t}
+\]</span> is the <strong>Jacobian</strong> of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(z_t\)</span>.</li>
+<li>Each entry is a partial derivative: <span class="math display">\[
+\bigg[\frac{\partial f}{\partial z_t}\bigg]_{ij}
+= \frac{\partial f_i}{\partial z_j}.
+\]</span></li>
+<li>The <strong>trace</strong> of this Jacobian is the <strong>divergence</strong> of <span class="math inline">\(f\)</span>: <span class="math display">\[
+\mathrm{div}\,f(z_t) = \sum_{i=1}^d \frac{\partial f_i}{\partial z_i}.
+\]</span></li>
+</ul>
+<h3 data-original-heading="6.10 Why the Trace Matters" id="why-the-trace-matters">6.10 Why the Trace Matters</h3>
+<ul>
+<li>In <strong>discrete flows</strong>, we use the Jacobian determinant to measure how much a transformation stretches or compresses volume.</li>
+<li>In <strong>continuous flows</strong>, we look at the <em>instantaneous rate</em> of change of volume.</li>
+<li>This rate is exactly the <strong>trace of the Jacobian</strong>.</li>
+</ul>
+<h3 data-original-heading="6.11 Intuition: Expansion vs Compression" id="intuition-expansion-vs-compression">6.11 Intuition: Expansion vs Compression</h3>
+<ul>
+<li>Think of probability density as an <strong>incompressible fluid</strong> flowing through space.</li>
+<li>The divergence tells us what happens locally:
+<ul>
+<li><strong>Positive divergence (<span class="math inline">\(&gt;0\)</span>):</strong>
+<ul>
+<li>The flow pushes space outward.</li>
+<li>A small region expands.</li>
+<li>Same mass over larger volume <span class="math inline">\(\;\Rightarrow\;\)</span> density decreases.</li>
+</ul></li>
+<li><strong>Negative divergence (<span class="math inline">\(&lt;0\)</span>):</strong>
+<ul>
+<li>The flow pulls space inward.</li>
+<li>A small region contracts.</li>
+<li>Same mass in smaller volume <span class="math inline">\(\;\Rightarrow\;\)</span> density increases.</li>
+</ul></li>
+<li><strong>Zero divergence:</strong>
+<ul>
+<li>Flow is volume-preserving.</li>
+<li>Density stays constant.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 data-original-heading="6.12 Example in 1D" id="example-in-1d">6.12 Example in 1D</h3>
+<p>Let <span class="math display">\[
+\frac{dz}{dt} = f(z) = az.
+\]</span></p>
+<ul>
+<li><p>Jacobian: <span class="math inline">\(\frac{\partial f}{\partial z} = a\)</span>.</p></li>
+<li><p>Trace = <span class="math inline">\(a\)</span>.</p></li>
+<li><p>Then: <span class="math display">\[
+\frac{d}{dt}\log p(z_t) = -a.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(a &gt; 0\)</span>: the system expands exponentially, so density decays.<br>
+</p></li>
+<li><p>If <span class="math inline">\(a &lt; 0\)</span>: the system contracts, so density grows.<br>
+</p></li>
+<li><p>If <span class="math inline">\(a = 0\)</span>: density is unchanged.</p></li>
+</ul>
+<h3 data-original-heading="6.13 Summary" id="summary">6.13 Summary</h3>
+<ul>
+<li>The formula <span class="math display">\[
+\frac{d}{dt}\,\log p(z_t) = - \mathrm{Tr}\!\left(\frac{\partial f}{\partial z_t}\right)
+\]</span> is the <strong>continuous analogue</strong> of the change-of-variables theorem.</li>
+<li>Discrete flows: multiply Jacobian determinants across layers.<br>
+</li>
+<li>Continuous flows: integrate the divergence of <span class="math inline">\(f\)</span> over time.<br>
+</li>
+<li>This guarantees that <strong>probability mass is preserved</strong> as the distribution evolves.</li>
+</ul>
+<h2 data-original-heading="7 🧠 Continuous Normalizing Flows — What’s Really Implemented" id="continuous-normalizing-flows-whats-really-implemented">7 🧠 Continuous Normalizing Flows — What’s Really Implemented</h2>
+<h3 data-original-heading="7.1 The Core ODE System" id="the-core-ode-system">7.1 The Core ODE System</h3>
+<p>CNFs model data as the solution of an ODE:</p>
+<p><span class="math display">\[
+\frac{dz_t}{dt} = f_\theta(z_t, t),
+\qquad
+\frac{d\,\log p(z_t)}{dt} = -\operatorname{Tr}\!\left(\frac{\partial f_\theta}{\partial z_t}\right).
+\]</span></p>
+<p>Both <span class="math inline">\(z_t\)</span> <strong>and</strong> its log-density evolve together. We integrate these two coupled ODEs using a numerical solver (e.g.&nbsp;<code>torchdiffeq.odeint</code>).</p>
+<h3 data-original-heading="7.2 Forward vs.&nbsp;Backward Integration" id="forward-vs.-backward-integration">7.2 Forward vs.&nbsp;Backward Integration</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 28%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Direction</th>
+<th>Known Quantity</th>
+<th>What You Compute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sampling</strong></td>
+<td>Forward (0→1)</td>
+<td><span class="math inline">\(z_0 \sim N(0,I)\)</span></td>
+<td><span class="math inline">\(z_1\)</span> in data space</td>
+</tr>
+<tr>
+<td><strong>Training / Likelihood</strong></td>
+<td>Backward (1→0)</td>
+<td><span class="math inline">\(z_1 = x_{\text{data}}\)</span></td>
+<td><span class="math inline">\(z_0\)</span> and <span class="math inline">\(\log p(z_0)\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>So during training we <em>start from data</em> and integrate <strong>backward</strong> to base space,<br>
+while during sampling we start from the base and integrate <strong>forward</strong>.</p>
+<h3 data-original-heading="7.3 ⚙️ Understanding the ODE Solver in Continuous Normalizing Flows" id="understanding-the-ode-solver-in-continuous-normalizing-flows">7.3 ⚙️ Understanding the ODE Solver in Continuous Normalizing Flows</h3>
+<p>Continuous Normalizing Flows (CNFs) rely on a numerical <strong>ODE solver</strong> (e.g., <code>torchdiffeq.odeint</code>)<br>
+to integrate both the <strong>state</strong> <span class="math inline">\(z_t\)</span> and the <strong>log-density</strong> <span class="math inline">\(\log p(z_t)\)</span> over time.</p>
+<h4 data-original-heading="7.3.1 🔹 Inputs to the ODE Solver" id="inputs-to-the-ode-solver">7.3.1 🔹 Inputs to the ODE Solver</h4>
+<ol type="1">
+<li><p><strong><code>func(t, y)</code> — the ODE function</strong><br>
+Defines <span class="math inline">\(\frac{dy}{dt}\)</span> for the current time <code>t</code> and state <code>y</code>.<br>
+In CNFs, we augment the state as <span class="math inline">\(y = [z_t, \log p(z_t)]\)</span> and evolve both: <span class="math display">\[
+\frac{dz_t}{dt} = f_\theta(z_t, t),
+\qquad
+\frac{d\log p(z_t)}{dt} = -\text{div}\,f_\theta(z_t, t).
+\]</span></p></li>
+<li><p><strong><code>y0</code> — initial condition</strong><br>
+The starting point of the ODE.</p>
+<ul>
+<li>For <strong>sampling (forward)</strong>: <code>y0 = [z0, log p(z0)]</code> with <span class="math inline">\(z_0 \sim N(0,I)\)</span>.<br>
+</li>
+<li>For <strong>training (backward)</strong>: <code>y0 = [x_{\text{data}}, 0]</code>, we accumulate the log-density change.</li>
+</ul></li>
+<li><p><strong><code>tspan</code> — time interval</strong><br>
+A 1-D tensor specifying the integration direction:</p>
+<ul>
+<li>Forward: <code>[0.0, 1.0]</code><br>
+</li>
+<li>Backward: <code>[1.0, 0.0]</code></li>
+</ul></li>
+</ol>
+<hr>
+<h4 data-original-heading="7.3.2 🔹 What the ODE Solver Does" id="what-the-ode-solver-does">7.3.2 🔹 What the ODE Solver Does</h4>
+<p>The solver numerically integrates: <span class="math display">\[
+y(t_1) = y(t_0) + \int_{t_0}^{t_1} f(t, y)\,dt
+\]</span> using adaptive methods (e.g., Runge–Kutta).<br>
+It repeatedly calls <code>func(t, y)</code> to estimate derivatives and update the state.</p>
+<p>You can think of it as a <strong>black-box integrator</strong> that returns the <em>trajectory</em> of <span class="math inline">\(y\)</span> at all requested times.</p>
+<h4 data-original-heading="7.3.3 🔹 Output of the ODE Solver in Continuous Normalizing Flows" id="output-of-the-ode-solver-in-continuous-normalizing-flows">7.3.3 🔹 Output of the ODE Solver in Continuous Normalizing Flows</h4>
+<p>When you integrate the augmented ODE (for both <span class="math inline">\(z_t\)</span> and <span class="math inline">\(\log p_t\)</span>) backward in time,<br>
+you typically call:</p>
+<pre><code>zT = odeint(odefunc_backward, y0, torch.tensor([1.0, 0.0]))</code></pre>
+<p><strong>Here:</strong></p>
+<ul>
+<li><code>y0</code> is the initial condition at <span class="math inline">\(t = 1.0\)</span>, containing both data and initial log-density:<br>
+<span class="math display">\[
+y_0 = [x_{\text{data}}, 0].
+\]</span></li>
+<li>The solver integrates <strong>backward</strong> from <span class="math inline">\(t = 1.0\)</span> to <span class="math inline">\(t = 0.0\)</span>.</li>
+</ul>
+<p><strong>After integration:</strong></p>
+<pre><code>zT[0]     # state at t = 1.0  (initial)
+zT[-1]    # state at t = 0.0  (final)</code></pre>
+<p>Each state in <code>zT</code> includes both the <strong>position</strong> and the <strong>log-density accumulator</strong>: <span class="math display">\[
+y_t = [z_t, \log p_t].
+\]</span></p>
+<p>Thus, the final outputs are obtained by slicing:</p>
+<pre><code>z0, logp_change = zT[-1, :, :D], zT[-1, :, D:]</code></pre>
+<h4 data-original-heading="7.3.4 Interpretations" id="interpretations">7.3.4 <strong>Interpretations</strong></h4>
+<ul>
+<li><strong><code>z0</code></strong> → latent variable in the <em>base space</em> (the transformed version of the data).<br>
+</li>
+<li><strong><code>logp_change</code></strong> → accumulated integral of <span class="math inline">\(-\text{div}\, f_\theta\)</span>,<br>
+representing the <strong>total log-volume change</strong> (the continuous-time Jacobian term).</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span>← Previous page</span><span>NF_transcribed</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span>Next page →</span><span>Score Matching</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Normalizing Flows (NF)</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#change-of-variable-theorem" class="is-active" aria-current="location">1 Change of Variable Theorem</a></li><li style="--depth:1"><a href="#cov-theorem">1.1 CoV Theorem</a></li><li style="--depth:2"><a href="#one-dimentaionl-special-case">1.1.1 One-dimentaionl special case:</a></li><li style="--depth:2"><a href="#change-of-variables-intuition">1.2.1 Change of Variables: Intuition</a></li><li style="--depth:0"><a href="#jacobian-determinant-and-general-functions">2 Jacobian Determinant and General Functions</a></li><li style="--depth:1"><a href="#linear-case">2.1 Linear Case</a></li><li style="--depth:1"><a href="#general-nonlinear-function">2.2 General Nonlinear Function</a></li><li style="--depth:1"><a href="#change-of-variables">2.3 Change of Variables</a></li><li style="--depth:0"><a href="#interpreting-the-jacobian-determinant-in-probability">3 Interpreting the Jacobian Determinant in Probability</a></li><li style="--depth:1"><a href="#effect-on-probability-densities">3.2 Effect on Probability Densities</a></li><li style="--depth:1"><a href="#example">3.3 Example</a></li><li style="--depth:0"><a href="#normalizing-flows">4 Normalizing Flows</a></li><li style="--depth:1"><a href="#lecture-notes">4.1.1 Lecture notes</a></li><li style="--depth:1"><a href="#background-and-intuition">5.1 Background and Intuition</a></li><li style="--depth:2"><a href="#normalizing-flows-nfs">5.1.1 Normalizing Flows (NFs)</a></li><li style="--depth:2"><a href="#limitations-of-discrete-flows">5.1.2 Limitations of Discrete Flows</a></li><li style="--depth:2"><a href="#continuous-normalizing-flows-cnfs">5.1.3 Continuous Normalizing Flows (CNFs)</a></li><li style="--depth:1"><a href="#intuition-with-a-picture">5.2 Intuition with a Picture</a></li><li style="--depth:0"><a href="#flux-net-flow-and-the-divergence-theorem">6 🌊 Flux, Net Flow, and the Divergence Theorem</a></li><li style="--depth:1"><a href="#local-flow-flux">6.1 🔹 1. Local Flow (Flux)</a></li><li style="--depth:1"><a href="#net-flow-across-a-region">6.2 🔹 2. Net Flow Across a Region</a></li><li style="--depth:1"><a href="#the-divergence-theorem">6.3 🔹 3. The Divergence Theorem</a></li><li style="--depth:1"><a href="#recall-divergence">6.4 Recall: Divergence</a></li><li style="--depth:1"><a href="#conservation-of-probability">6.5 🔹 4. Conservation of Probability</a></li><li style="--depth:1"><a href="#substituting-the-divergence-theorem">6.6 🔹 5. Substituting the Divergence Theorem</a></li><li style="--depth:1"><a href="#from-density-to-log-density-along-a-trajectory">6.7 🔹 6. From Density to Log-Density Along a Trajectory</a></li><li style="--depth:2"><a href="#interpretation">6.7.1 💬 Interpretation</a></li><li style="--depth:1"><a href="#setup">6.8 Setup</a></li><li style="--depth:1"><a href="#jacobian-of-the-vector-field">6.9 Jacobian of the Vector Field</a></li><li style="--depth:1"><a href="#why-the-trace-matters">6.10 Why the Trace Matters</a></li><li style="--depth:1"><a href="#intuition-expansion-vs-compression">6.11 Intuition: Expansion vs Compression</a></li><li style="--depth:1"><a href="#example-in-1d">6.12 Example in 1D</a></li><li style="--depth:1"><a href="#summary">6.13 Summary</a></li><li style="--depth:0"><a href="#continuous-normalizing-flows-whats-really-implemented">7 🧠 Continuous Normalizing Flows — What’s Really Implemented</a></li><li style="--depth:1"><a href="#the-core-ode-system">7.1 The Core ODE System</a></li><li style="--depth:1"><a href="#forward-vs.-backward-integration">7.2 Forward vs. Backward Integration</a></li><li style="--depth:1"><a href="#understanding-the-ode-solver-in-continuous-normalizing-flows">7.3 ⚙️ Understanding the ODE Solver in Continuous Normalizing Flows</a></li><li style="--depth:2"><a href="#inputs-to-the-ode-solver">7.3.1 🔹 Inputs to the ODE Solver</a></li><li style="--depth:2"><a href="#what-the-ode-solver-does">7.3.2 🔹 What the ODE Solver Does</a></li><li style="--depth:2"><a href="#output-of-the-ode-solver-in-continuous-normalizing-flows">7.3.3 🔹 Output of the ODE Solver in Continuous Normalizing Flows</a></li><li style="--depth:2"><a href="#interpretations">7.3.4 Interpretations</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

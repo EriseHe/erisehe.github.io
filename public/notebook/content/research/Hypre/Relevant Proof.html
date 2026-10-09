@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Relevant Proof — E.H. Notebook</title>
+<meta name="description" content="1. Near-asymptotic analysis of SOR1.1 SOR Iteration Matrix DerivationThis derivation follows the notation used in Algorithm 1 and Section 2.1.1.1.1 Matrix SplittingThe sy">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html" aria-current="page">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="research file hierarchy" data-sidebar-root="content/research"><a class="sidebar-root" href="/notebook/content/research/index.html">research</a><ul class="notes-tree"><li class="folder-node" data-folder="content/research/Advanced Lab" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-a0a27906c83c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Advanced Lab</span></button></div><ul class="tree-children" id="folder-a0a27906c83c" hidden><li class="folder-node" data-folder="content/research/Advanced Lab/Module 3" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-2da6076d8ee3" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Module 3</span></button></div><ul class="tree-children" id="folder-2da6076d8ee3" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/md.html"><span class="page-number"></span><span>md</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/Module%203%20Heat%20Conduction.html"><span class="page-number"></span><span>Module 3 Heat Conduction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%203/Paper.html"><span class="page-number"></span><span>Paper</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Advanced Lab/Module 4" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d2cbcc62a70c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Module 4</span></button></div><ul class="tree-children" id="folder-d2cbcc62a70c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%204/Final.html"><span class="page-number"></span><span>Final</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Instruction%20for%20Lab.html"><span class="page-number"></span><span>Instruction for Lab</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Module%201%20LabVIEW.html"><span class="page-number"></span><span>Module 1 LabVIEW</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Advanced%20Lab/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Feminist History" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-734c6ff122df" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Feminist History</span></button></div><ul class="tree-children" id="folder-734c6ff122df" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Barnes%2C%20Nicole%20Elizabeth).%20Intimate%20Communities%20-%20Wartime%20Healthcare%20and%20the%20Birth%20of%20Modern%20China%2C%201937%E2%80%931945.html"><span class="page-number"></span><span>(Barnes, Nicole Elizabeth). Intimate Communities - Wartime Healthcare and the Birth of Modern China, 1937–1945</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Li%2C%20Minghui)%20Childbirth%20transformation%20and%20new%20style%20midwifery%20in%20Beijing%2C%201926%20%E2%80%93%201937.html"><span class="page-number"></span><span>(Li, Minghui) Childbirth transformation and new style midwifery in Beijing, 1926 – 1937</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Shemo%2C%20Connie)%20Able%20to%20Do%20Things%20of%20Which%20They%20Have%20Never%20Dreamed%20-%20Shi%20Meiyu%E2%80%99s%20Vision%20of%20Nursing%20in%20Early%20Twentieth-Century%20China.html"><span class="page-number"></span><span>(Shemo, Connie) Able to Do Things of Which They Have Never Dreamed - Shi Meiyu’s Vision of Nursing in Early Twentieth-Century China</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Xu%2C%20Yier)%20A%20Modern%20Occupation%20for%20Women%20-%20Feminization%20and%20the%20Professionalization%20of%20Nursing%20in%201930s%20China.html"><span class="page-number"></span><span>(Xu, Yier) A Modern Occupation for Women - Feminization and the Professionalization of Nursing in 1930s China</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Feminist%20History/(Yip%2C%20Ka-che)%20Health%20and%20Nationalist%20Reconstruction%20Rural%20Health%20in%20Nationalist%20China%2C%201928-1937.html"><span class="page-number"></span><span>(Yip, Ka-che) Health and Nationalist Reconstruction Rural Health in Nationalist China, 1928-1937</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Hypre" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-6714cbdf71d2" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Hypre</span></button></div><ul class="tree-children" id="folder-6714cbdf71d2"><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Linux%20Environment%20for%20GPTune.html"><span class="page-number"></span><span>Linux Environment for GPTune</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/List%20of%20All%20Proof%20(Learning%20to%20Relax).html"><span class="page-number"></span><span>List of All Proof (Learning to Relax)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Paper.html"><span class="page-number"></span><span>Paper</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Paper%20Notes.html"><span class="page-number"></span><span>Paper Notes</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/research/Hypre/Relevant%20Proof.html"><span class="page-number"></span><span>Relevant Proof</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Hypre/Setup-Solve%20Phases%20RL%20design.html"><span class="page-number"></span><span>Setup-Solve Phases RL design</span></a></li></ul></li><li class="folder-node" data-folder="content/research/IllustrateTNG Simulation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-43d0b979f227" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>IllustrateTNG Simulation</span></button></div><ul class="tree-children" id="folder-43d0b979f227" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/IllustrateTNG%20Simulation/Short%20Cut%20for%20GIST.html"><span class="page-number"></span><span>Short Cut for GIST</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/IllustrateTNG%20Simulation/Viewing%20Angle.html"><span class="page-number"></span><span>Viewing Angle</span></a></li></ul></li><li class="folder-node" data-folder="content/research/Underdeck" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aefc9997568f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Underdeck</span></button></div><ul class="tree-children" id="folder-aefc9997568f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Design%20Logic.html"><span class="page-number"></span><span>Design Logic</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Instruction%20for%20Generic%20Underdeck%20Setting.html"><span class="page-number"></span><span>Instruction for Generic Underdeck Setting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/research/Underdeck/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/research/Hypre/index.html">Hypre</a></nav><h1 id="reader-title">Relevant Proof</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1. Near-asymptotic analysis of SOR" id="near-asymptotic-analysis-of-sor">1. Near-asymptotic analysis of SOR</h2>
+<h3 data-original-heading="1.1 SOR Iteration Matrix Derivation" id="sor-iteration-matrix-derivation">1.1 SOR Iteration Matrix Derivation</h3>
+<blockquote>
+<p>This derivation follows the notation used in <strong>Algorithm 1</strong> and <strong>Section 2.1</strong>.</p>
+</blockquote>
+<h4 data-original-heading="1.1.1 Matrix Splitting" id="matrix-splitting">1.1.1 Matrix Splitting</h4>
+<p>The system matrix <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times n}\)</span> is decomposed into its diagonal, strictly lower, and strictly upper triangular components: <span class="math display">\[\mathbf{A} = \mathbf{D} + \mathbf{L} + \mathbf{L}^T\]</span> For SOR method with parameter <span class="math inline">\(\omega \in (0, 2)\)</span>, we define preconditioner matrix <span class="math inline">\(\mathbf{W}_\omega\)</span> as: <span class="math display">\[\mathbf{W}_\omega = \frac{1}{\omega}\mathbf{D} + \mathbf{L}\]</span></p>
+<h4 data-original-heading="1.1.2. Fixed-Point Iteration" id="fixed-point-iteration">1.1.2. Fixed-Point Iteration</h4>
+<p>We define the residual <span class="math inline">\(\mathbf{r}_k\)</span> as: <span class="math display">\[\mathbf{r}_k = \mathbf{b} - \mathbf{A}\mathbf{x}_k\]</span> Then, the SOR update step for the iterate <span class="math inline">\(\mathbf{x}_k\)</span> is given by <span class="math display">\[
+\begin{align}
+\mathbf{x}_{k+1}&amp; =\mathbf{x}_k + \mathbf{W}_\omega^{-1} \mathbf{r}_k \\
+ &amp;=\mathbf{x}_k + \mathbf{W}_\omega^{-1} (\mathbf{b} - \mathbf{A}\mathbf{x}_k) \\
+&amp; = \underbrace{(\mathbf{I} - \mathbf{W}_\omega^{-1}\mathbf{A})}_{e_{\omega}}\mathbf{x}_k+ \mathbf{W}_\omega^{-1}\mathbf{b}
+\end{align}\]</span></p>
+<h4 data-original-heading="1.1.3. The Defect Reduction Matrix \mathbf{C}_\omega" id="the-defect-reduction-matrix-mathbfc_omega">1.1.3. The Defect Reduction Matrix <span class="math inline">\(\mathbf{C}_\omega\)</span></h4>
+<p>The iteration matrix, <span class="math inline">\(\mathbf{C}_\omega\)</span>, by definition governs the evolution of the <strong>error</strong> and the <strong>residual</strong>:</p>
+<p><span class="math display">\[\mathbf{r}_{k+1}=\underbrace{\left(\mathbf{I}-\mathbf{A} \mathbf{W}_\omega^{-1}\right)}_{\mathbf{C}_\omega} \mathbf{r}_k\]</span> That is, <span class="math display">\[\begin{align}
+\mathbf{C}_\omega :&amp;= (\mathbf{I} - \mathbf{W}_\omega^{-1}\mathbf{A})\\
+&amp;=\mathbf{I} - \mathbf{A}(\mathbf{D}/\omega + \mathbf{L})^{-1}
+\end{align}
+\]</span> (note: <span class="math inline">\(\mathbf{W}_\omega^{-1}\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{A}\mathbf{W}_\omega^{-1}\)</span> are similar and share the same eigenvalues). Therefore, the residual at iteration <span class="math inline">\(k\)</span> evolves as: <span class="math display">\[\boxed{\mathbf{r}_k = \mathbf{C}_\omega^k \mathbf{r}_0}\]</span></p>
+<h4 data-original-heading="1.1.4. Spectral Radius and Convergence" id="spectral-radius-and-convergence">1.1.4. Spectral Radius and Convergence</h4>
+<p>The <strong>asymptotic convergence rate</strong> is determined by the spectral radius <span class="math inline">\(\rho(\mathbf{C}_\omega)\)</span>: <span class="math display">\[\rho(\mathbf{C}_\omega) = \max \{ |\lambda| : \lambda \in \text{eig}(\mathbf{C}_\omega) \}\]</span> where <span class="math inline">\(\rho(\mathbf{C}_\omega) &lt; 1\)</span> (convergence condition for SOR). As <span class="math inline">\(k \to \infty\)</span>, the error reduction per iteration approaches <span class="math inline">\(\rho(\mathbf{C}_\omega)\)</span>: <span class="math display">\[\lim_{k \to \infty} \sqrt[k]{\|\mathbf{C}_\omega^k\|_2} = \rho(\mathbf{C}_\omega)\]</span></p>
+<h3 data-original-heading="1.2 From \rho to Iteration Count U(\omega)" id="from-rho-to-iteration-count-uomega">1.2 From <span class="math inline">\(\rho\)</span> to Iteration Count <span class="math inline">\(U(\omega)\)</span></h3>
+<div class="math-theorem assumption" data-callout="assumption" data-label="2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Assumption 2.1</span><span class="theorem-title">near-asymptotic</span></p>
+</div>
+<div class="theorem-content">
+<p>There exists a constant <span class="math inline">\(\tau \in (0,1)\)</span> s.t <span class="math inline">\(\forall\,\omega \in \Omega\)</span>, the matrix <span class="math inline">\(\mathbf{C}_\omega=\mathbf{I}_n -\mathbf{A}(\mathbf{D}/\omega + \mathbf{L})^{-1}\)</span> satisfies <span class="math display">\[
+\left\|\mathbf{C}_\omega^{\,k}\right\|_2
+\le
+\Bigl(
+\rho(\mathbf{C}_\omega)
++
+\tau\bigl(1-\rho(\mathbf{C}_\omega)\bigr)
+\Bigr)^{k}
+\]</span> for the iteration index <span class="math inline">\(k =\min\Bigl\{\, i \;\big|\;|\mathbf{C}_\omega^{\,i+1}\mathbf{b}\|_2&lt;\varepsilon \|\mathbf{b}\|_2\Bigr\}.\)</span></p>
+</div>
+</div>
+<div class="math-theorem remark" data-callout="remark" data-label="2.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 2.2</span><span class="theorem-title">interpretation of the near-asymptotic regime</span></p>
+</div>
+<div class="theorem-content">
+<p>Convergence is assumed to occur when the iteration already behaves like its asymptotic rate (governed by the spectral radius), up to the slack parameter <span class="math inline">\(\tau\)</span>. The parameter <span class="math inline">\(\tau\)</span> quantifies the <em>degree of non-asymptoticity</em>: a small <span class="math inline">\(\tau\)</span> indicates rapid entry into the asymptotic regime, while a large <span class="math inline">\(\tau\)</span> indicates that the method remains in a transient phase when the tolerance <span class="math inline">\(\varepsilon\)</span> is reached.</p>
+</div>
+</div>
+<p>We want to show that the solver always converges, no matter what <span class="math inline">\(\mathbf{r}_0\)</span> looks like. To eliminate the initial residual, note that if we can ensure the matrix norm <span class="math inline">\(\left\|\mathbf{C}_\omega^k\right\|_2 \leq \varepsilon\)</span>, then <span class="math display">\[
+\left\|\mathbf{r}_k\right\|_2=\left\|\mathbf{C}_\omega^k \mathbf{r}_0\right\|_2 \leq\left\|\mathbf{C}_\omega^k\right\|_2\left\|\mathbf{r}_0\right\|_2 \leq \varepsilon\left\|\mathbf{r}_0\right\|_2
+\]</span> which is sufficient to guarantee that the algorithmic stopping condition. However, calculating the exact norm <span class="math inline">\(\left\|\mathbf{C}_\omega^k\right\|_2\)</span> is difficult, so under <strong>Assumption 2.1</strong>, the paper assumes the actual convergence is bounded by a surrogate rate for a “non-asymptocity” parameter <span class="math inline">\(\tau \in (0, 1)\)</span>: <span class="math display">\[
+\text{Surrogate Rate} = \rho(\mathbf{C}_\omega) + \tau(1 - \rho(\mathbf{C}_\omega))
+\]</span> Therefore, we have <span class="math display">\[
+\begin{align}
+\left(\rho\left(\mathbf{C}_\omega\right)+\tau\left(1-\rho\left(\mathbf{C}_\omega\right)\right)\right)^k &amp;\leq \varepsilon\\
+k \cdot \log \left(\rho\left(\mathbf{C}_\omega\right)+\tau\left(1-\rho\left(\mathbf{C}_\omega\right)\right) \right)  &amp; \leq \log \epsilon \\
+\end{align}
+\]</span> Since <span class="math inline">\(\rho\left(\mathbf{C}_\omega\right)&lt;1\)</span> and <span class="math inline">\(\tau \in(0,1)\)</span>, the term inside the log is &lt; 1, so it flips the inequality: <span class="math display">\[
+k   \geq \frac{\log \epsilon}{\log \left(\rho\left(\mathbf{C}_\omega\right)+\tau\left(1-\rho\left(\mathbf{C}_\omega\right)\right)\right)}
+\]</span> The total number of iterations required to reach tolerance <span class="math inline">\(\varepsilon\)</span> is then bounded by <span class="math inline">\(U(\omega)\)</span>: <span class="math display">\[\boxed{U(\omega) = 1 + \frac{-\log \varepsilon}{-\log(\rho(\mathbf{C}_\omega) + \tau(1 - \rho(\mathbf{C}_\omega)))}}\]</span></p>
+<h2 data-original-heading="2. Relevant Proof" id="relevant-proof">2. Relevant Proof</h2>
+<blockquote>
+<p><strong>Lemma 2.1</strong>, <strong>Theorem B.3</strong>, <strong>Theorem B.4</strong>, <strong>Theorem 2.1</strong>, and <strong>Theorem 2.3</strong> (plus <strong>F.3–F.4</strong> if we want the “smooth in expectation” trick).</p>
+</blockquote>
+<h3 data-original-heading="Lemma 2.1" id="lemma-2.1">2.1 Lemma 2.1</h3>
+<div class="math-theorem lemma" data-callout="lemma" data-label="2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma 2.1</span><span class="theorem-title">iteration bound and regularity of the SOR iteration count</span></p>
+</div>
+<div class="theorem-content">
+<p>Define <span class="math display">\[
+\begin{aligned}
+U(\omega)
+&amp;=
+1+\frac{-\log\varepsilon}{
+-\log\!\left(
+\rho(\mathbf{C}_\omega)
++\tau\left(1-\rho(\mathbf{C}_\omega)\right)
+\right)
+}\\
+\alpha
+&amp;=
+\tau+(1-\tau)\max\left\{\beta^2,\omega_{\max}-1\right\}\\
+\omega^*
+&amp;=
+1+\frac{\beta^2}{\left(1+\sqrt{1-\beta^2}\right)^2}
+\end{aligned}
+\]</span> where <span class="math inline">\(\beta=\rho\!\left(\mathbf{I}_n-\mathbf{D}^{-1}\mathbf{A}\right)\)</span>. Then the following holds:</p>
+<ol type="1">
+<li><strong>(Upper bound on iterations)</strong> <span class="math inline">\(U\)</span> bounds the number of iterations and is itself bounded: <span class="math display">\[
+\operatorname{SOR}(\mathbf{A},\mathbf{b},\omega)
+&lt;
+U(\omega)
+\le
+1+\frac{-\log\varepsilon}{-\log\alpha}.
+\]</span></li>
+<li><strong>(Monotonicity and regularity)</strong> <span class="math inline">\(U\)</span> is decreasing toward <span class="math inline">\(\omega^*\)</span>, and is <span class="math display">\[
+\left(\frac{-(1-\tau)\log\varepsilon}{\alpha\log^2\alpha}\right)\text{ -Lipschitz}
+\]</span> on <span class="math inline">\(\omega\ge\omega^*\)</span> if <span class="math display">\[
+\tau\ge\frac{1}{e^2}
+\quad\text{or}\quad
+\beta^2\ge\frac{4}{e^2}\left(1-\frac{1}{e^2}\right).
+\]</span></li>
+</ol>
+</div>
+</div>
+<div class="math-theorem remark" data-callout="remark" data-label="2.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 2.3</span><span class="theorem-title">interpretation of the spectral difficulty parameter</span></p>
+</div>
+<div class="theorem-content">
+<p>The quantity <span class="math inline">\(\alpha\)</span> will in some sense measure the difficulty of learning: if <span class="math inline">\(\alpha\)</span> is close to <span class="math inline">\(1\)</span> for many of the instances under consideration, then learning will be harder. Crucially, all quantities in the result are spectral and do not depend on the dimensionality of the matrix.</p>
+</div>
+</div>
+<h4 data-original-heading="Claim 1. \operatorname{SOR}(\mathbf{A}, \mathbf{b}, \omega)<U(\omega)" id="claim-1.-operatornamesormathbfa-mathbfb-omegauomega">2.1.1 Claim 1. <span class="math inline">\(\operatorname{SOR}(\mathbf{A}, \mathbf{b}, \omega)&lt;U(\omega)\)</span></h4>
+<p><strong>Proof.</strong> We want to show that the final iteration <span class="math inline">\(k&lt;U(\omega)\)</span>. Suppose, for the sake of <strong>contradiction</strong>, there exists <span class="math inline">\(l\)</span> such that <span class="math inline">\(l&gt;U(\omega)\)</span>. Then, this means at step <span class="math inline">\(l-1\)</span>, the error still too large: <span class="math display">\[\frac{\left\|\mathbf{C}_\omega^{l-1} \mathbf{b}\right\|_2}{\|\mathbf{b}\|_2}&gt;\varepsilon\]</span> As we have shown earlier, we know <span class="math display">\[
+\epsilon&lt;\frac{\left\|\mathbf{C}_\omega^{l-1} \mathbf{b}\right\|_2}{\|\mathbf{b}\|_2}\leq\frac{\|\mathbf{C}_\omega^{l-1}\|\cancel{\| \mathbf{b}\|_2}}{\cancel{\|\mathbf{b}\|_2}}=\left\|\mathbf{C}_\omega^{l-1}\right\|_2 \leq \underbrace{\left(\rho\left(\mathbf{C}_\omega\right)+\tau\left(1-\rho\left(\mathbf{C}_\omega\right)\right)\right)^{l-1}}_{\text {Assumption 2.1 }}
+\]</span> By definition of <span class="math inline">\(U(\omega)\)</span>, we know, <span class="math display">\[
+\begin{align}
+l  &amp; &gt; U(\omega)\\
+l - 1  &amp; &gt; U(\omega) - 1 = \frac{\log \epsilon}{\log(\rho + \tau(1 - \rho))} = \log_{(\rho + \tau(1 - \rho))} (\epsilon)
+\end{align}
+\]</span> Then <span class="math display">\[(\rho + \tau(1 - \rho))^{l-1} &lt; (\rho + \tau(1 - \rho))^{U(\omega)-1} = \epsilon\]</span> and this results in <span class="math inline">\(\epsilon \leq \dots &lt; \epsilon\)</span>, which is a contradiction. ■</p>
+<h4 data-original-heading="Claim 2. U is decreasing towards \omega^*" id="claim-2.-u-is-decreasing-towards-omega">2.1.2 Claim 2. <span class="math inline">\(U\)</span> is decreasing towards <span class="math inline">\(\omega^*\)</span></h4>
+<p><strong>Step 1. (<span class="math inline">\(U(\omega)\)</span> is a monotonic function of <span class="math inline">\(\rho\)</span>)</strong> For <span class="math inline">\(u(\omega) = 1 + \frac{-\log \epsilon}{-\log \alpha}\)</span> where <span class="math inline">\(\alpha = \rho + \tau(1 - \rho)\)</span>, notice that as <span class="math inline">\(\rho \downarrow\)</span>, we have</p>
+<ol type="1">
+<li><span class="math inline">\(\alpha \downarrow\)</span></li>
+<li><span class="math inline">\(\log \alpha \downarrow\)</span></li>
+<li><span class="math inline">\(\frac{\log \epsilon}{\log \alpha} \to 0\)</span></li>
+</ol>
+<p>So <span class="math inline">\(U(\omega)\)</span> is strictly decreasing as <span class="math inline">\(\rho\)</span> decreases.</p>
+<p><strong>Step 2. (V-Shape of spectral radius)</strong></p>
+<p>SOR theory by Hackbusch (2016) shows the V-shape of its spectral radius: <span class="math display">\[\rho(C_{\omega}) = \begin{cases} 
+\frac{1}{4} \left( \omega \beta + \sqrt{\omega^2 \beta^2 - 4(\omega - 1)} \right)^2 &amp; \omega &lt; \omega^* \\
+\omega - 1 &amp; \omega &gt; \omega^* \end{cases}\]</span></p>
+<p>Over the interval <span class="math inline">\((0, \omega^*)\)</span>, observe that <span class="math inline">\(\rho\)</span> strictly decreases. From part A, since <span class="math inline">\(U\)</span> follows the same direction as <span class="math inline">\(\rho\)</span>, therefore <span class="math inline">\(U(\omega)\)</span> is <strong>monotonically decreasing</strong> on <span class="math inline">\(\left(0, \omega^*\right)\)</span>.</p>
+<h4 data-original-heading="Claim 3. Lipschitz Continuity" id="claim-3.-lipschitz-continuity">2.1.3 Claim 3. Lipschitz Continuity</h4>
+<p>For interval <span class="math inline">\((\omega^*,2)\)</span>, the right side, we know <span class="math inline">\(\rho(C_{\omega})=\omega -1\)</span>, so we have <span class="math display">\[
+\begin{align}
+\alpha_\omega  &amp; = \rho + \tau(1-\rho)\\ 
+ &amp; =\tau + (1 - \tau)(\omega - 1)
+\end{align}\]</span> Then using the chain rule, we compute <span class="math inline">\(\partial_\omega U(\omega) = \frac{dU}{d\alpha} \cdot \frac{d\alpha}{d\omega}\)</span>: <span class="math display">\[\begin{aligned} \partial_\omega U(\omega) &amp;= \frac{d}{d\omega} \left[ 1 + \frac{\log \varepsilon}{\log(\alpha_\omega)} \right] \\ &amp;= (\log \varepsilon) \cdot \frac{d}{d\omega} \left[ (\log \alpha_\omega)^{-1} \right] \\ &amp;= (\log \varepsilon) \cdot \underbrace{\left[ -(\log \alpha_\omega)^{-2} \cdot \frac{1}{\alpha_\omega} \right]}_{\text{Outer Derivative } \frac{dU}{d\alpha}} \cdot \underbrace{\frac{d}{d\omega} \left[ \tau + (1 - \tau)(\omega - 1) \right]}_{\text{Inner Derivative } \frac{d\alpha}{d\omega}} \\ &amp;= (\log \varepsilon) \cdot \left[ \frac{-1}{\alpha_\omega \log^2 \alpha_\omega} \right] \cdot \left[ 1 - \tau \right] \\ &amp;= \frac{-(1 - \tau) \log \varepsilon}{\alpha_\omega \log^2 \alpha_\omega} \end{aligned}\]</span> Therefore, we have obtained <span class="math display">\[\lvert \partial_\omega U(\omega) \rvert = \frac{(\tau - 1) \log \varepsilon}{(\tau + (1-\tau)(\omega - 1)) \log^2(\tau + (1-\tau)(\omega - 1))}\]</span> We want to show the Lipschitz continuity of <span class="math inline">\(U(\omega)\)</span>, that is, to show its derivative is <strong>bounded by a constant</strong>. Here, the numerator is a constant, and denominator is basically in a form of <span class="math display">\[f(\alpha) = \alpha \ln^2 \alpha\]</span>To ensure the slope of the cost function <span class="math inline">\(|\partial_\omega U(\omega)|\)</span> does not blow up to infinity, we must ensure <span class="math inline">\(f(\alpha)\)</span> stays away from zero. So, <span class="math display">\[\begin{aligned} f'(\alpha) &amp;= \frac{d}{d\alpha} (\alpha \ln^2 \alpha) \\ &amp;= (1) \cdot \ln^2 \alpha + \alpha \cdot \left( 2 \ln \alpha \cdot \frac{1}{\alpha} \right) \\ &amp;= \ln^2 \alpha + 2 \ln \alpha \\ &amp;= \ln \alpha (\ln \alpha + 2) \end{aligned}\]</span> Set this to <span class="math inline">\(0\)</span>, we get <span class="math inline">\(\alpha = 1, \frac{1}{e^{2}}\)</span>, so the paper assumes <span class="math inline">\(\tau \geq 1/e^2\)</span> to avoid any explosion. For our <span class="math inline">\(\alpha_\omega\)</span>, it starts at <span class="math inline">\(\tau\)</span> and only grows larger as <span class="math inline">\(\omega\)</span> increases. Then ## Theorem 2.1</p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 2.1</span><span class="theorem-title">Regret bound for the automated SOR parameter selection</span></p>
+</div>
+<div class="theorem-content">
+<p>Define <span class="math inline">\(\alpha_t = \tau_t + (1-\tau_t)\max\{\beta_t^2, \omega_{\max}-1\}\)</span>, where <span class="math inline">\(\beta_t = \rho(\mathbf{I}_n - \mathbf{D}_t^{-1}\mathbf{A}_t)\)</span> and <span class="math inline">\(\tau_t\)</span> is the minimal <span class="math inline">\(\tau\)</span> satisfying Assumption 2.1 and the second part of Lemma 2.1. If we run Algorithm 2 using SOR initialized at</p>
+<ul>
+<li>solver: <span class="math inline">\(\mathbf{x} = \mathbf{0}_n\)</span></li>
+<li>parameter grid: <span class="math inline">\(g_{[i]} = 1 + (\omega_{\max}-1)\frac{i}{d}\)</span></li>
+<li>normalization: <span class="math inline">\(K \ge \frac{-\log \varepsilon}{-\log \alpha_{\max}}\)</span> for <span class="math inline">\(\alpha_{\max} = \max_t \alpha_t\)</span></li>
+<li>step-size: <span class="math inline">\(\eta = 1/\sqrt{T}\)</span><br>
+then the expected number of iterations is bounded as: <span class="math display">\[
+\mathbb{E} \sum_{t=1}^T \operatorname{SOR}_t(\omega_t) \le 2K\sqrt{2dT} + \sum_{t=1}^T \frac{-\log \varepsilon}{d \log^2 \alpha_t} + \min_{\omega \in (0, \omega_{\max}]} \sum_{t=1}^T U_t(\omega) 
+\]</span> Furthermore, using <span class="math inline">\(d = \sqrt[3]{\frac{T/2}{\log^2 \alpha_{\max}}}\)</span>, yields the tighter bound: <span class="math display">\[
+\mathbb{E} \sum_{t=1}^T \operatorname{SOR}_t(\omega_t) \le 3 \log \frac{1}{\varepsilon} \sqrt[3]{\frac{2\overline{\gamma} T^2}{\log^2 \alpha_{\max}}} + \min_{\omega \in (0,2)} \sum_{t=1}^T U_t(\omega) 
+\]</span></li>
+</ul>
+</div>
+</div>
+<div class="math-theorem remark" data-callout="remark" data-label="2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 2.1</span></p>
+</div>
+<div class="theorem-content">
+<p>As number of instances (<span class="math inline">\(T\)</span>) approaches infinity, the <strong>average cost per instance</strong> converges to the performance of the best fixed parameter <span class="math inline">\(\omega\)</span> in the search space. This means the AI agent eventually becomes as efficient as a human expert who already knows the optimal setting.</p>
+</div>
+</div>
+<p><strong>Proof.</strong></p>
+<p>The first inequality in Theorem 2.1 (Equation 4) is a standard result for <strong>Multi-Armed Bandits</strong>. We need to prove that the SOR cost functions (<span class="math inline">\(U_t\)</span>) meet the specific requirements of that theorem:</p>
+<ol type="1">
+<li><strong>Lipschitz Requirement</strong>: Theorem B.3 requires the functions to be Lipschitz.
+<ul>
+<li>For <span class="math inline">\(\omega \in [1, \omega_{\max}]\)</span>, <em>Lemma 2.1</em> is used to show that <span class="math inline">\(U_t - 1\)</span> is indeed semi-Lipschitz.</li>
+<li>for <span class="math inline">\(\omega \in (0, 1)\)</span>, while non-smooth, Lemma 2.1.2 proves all <span class="math inline">\(U_t\)</span> are <strong>strictly decreasing</strong> toward <span class="math inline">\(\omega=1\)</span>, so any parameter chosen in the non-Lipschitz region <span class="math inline">\((0, 1)\)</span> will either be closer to the optimum or bounded by the value at <span class="math inline">\(\omega=1\)</span>. Therefore, we can extend the comparator domain to the full range <span class="math inline">\((0, \omega_{\max}]\)</span>.</li>
+</ul></li>
+<li><strong>Boundedness Requirement</strong>: The cost must be capped. We have already shown that <span class="math inline">\(SOR_t - 1\)</span> is safely bounded by <span class="math inline">\(\frac{-\log \varepsilon}{-\log \alpha_t}\)</span>.</li>
+</ol>
+<h2 data-original-heading="3. Semi-Lipschitz Bandits" id="semi-lipschitz-bandits">3. Semi-Lipschitz Bandits</h2>
+<h2 data-original-heading="Appendix B — Semi-Lipschitz Bandits" id="appendix-b-semi-lipschitz-bandits">4 Appendix B — Semi-Lipschitz Bandits</h2>
+<p>We consider a sequence of adaptively chosen loss functions <span class="math inline">\(\ell_1,\ldots,\ell_T : [a,b] \mapsto [0,K]\)</span> on an interval <span class="math inline">\([a,b]\subset \mathbb{R}\)</span> and upper bounds <span class="math inline">\(u_1,\ldots,u_T : [a,b] \mapsto \mathbb{R}\)</span> satisfying <span class="math inline">\(u_t(x) \ge \ell_t(x)\ \forall t \in [T],\ x \in [a,b]\)</span>, where <span class="math inline">\([T]\)</span> denotes the set of integers from <span class="math inline">\(1\)</span> to <span class="math inline">\(T\)</span>. Our analysis will focus on the Tsallis-INF algorithm of Abernethy et al.&nbsp;(2015), which we write in its general form in Algorithm 4, although the analysis extends easily to the better-known (but sub-optimal) Exp3 (Auer et al., 2002). For Tsallis-INF, the following two facts follow directly from known results:</p>
+<hr>
+<h3 data-original-heading="Theorem B.1" id="theorem-b.1">4.1 Theorem B.1</h3>
+<div class="math-theorem theorem" data-callout="theorem" data-label="B.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem B.1</span><span class="theorem-title">(Corollary of Abernethy et al.&nbsp;(2015, Corollary 3.2))</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(\eta_t = 1/\sqrt{T}\ \forall t \in [T]\)</span> then Algorithm 4 has regret <span class="math display">\[
+\mathbb{E}\sum_{t=1}^T \ell_t(g_{[i_t]}) - \min_{i\in[d]} \sum_{t=1}^T \ell_t(g_{[i]}) \le 2K\sqrt{2dT}.
+\]</span></p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="Theorem B.2" id="theorem-b.2">4.2 Theorem B.2</h3>
+<div class="math-theorem theorem" data-callout="theorem" data-label="B.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem B.2</span><span class="theorem-title">(Corollary of Zimmert &amp; Seldin (2021, Theorem 1))</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(\eta_t = 2/\sqrt{t}\ \forall t \in [T]\)</span> then Algorithm 4 has regret <span class="math display">\[
+\mathbb{E}\sum_{t=1}^T \ell_t(g_{[i_t]}) - \min_{i\in[d]} \sum_{t=1}^T \ell_t(g_{[i]}) \le 4K\sqrt{dT} + 1.
+\]</span></p>
+</div>
+</div>
+<hr>
+<p>We now define a generalization of the Lipschitzness condition that trivially generalizes regular <span class="math inline">\(L\)</span>-Lipschitz functions, as well as the notion of one-sided Lipschitz functions studied in the stochastic setting by Dütting et al.&nbsp;(2023).</p>
+<h3 data-original-heading="Definition B.1" id="definition-b.1">4.3 Definition B.1</h3>
+<div class="math-theorem definition" data-callout="definition" data-label="B.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition B.1</span></p>
+</div>
+<div class="theorem-content">
+<p>Given a constant <span class="math inline">\(L \ge 0\)</span> and a point <span class="math inline">\(z \in [a,b]\)</span>, we say a function <span class="math inline">\(f : [a,b] \mapsto \mathbb{R}\)</span> is <span class="math inline">\((L,z)\)</span>-semi-Lipschitz if <span class="math display">\[
+f(x) - f(y) \le L|x-y|\ \forall x,y\ \text{s.t.}\ |x-z| \le |y-z|.
+\]</span></p>
+</div>
+</div>
+<hr>
+<p>We now show that Tsallis-INF with bandit access to <span class="math inline">\(\ell_t\)</span> on a discretization of <span class="math inline">\([a,b]\)</span> attains <span class="math inline">\(O(T^{2/3})\)</span> regret w.r.t. any fixed <span class="math inline">\(x \in [a,b]\)</span> evaluated by any comparator sequence of semi-Lipschitz upper bounds <span class="math inline">\(u_t\)</span>. Note that guarantees for the standard comparator can be recovered by just setting <span class="math inline">\(\ell_t = u_t\ \forall t \in [T]\)</span>, and that the rate is optimal by Kleinberg (2004, Theorem 4.2).</p>
+<h3 data-original-heading="Theorem B.3" id="theorem-b.3">4.4 Theorem B.3</h3>
+<div class="math-theorem theorem" data-callout="theorem" data-label="B.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem B.3</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(u_t \ge \ell_t\)</span> is <span class="math inline">\((L_t,z)\)</span>-semi-Lipschitz <span class="math inline">\(\forall t \in [T]\)</span> then Algorithm 4 using action space <span class="math inline">\(g \in [a,b]^d\)</span> s.t. <span class="math inline">\(g_{[i]} = a + \frac{b-a}{d}i\ \forall i \in [d-1]\)</span> and <span class="math inline">\(g_{[d]} = z\)</span> has regret <span class="math display">\[
+\mathbb{E}\sum_{t=1}^T \ell_t(g_{[i_t]}) - \min_{x\in[a,b]} \sum_{t=1}^T u_t(x) \le 2K\sqrt{2dT} + \frac{b-a}{d}\sum_{t=1}^T L_t.
+\]</span> Setting <span class="math inline">\(d = \sqrt[3]{\frac{(b-a)^2\bar{L}^2T}{2K^2}}\)</span> for <span class="math inline">\(\bar{L} = \frac{1}{T}\sum_{t=1}^T L_t\)</span> yields the bound <span class="math inline">\(3\sqrt[3]{2(b-a)\bar{L}K^2T^2}\)</span>.</p>
+</div>
+</div>
+<p><strong>Proof.</strong> Let <span class="math inline">\(\lceil\cdot\rceil_g\)</span> denote rounding to the closest element of <span class="math inline">\(g\)</span> in the direction of <span class="math inline">\(z\)</span>. Then for <span class="math inline">\(x \in [a,b]\)</span> we have <span class="math inline">\(|\lceil x\rceil_g - z| \le |x-z|\)</span> and <span class="math inline">\(|\lceil x\rceil_g - x| \le \frac{b-a}{d}\)</span>, so applying Theorem B.1 and this fact yields <span class="math display">\[
+\begin{aligned}
+\mathbb{E}\sum_{t=1}^T \ell_t(g_{[i_t]})
+&amp;\le 2K\sqrt{2dT} + \min_{i\in[d]} \sum_{t=1}^T \ell_t(g_{[i]})
+\le 2K\sqrt{2dT} + \min_{i\in[d]} \sum_{t=1}^T u_t(g_{[i]}) \\
+&amp;= 2K\sqrt{2dT} + \min_{x\in[a,b]} \sum_{t=1}^T u_t(\lceil x\rceil_g) \\
+&amp;\le 2K\sqrt{2dT} + \frac{b-a}{d}\sum_{t=1}^T L_t + \min_{x\in[a,b]} \sum_{t=1}^T u_t(x).
+\end{aligned}
+\]</span></p>
+<p>For contextual bandits, we restrict to <span class="math inline">\((L_t,b)\)</span>-semi-Lipschitz functions and <span class="math inline">\(L_f\)</span>-Lipschitz policies, obtaining <span class="math inline">\(O(T^{3/4})\)</span> regret; this rate matches known upper and lower bounds for the case where losses are Lipschitz in both actions and contexts (Lu et al., 2010, Theorem 1), although this does not imply optimality of our result.</p>
+<h3 data-original-heading="Theorem B.4" id="theorem-b.4">4.5 Theorem B.4</h3>
+<div class="math-theorem theorem" data-callout="theorem" data-label="B.4">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem B.4</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(u_t \ge \ell_t\)</span> is <span class="math inline">\((L_t,b)\)</span>-semi-Lipschitz and <span class="math inline">\(c_t \in [c,c+C]\ \forall t \in [T]\)</span> then Algorithm 5 using action space <span class="math inline">\(g_{[i]} = a + \frac{b-a}{d}i\)</span> and <span class="math inline">\(h_{[j]} = c + \frac{C}{m}\left(j - \frac{1}{2}\right)\)</span> as the grid of contexts has regret w.r.t. any <span class="math inline">\(L_f\)</span>-Lipschitz policy <span class="math inline">\(f : [c,c+C] \mapsto [a,b]\)</span> of <span class="math display">\[
+\mathbb{E}\sum_{t=1}^T \ell_t(g_{[i_t]}) - \sum_{t=1}^T u_t(\pi(c_t))
+\le m + 4K\sqrt{dmT} + \left(\frac{CL_f}{m} + \frac{b-a}{d}\right)\sum_{t=1}^T L_t.
+\]</span> Setting <span class="math inline">\(d = \sqrt[4]{\frac{(b-a)^3\bar{L}^2T}{4CL_fK^2}},\ m = \sqrt[4]{\frac{C^3L_f^3\bar{L}^2T}{4(b-a)K^2}}\)</span> yields regret <span class="math display">\[
+4\sqrt[4]{4K^2\bar{L}^2(b-a)CL_fT^3} \;+\; \sqrt[4]{\frac{C^3L_f^3\bar{L}^2T}{4(b-a)K^2}}.
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof.</strong> Define <span class="math inline">\([\cdot]_h\)</span> to be the operation of rounding to the closest element of <span class="math inline">\(h\)</span>, breaking ties arbitrarily, and set <span class="math inline">\([T]_j = \{t \in [T] : [c_t]_h = h_{[j]}\}\)</span>. Furthermore, define <span class="math inline">\([x]_g\)</span> to be the smallest element <span class="math inline">\(g_{[i]}\)</span> in <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(x + \frac{CL_f}{2m} \le g_{[i]}\)</span> (or <span class="math inline">\(\max_{i\in[d]} g_{[i]}\)</span> if such an element does not exist).</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{E}\sum_{t=1}^T \ell_t(g_{[i_t]})
+&amp;= \mathbb{E}\sum_{j=1}^m \sum_{t\in[T]_j} \ell_t(g_{[i_t]}) - \min_{i\in[d]} \sum_{t\in[T]_j} \ell_t(g_{[i]}) + \min_{i\in[d]} \sum_{t\in[T]_j} \ell_t(g_{[i]}) \\
+&amp;\le m + 4\sum_{j=1}^m K\sqrt{d|[T]_j|} + \min_{i\in[d]} \sum_{t\in[T]_j} \ell_t(g_{[i]}) \\
+&amp;\le m + 4K\sqrt{dmT} + \sum_{j=1}^m \min_{i\in[d]} \sum_{t\in[T]_j} u_t(g_{[i]}) \\
+&amp;\le m + 4K\sqrt{dmT} + \sum_{t=1}^T u_t([f([c_t]_h)]_g).
+\end{aligned}
+\]</span> where the first inequality follows by Theorem B.2, the second applies Jensen’s inequality to the left term and <span class="math inline">\(u_t \ge \ell_t\)</span> on the right, and the last uses optimality of each <span class="math inline">\(i\)</span> for each <span class="math inline">\(j\)</span>. Now since <span class="math inline">\(f\)</span> is <span class="math inline">\(L_f\)</span>-Lipschitz we have by definition of <span class="math inline">\([\cdot]_h\)</span> that <span class="math inline">\(|f(c_t) - f([c_t]_h)| \le \frac{CL_f}{2m}\)</span>. This in turn implies that <span class="math inline">\(f(c_t) \le [f([c_t]_h)]_g \le f(c_t) + \frac{CL_f}{m} + \frac{b-a}{d}\)</span> by definition of <span class="math inline">\(g\)</span> and <span class="math inline">\([\cdot]_g\)</span>. Since <span class="math inline">\(u_t\)</span> is <span class="math inline">\((L_t,b)\)</span>-semi-Lipschitz, the result follows.</p>
+<p><span class="math inline">\(\square\)</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/research/Hypre/Paper%20Notes.html"><span>← Previous page</span><span>Paper Notes</span></a>
+    <a rel="next" href="/notebook/content/research/Hypre/Setup-Solve%20Phases%20RL%20design.html"><span>Next page →</span><span>Setup-Solve Phases RL design</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Relevant Proof</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#near-asymptotic-analysis-of-sor" class="is-active" aria-current="location">1. Near-asymptotic analysis of SOR</a></li><li style="--depth:1"><a href="#sor-iteration-matrix-derivation">1.1 SOR Iteration Matrix Derivation</a></li><li style="--depth:2"><a href="#matrix-splitting">1.1.1 Matrix Splitting</a></li><li style="--depth:2"><a href="#fixed-point-iteration">1.1.2. Fixed-Point Iteration</a></li><li style="--depth:2"><a href="#the-defect-reduction-matrix-mathbfc_omega">1.1.3. The Defect Reduction Matrix \mathbf{C}_\omega</a></li><li style="--depth:2"><a href="#spectral-radius-and-convergence">1.1.4. Spectral Radius and Convergence</a></li><li style="--depth:1"><a href="#from-rho-to-iteration-count-uomega">1.2 From \rho to Iteration Count U(\omega)</a></li><li style="--depth:0"><a href="#relevant-proof">2. Relevant Proof</a></li><li style="--depth:1"><a href="#lemma-2.1">2.1 Lemma 2.1</a></li><li style="--depth:2"><a href="#claim-1.-operatornamesormathbfa-mathbfb-omegauomega">2.1.1 Claim 1. \operatorname{SOR}(\mathbf{A}, \mathbf{b}, \omega)&lt;U(\omega)</a></li><li style="--depth:2"><a href="#claim-2.-u-is-decreasing-towards-omega">2.1.2 Claim 2. U is decreasing towards \omega^*</a></li><li style="--depth:2"><a href="#claim-3.-lipschitz-continuity">2.1.3 Claim 3. Lipschitz Continuity</a></li><li style="--depth:0"><a href="#semi-lipschitz-bandits">3. Semi-Lipschitz Bandits</a></li><li style="--depth:0"><a href="#appendix-b-semi-lipschitz-bandits">4 Appendix B — Semi-Lipschitz Bandits</a></li><li style="--depth:1"><a href="#theorem-b.1">4.1 Theorem B.1</a></li><li style="--depth:1"><a href="#theorem-b.2">4.2 Theorem B.2</a></li><li style="--depth:1"><a href="#definition-b.1">4.3 Definition B.1</a></li><li style="--depth:1"><a href="#theorem-b.3">4.4 Theorem B.3</a></li><li style="--depth:1"><a href="#theorem-b.4">4.5 Theorem B.4</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

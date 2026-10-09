@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>3.4 Reaction-Dominated Problem — E.H. Notebook</title>
+<meta name="description" content="3.4.1 Reaction-Dominated ProblemConsider the boundary value problem \begin{aligned} -\mu u&#39;&#39; + \sigma u &amp;= 0, \qquad x\in (0,1),\\ u(0)&amp;=0,\\ u(1)&amp;=1. \end{aligned} Let 0">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768"><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/index.html">数值PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></nav><h1 id="reader-title">3.4 Reaction-Dominated Problem</h1></header><div id="article-body" class="prose"><h2 data-original-heading="3.4.1 Reaction-Dominated Problem" id="reaction-dominated-problem">3.4.1 Reaction-Dominated Problem</h2>
+<p>Consider the boundary value problem <span class="math display">\[
+\begin{aligned}
+-\mu u'' + \sigma u &amp;= 0, \qquad x\in (0,1),\\
+u(0)&amp;=0,\\
+u(1)&amp;=1.
+\end{aligned}
+\]</span> Let <span class="math display">\[
+0=x_0&lt;x_1&lt;\cdots&lt;x_N=1,
+\qquad
+h=x_i-x_{i-1}=\frac1N,
+\]</span> and let <span class="math inline">\(\{\psi_i\}\)</span> be the standard piecewise linear hat basis functions. For an interior node <span class="math inline">\(x_i\)</span>, <span class="math inline">\(i=1,\dots,N-1\)</span>, we have <span class="math display">\[
+\psi_i(x)=
+\begin{cases}
+\dfrac{x-x_{i-1}}{h}, &amp; x\in [x_{i-1},x_i],\\[1ex]
+\dfrac{x_{i+1}-x}{h}, &amp; x\in [x_i,x_{i+1}],\\[1ex]
+0, &amp; \text{otherwise}.
+\end{cases}
+\]</span></p>
+<h3 data-original-heading="3.4.1.1 Weak Form" id="weak-form">3.4.1.1 Weak Form</h3>
+<p>The weak form is: find <span class="math inline">\(u_h\in V_h\)</span> such that for all <span class="math inline">\(v_h\in V_h^0\)</span>, <span class="math display">\[
+\mu \int_0^1 u_h' v_h'\,dx
++\sigma \int_0^1 u_h v_h\,dx
+=0.
+\]</span> Taking <span class="math inline">\(v_h=\psi_i\)</span> gives, for each interior node <span class="math inline">\(i\)</span>, <span class="math display">\[
+\mu \int_0^1 u_h' \psi_i'\,dx
++\sigma \int_0^1 u_h \psi_i\,dx
+=0.
+\]</span></p>
+<h2 data-original-heading="3.4.2 Standard P_1 Finite Element Discretization" id="standard-p_1-finite-element-discretization">3.4.2 Standard <span class="math inline">\(P_1\)</span> Finite Element Discretization</h2>
+<p>Using the usual stiffness and mass matrices <span class="math display">\[
+\underbrace{
+\frac{\mu}{h}\left[\begin{array}{cccc}
+2 &amp; -1 &amp; &amp; \\
+-1 &amp; 2 &amp; -1 &amp; \\
+&amp; \ddots &amp; \ddots &amp; \ddots \\
+&amp; &amp; -1 &amp; 2
+\end{array}\right]}_{\text{stiffness}}
+\qquad\text{and}\qquad
+\underbrace{
+\frac{\sigma h}{6}\left[\begin{array}{cccc}
+4 &amp; 1 &amp; &amp; \\
+1 &amp; 4 &amp; 1 &amp; \\
+&amp; \ddots &amp; \ddots &amp; \ddots \\
+&amp; &amp; 1 &amp; 4
+\end{array}\right]}_{\text{consistent mass}}
+\]</span> the nodal equation at an interior node is <span class="math display">\[
+\begin{align}
+\frac{\mu}{h}\,(-u_{i-1}+2u_i-u_{i+1})
++\frac{\sigma h}{6}(u_{i-1}+4u_i+u_{i+1}) &amp; =0\\
+-\mu\left(\frac{u_{i+1}-2u_i+u_{i-1}}{h^2}\right)
++\frac{\sigma}{6}\left(u_{i-1}+4u_i+u_{i+1}\right) &amp; =0 \\
+\end{align}
+\]</span> and equivalently, <span class="math display">\[
+\left(-\frac{\mu}{h^2}+\frac{\sigma}{6}\right)u_{i-1}
++\left(\frac{2\mu}{h^2}+\frac{4\sigma}{6}\right)u_i
++\left(-\frac{\mu}{h^2}+\frac{\sigma}{6}\right)u_{i+1}
+ =0
+\]</span> To keep the off-diagonal entries nonpositive, we require <span class="math display">\[
+\begin{align}
+-\frac{\mu}{h^2}+\frac{\sigma}{6}&amp;\le 0\\
+\mathbb{P}_{e}=\frac{\sigma h^2}{6\mu}&amp;\le 1&amp;&amp;
+\end{align}
+\Longrightarrow\qquad
+\boxed{h\le \sqrt{\frac{6\mu}{\sigma}}}
+\]</span></p>
+<p>for mesh restriction. ## Reaction-Dominated Problem</p>
+<p>Consider <span class="math display">\[
+\begin{aligned}
+-\mu u'' + \sigma u &amp;= 0, \qquad x\in (0,1),\\
+u(0)&amp;=0,\\
+u(1)&amp;=1.
+\end{aligned}
+\]</span></p>
+<p>Let <span class="math display">\[
+0=x_0&lt;x_1&lt;\cdots&lt;x_N=1,
+\qquad
+h=x_i-x_{i-1}=\frac{1}{N},
+\]</span> and let <span class="math inline">\(\{\varphi_i\}\)</span> be the standard piecewise linear hat basis functions.</p>
+<hr>
+<h2 data-original-heading="Weak Form" id="weak-form-1">3.4.3 Weak Form</h2>
+<p>The weak form is: find <span class="math inline">\(u_h\)</span> such that <span class="math display">\[
+\mu \int_0^1 u_h' v_h'\,dx+\sigma \int_0^1 u_h v_h\,dx=0
+\]</span> for all test functions <span class="math inline">\(v_h\)</span>.</p>
+<p>Taking <span class="math inline">\(v_h=\varphi_i\)</span>, we obtain <span class="math display">\[
+\mu \int_0^1 u_h' \varphi_i'\,dx+\sigma \int_0^1 u_h \varphi_i\,dx=0.
+\]</span></p>
+<hr>
+<h2 data-original-heading="Standard Finite Element Equation" id="standard-finite-element-equation">3.4.4 Standard Finite Element Equation</h2>
+<p>Using the usual stiffness and consistent mass matrices, the nodal equation at an interior node <span class="math inline">\(x_i\)</span> is <span class="math display">\[
+\frac{\mu}{h}(-u_{i-1}+2u_i-u_{i+1})
++\frac{\sigma h}{6}(u_{i-1}+4u_i+u_{i+1})=0.
+\]</span></p>
+<p>Dividing by <span class="math inline">\(h\)</span>, this becomes <span class="math display">\[
+-\mu\left(\frac{u_{i+1}-2u_i+u_{i-1}}{h^2}\right)
++\frac{\sigma}{6}(u_{i-1}+4u_i+u_{i+1})=0.
+\]</span></p>
+<p>Equivalently, <span class="math display">\[
+\left(-\frac{\mu}{h^2}+\frac{\sigma}{6}\right)u_{i-1}
++\left(\frac{2\mu}{h^2}+\frac{4\sigma}{6}\right)u_i
++\left(-\frac{\mu}{h^2}+\frac{\sigma}{6}\right)u_{i+1}=0.
+\]</span></p>
+<p>To keep the off-diagonal coefficients nonpositive, we require <span class="math display">\[
+-\frac{\mu}{h^2}+\frac{\sigma}{6}\le 0,
+\]</span> that is, <span class="math display">\[
+\frac{\sigma h^2}{6\mu}\le 1.
+\]</span></p>
+<p>Hence, <span class="math display">\[
+h\le \sqrt{\frac{6\mu}{\sigma}}.
+\]</span></p>
+<hr>
+<h2 data-original-heading="Mass Lumping" id="mass-lumping">3.4.5 Mass Lumping</h2>
+<p>We now approximate the mass term by the trapezoidal rule, written in your notation as <span class="math inline">\(\sigma(T)\)</span>.</p>
+<h3 data-original-heading="Off-diagonal term" id="off-diagonal-term">3.4.5.1 Off-diagonal term</h3>
+<p>For <span class="math inline">\(j\neq i\)</span>, only the neighboring cases <span class="math inline">\(j=i-1\)</span> and <span class="math inline">\(j=i+1\)</span> need to be checked, since otherwise the supports do not overlap and the integral is automatically <span class="math inline">\(0\)</span>. For example, <span class="math display">\[
+\begin{aligned}
+\sigma \int_0^1 \varphi_i\varphi_j
+&amp;\approx \sigma(T)\int_0^1 \varphi_i\varphi_j \\
+&amp;= \sigma(T)\int_{x_{i-1}}^{x_{i+1}} \varphi_i\varphi_j \\
+&amp;= \sigma(T)\left(
+\int_{x_{i-1}}^{x_i}\varphi_i\varphi_{i-1}
++\int_{x_i}^{x_{i+1}}\varphi_i\varphi_{i-1}
++\int_{x_{i-1}}^{x_i}\varphi_i\varphi_{i+1}
++\int_{x_i}^{x_{i+1}}\varphi_i\varphi_{i+1}
+\right) \\
+&amp;= \sigma(T)\left(
+\int_{x_{i-1}}^{x_i}\varphi_i\varphi_{i-1}
++0
++0
++\int_{x_i}^{x_{i+1}}\varphi_i\varphi_{i+1}
+\right),
+\end{aligned}
+\]</span> since <span class="math display">\[
+\int_{x_i}^{x_{i+1}}\varphi_i\varphi_{i-1}=0,
+\qquad
+\int_{x_{i-1}}^{x_i}\varphi_i\varphi_{i+1}=0,
+\]</span> because the supports do not overlap on those intervals.</p>
+<p>Applying the trapezoidal rule on each remaining interval, <span class="math display">\[
+\begin{aligned}
+\sigma \int_0^1 \varphi_i\varphi_j
+&amp;\approx
+\sigma(T)\left(
+\int_{x_{i-1}}^{x_i}\varphi_i\varphi_{i-1}
++
+\int_{x_i}^{x_{i+1}}\varphi_i\varphi_{i+1}
+\right) \\
+&amp;=
+\frac{\sigma h}{2}\Big(\varphi_i\varphi_{i-1}(x_{i-1})+\varphi_i\varphi_{i-1}(x_i)\Big)
++
+\frac{\sigma h}{2}\Big(\varphi_i\varphi_{i+1}(x_i)+\varphi_i\varphi_{i+1}(x_{i+1})\Big) \\
+&amp;= 0+0 \\
+&amp;= 0.
+\end{aligned}
+\]</span></p>
+<p>Therefore, the off-diagonal terms vanish: <span class="math display">\[
+\sigma(T)\int_0^1 \varphi_i\varphi_j = 0,
+\qquad j\neq i.
+\]</span> ### Diagonal term</p>
+<p>For the diagonal term, <span class="math display">\[
+\begin{aligned}
+\sigma \int_0^1 \varphi_i^2
+&amp;\approx \sigma(T)\int_0^1 \varphi_i^2 \\
+&amp;= \sigma(T)\int_{x_{i-1}}^{x_i}\varphi_i^2
++\sigma(T)\int_{x_i}^{x_{i+1}}\varphi_i^2.
+\end{aligned}
+\]</span></p>
+<p>Applying the trapezoidal rule, <span class="math display">\[
+\begin{aligned}
+\sigma(T)\int_{x_{i-1}}^{x_i}\varphi_i^2
+&amp;=
+\frac{\sigma h}{2}\Big(\varphi_i^2(x_{i-1})+\varphi_i^2(x_i)\Big),
+\\
+\sigma(T)\int_{x_i}^{x_{i+1}}\varphi_i^2
+&amp;=
+\frac{\sigma h}{2}\Big(\varphi_i^2(x_i)+\varphi_i^2(x_{i+1})\Big).
+\end{aligned}
+\]</span></p>
+<p>Since <span class="math display">\[
+\varphi_i(x_{i-1})=0,\qquad
+\varphi_i(x_i)=1,\qquad
+\varphi_i(x_{i+1})=0,
+\]</span> we get <span class="math display">\[
+\begin{aligned}
+\sigma(T)\int_0^1 \varphi_i^2
+&amp;=
+\frac{\sigma h}{2}(0+1)+\frac{\sigma h}{2}(1+0) \\
+&amp;= \sigma h.
+\end{aligned}
+\]</span></p>
+<p>So the lumped mass matrix is diagonal, with diagonal entry <span class="math inline">\(\sigma h\)</span>.</p>
+<hr>
+<h2 data-original-heading="Lumped Scheme" id="lumped-scheme">3.4.6 Lumped Scheme</h2>
+<p>Therefore, after mass lumping, the finite element equation becomes <span class="math display">\[
+\frac{\mu}{h}(-u_{i-1}+2u_i-u_{i+1})+\sigma h\,u_i=0.
+\]</span></p>
+<p>Dividing by <span class="math inline">\(h\)</span> gives <span class="math display">\[
+-\mu\left(\frac{u_{i+1}-2u_i+u_{i-1}}{h^2}\right)+\sigma u_i=0.
+\]</span></p>
+<p>Thus the lumped finite element scheme agrees with the finite difference scheme.</p>
+<hr>
+<h2 data-original-heading="Bilinear Form" id="bilinear-form">3.4.7 Bilinear Form</h2>
+<p>For this reaction–diffusion problem, the bilinear form is <span class="math display">\[
+a(\varphi_j,\varphi_i)
+=
+\mu\int_0^1 \varphi_j'\varphi_i'\,dx
++\sigma\int_0^1 \varphi_j\varphi_i\,dx.
+\]</span></p>
+<h3 data-original-heading="3.4.3 Mass Lumping" id="mass-lumping-1">3.4.3 Mass Lumping</h3>
+<p>To lump the mass matrix, we approximate the mass integral by nodal quadrature (equivalently, the trapezoidal rule on each element). For the <span class="math inline">\(i\)</span>-th test function, <span class="math display">\[
+\begin{align}
+\int_0^1 u \psi_i\,dx
+= &amp; 
+\int_{x_{i-1}}^{x_i} u\psi_i\,dx
++
+\int_{x_i}^{x_{i+1}} u\psi_i\,dx
+ \\
+= &amp; 
+\frac{h}{2}\Big[\cancel{ u\underbrace{ \psi_i(x_{i-1})  }_{ 0 }}+u\underbrace{ \psi_i(x_i) }_{ 1 }\Big]  + 
+\frac{h}{2}\Big[u\underbrace{ \psi_i(x_i) }_{ 1 }+u\cancel{ \underbrace{ \psi_i(x_{i+1}) }_{ 0 } }\Big]  &amp;  &amp; \text{trapezoidal rule}\\
+=  &amp;  \frac{h}{2}u_{i}+ \frac{h}{2}u_i = hu_{i}
+\end{align} 
+\]</span> So the lumped mass contribution is <span class="math display">\[
+\boxed{\sigma \int_0^1 u\psi_i\,dx
+\approx
+\sigma h\,u_i}
+\]</span></p>
+<h2 data-original-heading="Lumped-Mass Finite Element Scheme" id="lumped-mass-finite-element-scheme">3.4.8 Lumped-Mass Finite Element Scheme</h2>
+<p>Replacing the consistent mass term by the lumped one gives <span class="math display">\[
+\begin{align}
+\frac{\mu}{h}(-u_{i-1}+2u_i-u_{i+1})+\sigma h\,u_i &amp; =0 \\
+-\mu\left(\frac{u_{i+1}-2u_i+u_{i-1}}{h^2}\right)+\sigma u_i&amp;=0
+\end{align}
+\]</span> This is exactly the standard finite difference discretization: <span class="math display">\[
+\boxed{
+\text{FD}=\text{FE}+\text{mass lumping}.
+}
+\]</span></p>
+<h3 data-original-heading="Bilinear Form for Reaction-Diffusion" id="bilinear-form-for-reaction-diffusion">3.4.8.1 Bilinear Form for Reaction-Diffusion</h3>
+<p>For the reaction–diffusion problem, the bilinear form is <span class="math display">\[
+a(\psi_j,\psi_i)
+=
+\mu\int_0^1 \psi_j'\psi_i'\,dx
++\sigma\int_0^1 \psi_j\psi_i\,dx.
+\]</span></p>
+<p>To record the finite element bilinear form: <span class="math display">\[
+\boxed{
+a(\psi_j,\psi_i)
+=
+\mu\int_0^1 \psi_j'\psi_i'\,dx
++\sigma\int_0^1 \psi_j\psi_i\,dx.
+}
+\]</span> ### Lumped Bilinear Form</p>
+<p>The <strong>consistent</strong> finite element bilinear form for the reaction–diffusion problem is <span class="math display">\[
+a(w,v)
+=
+\mu\int_0^1 w'v'\,dx
++
+\sigma\int_0^1 wv\,dx.
+\]</span></p>
+<p>After mass lumping, we replace the exact mass integral by a nodal quadrature rule: <span class="math display">\[
+\int_0^1 wv\,dx
+\;\approx\;
+Q_h(wv).
+\]</span> Thus the <strong>lumped</strong> bilinear form becomes <span class="math display">\[
+\boxed{
+a_h(w,v)
+=
+\mu\int_0^1 w'v'\,dx
++
+\sigma Q_h(wv).
+}
+\]</span></p>
+<p>For piecewise linear basis functions <span class="math inline">\(\{\psi_i\}\)</span>, the nodal quadrature gives <span class="math display">\[
+Q_h(\psi_j\psi_i)=h\,\delta_{ij},
+\]</span> so <span class="math display">\[
+\boxed{
+a_h(\psi_j,\psi_i)
+=
+\mu\int_0^1 \psi_j'\psi_i'\,dx
++
+\sigma h\,\delta_{ij}.
+}
+\]</span></p>
+<p>Hence the mass-lumped finite element matrix is <span class="math display">\[
+A_h = K + \sigma M_{\mathrm{lump}},
+\]</span> where <span class="math inline">\(K\)</span> is the usual stiffness matrix and <span class="math display">\[
+M_{\mathrm{lump}} = hI.
+\]</span></p>
+<p>So in 1D with <span class="math inline">\(P_1\)</span> elements, <span class="math display">\[
+\boxed{
+M_{\mathrm{lump}}
+=
+hI,
+\qquad
+K
+=
+\frac{\mu}{h}
+\begin{bmatrix}
+2 &amp; -1 &amp; &amp; \\
+-1 &amp; 2 &amp; -1 &amp; \\
+&amp; \ddots &amp; \ddots &amp; \ddots \\
+&amp; &amp; -1 &amp; 2
+\end{bmatrix}.
+}
+\]</span></p>
+<h3 data-original-heading="Why Strang’s Lemma Appears" id="why-strangs-lemma-appears">3.4.8.2 Why Strang’s Lemma Appears</h3>
+<p>The original finite element method uses the exact bilinear form <span class="math inline">\(a(\cdot,\cdot)\)</span>, but mass lumping replaces it by the approximate form <span class="math inline">\(a_h(\cdot,\cdot)\)</span>. So this is <strong>not exactly the same Galerkin method anymore</strong>: it is a <strong>perturbed variational problem</strong>.</p>
+<p>That is why <strong>Strang’s Lemma</strong> is the right tool. It says that the total error is controlled by</p>
+<ol type="1">
+<li>the usual finite element approximation error, and<br>
+</li>
+<li>the additional consistency error coming from replacing <span class="math inline">\(a\)</span> by <span class="math inline">\(a_h\)</span>.</li>
+</ol>
+<p>In this setting, if <span class="math inline">\(u\)</span> is the exact solution and <span class="math inline">\(u_h\)</span> is the lumped-mass finite element solution, then schematically <span class="math display">\[
+\|u-u_h\|
+\;\le\;
+C\left(
+\underbrace{\inf_{v_h\in V_h}\|u-v_h\|}_{\text{approximation error}}
++
+\underbrace{\sup_{w_h\in V_h\setminus\{0\}}
+\frac{|a(v_h,w_h)-a_h(v_h,w_h)|}{\|w_h\|}}_{\text{quadrature / lumping error}}
+\right).
+\]</span></p>
+<p>So the full picture is: <span class="math display">\[
+\text{mass lumping} = \text{exact mass bilinear form $\to$ quadrature-based diagonal approximation}
+\]</span></p>
+<p>And Strang’s Lemma tells us that this is <strong>acceptable</strong> as long as the added quadrature error is small enough.</p>
+<h3 data-original-heading="Summary" id="summary">3.4.8.3 Summary</h3>
+<ul>
+<li>The <strong>consistent</strong> bilinear form is <span class="math display">\[
+a(w,v)=\mu\int_0^1 w'v'\,dx+\sigma\int_0^1 wv\,dx.
+\]</span></li>
+<li>The <strong>lumped</strong> bilinear form is <span class="math display">\[
+a_h(w,v)=\mu\int_0^1 w'v'\,dx+\sigma Q_h(wv).
+\]</span></li>
+<li>For <span class="math inline">\(P_1\)</span> elements in 1D, <span class="math display">\[
+Q_h(\psi_j\psi_i)=h\delta_{ij},
+\]</span> so the mass matrix becomes diagonal.</li>
+<li>Therefore, the standard finite difference scheme can be interpreted as <span class="math display">\[
+\boxed{\text{FD}=\text{FE}+\text{mass lumping}.}
+\]</span></li>
+</ul>
+<h3 data-original-heading="4. Strang’s First Lemma" id="strangs-first-lemma">4. Strang’s First Lemma</h3>
+<p>Let <span class="math inline">\(u\)</span> be the exact solution and <span class="math inline">\(\tilde u_h\)</span> the discrete solution defined by the approximate bilinear form <span class="math inline">\(a_h\)</span>.<br>
+Then, under the usual continuity and stability assumptions, <span class="math display">\[
+\|u-\tilde u_h\|_V
+\le C
+\left(
+\underbrace{\inf_{v_h\in V_h}\|u-v_h\|_V}_{\text{best approximation}}
++
+\underbrace{\sup_{w_h\in V_h\setminus\{0\}}
+\frac{|a(v_h,w_h)-a_h(v_h,w_h)|}{\|w_h\|_V}}_{\text{bilinear form consistency error}}
++
+\underbrace{\sup_{w_h\in V_h\setminus\{0\}}
+\frac{|F(w_h)-F_h(w_h)|}{\|w_h\|_V}}_{\text{load consistency error}}
+\right).
+\]</span></p>
+<p>This is the full picture:</p>
+<p><span class="math display">\[
+\text{total error}
+=
+\text{approximation error}
++
+\text{quadrature / mass-lumping error}.
+\]</span></p>
+<h3 data-original-heading="5. Interpretation for mass lumping" id="interpretation-for-mass-lumping">5. Interpretation for mass lumping</h3>
+<p>Mass lumping changes the discrete problem by replacing the exact mass/reaction inner product with a simpler quadrature rule, often producing a diagonal matrix.</p>
+<p>So Strang’s Lemma tells us:</p>
+<ul>
+<li>if <span class="math inline">\(V_h\)</span> approximates well, and</li>
+<li>if the quadrature error in <span class="math inline">\(a_h\)</span> and <span class="math inline">\(F_h\)</span> is small,</li>
+</ul>
+<p>then the total error remains controlled.</p>
+<p>In other words, <span class="math display">\[
+\boxed{
+\text{mass lumping is acceptable if the added consistency error is of higher order or comparable to the FE approximation error.}
+}
+\]</span></p>
+<h3 data-original-heading="6. Practical note for your matrix entries" id="practical-note-for-your-matrix-entries">6. Practical note for your matrix entries</h3>
+<p>For the convection-diffusion-reaction problem, the basis-entry formula you want in your notes is <span class="math display">\[
+A_{ij}
+=
+\mu \int_0^1 \psi_j' \psi_i' \, dx
++
+\beta \int_0^1 \psi_j' \psi_i \, dx
++
+\sigma \int_0^1 \psi_j \psi_i \, dx.
+\]</span></p>
+<p>If you then apply mass lumping only to the mass/reaction term, replace <span class="math display">\[
+\int_0^1 \psi_j \psi_i\,dx
+\quad \text{by} \quad
+Q_h(\psi_j\psi_i),
+\]</span> so that <span class="math display">\[
+A_{ij}^{\mathrm{lump}}
+=
+\mu \int_0^1 \psi_j' \psi_i' \, dx
++
+\beta \int_0^1 \psi_j' \psi_i \, dx
++
+\sigma\, Q_h(\psi_j\psi_i).
+\]</span></p>
+<p>This is exactly the setting where Strang’s Lemma is the right tool.</p>
+<h3 data-original-heading="Approximated Integral" id="approximated-integral">3.4.8.7 Approximated Integral</h3>
+<p>Instead of this, we solve the problem with the integral approximated <span class="math display">\[
+\begin{align}
+ a (u,v ) &amp; =F(v)  &amp;  &amp; \text{Gen Galerkin}\\
+  a_{h}(u, v)&amp; = F_{a} (v)
+\end{align}
+\]</span> Here,</p>
+<p><span class="math display">\[
+\begin{align}
+\underbrace{ \left( \sigma \int uv - \sigma(T) \int uv \right) }_{ \mathcal{O}(h^{2})}
+\end{align}
+\]</span></p>
+<p>These studnets are solving this problem <span class="math display">\[
+\left\{ \begin{align}
+ &amp; \frac{\partial u}{\partial t} + \mu\Delta u + \beta \cdot \nabla u + \beta(u) = f_{1} \\
+ &amp; \frac{\partial \alpha}{\partial t} + s (a, u)
+\end{align} \right.
+\]</span> You can still use trapizial view</p>
+<ul>
+<li>the vertices are the degrees of zero</li>
+<li>mass lamping ? check this</li>
+</ul>
+<blockquote>
+<p>Very rare in practical application</p>
+</blockquote>
+<p><span class="math display">\[
+\begin{align}
+ \frac{\partial u}{\partial t}  - \mu\Delta u + \beta \cdot \nabla u + \sigma u = f \\
+ + B.C. + I.C. \\
+ u(\partial\Omega)=g \\
+ \underline{x}\in \Omega , \mu &gt; 0 \\
+  \\
+ \Gamma_{d}, \Gamma_{n},\Gamma_{R}
+\end{align}
+\]</span></p>
+<h3 data-original-heading="Week formula" id="week-formula">3.4.8.8 Week formula</h3>
+<p>To obtain a week formula,</p>
+<ol type="1">
+<li><span class="math inline">\(\times v\)</span></li>
+<li><span class="math inline">\(\int_{0}^t \int_{\Omega}\)</span></li>
+</ol>
+<p><span class="math display">\[\begin{align}
+\int \int \dots [miss]
+\end{align}\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+ \int_{0} ^T \int_{\Omega}\frac{ \partial u }{ \partial t }  v = \int^T_{0} \frac{d}{dt} \int uv \\
+ \frac{d}{dt} \int uv   \\
+ = \int_{\Omega}\frac{ \partial uv }{ \partial t } +\int_{\partial \Omega} \int  w\cdot u uv  \\
+ + \int_{0} \frac{d}{dt} \int uv + \mu \int \nabla \nabla v + \int \beta \cdot \nabla uv + \sigma \int uv
+\end{align}
+\]</span></p>
+<p>Lemma.</p>
+<p>If <span class="math inline">\(a(u, v)\)</span> … in <span class="math inline">\(H_{0}^1\)</span> , <span class="math inline">\({} \exists \alpha &gt; 0\dots {}\)</span></p>
+<p>for an elipetical problem, we define weakly coercive <span class="math display">\[
+\begin{align}
+a(u,v) + \lambda \|u\|^{2}_{L^{2}}\geq \alpha \|u\|^{2}_{H^1}
+\end{align}
+\]</span> How is it weak? For exmaple, if <span class="math display">\[
+-\mu u'' + \sigma u = f,\sigma\geq 0
+\]</span> then, <span class="math display">\[
+\begin{align}
+\frac{ \partial u }{ \partial t } -\mu \frac{ \partial^{2} u }{ \partial t^{2} }[mis\sin g]
+\end{align}
+\]</span></p>
+<p>Here we have <span class="math display">\[
+\begin{align}
+ \int_{0}^{T \int_{\Omega} uv }=\int\int \nabla u \nabla v =? \int \|u\|^{2}_{H^1}(t)
+\end{align}
+\]</span> this is what we called a <span class="math display">\[
+\begin{align}
+ L^{2} ( O, T; H_{0}^{1}(\Omega)) \\
+ L^{2} (H_{0}^1)
+\end{align}
+\]</span></p>
+<p>Here <span class="math display">\[
+\begin{align}
+\int \frac{d}{dt }\|u\|_{L^{2}}^{2}= \underbrace{ \|u\| ^{2}_{L^{2}} (T)  }_{ L^{\infty}(0,T; L^{2}(\Omega)) }= \|u\|^{2}_{L^{2}} (0)
+\end{align}
+\]</span></p>
+<p>if <span class="math inline">\(f \in L^{2}(L^{2})\)</span>, <span class="math inline">\(u_{0} \in L^{2}(\Omega)\)</span>, then if [missing]</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span>← Previous page</span><span>3.1 Finite Difference of 1D Problem</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span>Next page →</span><span>3.5 Heat equation</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">3.4 Reaction-Dominated Problem</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#reaction-dominated-problem" class="is-active" aria-current="location">3.4.1 Reaction-Dominated Problem</a></li><li style="--depth:1"><a href="#weak-form">3.4.1.1 Weak Form</a></li><li style="--depth:0"><a href="#standard-p_1-finite-element-discretization">3.4.2 Standard P_1 Finite Element Discretization</a></li><li style="--depth:0"><a href="#weak-form-1">3.4.3 Weak Form</a></li><li style="--depth:0"><a href="#standard-finite-element-equation">3.4.4 Standard Finite Element Equation</a></li><li style="--depth:0"><a href="#mass-lumping">3.4.5 Mass Lumping</a></li><li style="--depth:1"><a href="#off-diagonal-term">3.4.5.1 Off-diagonal term</a></li><li style="--depth:0"><a href="#lumped-scheme">3.4.6 Lumped Scheme</a></li><li style="--depth:0"><a href="#bilinear-form">3.4.7 Bilinear Form</a></li><li style="--depth:1"><a href="#mass-lumping-1">3.4.3 Mass Lumping</a></li><li style="--depth:0"><a href="#lumped-mass-finite-element-scheme">3.4.8 Lumped-Mass Finite Element Scheme</a></li><li style="--depth:1"><a href="#bilinear-form-for-reaction-diffusion">3.4.8.1 Bilinear Form for Reaction-Diffusion</a></li><li style="--depth:1"><a href="#why-strangs-lemma-appears">3.4.8.2 Why Strang’s Lemma Appears</a></li><li style="--depth:1"><a href="#summary">3.4.8.3 Summary</a></li><li style="--depth:1"><a href="#strangs-first-lemma">4. Strang’s First Lemma</a></li><li style="--depth:1"><a href="#interpretation-for-mass-lumping">5. Interpretation for mass lumping</a></li><li style="--depth:1"><a href="#practical-note-for-your-matrix-entries">6. Practical note for your matrix entries</a></li><li style="--depth:1"><a href="#approximated-integral">3.4.8.7 Approximated Integral</a></li><li style="--depth:1"><a href="#week-formula">3.4.8.8 Week formula</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

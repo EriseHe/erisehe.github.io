@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>8.5 不定积分 — E.H. Notebook</title>
+<meta name="description" content="8.3 反常积分 (Improper Integrals)WTS: Study integral of the form \int_A f(x), where f : A \subset \mathbb{R}^n \rightarrow \mathbb{R} is an arbitrary function and A \subset \">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="实分析 file hierarchy" data-sidebar-root="content/notes/理论/实分析"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/实分析/Homework" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-14bb7df7f893" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Homework</span></button></div><ul class="tree-children" id="folder-14bb7df7f893" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%206.html"><span class="page-number"></span><span>Homework 6</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%207.html"><span class="page-number"></span><span>Homework 7</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%208.html"><span class="page-number"></span><span>Homework 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%209.html"><span class="page-number"></span><span>Homework 9</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2010.html"><span class="page-number"></span><span>Homework 10</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2011.html"><span class="page-number"></span><span>Homework 11</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第七章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6c1cdfa2831" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第七章</span></button></div><ul class="tree-children" id="folder-f6c1cdfa2831" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1%20Inverse%20Function%20Theorem.html"><span class="page-number">7.1</span><span>Inverse Function Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1.1%20Inverse%20FT%20(Proof).html"><span class="page-number">7.1.1</span><span>Inverse FT (Proof)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.2%20Implicit%20Function%20Theorem.html"><span class="page-number">7.2</span><span>Implicit Function Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.6%20Morse%20Lemma.html"><span class="page-number">7.6</span><span>Morse Lemma</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ba4a6565a187" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-ba4a6565a187" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Computing%20Integrals.html"><span class="page-number">9.1</span><span>Computing Integrals</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第八章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d4f2f6842523" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第八章</span></button></div><ul class="tree-children" id="folder-d4f2f6842523"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.1%20%E5%BA%A6%E9%87%8F%E7%90%86%E8%AE%BA.html"><span class="page-number">8.1</span><span>度量理论</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.2%20Criterion%20for%20Integrability.html"><span class="page-number">8.2</span><span>Criterion for Integrability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.3%20Proof%20of%20Lebesgue's%20Theorem.html"><span class="page-number">8.3</span><span>Proof of Lebesgue&#39;s Theorem</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.5%20Improper%20Integral.html"><span class="page-number">8.5</span><span>Improper Integral</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.6%20Lebesgue%20Convergence%20Theorem.html"><span class="page-number">8.6</span><span>Lebesgue Convergence Theorem</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第六章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aaca2e98953e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第六章</span></button></div><ul class="tree-children" id="folder-aaca2e98953e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.4%20Sufficient%20Conditions%20for%20Differentiability.html"><span class="page-number">6.4</span><span>Sufficient Conditions for Differentiability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.5%20The%20Chain%20Rule.html"><span class="page-number">6.5</span><span>The Chain Rule</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.6%20Product%20Rule%20and%20Gradients.html"><span class="page-number">6.6</span><span>Product Rule and Gradients</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.9%20Taylor%20Higher%20Dimentions.html"><span class="page-number">6.9</span><span>Taylor Higher Dimentions</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-6b1aa89ac58c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-6b1aa89ac58c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%8D%81%E7%AB%A0/10.1%20Fourier%20Analysis.html"><span class="page-number">10.1</span><span>Fourier Analysis</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/index.html">第八章</a></nav><h1 id="reader-title">8.5 不定积分</h1></header><div id="article-body" class="prose"><h2 data-original-heading="8.3 反常积分 (Improper Integrals)" id="反常积分-improper-integrals">8.3 反常积分 (Improper Integrals)</h2>
+<p>WTS: Study integral of the form <span class="math inline">\(\int_A f(x)\)</span>, where <span class="math inline">\(f : A \subset \mathbb{R}^n \rightarrow \mathbb{R}\)</span> is an arbitrary function and <span class="math inline">\(A \subset \mathbb{R}^n\)</span> is an arbitrary set.</p>
+<h3 data-original-heading="定义 8.3.1 (Integral)" id="定义-8.3.1-integral">8.5.1.1 定义 8.3.1 (Integral)</h3>
+<ul>
+<li><p>If <span class="math inline">\(A \subset \mathbb{R}^n\)</span> is bounded and <span class="math inline">\(f\)</span> is bounded, then <span class="math display">\[\int_A f(x) = \int_{\overline{A}} f(x) = \underline{\int_{A}} f(x) \quad \text{(Riemann Condition)}\]</span></p></li>
+<li><p><span class="math inline">\(f(x) \geq 0\)</span> bounded and <span class="math inline">\(A\)</span> is arbitrary, then <span class="math display">\[\int_A f(x) = \lim_{a\to\infty} \int_{A_a} f(x)\]</span></p>
+<p><span class="math inline">\(A \subset \mathbb{R}^n\)</span></p>
+<p><span class="math inline">\(A_a = [-a, a]^n\)</span></p></li>
+<li><p><span class="math inline">\(f(x) \geq 0\)</span> unbounded and <span class="math inline">\(A\)</span> is arbitrary.</p>
+<p>For <span class="math inline">\(M &gt; 0\)</span>, define <span class="math display">\[f_M(x) = 
+\begin{cases}
+f(x) &amp; \text{for } f(x) \leq M \\
+0 &amp; \text{o/w}.
+\end{cases}\]</span></p>
+<p>Then, <span class="math inline">\(\int_A f(x) = \lim_{M\to\infty} \int_A f_M(x)\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> is arbitrary and <span class="math inline">\(A\)</span> is arbitrary.</p>
+<p>Let <span class="math display">\[f^+(x) = 
+\begin{cases}
+f(x) &amp; f(x) \geq 0 \\
+0 &amp; f(x) &lt; 0,
+\end{cases}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[f^-(x) = 
+\begin{cases}
+0 &amp; f(x) \geq 0 \\
+-f(x) &amp; f(x) &lt; 0.
+\end{cases}\]</span></p></li>
+</ul>
+<p><strong>Remark 8.5</strong></p>
+<ol type="1">
+<li><span class="math inline">\(f^+(x)\)</span> is the positive part of <span class="math inline">\(f\)</span> and <span class="math inline">\(f^-(x)\)</span> is the negative part of <span class="math inline">\(f\)</span>.</li>
+<li><span class="math inline">\(f^+, f^- \geq 0\)</span>.</li>
+<li><span class="math inline">\(f(x) = f^+(x) - f^-(x)\)</span>. We can write any function as the difference of two non-negative functions.</li>
+<li><span class="math inline">\(|f(x)| = f^+(x) + f^-(x)\)</span>.</li>
+</ol>
+<p>So, <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\(A\)</span> if both <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span> are integrable on <span class="math inline">\(A\)</span>. We write <span class="math display">\[\int_A f(x) = \int_A f^+(x) - \int_A f^-(x).\]</span></p>
+<p><strong>Remark 8.6</strong></p>
+<ol type="1">
+<li>One can show this definition preserves linearity of integral from bounded case.</li>
+<li><strong>Observation:</strong> <span class="math inline">\(f\)</span> integrable <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span> integrable <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|f| = f^+ + f^-\)</span> is also integrable. However, <span class="math inline">\(|f|\)</span> integrable <span class="math inline">\(\nRightarrow\)</span> <span class="math inline">\(f\)</span> integrable. For counterexample, <span class="math display">\[f(x) = 
+\begin{cases}
+1 &amp; x \text{ rational} \\
+-1 &amp; x \text{ irrational}
+\end{cases}
+\text{ on } [0, 1].\]</span> <span class="math inline">\(|f(x)| \equiv 1 \Rightarrow\)</span> integrable. But <span class="math inline">\(f^+, f^-\)</span>, or <span class="math inline">\(f\)</span> are not integrable.</li>
+</ol>
+<h3 data-original-heading="Theorem 8.3.2 Comparison Principle" id="theorem-8.3.2-comparison-principle">8.5.1.2 Theorem 8.3.2 Comparison Principle</h3>
+<p>Suppose</p>
+<ul>
+<li><span class="math inline">\(0 \leq g \leq f\)</span> on <span class="math inline">\(A\)</span> and <span class="math inline">\(\int_A f\)</span> converges (i.e., <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\(A\)</span>)</li>
+<li><span class="math inline">\(g\)</span> is integrable on each finite rectangle <span class="math inline">\([-a, a]^n\)</span>.</li>
+</ul>
+<p>Then, <span class="math inline">\(g\)</span> is also integrable on <span class="math inline">\(A\)</span>, and <span class="math inline">\(\int_A g \leq \int_A f\)</span>.</p>
+<p><strong>Remark 8.7</strong> The second condition is crucial and cannot be removed.</p>
+<p><strong>Proof 1.</strong> Since <span class="math inline">\(g \geq 0\)</span> and is integrable on <span class="math inline">\([-a, a]^n\)</span>, define <span class="math display">\[G(a) = \int_{[-a,a]^n} g(x).\]</span></p>
+<p>Then, <span class="math inline">\(G(a)\)</span> is an increasing function of <span class="math inline">\(a\)</span>. Furthermore, <span class="math display">\[g \leq f \Rightarrow G(a) = \int_{[-a,a]^n} g(x) \leq \int_{[-a,a]^n} f(x) \leq \int_A f(x).\]</span></p>
+<p>So, <span class="math inline">\(\int_A g(x) = \lim_{a\to\infty} G(a) \leq \int_A f(x)\)</span>.</p>
+<p>Q.E.D. ■</p>
+<p><strong>Question:</strong> When does an integrable <span class="math inline">\(\int_a^b f(x)\)</span> (one-variable function) converge? If it converges, how to compute?</p>
+<h3 data-original-heading="Theorem 8.3.3 Integral of Functions of One-Variable" id="theorem-8.3.3-integral-of-functions-of-one-variable">8.5.1.3 Theorem 8.3.3 Integral of Functions of One-Variable</h3>
+<ul>
+<li><p>Suppose <span class="math inline">\(f : [a, \infty] \rightarrow \mathbb{R}\)</span> is continuous with <span class="math inline">\(f(x) \geq 0\)</span>. Let <span class="math inline">\(F'(x) = f(x)\)</span>. Then, <span class="math display">\[\int_a^{\infty} f(x) dx = \lim_{b\to\infty} \int_a^b f(x) dx = \lim_{b\to\infty} [F(b) - F(a)].\]</span></p></li>
+<li><p>Suppose <span class="math inline">\(f : (a, b] \rightarrow \mathbb{R}\)</span> is continuous with <span class="math inline">\(f(x) \geq 0\)</span>. Then, <span class="math display">\[\int_a^b f(x) dx = \lim_{\varepsilon\to0^+} \int_{a+\varepsilon}^b f(x) dx.\]</span></p></li>
+</ul>
+<h3 data-original-heading="Example 8.3.4" id="example-8.3.4">8.5.1.4 Example 8.3.4</h3>
+<ul>
+<li><p>Consider <span class="math inline">\(\int_1^{\infty} x^p dx\)</span>.</p>
+<p><strong>Solution 2.</strong></p>
+<p>For <span class="math inline">\(b \geq 1\)</span>, <span class="math display">\[\int_1^b x^p dx = 
+\begin{cases}
+\ln b &amp; p = -1 \\
+\frac{1}{p + 1}(b^{p+1} - 1) &amp; p \neq -1.
+\end{cases}\]</span></p>
+<p>When <span class="math inline">\(b \to \infty\)</span>, <span class="math inline">\(\int_1^b x^p dx\)</span> diverges when <span class="math inline">\(p \geq -1\)</span> and converges when <span class="math inline">\(p &lt; -1\)</span>. So,</p>
+<p><span class="math inline">\(\int_1^{\infty} x^p dx\)</span> is divergent when <span class="math inline">\(p \geq -1\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(\int_1^{\infty} x^p dx = -\frac{1}{p + 1}\)</span> is convergent when <span class="math inline">\(p &lt; -1\)</span>.</p></li>
+<li><p>Consider <span class="math inline">\(\int_1^{\infty} e^{-x^2}x^3 dx\)</span>.</p>
+<p><strong>Solution 3.</strong></p>
+<p>Converges by comparison.</p></li>
+</ul>
+<h3 data-original-heading="Definition 8.3.5 (Conditional Convergence)" id="definition-8.3.5-conditional-convergence">8.5.1.5 Definition 8.3.5 (Conditional Convergence)</h3>
+<p><span class="math display">\[\int_a^{\infty} f(x) dx \text{ (conditional)} = \lim_{b\to\infty} \int_a^b f(x) dx.\]</span></p>
+<p><strong>Remark 8.8 (Types of Convergence)</strong> For an improper integral <span class="math inline">\(\int_a^{\infty} f(x) dx\)</span>, there are three types of convergence:</p>
+<ul>
+<li><p><strong>Absolute Convergence:</strong> <span class="math inline">\(\int_a^{\infty} |f(x)| dx\)</span> exists.</p></li>
+<li><p><strong>Conditional Convergence:</strong> <span class="math inline">\(\lim_{b\to\infty} \int_a^b f(x) dx\)</span> exists.</p></li>
+<li><p><strong>Divergence.</strong></p></li>
+</ul>
+<p>For general function, absolute convergence <span class="math inline">\(\nRightarrow\)</span> conditional convergence. For continuous function, absolute convergence is stronger, and <span class="math inline">\(\Rightarrow\)</span> conditional convergence.</p>
+<h3 data-original-heading="Example 8.3.6" id="example-8.3.6">8.5.1.6 Example 8.3.6</h3>
+<p>Determine whether the integral <span class="math inline">\(\int_1^{\infty} \frac{\cos x}{x} dx\)</span> is absolute convergence, conditional convergence, or neither (divergence).</p>
+<p><strong>Solution 4.</strong></p>
+<ul>
+<li><p>First, consider absolute convergence.</p>
+<p>Observe that <span class="math display">\[\int_0^{\infty} \left|\frac{\cos x}{x}\right| dx = \int_1^{\infty} \frac{|\cos x|}{x} dx \geq \int_{\pi/2}^{n\pi/2} \frac{|\cos x|}{x} dx\]</span></p>
+<p><span class="math display">\[= \sum_{k=1}^{n-1} \int_{k\pi/2}^{(k+1)\pi/2} \frac{|\cos x|}{x} dx\]</span></p>
+<p><span class="math display">\[\geq \sum_{k=1}^{n-1} \frac{1}{(k + 1)\frac{\pi}{2}} \int_{k\pi/2}^{(k+1)\pi/2} |\cos x| dx\]</span></p>
+<p><span class="math inline">\(\to \infty\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>So, <span class="math inline">\(\int_1^{\infty} \left|\frac{\cos x}{x}\right| dx\)</span> diverges, and thus <span class="math inline">\(\int_1^{\infty} \frac{\cos x}{x} dx\)</span> is not absolutely convergent.</p></li>
+<li><p>Conditional convergence:</p>
+<p><span class="math display">\[\int_1^b \frac{\cos x}{x} dx = \frac{\sin x}{x}\Big|_1^b + \int_1^b \frac{\sin x}{x^2} dx \quad \text{[Integration by Parts]}\]</span></p>
+<p>When <span class="math inline">\(b \to \infty\)</span>, <span class="math display">\[\lim_{b\to\infty} \frac{\sin x}{x}\Big|_1^b = \frac{\sin 1}{1} \quad \text{converges}.\]</span></p>
+<p>Further, <span class="math display">\[\left|\frac{\sin x}{x^2}\right| \leq \left|\frac{1}{x^2}\right| = \frac{1}{x^2} \Rightarrow \int_1^{\infty} \left|\frac{\sin x}{x^2}\right| dx \leq \int_1^{\infty} \frac{1}{x^2} dx.\]</span></p>
+<p>So, <span class="math inline">\(\int_1^{\infty} \frac{\sin x}{x^2} dx\)</span> absolutely converges by comparison.</p>
+<p>Then, <span class="math inline">\(\int_1^b \frac{\cos x}{x} dx\)</span> is conditional convergence.</p></li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.3%20Proof%20of%20Lebesgue's%20Theorem.html"><span>← Previous page</span><span>8.3 Proof of Lebesgue&#39;s Theorem</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.6%20Lebesgue%20Convergence%20Theorem.html"><span>Next page →</span><span>8.6 勒贝格收敛定理</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">8.5 不定积分</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#%E5%8F%8D%E5%B8%B8%E7%A7%AF%E5%88%86-improper-integrals" class="is-active" aria-current="location">8.3 反常积分 (Improper Integrals)</a></li><li style="--depth:1"><a href="#%E5%AE%9A%E4%B9%89-8.3.1-integral">8.5.1.1 定义 8.3.1 (Integral)</a></li><li style="--depth:1"><a href="#theorem-8.3.2-comparison-principle">8.5.1.2 Theorem 8.3.2 Comparison Principle</a></li><li style="--depth:1"><a href="#theorem-8.3.3-integral-of-functions-of-one-variable">8.5.1.3 Theorem 8.3.3 Integral of Functions of One-Variable</a></li><li style="--depth:1"><a href="#example-8.3.4">8.5.1.4 Example 8.3.4</a></li><li style="--depth:1"><a href="#definition-8.3.5-conditional-convergence">8.5.1.5 Definition 8.3.5 (Conditional Convergence)</a></li><li style="--depth:1"><a href="#example-8.3.6">8.5.1.6 Example 8.3.6</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

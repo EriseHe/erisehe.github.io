@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>8.1 度量理论 — E.H. Notebook</title>
+<meta name="description" content="第八章的研究对象是Lebesgue积分。我们将要推导的是度量理论（measure theory）的核心内容：集合的测度（measure）和覆盖性质。我们主要看以下这几个方面：积分的定义可积性的判据（必要条件和充分条件）性质与收敛性计算和估计积分1.1 积分的定义1.1.1 几何动机积分本质上是计算函数下方区域的「体积（volume）」。如">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="实分析 file hierarchy" data-sidebar-root="content/notes/理论/实分析"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/实分析/Homework" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-14bb7df7f893" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Homework</span></button></div><ul class="tree-children" id="folder-14bb7df7f893" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%206.html"><span class="page-number"></span><span>Homework 6</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%207.html"><span class="page-number"></span><span>Homework 7</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%208.html"><span class="page-number"></span><span>Homework 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%209.html"><span class="page-number"></span><span>Homework 9</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2010.html"><span class="page-number"></span><span>Homework 10</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2011.html"><span class="page-number"></span><span>Homework 11</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第七章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6c1cdfa2831" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第七章</span></button></div><ul class="tree-children" id="folder-f6c1cdfa2831" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1%20Inverse%20Function%20Theorem.html"><span class="page-number">7.1</span><span>Inverse Function Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1.1%20Inverse%20FT%20(Proof).html"><span class="page-number">7.1.1</span><span>Inverse FT (Proof)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.2%20Implicit%20Function%20Theorem.html"><span class="page-number">7.2</span><span>Implicit Function Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.6%20Morse%20Lemma.html"><span class="page-number">7.6</span><span>Morse Lemma</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ba4a6565a187" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-ba4a6565a187" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Computing%20Integrals.html"><span class="page-number">9.1</span><span>Computing Integrals</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第八章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d4f2f6842523" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第八章</span></button></div><ul class="tree-children" id="folder-d4f2f6842523"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.1%20%E5%BA%A6%E9%87%8F%E7%90%86%E8%AE%BA.html"><span class="page-number">8.1</span><span>度量理论</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.2%20Criterion%20for%20Integrability.html"><span class="page-number">8.2</span><span>Criterion for Integrability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.3%20Proof%20of%20Lebesgue's%20Theorem.html"><span class="page-number">8.3</span><span>Proof of Lebesgue&#39;s Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.5%20Improper%20Integral.html"><span class="page-number">8.5</span><span>Improper Integral</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.6%20Lebesgue%20Convergence%20Theorem.html"><span class="page-number">8.6</span><span>Lebesgue Convergence Theorem</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第六章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aaca2e98953e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第六章</span></button></div><ul class="tree-children" id="folder-aaca2e98953e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.4%20Sufficient%20Conditions%20for%20Differentiability.html"><span class="page-number">6.4</span><span>Sufficient Conditions for Differentiability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.5%20The%20Chain%20Rule.html"><span class="page-number">6.5</span><span>The Chain Rule</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.6%20Product%20Rule%20and%20Gradients.html"><span class="page-number">6.6</span><span>Product Rule and Gradients</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.9%20Taylor%20Higher%20Dimentions.html"><span class="page-number">6.9</span><span>Taylor Higher Dimentions</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-6b1aa89ac58c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-6b1aa89ac58c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%8D%81%E7%AB%A0/10.1%20Fourier%20Analysis.html"><span class="page-number">10.1</span><span>Fourier Analysis</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/index.html">第八章</a></nav><h1 id="reader-title">8.1 度量理论</h1></header><div id="article-body" class="prose"><p>第八章的研究对象是Lebesgue积分。我们将要推导的是度量理论（measure theory）的核心内容：集合的测度（measure）和覆盖性质。</p>
+<p>我们主要看以下这几个方面：</p>
+<ol type="1">
+<li>积分的定义</li>
+<li>可积性的判据（必要条件和充分条件）</li>
+<li>性质与收敛性</li>
+<li>计算和估计积分</li>
+</ol>
+<h2 data-original-heading="1.1 积分的定义" id="积分的定义">1.1 积分的定义</h2>
+<h3 data-original-heading="1.1.1 几何动机" id="几何动机">1.1.1 几何动机</h3>
+<p>积分本质上是计算函数下方区域的「体积（volume）」。如何定义这种「体积」会直接改变到积分的性质。我们的目的是为了计算任意曲线 <span class="math inline">\(y = f(x)\)</span> 从 <span class="math inline">\(a\)</span> 到 <span class="math inline">\(b\)</span> 下方区域的面积</p>
+<p>Lebesgue积分定义的逻辑步骤如下：</p>
+<ol type="1">
+<li><strong>定义</strong>：任意有界函数<span class="math inline">\(f\)</span>于在高维空间中的有界区域 <span class="math inline">\(A\)</span> （bounded）上。</li>
+<li><strong>简化问题</strong>：由于曲线下方区域通常不是规则形状，我们需要用近似方法来计算。我们可以将区间 <span class="math inline">\([a,b]\)</span> 分成若干小区间，然后用矩形来近似。将区域 <span class="math inline">\(A\)</span> 嵌入到一个矩形区域 <span class="math inline">\(B\)</span> 中，并将函数 <span class="math inline">\(f\)</span> 扩展为函数 <span class="math inline">\(f̃\)</span>，使其在 <span class="math inline">\(A\)</span> 之外的 <span class="math inline">\(B\)</span> 上取值为零</li>
+<li><strong>分割</strong>：划分矩形 <span class="math inline">\(B\)</span> 为更小的矩形，来创建一个<strong>分割结构</strong>（partition）。</li>
+<li><strong>构造上下近似</strong>：对每个小矩形，通过这种方式，我们可以获得两种近似：一种是偏大的（上和），一种是偏小的（下和）。
+<ol type="1">
+<li><strong>上和</strong>: <span class="math inline">\(U(f, P) = \sum_{i=1}^{n} (\sup f(x)) \cdot \ell(I_i)\)</span></li>
+<li>对每个小区间 <span class="math inline">\(I_i\)</span>，我们找出函数在该区间上的最大值 <span class="math inline">\(\sup f(x)\)</span>，然后乘以区间长度 <span class="math inline">\(\ell(I_i)\)</span>。这样形成的矩形面积之和总是大于或等于真实面积。</li>
+<li><strong>下和</strong>: <span class="math inline">\(L(f, P) = \sum_{i=1}^{n} (\inf f(x)) \cdot \ell(I_i)\)</span></li>
+<li>对每个小区间 <span class="math inline">\(I_i\)</span>，我们找出函数在该区间上的最小值 <span class="math inline">\(\inf f(x)\)</span>，然后乘以区间长度 <span class="math inline">\(\ell(I_i)\)</span>。这样形成的矩形面积之和总是小于或等于真实面积。</li>
+</ol></li>
+<li>当我们让分割变得越来越细时，上和会减小，下和会增大。它们的极限值就定义了上积分和下积分。当这两个极限值相等时，我们就说这个函数是<strong>可积的（integrable）</strong>。</li>
+</ol>
+<h3 data-original-heading="1.1.2 一般表述" id="一般表述">1.1.2 一般表述</h3>
+<h4 data-original-heading="设定" id="设定">8.1.1.2.1 设定</h4>
+<p>Let <span class="math inline">\(f: A \to \mathbb{R}\)</span> be a bounded function on a bounded set <span class="math inline">\(A\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span>. We want to define the “volume” of the region under the surface <span class="math inline">\(y = f(x)\)</span> (or the integral <span class="math inline">\(\int_A f(x) dx\)</span>).</p>
+<h4 data-original-heading="步骤1：选择一个矩形B" id="步骤1选择一个矩形b">8.1.1.2.2 步骤1：选择一个矩形<span class="math inline">\(B\)</span></h4>
+<p>为了简化计算，我们首先选择一个包含 <span class="math inline">\(A\)</span> 的<strong>矩形区域<span class="math inline">\(B\)</span></strong>，并将函数 <span class="math inline">\(f\)</span> 扩展到整个矩形上。选择包含 <span class="math inline">\(A\)</span> 的矩形 <span class="math inline">\(B = [a_1, b_1] \times [a_2, b_2] \times ... \times [a_n, b_n]\)</span> 并且扩展函数 <span class="math inline">\(f\)</span> 使得当 <span class="math inline">\(x \notin A\)</span> 时，<span class="math inline">\(f(x) = 0\)</span></p>
+<h4 data-original-heading="步骤2：对B进行分割（partition）" id="步骤2对b进行分割partition">8.1.1.2.3 步骤2：对B进行分割（partition）</h4>
+<p>我们将矩形 <span class="math inline">\(B\)</span> 的各边分割成若干个子区间（subintervals），得到一个分割 <span class="math inline">\(P\)</span>（partition <span class="math inline">\(P\)</span>）的小矩形的集合。</p>
+<h4 data-original-heading="步骤3：构造上下和（upper and lower sums）" id="步骤3构造上下和upper-and-lower-sums">8.1.1.2.4 步骤3：构造上下和（upper and lower sums）</h4>
+<p>对于每个小矩形 <span class="math inline">\(R\)</span>，我们找出函数在其上的最大值 <span class="math inline">\(\sup f(x)\)</span>，和最小值 <span class="math inline">\(\inf f(x)\)</span>，乘以矩形的体积 <span class="math inline">\(V(R)\)</span>，然后求和。</p>
+<ul>
+<li><p><strong>上和</strong>（US）: <span class="math display">\[U(f, P) = \sum_{R \in P} (\sup f(x)) \cdot V(R)\]</span></p></li>
+<li><p><strong>下和</strong> （LS）: <span class="math display">\[L(f, P) = \sum_{R \in P} (\inf f(x)) \cdot V(R)\]</span></p></li>
+</ul>
+<h4 data-original-heading="步骤4：构造上下积分" id="步骤4构造上下积分">8.1.1.2.5 步骤4：构造上下积分</h4>
+<p>与一维情况相同，我们定义上积分和下积分作为US和LS的极限。所有可能分割对应的下和的上确界:</p>
+<ul>
+<li><p><strong>上积分</strong>: <span class="math display">\[\overline{\int_A} f = \inf_P U(f, P)\]</span></p></li>
+<li><p><strong>下积分</strong>: <span class="math display">\[\underline{\int_A} f = \sup_P L(f, P)\]</span></p></li>
+</ul>
+<h4 data-original-heading="重要观察" id="重要观察">8.1.1.2.6 重要观察</h4>
+<p>很明显，我们有 <span class="math inline">\(L(f, P) \leq\)</span> “真实体积” <span class="math inline">\(\leq U(f, P)\)</span>。下积分和上积分分别是真实体积的下界和上界：</p>
+<p><span class="math display">\[\underline{\int_{A}}f \leq\text{“real volume” }\leq \overline{\int_A} f\]</span></p>
+<h2 data-original-heading="1.2 函数的可积性及其积分" id="函数的可积性及其积分">1.2 函数的可积性及其积分</h2>
+<p>现在我们可以正式定义函数的可积性及其积分。</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p>我们称函数 <span class="math inline">\(f\)</span> 是<strong>黎曼可积（Riemann integrable）</strong>的，当且仅当： <span class="math display">\[\overline{\int_A} f = \underline{\int_A} f\]</span> 函数 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(A\)</span> 上的积分定义为：<span class="math inline">\(\int_A f(x)dx = \overline{\int_A} f = \underline{\int_A} f\)</span>。</p>
+</div>
+</div>
+<h3 data-original-heading="1.2.1 一般设定：" id="一般设定">1.2.1 一般设定：</h3>
+<p>在我们讨论积分时，通常默认以下条件成立：</p>
+<ol type="1">
+<li>函数有界：<span class="math inline">\(f: A \subset \mathbb{R}^n \to \mathbb{R}\)</span> bounded；</li>
+<li>定义域有界： <span class="math inline">\(A \subset B\)</span> is bounded；</li>
+<li>矩形区域： <span class="math inline">\(B\)</span> is a rectangle in <span class="math inline">\(\mathbb{R}^n\)</span>；</li>
+<li>零延拓：函数 f 在集合 A 外部定义为 0，即： <span class="math display">\[f(x) = 0, \quad \forall x \notin A\]</span></li>
+</ol>
+<h3 data-original-heading="1.2.2 黎曼条件（Riemann’s Condition）" id="黎曼条件riemanns-condition">1.2.2 黎曼条件（Riemann’s Condition）</h3>
+<p>这意味着我们可以找到一个足够细的分割，使得上和与下和的差小于任意给定的正数 <span class="math inline">\(\varepsilon\)</span>。换句话说，随着分割变得越来越细，上和和下和会无限接近。 &gt; [!theorem|*] &gt; For <span class="math inline">\(f\)</span> to be (Riemann) integrable, <span class="math inline">\(\forall \varepsilon &gt; 0\)</span>, <span class="math inline">\(\exists\)</span> partition <span class="math inline">\(P_\varepsilon\)</span> (of <span class="math inline">\(B\)</span>) s.t. <span class="math display">\[0 \leq U(f, P_\varepsilon) - L(f, P_\varepsilon) &lt; \varepsilon\]</span></p>
+<h3 data-original-heading="1.2.3 达布条件（Darboux’s Condition）" id="达布条件darbouxs-condition">1.2.3 达布条件（Darboux’s Condition）</h3>
+<p>达布条件是黎曼可积性的另一个等价表述。</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall \varepsilon &gt; 0\)</span>, <span class="math inline">\(\exists P_\delta\)</span> s.t. if:</p>
+<ol type="1">
+<li><span class="math inline">\(P\)</span> is any partition of <span class="math inline">\(B\)</span> into rectangles <span class="math inline">\(B_1, B_2, ..., B_N\)</span> with side length <span class="math inline">\(&lt; \delta\)</span></li>
+<li><span class="math inline">\(x \in B_1, x \in B_2, ..., x \in B_N\)</span>, then we have: <span class="math inline">\(\left|\sum_{i=1}^N f(x_i)V(B_i) - I\right| &lt; \varepsilon\)</span> where the number <span class="math inline">\(I\)</span> is the value of the integral.</li>
+</ol>
+</div>
+</div>
+<p><span class="math inline">\(\forall \varepsilon &gt; 0\)</span>，<span class="math inline">\(\exists P_0\)</span> 使得如果：</p>
+<ol type="1">
+<li><span class="math inline">\(P\)</span> 是将 <span class="math inline">\(B\)</span> 分割成矩形 <span class="math inline">\(B_1, B_2, ..., B_N\)</span> 的任意分割，且这些矩形的边长 <span class="math inline">\(&lt; \delta\)</span></li>
+<li>如果 <span class="math inline">\(x \in B_1, x \in B_2, ..., x \in B_N\)</span>，那么我们有： <span class="math inline">\(\left|\sum_{i=1}^N f(x_i)V(B_i) - I\right| &lt; \varepsilon\)</span> 其中 <span class="math inline">\(I\)</span> 是积分值。</li>
+</ol>
+<ul>
+<li><strong>解释</strong>: 达布条件说的是，当分割足够细时（每个矩形的边长小于某个 <span class="math inline">\(\delta\)</span>），黎曼和（在每个小矩形上取一点计算函数值，乘以体积，然后求和）会非常接近积分值 <span class="math inline">\(I\)</span>。</li>
+</ul>
+<p>达布条件也可以表述为： <span class="math inline">\(\forall \varepsilon &gt; 0\)</span>，<span class="math inline">\(\exists\)</span> 分割 <span class="math inline">\(P_{\varepsilon}\)</span> 使得 <span class="math inline">\(0 \leq U(f, P_{\varepsilon}) - L(f, P_{\varepsilon}) &lt; \varepsilon\)</span></p>
+<ul>
+<li><strong>解释</strong>: 这一表述与黎曼条件形式上相同，但强调了这是达布条件的一个等价形式。</li>
+</ul>
+<h2 data-original-heading="备注" id="备注">8.1.3 备注</h2>
+<ul>
+<li>数字 <span class="math inline">\(I\)</span> 是积分的值
+<ul>
+<li><strong>解释</strong>: <span class="math inline">\(I\)</span> 代表函数 <span class="math inline">\(f\)</span> 在区域 <span class="math inline">\(A\)</span> 上的积分值。</li>
+</ul></li>
+<li>称为关于 <span class="math inline">\(P\)</span> 的 <span class="math inline">\(f\)</span> 的黎曼和
+<ul>
+<li><strong>解释</strong>: 黎曼和是一种近似积分的方法，根据一个分割 <span class="math inline">\(P\)</span>，在每个小区域内选取一点，计算函数值，乘以区域的大小，然后求和。</li>
+</ul></li>
+<li>解释：达布条件说当分割足够细时（边长 <span class="math inline">\(&lt; \delta\)</span>），黎曼和是积分的良好近似。
+<ul>
+<li><strong>解释</strong>: 这表明，随着分割变得越来越细，黎曼和会收敛到真实的积分值。</li>
+</ul></li>
+</ul>
+<h2 data-original-heading="定理" id="定理">8.1.4 定理</h2>
+<p><strong>解释</strong>: 下面的定理表明，我们之前讨论的条件是等价的。这很重要，因为不同的条件可能在不同的情境下更容易验证或应用。</p>
+<p>以下条件是等价的：</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> 在 <span class="math inline">\(A\)</span> 上可积
+<ul>
+<li><strong>解释</strong>: 上积分等于下积分。</li>
+</ul></li>
+<li><span class="math inline">\(f\)</span> 满足黎曼条件
+<ul>
+<li><strong>解释</strong>: 可以找到足够细的分割使上和与下和的差小于任意给定的正数。</li>
+</ul></li>
+<li><span class="math inline">\(f\)</span> 满足达布条件
+<ul>
+<li><strong>解释</strong>: 对于足够细的分割，黎曼和接近积分值。</li>
+</ul></li>
+</ol>
+<h2 data-original-heading="定理证明" id="定理证明">8.1.5 定理证明</h2>
+<p><strong>解释</strong>: 现在我们来证明这些条件的等价性。我们需要证明：1⇒2，2⇒1，以及其他等价关系。</p>
+<h3 data-original-heading="步骤1：f 可积 \Rightarrow 黎曼条件" id="步骤1f-可积-rightarrow-黎曼条件">8.1.5.1 步骤1：<span class="math inline">\(f\)</span> 可积 <span class="math inline">\(\Rightarrow\)</span> 黎曼条件</h3>
+<p><strong>解释</strong>: 首先，我们证明如果函数可积，那么它满足黎曼条件。</p>
+<p>假设，如果 <span class="math inline">\(\varepsilon &gt; 0\)</span>：</p>
+<p>因为 <span class="math inline">\(\overline{\int_A} f = \underline{\int_A} f\)</span>，且根据上确界和下确界的定义， <span class="math inline">\(\exists P_\varepsilon\)</span> 使得 <span class="math inline">\(0 \leq U(f, P_\varepsilon) - L(f, P_\varepsilon) &lt; \varepsilon\)</span></p>
+<ul>
+<li><strong>解释</strong>: 由于可积性意味着上积分等于下积分，我们可以找到一个分割，使得上和和下和足够接近。</li>
+</ul>
+<h3 data-original-heading="步骤2：黎曼条件 \Rightarrow f 可积" id="步骤2黎曼条件-rightarrow-f-可积">8.1.5.2 步骤2：黎曼条件 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(f\)</span> 可积</h3>
+<p><strong>解释</strong>: 现在，我们证明如果函数满足黎曼条件，那么它是可积的。</p>
+<p>假设，<span class="math inline">\(\forall \varepsilon &gt; 0\)</span>，<span class="math inline">\(\exists P_\varepsilon\)</span> 使得 <span class="math inline">\(0 \leq U(f, P_\varepsilon) - L(f, P_\varepsilon) &lt; \varepsilon\)</span></p>
+<p>因为 <span class="math inline">\(\overline{\int_A} f \leq U(f, P_\varepsilon)\)</span> 且 <span class="math inline">\(\underline{\int_A} f \geq L(f, P_\varepsilon)\)</span>：</p>
+<p><span class="math inline">\(\Rightarrow 0 \leq \overline{\int_A} f - \underline{\int_A} f \leq U(f, P_\varepsilon) - L(f, P_\varepsilon) &lt; \varepsilon\)</span></p>
+<ul>
+<li><strong>解释</strong>: 我们利用上积分是所有上和的下确界，而下积分是所有下和的上确界，得到上积分与下积分的差小于 <span class="math inline">\(\varepsilon\)</span>。</li>
+</ul>
+<p>由于 <span class="math inline">\(\overline{\int_A} f - \underline{\int_A} f &lt; \varepsilon\)</span> 对任意的 <span class="math inline">\(\varepsilon &gt; 0\)</span> 成立：</p>
+<p><span class="math inline">\(\overline{\int_A} f - \underline{\int_A} f = 0\)</span></p>
+<ul>
+<li><strong>解释</strong>: 如果两个数的差小于任意正数，那么它们必须相等。</li>
+</ul>
+<p>因此 <span class="math inline">\(\overline{\int_A} f = \underline{\int_A} f \Rightarrow f\)</span> 可积。</p>
+<ul>
+<li><strong>解释</strong>: 这就证明了函数是可积的。</li>
+</ul>
+<h2 data-original-heading="构造细分分割" id="构造细分分割">8.1.6 构造细分分割</h2>
+<p><strong>解释</strong>: 在定理的证明中，我们需要构造特定的分割。下面是这一过程的详细说明。</p>
+<p>因为 <span class="math inline">\(\overline{\int_A} f = \inf_P U(f,P)\)</span>，根据下确界的定义，<span class="math inline">\(\exists P_1\)</span> 使得 <span class="math inline">\(U(f, P_1) &lt; \overline{\int_A} f + \frac{\varepsilon}{2}\)</span></p>
+<ul>
+<li><strong>解释</strong>: 我们可以找到一个分割 <span class="math inline">\(P_1\)</span>，使得它对应的上和与上积分的差小于 <span class="math inline">\(\frac{\varepsilon}{2}\)</span>。</li>
+</ul>
+<p>类似地，<span class="math inline">\(\exists\)</span> 分割 <span class="math inline">\(P_2\)</span> 使得 <span class="math inline">\(L(f, P_2) &gt; \underline{\int_A} f - \frac{\varepsilon}{2}\)</span></p>
+<ul>
+<li><strong>解释</strong>: 同样，我们可以找到一个分割 <span class="math inline">\(P_2\)</span>，使得它对应的下和与下积分的差小于 <span class="math inline">\(\frac{\varepsilon}{2}\)</span>。</li>
+</ul>
+<p>设 <span class="math inline">\(P_\varepsilon = P_1 \cup P_2\)</span>（共同细分）</p>
+<ul>
+<li><strong>解释</strong>: 我们将两个分割合并，得到一个新的、更细的分割。</li>
+</ul>
+<p>那么 <span class="math inline">\(P_\varepsilon\)</span> 是 <span class="math inline">\(P_1\)</span> 和 <span class="math inline">\(P_2\)</span> 的细分。</p>
+<p>细分的性质：</p>
+<ul>
+<li><span class="math inline">\(U(f, P_\varepsilon) \leq U(f, P_1)\)</span>（细分会使上和减小）
+<ul>
+<li><strong>解释</strong>: 当分割变得更细时，上和不会增加，因为我们更准确地逼近了函数的最大值。</li>
+</ul></li>
+<li><span class="math inline">\(L(f, P_\varepsilon) \geq L(f, P_2)\)</span>（细分会使下和增大）
+<ul>
+<li><strong>解释</strong>: 当分割变得更细时，下和不会减小，因为我们更准确地逼近了函数的最小值。</li>
+</ul></li>
+</ul>
+<p>因此： <span class="math inline">\(U(f, P_\varepsilon) - L(f, P_\varepsilon) \leq U(f, P_1) - L(f, P_2)\)</span></p>
+<p><span class="math inline">\(&lt; (\overline{\int_A} f + \frac{\varepsilon}{2}) - (\underline{\int_A} f - \frac{\varepsilon}{2})\)</span></p>
+<p><span class="math inline">\(= \overline{\int_A} f - \underline{\int_A} f + \varepsilon = 0 + \varepsilon = \varepsilon\)</span></p>
+<ul>
+<li><strong>解释</strong>: 通过上述不等式链，我们证明了 <span class="math inline">\(P_\varepsilon\)</span> 对应的上和与下和的差小于 <span class="math inline">\(\varepsilon\)</span>，这就是黎曼条件。</li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> 黎曼条件</p>
+<p>因此 <span class="math inline">\(\overline{\int_A} f = \underline{\int_A} f \Rightarrow f\)</span> 可积。</p>
+<ul>
+<li><strong>解释</strong>: 这完成了证明：黎曼条件蕴含函数可积。通过证明这些条件的等价性，我们深入理解了可积性的本质，并为积分的计算和应用奠定了基础。</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.2%20Criterion%20for%20Integrability.html"><span>Next page →</span><span>8.2 Criterion for Integrability</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">8.1 度量理论</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#%E7%A7%AF%E5%88%86%E7%9A%84%E5%AE%9A%E4%B9%89" class="is-active" aria-current="location">1.1 积分的定义</a></li><li style="--depth:1"><a href="#%E5%87%A0%E4%BD%95%E5%8A%A8%E6%9C%BA">1.1.1 几何动机</a></li><li style="--depth:1"><a href="#%E4%B8%80%E8%88%AC%E8%A1%A8%E8%BF%B0">1.1.2 一般表述</a></li><li style="--depth:2"><a href="#%E8%AE%BE%E5%AE%9A">8.1.1.2.1 设定</a></li><li style="--depth:2"><a href="#%E6%AD%A5%E9%AA%A41%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA%E7%9F%A9%E5%BD%A2b">8.1.1.2.2 步骤1：选择一个矩形B</a></li><li style="--depth:2"><a href="#%E6%AD%A5%E9%AA%A42%E5%AF%B9b%E8%BF%9B%E8%A1%8C%E5%88%86%E5%89%B2partition">8.1.1.2.3 步骤2：对B进行分割（partition）</a></li><li style="--depth:2"><a href="#%E6%AD%A5%E9%AA%A43%E6%9E%84%E9%80%A0%E4%B8%8A%E4%B8%8B%E5%92%8Cupper-and-lower-sums">8.1.1.2.4 步骤3：构造上下和（upper and lower sums）</a></li><li style="--depth:2"><a href="#%E6%AD%A5%E9%AA%A44%E6%9E%84%E9%80%A0%E4%B8%8A%E4%B8%8B%E7%A7%AF%E5%88%86">8.1.1.2.5 步骤4：构造上下积分</a></li><li style="--depth:2"><a href="#%E9%87%8D%E8%A6%81%E8%A7%82%E5%AF%9F">8.1.1.2.6 重要观察</a></li><li style="--depth:0"><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E7%A7%AF%E6%80%A7%E5%8F%8A%E5%85%B6%E7%A7%AF%E5%88%86">1.2 函数的可积性及其积分</a></li><li style="--depth:1"><a href="#%E4%B8%80%E8%88%AC%E8%AE%BE%E5%AE%9A">1.2.1 一般设定：</a></li><li style="--depth:1"><a href="#%E9%BB%8E%E6%9B%BC%E6%9D%A1%E4%BB%B6riemanns-condition">1.2.2 黎曼条件（Riemann’s Condition）</a></li><li style="--depth:1"><a href="#%E8%BE%BE%E5%B8%83%E6%9D%A1%E4%BB%B6darbouxs-condition">1.2.3 达布条件（Darboux’s Condition）</a></li><li style="--depth:0"><a href="#%E5%A4%87%E6%B3%A8">8.1.3 备注</a></li><li style="--depth:0"><a href="#%E5%AE%9A%E7%90%86">8.1.4 定理</a></li><li style="--depth:0"><a href="#%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E">8.1.5 定理证明</a></li><li style="--depth:1"><a href="#%E6%AD%A5%E9%AA%A41f-%E5%8F%AF%E7%A7%AF-rightarrow-%E9%BB%8E%E6%9B%BC%E6%9D%A1%E4%BB%B6">8.1.5.1 步骤1：f 可积 \Rightarrow 黎曼条件</a></li><li style="--depth:1"><a href="#%E6%AD%A5%E9%AA%A42%E9%BB%8E%E6%9B%BC%E6%9D%A1%E4%BB%B6-rightarrow-f-%E5%8F%AF%E7%A7%AF">8.1.5.2 步骤2：黎曼条件 \Rightarrow f 可积</a></li><li style="--depth:0"><a href="#%E6%9E%84%E9%80%A0%E7%BB%86%E5%88%86%E5%88%86%E5%89%B2">8.1.6 构造细分分割</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

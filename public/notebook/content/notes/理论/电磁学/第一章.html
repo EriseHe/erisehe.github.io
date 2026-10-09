@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>第一章 — E.H. Notebook</title>
+<meta name="description" content="1 Chapter 1: Vector AnalysisElectrodynamics is the study of electromagnetic fields—vector functions that exist at every point in space. To describe how these fields chang">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a></nav><h1 id="reader-title">第一章</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Chapter 1: Vector Analysis" id="chapter-1-vector-analysis">1 Chapter 1: Vector Analysis</h2>
+<p>Electrodynamics is the study of electromagnetic fields—vector functions that exist at every point in space. To describe how these fields change and interact, we require the language of <strong>Vector Analysis</strong>. This chapter builds the mathematical foundation, moving from simple algebra to the calculus of vector fields (<span class="math inline">\(\nabla\)</span>) and the fundamental integral theorems that relate local field behavior to macroscopic quantities.</p>
+<h3 data-original-heading="1.1 Vector Algebra and Separation Vectors" id="vector-algebra-and-separation-vectors">1.1 Vector Algebra and Separation Vectors</h3>
+<p>While vector addition and multiplication (dot and cross products) are standard, electrodynamics relies heavily on relative positions. We must distinguish between the location of a source charge and the location where we measure the field.</p>
+<h4 data-original-heading="1.1.4 Separation Vector" id="separation-vector">1.1.4 Separation Vector</h4>
+<p>In almost every problem, we deal with two position vectors:</p>
+<ol type="1">
+<li><strong>Source point (<span class="math inline">\(\mathbf{r}'\)</span>):</strong> Where the charge is located.</li>
+<li><strong>Field point (<span class="math inline">\(\mathbf{r}\)</span>):</strong> Where we are calculating the field.</li>
+</ol>
+<p>The physical quantities depend on the relative distance between them. Griffiths introduces a special script vector <span class="math inline">\(\boldsymbol{\mathcal{r}}\)</span> (script-r) to represent this <strong>separation vector</strong>:</p>
+<div class="math-theorem definition" data-label="1.1" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.1</span><span class="theorem-title">(Separation Vector)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[ \boldsymbol{\mathcal{r}} \equiv \mathbf{r} - \mathbf{r}' \]</span></p>
+</div>
+</div>
+<p>The magnitude is <span class="math inline">\(\mathcal{r} = |\mathbf{r} - \mathbf{r}'|\)</span>, and the unit vector pointing from source to field is: <span class="math display">\[ \hat{\boldsymbol{\mathcal{r}}} = \frac{\boldsymbol{\mathcal{r}}}{\mathcal{r}} = \frac{\mathbf{r} - \mathbf{r}'}{|\mathbf{r} - \mathbf{r}'|} \]</span></p>
+<p><em>Note: Be extremely careful not to confuse <span class="math inline">\(\mathcal{r}\)</span> (distance from source) with <span class="math inline">\(r\)</span> (distance from origin).</em></p>
+<hr>
+<h3 data-original-heading="1.2 Differential Calculus: The Del Operator" id="differential-calculus-the-del-operator">1.2 Differential Calculus: The Del Operator</h3>
+<p>We utilize a vector operator <span class="math inline">\(\nabla\)</span> (“del”) to measure how fields change in space. It acts as a vector of derivatives: <span class="math display">\[ \nabla = \hat{\mathbf{x}}\frac{\partial}{\partial x} + \hat{\mathbf{y}}\frac{\partial}{\partial y} + \hat{\mathbf{z}}\frac{\partial}{\partial z} \]</span></p>
+<p>Using <span class="math inline">\(\nabla\)</span>, we construct three fundamental derivatives.</p>
+<h4 data-original-heading="1.2.2 The Gradient (\nabla T)" id="the-gradient-nabla-t">1.2.2 The Gradient (<span class="math inline">\(\nabla T\)</span>)</h4>
+<p>For a scalar function <span class="math inline">\(T\)</span> (like temperature or Electric Potential), the gradient is a vector that points in the direction of the steepest increase. Its magnitude is the slope in that direction.</p>
+<div class="math-theorem theorem" data-label="1.1" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.1</span><span class="theorem-title">(Geometric Interpretation of Gradient)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[ dT = (\nabla T) \cdot d\mathbf{l} \]</span> A small change in position <span class="math inline">\(d\mathbf{l}\)</span> results in a change in the scalar function <span class="math inline">\(dT\)</span> determined by the projection of <span class="math inline">\(d\mathbf{l}\)</span> onto the gradient.</p>
+</div>
+</div>
+<h4 data-original-heading="1.2.4 The Divergence (\nabla \cdot \mathbf{v})" id="the-divergence-nabla-cdot-mathbfv">1.2.4 The Divergence (<span class="math inline">\(\nabla \cdot \mathbf{v}\)</span>)</h4>
+<p>For a vector field <span class="math inline">\(\mathbf{v}\)</span>, the divergence is a scalar that measures how much the vector “spreads out” (diverges) from a point. <span class="math display">\[ \nabla \cdot \mathbf{v} = \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z} \]</span></p>
+<ul>
+<li><strong>Positive divergence:</strong> A “source” (e.g., positive charge).</li>
+<li><strong>Negative divergence:</strong> A “sink” (e.g., negative charge).</li>
+</ul>
+<h4 data-original-heading="1.2.5 The Curl (\nabla \times \mathbf{v})" id="the-curl-nabla-times-mathbfv">1.2.5 The Curl (<span class="math inline">\(\nabla \times \mathbf{v}\)</span>)</h4>
+<p>The curl is a vector that measures how much the field “swirls” or circulates around a point. <span class="math display">\[ \nabla \times \mathbf{v} = \left| \begin{matrix} \hat{\mathbf{x}} &amp; \hat{\mathbf{y}} &amp; \hat{\mathbf{z}} \\ \partial/\partial x &amp; \partial/\partial y &amp; \partial/\partial z \\ v_x &amp; v_y &amp; v_z \end{matrix} \right| \]</span></p>
+<hr>
+<h3 data-original-heading="1.3 Integral Calculus: The Fundamental Theorems" id="integral-calculus-the-fundamental-theorems">1.3 Integral Calculus: The Fundamental Theorems</h3>
+<p>There are three fundamental theorems that link differential operations (what is happening <em>at</em> a point) to integral operations (what is happening <em>over</em> a region). These are the tools used to convert Maxwell’s equations from differential to integral form.</p>
+<h4 data-original-heading="1.3.3 Fundamental Theorem for Gradients" id="fundamental-theorem-for-gradients">1.3.3 Fundamental Theorem for Gradients</h4>
+<p>This is the vector calculus equivalent of <span class="math inline">\(\int_a^b (df/dx)dx = f(b) - f(a)\)</span>.</p>
+<div class="math-theorem theorem" data-label="1.2" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2</span><span class="theorem-title">(Fundamental Theorem for Gradients)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[ \int_{\mathbf{a}}^{\mathbf{b}} (\nabla T) \cdot d\mathbf{l} = T(\mathbf{b}) - T(\mathbf{a}) \]</span></p>
+</div>
+</div>
+<ul>
+<li><strong>Implication:</strong> Line integrals of gradients are <strong>path independent</strong>; they depend only on the end points.</li>
+<li><strong>Corollary:</strong> <span class="math inline">\(\oint (\nabla T) \cdot d\mathbf{l} = 0\)</span> for any closed loop. This characterizes conservative forces (like Electrostatics).</li>
+</ul>
+<h4 data-original-heading="1.3.4 The Divergence Theorem (Gauss’s Theorem)" id="the-divergence-theorem-gausss-theorem">1.3.4 The Divergence Theorem (Gauss’s Theorem)</h4>
+<p>This theorem relates the flow of a vector field out of a volume to the “sources” (divergence) inside.</p>
+<div class="math-theorem theorem" data-label="1.3" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.3</span><span class="theorem-title">(Divergence Theorem)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[ \int_{\mathcal{V}} (\nabla \cdot \mathbf{v}) d\tau = \oint_{\mathcal{S}} \mathbf{v} \cdot d\mathbf{a} \]</span></p>
+</div>
+</div>
+<ul>
+<li><strong>Intuition:</strong> If you treat the vector field as the flow of water, the total water created inside a region (sum of divergences) must equal the total water flowing out through the surface (flux).</li>
+</ul>
+<h4 data-original-heading="1.3.5 The Curl Theorem (Stokes’ Theorem)" id="the-curl-theorem-stokes-theorem">1.3.5 The Curl Theorem (Stokes’ Theorem)</h4>
+<p>This theorem relates the swirl on a surface to the circulation around its edge.</p>
+<div class="math-theorem theorem" data-label="1.4" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.4</span><span class="theorem-title">(Stokes’ Theorem)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[ \int_{\mathcal{S}} (\nabla \times \mathbf{v}) \cdot d\mathbf{a} = \oint_{\mathcal{P}} \mathbf{v} \cdot d\mathbf{l} \]</span></p>
+</div>
+</div>
+<ul>
+<li><strong>Intuition:</strong> If you break a surface into tiny loops, the internal currents cancel out, leaving only the flow along the boundary perimeter <span class="math inline">\(\mathcal{P}\)</span>.</li>
+</ul>
+<hr>
+<h3 data-original-heading="1.4 Curvilinear Coordinates" id="curvilinear-coordinates">1.4 Curvilinear Coordinates</h3>
+<p>Most electrodynamics problems possess spherical or cylindrical symmetry. While coordinates <span class="math inline">\((x,y,z)\)</span> are constant, curvilinear unit vectors (<span class="math inline">\(\hat{\mathbf{r}}, \hat{\boldsymbol{\theta}}, \hat{\boldsymbol{\phi}}\)</span>) <strong>change direction</strong> depending on position.</p>
+<ul>
+<li><strong>Warning:</strong> You generally cannot pull unit vectors like <span class="math inline">\(\hat{\mathbf{r}}\)</span> outside of an integral, because they are functions of position!</li>
+<li><strong>Vector Derivatives:</strong> The formulas for <span class="math inline">\(\nabla\)</span>, divergence, and curl are significantly more complex in these systems (they contain geometric factors like <span class="math inline">\(1/r\)</span> or <span class="math inline">\(1/s\)</span>).</li>
+</ul>
+<div class="math-theorem remark" data-label="1.1" data-callout="remark">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 1.1</span><span class="theorem-title">(Spherical Volume Element)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[ d\tau = r^2 \sin\theta \, dr \, d\theta \, d\phi \]</span></p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="1.5 The Dirac Delta Function" id="the-dirac-delta-function">1.5 The Dirac Delta Function</h3>
+<p>Classical electrodynamics deals with point charges—finite charge at a single point of zero volume. This creates a mathematical crisis: the charge density <span class="math inline">\(\rho = dq/d\tau\)</span> is infinite at that point and zero elsewhere. To handle this, we use the <strong>Dirac Delta Function</strong>.</p>
+<h4 data-original-heading="1.5.1 The Divergence of \hat{\mathbf{r}}/r^2" id="the-divergence-of-hatmathbfrr2">1.5.1 The Divergence of <span class="math inline">\(\hat{\mathbf{r}}/r^2\)</span></h4>
+<p>Consider the field <span class="math inline">\(\mathbf{v} = \frac{1}{r^2} \hat{\mathbf{r}}\)</span>.</p>
+<ol type="1">
+<li>Calculated naively using standard calculus, <span class="math inline">\(\nabla \cdot \mathbf{v} = 0\)</span> everywhere (for <span class="math inline">\(r \neq 0\)</span>).</li>
+<li>However, the surface integral (flux) over a sphere is <span class="math inline">\(\oint \mathbf{v} \cdot d\mathbf{a} = \oint \frac{1}{R^2} R^2 \sin\theta d\theta d\phi = 4\pi\)</span>.</li>
+<li>By the Divergence Theorem, the volume integral of divergence must be <span class="math inline">\(4\pi\)</span>, not 0.</li>
+</ol>
+<p>The divergence is zero everywhere <em>except</em> the origin, where it is infinite such that the integral is finite.</p>
+<div class="math-theorem definition" data-label="1.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2</span><span class="theorem-title">(The Three-Dimensional Delta Function)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[ \nabla \cdot \left( \frac{\hat{\mathbf{r}}}{r^2} \right) = 4\pi \delta^3(\mathbf{r}) \]</span></p>
+</div>
+</div>
+<p>This function acts as a sieve. Under an integral, it picks out the value of the function at the specific point where the delta function “spikes”: <span class="math display">\[ \int_{\text{all space}} f(\mathbf{r}) \delta^3(\mathbf{r} - \mathbf{a}) d\tau = f(\mathbf{a}) \]</span></p>
+<hr>
+<h3 data-original-heading="1.6 The Theory of Vector Fields (Helmholtz Theorem)" id="the-theory-of-vector-fields-helmholtz-theorem">1.6 The Theory of Vector Fields (Helmholtz Theorem)</h3>
+<p>Why do we define exactly two vector derivatives (Divergence and Curl)? The <strong>Helmholtz Theorem</strong> assures us that these two quantities are sufficient to fully determine a vector field (that vanishes at infinity).</p>
+<div class="math-theorem theorem" data-label="1.5" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.5</span><span class="theorem-title">(Helmholtz Theorem)</span></p>
+</div>
+<div class="theorem-content">
+<p>A vector field <span class="math inline">\(\mathbf{F}\)</span> is uniquely determined if its divergence <span class="math inline">\(D(\mathbf{r})\)</span> and its curl <span class="math inline">\(\mathbf{C}(\mathbf{r})\)</span> are specified everywhere (assuming <span class="math inline">\(\mathbf{F} \to 0\)</span> at <span class="math inline">\(\infty\)</span>).</p>
+</div>
+</div>
+<h4 data-original-heading="1.6.2 Potentials" id="potentials">1.6.2 Potentials</h4>
+<p>The theorem implies two special cases crucial for Physics:</p>
+<p><strong>1. Irrotational Fields (Curl-free)</strong> If <span class="math inline">\(\nabla \times \mathbf{F} = 0\)</span> everywhere, then:</p>
+<ul>
+<li><span class="math inline">\(\oint \mathbf{F} \cdot d\mathbf{l} = 0\)</span> (Conservative).</li>
+<li><span class="math inline">\(\mathbf{F}\)</span> can be written as the gradient of a scalar potential: <span class="math display">\[ \mathbf{F} = -\nabla V \]</span></li>
+</ul>
+<p><strong>2. Solenoidal Fields (Divergence-free)</strong> If <span class="math inline">\(\nabla \cdot \mathbf{F} = 0\)</span> everywhere, then:</p>
+<ul>
+<li><span class="math inline">\(\oint \mathbf{F} \cdot d\mathbf{a} = 0\)</span> (Flux through closed surface is zero).</li>
+<li><span class="math inline">\(\mathbf{F}\)</span> can be written as the curl of a vector potential: <span class="math display">\[ \mathbf{F} = \nabla \times \mathbf{A} \]</span></li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span>← Previous page</span><span>习题集</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span>Next page →</span><span>第三章</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">第一章</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#chapter-1-vector-analysis" class="is-active" aria-current="location">1 Chapter 1: Vector Analysis</a></li><li style="--depth:1"><a href="#vector-algebra-and-separation-vectors">1.1 Vector Algebra and Separation Vectors</a></li><li style="--depth:2"><a href="#separation-vector">1.1.4 Separation Vector</a></li><li style="--depth:1"><a href="#differential-calculus-the-del-operator">1.2 Differential Calculus: The Del Operator</a></li><li style="--depth:2"><a href="#the-gradient-nabla-t">1.2.2 The Gradient (\nabla T)</a></li><li style="--depth:2"><a href="#the-divergence-nabla-cdot-mathbfv">1.2.4 The Divergence (\nabla \cdot \mathbf{v})</a></li><li style="--depth:2"><a href="#the-curl-nabla-times-mathbfv">1.2.5 The Curl (\nabla \times \mathbf{v})</a></li><li style="--depth:1"><a href="#integral-calculus-the-fundamental-theorems">1.3 Integral Calculus: The Fundamental Theorems</a></li><li style="--depth:2"><a href="#fundamental-theorem-for-gradients">1.3.3 Fundamental Theorem for Gradients</a></li><li style="--depth:2"><a href="#the-divergence-theorem-gausss-theorem">1.3.4 The Divergence Theorem (Gauss’s Theorem)</a></li><li style="--depth:2"><a href="#the-curl-theorem-stokes-theorem">1.3.5 The Curl Theorem (Stokes’ Theorem)</a></li><li style="--depth:1"><a href="#curvilinear-coordinates">1.4 Curvilinear Coordinates</a></li><li style="--depth:1"><a href="#the-dirac-delta-function">1.5 The Dirac Delta Function</a></li><li style="--depth:2"><a href="#the-divergence-of-hatmathbfrr2">1.5.1 The Divergence of \hat{\mathbf{r}}/r^2</a></li><li style="--depth:1"><a href="#the-theory-of-vector-fields-helmholtz-theorem">1.6 The Theory of Vector Fields (Helmholtz Theorem)</a></li><li style="--depth:2"><a href="#potentials">1.6.2 Potentials</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

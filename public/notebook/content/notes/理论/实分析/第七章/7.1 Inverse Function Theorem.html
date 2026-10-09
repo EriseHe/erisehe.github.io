@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>7.1 反函数定理 — E.H. Notebook</title>
+<meta name="description" content="7.1 Inverse Function Theorem (IFT)Two lines of ideas:A: CMP ⇒ Inverse FT ⇒ Applications in ODE B: IFT ⇒ Implicit FT ⇒ Local behavior, extreme problems7.1.1.1 I. Inverse F">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="实分析 file hierarchy" data-sidebar-root="content/notes/理论/实分析"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/实分析/Homework" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-14bb7df7f893" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Homework</span></button></div><ul class="tree-children" id="folder-14bb7df7f893" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%206.html"><span class="page-number"></span><span>Homework 6</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%207.html"><span class="page-number"></span><span>Homework 7</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%208.html"><span class="page-number"></span><span>Homework 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%209.html"><span class="page-number"></span><span>Homework 9</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2010.html"><span class="page-number"></span><span>Homework 10</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/Homework/Homework%2011.html"><span class="page-number"></span><span>Homework 11</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第七章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6c1cdfa2831" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第七章</span></button></div><ul class="tree-children" id="folder-f6c1cdfa2831"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1%20Inverse%20Function%20Theorem.html"><span class="page-number">7.1</span><span>Inverse Function Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1.1%20Inverse%20FT%20(Proof).html"><span class="page-number">7.1.1</span><span>Inverse FT (Proof)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.2%20Implicit%20Function%20Theorem.html"><span class="page-number">7.2</span><span>Implicit Function Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.6%20Morse%20Lemma.html"><span class="page-number">7.6</span><span>Morse Lemma</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ba4a6565a187" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-ba4a6565a187" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Computing%20Integrals.html"><span class="page-number">9.1</span><span>Computing Integrals</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第八章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d4f2f6842523" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第八章</span></button></div><ul class="tree-children" id="folder-d4f2f6842523" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.1%20%E5%BA%A6%E9%87%8F%E7%90%86%E8%AE%BA.html"><span class="page-number">8.1</span><span>度量理论</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.2%20Criterion%20for%20Integrability.html"><span class="page-number">8.2</span><span>Criterion for Integrability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.3%20Proof%20of%20Lebesgue's%20Theorem.html"><span class="page-number">8.3</span><span>Proof of Lebesgue&#39;s Theorem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.5%20Improper%20Integral.html"><span class="page-number">8.5</span><span>Improper Integral</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0/8.6%20Lebesgue%20Convergence%20Theorem.html"><span class="page-number">8.6</span><span>Lebesgue Convergence Theorem</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第六章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aaca2e98953e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第六章</span></button></div><ul class="tree-children" id="folder-aaca2e98953e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.4%20Sufficient%20Conditions%20for%20Differentiability.html"><span class="page-number">6.4</span><span>Sufficient Conditions for Differentiability</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.5%20The%20Chain%20Rule.html"><span class="page-number">6.5</span><span>The Chain Rule</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.6%20Product%20Rule%20and%20Gradients.html"><span class="page-number">6.6</span><span>Product Rule and Gradients</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.9%20Taylor%20Higher%20Dimentions.html"><span class="page-number">6.9</span><span>Taylor Higher Dimentions</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/实分析/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-6b1aa89ac58c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-6b1aa89ac58c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E5%8D%81%E7%AB%A0/10.1%20Fourier%20Analysis.html"><span class="page-number">10.1</span><span>Fourier Analysis</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/index.html">实分析</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/index.html">第七章</a></nav><h1 id="reader-title">7.1 反函数定理</h1></header><div id="article-body" class="prose"><h2 data-original-heading="7.1 Inverse Function Theorem (IFT)" id="inverse-function-theorem-ift">7.1 Inverse Function Theorem (IFT)</h2>
+<p>Two lines of ideas:</p>
+<p><strong>A</strong>: CMP <span class="math inline">\(⇒\)</span> Inverse FT <span class="math inline">\(⇒\)</span> Applications in ODE<br>
+<strong>B</strong>: IFT <span class="math inline">\(⇒\)</span> Implicit FT <span class="math inline">\(⇒\)</span> Local behavior, extreme problems</p>
+<h3 data-original-heading="I. Inverse Function Theorem" id="i.-inverse-function-theorem">7.1.1.1 I. Inverse Function Theorem</h3>
+<h4 data-original-heading="1. Linear Case" id="linear-case">1. Linear Case</h4>
+<p>Consider a linear map, <span class="math inline">\(y = f(x): \mathbb{R}^n \to \mathbb{R}^n\)</span>.</p>
+<p><span class="math display">\[
+x = (x_1, x_2, \dots, x_n)^T
+\]</span></p>
+<p>Given <span class="math inline">\(y \in \mathbb{R}^n\)</span>, <span class="math inline">\(f(x)\)</span> is a linear system of equations:</p>
+<p><span class="math display">\[\begin{aligned}
+y_1 &amp;= a_{11} x_1 + a_{12} x_2 + \dots + a_{1n} x_n \\\\
+y_2 &amp;= a_{21} x_1 + a_{22} x_2 + \dots + a_{2n} x_n \\\\
+&amp;\vdots \\\\
+y_n &amp;= a_{n1} x_1 + \dots + a_{nn} x_n
+\end{aligned}\]</span></p>
+<p>or <span class="math display">\[
+A_{n\times n}X_{n\times 1} = Y_{n\times 1}
+\]</span></p>
+<div class="math-theorem assumption" data-callout="assumption">
+<div class="theorem-header">
+<p><span class="theorem-badge">Assumption</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[X \text{ has a unique solution} \Longleftrightarrow \det(A) \neq 0.\]</span></p>
+</div>
+</div>
+<p>In this case, the solution is given by: <span class="math display">\[
+X = A^{-1} Y
+\]</span> Thus, the inverse function satisfies: <span class="math display">\[
+f^{-1} \circ f = \text{Identity}
+\]</span> <strong>The inverse theorem for <span class="math inline">\(y = f(x)\)</span>:</strong></p>
+<p><span class="math display">\[
+f(f^{-1}(y)) = A A^{-1} y = y
+\]</span></p>
+<hr>
+<h5 data-original-heading="Question: When can we solve a nonlinear system?" id="question-when-can-we-solve-a-nonlinear-system">7.1.1.1.1.1 Question: When can we solve a <strong>nonlinear</strong> system?</h5>
+<p>We consider a system of nonlinear equations: <span class="math display">\[
+\begin{cases}
+    f_1(x_1, x_2, \dots, x_n) = y_1 \\\\
+    f_2(x_1, x_2, \dots, x_n) = y_2 \\\\
+    \quad \vdots \\\\
+    f_n(x_1, x_2, \dots, x_n) = y_n
+\end{cases}
+\]</span> or equivalently, <span class="math display">\[
+f(x) = y
+\]</span> ### 2. The Inverse of a General Function</p>
+<p><strong>Notation:</strong><br>
+Let <span class="math inline">\(y = f(x): A \subset \mathbb{R}^n \to \mathbb{R}^n\)</span> be a <strong>diffeomorphism</strong>.</p>
+<p><span class="math display">\[
+y = (y_1, y_2, \dots, y_n)
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+y_i = f_i(x_1, x_2, \dots, x_n)
+\]</span></p>
+<p>The Jacobian determinant of <span class="math inline">\(f\)</span> at <span class="math inline">\(x\)</span> is:</p>
+<p><span class="math display">\[
+\det \left( \frac{\partial f_i}{\partial x_j} \right)
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="7.1.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 7.1.1</span></p>
+</div>
+<div class="theorem-content">
+<p>Let <span class="math inline">\(y = f(x): A \subset \mathbb{R}^n \to \mathbb{R}^n\)</span> be of class <span class="math inline">\(C^1\)</span>. Suppose <span class="math inline">\(x_0 \in A\)</span> and <span class="math inline">\(\det(Df(x_0)) \neq 0\)</span>. Then there exists a neighborhood <span class="math inline">\(U\)</span> of <span class="math inline">\(x_0\)</span> and a neighborhood <span class="math inline">\(W\)</span> of <span class="math inline">\(y_0 = f(x_0)\)</span> such that:</p>
+<ol type="1">
+<li><span class="math inline">\(f: U \to W\)</span> has an <strong>inverse</strong> <span class="math inline">\(f^{-1}: W \to U\)</span>.</li>
+<li><span class="math inline">\(f^{-1}\)</span> is of class <span class="math inline">\(C^1\)</span>.</li>
+<li><span class="math inline">\(D(f^{-1}(y)) = (Df(x))^{-1}\)</span> for all <span class="math inline">\(y \in W\)</span> at <span class="math inline">\(y = f(x)\)</span>.</li>
+</ol>
+</div>
+</div>
+<hr>
+<h4 data-original-heading="Visualization:" id="visualization">7.1.1.1.2 Visualization:</h4>
+<ul>
+<li><span class="math inline">\(y = f(x)\)</span> maps from <span class="math inline">\(U\)</span> to <span class="math inline">\(W\)</span>.</li>
+<li><span class="math inline">\(x = f^{-1}(y)\)</span> gives the inverse mapping from <span class="math inline">\(W\)</span> back to <span class="math inline">\(U\)</span>. ### Recall: Contraction Mapping Principle (CMP)</li>
+</ul>
+<p>Let <span class="math inline">\(\mathbb{X}\)</span> be a <strong>complete metric space</strong> and let</p>
+<p><span class="math display">\[
+\varphi: \mathbb{X} \to \mathbb{X}
+\]</span></p>
+<p>be a function satisfying a contraction condition for some constant <span class="math inline">\(k\)</span> with <span class="math inline">\(0 &lt; k &lt; 1\)</span>:</p>
+<p><span class="math display">\[
+d(\varphi(x), \varphi(y)) \leq k \cdot d(x,y), \quad \forall x,y \in \mathbb{X}.
+\]</span></p>
+<p>Then, there exists a <strong>unique fixed point</strong> <span class="math inline">\(X^*\)</span> such that:</p>
+<p><span class="math display">\[
+\varphi(X^*) = X^*.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Proof of the Inverse Function Theorem (IFT)" id="proof-of-the-inverse-function-theorem-ift">7.1.1.2 Proof of the Inverse Function Theorem (IFT)</h3>
+<h4 data-original-heading="Step 1: Reductions" id="step-1-reductions">7.1.1.2.1 Step 1: Reductions</h4>
+<ol type="a">
+<li><strong>May assume</strong> that the Jacobian matrix at <span class="math inline">\(x_0\)</span> is the identity: <span class="math display">\[
+D f(x_0) = I.
+\]</span> In fact, define the transformation: <span class="math display">\[
+T = D f(x_0).
+\]</span> Then, we can consider a new function:</li>
+</ol>
+<p><span class="math display">\[
+\tilde{f} = T^{-1} \circ f.
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+D(\tilde{f})(x_0) = I.
+\]</span></p>
+<ol start="2" type="a">
+<li><strong>Main assumption:</strong></li>
+</ol>
+<p><span class="math display">\[
+x_0 = f^{-1}(y_0).
+\]</span></p>
+<p>To see this, define:</p>
+<p><span class="math display">\[
+h(x) = f(x) - f(x_0).
+\]</span></p>
+<p>Then,</p>
+<p><span class="math display">\[
+D h(x_0) = D f(x_0) - D f(x_0) = 0.
+\]</span></p>
+<p>If <span class="math inline">\(h^{-1}\)</span> exists, then <span class="math inline">\(y = f(x)\)</span> can be solved as:</p>
+<p><span class="math display">\[
+f(x) = h(x) + f(x_0) = y.
+\]</span></p>
+<p>Thus, the inverse function satisfies:</p>
+<p><span class="math display">\[
+x = x_0 - h^{-1}(y - f(x_0)).
+\]</span></p>
+<hr>
+<h3 data-original-heading="Step 2: Existence of the Inverse Function" id="step-2-existence-of-the-inverse-function">7.1.1.3 Step 2: Existence of the Inverse Function</h3>
+<ol type="a">
+<li><strong>Setup:</strong> By the reduction above, we assume:</li>
+</ol>
+<p><span class="math display">\[
+x_0 = 0, \quad y_0 = f(x_0) = 0, \quad D f(x_0) = I.
+\]</span></p>
+<p><strong>Need to show:</strong><br>
+There exist neighborhoods <span class="math inline">\(U\)</span> and <span class="math inline">\(W\)</span> such that the mapping:</p>
+<p><span class="math display">\[
+y = f(x): U \to W
+\]</span></p>
+<p>has an <strong>inverse function</strong> in <span class="math inline">\(W\)</span>, meaning:</p>
+<p><span class="math display">\[
+\forall y \in W, \quad \exists! x \in U \text{ such that } y = f(x).
+\]</span></p>
+<p><strong>Illustration:</strong></p>
+<p>A diagram representing <span class="math inline">\(U\)</span> mapping to <span class="math inline">\(W\)</span> via <span class="math inline">\(f\)</span>, where <span class="math inline">\(f\)</span> is invertible.</p>
+<hr>
+<h4 data-original-heading="For a fixed y \in \mathbb{R}^n, define:" id="for-a-fixed-y-in-mathbbrn-define">7.1.1.3.1 For a fixed <span class="math inline">\(y \in \mathbb{R}^n\)</span>, define:</h4>
+<p><span class="math display">\[
+g_x = g(y) = y + x - f(x).
+\]</span></p>
+<p>We need to show that <strong><span class="math inline">\(g_x\)</span> has a unique fixed point</strong>.</p>
+<ol start="2" type="a">
+<li><strong>Construction of neighborhoods <span class="math inline">\(U\)</span> and <span class="math inline">\(W\)</span></strong></li>
+</ol>
+<p>Let:</p>
+<p><span class="math display">\[
+g(x) = x - f(x).
+\]</span></p>
+<p>Then:</p>
+<p><span class="math display">\[
+D g(x) = I - D f(x).
+\]</span></p>
+<p>Since:</p>
+<p><span class="math display">\[
+D g(x_0) = I - I = 0,
+\]</span></p>
+<p>it follows that:</p>
+<p><span class="math display">\[
+D g(x) \text{ is close to zero}.
+\]</span></p>
+<p>Thus, choosing:</p>
+<p><span class="math display">\[
+\epsilon = \frac{1}{2n},
+\]</span></p>
+<p>there exists <span class="math inline">\(\delta &gt; 0\)</span> such that:</p>
+<p><span class="math display">\[
+\|x - x_0\| &lt; \delta \implies \|D g_x(x)\| \leq \frac{1}{2n}.
+\]</span></p>
+<p>Applying the <strong>Contraction Mapping Principle</strong> to <span class="math inline">\(g_x\)</span>, we obtain:</p>
+<p><span class="math display">\[
+\exists x \in B_{\delta}(x_0) \text{ such that } g_x(x) = x.
+\]</span></p>
+<p>Thus:</p>
+<p><span class="math display">\[
+g_x(x) = g_x(x_0) + D g_x(\xi)(x - x_0),
+\]</span></p>
+<p>which shows:</p>
+<p><span class="math display">\[
+D g_x(\xi) (x - x_0).
+\]</span></p>
+<hr>
+<h2 data-original-heading="Chapter 7: Inverse and Implicit Function Theorems" id="chapter-7-inverse-and-implicit-function-theorems">7.1.2 Chapter 7: Inverse and Implicit Function Theorems</h2>
+<h3 data-original-heading="Contraction Mapping Principle (CMP)" id="contraction-mapping-principle-cmp">7.1.2.1 Contraction Mapping Principle (CMP)</h3>
+<p>Let <span class="math inline">\(\mathbb{X}\)</span> be a <strong>complete metric space</strong>, and let <span class="math inline">\(\varphi: \mathbb{X} \to \mathbb{X}\)</span> satisfy:</p>
+<p><span class="math display">\[
+d(\varphi(x), \varphi(y)) \leq k \cdot d(x,y), \quad 0 &lt; k &lt; 1.
+\]</span></p>
+<p>Then, there exists a <strong>unique fixed point</strong> <span class="math inline">\(X^\*\)</span> such that <span class="math inline">\(\varphi(X^{\*}) = X^{\*}\)</span>.</p>
+<hr>
+<h3 data-original-heading="Proof of the Inverse Function Theorem (IFT)" id="proof-of-the-inverse-function-theorem-ift-1">7.1.2.2 Proof of the Inverse Function Theorem (IFT)</h3>
+<h4 data-original-heading="Step 1: Reduction" id="step-1-reduction">7.1.2.2.1 Step 1: Reduction</h4>
+<p>Assume <span class="math inline">\(Df(x_0) = I\)</span>. Define <span class="math inline">\(\tilde{f} = Df(x_0)^{-1} \circ f\)</span>, ensuring <span class="math inline">\(D\tilde{f}(x_0) = I\)</span>.<br>
+For <span class="math inline">\(x_0 = f^{-1}(y_0)\)</span>, define <span class="math inline">\(h(x) = f(x) - f(x_0)\)</span>. Since <span class="math inline">\(Dh(x_0) = 0\)</span>, solving <span class="math inline">\(f(x) = y\)</span> reduces to:</p>
+<p><span class="math display">\[
+x = x_0 - h^{-1}(y - f(x_0)).
+\]</span></p>
+<hr>
+<h4 data-original-heading="Step 2: Existence of the Inverse**" id="step-2-existence-of-the-inverse">7.1.2.2.2 Step 2: Existence of the Inverse**</h4>
+<p>Set up: <span class="math inline">\(x_0 = 0, y_0 = f(x_0) = 0, Df(x_0) = I\)</span>. Need to show a local inverse:</p>
+<p><span class="math display">\[
+\forall y \in W, \quad \exists! x \in U \text{ such that } y = f(x).
+\]</span></p>
+<p>Define:</p>
+<p><span class="math display">\[
+g_x(y) = y + x - f(x).
+\]</span></p>
+<p>We need to show <span class="math inline">\(g_x\)</span> has a <strong>unique fixed point</strong>.</p>
+<p>Let <span class="math inline">\(g(x) = x - f(x)\)</span>, then <span class="math inline">\(Dg(x) = I - Df(x)\)</span>. Since <span class="math inline">\(Dg(x_0) = 0\)</span>, choosing <span class="math inline">\(\epsilon = \frac{1}{2n}\)</span> ensures <span class="math inline">\(\|D g_x(x)\|\)</span> is small. Applying <strong>CMP</strong>, we get:</p>
+<p><span class="math display">\[
+\exists x \in B_{\delta}(x_0) \text{ such that } g_x(x) = x.
+\]</span> Thus, the inverse exists and is unique.</p>
+<p>babeldown::deepl_translate_hugo( post_path = “content.en/docs/Mathematics/MATH 412 Real Analysis II/Lecture/7.1 Inverse Function Theorem.md”, target_lang = “ZH”, source_lang = “EN”, force = TRUE )</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%AE%9E%E5%88%86%E6%9E%90/%E7%AC%AC%E4%B8%83%E7%AB%A0/7.1.1%20Inverse%20FT%20(Proof).html"><span>Next page →</span><span>7.1.1 反函数定理（证明）</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">7.1 反函数定理</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#inverse-function-theorem-ift" class="is-active" aria-current="location">7.1 Inverse Function Theorem (IFT)</a></li><li style="--depth:1"><a href="#i.-inverse-function-theorem">7.1.1.1 I. Inverse Function Theorem</a></li><li style="--depth:2"><a href="#linear-case">1. Linear Case</a></li><li style="--depth:3"><a href="#question-when-can-we-solve-a-nonlinear-system">7.1.1.1.1.1 Question: When can we solve a nonlinear system?</a></li><li style="--depth:2"><a href="#visualization">7.1.1.1.2 Visualization:</a></li><li style="--depth:1"><a href="#proof-of-the-inverse-function-theorem-ift">7.1.1.2 Proof of the Inverse Function Theorem (IFT)</a></li><li style="--depth:2"><a href="#step-1-reductions">7.1.1.2.1 Step 1: Reductions</a></li><li style="--depth:1"><a href="#step-2-existence-of-the-inverse-function">7.1.1.3 Step 2: Existence of the Inverse Function</a></li><li style="--depth:2"><a href="#for-a-fixed-y-in-mathbbrn-define">7.1.1.3.1 For a fixed y \in \mathbb{R}^n, define:</a></li><li style="--depth:0"><a href="#chapter-7-inverse-and-implicit-function-theorems">7.1.2 Chapter 7: Inverse and Implicit Function Theorems</a></li><li style="--depth:1"><a href="#contraction-mapping-principle-cmp">7.1.2.1 Contraction Mapping Principle (CMP)</a></li><li style="--depth:1"><a href="#proof-of-the-inverse-function-theorem-ift-1">7.1.2.2 Proof of the Inverse Function Theorem (IFT)</a></li><li style="--depth:2"><a href="#step-1-reduction">7.1.2.2.1 Step 1: Reduction</a></li><li style="--depth:2"><a href="#step-2-existence-of-the-inverse">7.1.2.2.2 Step 2: Existence of the Inverse**</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

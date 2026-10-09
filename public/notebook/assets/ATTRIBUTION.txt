@@ -1,0 +1,13 @@
+Quiet Reader UI
+Design reference: https://www.figma.com/design/RjULRTUH4yd9FcAQriMuss?node-id=9-2
+The sidebar, outline, search, GitHub and chevron SVG assets were exported directly
+from the user's Figma design through its design-context asset URLs. They are
+preserved as supplied; no Apple system font files are redistributed.
+
+STIX Two Text: SIL Open Font License 1.1. See fonts/LICENSE.txt.
+TeX Gyre Termes: GUST Font License. The unmodified OpenType fonts are from
+https://ctan.net/fonts/tex-gyre/opentype/ (version 2.004).
+See fonts/GUST-FONT-LICENSE.txt and fonts/README-TeX-Gyre-Termes.txt.
+This is a traditional Times-family option, not a claimed identification of
+the original printing typeface of Rudin's Principles of Mathematical Analysis.
+MathJax 3.2.2: Apache License 2.0. See vendor/mathjax/LICENSE.txt.

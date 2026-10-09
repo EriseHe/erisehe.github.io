@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 19 Riemman Tensor — E.H. Notebook</title>
+<meta name="description" content="Curvature isn’t “how bent the coordinates look”; it’s how nearby free-falling worldlines accelerate relative to each other. The Riemann tensor is the device that turns a ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 19 Riemman Tensor</h1></header><div id="article-body" class="prose"><p>Curvature isn’t “how bent the coordinates look”; it’s how <strong>nearby free-falling worldlines accelerate relative to each other</strong>.<br>
+The Riemann tensor is the device that turns a reference geodesic’s four-velocity and a separation vector into that relative acceleration.<br>
+When Riemann vanishes everywhere you can globally call the place “flat.”<br>
+When it doesn’t, spacetime has intrinsic curvature you can’t transform away.</p>
+<h2 data-original-heading="1 Geodesic deviation (definition-by-action)" id="geodesic-deviation-definition-by-action">1 Geodesic deviation (definition-by-action)</h2>
+<p><span class="math display">\[
+\boxed{
+\left(\frac{d^2 \boldsymbol{n}}{d \tau^2}\right)^\alpha
+= -R_{\beta \mu \nu}^\alpha u^\beta n^\mu u^\nu
+}
+\tag{19.1}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(u^\alpha(\tau)\)</span>: four-velocity along the reference geodesic (proper time <span class="math inline">\(\tau\)</span>).</li>
+<li><span class="math inline">\(n^\mu(\tau)\)</span>: infinitesimal separation to a neighboring geodesic.</li>
+<li>If <span class="math inline">\(R^{\alpha}{}_{\beta\mu\nu}=0\)</span>, initially parallel geodesics remain parallel → flat.</li>
+</ul>
+<h2 data-original-heading="2 Coordinate expression (in any chart)" id="coordinate-expression-in-any-chart">2 Coordinate expression (in any chart)</h2>
+<p><span class="math display">\[
+\boxed{
+R_{\beta \mu \nu}^\alpha
+\equiv
+\partial_\mu \Gamma_{\beta \nu}^\alpha
+-\partial_\nu \Gamma_{\beta \mu}^\alpha
++\Gamma_{\mu \gamma}^\alpha \Gamma_{\beta \nu}^\gamma
+-\Gamma_{\nu \sigma}^\alpha \Gamma_{\beta \mu}^\sigma
+}
+\tag{19.2}
+\]</span> Sign conventions vary (some authors flip the overall sign, or use the alternative Ricci contraction — keep track).</p>
+<h2 data-original-heading="3 Local Inertial Frame (LIF) at an event" id="local-inertial-frame-lif-at-an-event">3 Local Inertial Frame (LIF) at an event</h2>
+<p>At the origin of a LIF: <span class="math inline">\(\Gamma^\alpha{}_{\beta\gamma}=0\)</span> but their <strong>derivatives</strong> need not vanish.<br>
+Lowering the first index:</p>
+<p><span class="math display">\[
+\begin{aligned}
+R_{\alpha\beta\mu\nu}
+&amp;\equiv g_{\alpha\gamma}R^{\gamma}{}_{\beta\mu\nu} \\
+&amp;= \tfrac{1}{2}\!
+\left(
+\partial_\beta\partial_\mu g_{\alpha\nu}
++ \partial_\alpha\partial_\nu g_{\beta\mu}
+- \partial_\alpha\partial_\mu g_{\beta\nu}
+- \partial_\beta\partial_\nu g_{\alpha\mu}
+\right)
+\qquad \text{(at the LIF origin).}
+\end{aligned}\tag{19.3}
+\]</span></p>
+<p>Intuition: curvature is exactly the “unremovable” part of the <strong>second</strong> derivatives of the metric once you’ve already killed the first derivatives by going to a LIF.</p>
+<h2 data-original-heading="4 Index symmetries (true at the LIF origin and hence tensorially everywhere)" id="index-symmetries-true-at-the-lif-origin-and-hence-tensorially-everywhere">4 Index symmetries (true at the LIF origin and hence tensorially everywhere)</h2>
+<p>$$   $$</p>
+<p>Consequences:</p>
+<ul>
+<li>In <span class="math inline">\(n=4\)</span>, only <strong>20</strong> independent components remain (out of 256).<br>
+</li>
+<li>In <span class="math inline">\(n=2\)</span>, there’s only <strong>one</strong> independent component.</li>
+</ul>
+<h2 data-original-heading="5 Bianchi identity (differential)" id="bianchi-identity-differential">5 Bianchi identity (differential)</h2>
+<p><span class="math display">\[
+\boxed{
+\nabla_\sigma R^{\alpha}{}_{\beta\mu\nu}
++ \nabla_\mu R^{\alpha}{}_{\beta\nu\sigma}
++ \nabla_\nu R^{\alpha}{}_{\beta\sigma\mu} = 0
+}
+\tag{19.5}
+\]</span> This fuels the conservation law in Einstein’s equation after suitable contractions<br>
+(the contracted Bianchi identity gives <span class="math inline">\(\nabla_\mu G^{\mu\nu}=0\)</span>).</p>
+<h2 data-original-heading="6 Useful contractions" id="useful-contractions">6 Useful contractions</h2>
+<p>Ricci tensor (contract 1st and 3rd indices; some authors use 1st and 4th with opposite sign): <span class="math display">\[
+\boxed{
+R_{\beta\nu} \equiv R^{\alpha}{}_{\beta\alpha\nu}
+\equiv g^{\alpha\mu} R_{\alpha\beta\mu\nu},
+\qquad
+R_{\beta\nu}=R_{\nu\beta}
+}
+\tag{19.6–19.7}
+\]</span></p>
+<p>Scalar curvature (trace of the Ricci)</p>
+<p><span class="math display">\[
+\boxed{
+R \equiv g^{\beta\nu} R_{\beta\nu}
+= g^{\beta\nu}g^{\alpha\mu}R_{\alpha\beta\mu\nu}
+}
+\tag{19.8}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(R\)</span> is a true scalar: coordinate-independent.<br>
+</li>
+<li><span class="math inline">\(R_{\mu\nu}\)</span> and <span class="math inline">\(R\)</span> can both vanish in some curved spacetimes; only the <strong>full</strong> Riemann distinguishes flatness conclusively.</li>
+</ul>
+<h2 data-original-heading="7 Worked example: 2-sphere of radius r" id="worked-example-2-sphere-of-radius-r">7 Worked example: 2-sphere of radius <span class="math inline">\(r\)</span></h2>
+<p>Coordinates <span class="math inline">\((\theta,\phi)\)</span>, metric <span class="math display">\[
+\boxed{
+ds^2 = r^2\,d\theta^2 + r^2\sin^2\theta\, d\phi^2
+}
+\tag{19.9}
+\]</span> Christoffel symbols (others <span class="math inline">\(=0\)</span>): <span class="math display">\[
+\boxed{
+\Gamma^{\theta}{}_{\phi\phi} = -\sin\theta\cos\theta, \qquad
+\Gamma^{\phi}{}_{\theta\phi}=\Gamma^{\phi}{}_{\phi\theta}=\cot\theta
+}
+\tag{19.10}
+\]</span> Compute <span class="math inline">\(R_{\theta\phi\theta\phi}\)</span>, <span class="math inline">\(R_{\mu\nu}\)</span>, and <span class="math inline">\(R\)</span>. <span class="math display">\[
+\begin{aligned}
+\textbf{Step 1: }&amp;
+\quad
+R^{\theta}{}_{\phi\theta\phi}
+= \partial_\theta \Gamma^{\theta}{}_{\phi\phi}
+- \partial_\phi \Gamma^{\theta}{}_{\phi\theta}
+- \Gamma^{\theta}{}_{\sigma\theta}\Gamma^{\sigma}{}_{\phi\phi}
++ \Gamma^{\theta}{}_{\sigma\phi}\Gamma^{\sigma}{}_{\phi\theta} \\
+&amp;= \underbrace{\partial_\theta (-\sin\theta\cos\theta)}_{=-(\cos^2\theta-\sin^2\theta)}
+- 0 + 0
+- \underbrace{\Gamma^{\theta}{}_{\phi\phi}\Gamma^{\phi}{}_{\phi\theta}}_{=(-\sin\theta\cos\theta)(\cot\theta)=-\cos^2\theta} \\
+&amp;= -(\cos^2\theta-\sin^2\theta)+\cos^2\theta = \sin^2\theta .
+\\[6pt]
+\textbf{Step 2: }&amp;
+\quad
+\text{Lower the first index: }
+R_{\theta\phi\theta\phi}
+= g_{\theta\theta} R^{\theta}{}_{\phi\theta\phi}
+= r^2 \sin^2\theta
+\end{aligned}
+\tag{19.11}
+\]</span></p>
+<p>By 2D identities, the other components follow from symmetries.</p>
+<p>Ricci and scalar:</p>
+<p><span class="math display">\[
+\begin{aligned}
+R_{\theta\theta}
+&amp;= g^{\phi\phi}R_{\phi\theta\phi\theta}
+= \frac{1}{r^2\sin^2\theta}(r^2\sin^2\theta)
+= 1, \\[2pt]
+R_{\phi\phi}
+&amp;= g^{\theta\theta}R_{\theta\phi\theta\phi}
+= \frac{1}{r^2}(r^2\sin^2\theta)
+= \sin^2\theta, \\[2pt]
+R_{\theta\phi}&amp;=0,
+\end{aligned}
+\tag{19.12}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+R = g^{\theta\theta}R_{\theta\theta}
++ g^{\phi\phi}R_{\phi\phi}
+= \frac{1}{r^2}+\frac{1}{r^2}
+= \frac{2}{r^2}}
+\tag{19.13}
+\]</span> Geometric meaning:<br>
+The Gaussian curvature <span class="math inline">\(K\)</span> of the sphere is <span class="math inline">\(1/r^2\)</span>, and in 2D <span class="math inline">\(R=2K\)</span>.</p>
+<h2 data-original-heading="8 Intuition compacted" id="intuition-compacted">8 Intuition compacted</h2>
+<ul>
+<li><strong>What Riemann does:</strong> it compares parallel transport around an infinitesimal loop; the mismatch is proportional to the loop’s area and given by <span class="math inline">\(R\)</span>.<br>
+</li>
+<li><strong>Why LIF helps:</strong> you kill <span class="math inline">\(\Gamma\)</span> at a point to expose that curvature lives in the second derivatives that <em>refuse</em> to vanish together (eq. 19.3).<br>
+</li>
+<li><strong>Why the symmetries matter:</strong> they’re conservation-law-like bookkeeping rules that crush 256 components down to 20 in 4D; in 2D curvature has only one local degree of freedom.<br>
+</li>
+<li><strong>Why Bianchi matters:</strong> after contracting, it guarantees a divergenceless geometric tensor (the Einstein tensor), matching local stress-energy conservation.</li>
+</ul>
+<hr>
+<p>If you want to push this further, the next natural step is to contract Bianchi to derive<br>
+<span class="math inline">\(\nabla_\mu G^{\mu\nu}=0\)</span> and then motivate the Einstein equation<br>
+<span class="math inline">\(G_{\mu\nu}=8\pi G\,T_{\mu\nu}\)</span> from these geometric ingredients.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span>← Previous page</span><span>Ch. 16</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span>Next page →</span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 19 Riemman Tensor</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#geodesic-deviation-definition-by-action" class="is-active" aria-current="location">1 Geodesic deviation (definition-by-action)</a></li><li style="--depth:0"><a href="#coordinate-expression-in-any-chart">2 Coordinate expression (in any chart)</a></li><li style="--depth:0"><a href="#local-inertial-frame-lif-at-an-event">3 Local Inertial Frame (LIF) at an event</a></li><li style="--depth:0"><a href="#index-symmetries-true-at-the-lif-origin-and-hence-tensorially-everywhere">4 Index symmetries (true at the LIF origin and hence tensorially everywhere)</a></li><li style="--depth:0"><a href="#bianchi-identity-differential">5 Bianchi identity (differential)</a></li><li style="--depth:0"><a href="#useful-contractions">6 Useful contractions</a></li><li style="--depth:0"><a href="#worked-example-2-sphere-of-radius-r">7 Worked example: 2-sphere of radius r</a></li><li style="--depth:0"><a href="#intuition-compacted">8 Intuition compacted</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

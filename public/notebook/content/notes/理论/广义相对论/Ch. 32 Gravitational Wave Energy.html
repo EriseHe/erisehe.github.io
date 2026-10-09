@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 32 Gravitational Wave Energy — E.H. Notebook</title>
+<meta name="description" content="32.1 IntroductionIn chapter 31 we saw that a passing gravitational wave distorts a ring of freely floating particles and makes them oscillate relative to each other. In t">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 32 Gravitational Wave Energy</h1></header><div id="article-body" class="prose"><h2 data-original-heading="32.1 Introduction" id="introduction">32.1 Introduction</h2>
+<p>In chapter 31 we saw that a passing gravitational wave distorts a ring of freely floating particles and makes them oscillate relative to each other.<br>
+In the rest frame of the ring’s center, the particles gain kinetic energy, so the gravitational wave must carry energy from its source to the particles.</p>
+<p><strong>Goal of this chapter:</strong><br>
+Work out how to calculate how much energy a gravitational wave of a given amplitude carries.</p>
+<hr>
+<h2 data-original-heading="32.2 Gravitational Energy in General Relativity" id="gravitational-energy-in-general-relativity">32.2 Gravitational Energy in General Relativity</h2>
+<h3 data-original-heading="32.2.1 Why it is subtle" id="why-it-is-subtle">32.2.1 Why it is subtle</h3>
+<p>In the Einstein equation <span class="math display">\[
+G^{\mu\nu}=8\pi G T^{\mu\nu}
+\]</span> the stress–energy tensor <span class="math inline">\(T^{\mu\nu}\)</span> describes the density of matter and non-gravitational energy, <strong>excluding</strong> gravitational field energy.</p>
+<p>Everything involving gravitational field energy is encoded in the Einstein tensor <span class="math inline">\(G^{\mu\nu}\)</span> itself: the gravitational field acts as a source for itself via the nonlinear structure of <span class="math inline">\(G^{\mu\nu}\)</span>.</p>
+<p>We have previously discussed that the equation <span class="math display">\[
+\nabla_\mu T^{\mu\nu}=0
+\]</span> represents conservation of (non-gravitational) energy and momentum.<br>
+However, the actual derivation of conservation used <strong>local</strong> Cartesian coordinates, where <span class="math display">\[
+\partial_\mu T^{\mu\nu}=0
+\]</span> and only in flat spacetime can we integrate this (using Gauss’s law) to obtain global conserved quantities.</p>
+<p>In a <strong>general curved spacetime</strong>, we can always choose a locally inertial frame at a point so that there, sufficiently near the origin, <span class="math display">\[
+\partial_\mu T^{\mu\nu}=0
+\]</span> but this statement refers only to non-gravitational energy–momentum. It says nothing about how gravitational energy fits in.</p>
+<p>If gravitational energy is to exchange “energy” with matter, it must do so in a nonlocal way that probes the curvature over an extended region of spacetime. This is essentially what we saw with the ring of particles: the effect of the wave shows up only when we compare different nearby worldlines.</p>
+<h3 data-original-heading="32.2.2 No local tensor for gravitational energy density" id="no-local-tensor-for-gravitational-energy-density">32.2.2 No local tensor for gravitational energy density</h3>
+<p>Suppose we tried to define a true tensor <span class="math inline">\(t^{\mu\nu}\)</span> representing the local density of gravitational field energy. At any spacetime point we can choose a locally Cartesian coordinate system in which the Christoffel symbols vanish at that point and <span class="math inline">\(g_{\mu\nu}=\eta_{\mu\nu}\)</span> there.</p>
+<p>In such a system, the equivalence principle tells us that locally gravity has been “transformed away.” If <span class="math inline">\(t^{\mu\nu}\)</span> were a true tensor representing gravitational energy density, the natural requirement would be that it vanish at the origin of this local inertial frame, hence be zero there. But if a tensor is zero in one frame at a point, it is zero in all frames at that point, so <span class="math inline">\(t^{\mu\nu}\)</span> would have to vanish everywhere.</p>
+<p>So we <strong>cannot</strong> define a genuine tensor giving the local gravitational energy density in arbitrary curved spacetime.</p>
+<h3 data-original-heading="2.3 Pseudotensors and effective descriptions" id="pseudotensors-and-effective-descriptions">2.3 Pseudotensors and effective descriptions</h3>
+<p>One response is to say that in a curved spacetime “energy is simply not conserved” in the naive global sense and that gravitational energy is not localizable.</p>
+<p>Another response is to build an <strong>effective stress–energy pseudotensor</strong> <span class="math inline">\(T^{\mu\nu}_{\text{eff}}\)</span> that includes both matter and some “gravitational part” and satisfies a conservation equation of the form <span class="math display">\[
+\partial_\mu T^{\mu\nu}_{\text{eff}} = 0
+\]</span> in some chosen coordinate system. This can then be integrated to give coordinate–dependent conserved quantities over finite spatial regions.</p>
+<div class="math-theorem remark" data-callout="remark" data-label="32.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 32.1</span><span class="theorem-title">Slippery notion of energy in GR</span></p>
+</div>
+<div class="theorem-content">
+<p>Global energy conservation in full general relativity is subtle and coordinate–dependent. Any attempt to assign an energy density to the gravitational field must be handled with great care.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="32.3. In Almost Flat Spacetime, We Can Pretend" id="in-almost-flat-spacetime-we-can-pretend">32.3. In Almost Flat Spacetime, We Can Pretend</h2>
+<p>In the <strong>weak–field limit</strong>, spacetime is almost flat and energy and momentum are almost conserved. In this regime there is a generally accepted trick that lets us define an <strong>effective energy</strong> carried by gravitational waves.</p>
+<p>We work with the metric perturbation <span class="math inline">\(h_{\mu\nu}\)</span> in <strong>Lorentz gauge</strong> and its trace–reversed partner <span class="math display">\[
+H_{\mu\nu} = h_{\mu\nu} - \tfrac12 \eta_{\mu\nu} h
+\]</span></p>
+<h3 data-original-heading="32.3.1 First–order field equation" id="firstorder-field-equation">32.3.1 First–order field equation</h3>
+<p>To first order in <span class="math inline">\(h_{\mu\nu}\)</span>, the Einstein equation becomes <span class="math display">\[
+-2G^{(1)}_{\mu\nu}
+= \partial_\alpha\partial^\alpha H_{\mu\nu}
+= -16\pi G T_{\mu\nu}
+\tag{32.1}
+\]</span> where <span class="math inline">\(G^{(1)}_{\mu\nu}\)</span> is the Einstein tensor evaluated to first order in <span class="math inline">\(h_{\mu\nu}\)</span>. This equation describes how the <em>matter</em> stress–energy <span class="math inline">\(T_{\mu\nu}\)</span> generates the linear gravitational field.</p>
+<p>Notice that it says nothing about the gravitational field’s own energy feeding back on itself; that self–interaction lives in higher orders of <span class="math inline">\(G_{\mu\nu}\)</span>, which we neglected in the linearized theory.</p>
+<h3 data-original-heading="32.3.2 Second–order expansion and self–feedback" id="secondorder-expansion-and-selffeedback">32.3.2 Second–order expansion and self–feedback</h3>
+<p>To capture at least the leading self–interaction terms, we expand the field equations to <strong>second order</strong> in the metric perturbation: <span class="math display">\[
+-2G^{(1)}_{\mu\nu}-2G^{(2)}_{\mu\nu}
+= \partial_\alpha\partial^\alpha H_{\mu\nu}-2G^{(2)}_{\mu\nu}
+= -16\pi G T_{\mu\nu}
+\tag{32.2}
+\]</span></p>
+<p>Rearranging and interpreting the second–order piece <span class="math inline">\(G^{(2)}_{\mu\nu}\)</span> as an effective source, we obtain <span class="math display">\[
+\begin{aligned}
+\partial_\alpha\partial^\alpha H_{\mu\nu}
+&amp;= -16\pi G T_{\mu\nu} + 2G^{(2)}_{\mu\nu} \\[4pt]
+&amp;= -16\pi G\bigl(T_{\mu\nu} + T^{GW}_{\mu\nu}\bigr)
+\end{aligned}
+\tag{32.3}
+\]</span> where we <strong>define</strong> <span class="math display">\[
+T^{GW}_{\mu\nu} \equiv -\frac{G^{(2)}_{\mu\nu}}{8\pi G}
+\tag{32.4}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="32.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 32.2</span><span class="theorem-title">Effective gravitational–wave stress–energy (local, un-averaged)</span></p>
+</div>
+<div class="theorem-content">
+<p>In the weak–field approximation on a flat background, the second–order part of the Einstein tensor, <span class="math inline">\(G^{(2)}_{\mu\nu}\)</span>, can be re–interpreted as an effective stress–energy tensor for the gravitational field via <span class="math inline">\(T^{GW}_{\mu\nu} \equiv -G^{(2)}_{\mu\nu}/(8\pi G)\)</span>.</p>
+</div>
+</div>
+<p>In this picture, <span class="math inline">\(T^{GW}_{\mu\nu}\)</span> acts alongside the non-gravitational <span class="math inline">\(T_{\mu\nu}\)</span> as a source for the field <span class="math inline">\(H_{\mu\nu}\)</span>, and so behaves like a stress–energy tensor for the gravitational waves.</p>
+<h3 data-original-heading="32.3.3 Conservation law in Lorentz gauge" id="conservation-law-in-lorentz-gauge">32.3.3 Conservation law in Lorentz gauge</h3>
+<p>We are working in Lorentz gauge, so <span class="math inline">\(\partial_\mu H^{\mu\nu}=0\)</span>. Taking <span class="math inline">\(\partial_\mu\)</span> of both sides of (32.3) and raising indices appropriately, we find <span class="math display">\[
+\partial_\mu\bigl(T^{\mu\nu} + T^{\mu\nu}_{GW}\bigr)=0
+\tag{32.5}
+\]</span></p>
+<p>This expresses conservation of the sum of matter energy–momentum and gravitational–wave energy–momentum, in the approximate flat–background picture.</p>
+<p>However, <span class="math inline">\(T^{GW}_{\mu\nu}\)</span> defined in (32.4) still depends on the local phase of the wave and is not a good tensor–like quantity at a single point. To make it meaningful, we <strong>average over several wavelengths</strong> of the wave, denoted by angle brackets <span class="math inline">\(\langle\cdots\rangle\)</span>.</p>
+<p>Thus we refine the definition to <span class="math display">\[
+T^{GW}_{\mu\nu} \equiv -\frac{\langle G^{(2)}_{\mu\nu}\rangle}{8\pi G}
+\quad\text{(average taken over several wavelengths)}
+\tag{32.6}
+\]</span></p>
+<p>This is our final expression for the <strong>effective</strong> stress–energy carried by a gravitational wave in the weak–field limit.</p>
+<hr>
+<h2 data-original-heading="32.4. Evaluating the Stress–Energy for a Gravitational Wave" id="evaluating-the-stressenergy-for-a-gravitational-wave">32.4. Evaluating the Stress–Energy for a Gravitational Wave</h2>
+<p>We now apply this to a specific wave. Consider a <strong>plus–polarized</strong> gravitational wave moving in the <span class="math inline">\(+z\)</span> direction, of the kind studied in chapter 31.</p>
+<p>We define a shorthand function <span class="math inline">\(h_+(t,z)\)</span> for the TT metric components: <span class="math display">\[
+h_+(t,z) = A_+\cos(\omega t - \omega z)
+= h^{TT}_{xx} = -h^{TT}_{yy}
+\tag{32.7a}
+\]</span></p>
+<p>Time and space derivatives are written as <span class="math display">\[
+\dot h_+ \equiv \partial_t h_+ = -\partial_z h_+ = -A_+\omega\sin(\omega t-\omega z)
+\tag{32.7b}
+\]</span> <span class="math display">\[
+\ddot h_+ \equiv \partial_t\partial_t h_+ = \partial_z\partial_z h_+
+= -\partial_z\partial_t h_+
+= -\omega^2 A_+\cos(\omega t-\omega z)
+= -\omega^2 h_+
+\tag{32.7c}
+\]</span></p>
+<h3 data-original-heading="32.4.1 Metric form for the plus–polarized wave" id="metric-form-for-the-pluspolarized-wave">32.4.1 Metric form for the plus–polarized wave</h3>
+<p>For this perturbation the metric is diagonal, so we can use a “Diagonal Metric Worksheet” to compute the Ricci tensor. The metric functions are labeled <span class="math inline">\(A,B,C,D\)</span> and their derivatives <span class="math inline">\(B_i,C_i,B_{ij},C_{ij}\)</span>:</p>
+<p><span class="math display">\[
+A=-1,\quad B=1+h_+,\quad C=1-h_+,\quad D=1
+\tag{32.8a}
+\]</span> <span class="math display">\[
+B_1=C_4=\dot h_+,\quad B_4=C_1=-\dot h_+,\quad
+B_{11}=-B_{14}=-C_{11}=B_{44}=C_{14}=-C_{44}=\ddot h_+
+\tag{32.8b}
+\]</span></p>
+<p>Using the worksheet, one finds that to second order in <span class="math inline">\(h_+\)</span> the diagonal Ricci components are <span class="math display">\[
+R_{tt}=R_{zz}=h_+\ddot h_+ + \tfrac12\dot h_+\dot h_+,\qquad
+R_{xx}=R_{yy}=0
+\tag{32.9}
+\]</span></p>
+<h3 data-original-heading="32.4.2 Averaging over several wavelengths" id="averaging-over-several-wavelengths">32.4.2 Averaging over several wavelengths</h3>
+<p>We now average over several wavelengths of the gravitational wave.</p>
+<p>Define <span class="math display">\[
+\theta = \omega t - \omega z
+\]</span> so that <span class="math display">\[
+h_+ = A_+\cos\theta,\quad
+\dot h_+ = -A_+\omega\sin\theta,\quad
+\ddot h_+ = -\omega^2 h_+ = -\omega^2 A_+\cos\theta
+\]</span></p>
+<p>Consider <span class="math display">\[
+\begin{aligned}
+\big\langle \dot h_+\ddot h_+ + h_+\ddot h_+ \big\rangle
+&amp;= \big\langle [-\omega A_+\sin\theta]^2
+      + A_+\cos\theta[-\omega^2 A_+\cos\theta] \big\rangle \\[4pt]
+&amp;= A_+^2\omega^2\big\langle \sin^2\theta - \cos^2\theta \big\rangle \\[2pt]
+&amp;= -A_+^2\omega^2 \langle \cos 2\theta \rangle \\[2pt]
+&amp;= 0
+\end{aligned}
+\tag{32.10}
+\]</span></p>
+<p>Because the average of <span class="math inline">\(\cos 2\theta\)</span> over a full cycle is zero, the whole expression vanishes.</p>
+<p>Using this, we rewrite the averaged combination that appears in <span class="math inline">\(R_{tt}\)</span> and <span class="math inline">\(R_{zz}\)</span>: <span class="math display">\[
+\begin{aligned}
+\big\langle h_+\ddot h_+ + \tfrac12\dot h_+\dot h_+ \big\rangle
+&amp;=
+\underbrace{\big\langle h_+\ddot h_+ + \dot h_+\dot h_+ \big\rangle}_{=\,0\ \text{by (32.10)}}
+-\tfrac12\langle \dot h_+\dot h_+ \rangle \\[4pt]
+&amp;= -\tfrac12\langle \dot h_+\dot h_+ \rangle
+\end{aligned}
+\tag{32.11}
+\]</span></p>
+<p>Therefore, the <strong>nonzero</strong> averaged second-order diagonal Ricci components are <span class="math display">\[
+\big\langle R^{(2)}_{tt} \big\rangle
+= \big\langle R^{(2)}_{zz} \big\rangle
+= -\tfrac12\langle \dot h_+\dot h_+ \rangle
+\tag{32.12}
+\]</span></p>
+<p>You can also show (see box 32.2 in the text) that the averaged second-order part of the curvature scalar vanishes: <span class="math display">\[
+\big\langle R^{(2)} \big\rangle = 0
+\tag{32.13}
+\]</span></p>
+<hr>
+<h2 data-original-heading="32.5. Effective Energy Density of the Wave" id="effective-energy-density-of-the-wave">32.5. Effective Energy Density of the Wave</h2>
+<p>Using the averaged effective stress–energy definition (32.6) and the fact that for this perturbation <span class="math inline">\(G^{(2)}_{tt}=R^{(2)}_{tt}\)</span> (because the averaged second-order scalar curvature is zero), we obtain <span class="math display">\[
+\begin{aligned}
+T^{GW}_{tt}
+&amp;= -\frac{\langle G^{(2)}_{tt}\rangle}{8\pi G}
+= -\frac{\langle R^{(2)}_{tt}\rangle}{8\pi G} \\[4pt]
+&amp;= +\frac{\langle \dot h_+\dot h_+ \rangle}{16\pi G}
+\end{aligned}
+\tag{32.14}
+\]</span></p>
+<p>This is the <strong>effective energy density</strong> of a plus–polarized gravitational wave, averaged over many wavelengths.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="32.3">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 32.3</span><span class="theorem-title">Effective GW energy density (plus polarization)</span></p>
+</div>
+<div class="theorem-content">
+<p>For an upright (“plus”) polarized plane wave traveling in the <span class="math inline">\(+z\)</span> direction, the effective energy density in the weak–field limit is<br>
+<span class="math display">\[T^{GW}_{tt} = \frac{1}{16\pi G}\langle \dot h_+\dot h_+ \rangle\]</span></p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="32.6. Arbitrary Polarizations and General Formula" id="arbitrary-polarizations-and-general-formula">32.6. Arbitrary Polarizations and General Formula</h2>
+<p>The calculation for a purely “cross” (diagonally polarized) wave is more complicated because the metric is not diagonal in the same simple form; one must compute Christoffel symbols and curvature components by hand. However, physically we can obtain a diagonally polarized wave from an upright one by a <span class="math inline">\(45^\circ\)</span> rotation around the <span class="math inline">\(z\)</span> axis, so the energy density must be the same functional form when both polarizations are included.</p>
+<p>Let us denote the TT transverse components by <span class="math display">\[
+h_x \equiv h^{TT}_{xy} = h^{TT}_{yx}
+\]</span> For an <strong>arbitrary</strong> linearly polarized wave, the total effective energy density becomes <span class="math display">\[
+T^{GW}_{tt}
+= \frac{1}{16\pi G}\big\langle \dot h_+\dot h_+ + \dot h_x\dot h_x \big\rangle
+\tag{32.15}
+\]</span></p>
+<p>More compactly, we can write this as a sum over purely spatial indices <span class="math inline">\(j,k=x,y,z\)</span>: <span class="math display">\[
+T^{GW}_{tt}
+= \frac{1}{32\pi G}\big\langle \dot h^{TT}_{jk}\dot h^{jk}_{TT} \big\rangle
+\tag{32.16}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition" data-label="32.4">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 32.4</span><span class="theorem-title">General effective GW energy density</span></p>
+</div>
+<div class="theorem-content">
+<p>In the weak–field limit, for a plane gravitational wave (in any propagation direction) the effective energy density is<br>
+<span class="math display">\[T^{GW}_{tt} = \frac{1}{32\pi G}\big\langle \dot h^{TT}_{jk}\dot h^{jk}_{TT} \big\rangle\]</span><br>
+where <span class="math inline">\(h^{TT}_{jk}\)</span> are the spatial components of the metric perturbation in transverse–traceless gauge and the average is taken over several wavelengths.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="32.7. Gravitational Wave Energy Flux" id="gravitational-wave-energy-flux">32.7. Gravitational Wave Energy Flux</h2>
+<p>Finally, the <strong>gravitational wave flux</strong>—energy transported per unit time per unit area by the wave in the direction of its motion—turns out to be equal to this same quantity (because waves propagate at speed <span class="math inline">\(1\)</span> in our units):</p>
+<p><span class="math display">\[
+\text{flux}
+= \frac{1}{32\pi G}\big\langle \dot h^{TT}_{jk}\dot h^{jk}_{TT} \big\rangle
+= T^{GW}_{tt}
+\tag{32.17}
+\]</span></p>
+<p>So, once we know the TT metric components for a wave and can compute their time derivatives, we can directly evaluate both the <strong>energy density</strong> and <strong>energy flux</strong> carried by the gravitational wave using the same averaged quadratic combination of <span class="math inline">\(\dot h^{TT}_{jk}\)</span>.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span>← Previous page</span><span>Ch. 31 Detecting Gravitational Waves</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span>Next page →</span><span>Ch. 33 ChatGPT</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 32 Gravitational Wave Energy</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#introduction" class="is-active" aria-current="location">32.1 Introduction</a></li><li style="--depth:0"><a href="#gravitational-energy-in-general-relativity">32.2 Gravitational Energy in General Relativity</a></li><li style="--depth:1"><a href="#why-it-is-subtle">32.2.1 Why it is subtle</a></li><li style="--depth:1"><a href="#no-local-tensor-for-gravitational-energy-density">32.2.2 No local tensor for gravitational energy density</a></li><li style="--depth:1"><a href="#pseudotensors-and-effective-descriptions">2.3 Pseudotensors and effective descriptions</a></li><li style="--depth:0"><a href="#in-almost-flat-spacetime-we-can-pretend">32.3. In Almost Flat Spacetime, We Can Pretend</a></li><li style="--depth:1"><a href="#firstorder-field-equation">32.3.1 First–order field equation</a></li><li style="--depth:1"><a href="#secondorder-expansion-and-selffeedback">32.3.2 Second–order expansion and self–feedback</a></li><li style="--depth:1"><a href="#conservation-law-in-lorentz-gauge">32.3.3 Conservation law in Lorentz gauge</a></li><li style="--depth:0"><a href="#evaluating-the-stressenergy-for-a-gravitational-wave">32.4. Evaluating the Stress–Energy for a Gravitational Wave</a></li><li style="--depth:1"><a href="#metric-form-for-the-pluspolarized-wave">32.4.1 Metric form for the plus–polarized wave</a></li><li style="--depth:1"><a href="#averaging-over-several-wavelengths">32.4.2 Averaging over several wavelengths</a></li><li style="--depth:0"><a href="#effective-energy-density-of-the-wave">32.5. Effective Energy Density of the Wave</a></li><li style="--depth:0"><a href="#arbitrary-polarizations-and-general-formula">32.6. Arbitrary Polarizations and General Formula</a></li><li style="--depth:0"><a href="#gravitational-wave-energy-flux">32.7. Gravitational Wave Energy Flux</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

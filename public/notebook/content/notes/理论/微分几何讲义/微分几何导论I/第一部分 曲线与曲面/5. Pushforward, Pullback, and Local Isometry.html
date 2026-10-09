@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>5. 前推，回拉，以及和局部等距 — E.H. Notebook</title>
+<meta name="description" content="1 Pushforward, Pullback, and Local Isometry1.1 Smooth map and its differential (push-forward)Let \psi:S\to \tilde S be a smooth map between surfaces. For p\in S, the diff">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="微分几何讲义 file hierarchy" data-sidebar-root="content/notes/理论/微分几何讲义"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/Frederic P Schuller讲义" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4588f86aeacf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Frederic P Schuller讲义</span></button></div><ul class="tree-children" id="folder-4588f86aeacf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC3%E8%AE%B2%20%E5%A4%9A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html"><span class="page-number"></span><span>第3讲 多线性代数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC4%E8%AE%B2%20%E5%8F%AF%E5%BE%AE%E6%B5%81%E5%BD%A2.html"><span class="page-number"></span><span>第4讲 可微流形</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-244bccca26dc" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论I</span></button></div><ul class="tree-children" id="folder-244bccca26dc"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第一部分 曲线与曲面" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f23833b55fc8" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一部分 曲线与曲面</span></button></div><ul class="tree-children" id="folder-f23833b55fc8"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/1.%20Overview%20of%20Differential%20Geometry.html"><span class="page-number">1</span><span>Overview of Differential Geometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/2.%20Parametrized%20Curves%20%26%20Surfaces.html"><span class="page-number">2</span><span>Parametrized Curves &amp; Surfaces</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vector%20on%20Surface%20(from%20Lecture).html"><span class="page-number">3</span><span>Tangent Vector on Surface (from Lecture)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vectors%20and%20Orientability%20(From%20Notes).html"><span class="page-number">3</span><span>Tangent Vectors and Orientability (From Notes)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/4.%20First%20Fundamental%20Form.html"><span class="page-number">4</span><span>First Fundamental Form</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/5.%20Pushforward%2C%20Pullback%2C%20and%20Local%20Isometry.html"><span class="page-number">5</span><span>Pushforward, Pullback, and Local Isometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/6.%20Normal%20%26%20Geodesic%20Curvature.html"><span class="page-number">6</span><span>Normal &amp; Geodesic Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/7.%20Gauss%20Map%2C%20Shape%20Operator%2C%20and%20Curvatures.html"><span class="page-number">7</span><span>Gauss Map, Shape Operator, and Curvatures</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/8.%20Gauss%20Map%20Area%2C%20Principal%20Curvatures%2C%20Mean%20Curvature%20%26%20Geodesics.html"><span class="page-number">8</span><span>Gauss Map Area, Principal Curvatures, Mean Curvature &amp; Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/9.%20Geodesic%20Normal%20Coordinates%2C%20Exponential%20Map.html"><span class="page-number">9</span><span>Geodesic Normal Coordinates, Exponential Map</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/10.%20Geodesic%20Polar%20Coordinates%2C%20Local%20Length%20Minimizers%2C%20and%20Gauss%E2%80%99s%20Theorema%20Egregium.html"><span class="page-number">10</span><span>Geodesic Polar Coordinates, Local Length Minimizers, and Gauss’s Theorema Egregium</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/12.%20Geodesic%20Triangle%20and%20Euler's%20Characteristics.html"><span class="page-number">12</span><span>Geodesic Triangle and Euler&#39;s Characteristics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第二部分 黎曼几何" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-61e3399769bc" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第二部分 黎曼几何</span></button></div><ul class="tree-children" id="folder-61e3399769bc" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/13.%20Smooth%20Functions%2C%20Tangent%20and%20Cotangent%20Vectors%2C%20Metrics.html"><span class="page-number">13</span><span>Smooth Functions, Tangent and Cotangent Vectors, Metrics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/14.%20Tensors%2C%20Connections%2C%20Lie%20bracket.html"><span class="page-number">14</span><span>Tensors, Connections, Lie bracket</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/15.%20Riemannian%20Connection%2C%20Geodesics%2C%20and%20Parallel%20Transport.html"><span class="page-number">15</span><span>Riemannian Connection, Geodesics, and Parallel Transport</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/16.%20Exponential%20Map%2C%20Normal%20Coordinates%2C%20and%20Distance.html"><span class="page-number">16</span><span>Exponential Map, Normal Coordinates, and Distance</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/17.%20Riemannian%20Distance%2C%20Variations%2C%20and%20Geodesics.html"><span class="page-number">17</span><span>Riemannian Distance, Variations, and Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/18%20Hopf%E2%80%93Rinow%20direction.html"><span class="page-number">18</span><span>Hopf–Rinow direction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/19%20Curvature%20Operator%20and%20Tensoriality.html"><span class="page-number">19</span><span>Curvature Operator and Tensoriality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/20%20Gauss%26Weingarten%20Formulas%2C%20Surfaces%2C%20and%20Sectional%20Curvature.html"><span class="page-number">20</span><span>Gauss&amp;Weingarten Formulas, Surfaces, and Sectional Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/21%20Curvature%20via%20Sectional%20Curvature%2C%20and%20Jacobi%20Fields.html"><span class="page-number">21</span><span>Curvature via Sectional Curvature, and Jacobi Fields</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/22%20Jacobi%20Fields%2C%20Constant%20Curvature%2C%20and%20Conjugate%20Points.html"><span class="page-number">22</span><span>Jacobi Fields, Constant Curvature, and Conjugate Points</span></a></li></ul></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论II" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-016769c1691a" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论II</span></button></div><ul class="tree-children" id="folder-016769c1691a" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%208.html"><span class="page-number"></span><span>Apr 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%2020.html"><span class="page-number"></span><span>Apr 20</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Course%20Content.html"><span class="page-number"></span><span>Course Content</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%202.html"><span class="page-number"></span><span>Problem 2</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span class="page-number"></span><span>Problem 3</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/problem%204.html"><span class="page-number"></span><span>problem 4</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%204%20Boundary%20Distance%20Determines%20Volume%20for%20Simple%20Metrics.html"><span class="page-number"></span><span>Problem 4 Boundary Distance Determines Volume for Simple Metrics</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/index.html">微分几何导论I</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/index.html">第一部分 曲线与曲面</a></nav><h1 id="reader-title">5. 前推，回拉，以及和局部等距</h1><p class="article-meta">2025-09-15</p></header><div id="article-body" class="prose"><h2 data-original-heading="1 Pushforward, Pullback, and Local Isometry" id="pushforward-pullback-and-local-isometry">1 Pushforward, Pullback, and Local Isometry</h2>
+<h3 data-original-heading="1.1 Smooth map and its differential (push-forward)" id="smooth-map-and-its-differential-push-forward">1.1 Smooth map and its differential (push-forward)</h3>
+<p>Let <span class="math inline">\(\psi:S\to \tilde S\)</span> be a smooth map between surfaces. For <span class="math inline">\(p\in S\)</span>, the <strong>differential</strong> (pushforward) of <span class="math inline">\(\psi\)</span> at <span class="math inline">\(p\)</span> is the linear map <span class="math display">\[
+d\psi_p:T_pS\longrightarrow T_{\psi(p)}\tilde S .
+\]</span> Viewing tangent vectors as derivations, for <span class="math inline">\(X\in T_pS\)</span> and <span class="math inline">\(f\in C^\infty(\tilde S)\)</span>, <span class="math display">\[
+\boxed{\,d\psi_p(X)\cdot f \;=\; X(f\circ \psi)\, } 
+\]</span></p>
+<p>Equivalently, if <span class="math inline">\(\gamma(0)=p\)</span> and <span class="math inline">\(X=\dot\gamma(0)\)</span>, then <span class="math display">\[
+d\psi_p(X) \;=\; \frac{d}{dt}\Big|_{t=0}\big(\psi\circ\gamma\big)(t).
+\]</span></p>
+<h3 data-original-heading="1.2 Pullback of a metric (first fundamental form)" id="pullback-of-a-metric-first-fundamental-form">1.2 Pullback of a metric (first fundamental form)</h3>
+<p>Let <span class="math inline">\(\tilde g\)</span> be a Riemannian metric on <span class="math inline">\(\tilde S\)</span>. The <strong>pullback metric</strong> <span class="math inline">\(\psi^*\tilde g\)</span> on <span class="math inline">\(S\)</span> is defined by <span class="math display">\[
+\boxed{\,(\psi^*\tilde g)_p(X,Y)\;=\;\tilde g_{\psi(p)}\!\big(d\psi_p X,\; d\psi_p Y\big),\qquad X,Y\in T_pS \, }.
+\]</span> (When <span class="math inline">\(S,\tilde S\subset\mathbb R^3\)</span> are embedded surfaces with the Euclidean inner product, this coincides with the classical <strong>first fundamental form</strong>.)</p>
+<h3 data-original-heading="1.3 Local Isometry" id="local-isometry">1.3 Local Isometry</h3>
+<p>We say <span class="math inline">\(\psi\)</span> is a <strong>local isometry</strong> iff it preserves the lengths of all (sufficiently short) curves. Writing curve length with a metric <span class="math inline">\(g\)</span>, <span class="math display">\[
+L_g(\gamma)=\int_a^b \sqrt{\,g_{\gamma(t)}(\dot\gamma(t),\dot\gamma(t))\,}\;dt
+\]</span> we have <span class="math display">\[
+\begin{aligned}
+L_{\tilde g}(\psi\circ\gamma)
+&amp;=\int_a^b \sqrt{\,\tilde g_{\psi(\gamma(t))}\!\big(d\psi_{\gamma(t)}\dot\gamma(t),\,d\psi_{\gamma(t)}\dot\gamma(t)\big)}\;dt\\
+&amp;=\int_a^b \sqrt{\,(\psi^*\tilde g)_{\gamma(t)}\!\big(\dot\gamma(t),\dot\gamma(t)\big)}\;dt
+\end{aligned}
+\]</span> Hence <strong>lengths are preserved for all curves iff <span class="math inline">\(g=\psi^*\tilde g\)</span></strong>: <span class="math display">\[
+\boxed{\,\psi\ \text{is a local isometry}\;\Longleftrightarrow\; g=\psi^*\tilde g\, }
+\]</span></p>
+<h3 data-original-heading="1.4 Example: helicoid \longleftrightarrow catenoid" id="example-helicoid-longleftrightarrow-catenoid">1.4 Example: helicoid <span class="math inline">\(\longleftrightarrow\)</span> catenoid</h3>
+<h4 data-original-heading="1.4.1 Parametrizations" id="parametrizations">1.4.1 Parametrizations</h4>
+<ul>
+<li><strong>Helicoid</strong> <span class="math inline">\(S\)</span>: <span class="math inline">\(r(\rho,t)=(\rho\cos t,\;\rho\sin t,\;t)\)</span>.</li>
+<li><strong>Catenoid</strong> <span class="math inline">\(\tilde S\)</span>: <span class="math inline">\(\tilde r(z,\theta)=(\cosh z\cos\theta,\;\cosh z\sin\theta,\;z)\)</span>.</li>
+</ul>
+<h4 data-original-heading="1.4.2 First fundamental forms (compute E,F,G)" id="first-fundamental-forms-compute-efg">1.4.2 First fundamental forms (compute <span class="math inline">\(E,F,G\)</span>)</h4>
+<p><strong>Helicoid</strong>: <span class="math display">\[
+\begin{aligned}
+r_\rho&amp;=(\cos t,\ \sin t,\ 0),&amp;
+r_t&amp;=(-\rho\sin t,\ \rho\cos t,\ 1),\\
+E&amp;=\langle r_\rho,r_\rho\rangle=1,\quad
+F=\langle r_\rho,r_t\rangle=0,\quad
+G=\langle r_t,r_t\rangle=1+\rho^2.
+\end{aligned}
+\]</span> Thus, <span class="math display">\[
+\boxed{\,ds^2=d\rho^{\,2}+(1+\rho^2)\,dt^{\,2}\, }.
+\]</span> <strong>Catenoid</strong>: <span class="math display">\[
+\begin{aligned}
+\tilde r_z&amp;=(\sinh z\cos\theta,\ \sinh z\sin\theta,\ 1),&amp;
+\tilde r_\theta&amp;=(-\cosh z\sin\theta,\ \cosh z\cos\theta,\ 0),\\
+\tilde E&amp;=\langle \tilde r_z,\tilde r_z\rangle=\sinh^2 z+1=\cosh^2 z,\\
+\tilde F&amp;=\langle \tilde r_z,\tilde r_\theta\rangle=0,\qquad
+\tilde G=\langle \tilde r_\theta,\\tilde r_\theta\rangle=\cosh^2 z.
+\end{aligned}
+\]</span> Thus</p>
+<p><span class="math display">\[
+\boxed{\,d\tilde s^{\,2}=\cosh^2 z\,(dz^{\,2}+d\theta^{\,2})\, }.
+\]</span></p>
+<h4 data-original-heading="1.4.3 The map \psi and pullback computation" id="the-map-psi-and-pullback-computation">1.4.3 The map <span class="math inline">\(\psi\)</span> and pullback computation</h4>
+<p>Define <span class="math display">\[
+\boxed{\,\psi:S\to\tilde S,\qquad \psi(\rho,t)=(z,\theta)=(\operatorname{arsinh}\rho,\ t)\, }.
+\]</span> Useful identities: <span class="math display">\[
+\cosh^2(\operatorname{arsinh}\rho)=1+\rho^2,\qquad
+d(\operatorname{arsinh}\rho)=\frac{d\rho}{\sqrt{1+\rho^2}}.
+\]</span> <strong>Pull back the catenoid metric:</strong> <span class="math display">\[
+\begin{aligned}
+\psi^*(d\tilde s^{\,2})
+&amp;=\cosh^2\!\big(\operatorname{arsinh}\rho\big)\,\Big(d(\operatorname{arsinh}\rho)^{2}+dt^{\,2}\Big)\\
+&amp;=(1+\rho^2)\left(\frac{d\rho^{\,2}}{1+\rho^2}+dt^{\,2}\right)\\
+&amp;=d\rho^{\,2}+(1+\rho^2)\,dt^{\,2}.
+\end{aligned}
+\]</span> Since this equals the helicoid’s first fundamental form, we conclude <span class="math display">\[
+\boxed{\,\psi^*(d\tilde s^{\,2})=ds^2\quad\Longrightarrow\quad \psi\ \text{is a local isometry}\, }
+\]</span> ### 1.4.4 Chain-rule detail (as on the board)</p>
+<p>Starting from <span class="math inline">\(\rho=\sinh z\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+d\rho&amp;=\cosh z\,dz,\\
+dz&amp;=\frac{d\rho}{\cosh z}=\frac{d\rho}{\sqrt{1+\rho^2}},\\
+dz^{\,2}&amp;=\frac{1}{1+\rho^2}\,d\rho^{\,2}.
+\end{aligned}
+\]</span> Plugging these into <span class="math inline">\(d\tilde s^{\,2}=\cosh^2 z(dz^{\,2}+d\theta^{\,2})\)</span> with <span class="math inline">\(z=\operatorname{arsinh}\rho,\ \theta=t\)</span> gives the same pullback as above.</p>
+<h2 data-original-heading="2 Surface Area Element from the First Fundamental Form" id="surface-area-element-from-the-first-fundamental-form">2 Surface Area Element from the First Fundamental Form</h2>
+<p>Let <span class="math inline">\(\sigma:U\subset\mathbb{R}^2\to S\subset\mathbb{R}^3\)</span> be a regular patch with local coordinates <span class="math inline">\((u^1,u^2)=(u,v)\)</span>. Write <span class="math display">\[
+\sigma_1=\frac{\partial\sigma}{\partial u},\qquad 
+\sigma_2=\frac{\partial\sigma}{\partial v},
+\]</span> and let <span class="math inline">\(g\)</span> be the (induced) metric on <span class="math inline">\(S\)</span>. Denote <span class="math inline">\(g_{ij}=g(\sigma_i,\sigma_j)\)</span> (so in <span class="math inline">\(\mathbb{R}^3\)</span> with the Euclidean inner product, <span class="math inline">\(g_{ij}=\langle\sigma_i,\sigma_j\rangle\)</span>).</p>
+<h3 data-original-heading="2.1 Area via the cross product (calculus recall)" id="area-via-the-cross-product-calculus-recall">2.1 Area via the cross product (calculus recall)</h3>
+<p>For a surface patch, the infinitesimal area is <span class="math display">\[
+dA=\|\sigma_1\times\sigma_2\|\,du\,dv .
+\]</span></p>
+<h4 data-original-heading="2.1.1 Expressing dA with the first fundamental form" id="expressing-da-with-the-first-fundamental-form">2.1.1 Expressing <span class="math inline">\(dA\)</span> with the first fundamental form</h4>
+<p>Let <span class="math inline">\(\theta=\angle(\sigma_1,\sigma_2)\)</span>. Then <span class="math display">\[
+\begin{aligned}
+\|\sigma_1\times\sigma_2\|^2
+&amp;=\|\sigma_1\|^2\|\sigma_2\|^2\sin^2\theta
+=\|\sigma_1\|^2\|\sigma_2\|^2(1-\cos^2\theta)\\
+&amp;=\|\sigma_1\|^2\|\sigma_2\|^2-\langle\sigma_1,\sigma_2\rangle^2\\
+&amp;=g_{11}\,g_{22}-g_{12}^2
+=\det\!\begin{pmatrix} g_{11}&amp;g_{12}\\ g_{12}&amp;g_{22}\end{pmatrix}.
+\end{aligned}
+\]</span> Therefore <span class="math display">\[
+\boxed{\,dA=\sqrt{g_{11}g_{22}-g_{12}^2}\;du\,dv
+=\sqrt{\det(g_{ij})}\;du\,dv\, }.
+\]</span> Equivalently, if we set the classical coefficients <span class="math inline">\(E=g_{11},\,F=g_{12},\,G=g_{22}\)</span>, then <span class="math display">\[
+dA=\sqrt{EG-F^2}\;du\,dv.
+\]</span></p>
+<h4 data-original-heading="2.1.2 Coordinate-invariance check" id="coordinate-invariance-check">2.1.2 Coordinate-invariance check</h4>
+<p>Although the matrix <span class="math inline">\(g_{ij}\)</span> depends on the chosen coordinates, the <span class="math inline">\(2\)</span>-form <span class="math inline">\(dA\)</span> does <strong>not</strong>. Under a change of parameters <span class="math inline">\((u,v)\mapsto(\tilde u,\tilde v)\)</span> with Jacobian <span class="math inline">\(J=\left(\frac{\partial(u,v)}{\partial(\tilde u,\tilde v)}\right)\)</span>, <span class="math display">\[
+\begin{aligned}
+(g_{ij}) &amp;\longmapsto (g'_{ij})=J^\top (g_{ij})\,J,\\[2pt]
+\det(g'_{ij})&amp;=\det(J^\top)\det(g_{ij})\det(J)=(\det J)^2\det(g_{ij}),\\[2pt]
+\sqrt{\det(g'_{ij})}\,d\tilde u\,d\tilde v
+&amp;=|\det J|\,\sqrt{\det(g_{ij})}\,d\tilde u\,d\tilde v
+=\sqrt{\det(g_{ij})}\,du\,dv,
+\end{aligned}
+\]</span> so <span class="math inline">\(\boxed{\,dA\ \text{is independent of the coordinate chart.}\,}\)</span></p>
+<h3 data-original-heading="2.2 Definition of Area" id="definition-of-area">2.2 Definition of Area</h3>
+<p><span class="math display">\[
+\boxed{\,dA=\|\sigma_1\times\sigma_2\|\,du\,dv
+=\sqrt{\det(g_{ij})}\,du\,dv
+=\sqrt{EG-F^2}\,du\,dv\,}
+\]</span> Where <span class="math inline">\(g_{ij}=g(\sigma_i,\sigma_j)\)</span> (or <span class="math inline">\(E=\langle\sigma_u,\sigma_u\rangle,\ F=\langle\sigma_u,\sigma_v\rangle,\ G=\langle\sigma_v,\sigma_v\rangle\)</span>).</p>
+<h2 data-original-heading="3 More Examples &amp; Curvature" id="more-examples-curvature">3 More Examples &amp; Curvature</h2>
+<h3 data-original-heading="3.1 Worked examples for d s^2 and dA" id="worked-examples-for-d-s2-and-da">3.1 Worked examples for <span class="math inline">\(d s^2\)</span> and <span class="math inline">\(dA\)</span></h3>
+<h4 data-original-heading="3.1.1 Cylinder in cylindrical coordinates" id="cylinder-in-cylindrical-coordinates">3.1.1 Cylinder in cylindrical coordinates</h4>
+<p>Parameterize the unit cylinder by <span class="math display">\[
+\sigma(z,\theta)=(\cos\theta,\ \sin\theta,\ z),\qquad (z,\theta)\in\mathbb R\times[0,2\pi).
+\]</span> Compute the first fundamental form: <span class="math display">\[
+\begin{aligned}
+\sigma_z&amp;=(0,0,1),&amp;
+\sigma_\theta&amp;=(-\sin\theta,\ \cos\theta,\ 0),\\[2pt]
+E&amp;=\langle\sigma_z,\sigma_z\rangle=1,\quad
+F=\langle\sigma_z,\sigma_\theta\rangle=0,\quad
+G=\langle\sigma_\theta,\sigma_\theta\rangle=1.
+\end{aligned}
+\]</span> Hence <span class="math display">\[
+\boxed{\,d s^2=dz^2+d\theta^2,\qquad \det g=EG-F^2=1,\qquad dA=\sqrt{\det g}\,dz\,d\theta=dz\,d\theta\,.}
+\]</span></p>
+<h4 data-original-heading="3.1.2 Sphere in cylindrical coordinates" id="sphere-in-cylindrical-coordinates">3.1.2 Sphere in cylindrical coordinates</h4>
+<p>Use</p>
+<p><span class="math display">\[
+\sigma(z,\theta)=\big(\sqrt{1-z^2}\cos\theta,\ \sqrt{1-z^2}\sin\theta,\ z\big),\qquad -1&lt;z&lt;1.
+\]</span></p>
+<p>Let <span class="math inline">\(a=\sqrt{1-z^2}\)</span> and <span class="math inline">\(a'=\frac{da}{dz}=-\frac{z}{a}\)</span>. Then <span class="math display">\[
+\begin{aligned}
+\sigma_z&amp;=(a'\cos\theta,\ a'\sin\theta,\ 1)=\left(-\frac{z}{a}\cos\theta,\ -\frac{z}{a}\sin\theta,\ 1\right),\\
+\sigma_\theta&amp;=(-a\sin\theta,\ a\cos\theta,\ 0).
+\end{aligned}
+\]</span> Now compute <span class="math inline">\(E,F,G\)</span>: <span class="math display">\[
+\begin{aligned}
+E&amp;=\langle\sigma_z,\sigma_z\rangle=\frac{z^2}{a^2}+1=\frac{z^2}{1-z^2}+1=\frac{1}{1-z^2},\\
+F&amp;=\langle\sigma_z,\sigma_\theta\rangle
+=\left(-\frac{z}{a}\cos\theta\right)(-a\sin\theta)+\left(-\frac{z}{a}\sin\theta\right)(a\cos\theta)+0=0,\\
+G&amp;=\langle\sigma_\theta,\sigma_\theta\rangle=a^2( \sin^2\theta+\cos^2\theta)=a^2=1-z^2.
+\end{aligned}
+\]</span> Thus <span class="math display">\[
+\boxed{\,\det g=EG-F^2=\frac{1}{1-z^2}\,(1-z^2)-0=1,\qquad dA=\sqrt{\det g}\,dz\,d\theta=dz\,d\theta\,.}
+\]</span> &gt; Archimedes’ theorem follows: the cylindrical projection <span class="math inline">\((z,\theta)\)</span> preserves area on the unit sphere.</p>
+<h2 data-original-heading="4 Curvature of surfaces: deviation from the tangent plane" id="curvature-of-surfaces-deviation-from-the-tangent-plane">4 Curvature of surfaces: deviation from the tangent plane</h2>
+<h3 data-original-heading="4.1 Setup and idea" id="setup-and-idea">4.1 Setup and idea</h3>
+<p>Let <span class="math inline">\(\sigma(u^1,u^2)\)</span> be a regular local patch with</p>
+<p><span class="math display">\[
+\sigma_i=\frac{\partial\sigma}{\partial u^i},\qquad
+g_{ij}=\langle\sigma_i,\sigma_j\rangle.
+\]</span></p>
+<p>At a base point <span class="math inline">\(u=(u^1,u^2)\)</span>, the <strong>tangent plane</strong> approximation at an offset <span class="math inline">\(\Delta u=(\Delta u^1,\Delta u^2)\)</span> is <span class="math display">\[
+\sigma(u)+\sigma_i(u)\,\Delta u^i.
+\]</span> The <strong>unit normal</strong> is <span class="math display">\[
+N(u)=\frac{\sigma_1\times\sigma_2}{\|\sigma_1\times\sigma_2\|}(u).
+\]</span> We quantify curvature by how much the true surface point <span class="math inline">\(\sigma(u+\Delta u)\)</span> departs from this tangent plane <strong>in the normal direction</strong>.</p>
+<h3 data-original-heading="4.2 Taylor expansion and the second fundamental form" id="taylor-expansion-and-the-second-fundamental-form">4.2 Taylor expansion and the second fundamental form</h3>
+<p>Taylor-expand <span class="math inline">\(\sigma\)</span> to second order:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma(u+\Delta u)
+&amp;=\sigma(u)+\sigma_i(u)\,\Delta u^i+\tfrac12\,\sigma_{ij}(u)\,\Delta u^i\Delta u^j+O(|\Delta u|^3),
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\sigma_{ij}=\frac{\partial^2\sigma}{\partial u^i\partial u^j}\)</span>.</p>
+<p>Define the normal deviation (signed distance to the tangent plane in the normal direction)</p>
+<p><span class="math display">\[
+d(\Delta u)\;:=\;\big(\sigma(u+\Delta u)-\sigma(u)-\sigma_i\,\Delta u^i\big)\cdot N(u).
+\]</span></p>
+<p>Using the expansion,</p>
+<p><span class="math display">\[
+\begin{aligned}
+d(\Delta u)
+&amp;=\tfrac12\,\big(\sigma_{ij}\cdot N\big)\,\Delta u^i\Delta u^j+O(|\Delta u|^3)\\
+&amp;=\tfrac12\,b_{ij}\,\Delta u^i\Delta u^j+O(|\Delta u|^3),
+\end{aligned}
+\]</span> where <span class="math display">\[
+\boxed{\,b_{ij}:=\sigma_{ij}\cdot N\quad\text{(coefficients of the second fundamental form)}\, }.
+\]</span> Thus the <strong>second fundamental form</strong> is <span class="math display">\[
+\boxed{\,\mathrm{II}=b_{ij}\,du^i\,du^j\, }
+\]</span></p>
+<h4 data-original-heading="4.2.1 Shape operator, principal/mean/Gauss curvature" id="shape-operator-principalmeangauss-curvature">4.2.1 Shape operator, principal/mean/Gauss curvature</h4>
+<p>Let <span class="math inline">\(g^{ij}\)</span> be the inverse matrix of <span class="math inline">\(g_{ij}\)</span>. Define the <strong>shape operator</strong> <span class="math inline">\(S:T_pS\to T_pS\)</span> by <span class="math display">\[
+S(X)=-dN_p(X),\qquad\text{so that}\qquad b_{ij}=g_{ik}\,h^k{}_j\ \ \text{with}\ \ h^i{}_j=g^{ik}b_{kj}.
+\]</span></p>
+<p>Then:</p>
+<ul>
+<li><strong>Normal curvature</strong> in direction <span class="math inline">\(v\neq0\)</span>: <span class="math display">\[
+k_n(v)=\frac{\mathrm{II}(v,v)}{\mathrm{I}(v,v)}=\frac{b_{ij}v^iv^j}{g_{ij}v^iv^j}.
+\]</span></li>
+<li><strong>Principal curvatures</strong> <span class="math inline">\(k_1,k_2\)</span>: eigenvalues of <span class="math inline">\(S\)</span> (or of the matrix <span class="math inline">\(h^i{}_j\)</span>).</li>
+<li><strong>Mean curvature</strong> <span class="math inline">\(H\)</span> and <strong>Gauss curvature</strong> <span class="math inline">\(K\)</span>: <span class="math display">\[
+\boxed{\,H=\tfrac12\,\mathrm{tr}(S)=\tfrac12\,g^{ij}b_{ij},\qquad
+K=\det(S)=\frac{\det(b_{ij})}{\det(g_{ij})}\, }.
+\]</span> These formulas arise directly from measuring the second-order normal deviation of the surface from its tangent plane.</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/4.%20First%20Fundamental%20Form.html"><span>← Previous page</span><span>4. 第一基本形式</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/6.%20Normal%20%26%20Geodesic%20Curvature.html"><span>Next page →</span><span>6. 法曲率与测地曲率</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">5. 前推，回拉，以及和局部等距</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#pushforward-pullback-and-local-isometry" class="is-active" aria-current="location">1 Pushforward, Pullback, and Local Isometry</a></li><li style="--depth:1"><a href="#smooth-map-and-its-differential-push-forward">1.1 Smooth map and its differential (push-forward)</a></li><li style="--depth:1"><a href="#pullback-of-a-metric-first-fundamental-form">1.2 Pullback of a metric (first fundamental form)</a></li><li style="--depth:1"><a href="#local-isometry">1.3 Local Isometry</a></li><li style="--depth:1"><a href="#example-helicoid-longleftrightarrow-catenoid">1.4 Example: helicoid \longleftrightarrow catenoid</a></li><li style="--depth:2"><a href="#parametrizations">1.4.1 Parametrizations</a></li><li style="--depth:2"><a href="#first-fundamental-forms-compute-efg">1.4.2 First fundamental forms (compute E,F,G)</a></li><li style="--depth:2"><a href="#the-map-psi-and-pullback-computation">1.4.3 The map \psi and pullback computation</a></li><li style="--depth:0"><a href="#surface-area-element-from-the-first-fundamental-form">2 Surface Area Element from the First Fundamental Form</a></li><li style="--depth:1"><a href="#area-via-the-cross-product-calculus-recall">2.1 Area via the cross product (calculus recall)</a></li><li style="--depth:2"><a href="#expressing-da-with-the-first-fundamental-form">2.1.1 Expressing dA with the first fundamental form</a></li><li style="--depth:2"><a href="#coordinate-invariance-check">2.1.2 Coordinate-invariance check</a></li><li style="--depth:1"><a href="#definition-of-area">2.2 Definition of Area</a></li><li style="--depth:0"><a href="#more-examples-curvature">3 More Examples &amp; Curvature</a></li><li style="--depth:1"><a href="#worked-examples-for-d-s2-and-da">3.1 Worked examples for d s^2 and dA</a></li><li style="--depth:2"><a href="#cylinder-in-cylindrical-coordinates">3.1.1 Cylinder in cylindrical coordinates</a></li><li style="--depth:2"><a href="#sphere-in-cylindrical-coordinates">3.1.2 Sphere in cylindrical coordinates</a></li><li style="--depth:0"><a href="#curvature-of-surfaces-deviation-from-the-tangent-plane">4 Curvature of surfaces: deviation from the tangent plane</a></li><li style="--depth:1"><a href="#setup-and-idea">4.1 Setup and idea</a></li><li style="--depth:1"><a href="#taylor-expansion-and-the-second-fundamental-form">4.2 Taylor expansion and the second fundamental form</a></li><li style="--depth:2"><a href="#shape-operator-principalmeangauss-curvature">4.2.1 Shape operator, principal/mean/Gauss curvature</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

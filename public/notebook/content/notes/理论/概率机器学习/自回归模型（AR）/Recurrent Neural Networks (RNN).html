@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Autoregressive模型 &amp; Recurrent Neural Networks (RNN) — E.H. Notebook</title>
+<meta name="description" content="1 Autoregressive Model (Continue)An AR (autoregressive) generative model represents the joint probability of a sequence by chaining conditionals left-to-right (the chain ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="true"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></nav><h1 id="reader-title">Autoregressive模型 &amp; Recurrent Neural Networks (RNN)</h1><p class="article-meta">2025-09-08 · AR · RNN</p></header><div id="article-body" class="prose"><h2 data-original-heading="Autoregressive Model (Continue)" id="autoregressive-model-continue">1 Autoregressive Model (Continue)</h2>
+<p>An AR (autoregressive) generative model represents the <strong>joint probability of a sequence</strong> by chaining conditionals left-to-right (the chain rule <span class="math display">\[P\left(w_{1: T}\right)=\prod_{t=1}^T P\left(w_t \mid w_{&lt;t}\right)\]</span> ## 1. Decoding / Inference in Language Models</p>
+<ul>
+<li>local higher probability do not always produce the global solution.</li>
+<li>we care about the joint probability ### 1. 1. Argmax (Greedy Decoding) Choose the most likely token: <span class="math display">\[
+w_t = \arg\max_{w} p_\theta(w \mid w_{&lt;t})
+\]</span></li>
+<li>Deterministic, always picks the top token.<br>
+</li>
+<li>Can lead to repetitive or dull text. ### Beam search</li>
+</ul>
+<h2 data-original-heading="2 Unrolled recurrent neural network" id="unrolled-recurrent-neural-network">2 Unrolled recurrent neural network</h2>
+<h3 data-original-heading="2.1 Setup &amp; notation (shapes first)" id="setup-notation-shapes-first">2.1 Setup &amp; notation (shapes first)</h3>
+<ul>
+<li>Inputs: <span class="math inline">\(\mathbf{x}_t\in\mathbb{R}^{p}\)</span><br>
+</li>
+<li>Hidden states: <span class="math inline">\(\mathbf{h}_t\in\mathbb{R}^{H}\)</span><br>
+</li>
+<li>Logits / probabilities / targets: <span class="math inline">\(\mathbf{z}_t,\mathbf{p}_t,\mathbf{y}_{t+1}\in\mathbb{R}^{R}\)</span><br>
+</li>
+<li>Parameters:
+<ul>
+<li><span class="math inline">\(W_{xh}\in\mathbb{R}^{H\times p}\)</span>, <span class="math inline">\(W_{hh}\in\mathbb{R}^{H\times H}\)</span>, <span class="math inline">\(\mathbf{b}_h\in\mathbb{R}^{H}\)</span><br>
+</li>
+<li><span class="math inline">\(W_{ho}\in\mathbb{R}^{R\times H}\)</span>, <span class="math inline">\(\mathbf{b}_o\in\mathbb{R}^{R}\)</span><br>
+</li>
+</ul></li>
+<li>Nonlinearity <span class="math inline">\(f:\mathbb{R}^{H}\to\mathbb{R}^{H}\)</span> (elementwise), with derivative <span class="math inline">\(f'\)</span>.</li>
+</ul>
+<blockquote>
+<p><strong>Shape cue</strong> used below: after each line, brackets like <code>[H×p]</code> or <code>[H]</code> indicate resulting shapes where helpful.</p>
+</blockquote>
+<h3 data-original-heading="2.2 Forward definitions" id="forward-definitions">2.2 Forward definitions</h3>
+<p><strong>Hidden pre-activation, hidden state, logits, softmax:</strong> <span class="math display">\[
+\begin{aligned}
+\mathbf{a}_t &amp;= W_{xh}\,\mathbf{x}_t \;+\; W_{hh}\,\mathbf{h}_{t-1} \;+\; \mathbf{b}_h 
+&amp;&amp;[\;H\times p\;\cdot\;p \to H\;+\;H\times H\cdot H \to H\;+\;H\;=\;H\;] \\
+\mathbf{h}_t &amp;= f(\mathbf{a}_t) &amp;&amp;[\;H\;] \\
+\mathbf{z}_t &amp;= W_{ho}\,\mathbf{h}_t \;+\; \mathbf{b}_o &amp;&amp;[\;R\times H\cdot H \to R\;+\;R\;=\;R\;] \\
+\mathbf{p}_t &amp;= \operatorname{softmax}(\mathbf{z}_t),\quad
+(\mathbf{p}_t)_i = \dfrac{e^{z_{t,i}}}{\sum_{j=1}^{R} e^{z_{t,j}}}
+&amp;&amp;[\;\mathbf{p}_t\in\Delta^{R-1}\;]
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p><strong>Observation model:</strong> <span class="math inline">\(P(X_{t+1}\mid X_{\le t})=\mathbf{p}_t=\operatorname{softmax}(W_{ho}\mathbf{h}_t+\mathbf{b}_o)\)</span>.</p>
+</blockquote>
+<h3 data-original-heading="2.3 Sequence loss = sum of per-time cross-entropies" id="sequence-loss-sum-of-per-time-cross-entropies">2.3 Sequence loss = sum of per-time cross-entropies</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L} 
+&amp;= \sum_{t=1}^{T} \ell_t,
+\qquad
+\ell_t \;=\; -\,\mathbf{y}_{t+1}^{\!\top}\log \mathbf{p}_t
+\;=\; -\sum_{i=1}^{R} y_{t+1,i}\,\log p_{t,i}.
+\end{aligned}
+\]</span></p>
+<p>If <span class="math inline">\(\mathbf{y}_{t+1}\)</span> is one-hot (<span class="math inline">\(\mathbf{y}_{t+1}=e_{k_t}\)</span>), then <span class="math display">\[
+\ell_t = -\log p_{t,k_t}\quad\text{(only the true class contributes)}.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Step 3. Softmax + cross-entropy gradient w.r.t. logits (local output node)" id="step-3.-softmax-cross-entropy-gradient-w.r.t.-logits-local-output-node">2.4 Step 3. Softmax + cross-entropy gradient w.r.t. logits (local output node)</h3>
+<p><strong>Derivation (math only):</strong> <span class="math display">\[
+\begin{aligned}
+&amp;\text{softmax: } p_{t,i}=\frac{e^{z_{t,i}}}{\sum_j e^{z_{t,j}}}, 
+\quad 
+\frac{\partial p_{t,i}}{\partial z_{t,j}} = p_{t,i}\left(\delta_{ij}-p_{t,j}\right) \\
+&amp;\text{CE: } \ell_t = -\sum_i y_{t+1,i}\log p_{t,i}
+\;\Rightarrow\;
+\frac{\partial \ell_t}{\partial p_{t,i}} = -\frac{y_{t+1,i}}{p_{t,i}} \\
+&amp;\text{chain: }
+\frac{\partial \ell_t}{\partial z_{t,j}}
+= \sum_i \frac{\partial \ell_t}{\partial p_{t,i}} \frac{\partial p_{t,i}}{\partial z_{t,j}}
+= \sum_i \left(-\frac{y_{t+1,i}}{p_{t,i}}\right) p_{t,i}(\delta_{ij}-p_{t,j}) \\
+&amp;\qquad\quad= -y_{t+1,j} + \Big(\sum_i y_{t+1,i}\Big)p_{t,j}
+= -y_{t+1,j} + p_{t,j}
+\;\Rightarrow\;
+\boxed{\nabla_{\mathbf{z}_t}\ell_t = \mathbf{p}_t - \mathbf{y}_{t+1}} \\
+&amp;\text{and since }\mathbf{z}_t=W_{ho}\mathbf{h}_t+\mathbf{b}_o,\;
+\boxed{\;\nabla_{\mathbf{h}_t}\ell_t = W_{ho}^{\!\top}\,(\mathbf{p}_t-\mathbf{y}_{t+1})\;}
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p><strong>Note:</strong> The “<span class="math inline">\(p - y\)</span>” result is independent of which class is correct; with one-hot labels it reduces to subtracting 1 at the true index.</p>
+</blockquote>
+<hr>
+<h3 data-original-heading="Step 4. Transition Jacobian of the hidden dynamics" id="step-4.-transition-jacobian-of-the-hidden-dynamics">2.5 Step 4. Transition Jacobian of the hidden dynamics</h3>
+<p>Define <span class="math inline">\(D_t:=\operatorname{diag}\!\big(f'(\mathbf{a}_t)\big)\in\mathbb{R}^{H\times H}\)</span>.</p>
+<p><strong>Derivation (math only):</strong> <span class="math display">\[
+\begin{aligned}
+\frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}}
+&amp;= 
+\frac{\partial \mathbf{h}_t}{\partial \mathbf{a}_t}
+\cdot
+\frac{\partial \mathbf{a}_t}{\partial \mathbf{h}_{t-1}}
+=
+D_t \cdot W_{hh}
+\;\; \Rightarrow\;\;
+\boxed{J_t := \frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}} = D_t\,W_{hh}} \\
+&amp;\text{so } J_t^{\!\top}=W_{hh}^{\!\top}D_t.
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p><strong>Shape cue:</strong> <span class="math inline">\(D_t[H\times H] \cdot W_{hh}[H\times H] \Rightarrow J_t[H\times H]\)</span>.</p>
+</blockquote>
+<hr>
+<h3 data-original-heading="Step 5. Backpropagation through time (BPTT): local + future error" id="step-5.-backpropagation-through-time-bptt-local-future-error">2.6 Step 5. Backpropagation through time (BPTT): local + future error</h3>
+<p>Let <span class="math inline">\(\mathbf{s}_t := \nabla_{\mathbf{h}_t}\mathcal{L}\)</span> be the <strong>total</strong> gradient on the hidden at time <span class="math inline">\(t\)</span>, and define the <strong>local</strong> term<br>
+<span class="math inline">\(\boldsymbol{\delta}_t := \nabla_{\mathbf{h}_t}\ell_t = W_{ho}^{\!\top}(\mathbf{p}_t-\mathbf{y}_{t+1})\)</span>.</p>
+<p><strong>Derivation (math only):</strong> <span class="math display">\[
+\begin{aligned}
+\text{future pullback: } 
+&amp;\mathbf{s}_{t+1} \xrightarrow{\text{chain via } \mathbf{h}_{t+1}=f(\cdots \mathbf{h}_t)}
+\frac{\partial \mathbf{h}_{t+1}}{\partial \mathbf{h}_t}^{\!\top}\,\mathbf{s}_{t+1}
+= J_{t+1}^{\!\top}\,\mathbf{s}_{t+1} \\
+\text{combine: } 
+&amp;\boxed{\;\mathbf{s}_t = \boldsymbol{\delta}_t \;+\; J_{t+1}^{\!\top}\,\mathbf{s}_{t+1}\;}
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p><strong>Reading cue:</strong> “total at <span class="math inline">\(t\)</span> = local at <span class="math inline">\(t\)</span> + future error back-propagated one step”.</p>
+</blockquote>
+<hr>
+<h3 data-original-heading="Step 6. Parameter gradients (outer-product form)" id="step-6.-parameter-gradients-outer-product-form">2.7 Step 6. Parameter gradients (outer-product form)</h3>
+<p>Let <span class="math inline">\(\mathbf{r}_t := D_t\,\mathbf{s}_t = f'(\mathbf{a}_t)\odot \mathbf{s}_t\)</span> (elementwise product).</p>
+<p><strong>Derivation (math only):</strong> <span class="math display">\[
+\begin{aligned}
+\text{Output layer: } \quad
+&amp;\nabla_{W_{ho}}\mathcal{L} = \sum_{t=1}^{T} (\mathbf{p}_t-\mathbf{y}_{t+1})\,\mathbf{h}_t^{\!\top},
+\qquad
+\nabla_{\mathbf{b}_o}\mathcal{L} = \sum_{t=1}^{T} (\mathbf{p}_t-\mathbf{y}_{t+1}) \\
+\text{Hidden update: } \quad
+&amp;\nabla_{W_{xh}}\mathcal{L} = \sum_{t=1}^{T} \mathbf{r}_t\,\mathbf{x}_t^{\!\top},
+\qquad
+\nabla_{W_{hh}}\mathcal{L} = \sum_{t=1}^{T} \mathbf{r}_t\,\mathbf{h}_{t-1}^{\!\top},
+\qquad
+\nabla_{\mathbf{b}_h}\mathcal{L} = \sum_{t=1}^{T} \mathbf{r}_t
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p><strong>Outer-product cue:</strong> each linear map’s gradient is “upstream vector” <span class="math inline">\(\times\)</span> “its input”<span class="math inline">\(^{\top}\)</span>.</p>
+</blockquote>
+<hr>
+<h3 data-original-heading="Step 7. Put the boxed pieces together (elementwise → general)" id="step-7.-put-the-boxed-pieces-together-elementwise-general">2.8 Step 7. Put the boxed pieces together (elementwise → general)</h3>
+<p>Collecting the key boxed results used repeatedly:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{(i)}\;&amp;\nabla_{\mathbf{z}_t}\ell_t \;=\; \mathbf{p}_t - \mathbf{y}_{t+1} \\
+\text{(ii)}\;&amp;\boldsymbol{\delta}_t \;=\; W_{ho}^{\!\top}(\mathbf{p}_t-\mathbf{y}_{t+1}) \\
+\text{(iii)}\;&amp;J_t \;=\; D_t\,W_{hh},\quad J_t^{\!\top}=W_{hh}^{\!\top}D_t \\
+\text{(iv)}\;&amp;\mathbf{s}_t \;=\; \boldsymbol{\delta}_t \;+\; J_{t+1}^{\!\top}\,\mathbf{s}_{t+1} \\
+\text{(v)}\;&amp;\mathbf{r}_t \;=\; D_t\,\mathbf{s}_t \;=\; f'(\mathbf{a}_t)\odot \mathbf{s}_t \\
+\text{(vi)}\;&amp;\nabla_{W_{ho}}\mathcal{L} = \sum_t (\mathbf{p}_t-\mathbf{y}_{t+1})\,\mathbf{h}_t^{\!\top},\quad
+\nabla_{\mathbf{b}_o}\mathcal{L} = \sum_t (\mathbf{p}_t-\mathbf{y}_{t+1}) \\
+\text{(vii)}\;&amp;\nabla_{W_{xh}}\mathcal{L} = \sum_t \mathbf{r}_t\,\mathbf{x}_t^{\!\top},\quad
+\nabla_{W_{hh}}\mathcal{L} = \sum_t \mathbf{r}_t\,\mathbf{h}_{t-1}^{\!\top},\quad
+\nabla_{\mathbf{b}_h}\mathcal{L} = \sum_t \mathbf{r}_t
+\end{aligned}
+\]</span></p>
+<hr>
+<h4 data-original-heading="Dilated convolution" id="dilated-convolution">2.8.1 Dilated convolution</h4>
+<p>Sampling for i = H for j = 1:W for c = 1:C sample Same for all three models:</p>
+<ol type="1">
+<li>RNN</li>
+<li>LSTM</li>
+<li>Tranformer</li>
+</ol>
+<p>Sampling is sequential.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span>← Previous page</span><span>Autoregressive模型</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span>Next page →</span><span>Transformer</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Autoregressive模型 &amp; Recurrent Neural Networks (RNN)</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#autoregressive-model-continue" class="is-active" aria-current="location">1 Autoregressive Model (Continue)</a></li><li style="--depth:0"><a href="#unrolled-recurrent-neural-network">2 Unrolled recurrent neural network</a></li><li style="--depth:1"><a href="#setup-notation-shapes-first">2.1 Setup &amp; notation (shapes first)</a></li><li style="--depth:1"><a href="#forward-definitions">2.2 Forward definitions</a></li><li style="--depth:1"><a href="#sequence-loss-sum-of-per-time-cross-entropies">2.3 Sequence loss = sum of per-time cross-entropies</a></li><li style="--depth:1"><a href="#step-3.-softmax-cross-entropy-gradient-w.r.t.-logits-local-output-node">2.4 Step 3. Softmax + cross-entropy gradient w.r.t. logits (local output node)</a></li><li style="--depth:1"><a href="#step-4.-transition-jacobian-of-the-hidden-dynamics">2.5 Step 4. Transition Jacobian of the hidden dynamics</a></li><li style="--depth:1"><a href="#step-5.-backpropagation-through-time-bptt-local-future-error">2.6 Step 5. Backpropagation through time (BPTT): local + future error</a></li><li style="--depth:1"><a href="#step-6.-parameter-gradients-outer-product-form">2.7 Step 6. Parameter gradients (outer-product form)</a></li><li style="--depth:1"><a href="#step-7.-put-the-boxed-pieces-together-elementwise-general">2.8 Step 7. Put the boxed pieces together (elementwise → general)</a></li><li style="--depth:2"><a href="#dilated-convolution">2.8.1 Dilated convolution</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

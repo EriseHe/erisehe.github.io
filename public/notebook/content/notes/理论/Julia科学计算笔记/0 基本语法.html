@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>0 基本语法 — E.H. Notebook</title>
+<meta name="description" content="This document summarizes the main ideas, codes, and algorithms from the provided PDF. Each section begins with the high-level purpose of the chapter and ends with code sn">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Julia科学计算笔记 file hierarchy" data-sidebar-root="content/notes/理论/Julia科学计算笔记"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a><ul class="notes-tree"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/0%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.html"><span class="page-number">0</span><span>基本语法</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/I%20%E5%8F%98%E9%87%8F%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0.html"><span class="page-number"></span><span>I 变量、基本类型和函数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/II%20ODEs%E4%B8%8E%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6.html"><span class="page-number"></span><span>II ODEs与分子动力学</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/III%20Random%20Numbers%20%26%20Monte%20Carlo.html"><span class="page-number"></span><span>III Random Numbers &amp; Monte Carlo</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a></nav><h1 id="reader-title">0 基本语法</h1></header><div id="article-body" class="prose"><p>This document summarizes the main ideas, codes, and algorithms from the provided PDF. Each section begins with the high-level purpose of the chapter and ends with code snippets and algorithmic highlights.</p>
+<h2 data-original-heading="0. Hello, \pi ! Julia as a second programming language" id="hello-pi-julia-as-a-second-programming-language">0. Hello, <span class="math inline">\(\pi\)</span> ! Julia as a second programming language</h2>
+<p>Context: The opening chapter introduces Julia as a modern, dynamic language and demonstrates how to set up the REPL, manage packages, and write a small program to compute <span class="math inline">\(\pi\)</span>. The emphasis is on exploring the language environment and using Julia to perform simple tasks.</p>
+<ol type="1">
+<li>Installing and working with Julia - The notes recommend using juliaup for installation. Within the REPL, pressing ? enters help mode and ] enters package mode, allowing you to add or update packages. The author suggests creating a ~/.julia/config/startup.jl file to automatically load useful packages like Revise, BenchmarkTools and OhMyREPL. The startup file checks whether the session is interactive before importing these packages.</li>
+</ol>
+<pre><code># ~/.julia/config/startup.jl
+if isinteractive()
+    try
+        using Revise # auto-reload modules on change
+        using BenchmarkTools # easy performance measurement
+        using OhMyREPL # colorized and enhanced REPL
+    catch
+        @warn "Failed to load interactive tools!"
+    end
+end</code></pre>
+<ol type="1">
+<li>Hello <span class="math inline">\(\boldsymbol{\pi}\)</span> script - A simple Julia program prints a formatted value of <span class="math inline">\(\boldsymbol{\pi}\)</span>. This script illustrates how to write and run Julia code from a file and how to import a module (Printf ) from the standard library.</li>
+</ol>
+<pre><code># helloPi.jl
+# Prints an approximation of \pi to six decimal places
+using Printf
+@printf "\pi \approx %.6f\n" \pi</code></pre>
+<p>Save the file as helloPi.jl and run it with julia helloPi.jl. You can also load code into a session using <span class="math inline">\(\square\)</span> include(“helloPi.jl”) If using Revise, <span class="math inline">\(\square\)</span> includet(“helloPi.jl”) automatically reloads the file on changes.</p>
+<ol type="1">
+<li>Starting with the REPL - The REPL supports modes for help ( ? ), package management ( ] ), shell commands <span class="math inline">\(\_\_\_\_\)</span> ), and Julia execution. Take advantage of tab completion and help mode to explore functions, and use the package manager to install tools as needed.</li>
+</ol>
+<h2 data-original-heading="2. Variables, primitive types, and functions" id="variables-primitive-types-and-functions">2. Variables, primitive types, and functions</h2>
+<p>Purpose: This chapter introduces Julia’s type system, variables, operators, and functions. You learn how Julia’s dynamic typing works, how to annotate types, how functions are defined, and how to write loops or vectorized code.</p>
+<ol type="1">
+<li>Variables and type annotations - Julia variables are dynamically typed: their type is inferred from the value on the right. Type annotations can convert or constrain a value. For instance, the annotation <span class="math inline">\(\square\)</span> : :Float64 converts the result on the right-hand side to a 64-bit float:</li>
+</ol>
+<pre><code>a::Float64 = 1 + 3 # a becomes 4.0 of type Float64
+b = 2 + 1im # complex numbers are supported
+c = "Hello" * "!" # * concatenates strings, not +
+d = 2 * acos(0) # numerical approximation of }</code></pre>
+<p>Note: Julia uses * for string concatenation and exponentiation only accepts integer exponents on integers; non-integer exponents yield floating-point results.</p>
+<ol type="1">
+<li>Defining functions - Functions can be defined in one line or multiple lines. For example, to compute <span class="math inline">\(f(x)=2 \cos ^{-1}(x)\)</span> you can write:</li>
+</ol>
+<pre><code>f(x) = 2 * acos(x)
+# or equivalently
+function f(x)
+    return 2 * acos(x)
+end</code></pre>
+<ol type="1">
+<li>Approximating <span class="math inline">\(\boldsymbol{\pi}\)</span> via Machin’s formula - Machin’s identity allows <span class="math inline">\(\boldsymbol{\pi}\)</span> to be written in terms of arctangent values. The notes provide a function to approximate arctan by truncating its Taylor series and then use it to compute <span class="math inline">\(\pi\)</span> :</li>
+</ol>
+<pre><code># approximate_atan(x, n) returns the nth-order approximation of arctan(x)
+function approximate_atan(x, n)
+    sum = 0.0
+    for k in 0:(n - 1)
+        term = (-1)^k * x^(2k + 1) / (2k + 1)</code></pre>
+<pre><code>        sum += term
+    end
+    return sum
+end
+function estimate_pi(n)
+    # Machin's formula: \pi/4 = 4*arctan(1/5) - arctan(1/239)
+    atan1 = approximate_atan(1/5, n)
+    atan2 = approximate_atan(1/239, n)
+    pi_est = 4 * (4 * atan1 - atan2)
+    return pi_est
+end</code></pre>
+<p>Larger <span class="math inline">\(n\)</span> increases accuracy but increases computation time. Using loops like this demonstrates Julia’s pass-by-sharing semantics: arrays and mutable objects passed to functions can be modified inside, but numbers and immutable objects cannot.</p>
+<ol type="1">
+<li>Higher-order functions and broadcasting - Functions in Julia are first-class. You can store them in arrays and apply them to values using loops or broadcasting:</li>
+</ol>
+<pre><code>square(x) = x^2
+cube(x) = x^3
+funcs = [square, cube, x -&gt; x^4]
+values = [1, 2, 3]
+# Apply each function to each value
+for f in funcs
+    println([f(v) for v in values])
+end</code></pre>
+<p>Broadcasting with the dot syntax applies functions elementwise to collections. For example, sin. (values) computes the sine of each element, and [f.(values) for <span class="math inline">\(f\)</span> in funcs] computes arrays of results.</p>
+<h2 data-original-heading="3. Composite types and data structures" id="composite-types-and-data-structures">3. Composite types and data structures</h2>
+<p>Context: Julia’s power comes from its rich set of built-in data structures (arrays, dictionaries, sets) and from defining your own types. This chapter explains how to organize data and write efficient numerical algorithms.</p>
+<ol type="1">
+<li>Tuples and arrays - Tuples are immutable ordered collections (e.g., (1, 1.0, “wow” )), and indexing is 1-based. Arrays (vectors and matrices) are mutable and typed; homogeneous arrays are faster. The functions sort (returns a sorted copy) and sort! (mutates in place) exemplify Julia’s convention of appending ! to functions that mutate their arguments.</li>
+<li>Broadcasting and vectorization - The dot (.) syntax performs elementwise operations: a . +1 adds 1 to every element of vector a , and g. (a) applies the scalar function g to each element. Broadcasting avoids explicit loops and is often faster and more readable.</li>
+<li>Iteration and comprehensions - Julia uses ranges ( <span class="math inline">\(1: 5\)</span> ) and the range function to iterate. Comprehensions build new collections succinctly; for example, collect(1:0.25:1.5) builds an array of equally spaced numbers, and <span class="math inline">\(\left[x^{\wedge} 2\right.\)</span> for <span class="math inline">\(x\)</span> in <span class="math inline">\(\left.1: 5\right]\)</span> squares integers 1 through 5 . When iterating over arrays or dictionaries, use eachindex(array) for performance or keys(dict)/ values(dict) for associative collections.</li>
+<li>Defining new types - Use struct for immutable composite types and mutable struct for mutable ones. Fields should be typed for performance, and parametric types allow flexibility. For instance, a particle with a position and mass can be defined as:</li>
+</ol>
+<pre><code>struct Particle
+    mass::Float64
+    charge::Float64
+    funny_name::String
+end
+mutable struct ParticlePosition{T}
+    x::T; y::T; z::T
+end</code></pre>
+<ol type="1">
+<li>Example: polygon geometry - A custom type PolygonVertex holds the coordinates of a vertex. A specialized constructor builds a vertex from a polar angle, and methods overload subtraction to measure distances. The perimeter of an n-gon can then be computed using different styles:</li>
+</ol>
+<pre><code>struct PolygonVertex
+    x::Float64
+    y::Float64
+end
+# Construct from an angle 0 on the unit circle
+PolygonVertex(0) = PolygonVertex(cos(莗), sin(麦)
+# Define subtraction between vertices
+Base.:-(v1::PolygonVertex, v2::PolygonVertex) =
+    PolygonVertex(v1.x - v2.x, v1.y - v2.y)
+# Euclidean norm for a vertex
+norm(v::PolygonVertex) = sqrt(v.x^2 + v.y^2)
+# Compute perimeter by looping over edges
+function calculate_perimeter(vertices::Vector{PolygonVertex})</code></pre>
+<pre><code>    L = length(vertices)
+    perimeter = 0.0
+    for i in 1:L
+        v1 = vertices[i]
+        v2 = vertices[mod1(i+1, L)] # circular indexing
+        perimeter += norm(v1 - v2)
+    end
+    return perimeter
+end
+# More expressive versions using circshift and mapreduce are given in the notes.</code></pre>
+<ol type="1">
+<li>Archimedes’ method (doubling polygons) - To approximate <span class="math inline">\(\pi\)</span>, Archimedes’ method iteratively doubles the number of polygon sides and updates the side length using the half-angle formula. Using BigInt and BigFloat allows arbitrary precision:</li>
+</ol>
+<pre><code>function archimedes_pi(iterations)
+    # start with a hexagon inscribed in a unit circle
+    n = BigInt(6)
+    side = BigFloat(sqrt(3)) # side length for hexagon
+    for _ in 1:iterations
+        # update side length for 2n-gon
+        side = sqrt(2 - sqrt(4 - side^2))
+        n *= 2
+    end
+    return n * side / 2 # perimeter/2 approximates }
+end</code></pre>
+<ol type="1">
+<li>Documenting functions - Julia supports docstrings written between triple quotes above a definition. Use sections such as # Arguments, # Returns, and # Examples to clarify usage. For instance:</li>
+</ol>
+<pre><code>"""
+perimeter_by_mapreduce(vertices)
+Computes the perimeter of a polygon using `mapreduce`.
+# Arguments
+* `vertices::Vector{PolygonVertex}`: list of vertices in order.
+# Returns
+* `Float64`: the perimeter of the polygon.
+# Examples
+```julia</code></pre>
+<pre><code>vertices = [PolygonVertex(0), PolygonVertex(\pi/2), PolygonVertex(\pi)]
+perimeter_by_mapreduce(vertices) # expected \approx 3.14159</code></pre>
+<p>““” function perimeter_by_mapreduce(vertices) # implementation here end “”</p>
+<h2 data-original-heading="4. Data, plots, and visualization" id="data-plots-and-visualization">4. Data, plots, and visualization</h2>
+<p>Purpose: This chapter discusses reading and writing data, generating random samples, and visualizing results. It culminates in a Monte Carlo estimation of <span class="math inline">\(\pi\)</span> and introduces Julia’s plotting ecosystem.</p>
+<ol type="1">
+<li>Random point generation - Functions to generate points uniformly in a square of side <span class="math inline">\(L\)</span> and to collect a list of such points are defined as:</li>
+</ol>
+<pre><code># Generate one point in a square of side L
+generate_point(L) = (rand() * L, rand() * L)
+# Generate n random points
+function scatter_points(n, box_side)
+    return [generate_point(box_side) for _ in 1:n]
+end</code></pre>
+<ol type="1">
+<li>File I/O - Write data using open (filename, “w”) do io … end and println or write to output. Read files with open(filename, ” <span class="math inline">\(r\)</span> “) do io … end , eachline(io) for line iteration, or read(io, String) for the full contents. For matrices, the DelimitedFiles module provides writedlm and readdlm:</li>
+</ol>
+<pre><code>using DelimitedFiles
+data = [1 2 3; 4 5 6]
+writedlm("data.csv", data, ',')
+mat = readdlm("data.csv", ',')</code></pre>
+<ol type="1">
+<li>Plotting with Makie - Julia’s plotting libraries separate the front-end API from the back-end renderer. After installing CairoMakie or GLMakie, you can create 2D scatter plots and annotate them. The notes show how to visualize Monte Carlo samples inside and outside the unit circle:</li>
+</ol>
+<pre><code>using CairoMakie
+# predicate: is a point inside the unit circle?
+in_unit_circle(p) = (p[1]^2 + p[2]^2) &lt;= 1
+# generate points
+pts = scatter_points(5000, 1.0)
+in_pts = [Point2f(p...) for p in pts if in_unit_circle(p)]
+out_pts = [Point2f(p...) for p in pts if !in_unit_circle(p)]</code></pre>
+<pre><code>fig = Figure()
+ax = Axis(fig[1, 1], xlabel = "x", ylabel = "y", aspect = 1)
+scatter!(ax, in_pts, color = :darkorange, markersize = 2)
+scatter!(ax, out_pts, color = :slateblue, markersize = 2)
+# draw the unit circle
+0 = range(0, 2\pi, length=200)
+circle = [Point2f(cos(t), sin(t)) for t in 0]
+poly!(ax, circle, color = (:white, 0), strokewidth = 1, strokecolor = :black)
+fig</code></pre>
+<ol type="1">
+<li>Monte Carlo estimation of <span class="math inline">\(\boldsymbol{\pi}\)</span> - The proportion of points inside the unit circle (scaled by 4) approximates <span class="math inline">\(\pi\)</span>. Two functions implement this approach:</li>
+</ol>
+<pre><code># return the proportion of points inside the unit circle
+function unit_circle_proportion(points)
+    count = 0
+    for p in points
+        if p[1]^2 + p[2]^2 &lt;= 1
+            count += 1
+        end
+    end
+    return count / length(points)
+end
+# run n trials with m points each and return the mean estimate of \pi
+using Statistics
+function estimate_pi(m, n)
+    estimates = Float64[]
+    for _ in 1:n
+        pts = scatter_points(m, 1.0)
+        prop = unit_circle_proportion(pts)
+        push!(estimates, 4 * prop)
+    end
+    return mean(estimates), var(estimates)
+end</code></pre>
+<p>For improved performance, preallocate arrays and use an in-place generate_point! function to avoid memory allocations.</p>
+<ol type="1">
+<li>Benchmarking - Use the <span class="citation" data-cites="btime">@btime</span> and <span class="citation" data-cites="benchmark">@benchmark</span> macros from BenchmarkTools to measure run time and memory allocations. Wrap the code in a function before benchmarking to avoid global scope slowdowns. For example:</li>
+</ol>
+<pre><code>using BenchmarkTools
+@btime estimate_pi(1_000, 20)</code></pre>
+<h2 data-original-heading="5. Projects, parametric types, and multiple dispatch" id="projects-parametric-types-and-multiple-dispatch">5. Projects, parametric types, and multiple dispatch</h2>
+<p>Purpose: The final chapter shows how to structure a larger project in Julia, manage dependencies, test your code, define parametric and abstract types, and leverage multiple dispatch. It culminates with a playful algorithm for computing <span class="math inline">\(\pi\)</span> by counting collisions.</p>
+<ol type="1">
+<li>Creating packages and modules - Use Julia’s package manager to generate a new project:</li>
+</ol>
+<pre><code>using Pkg
+Pkg.generate("EventDrivenMolecularDynamics")</code></pre>
+<p>This creates a folder containing a Project.toml file (listing dependencies) and a src directory with a EventDrivenMolecularDynamics.jl module. Activate the environment by starting Julia in that directory or with ] activate . . Editing the module inside src/ defines functions and types for your simulation. Use Revise to automatically reload changes.</p>
+<ol type="1">
+<li>Testing - Place tests in the test directory, typically in a file called runtests.jl. Group tests with <span class="citation" data-cites="testset">@testset</span> and write expectations using <span class="citation" data-cites="test">@test</span>. For approximate comparisons use the <span class="math inline">\(\approx\)</span> operator with an optional tolerance:</li>
+</ol>
+<pre><code>using Test
+@testset "Area calculation" begin
+    @test abs(compute_area(2.0) - 3.14159) &lt; 1e-5
+    @test isapprox(compute_area(2.0), 3.1415926; atol = 1e-7)
+end</code></pre>
+<ol type="1">
+<li>Parametric and abstract types - Parametric types allow data structures to be generic over element types and dimensions. For example:</li>
+</ol>
+<pre><code>mutable struct ParticlePosition{T}
+    x::T; y::T; z::T
+end
+struct Particle{D,T}
+    position::NTuple{D, T}
+    velocity::NTuple{D, T}
+    mass::T
+    radius::T
+end
+abstract type AbstractObstacle{D,T} end</code></pre>
+<pre><code>struct Hyperplane{D,T} &lt;: AbstractObstacle{D,T}
+    normal::NTuple{D, T}
+    offset::T
+end
+struct SphericalObstacle{D,T} &lt;: AbstractObstacle{D,T}
+    center::NTuple{D, T}
+    radius::T
+end</code></pre>
+<p>Abstract types let you define method hierarchies and make code extensible without specifying all implementation details.</p>
+<ol type="1">
+<li>Multiple dispatch - Julia dispatches on all argument types, making it straightforward to define functions that behave differently for different combinations of types. For instance, define collisions between particles and obstacles:</li>
+</ol>
+<pre><code># Two particles collide and both change state
+function collision(p1::Particle{D,T}, p2::Particle{D,T}) where {D,T}
+    # compute new positions and velocities (omitted)
+    return new_p1, new_p2
+end
+"""particles colliding with obstacles reflect velocity"""
+function collision(p::Particle{D,T}, o::AbstractObstacle{D,T}) where {D,T}
+    new_vel = -p.velocity
+    new_particle = Particle{D,T}(p.position, new_vel, p.mass, p.radius)
+    return new_particle, o
+end
+# handle reversed argument order by delegating
+collision(o::AbstractObstacle{D,T}, p::Particle{D,T}) where {D,T} =
+    let new_particle, new_obstacle = collision(p, o)
+        (new_obstacle, new_particle)
+    end</code></pre>
+<p>The where <span class="math inline">\(\{\mathrm{D}, \mathrm{T}\}\)</span> clause exposes the type parameters for specialization. Defining functions outside the original type definitions makes the system composable, enabling extension without modifying base types.</p>
+<ol type="1">
+<li>Counting collisions to compute <span class="math inline">\(\boldsymbol{\pi}\)</span> - A creative algorithm shows that the number of elastic collisions in a mass-ratio billiards problem encodes digits of <span class="math inline">\(\pi\)</span>. You set up two particles and an immovable wall, then count collisions until the fast particle escapes. A parametric System{D, T} type holds the state, and a function pi_from_pool returns the total number of collisions:</li>
+</ol>
+<pre><code>mutable struct System{D,T}
+    particles::Vector{Particle{D,T}}
+    obstacles::Vector{AbstractObstacle{D,T}}</code></pre>
+<pre><code>    total_collisions::Int64
+    current_time::Float64
+end
+function pi_from_pool(mass_ratio::Float64)
+    s = pool_pi_initialization(mass_ratio) # initialize positions &amp; velocities
+    time_to_next_collision = 0.0
+    while time_to_next_collision != Inf
+        time_to_next_collision = evolve_step!(s)
+    end
+    return s.total_collisions
+end</code></pre>
+<p>Running this function with different mass ratios reveals successive digits of <span class="math inline">\(\pi\)</span> in the total collision count:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th style="text-align: left;">mass ratio</th>
+<th style="text-align: left;">collisions</th>
+<th style="text-align: left;">approximation of <span class="math inline">\(\pi\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">3.1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(10^{4}\)</span></td>
+<td style="text-align: left;">314</td>
+<td style="text-align: left;">3.14</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(10^{6}\)</span></td>
+<td style="text-align: left;">3141</td>
+<td style="text-align: left;">3.141</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(10^{8}\)</span></td>
+<td style="text-align: left;">31415</td>
+<td style="text-align: left;">3.1415</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(10^{16}\)</span></td>
+<td style="text-align: left;">314159265</td>
+<td style="text-align: left;">3.14159265</td>
+</tr>
+</tbody>
+</table></div>
+<p>This result is both a fun demonstration of multiple dispatch and an example of how physical modeling and programming can produce surprising results.</p>
+<ol type="1">
+<li>Additional resources - The notes recommend consulting the official Julia documentation, the Julia Discourse, and books such as Think Julia and Practical Julia for deeper study.</li>
+</ol>
+<p>These chapter summaries highlight the important codes and algorithms introduced in the notes. Use them as a reference while exploring Julia further and as a foundation for building more sophisticated numerical and scientific programs.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/I%20%E5%8F%98%E9%87%8F%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0.html"><span>Next page →</span><span>I 变量、基本类型和函数</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">0 基本语法</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#hello-pi-julia-as-a-second-programming-language" class="is-active" aria-current="location">0. Hello, \pi ! Julia as a second programming language</a></li><li style="--depth:0"><a href="#variables-primitive-types-and-functions">2. Variables, primitive types, and functions</a></li><li style="--depth:0"><a href="#composite-types-and-data-structures">3. Composite types and data structures</a></li><li style="--depth:0"><a href="#data-plots-and-visualization">4. Data, plots, and visualization</a></li><li style="--depth:0"><a href="#projects-parametric-types-and-multiple-dispatch">5. Projects, parametric types, and multiple dispatch</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

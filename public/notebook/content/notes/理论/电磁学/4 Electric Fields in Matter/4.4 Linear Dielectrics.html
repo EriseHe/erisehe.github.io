@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>4.4 Linear Dielectrics — E.H. Notebook</title>
+<meta name="description" content="4.4.1 Susceptibility, Permittivity, Dielectric ConstantWe dealt with the effect of the polarization \mathbf{P}, but what about the cause?This set of notes transitions bet">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/index.html">4 Electric Fields in Matter</a></nav><h1 id="reader-title">4.4 Linear Dielectrics</h1></header><div id="article-body" class="prose"><h2 data-original-heading="4.4.1 Susceptibility, Permittivity, Dielectric Constant" id="susceptibility-permittivity-dielectric-constant">4.4.1 Susceptibility, Permittivity, Dielectric Constant</h2>
+<blockquote>
+<p>We dealt with the <em>effect</em> of the polarization <span class="math inline">\(\mathbf{P}\)</span>, but what about the <em>cause</em>?</p>
+</blockquote>
+<p>This set of notes transitions between <strong>Chapter 4 (Linear Dielectrics)</strong> and <strong>Chapter 5 (Magnetostatics)</strong>. It covers how electric fields behave in matter and then introduces the fundamental laws governing magnetic fields from steady currents.</p>
+<hr>
+<h2 data-original-heading="4.4 Linear Dielectrics (Electrostatics)" id="linear-dielectrics-electrostatics">4.4 Linear Dielectrics (Electrostatics)</h2>
+<p>In many substances, the polarization <span class="math inline">\(\mathbf{P}\)</span> is directly proportional to the total electric field <span class="math inline">\(\mathbf{E}\)</span>, provided the field is not too strong. These are called <strong>linear dielectrics</strong>.</p>
+<h3 data-original-heading="1. Susceptibility and Permittivity" id="susceptibility-and-permittivity">1. Susceptibility and Permittivity</h3>
+<p>The proportionality is defined using the <strong>electric susceptibility</strong> (<span class="math inline">\(\chi_e\)</span>): <span class="math display">\[\mathbf{P} = \epsilon_0 \chi_e \mathbf{E}\]</span></p>
+<p>This allows us to write the <strong>electric displacement</strong> (<span class="math inline">\(\mathbf{D}\)</span>) in terms of the field alone: <span class="math display">\[
+\begin{aligned}
+\mathbf{D} &amp;= \epsilon_0 \mathbf{E} + \mathbf{P} \\
+&amp;= \epsilon_0(1 + \chi_e)\mathbf{E} \\
+&amp;= \epsilon \mathbf{E}
+\end{aligned}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Constants of Linear Media</span></p>
+</div>
+<div class="theorem-content">
+<ul>
+<li><strong>Permittivity</strong> (<span class="math inline">\(\epsilon\)</span>): <span class="math inline">\(\epsilon \equiv \epsilon_0(1 + \chi_e)\)</span></li>
+<li><strong>Relative Permittivity</strong> (<span class="math inline">\(\epsilon_r\)</span>): <span class="math inline">\(\epsilon_r \equiv 1 + \chi_e = \epsilon / \epsilon_0\)</span> (also called the <strong>dielectric constant</strong>).</li>
+</ul>
+</div>
+</div>
+<h3 data-original-heading="2. Physical Effects" id="physical-effects">2. Physical Effects</h3>
+<ul>
+<li><strong>Field Reduction</strong>: In a homogeneous linear dielectric that fills all space, the electric field is reduced by a factor of <span class="math inline">\(1/\epsilon_r\)</span> compared to the vacuum field (<span class="math inline">\(\mathbf{E} = \frac{1}{\epsilon_r} \mathbf{E}_{\text{vac}}\)</span>).</li>
+<li><strong>Shielding</strong>: The polarization of the medium “shields” embedded charges by surrounding them with bound charge of the opposite sign.</li>
+<li><strong>Crystals</strong>: In anisotropic materials like crystals, susceptibility is a <strong>tensor</strong>, meaning <span class="math inline">\(\mathbf{P}\)</span> might not point in the same direction as <span class="math inline">\(\mathbf{E}\)</span>.</li>
+</ul>
+<h2 data-original-heading="4.4.2 Boundary Value Problems with Linear Dielectrics" id="boundary-value-problems-with-linear-dielectrics">4.4.2 Boundary Value Problems with Linear Dielectrics</h2>
+<p>The introduction of linear media simplifies boundary value problems significantly. In a homogeneous linear dielectric, the bound charge density (<span class="math inline">\(\rho_b\)</span>) is directly proportional to the free charge density (<span class="math inline">\(\rho_f\)</span>).</p>
+<h3 data-original-heading="1. Bound vs.&nbsp;Free Charge" id="bound-vs.-free-charge">1. Bound vs.&nbsp;Free Charge</h3>
+<p>Within a dielectric, the bound charge density is given by: <span class="math display">\[
+\begin{aligned}
+\rho_b &amp;= -\nabla \cdot \mathbf{P} = -\nabla \cdot \left( \epsilon_0 \frac{\chi_e}{\epsilon} \mathbf{D} \right) \\
+&amp;= -\left( \frac{\chi_e}{1 + \chi_e} \right) \rho_f
+\end{aligned}
+\]</span></p>
+<div class="math-theorem important" data-callout="important">
+<div class="theorem-header">
+<p><span class="theorem-badge">Important</span><span class="theorem-title">The “Zero” Rule</span></p>
+</div>
+<div class="theorem-content">
+<p>Unless free charge is actually embedded in the material (<span class="math inline">\(\rho_f \neq 0\)</span>), the total volume charge density <span class="math inline">\(\rho\)</span> is zero. This means within the dielectric, the potential <span class="math inline">\(V\)</span> still obeys <strong>Laplace’s equation</strong> (<span class="math inline">\(\nabla^2 V = 0\)</span>).</p>
+</div>
+</div>
+<h3 data-original-heading="2. Boundary Conditions" id="boundary-conditions">2. Boundary Conditions</h3>
+<p>When solving for <span class="math inline">\(V\)</span> at the interface between two media, we use the following conditions:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Boundary Condition</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Potential (<span class="math inline">\(V\)</span>)</strong></td>
+<td style="text-align: left;"><span class="math inline">\(V_{\text{above}} = V_{\text{below}}\)</span></td>
+<td style="text-align: left;">Potential is always continuous.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Electric Field (<span class="math inline">\(\mathbf{E}\)</span>)</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\epsilon_{\text{above}} E_{\text{above}}^{\perp} - \epsilon_{\text{below}} E_{\text{below}}^{\perp} = \sigma_f\)</span></td>
+<td style="text-align: left;">Accounts for free surface charge.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>In terms of <span class="math inline">\(V\)</span></strong></td>
+<td style="text-align: left;"><span class="math inline">\(\epsilon_{\text{above}} \frac{\partial V_{\text{above}}}{\partial n} - \epsilon_{\text{below}} \frac{\partial V_{\text{below}}}{\partial n} = -\sigma_f\)</span></td>
+<td style="text-align: left;">Derivative w.r.t. the normal vector.</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 data-original-heading="4.4.3 Energy in Dielectric Systems" id="energy-in-dielectric-systems">4.4.3 Energy in Dielectric Systems</h2>
+<p>How much work does it take to charge up a system when dielectrics are present? The answer depends on what you mean by “energy.”</p>
+<h3 data-original-heading="1. The Capacitor Case" id="the-capacitor-case">1. The Capacitor Case</h3>
+<p>If a capacitor is filled with a linear dielectric, its capacitance increases: <span class="math display">\[C = \epsilon_r C_{\text{vac}}\]</span> Consequently, the work required to charge it to a specific voltage <span class="math inline">\(V\)</span> increases by the same factor: <span class="math display">\[W = \frac{1}{2} CV^2\]</span> This extra work is necessary because you must overcome the field produced by the <strong>bound charges</strong> that are trying to cancel out your efforts.</p>
+<h3 data-original-heading="2. General Energy Formula" id="general-energy-formula">2. General Energy Formula</h3>
+<p>For a linear dielectric system, the total work done to assemble the free charge is: <span class="math display">\[\boxed{W = \frac{1}{2} \int \mathbf{D} \cdot \mathbf{E} d\tau}\]</span></p>
+<h3 data-original-heading="3. Two Ways to Count Energy" id="two-ways-to-count-energy">3. Two Ways to Count Energy</h3>
+<p>Griffiths highlights a “subtle distinction” in what we call the “energy of a system”:</p>
+<ol type="1">
+<li><strong>Total Energy (Eq. 2.45):</strong> <span class="math inline">\(W = \frac{\epsilon_0}{2} \int E^2 d\tau\)</span>. This represents the work to assemble <strong>every</strong> charge (free and bound) piece by piece. It does <em>not</em> include the energy stored in the “molecular springs” (the stretching/twisting of atoms).</li>
+<li><strong>Free Charge Energy (Eq. 4.58):</strong> <span class="math inline">\(W = \frac{1}{2} \int \mathbf{D} \cdot \mathbf{E} d\tau\)</span>. This represents the work to bring in the <strong>free charges only</strong>, allowing the dielectric to polarize naturally. This <em>does</em> include the energy stored in the molecular springs.</li>
+</ol>
+<div class="math-theorem warning" data-callout="warning">
+<div class="theorem-header">
+<p><span class="theorem-badge">Warning</span><span class="theorem-title">Linearity Required</span></p>
+</div>
+<div class="theorem-content">
+<p>Eq. 4.58 (<span class="math inline">\(W = \frac{1}{2} \int \mathbf{D} \cdot \mathbf{E} d\tau\)</span>) is <strong>only valid for linear dielectrics</strong>. If the system is non-linear or dissipative (like an electret with “frozen-in” polarization), the work done depends on the path taken, and the simple integral fails.</p>
+</div>
+</div>
+<hr>
+<h3 data-original-heading="Summary Checklist" id="summary-checklist">4.4.3.4 Summary Checklist</h3>
+<ul>
+<li><strong>Boundary Conditions</strong>: Use <span class="math inline">\(D\)</span> for free charge and <span class="math inline">\(V\)</span> for continuity.</li>
+<li><strong>Energy</strong>: Use <span class="math inline">\(\frac{1}{2} \mathbf{D} \cdot \mathbf{E}\)</span> if you only care about the work done on free charges.</li>
+<li><strong>Homogeneity</strong>: If <span class="math inline">\(\rho_f = 0\)</span> in the bulk, <span class="math inline">\(\rho_b = 0\)</span> in the bulk too! All charge resides on the surface.</li>
+</ul>
+<h2 data-original-heading="4.4 Linear Dielectrics" id="linear-dielectrics">4.4 Linear Dielectrics</h2>
+<p>In the previous sections, we analyzed the effects of polarization (<span class="math inline">\(\mathbf{P}\)</span>) without committing to its cause. In this section, we assume the polarization is sustained by an applied electric field and is proportional to that field.</p>
+<hr>
+<h3 data-original-heading="4.4.1 Susceptibility, Permittivity, and Dielectric Constant" id="susceptibility-permittivity-and-dielectric-constant">4.4.1 Susceptibility, Permittivity, and Dielectric Constant</h3>
+<p>For many substances, the polarization is proportional to the total field <span class="math inline">\(\mathbf{E}\)</span>, provided the field is not too strong:</p>
+<p><span class="math display">\[\mathbf{P} = \epsilon_0 \chi_e \mathbf{E}\]</span></p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Electric Susceptibility (<span class="math inline">\(\chi_e\)</span>)</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\chi_e\)</span> is a dimensionless constant of proportionality that depends on the microscopic structure of the substance and external conditions like temperature.</p>
+</div>
+</div>
+<h4 data-original-heading="1. The Displacement Field (D)" id="the-displacement-field-d">1. The Displacement Field (D)</h4>
+<p>In linear media, the displacement field <span class="math inline">\(\mathbf{D}\)</span> is also proportional to <span class="math inline">\(\mathbf{E}\)</span>: <span class="math display">\[
+\begin{aligned}
+\mathbf{D} &amp;= \epsilon_0 \mathbf{E} + \mathbf{P} \\
+&amp;= \epsilon_0 \mathbf{E} + \epsilon_0 \chi_e \mathbf{E} \\
+&amp;= \epsilon_0(1 + \chi_e)\mathbf{E} \\
+&amp;= \epsilon \mathbf{E}
+\end{aligned}
+\]</span></p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Permittivity and Dielectric Constant</span></p>
+</div>
+<div class="theorem-content">
+<ul>
+<li><strong>Permittivity (<span class="math inline">\(\epsilon\)</span>):</strong> Defined as <span class="math inline">\(\epsilon \equiv \epsilon_0(1 + \chi_e)\)</span>.</li>
+<li><strong>Relative Permittivity (<span class="math inline">\(\epsilon_r\)</span>):</strong> Also called the <strong>dielectric constant</strong>, defined as <span class="math inline">\(\epsilon_r \equiv 1 + \chi_e = \epsilon/\epsilon_0\)</span>.</li>
+</ul>
+</div>
+</div>
+<h4 data-original-heading="2. Anisotropy and the Susceptibility Tensor" id="anisotropy-and-the-susceptibility-tensor">2. Anisotropy and the Susceptibility Tensor</h4>
+<p>In crystals, it is often easier to polarize the material in certain directions. In such cases, the linear relation is replaced by a general tensor relation: <span class="math display">\[P_i = \epsilon_0 \sum_{j} \chi_{eij} E_j\]</span> The nine coefficients <span class="math inline">\(\chi_{exx}, \chi_{exy}, \dots\)</span> constitute the <strong>susceptibility tensor</strong>.</p>
+<hr>
+<h3 data-original-heading="4.4.2 Boundary Value Problems with Linear Dielectrics" id="boundary-value-problems-with-linear-dielectrics-1">4.4.2 Boundary Value Problems with Linear Dielectrics</h3>
+<p>In a homogeneous isotropic linear dielectric, the bound charge density <span class="math inline">\(\rho_b\)</span> is proportional to the free charge density <span class="math inline">\(\rho_f\)</span>: <span class="math display">\[\rho_b = -\nabla \cdot \mathbf{P} = -\nabla \cdot \left( \epsilon_0 \frac{\chi_e}{\epsilon} \mathbf{D} \right) = -\left( \frac{\chi_e}{1 + \chi_e} \right) \rho_f\]</span></p>
+<p><strong>Key Implication:</strong> Unless free charge is embedded in the material, <span class="math inline">\(\rho_b = 0\)</span> in the bulk. Any net charge must reside on the surface. Within the dielectric, the potential obeys <strong>Laplace’s equation</strong> (<span class="math inline">\(\nabla^2 V = 0\)</span>).</p>
+<h4 data-original-heading="1. Boundary Conditions" id="boundary-conditions-1">1. Boundary Conditions</h4>
+<p>The conditions for solving the potential <span class="math inline">\(V\)</span> are expressed in terms of free charge:</p>
+<ul>
+<li><strong>Potential Continuity:</strong> <span class="math inline">\(V_{\text{above}} = V_{\text{below}}\)</span></li>
+<li><strong>Field Jump (Normal):</strong> <span class="math inline">\(\epsilon_{\text{above}} E_{\text{above}}^{\perp} - \epsilon_{\text{below}} E_{\text{below}}^{\perp} = \sigma_f\)</span></li>
+<li><strong>Potential Derivative:</strong> <span class="math inline">\(\epsilon_{\text{above}} \frac{\partial V_{\text{above}}}{\partial n} - \epsilon_{\text{below}} \frac{\partial V_{\text{below}}}{\partial n} = -\sigma_f\)</span></li>
+</ul>
+<hr>
+<h3 data-original-heading="4.4.3 Energy in Dielectric Systems" id="energy-in-dielectric-systems-1">4.4.3 Energy in Dielectric Systems</h3>
+<p>To calculate the work done in charging a system with dielectrics, we must account for the work done on the free charges while the dielectric responds.</p>
+<h4 data-original-heading="1. General Derivation for Work" id="general-derivation-for-work">1. General Derivation for Work</h4>
+<p>To increase the free charge by an amount <span class="math inline">\(\Delta \rho_f\)</span>, the work done is: <span class="math display">\[\Delta W = \int (\Delta \rho_f)V d\tau\]</span> Since <span class="math inline">\(\nabla \cdot \mathbf{D} = \rho_f\)</span>, then <span class="math inline">\(\Delta \rho_f = \nabla \cdot (\Delta \mathbf{D})\)</span>: <span class="math display">\[
+\begin{aligned}
+\Delta W &amp;= \int [\nabla \cdot (\Delta \mathbf{D})]V d\tau \\
+&amp;= \int \nabla \cdot [(\Delta \mathbf{D})V] d\tau + \int (\Delta \mathbf{D}) \cdot \mathbf{E} d\tau &amp;&amp; \text{\scriptsize (Integration by parts)}
+\end{aligned}
+\]</span> The first term vanishes as a surface integral over all space. For <strong>linear media</strong>, <span class="math inline">\((\Delta \mathbf{D}) \cdot \mathbf{E} = \frac{1}{2} \Delta (\mathbf{D} \cdot \mathbf{E})\)</span>.</p>
+<div class="math-theorem important" data-callout="important">
+<div class="theorem-header">
+<p><span class="theorem-badge">Important</span><span class="theorem-title">Total Stored Energy</span></p>
+</div>
+<div class="theorem-content">
+<p>Integrating from zero to the final configuration: <span class="math display">\[\boxed{W = \frac{1}{2} \int \mathbf{D} \cdot \mathbf{E} d\tau}\]</span></p>
+</div>
+</div>
+<p><strong>Equation 2.45 vs 4.58:</strong> Eq 2.45 (<span class="math inline">\(W = \frac{\epsilon_0}{2} \int E^2 d\tau\)</span>) counts the work to assemble all charges (free and bound). Eq 4.58 includes the “spring energy” stored in the polarized molecules because it accounts for the work done on the free charges as they “stretch” those molecular springs.</p>
+<hr>
+<h3 data-original-heading="4.4.4 Forces on Dielectrics" id="forces-on-dielectrics">4.4.4 Forces on Dielectrics</h3>
+<p>A dielectric is attracted into an electric field. In a parallel-plate capacitor, this is caused by the <strong>fringing field</strong>—the non-uniform field at the edges of the plates.</p>
+<h4 data-original-heading="1. Force Calculation (Energy Method)" id="force-calculation-energy-method">1. Force Calculation (Energy Method)</h4>
+<p>If the dielectric is pulled out by <span class="math inline">\(dx\)</span>, the work done is <span class="math inline">\(dW = F_{\text{me}} dx\)</span>. The electrical force is <span class="math inline">\(F = -dW/dx\)</span>.</p>
+<ul>
+<li><strong>Constant Charge (<span class="math inline">\(Q\)</span>):</strong> <span class="math inline">\(W = \frac{1}{2} \frac{Q^2}{C}\)</span> <span class="math display">\[F = -\frac{dW}{dx} = \frac{1}{2} \frac{Q^2}{C^2} \frac{dC}{dx} = \frac{1}{2} V^2 \frac{dC}{dx}\]</span></li>
+<li><strong>Constant Potential (<span class="math inline">\(V\)</span>):</strong> <span class="math inline">\(dW = F_{\text{me}} dx + V dQ\)</span>. This yields the same result for <span class="math inline">\(F\)</span> but requires accounting for the work done by the battery.</li>
+</ul>
+<div class="math-theorem important" data-callout="important">
+<div class="theorem-header">
+<p><span class="theorem-badge">Important</span><span class="theorem-title">Result for a Slab</span></p>
+</div>
+<div class="theorem-content">
+<p>For a slab of width <span class="math inline">\(w\)</span> and thickness <span class="math inline">\(d\)</span> inserted a distance <span class="math inline">\(x\)</span>: <span class="math display">\[F = -\frac{\epsilon_0 \chi_e w}{2d} V^2\]</span> The negative sign indicates the dielectric is pulled <strong>into</strong> the capacitor.</p>
+</div>
+</div></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span>← Previous page</span><span>4.3 The Electric Displacement</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">4.4 Linear Dielectrics</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#susceptibility-permittivity-dielectric-constant" class="is-active" aria-current="location">4.4.1 Susceptibility, Permittivity, Dielectric Constant</a></li><li style="--depth:0"><a href="#linear-dielectrics-electrostatics">4.4 Linear Dielectrics (Electrostatics)</a></li><li style="--depth:1"><a href="#susceptibility-and-permittivity">1. Susceptibility and Permittivity</a></li><li style="--depth:1"><a href="#physical-effects">2. Physical Effects</a></li><li style="--depth:0"><a href="#boundary-value-problems-with-linear-dielectrics">4.4.2 Boundary Value Problems with Linear Dielectrics</a></li><li style="--depth:1"><a href="#bound-vs.-free-charge">1. Bound vs. Free Charge</a></li><li style="--depth:1"><a href="#boundary-conditions">2. Boundary Conditions</a></li><li style="--depth:0"><a href="#energy-in-dielectric-systems">4.4.3 Energy in Dielectric Systems</a></li><li style="--depth:1"><a href="#the-capacitor-case">1. The Capacitor Case</a></li><li style="--depth:1"><a href="#general-energy-formula">2. General Energy Formula</a></li><li style="--depth:1"><a href="#two-ways-to-count-energy">3. Two Ways to Count Energy</a></li><li style="--depth:1"><a href="#summary-checklist">4.4.3.4 Summary Checklist</a></li><li style="--depth:0"><a href="#linear-dielectrics">4.4 Linear Dielectrics</a></li><li style="--depth:1"><a href="#susceptibility-permittivity-and-dielectric-constant">4.4.1 Susceptibility, Permittivity, and Dielectric Constant</a></li><li style="--depth:2"><a href="#the-displacement-field-d">1. The Displacement Field (D)</a></li><li style="--depth:2"><a href="#anisotropy-and-the-susceptibility-tensor">2. Anisotropy and the Susceptibility Tensor</a></li><li style="--depth:1"><a href="#boundary-value-problems-with-linear-dielectrics-1">4.4.2 Boundary Value Problems with Linear Dielectrics</a></li><li style="--depth:2"><a href="#boundary-conditions-1">1. Boundary Conditions</a></li><li style="--depth:1"><a href="#energy-in-dielectric-systems-1">4.4.3 Energy in Dielectric Systems</a></li><li style="--depth:2"><a href="#general-derivation-for-work">1. General Derivation for Work</a></li><li style="--depth:1"><a href="#forces-on-dielectrics">4.4.4 Forces on Dielectrics</a></li><li style="--depth:2"><a href="#force-calculation-energy-method">1. Force Calculation (Energy Method)</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

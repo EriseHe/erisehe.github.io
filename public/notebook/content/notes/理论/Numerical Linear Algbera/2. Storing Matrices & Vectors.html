@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>2. Memory, Computational Cost, and Gaussian Elimination — E.H. Notebook</title>
+<meta name="description" content="Numerical Methods I — Florian Schaefer. Source: Lecture 02.pdf, pp. 1–13.Schedule association: September 9, 2026 (from the course schedule, not a handwritten date stamp).">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">2. Memory, Computational Cost, and Gaussian Elimination</h1></header><div id="article-body" class="prose"><p><em>Numerical Methods I — Florian Schaefer. Source: Lecture 02.pdf, pp.&nbsp;1–13.</em></p>
+<p>Schedule association: September 9, 2026 (from the course schedule, not a handwritten date stamp).</p>
+<h2 data-original-heading="2.1 Recap" id="recap">2.1 Recap</h2>
+<!-- Source: Lecture 02.pdf, p. 1. -->
+<p>The preceding lecture introduced vectors and matrices, their floating-point representation, and the distinction between conditioning and stability. Conditioning is problem-dependent: it describes an intrinsic sensitivity. Stability is algorithm-dependent: it concerns avoidable additional error.</p>
+<p>This lecture turns first to how arrays are stored and accessed, and then to solving linear systems.</p>
+<h2 data-original-heading="2.2 Storing Matrices and Vectors" id="storing-matrices-and-vectors">2.2 Storing Matrices and Vectors</h2>
+<!-- Source: Lecture 02.pdf, p. 2. -->
+<p>Memory can be viewed as one long string of bits. A vector is stored as a sequence of floating-point values,</p>
+<p><span class="math display">\[
+u_1,\ u_2,\ u_3,\ \ldots.
+\]</span></p>
+<p>A matrix is also stored in a linear sequence, organized by rows or by columns. The layout drawn in the lecture stores columns consecutively:</p>
+<p><span class="math display">\[
+\underbrace{A_{11},A_{21},A_{31},A_{41}}_{\text{first column}},
+\quad
+\underbrace{A_{12},A_{22},A_{32},A_{42}}_{\text{second column}},
+\quad\ldots.
+\]</span></p>
+<p>Additional metadata records such information as the array size and allocated storage. The same block of entries can be viewed with different compatible shapes: for example, as an <span class="math inline">\(m\times n\times k\times\ell\)</span> array, an <span class="math inline">\((mn)\times(k\ell)\)</span> matrix, or an <span class="math inline">\((mnk)\times\ell\)</span> matrix.</p>
+<p>The number of stored entries is unchanged; the shape determines how indices refer to those entries.</p>
+<h2 data-original-heading="2.3 Algorithms and Computational Cost" id="algorithms-and-computational-cost">2.3 Algorithms and Computational Cost</h2>
+<!-- Source: Lecture 02.pdf, p. 3. -->
+<p>Consider the matrix multiplication-and-addition operation</p>
+<p><span class="math display">\[
+A\mathrel{+}=BC,
+\qquad
+A\in\mathbb{K}^{\ell\times n},\quad
+B\in\mathbb{K}^{\ell\times m},\quad
+C\in\mathbb{K}^{m\times n}.
+\]</span></p>
+<p>Entrywise, the operation is</p>
+<p><span class="math display">\[
+A_{ik}\leftarrow A_{ik}+\sum_{j=1}^m B_{ij}C_{jk}.
+\]</span></p>
+<p>The lecture’s <code>Matmuladd(A, B, C)</code> algorithm is the following triple loop.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>ℓ</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            A[i, k] <span class="op">+=</span> B[i, j] <span class="op">*</span> C[j, k]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>There are <span class="math inline">\(\ell mn\)</span> multiply-and-add updates. Thus the arithmetic work scales as <span class="math inline">\(\ell mn\)</span>; counting multiplication and addition separately gives two arithmetic operations per update. For real scalars, this is <span class="math inline">\(2\ell mn\)</span> flops under the usual separate multiply/add convention. Complex scalars have the same <span class="math inline">\(O(\ell mn)\)</span> scaling but a different count when measured in real flops.</p>
+<h3 data-original-heading="2.3.1 A Timing Comparison" id="a-timing-comparison">2.3.1 A Timing Comparison</h3>
+<p>The lecture fixes</p>
+<p><span class="math display">\[
+\ell=2\cdot10^4,\qquad m=3\cdot10^4,
+\]</span></p>
+<p>and records the following <code>@btime</code> results:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Number of columns <span class="math inline">\(n\)</span></th>
+<th>Time recorded in the lecture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(1\)</span></td>
+<td>Approximately <span class="math inline">\(6\cdot10^{-2}\)</span> s</td>
+</tr>
+<tr>
+<td><span class="math inline">\(10^3\)</span></td>
+<td>Approximately <span class="math inline">\(4\cdot10^0\)</span> s</td>
+</tr>
+</tbody>
+</table></div>
+<p>The arithmetic count increases by a factor of <span class="math inline">\(10^3\)</span>, but the observed time increases by only about <span class="math inline">\(4/0.06\)</span>. The larger operation is therefore more than ten times faster than a direct extrapolation from the first timing would predict.</p>
+<p>These are the timings reported on the sheet, not new benchmark measurements. They motivate the question: <strong>why does counting arithmetic operations not fully predict execution time?</strong></p>
+<h2 data-original-heading="2.4 Floating-Point Operations and Memory Access" id="floating-point-operations-and-memory-access">2.4 Floating-Point Operations and Memory Access</h2>
+<!-- Source: Lecture 02.pdf, pp. 4–7. -->
+<h3 data-original-heading="2.4.1 Arithmetic Is Only Part of the Cost" id="arithmetic-is-only-part-of-the-cost">2.4.1 Arithmetic Is Only Part of the Cost</h3>
+<p>For square matrices, another comparison on the sheet gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+\ell=m=n=10^3 &amp;: \quad \text{approximately }7\cdot10^{-3}\text{ s},\\
+\ell=m=n=10^4 &amp;: \quad \text{approximately }6\text{ s}.
+\end{aligned}
+\]</span></p>
+<p>An inner iteration of matrix multiplication involves arithmetic, indexing or memory access, and updating the output. The sheet emphasizes the qualitative comparison</p>
+<p><span class="math display">\[
+\operatorname{cost}(+)
+\ll\operatorname{cost}(\times)
+\ll\operatorname{cost}(\text{memory access}).
+\]</span></p>
+<p>This is the lecture’s schematic cost comparison, not a universal ratio between hardware instruction timings. Its central point is that accessing data can be much more expensive than the floating-point arithmetic performed on that data.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<h3 data-original-heading="2.4.2 RAM, Cache, and Prefetching" id="ram-cache-and-prefetching">2.4.2 RAM, Cache, and Prefetching</h3>
+<p>The simple picture of equally accessible memory is not an adequate performance model. The lecture distinguishes a large, slower memory from a small, faster <strong>cache</strong>.</p>
+<p>Two possible bottlenecks are latency, the delay before requested data becomes available, and bandwidth, the rate at which data can be transferred. Prefetching attempts to reduce the effect of latency by bringing data into faster memory before it is needed.</p>
+<p>The patterns highlighted on the sheet are fetching nearby memory and fetching memory in a predictable strided pattern. Its GPU discussion emphasizes multiple threads carrying out the same instruction on contiguous data.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<h3 data-original-heading="2.4.3 Loop Order Matters" id="loop-order-matters">2.4.3 Loop Order Matters</h3>
+<p>Consider the matrix–vector product</p>
+<p><span class="math display">\[
+u=Av,
+\qquad A\in\mathbb{K}^{m\times n},\quad v\in\mathbb{K}^n.
+\]</span></p>
+<p>Assume <span class="math inline">\(u\)</span> has been initialized to zero. Both loop orderings below perform the same exact-arithmetic updates.</p>
+<p><strong>Row-oriented traversal: the column index varies in the inner loop.</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        u[i] <span class="op">+=</span> A[i, j] <span class="op">*</span> v[j]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p><strong>Column-oriented traversal: the row index varies in the inner loop.</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        u[i] <span class="op">+=</span> A[i, j] <span class="op">*</span> v[j]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>For the column-major layout drawn in the lecture,</p>
+<p><span class="math display">\[
+\underbrace{A_{11},A_{21},\ldots,A_{m1}}_{j=1},
+\quad
+\underbrace{A_{12},A_{22},\ldots,A_{m2}}_{j=2},
+\quad\ldots,
+\]</span></p>
+<p>the second algorithm traverses consecutive entries of <span class="math inline">\(A\)</span> in its inner loop. In the first algorithm, consecutive values of <span class="math inline">\(j\)</span> move between different columns.</p>
+<p>The sheet counts two noncontiguous input streams in the first ordering and one in the second. It also notes the importance of this consideration for smaller matrices and vectors. These observations belong to the lecture’s particular memory-access discussion; they are not a claim that one dimension-independent speedup applies to every array.</p>
+<h3 data-original-heading="2.4.4 Tiling" id="tiling">2.4.4 Tiling</h3>
+<p>Even when latency is well managed, memory bandwidth remains limited. For square matrix multiplication, the key observation is</p>
+<p><span class="math display">\[
+\underbrace{\text{arithmetic work}}_{\text{order }m^3}
+\qquad\text{versus}\qquad
+\underbrace{\text{stored data}}_{\text{order }m^2}.
+\]</span></p>
+<p>If the relevant matrices fit in cache, their entries can be reused many times after only order-<span class="math inline">\(m^2\)</span> transfers from slower memory. The question is how to retain this reuse when the full matrices are too large.</p>
+<p>The lecture’s answer is <strong>tiling</strong>: partition the matrices into blocks and organize the multiplication around these smaller pieces. The block diagram has the form</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+A_{11}&amp;A_{12}&amp;\cdots\\
+A_{21}&amp;A_{22}&amp;\cdots\\
+\vdots&amp;\vdots&amp;\ddots
+\end{pmatrix}
+=
+\begin{pmatrix}
+B_{11}&amp;B_{12}&amp;\cdots\\
+B_{21}&amp;B_{22}&amp;\cdots\\
+\vdots&amp;\vdots&amp;\ddots
+\end{pmatrix}
+\begin{pmatrix}
+C_{11}&amp;C_{12}&amp;\cdots\\
+C_{21}&amp;C_{22}&amp;\cdots\\
+\vdots&amp;\vdots&amp;\ddots
+\end{pmatrix},
+\]</span></p>
+<p>where each displayed entry now denotes a block. Thus</p>
+<p><span class="math display">\[
+A_{ij}=\sum_k B_{ik}C_{kj}
+\]</span></p>
+<p>is a matrix multiplication at the block level. The purpose is to reuse blocks while they remain in cache, rather than repeatedly transfer the same entries from slower memory.</p>
+<h2 data-original-heading="2.5 Linear Systems" id="linear-systems">2.5 Linear Systems</h2>
+<!-- Source: Lecture 02.pdf, p. 8. -->
+<p>The general problem is: given</p>
+<p><span class="math display">\[
+A\in\mathbb{K}^{m\times n},
+\qquad b\in\operatorname{range}(A)\subseteq\mathbb{K}^m,
+\]</span></p>
+<p>find <span class="math inline">\(x\in\mathbb{K}^n\)</span> such that</p>
+<p><span class="math display">\[
+Ax=b.
+\]</span></p>
+<p>Linear systems occur throughout mathematics. Although an invertible square system can be written as <span class="math inline">\(x=A^{-1}b\)</span>, the lecture emphasizes that computing <span class="math inline">\(A^{-1}\)</span> is not necessary for solving the system.</p>
+<p>We begin with square matrices <span class="math inline">\(A\in\mathbb{K}^{m\times m}\)</span>.</p>
+<div class="math-theorem proposition" data-callout="proposition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Proposition</span><span class="theorem-title">Equivalent conditions for a square matrix</span></p>
+</div>
+<div class="theorem-content">
+<p>For <span class="math inline">\(A\in\mathbb{K}^{m\times m}\)</span>, the following conditions are equivalent: <span class="math display">\[
+\begin{aligned}
+\operatorname{null}(A)=\{0\}
+&amp;\iff\text{the columns of }A\text{ are linearly independent}\\
+&amp;\iff\operatorname{range}(A)=\mathbb{K}^m\\
+&amp;\iff A\text{ is invertible}.
+\end{aligned}
+\]</span> Such a matrix has full rank and is also called nonsingular.</p>
+</div>
+</div>
+<p>The nullspace condition means that <span class="math inline">\(x\mapsto Ax\)</span> is injective. Indeed,</p>
+<p><span class="math display">\[
+\begin{aligned}
+Ax=Ay
+&amp;\Longrightarrow A(x-y)=0\\
+&amp;\Longrightarrow x-y=0\\
+&amp;\Longrightarrow x=y.
+\end{aligned}
+\]</span></p>
+<p>The range condition means the map is surjective. The equivalence of these conditions here relies on <span class="math inline">\(A\)</span> being square.</p>
+<h2 data-original-heading="2.6 Forward and Back Substitution" id="forward-and-back-substitution">2.6 Forward and Back Substitution</h2>
+<!-- Source: Lecture 02.pdf, pp. 9–10. -->
+<p>The introductory example is</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_1+5&amp;=15,\\
+x_1+5x_2&amp;=20.
+\end{aligned}
+\]</span></p>
+<p>The first equation gives <span class="math inline">\(x_1=10\)</span>, which can then be substituted into the second equation to give <span class="math inline">\(x_2=2\)</span>. The key feature is that the first equation determines <span class="math inline">\(x_1\)</span> independently of <span class="math inline">\(x_2\)</span>.</p>
+<h3 data-original-heading="2.6.1 Lower-Triangular Systems" id="lower-triangular-systems">2.6.1 Lower-Triangular Systems</h3>
+<p>For a lower-triangular matrix with nonzero diagonal entries,</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+A_{11}&amp;0&amp;\cdots&amp;0\\
+A_{21}&amp;A_{22}&amp;\ddots&amp;\vdots\\
+\vdots&amp;\vdots&amp;\ddots&amp;0\\
+A_{m1}&amp;A_{m2}&amp;\cdots&amp;A_{mm}
+\end{pmatrix}
+\begin{pmatrix}x_1\\x_2\\\vdots\\x_m\end{pmatrix}
+=
+\begin{pmatrix}b_1\\b_2\\\vdots\\b_m\end{pmatrix},
+\]</span></p>
+<p>compute the unknowns in increasing order:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_1&amp;=\frac{b_1}{A_{11}},\\
+x_2&amp;=\frac{b_2-A_{21}x_1}{A_{22}},\\
+x_3&amp;=\frac{b_3-A_{31}x_1-A_{32}x_2}{A_{33}}.
+\end{aligned}
+\]</span></p>
+<p>In general,</p>
+<p><span class="math display">\[
+\boxed{
+x_i=\frac{b_i-\displaystyle\sum_{j=1}^{i-1}A_{ij}x_j}{A_{ii}},
+\qquad i=1,\ldots,m.
+}
+\]</span></p>
+<p>Every value on the right-hand side has already been computed. This is <strong>forward substitution</strong>.</p>
+<h3 data-original-heading="2.6.2 Upper-Triangular Systems" id="upper-triangular-systems">2.6.2 Upper-Triangular Systems</h3>
+<p>For an upper-triangular matrix with nonzero diagonal entries, compute the unknowns in reverse order:</p>
+<p><span class="math display">\[
+\boxed{
+x_i=\frac{b_i-\displaystyle\sum_{j=i+1}^{m}A_{ij}x_j}{A_{ii}},
+\qquad i=m,m-1,\ldots,1.
+}
+\]</span></p>
+<p>This is <strong>back substitution</strong>.</p>
+<h3 data-original-heading="2.6.3 Row-Oriented Algorithms" id="row-oriented-algorithms">2.6.3 Row-Oriented Algorithms</h3>
+<p>The sheet gives forward and backward substitution together, with the backward-loop ranges in brackets. Written separately, they are as follows. These Julia-style transcriptions assume floating-point arrays of compatible dimensions, and <span class="math inline">\(x\)</span> is initialized as a copy of <span class="math inline">\(b\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><strong>Forward substitution:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">copy</span>(b)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>(i <span class="op">-</span> <span class="fl">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        x[i] <span class="op">-=</span> A[i, j] <span class="op">*</span> x[j]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    x[i] <span class="op">/=</span> A[i, i]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p><strong>Back substitution:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">copy</span>(b)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> m<span class="op">:-</span><span class="fl">1</span><span class="op">:</span><span class="fl">1</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> (i <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>m</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        x[i] <span class="op">-=</span> A[i, j] <span class="op">*</span> x[j]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    x[i] <span class="op">/=</span> A[i, i]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<h3 data-original-heading="2.6.4 Column-Oriented Variants" id="column-oriented-variants">2.6.4 Column-Oriented Variants</h3>
+<p>The variants labeled “efficient” on the sheet compute one unknown and immediately update the remaining right-hand-side entries. This organizes the matrix accesses down a column.</p>
+<p><strong>Forward substitution:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">copy</span>(b)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x[j] <span class="op">/=</span> A[j, j]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> (j <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>m</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        x[i] <span class="op">-=</span> A[i, j] <span class="op">*</span> x[j]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p><strong>Back substitution:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">copy</span>(b)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> m<span class="op">:-</span><span class="fl">1</span><span class="op">:</span><span class="fl">1</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    x[j] <span class="op">/=</span> A[j, j]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>(j <span class="op">-</span> <span class="fl">1</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        x[i] <span class="op">-=</span> A[i, j] <span class="op">*</span> x[j]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>All four algorithms assume the appropriate triangular structure and nonzero diagonal entries.</p>
+<h2 data-original-heading="2.7 Gaussian Elimination" id="gaussian-elimination">2.7 Gaussian Elimination</h2>
+<!-- Source: Lecture 02.pdf, pp. 11–12. -->
+<p>A general matrix is not triangular. Gaussian elimination transforms its system into one that can be solved by substitution.</p>
+<h3 data-original-heading="2.7.1 A Two-Equation Example" id="a-two-equation-example">2.7.1 A Two-Equation Example</h3>
+<p>Consider</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_1+2x_2&amp;=10,\\
+2x_1+x_2&amp;=8.
+\end{aligned}
+\]</span></p>
+<p>Subtract twice the first equation from the second equation:<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><span class="math display">\[
+\begin{aligned}
+(2x_1+x_2)-2(x_1+2x_2)&amp;=8-2\cdot10,\\
+\underbrace{2x_1-2x_1}_{0}+x_2-4x_2&amp;=-12,\\
+-3x_2&amp;=-12.
+\end{aligned}
+\]</span></p>
+<p>The equivalent triangular system is</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_1+2x_2&amp;=10,\\
+-3x_2&amp;=-12,
+\end{aligned}
+\qquad\Longrightarrow\qquad
+x_2=4,\quad x_1=2.
+\]</span></p>
+<p>In matrix form, the row operation is multiplication by</p>
+<p><span class="math display">\[
+L_1=
+\begin{pmatrix}1&amp;0\\-2&amp;1\end{pmatrix}.
+\]</span></p>
+<p>Indeed,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\underbrace{\begin{pmatrix}1&amp;0\\-2&amp;1\end{pmatrix}}_{L_1}
+\underbrace{\begin{pmatrix}1&amp;2\\2&amp;1\end{pmatrix}}_A
+&amp;=\begin{pmatrix}1&amp;2\\0&amp;-3\end{pmatrix},\\[4pt]
+\underbrace{\begin{pmatrix}1&amp;0\\-2&amp;1\end{pmatrix}}_{L_1}
+\underbrace{\begin{pmatrix}10\\8\end{pmatrix}}_b
+&amp;=\begin{pmatrix}10\\-12\end{pmatrix}.
+\end{aligned}
+\]</span></p>
+<p>The same row operation must be applied to both the matrix and the right-hand side.</p>
+<h3 data-original-heading="2.7.2 One Elimination Step" id="one-elimination-step">2.7.2 One Elimination Step</h3>
+<p>At step <span class="math inline">\(k\)</span>, let <span class="math inline">\(A\)</span> denote the current matrix, with columns <span class="math inline">\(1,\ldots,k-1\)</span> already zero below their diagonals. Assume the current pivot <span class="math inline">\(A_{kk}\)</span> is nonzero.</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Theorem 1 — Elementary elimination</span></p>
+</div>
+<div class="theorem-content">
+<p>Let <span class="math inline">\(L_k\)</span> be the identity matrix except for the entries <span class="math display">\[
+(L_k)_{ik}=-\frac{A_{ik}}{A_{kk}},\qquad i=k+1,\ldots,m.
+\]</span> Then <span class="math inline">\(L_k\)</span> is an elementary lower-triangular matrix, and <span class="math inline">\(L_kA\)</span> has zero entries below the diagonal in column <span class="math inline">\(k\)</span>, while preserving the previously created zeros.</p>
+</div>
+</div>
+<p>For <span class="math inline">\(i&gt;k\)</span>, the new entry in column <span class="math inline">\(k\)</span> is</p>
+<p><span class="math display">\[
+(L_kA)_{ik}
+=A_{ik}-\frac{A_{ik}}{A_{kk}}A_{kk}
+=0.
+\]</span></p>
+<p>The corresponding update to the trailing entries is</p>
+<p><span class="math display">\[
+(L_kA)_{ij}
+=A_{ij}-\underbrace{\frac{A_{ik}}{A_{kk}}}_{\text{elimination multiplier}}A_{kj},
+\qquad i&gt;k,\quad j&gt;k.
+\]</span></p>
+<p>These formulas express the matrix diagrams on the sheet: another column becomes triangular, and the remaining lower-right block is updated.</p>
+<h2 data-original-heading="2.8 From Elimination to LU Factorization" id="from-elimination-to-lu-factorization">2.8 From Elimination to LU Factorization</h2>
+<!-- Source: Lecture 02.pdf, p. 13. -->
+<p>Assuming elimination can proceed without a zero pivot, successive elementary lower-triangular matrices produce an upper-triangular matrix</p>
+<p><span class="math display">\[
+\underbrace{L_m\cdots L_1A}_{U}.
+\]</span></p>
+<p>The lecture includes <span class="math inline">\(L_m\)</span> in the product; its elimination column is empty, so it can be taken as the identity. For the full system, the transformation is<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p><span class="math display">\[
+\underbrace{L_m\cdots L_1A}_{U}x=L_m\cdots L_1b.
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+L=(L_m\cdots L_1)^{-1}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\boxed{A=LU.}
+\]</span></p>
+<p>The lecture ends with two questions: <strong>is <span class="math inline">\(L\)</span> lower triangular, and can it be computed efficiently?</strong> These are developed in Lecture 03.</p>
+<hr>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Lecture 02, p.&nbsp;3. The final factor’s first index is not written consistently enough to preserve literally. The contraction is transcribed as <span class="math inline">\(B_{ij}C_{jk}\)</span>, as required by the displayed dimensions and by <span class="math inline">\(A\mathrel{+}=BC\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Lecture 02, p.&nbsp;4. The cost ordering is retained as a schematic statement attributed to the lecture; it is not presented as an architecture-independent law.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Lecture 02, p.&nbsp;5 also says “On GPUs, no prefetching.” No GPU architecture or scope is specified. That phrase is recorded here rather than promoted to a general hardware claim in the main text.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The algorithms on p.&nbsp;10 are handwritten pseudocode. <code>copy(b)</code> makes the initialization explicit in Julia without aliasing the input vector. Loop ranges have been separated into forward and backward versions; the arithmetic and traversal order are unchanged.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Lecture 02, p.&nbsp;11 says to subtract the second equation from the first, but its resulting equations and elementary matrix implement <span class="math inline">\(R_2\leftarrow R_2-2R_1\)</span>. The text above follows that displayed calculation.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Lecture 02, p.&nbsp;13 omits <span class="math inline">\(x\)</span> between the transformed matrix and the equality to the transformed right-hand side. The missing vector has been restored.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span>← Previous page</span><span>1. Vectors, Floating-Point Arithmetic, and Conditioning</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span>Next page →</span><span>3. LU Factorization and Zero Pivots</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">2. Memory, Computational Cost, and Gaussian Elimination</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#recap" class="is-active" aria-current="location">2.1 Recap</a></li><li style="--depth:0"><a href="#storing-matrices-and-vectors">2.2 Storing Matrices and Vectors</a></li><li style="--depth:0"><a href="#algorithms-and-computational-cost">2.3 Algorithms and Computational Cost</a></li><li style="--depth:1"><a href="#a-timing-comparison">2.3.1 A Timing Comparison</a></li><li style="--depth:0"><a href="#floating-point-operations-and-memory-access">2.4 Floating-Point Operations and Memory Access</a></li><li style="--depth:1"><a href="#arithmetic-is-only-part-of-the-cost">2.4.1 Arithmetic Is Only Part of the Cost</a></li><li style="--depth:1"><a href="#ram-cache-and-prefetching">2.4.2 RAM, Cache, and Prefetching</a></li><li style="--depth:1"><a href="#loop-order-matters">2.4.3 Loop Order Matters</a></li><li style="--depth:1"><a href="#tiling">2.4.4 Tiling</a></li><li style="--depth:0"><a href="#linear-systems">2.5 Linear Systems</a></li><li style="--depth:0"><a href="#forward-and-back-substitution">2.6 Forward and Back Substitution</a></li><li style="--depth:1"><a href="#lower-triangular-systems">2.6.1 Lower-Triangular Systems</a></li><li style="--depth:1"><a href="#upper-triangular-systems">2.6.2 Upper-Triangular Systems</a></li><li style="--depth:1"><a href="#row-oriented-algorithms">2.6.3 Row-Oriented Algorithms</a></li><li style="--depth:1"><a href="#column-oriented-variants">2.6.4 Column-Oriented Variants</a></li><li style="--depth:0"><a href="#gaussian-elimination">2.7 Gaussian Elimination</a></li><li style="--depth:1"><a href="#a-two-equation-example">2.7.1 A Two-Equation Example</a></li><li style="--depth:1"><a href="#one-elimination-step">2.7.2 One Elimination Step</a></li><li style="--depth:0"><a href="#from-elimination-to-lu-factorization">2.8 From Elimination to LU Factorization</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>17. Riemannian Distance, Variations, and Geodesics — E.H. Notebook</title>
+<meta name="description" content="1 Riemannian distanceGiven p,q\in M, there exists a piecewise regular path from p to q obtained by joining regular paths inside coordinate neighborhoods.[!definition|4.2]">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="微分几何讲义 file hierarchy" data-sidebar-root="content/notes/理论/微分几何讲义"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/Frederic P Schuller讲义" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4588f86aeacf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Frederic P Schuller讲义</span></button></div><ul class="tree-children" id="folder-4588f86aeacf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC3%E8%AE%B2%20%E5%A4%9A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html"><span class="page-number"></span><span>第3讲 多线性代数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC4%E8%AE%B2%20%E5%8F%AF%E5%BE%AE%E6%B5%81%E5%BD%A2.html"><span class="page-number"></span><span>第4讲 可微流形</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-244bccca26dc" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论I</span></button></div><ul class="tree-children" id="folder-244bccca26dc"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第一部分 曲线与曲面" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f23833b55fc8" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一部分 曲线与曲面</span></button></div><ul class="tree-children" id="folder-f23833b55fc8" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/1.%20Overview%20of%20Differential%20Geometry.html"><span class="page-number">1</span><span>Overview of Differential Geometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/2.%20Parametrized%20Curves%20%26%20Surfaces.html"><span class="page-number">2</span><span>Parametrized Curves &amp; Surfaces</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vector%20on%20Surface%20(from%20Lecture).html"><span class="page-number">3</span><span>Tangent Vector on Surface (from Lecture)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vectors%20and%20Orientability%20(From%20Notes).html"><span class="page-number">3</span><span>Tangent Vectors and Orientability (From Notes)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/4.%20First%20Fundamental%20Form.html"><span class="page-number">4</span><span>First Fundamental Form</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/5.%20Pushforward%2C%20Pullback%2C%20and%20Local%20Isometry.html"><span class="page-number">5</span><span>Pushforward, Pullback, and Local Isometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/6.%20Normal%20%26%20Geodesic%20Curvature.html"><span class="page-number">6</span><span>Normal &amp; Geodesic Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/7.%20Gauss%20Map%2C%20Shape%20Operator%2C%20and%20Curvatures.html"><span class="page-number">7</span><span>Gauss Map, Shape Operator, and Curvatures</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/8.%20Gauss%20Map%20Area%2C%20Principal%20Curvatures%2C%20Mean%20Curvature%20%26%20Geodesics.html"><span class="page-number">8</span><span>Gauss Map Area, Principal Curvatures, Mean Curvature &amp; Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/9.%20Geodesic%20Normal%20Coordinates%2C%20Exponential%20Map.html"><span class="page-number">9</span><span>Geodesic Normal Coordinates, Exponential Map</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/10.%20Geodesic%20Polar%20Coordinates%2C%20Local%20Length%20Minimizers%2C%20and%20Gauss%E2%80%99s%20Theorema%20Egregium.html"><span class="page-number">10</span><span>Geodesic Polar Coordinates, Local Length Minimizers, and Gauss’s Theorema Egregium</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/12.%20Geodesic%20Triangle%20and%20Euler's%20Characteristics.html"><span class="page-number">12</span><span>Geodesic Triangle and Euler&#39;s Characteristics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第二部分 黎曼几何" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-61e3399769bc" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第二部分 黎曼几何</span></button></div><ul class="tree-children" id="folder-61e3399769bc"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/13.%20Smooth%20Functions%2C%20Tangent%20and%20Cotangent%20Vectors%2C%20Metrics.html"><span class="page-number">13</span><span>Smooth Functions, Tangent and Cotangent Vectors, Metrics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/14.%20Tensors%2C%20Connections%2C%20Lie%20bracket.html"><span class="page-number">14</span><span>Tensors, Connections, Lie bracket</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/15.%20Riemannian%20Connection%2C%20Geodesics%2C%20and%20Parallel%20Transport.html"><span class="page-number">15</span><span>Riemannian Connection, Geodesics, and Parallel Transport</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/16.%20Exponential%20Map%2C%20Normal%20Coordinates%2C%20and%20Distance.html"><span class="page-number">16</span><span>Exponential Map, Normal Coordinates, and Distance</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/17.%20Riemannian%20Distance%2C%20Variations%2C%20and%20Geodesics.html"><span class="page-number">17</span><span>Riemannian Distance, Variations, and Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/18%20Hopf%E2%80%93Rinow%20direction.html"><span class="page-number">18</span><span>Hopf–Rinow direction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/19%20Curvature%20Operator%20and%20Tensoriality.html"><span class="page-number">19</span><span>Curvature Operator and Tensoriality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/20%20Gauss%26Weingarten%20Formulas%2C%20Surfaces%2C%20and%20Sectional%20Curvature.html"><span class="page-number">20</span><span>Gauss&amp;Weingarten Formulas, Surfaces, and Sectional Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/21%20Curvature%20via%20Sectional%20Curvature%2C%20and%20Jacobi%20Fields.html"><span class="page-number">21</span><span>Curvature via Sectional Curvature, and Jacobi Fields</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/22%20Jacobi%20Fields%2C%20Constant%20Curvature%2C%20and%20Conjugate%20Points.html"><span class="page-number">22</span><span>Jacobi Fields, Constant Curvature, and Conjugate Points</span></a></li></ul></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论II" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-016769c1691a" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论II</span></button></div><ul class="tree-children" id="folder-016769c1691a" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%208.html"><span class="page-number"></span><span>Apr 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%2020.html"><span class="page-number"></span><span>Apr 20</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Course%20Content.html"><span class="page-number"></span><span>Course Content</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%202.html"><span class="page-number"></span><span>Problem 2</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span class="page-number"></span><span>Problem 3</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/problem%204.html"><span class="page-number"></span><span>problem 4</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%204%20Boundary%20Distance%20Determines%20Volume%20for%20Simple%20Metrics.html"><span class="page-number"></span><span>Problem 4 Boundary Distance Determines Volume for Simple Metrics</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/index.html">微分几何导论I</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/index.html">第二部分 黎曼几何</a></nav><h1 id="reader-title">17. Riemannian Distance, Variations, and Geodesics</h1><p class="article-meta">2025-10-27</p></header><div id="article-body" class="prose"><h2 data-original-heading="1 Riemannian distance" id="riemannian-distance">1 Riemannian distance</h2>
+<p>Given <span class="math inline">\(p,q\in M\)</span>, there exists a piecewise regular path from <span class="math inline">\(p\)</span> to <span class="math inline">\(q\)</span> obtained by joining regular paths inside coordinate neighborhoods.</p>
+<div class="math-theorem definition" data-label="4.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 4.2</span><span class="theorem-title">Riemannian distance</span></p>
+</div>
+<div class="theorem-content">
+<p>Define the distance between <span class="math inline">\(p,q\in M\)</span> by <span class="math display">\[
+d(p,q) = \inf\{\, L(\gamma) \mid \gamma \text{ piecewise regular from } p \text{ to } q \,\}
+\]</span></p>
+</div>
+</div>
+<div class="math-theorem lemma" data-label="4.3" data-callout="lemma">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma 4.3</span><span class="theorem-title">Metric space property</span></p>
+</div>
+<div class="theorem-content">
+<p>This definition makes <span class="math inline">\((M,g)\)</span> into a metric space, and the metric topology agrees with the manifold topology.</p>
+</div>
+</div>
+<blockquote>
+<p>So the Riemannian distance built from geodesic length recovers the original smooth topology on <span class="math inline">\(M\)</span>.</p>
+</blockquote>
+<h2 data-original-heading="1.1. Manifold Topology (Proof)" id="manifold-topology-proof">1.1. Manifold Topology (Proof)</h2>
+<p><strong>Proof.</strong> Symmetry, <span class="math inline">\(d(p,q)\ge 0\)</span>, and the triangle inequality all follow immediately from the definition. For the other properties we need to compare norms. Let <span class="math inline">\(x^1,\dots,x^n\)</span> be normal coordinates at <span class="math inline">\(p\)</span>, defined on a ball of radius <span class="math inline">\(\ge r\)</span>. A tangent vector is written <span class="math display">\[
+V = v^i \partial_i
+\]</span> and we have two norms <span class="math display">\[
+\begin{aligned}
+|V|_g^2 &amp;= g_{ij} v^i v^j \\
+|V|_\delta^2 &amp;= \delta_{ij} v^i v^j \qquad \text{(Euclidean)}
+\end{aligned}
+\]</span></p>
+<p>The function <span class="math inline">\(|{\cdot}|_g\)</span> is continuous and non-vanishing on the Euclidean compact set <span class="math display">\[
+K=\{(x,v)\; ;\; |x|\le r,\ |V|_\delta\le 1\}
+\]</span> Hence there exist constants <span class="math inline">\(c_1,c_2&gt;0\)</span> such that <span class="math display">\[
+\underbrace{c_1 |V|_\delta \le |V|_g \le c_2 |V|_\delta}_{\text{norms are comparable on }K}
+\]</span></p>
+<p>Within <span class="math inline">\(B_r(p)\)</span> the length functional <span class="math inline">\(L\)</span> is therefore comparable to the Euclidean length functional <span class="math display">\[
+L_\delta(\gamma) = \int_a^b |\dot\gamma(t)|_\delta\,dt
+\]</span> so the corresponding distances <span class="math inline">\(d_g\)</span> and <span class="math inline">\(d_\delta\)</span> are comparable in <span class="math inline">\(B_r(p)\)</span>.</p>
+<p>Also, for <span class="math inline">\(q\notin B_r(p)\)</span> this comparability shows <span class="math display">\[
+d(p,q)\ge c\,r
+\]</span> for some constant <span class="math inline">\(c&gt;0\)</span>. From these facts one checks that the open balls for <span class="math inline">\(d\)</span> give exactly the original manifold topology. ∎</p>
+<hr>
+<h2 data-original-heading="1.2 Minimizing length" id="minimizing-length">1.2 Minimizing length</h2>
+<h3 data-original-heading="1.2.1 Families of regular curves and proper variations" id="families-of-regular-curves-and-proper-variations">1.2.1 Families of regular curves and proper variations</h3>
+<p>Consider a family of regular curves <span class="math display">\[
+F:(-\varepsilon,\varepsilon)\times[a,b]\longrightarrow M
+\]</span> smooth, such that for each fixed <span class="math inline">\(s\)</span> the curve <span class="math display">\[
+\Gamma[s,-]\;:\;[a,b]\to M,\qquad t\longmapsto F(s,t)
+\]</span> is regular.</p>
+<blockquote>
+<p>Conceptually one can picture parallel curves for <span class="math inline">\(s\in(-\varepsilon,\varepsilon)\)</span>, with the middle one corresponding to <span class="math inline">\(s=0\)</span>.</p>
+</blockquote>
+<p>The book also allows for piecewise regular curves. Both <span class="math inline">\(\partial_s F\)</span> and <span class="math inline">\(\partial_t F\)</span> qualify as vector fields along <span class="math inline">\(\Gamma\)</span>.</p>
+<p>The variation is <strong>proper</strong> if the endpoints are fixed, i.e. <span class="math display">\[
+p = \Gamma[s,0],\qquad q = \Gamma[s,1]
+\]</span> are independent of <span class="math inline">\(s\)</span>. We will study the length functional <span class="math display">\[
+L(s)=L(\Gamma[s,-])
+\]</span></p>
+<h3 data-original-heading="1.2.2 Symmetry lemma for covariant derivatives of a variation" id="symmetry-lemma-for-covariant-derivatives-of-a-variation">1.2.2 Symmetry lemma for covariant derivatives of a variation</h3>
+<div class="math-theorem lemma" data-label="5.1" data-callout="lemma">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma 5.1</span><span class="theorem-title">Symmetry lemma</span></p>
+</div>
+<div class="theorem-content">
+<p>For <span class="math inline">\(F\)</span> as above, <span class="math display">\[
+D_s\partial_t F = D_t\partial_s F
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof.</strong> The covariant derivatives are local, so we can use local coordinates. Write <span class="math display">\[
+F(s,t)\longmapsto x^i(s,t),\qquad i=1,\dots,n
+\]</span> Then <span class="math display">\[
+\partial_t F = \frac{\partial x^i}{\partial t}\,\partial_i
+\]</span> Recall that for a vector field <span class="math inline">\(V=v^i\partial_i\)</span> along a coordinate curve, <span class="math display">\[
+D_s(v^i\partial_i)
+=\Big[\frac{\partial v^i}{\partial s}
+      + v^j\frac{\partial x^h}{\partial s}\Gamma^i_{jh}\Big]\partial_i
+\qquad\text{(avoiding dot notation)}
+\]</span> Hence <span class="math display">\[
+\begin{aligned}
+D_s\partial_t F
+&amp;= D_s\!\left(\frac{\partial x^i}{\partial t}\partial_i\right) \\[4pt]
+&amp;=\Big[\frac{\partial^2 x^i}{\partial s\,\partial t}
+      +\frac{\partial x^j}{\partial t}
+       \frac{\partial x^h}{\partial s}\Gamma^i_{jh}\Big]\partial_i
+\end{aligned}
+\]</span> Similarly, <span class="math display">\[
+D_t\partial_s F
+=\Big[\frac{\partial^2 x^i}{\partial t\,\partial s}
+      +\frac{\partial x^j}{\partial s}
+       \frac{\partial x^h}{\partial t}\Gamma^i_{jh}\Big]\partial_i
+\]</span> These expressions are equal, since for the Levi-Civita connection <span class="math inline">\(\Gamma^i_{jk}=\Gamma^i_{kj}\)</span>. ∎</p>
+<hr>
+<h2 data-original-heading="1.3 Variational calculus and the first variation formula" id="variational-calculus-and-the-first-variation-formula">1.3 Variational calculus and the first variation formula</h2>
+<p>Let <span class="math inline">\(\gamma:[a,b]\to M\)</span> be a regular unit-speed curve and consider a proper regular variation <span class="math inline">\(F\)</span> such that <span class="math display">\[
+F(0,t)=\gamma(t)
+\]</span> Define <span class="math display">\[
+L(s)=L(\Gamma[s,-]) = L(F[s,-])
+\]</span> The <strong>variation field</strong> along <span class="math inline">\(\gamma\)</span> is <span class="math display">\[
+V(t) := \partial_s F(s,t)\big|_{s=0}
+\]</span></p>
+<div class="math-theorem theorem" data-label="5.2" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 5.2</span><span class="theorem-title">First variation formula</span></p>
+</div>
+<div class="theorem-content">
+<p>For a proper regular variation of a unit-speed curve <span class="math inline">\(\gamma\)</span>, <span class="math display">\[
+L'(0) = - \int_a^b g\!\big(V, D_t\dot\gamma\big)\,dt
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof.</strong> Let <span class="math display">\[
+T = \partial_t F(s,t),\qquad S = \partial_s F(s,t)
+\]</span> Then</p>
+$$
+<span class="math display">\[\begin{aligned}
+L(s) &amp;= \int_a^b \sqrt{g(T,T)}\,dt\\
+
+{\text{differentiation}}\Longrightarrow L'(s)
+&amp;= \int_a^b 
+   \frac{\color{blue}{\partial_s g(T,T)}}{2\sqrt{g(T,T)}}\,dt \\[4pt]
+&amp;= \int_a^b 
+   \frac{\color{blue}{2g(D_s T,T)}}{2|T|_g}\,dt \\[4pt]
+&amp;= \int_a^b \frac{1}{|T|_g}\,g(D_s T,T)\,dt
+\end{aligned}\]</span>
+<p><span class="math display">\[
+Using the symmetry lemma $D_s T = D_t S$,
+\]</span> L’(s) = _a^b ,g(D_t S,T),dt <span class="math display">\[
+Evaluating at $s=0$, the curve is unit speed, so $|T|_g=1$ and
+$T|_{s=0}=\dot\gamma$, $S|_{s=0}=V$, hence
+\]</span> L’(0) = _a^b g(D_t V,),dt $$</p>
+<p>Next, compute <span class="math display">\[
+\partial_t g(V,\dot\gamma)
+= g(D_t V,\dot\gamma) + g(V,D_t\dot\gamma)
+\]</span> Integrating from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span> we obtain <span class="math display">\[
+\int_a^b \partial_t g(V,\dot\gamma)\,dt
+= g(V,\dot\gamma)\big|_a^b = 0
+\]</span> since the variation is proper and <span class="math inline">\(V(a)=V(b)=0\)</span>. Therefore <span class="math display">\[
+\begin{aligned}
+L'(0)
+&amp;= \int_a^b g(D_t V,\dot\gamma)\,dt \\[4pt]
+&amp;= -\int_a^b g(V,D_t\dot\gamma)\,dt
+\end{aligned}
+\]</span> which is the claimed first variation formula. ∎</p>
+<h2 data-original-heading="1.4 Geodesics as minimizers of length" id="geodesics-as-minimizers-of-length">1.4 Geodesics as minimizers of length</h2>
+<p><strong>Note.</strong> Given a vector field <span class="math inline">\(V\)</span> along a curve <span class="math inline">\(\gamma\)</span>, we can define a corresponding variation by <span class="math display">\[
+F(s,t)=\exp(sV(t))
+\]</span> for <span class="math inline">\(\varepsilon\)</span> sufficiently small (using the exponential map along <span class="math inline">\(\gamma\)</span>).</p>
+<div class="math-theorem theorem" data-label="5.3" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 5.3</span><span class="theorem-title">Minimizers are geodesics</span></p>
+</div>
+<div class="theorem-content">
+<p>Suppose <span class="math inline">\(\gamma\)</span> is unit speed and has minimal length among regular curves from <span class="math inline">\(p\)</span> to <span class="math inline">\(q\)</span>. Then <span class="math inline">\(\gamma\)</span> is geodesic.</p>
+</div>
+</div>
+<p><strong>Proof.</strong> For any proper variation <span class="math inline">\(F\)</span> of <span class="math inline">\(\gamma\)</span> we have that <span class="math inline">\(L[s]=L(F[s,-])\)</span> has a minimum at <span class="math inline">\(s=0\)</span>, hence <span class="math inline">\(L'(0)=0\)</span>. Take a function <span class="math inline">\(\ell\in C_0^\infty[a,b]\)</span> with <span class="math inline">\(\ell&gt;0\)</span> on <span class="math inline">\((a,b)\)</span> and <span class="math inline">\(\ell(a)=\ell(b)=0\)</span>, and set <span class="math display">\[
+V = \ell\,D_t\dot\gamma
+\]</span> This <span class="math inline">\(V\)</span> is a proper variation field along <span class="math inline">\(\gamma\)</span>, so by the first variation formula <span class="math display">\[
+\begin{aligned}
+0=L'(0)
+&amp;= -\int_a^b g(V,D_t\dot\gamma)\,dt \\[4pt]
+&amp;= -\int_a^b \ell\,|D_t\dot\gamma|_g^2\,dt
+\end{aligned}
+\]</span> Since <span class="math inline">\(\ell&gt;0\)</span> on <span class="math inline">\((a,b)\)</span>, this implies <span class="math display">\[
+\boxed{D_t\dot\gamma \equiv 0 \quad\text{on }(a,b)}
+\]</span> so <span class="math inline">\(\gamma\)</span> is a geodesic. The equation <span class="math inline">\(D_t\dot\gamma = 0\)</span> is the “Euler–Lagrange equation’’ for the length functional.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/16.%20Exponential%20Map%2C%20Normal%20Coordinates%2C%20and%20Distance.html"><span>← Previous page</span><span>16. Exponential Map, Normal Coordinates, and Distance</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/18%20Hopf%E2%80%93Rinow%20direction.html"><span>Next page →</span><span>18 Hopf–Rinow direction</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">17. Riemannian Distance, Variations, and Geodesics</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#riemannian-distance" class="is-active" aria-current="location">1 Riemannian distance</a></li><li style="--depth:0"><a href="#manifold-topology-proof">1.1. Manifold Topology (Proof)</a></li><li style="--depth:0"><a href="#minimizing-length">1.2 Minimizing length</a></li><li style="--depth:1"><a href="#families-of-regular-curves-and-proper-variations">1.2.1 Families of regular curves and proper variations</a></li><li style="--depth:1"><a href="#symmetry-lemma-for-covariant-derivatives-of-a-variation">1.2.2 Symmetry lemma for covariant derivatives of a variation</a></li><li style="--depth:0"><a href="#variational-calculus-and-the-first-variation-formula">1.3 Variational calculus and the first variation formula</a></li><li style="--depth:0"><a href="#geodesics-as-minimizers-of-length">1.4 Geodesics as minimizers of length</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

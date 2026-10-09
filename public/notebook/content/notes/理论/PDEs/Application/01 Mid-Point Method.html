@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>01 Mid-Point Method — E.H. Notebook</title>
+<meta name="description" content="01.1 Formula DerivationThe derivative approximation: \begin{aligned} f(t_i, u_i) &amp;= \frac{dy}{dt} \Big|_{t_i} \approx \frac{y(t_{i+1}) - y(t_{i-1})}{2\Delta t} + \mathcal">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/index.html">Application</a></nav><h1 id="reader-title">01 Mid-Point Method</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Formula Derivation" id="formula-derivation">01.1 Formula Derivation</h2>
+<center>
+The derivative approximation:
+</center>
+<p><span class="math display">\[
+\begin{aligned}
+f(t_i, u_i) &amp;= \frac{dy}{dt} \Big|_{t_i} \approx \frac{y(t_{i+1}) - y(t_{i-1})}{2\Delta t} + \mathcal{O}(\Delta t^2)
+\end{aligned}
+\]</span></p>
+<p>Update formula:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u_{i+1} &amp;= u_{i-1} + 2\Delta t f(t_i, u_i)
+\end{aligned}
+\]</span></p>
+<hr>
+<h3 data-original-heading="Initial Conditions" id="initial-conditions">01.1.1 Initial Conditions</h3>
+<ol type="1">
+<li><p><strong>Initial Condition Calculation</strong>: Given <span class="math inline">\(y_0\)</span> <span class="math display">\[
+\begin{aligned}
+u_2 &amp;= y_0 + 2\Delta t f(t_1, u_1)
+\end{aligned}
+\]</span></p></li>
+<li><p><strong>Predictor-Corrector Steps</strong>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u_1^* &amp;= y_0 + \Delta t f(t_0, y_0), \\
+u_1 &amp;= y_0 + \frac{\Delta t}{2} (f(t_0, y_0) + f(t_1, u_1^*))
+\end{aligned}
+\]</span></p></li>
+</ol>
+<hr>
+<h3 data-original-heading="Two-Step Method" id="two-step-method">01.1.2 Two-Step Method</h3>
+<ul>
+<li><strong>Higher-order method</strong> that improves accuracy using information from two previous time steps.</li>
+<li>The method achieves <strong>second-order accuracy</strong> due to the central difference approximation. *** # Absolute Stability</li>
+</ul>
+<p>We consider the test equation:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{dy}{dt} &amp;= -\lambda y, \quad y(0) = y_0
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\lambda &gt; 0\)</span>.</p>
+<h2 data-original-heading="Discretization" id="discretization">01.2 Discretization</h2>
+<p>The numerical update formula is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u_{n+1} &amp;= u_{n-1} - 2\Delta t \lambda u_n
+\end{aligned}
+\]</span></p>
+<p>Rearranging:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u_{n+1} + 2\Delta t \lambda u_n - u_{n-1} &amp;= 0
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="Iterative Computation" id="iterative-computation">01.2.1 Iterative Computation</h3>
+<p>Starting with initial conditions (<span class="math inline">\(y_0\)</span>, <span class="math inline">\(y_1\)</span>):</p>
+<p><span class="math display">\[
+\begin{aligned}
+   u_2 &amp;= y_0 - 2\Delta t \lambda y_1, \\
+   u_3 &amp;= y_1 - 2\Delta t \lambda u_2, \\
+   u_4 &amp;= u_2 - 2\Delta t \lambda u_3, \\
+   u_5 &amp;= u_3 - 2\Delta t \lambda u_4
+\end{aligned}
+\]</span></p>
+<p>This formulation helps analyze the stability of the numerical scheme by checking whether the sequence <span class="math inline">\(u_n\)</span> grows or decays as <span class="math inline">\(n \to \infty\)</span>.</p>
+<hr>
+<h2 data-original-heading="Stability Analysis of the Numerical Scheme" id="stability-analysis-of-the-numerical-scheme">01.3 Stability Analysis of the Numerical Scheme</h2>
+<p>We assume a solution of the form:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u_i &amp;= C \beta^i
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="Substituting into the Recurrence Relation" id="substituting-into-the-recurrence-relation">01.3.1 Substituting into the Recurrence Relation</h3>
+$$
+<span class="math display">\[\begin{aligned}
+
+\end{aligned}\]</span>
+<span class="math display">\[
+\]</span>
+<span class="math display">\[\begin{aligned}
+C \beta^{i+1} + C 2\Delta t \lambda \beta^i - C \beta^{i-1} &amp;= 0\\
+\beta^2 + 2\Delta t \lambda \beta - 1 &amp;= 0 \quad \text{devided by $C \beta^{i-1}$.}
+\end{aligned}\]</span>
+<p>$$ This is a <strong>characteristic equation</strong> for the recurrence relation. And solving for <span class="math inline">\(\beta\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\beta &amp;= \frac{-2\Delta t \lambda \pm \sqrt{(2\Delta t \lambda)^2 + 4}}{2}
+\end{aligned}
+\]</span> To ensure stability, we require:</p>
+<p><span class="math display">\[
+\begin{aligned}
+|\beta_0|, |\beta_1| &amp;\leq 1.
+\end{aligned}
+\]</span></p>
+<hr>
+<h3 data-original-heading="General Solution" id="general-solution">01.3.2 General Solution</h3>
+<p>Since the recurrence relation is second-order, the general solution is: <span class="math display">\[
+\begin{aligned}
+u_i &amp;= C_0 \beta_0^i + C_1 \beta_1^i.
+\end{aligned}
+\]</span> From the initial conditions:</p>
+$$
+<span class="math display">\[\begin{aligned}
+u_0 &amp;= C_0 + C_1 = y_0, \\
+
+
+
+
+   \nu_1 &amp;= C_0 \beta_0 + C_1 \beta_1 = y_1
+\end{aligned}\]</span>
+<p>$$ which can be solved for <span class="math inline">\(C_0\)</span> and <span class="math inline">\(C_1\)</span>.</p>
+<hr>
+<h2 data-original-heading="Stability Condition" id="stability-condition">01.4 Stability Condition</h2>
+<p>For stability, the roots <span class="math inline">\(\beta_0, \beta_1\)</span> must satisfy:</p>
+<p><span class="math display">\[
+\begin{aligned}|\beta_0 \beta_1| &amp;= 1.\end{aligned}
+\]</span></p>
+<p>From the characteristic equation:</p>
+<p><span class="math display">\[
+\begin{aligned}\beta_0 \beta_1 &amp;= -\frac{1}{\beta_1}.
+\end{aligned}
+\]</span></p>
+<p>Ensuring <span class="math inline">\(|\beta| \leq 1\)</span> determines the absolute stability region.</p>
+<hr>
+<h2 data-original-heading="Finite Difference Approximation and Stability Analysis" id="finite-difference-approximation-and-stability-analysis">01.5 Finite Difference Approximation and Stability Analysis</h2>
+<h3 data-original-heading="Finite Difference Approximation" id="finite-difference-approximation">01.5.1 Finite Difference Approximation</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\alpha u_{i+1} + \beta u_i + \sigma u_{i-1} + \delta u_{i-2} &amp;= (\alpha + \beta + \sigma + \delta) u_i + \mathcal{O}(\Delta t^5)
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="Time Discretization" id="time-discretization">01.5.2 Time Discretization</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{du}{dt} \Big|_{t_i} &amp;= \frac{u_i - u_{i-1}}{\Delta t} + \mathcal{O}(\Delta t^2)
+\end{aligned}
+\]</span></p>
+<h3 data-original-heading="Stability Analysis" id="stability-analysis">01.5.3 Stability Analysis</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\alpha + 4\beta &amp;= 0, \\
+\alpha &amp;= -4\beta, \\
+4\beta - 2\beta &amp;= 1 \Rightarrow \beta = \frac{1}{2}, \quad \alpha = -2.
+\end{aligned}
+\]</span></p>
+<p>These constraints ensure numerical stability and proper convergence of the finite difference scheme. ### Taylor Expansions Applying Taylor expansions to express the function values at different time steps: <span class="math display">\[
+\begin{aligned}
+&amp; \alpha\left[u_{i+1}=u_i-\left.\frac{d u}{d t}\right|_{t_i} \Delta t+\ldots\right] \\
+&amp; \beta\left[u_{i+2}=u_i-\left.\frac{d u}{d t}\right|_{t_i} 2 \Delta t+\ldots\right] \\
+&amp; \gamma\left[u_{i+3}=u_i-\left.\frac{d u}{d t}\right|_{t_i} 3 \Delta t+\ldots\right] \\
+&amp; \delta\left[u_{i+4}=u_i-\left.\frac{d u}{d t}\right|_{t_i} 4 \Delta t+\ldots\right]
+\end{aligned}
+\]</span> Summing these expansions, we obtain the system of equations,</p>
+<p><span class="math display">\[
+\left\{\begin{aligned}
+-\alpha-2 \beta-3 \gamma-4 \delta &amp; =1 \\
+\alpha+4 \beta+8 \gamma+16 \delta &amp; =0
+\end{aligned}\right.
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span>Next page →</span><span>02 Three-Point Backward Differentiation Formula</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">01 Mid-Point Method</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#formula-derivation" class="is-active" aria-current="location">01.1 Formula Derivation</a></li><li style="--depth:1"><a href="#initial-conditions">01.1.1 Initial Conditions</a></li><li style="--depth:1"><a href="#two-step-method">01.1.2 Two-Step Method</a></li><li style="--depth:0"><a href="#discretization">01.2 Discretization</a></li><li style="--depth:1"><a href="#iterative-computation">01.2.1 Iterative Computation</a></li><li style="--depth:0"><a href="#stability-analysis-of-the-numerical-scheme">01.3 Stability Analysis of the Numerical Scheme</a></li><li style="--depth:1"><a href="#substituting-into-the-recurrence-relation">01.3.1 Substituting into the Recurrence Relation</a></li><li style="--depth:1"><a href="#general-solution">01.3.2 General Solution</a></li><li style="--depth:0"><a href="#stability-condition">01.4 Stability Condition</a></li><li style="--depth:0"><a href="#finite-difference-approximation-and-stability-analysis">01.5 Finite Difference Approximation and Stability Analysis</a></li><li style="--depth:1"><a href="#finite-difference-approximation">01.5.1 Finite Difference Approximation</a></li><li style="--depth:1"><a href="#time-discretization">01.5.2 Time Discretization</a></li><li style="--depth:1"><a href="#stability-analysis">01.5.3 Stability Analysis</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

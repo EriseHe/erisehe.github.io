@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>NF_transcribed — E.H. Notebook</title>
+<meta name="description" content="1 Normalizing Flows (NF) and Continuous Normalizing Flows (CNF)Clean compilation of handwritten lecture notes. Structure and notation preserved.1. Change of Variables in ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/index.html">隐藏变量模型</a></nav><h1 id="reader-title">NF_transcribed</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Normalizing Flows (NF) and Continuous Normalizing Flows (CNF)" id="normalizing-flows-nf-and-continuous-normalizing-flows-cnf">1 Normalizing Flows (NF) and Continuous Normalizing Flows (CNF)</h2>
+<blockquote>
+<p>Clean compilation of handwritten lecture notes. Structure and notation preserved.</p>
+</blockquote>
+<hr>
+<h3 data-original-heading="1. Change of Variables in Distributions" id="change-of-variables-in-distributions">1. Change of Variables in Distributions</h3>
+<p>Let <span class="math inline">\(x = f_\theta(z)\)</span>, with inverse <span class="math inline">\(z = f_\theta^{-1}(x)\)</span>. <span class="math display">\[
+\begin{aligned}
+p_X(x; \theta)
+&amp;= p_Z(f_\theta^{-1}(x))
+\left|\det \frac{\partial f_\theta^{-1}(x)}{\partial x}\right|.
+\end{aligned}
+\]</span> In 1D: <span class="math display">\[
+\begin{aligned}
+p_X(x; \theta)
+&amp;= p_Z(f_\theta^{-1}(x))
+\left|\frac{d f_\theta^{-1}(x)}{dx}\right|.
+\end{aligned}
+\]</span> For higher dimensions: <span class="math inline">\(\;\left|\det J_{f_\theta^{-1}}(x)\right|\)</span> represents the absolute determinant of the inverse Jacobian.</p>
+<hr>
+<h3 data-original-heading="2. Linear Map Interpretation" id="linear-map-interpretation">2. Linear Map Interpretation</h3>
+<p>For a linear map <span class="math inline">\(y = f(x) = Jx\)</span>: <span class="math display">\[
+J = \frac{\partial f}{\partial x}, \quad \det J \text{ = volume scaling factor.}
+\]</span> Example in <span class="math inline">\(\mathbb{R}^2\)</span>:<br>
+If <span class="math inline">\(J = \begin{bmatrix}3 &amp; 1\\ 0 &amp; 2\end{bmatrix}\)</span>, then <span class="math inline">\(\det J = 6.\)</span></p>
+<hr>
+<h3 data-original-heading="3. Nonlinear Case and Local Linearization" id="nonlinear-case-and-local-linearization">3. Nonlinear Case and Local Linearization</h3>
+<p>For <span class="math inline">\(f: \mathbb{R}^d \to \mathbb{R}^d\)</span>,<br>
+near <span class="math inline">\(x_0\)</span>, <span class="math display">\[
+\begin{aligned}
+f(x) \approx f(x_0) + J_f(x_0)(x - x_0),
+\end{aligned}
+\]</span> the <strong>first-order Taylor expansion</strong>.</p>
+<hr>
+<h3 data-original-heading="4. Flow Composition and Notation" id="flow-composition-and-notation">4. Flow Composition and Notation</h3>
+<p>We compose multiple invertible mappings: <span class="math display">\[
+f_\theta = f_K \circ f_{K-1} \circ \cdots \circ f_1.
+\]</span></p>
+<p>For intermediate states: <span class="math display">\[
+z_i = f_i(z_{i-1}), \quad z_0 \sim p_0(z_0), \quad z_K = x.
+\]</span></p>
+<p>Hence <span class="math inline">\(p_i(z_i)\)</span> represents the density at stage <span class="math inline">\(i\)</span>.</p>
+<h3 data-original-heading="5. Density Recursion and Change of Variables" id="density-recursion-and-change-of-variables">5. Density Recursion and Change of Variables</h3>
+<p>If <span class="math inline">\(x = f_\theta(z_0)\)</span>, then <span class="math inline">\(z_{i-1} = f_i^{-1}(z_i)\)</span>.<br>
+By change of variable: <span class="math display">\[
+\begin{aligned}
+p_i(z_i)
+&amp;= p_{i-1}(z_{i-1}) 
+\left|\det \frac{\partial f_i^{-1}(z_i)}{\partial z_i}\right|.
+\end{aligned}
+\]</span> Recursively: <span class="math display">\[
+\begin{aligned}
+p_X(x;\theta)
+&amp;= p_Z(f_\theta^{-1}(x))
+\left|\det J_{f_\theta^{-1}}(x)\right| \\
+&amp;= p_Z(z_0)
+\prod_{i=1}^K
+\left|\det \frac{\partial z_{i-1}}{\partial z_i}\right|
+= p_Z(z_0)
+\prod_{i=1}^K
+\left|\det \frac{\partial f_i^{-1}(z_i)}{\partial z_i}\right|.
+\end{aligned}
+\]</span> Or equivalently: <span class="math display">\[
+p_X(x;\theta)
+= p_Z(z_0)\prod_{i=1}^{K}
+\left|\det \frac{\partial f_i(z_{i-1})}{\partial z_{i-1}}\right|^{-1}.
+\]</span></p>
+<p><strong>Log form:</strong> <span class="math display">\[
+\begin{aligned}
+\log p_X(x|\theta)
+= \log p_Z(z_0) - \sum_{i=1}^{K}\log\left|\det \frac{\partial z_i}{\partial z_{i-1}}\right|,
+\end{aligned}
+\]</span> with <span class="math inline">\(z_0 = f_\theta^{-1}(x)\)</span>.</p>
+<hr>
+<h3 data-original-heading="6. Objective Function" id="objective-function">6. Objective Function</h3>
+<p><span class="math display">\[
+\max_\theta \sum_{x\in\text{data}} \log p_X(x|\theta).
+\]</span></p>
+<hr>
+<h3 data-original-heading="7. Affine Coupling Layers" id="affine-coupling-layers">7. Affine Coupling Layers</h3>
+<p>To ensure invertibility: Split input <span class="math inline">\(x = (x_1, x_2)\)</span>, <span class="math display">\[
+\begin{aligned}
+y_1 &amp;= x_1,\\
+y_2 &amp;= x_2 \odot \exp(s(x_1)) + t(x_1),
+\end{aligned}
+\]</span> so <span class="math inline">\(y = f(x) = (y_1, y_2)\)</span>.</p>
+<p>Inverse: <span class="math display">\[
+\begin{aligned}
+x_1 &amp;= y_1,\\
+x_2 &amp;= (y_2 - t(y_1)) \odot \exp(-s(y_1)).
+\end{aligned}
+\]</span> ### Jacobian and Determinant</p>
+Jacobian: <span class="math display">\[
+J =
+\]</span>
+<span class="math display">\[\begin{bmatrix}
+I &amp; 0\\
+* &amp; \operatorname{diag}\big(\exp(s(x_1))\big)
+\end{bmatrix}\]</span>
+<p><span class="math display">\[,
+\quad
+\det J = \exp\!\left(\sum_j s_j(x_1)\right).
+\]</span> Hence, computing <span class="math inline">\(\log \det J\)</span> is cheap.</p>
+<hr>
+<h3 data-original-heading="8. Neural ODE and Continuous Normalizing Flow (CNF)" id="neural-ode-and-continuous-normalizing-flow-cnf">8. Neural ODE and Continuous Normalizing Flow (CNF)</h3>
+<p>Limitations of discrete NFs:</p>
+<ul>
+<li>Fixed <span class="math inline">\(K\)</span> layers, limited approximation.</li>
+</ul>
+<p>We define the continuous flow: <span class="math display">\[
+\frac{dz}{dt} = f_\theta(z(t),t), \quad t\in[0,1].
+\]</span></p>
+<hr>
+<h3 data-original-heading="9. Deriving the CNF Equation" id="deriving-the-cnf-equation">9. Deriving the CNF Equation</h3>
+<p>Define probability density <span class="math inline">\(p(z,t)\)</span> and velocity field <span class="math inline">\(f_\theta(z,t)\)</span>.</p>
+<p><strong>Flux through surface:</strong> <span class="math display">\[
+(p f_\theta)\cdot \hat{n}.
+\]</span> By divergence theorem: <span class="math display">\[
+\oint_{\partial V} (p f_\theta)\cdot \hat{n} \, dS
+= \int_V \nabla_z \cdot (p f_\theta)\,dz.
+\]</span> Conservation of probability: <span class="math display">\[
+\frac{d}{dt}\int_V p\,dz
+= -\int_V \nabla_z\cdot(p f_\theta)\,dz
+\Rightarrow
+\boxed{\partial_t p + \nabla_z\cdot(p f_\theta)=0.}
+\]</span></p>
+<hr>
+<h3 data-original-heading="10. Log-Density Dynamics" id="log-density-dynamics">10. Log-Density Dynamics</h3>
+<p>Along trajectories: <span class="math display">\[
+\frac{dz}{dt} = f_\theta(z,t),
+\]</span> <span class="math display">\[
+\frac{d}{dt}p(z(t),t)
+= \partial_t p + f_\theta \cdot \nabla_z p.
+\]</span> Substitute from continuity: <span class="math display">\[
+\frac{d}{dt}p(z(t),t)
+= -p\,(\nabla_z \cdot f_\theta),
+\]</span> <span class="math display">\[
+\boxed{\frac{d}{dt}\log p = -\nabla_z \cdot f_\theta = -\operatorname{Tr}\!\left(\frac{\partial f_\theta}{\partial z}\right)}.
+\]</span></p>
+<p>Hence, <span class="math display">\[
+\log p_{t_1}(z_{t_1}) = \log p_{t_0}(z_{t_0}) - \int_{t_0}^{t_1}\operatorname{Tr}\!\left(\frac{\partial f_\theta}{\partial z}\right)dt.
+\]</span></p>
+<hr>
+<h3 data-original-heading="11. ODE Solver (Runge–Kutta)" id="ode-solver-rungekutta">11. ODE Solver (Runge–Kutta)</h3>
+<p><span class="math display">\[
+y(t_1) = y(t_0) + \int_{t_0}^{t_1} f(t,y(t))\,dt.
+\]</span> Augmented state: <span class="math display">\[
+y_t = [z(t), \log p_t], \quad y_0 = [x_\text{data}, 0].
+\]</span></p>
+<hr>
+<h3 data-original-heading="12. Hutchinson’s Trick (Trace Estimation)" id="hutchinsons-trick-trace-estimation">12. Hutchinson’s Trick (Trace Estimation)</h3>
+<p><span class="math display">\[
+\operatorname{Tr}(J) = \mathbb{E}_{s\sim \mathcal{N}(0,I)}[s^\top J s]
+\approx s^\top J s.
+\]</span> Define scalar <span class="math inline">\(S(z) = \langle f_\theta(z), s \rangle\)</span>. <span class="math display">\[
+\nabla_z S(z) = J^\top s.
+\]</span></p>
+<hr>
+<h3 data-original-heading="13. Likelihood Formulation (Backward Integration)" id="likelihood-formulation-backward-integration">13. Likelihood Formulation (Backward Integration)</h3>
+<p><span class="math display">\[
+\log p_X(x)
+= \log p_Z(z_0) - \int_0^1 \operatorname{div}f_\theta(z_t,t)\,dt.
+\]</span> Alternatively, <span class="math display">\[
+\log p_Z(z_1) = \log p_X(x) + \int_1^0 \operatorname{Tr}(J_f)\,dt.
+\]</span></p>
+<p>Training uses negative sign convention.</p>
+<hr>
+<h3 data-original-heading="14. Adjoint Method for Gradients" id="adjoint-method-for-gradients">14. Adjoint Method for Gradients</h3>
+<p>Adjoint variable: <span class="math display">\[
+a_t = \frac{\partial \mathcal{L}}{\partial z_t}.
+\]</span></p>
+<p>State evolution: <span class="math display">\[
+z_{t+\Delta t} = z_t + \int_t^{t+\Delta t} f_\theta(z_\tau,\tau)\,d\tau.
+\]</span></p>
+<p>Adjoint dynamics: <span class="math display">\[
+\dot{a}_t = -\left(\frac{\partial f_\theta}{\partial z}\right)^\top a_t.
+\]</span></p>
+<p>Parameter sensitivity: <span class="math display">\[
+\frac{d}{dt}\left(\frac{\partial z_t}{\partial \theta}\right)
+= \frac{\partial f_\theta}{\partial z}\frac{\partial z_t}{\partial \theta}
++ \frac{\partial f_\theta}{\partial \theta}.
+\]</span></p>
+<p>Gradient formula: <span class="math display">\[
+\boxed{\frac{\partial \mathcal{L}}{\partial \theta}
+= -\int_{t_1}^{t_0} a_t^\top \frac{\partial f_\theta}{\partial \theta}(z_t,t)\,dt.}
+\]</span></p>
+<hr>
+<h3 data-original-heading="15. Summary" id="summary">15. Summary</h3>
+<ul>
+<li>Change of variables → discrete NF likelihood.</li>
+<li>Affine coupling → efficient triangular Jacobian.</li>
+<li>CNF → continuous ODE + log-density ODE.</li>
+<li>Hutchinson’s trick → efficient trace estimation.</li>
+<li>Adjoint method → efficient gradient backprop through ODE solver.</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span>← Previous page</span><span>GANs</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span>Next page →</span><span>Normalizing Flows (NF)</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">NF_transcribed</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#normalizing-flows-nf-and-continuous-normalizing-flows-cnf" class="is-active" aria-current="location">1 Normalizing Flows (NF) and Continuous Normalizing Flows (CNF)</a></li><li style="--depth:1"><a href="#change-of-variables-in-distributions">1. Change of Variables in Distributions</a></li><li style="--depth:1"><a href="#linear-map-interpretation">2. Linear Map Interpretation</a></li><li style="--depth:1"><a href="#nonlinear-case-and-local-linearization">3. Nonlinear Case and Local Linearization</a></li><li style="--depth:1"><a href="#flow-composition-and-notation">4. Flow Composition and Notation</a></li><li style="--depth:1"><a href="#density-recursion-and-change-of-variables">5. Density Recursion and Change of Variables</a></li><li style="--depth:1"><a href="#objective-function">6. Objective Function</a></li><li style="--depth:1"><a href="#affine-coupling-layers">7. Affine Coupling Layers</a></li><li style="--depth:1"><a href="#neural-ode-and-continuous-normalizing-flow-cnf">8. Neural ODE and Continuous Normalizing Flow (CNF)</a></li><li style="--depth:1"><a href="#deriving-the-cnf-equation">9. Deriving the CNF Equation</a></li><li style="--depth:1"><a href="#log-density-dynamics">10. Log-Density Dynamics</a></li><li style="--depth:1"><a href="#ode-solver-rungekutta">11. ODE Solver (Runge–Kutta)</a></li><li style="--depth:1"><a href="#hutchinsons-trick-trace-estimation">12. Hutchinson’s Trick (Trace Estimation)</a></li><li style="--depth:1"><a href="#likelihood-formulation-backward-integration">13. Likelihood Formulation (Backward Integration)</a></li><li style="--depth:1"><a href="#adjoint-method-for-gradients">14. Adjoint Method for Gradients</a></li><li style="--depth:1"><a href="#summary">15. Summary</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

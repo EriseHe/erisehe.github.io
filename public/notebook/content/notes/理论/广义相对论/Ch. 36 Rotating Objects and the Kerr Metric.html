@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 36 Rotating Objects and the Kerr Metric — E.H. Notebook</title>
+<meta name="description" content="1. OverviewWe first study the weak-field spacetime around a slowly rotating, spherically symmetric object. This exposes the characteristic off-diagonal features of the me">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 36 Rotating Objects and the Kerr Metric</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1. Overview" id="overview">1. Overview</h2>
+<p>We first study the <strong>weak-field</strong> spacetime around a <strong>slowly rotating, spherically symmetric object</strong>.<br>
+This exposes the characteristic off-diagonal features of the metric created by rotation.</p>
+<p>Then we use these weak-field insights to motivate an <strong>exact</strong> vacuum solution of the Einstein equation for a rotating compact object: the <strong>Kerr metric</strong>, relevant for rotating stars and black holes.</p>
+<hr>
+<h2 data-original-heading="2. Weak-Field Solution for a Rotating Sphere" id="weak-field-solution-for-a-rotating-sphere">2. Weak-Field Solution for a Rotating Sphere</h2>
+<h3 data-original-heading="2.1 Stationary rotating sphere and metric perturbations" id="stationary-rotating-sphere-and-metric-perturbations">2.1 Stationary rotating sphere and metric perturbations</h3>
+<p>Consider a slowly rotating, spherically symmetric object whose stress-energy tensor is <strong>time-independent</strong>.<br>
+Such an object is called <strong>stationary</strong>.</p>
+<p>In this case:</p>
+<ul>
+<li>The metric perturbations <span class="math inline">\(h^{\mu\nu}\)</span> are time-independent<br>
+</li>
+<li>Retardation effects from light-travel time can be neglected</li>
+</ul>
+<p>From equations 35.6 of the previous chapter, the non-negligible components of the perturbation are</p>
+<p><span class="math display">\[
+h^{tt}(\vec R)
+= h^{xx}(\vec R)
+= h^{yy}(\vec R)
+= h^{zz}(\vec R)
+= 2G\int_{\text{src}}
+\frac{\rho_0(r)}{|\vec R-\vec r|}\,dV
+\tag{36.1a}
+\]</span> <span class="math display">\[
+h^{ti}(\vec R)
+= h^{it}(\vec R)
+= 4G\int_{\text{src}}
+\frac{\rho_0(r)\,v^i(\vec r)}{|\vec R-\vec r|}\,dV,
+\qquad\text{other }h^{\mu\nu}\approx 0
+\tag{36.1b}
+\]</span></p>
+<p>Here</p>
+<ul>
+<li><span class="math inline">\(\vec R\)</span> is the field point where the metric is evaluated<br>
+</li>
+<li><span class="math inline">\(\vec r\)</span> is the source point inside the object<br>
+</li>
+<li><span class="math inline">\(\rho_0\)</span> is the (time-independent) mass density<br>
+</li>
+<li><span class="math inline">\(\vec v\)</span> is the fluid velocity inside the object</li>
+</ul>
+<h3 data-original-heading="2.2 The scalar part h^{tt}" id="the-scalar-part-htt">2.2 The scalar part <span class="math inline">\(h^{tt}\)</span></h3>
+<p>The integral (36.1a) is the same as for a <strong>non-rotating</strong> spherical object and is analogous (aside from constants) to the electrostatic potential of a spherical charge distribution.<br>
+Therefore, without further calculation, we know</p>
+<p><span class="math display">\[
+h^{tt}(\vec R)
+= h^{xx}(\vec R)
+= h^{yy}(\vec R)
+= h^{zz}(\vec R)
+= \frac{2GM}{R}
+\tag{36.2}
+\]</span></p>
+<p>where <span class="math inline">\(M\)</span> is the total mass of the object and <span class="math inline">\(R\equiv|\vec R|\)</span>.</p>
+<h3 data-original-heading="2.3 Rigid rotation and angular momentum" id="rigid-rotation-and-angular-momentum">2.3 Rigid rotation and angular momentum</h3>
+<p>The integral in (36.1b) is more involved.<br>
+Assume the object rotates <strong>rigidly</strong> with angular velocity vector <span class="math inline">\(\vec\Omega\)</span>, so that</p>
+<p><span class="math display">\[
+\vec v(\vec r) = \vec\Omega\times\vec r
+\]</span></p>
+<p>Choose coordinates such that</p>
+<ul>
+<li>the center of mass is at the origin, and<br>
+</li>
+<li><span class="math inline">\(\vec\Omega\)</span> points along the <span class="math inline">\(+z\)</span> axis</li>
+</ul>
+<p>Then the components of the velocity are</p>
+<p><span class="math display">\[
+v^x = -\Omega y,
+\qquad
+v^y = \Omega x,
+\qquad
+v^z = 0
+\tag{36.3}
+\]</span></p>
+<p>The total spin angular momentum <span class="math inline">\(\vec S\)</span> of the object is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\vec S
+&amp;= I\vec\Omega
+= \vec\Omega\int_{\text{src}}\rho_0 r_\perp^2\,dV \\[4pt]
+&amp;= \vec\Omega\int_{\text{src}}\rho_0(x^2 + y^2)\,dV
+\end{aligned}
+\tag{36.4}
+\]</span></p>
+<p>where <span class="math inline">\(I\)</span> is the moment of inertia and <span class="math inline">\(r_\perp\)</span> is the distance from the rotation axis.</p>
+<h3 data-original-heading="2.4 Multipole expansion of the potential kernel" id="multipole-expansion-of-the-potential-kernel">2.4 Multipole expansion of the potential kernel</h3>
+<p>To evaluate the integrals in (36.1b), expand the factor <span class="math inline">\(|\vec R-\vec r|^{-1}\)</span> in powers of <span class="math inline">\(r/R\)</span>:</p>
+<p><span class="math display">\[
+\frac{1}{|\vec R-\vec r|}
+=
+\frac{1}{R}
++
+\frac{\vec R\cdot\vec r}{R^3}
++
+\frac{3(\vec R\cdot\vec r)^2 - R^2r^2}{R^5}
++\cdots
+\tag{36.5}
+\]</span></p>
+<p>At least the first two terms can be justified using the binomial approximation.</p>
+<p>Using (36.3) for <span class="math inline">\(v^x\)</span> and inserting the expansion (36.5) into (36.1b), the integral for <span class="math inline">\(h^{tx}\)</span> becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+h^{tx}(\vec R)
+&amp;= 4G\int_{\text{src}}
+\frac{\rho_0 v^x}{|\vec R-\vec r|}\,dV \\[4pt]
+&amp;= -\frac{4G\Omega}{R}\int_{\text{src}}\rho_0(r)y\,dV
+-\frac{4G\Omega}{R^3}\int_{\text{src}}\rho_0(r)[\vec R\cdot\vec r]\,y\,dV
++\cdots
+\end{aligned}
+\tag{36.6}
+\]</span></p>
+<ul>
+<li><p>The <strong>first integral</strong> is zero because for every volume element at <span class="math inline">\((x,y,z)\)</span> there is another at <span class="math inline">\((x,-y,z)\)</span> with the same density; their contributions cancel in pairs. Equivalently, the first integral is proportional to the <span class="math inline">\(y\)</span>-coordinate of the center of mass, which is at the origin.</p></li>
+<li><p>The <strong>second integral</strong> (after some algebra referred to in box 36.2) evaluates to <span class="math inline">\(-2GSY/R^3\)</span> where <span class="math inline">\(\vec R = [X,Y,Z]\)</span>.</p></li>
+</ul>
+<p>All higher-order terms in the expansion integrate to zero (see box 36.3).<br>
+Repeating the same analysis for <span class="math inline">\(h^{ty}\)</span> gives the analogous result.<br>
+Thus</p>
+<p><span class="math display">\[
+h^{tx}(\vec R) = h^{xt}(\vec R) = -\frac{2GS}{R^3}Y,
+\qquad
+h^{ty}(\vec R) = h^{yt}(\vec R) = \frac{2GS}{R^3}X
+\tag{36.7}
+\]</span></p>
+<h3 data-original-heading="2.5 Metric in Cartesian coordinates" id="metric-in-cartesian-coordinates">2.5 Metric in Cartesian coordinates</h3>
+<p>Recall that <span class="math inline">\(g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}\)</span> and that</p>
+<p><span class="math display">\[
+h_{tx}
+= \eta_{t\alpha}\eta_{x\beta}h^{\alpha\beta}
+= \eta_{tt}\eta_{xx}h^{tx}
+= -h^{tx}
+\]</span></p>
+<p>(similarly <span class="math inline">\(h_{ty} = -h^{ty}\)</span>).<br>
+Using (36.2) and (36.7), the spacetime metric outside a slowly rotating object is</p>
+<p><span class="math display">\[
+\begin{aligned}
+ds^2
+&amp;= -\left(1 - \frac{2GM}{R}\right)dt^2
++ \left(1 + \frac{2GM}{R}\right)(dX^2 + dY^2 + dZ^2) \\[4pt]
+&amp;\quad
+- \frac{4GS}{R^3}(X\,dY - Y\,dX)\,dt
+\end{aligned}
+\tag{36.8}
+\]</span></p>
+<p>The last term, linear in the rotation <span class="math inline">\(S\)</span>, is the <strong>gravitomagnetic</strong> effect of the spinning mass.</p>
+<h3 data-original-heading="2.6 Metric in spherical coordinates" id="metric-in-spherical-coordinates">2.6 Metric in spherical coordinates</h3>
+<p>Introduce spherical-like coordinates <span class="math inline">\((R,\theta,\phi)\)</span>:</p>
+<p><span class="math display">\[
+X = R\sin\theta\cos\phi,
+\qquad
+Y = R\sin\theta\sin\phi,
+\qquad
+Z = R\cos\theta
+\tag{36.9}
+\]</span></p>
+<p>Then (using the coordinate relations discussed in box 36.4) the metric becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+ds^2
+&amp;= -\left(1 - \frac{2GM}{R}\right)dt^2
++ \left(1 + \frac{2GM}{R}\right)
+\left(dR^2 + R^2 d\theta^2 + R^2\sin^2\theta\,d\phi^2\right) \\[4pt]
+&amp;\quad
+- \frac{4GMa}{R}\sin^2\theta\,d\phi\,dt
+\end{aligned}
+\tag{36.10}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+a \equiv \frac{S}{M}
+\]</span></p>
+<p>is the object’s <strong>angular momentum per unit mass</strong>.</p>
+<div class="math-theorem definition" data-label="36.1" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 36.1</span><span class="theorem-title">Weak-field rotating-sphere metric</span></p>
+</div>
+<div class="theorem-content">
+<p>Equation (36.10) is the weak-field metric around a slowly rotating spherical object, accurate to first order in <span class="math inline">\(2GM/R\)</span>, plus an off-diagonal <span class="math inline">\(d\phi\,dt\)</span> term determined by the spin <span class="math inline">\(S\)</span>.</p>
+</div>
+</div>
+<p>This metric is suitable for slowly rotating planets and ordinary stars, but we need an <strong>exact</strong> vacuum solution for strongly gravitating rotating bodies such as black holes or neutron stars.</p>
+<hr>
+<h2 data-original-heading="3. Towards the Kerr Solution" id="towards-the-kerr-solution">3. Towards the Kerr Solution</h2>
+<h3 data-original-heading="3.1 Desired properties of the exact solution" id="desired-properties-of-the-exact-solution">3.1 Desired properties of the exact solution</h3>
+<p>We seek a vacuum spacetime outside a <strong>stationary compact object</strong> that is completely surrounded by empty space and has:</p>
+<ol type="1">
+<li>Asymptotic flatness: the metric reduces to the flat-space spherical form as <span class="math inline">\(r\to\infty\)</span>.<br>
+</li>
+<li>Time independence.<br>
+</li>
+<li>Axial symmetry: there is a preferred axis, and the metric is independent of the azimuthal angle <span class="math inline">\(\phi\)</span> when the symmetry axis is chosen appropriately.</li>
+</ol>
+<h3 data-original-heading="3.2 Stationary axisymmetric ansatz" id="stationary-axisymmetric-ansatz">3.2 Stationary axisymmetric ansatz</h3>
+<p>We therefore look for metrics of the form</p>
+<p><span class="math display">\[
+ds^2
+=
+g_{tt}dt^2
++
+g_{rr}dr^2
++
+g_{\theta\theta}d\theta^2
++
+g_{\phi\phi}d\phi^2
++
+2g_{t\phi}dt\,d\phi
+\tag{36.11}
+\]</span></p>
+<p>where <span class="math inline">\(g_{tt},g_{rr},g_{\theta\theta},g_{\phi\phi},g_{t\phi}\)</span> depend only on <span class="math inline">\(r\)</span> and <span class="math inline">\(\theta\)</span>.</p>
+<p>This differs from the Schwarzschild trial metric in two ways:</p>
+<ol type="1">
+<li>We do <strong>not</strong> assume <span class="math inline">\(g_{\theta\theta} = r^2\)</span> and <span class="math inline">\(g_{\phi\phi} = r^2\sin^2\theta\)</span>, because constant-<span class="math inline">\(t\)</span> slices need not be spherically symmetric.<br>
+</li>
+<li>We allow an off-diagonal term <span class="math inline">\(g_{t\phi}\)</span>, i.e.&nbsp;<span class="math inline">\(dt\,d\phi\)</span>, consistent with what we already saw in the weak-field metric (36.10).</li>
+</ol>
+<p>The <span class="math inline">\(dt\,d\phi\)</span> term has a physical interpretation: in an axisymmetric rotating spacetime, whether <span class="math inline">\(d\phi\)</span> between events is “with” or “against” the rotation can depend on the sign of <span class="math inline">\(dt\)</span>. If we reverse time in a movie of the rotation, the sense of <span class="math inline">\(d\phi\)</span> reverses as well, making a <span class="math inline">\(dt\,d\phi\)</span> term natural. Other off-diagonal terms (like <span class="math inline">\(dr\,dt\)</span>) would not have such a clear meaning, so we focus on the form (36.11).</p>
+<p>If necessary, additional terms could be added later.</p>
+<hr>
+<h2 data-original-heading="4. The Kerr Metric" id="the-kerr-metric">4. The Kerr Metric</h2>
+<h3 data-original-heading="4.1 Statement of the solution" id="statement-of-the-solution">4.1 Statement of the solution</h3>
+<p>Solving the Einstein equation with the ansatz (36.11) is technically difficult: the metric is not diagonal, and one must work directly with the Ricci tensor and the full nonlinear equations.</p>
+<p>However, one can show (after considerable effort) that there exists a solution satisfying the desired criteria:</p>
+<p><span class="math display">\[
+\begin{aligned}
+ds^2
+&amp;= -
+\left(1 - \frac{2GMr}{r^2 + a^2\cos^2\theta}\right)dt^2
++
+\left(\frac{r^2 + a^2\cos^2\theta}{r^2 - 2GMr + a^2}\right)dr^2
++
+(r^2 + a^2\cos^2\theta)d\theta^2 \\[4pt]
+&amp;\quad
++
+\left(
+r^2 + a^2
++
+\frac{2GMra^2\sin^2\theta}{r^2 + a^2\cos^2\theta}
+\right)\sin^2\theta\,d\phi^2
+-
+\left(
+\frac{4GMra\sin^2\theta}{r^2 + a^2\cos^2\theta}
+\right)dt\,d\phi
+\end{aligned}
+\tag{36.12}
+\]</span></p>
+<div class="math-theorem definition" data-label="36.2" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 36.2</span><span class="theorem-title">Kerr metric</span></p>
+</div>
+<div class="theorem-content">
+<p>Equation (36.12) is the <strong>Kerr geometry</strong> in <strong>Boyer–Lindquist coordinates</strong>.<br>
+For simplicity, we call this the <strong>Kerr metric</strong>, and the coordinates <span class="math inline">\((t,r,\theta,\phi)\)</span> the <strong>Kerr coordinate system</strong>.</p>
+</div>
+</div>
+<p>The parameters <span class="math inline">\(GM\)</span> and <span class="math inline">\(a\)</span> are integration constants with dimensions of length. They can be measured observationally from the motion of particles in the spacetime.</p>
+<h3 data-original-heading="4.2 Properties and limits" id="properties-and-limits">4.2 Properties and limits</h3>
+<p>Some key points:</p>
+<ol type="1">
+<li>If <span class="math inline">\(a=0\)</span>, the solution reduces to the <strong>Schwarzschild</strong> solution.<br>
+</li>
+<li>We therefore interpret <span class="math inline">\(M\)</span> as the object’s mass, just as in the Schwarzschild case.<br>
+</li>
+<li>The parameter <span class="math inline">\(a\)</span> must encode information about the object’s rotation; indeed, in the weak-field limit we already had <span class="math inline">\(a = S/M\)</span>.<br>
+</li>
+<li>In the regime <span class="math inline">\(r\gg a\)</span>, keeping only first order in <span class="math inline">\(2GMr\)</span>, the Kerr metric reduces to the weak-field rotating-sphere metric (36.10) (details in box 36.5). Hence we interpret <span class="math display">\[
+a = \frac{S}{M}
+\]</span> as the angular momentum per unit mass of the source.</li>
+</ol>
+<hr>
+<h2 data-original-heading="5. The Importance of the Kerr Solution" id="the-importance-of-the-kerr-solution">5. The Importance of the Kerr Solution</h2>
+<p>The Kerr solution is central to astrophysics for several reasons. Why Kerr matters?</p>
+<ol type="1">
+<li><p><strong>Exact rotating vacuum solution</strong><br>
+&gt; The Kerr metric is an exact solution of the <strong>empty-space</strong> Einstein equation and therefore describes the spacetime outside any arbitrarily massive, compact rotating object (including black holes), provided the exterior is vacuum.</p></li>
+<li><p><strong>Uniqueness for axially symmetric objects</strong><br>
+&gt; Just as the Schwarzschild geometry gives the unique spacetime outside any <strong>spherically symmetric</strong> non-charged object (for a given coordinate system), the Kerr geometry gives the unique spacetime outside any <strong>axially symmetric</strong>, time-independent compact object whose spacetime is asymptotically flat (again, assuming no electric charge).</p></li>
+<li><p><strong>Only possible exterior for uncharged rotating black holes</strong><br>
+&gt; For gravitational collapse of an <strong>uncharged</strong> mass distribution, any non-spherical complexities in the gravitational field are radiated away as gravitational waves, leaving behind a Kerr geometry. If the angular momentum of the collapsing matter is exactly zero, the limiting geometry is Schwarzschild, which is simply the Kerr solution with <span class="math inline">\(a=0\)</span>.</p></li>
+<li><p><strong>Astrophysical expectation: <span class="math inline">\(a\approx GM\)</span></strong><br>
+&gt; Realistic objects that might collapse to black holes almost certainly have non-zero angular momentum. Arguments (for example Bardeen, <em>Nature</em> <strong>226</strong>, 1970) indicate that many black holes formed by plausible processes will have <span class="math inline">\(a\approx GM\)</span>.</p></li>
+<li><p><strong>Upper bound <span class="math inline">\(a&lt;GM\)</span> for black-hole formation</strong><br>
+&gt; It is strongly believed that a black hole will not form if <span class="math inline">\(a\ge GM\)</span>: too much angular momentum causes the collapsing object to spin off mass. Thus astrophysical black holes formed by collapse will almost certainly satisfy <span class="math inline">\(a\approx GM\)</span> but not exceed <span class="math inline">\(GM\)</span>.</p></li>
+<li><p><strong>Galactic centers and quasars</strong><br>
+&gt; Observations suggest that massive black holes reside at the centers of essentially all galaxies, and that accretion disks around these black holes power quasars. Understanding such systems requires understanding Kerr geometry.</p></li>
+</ol>
+<p>Therefore, there are strong astrophysical motivations to study the Kerr solution in depth: it is not just a beautiful exact metric, but the <strong>realistic</strong> spacetime around rotating black holes throughout the universe.</p>
+<p>Alright, let’s do a clean, textbook-style solution to Problem 3, with all the algebra actually shown and notation matching the Schwarzschild chapter.</p>
+<p>We use the Schwarzschild metric (your eq. (23.19)):</p>
+<p>$$ ds^2 = -(1-)dt^2</p>
+<ul>
+<li>(1-)<sup>{-1}dr</sup>2</li>
+<li>r<sup>2(d</sup>2+<sup>2,d</sup>2) $$</li>
+</ul>
+<p>We set <span class="math inline">\(c=1\)</span> as in the notes.</p>
+<hr>
+<h2 data-original-heading="Problem 3(a): Radial ingoing photon, t as a function of r" id="problem-3a-radial-ingoing-photon-t-as-a-function-of-r">6 Problem 3(a): Radial ingoing photon, <span class="math inline">\(t\)</span> as a function of <span class="math inline">\(r\)</span></h2>
+<p>For a <em>radial</em> photon:</p>
+<ul>
+<li><span class="math inline">\(d\theta = 0\)</span></li>
+<li><span class="math inline">\(d\phi = 0\)</span></li>
+<li><span class="math inline">\(ds^2 = 0\)</span> (null geodesic)</li>
+</ul>
+<p>So the line element reduces to</p>
+<p>$$ 0 = -(1-)dt^2</p>
+<ul>
+<li>(1-)<sup>{-1}dr</sup>2 $$</li>
+</ul>
+<p>Solve for <span class="math inline">\(dt/dr\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left(1-\frac{2GM}{r}\right)dt^2
+&amp;= \left(1-\frac{2GM}{r}\right)^{-1}dr^2 [4pt]
+dt^2
+&amp;= \left(1-\frac{2GM}{r}\right)^{-2}dr^2 [4pt]
+\frac{dt}{dr}
+&amp;= \pm\left(1-\frac{2GM}{r}\right)^{-1}
+\end{aligned}
+\]</span></p>
+<ul>
+<li>For an <strong>outgoing</strong> photon, <span class="math inline">\(r\)</span> increases with <span class="math inline">\(t\)</span> so <span class="math inline">\(dt/dr &gt; 0\)</span> (plus sign).</li>
+<li>For an <strong>ingoing</strong> photon, <span class="math inline">\(r\)</span> decreases as <span class="math inline">\(t\)</span> increases, so <span class="math inline">\(dt/dr &lt; 0\)</span> (minus sign).</li>
+</ul>
+<p>Thus for the ingoing photon we take</p>
+<p><span class="math display">\[
+\frac{dt}{dr}
+= -\left(1-\frac{2GM}{r}\right)^{-1}
+\]</span></p>
+<p>Now integrate. First rewrite the integrand:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{dt}{dr}
+&amp;= -\frac{1}{1-\frac{2GM}{r}}
+= -\frac{r}{r-2GM} [4pt]
+&amp;= -\left(1 + \frac{2GM}{r-2GM}\right)
+\end{aligned}
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\begin{aligned}
+t(r)
+&amp;= -\int\left(1 + \frac{2GM}{r-2GM}\right)dr + C [4pt]
+&amp;= -\left[
+r + 2GM\ln|r-2GM|
+\right] + C
+\end{aligned}
+\]</span></p>
+<p>So along an ingoing radial null geodesic we can write</p>
+<p><span class="math display">\[
+\boxed{
+t + r + 2GM\ln|r-2GM| = \text{constant}
+}
+\]</span></p>
+<p>For the exterior region <span class="math inline">\(r&gt;2GM\)</span> we can drop the absolute value.</p>
+<hr>
+<h2 data-original-heading="Problem 3(b): Straight 45° line in (\bar t, r) coordinates" id="problem-3b-straight-45-line-in-bar-t-r-coordinates">7 Problem 3(b): Straight 45° line in <span class="math inline">\((\bar t, r)\)</span> coordinates</h2>
+<p>Define the new time coordinate as in the problem:</p>
+<p><span class="math display">\[
+\boxed{
+\bar t \equiv t + 2GM\ln(r-2GM)
+}
+\]</span></p>
+<p>This is a <em>coordinate transformation</em>; <span class="math inline">\(r,\theta,\phi\)</span> are left unchanged.</p>
+<p>Now evaluate <span class="math inline">\(\bar t\)</span> along the ingoing photon worldline we just found. From part (a),</p>
+<p><span class="math display">\[
+t(r) = -r - 2GM\ln(r-2GM) + C
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+\begin{aligned}
+\bar t
+&amp;= t + 2GM\ln(r-2GM) [4pt]
+&amp;= \big[-r - 2GM\ln(r-2GM)+C\big]
++ 2GM\ln(r-2GM) [4pt]
+&amp;= -r + C
+\end{aligned}
+\]</span></p>
+<p>Thus the ingoing photon satisfies</p>
+<p><span class="math display">\[
+\boxed{
+\bar t + r = C
+}
+\]</span></p>
+<p>In the <span class="math inline">\((\bar t,r)\)</span>-plane, this is a straight line with slope</p>
+<p><span class="math display">\[
+\frac{d\bar t}{dr}=-1
+\]</span></p>
+<p>If we draw <span class="math inline">\(r\)</span> horizontally and <span class="math inline">\(\bar t\)</span> vertically, lines with <span class="math inline">\(|d\bar t/dr|=1\)</span> are at 45° to the axes. So this shows exactly what the problem asked:</p>
+<blockquote>
+<p>In the <span class="math inline">\((\bar t,r)\)</span> coordinates, a radially ingoing photon follows a straight line at 45° relative to the <span class="math inline">\(r\)</span>-axis.</p>
+</blockquote>
+<p>You can also check directly that these are null in the new metric (see below), but the coordinate-transformation argument is enough.</p>
+<hr>
+<h2 data-original-heading="Problem 3(c): Schwarzschild metric in ingoing Eddington–Finkelstein coordinates" id="problem-3c-schwarzschild-metric-in-ingoing-eddingtonfinkelstein-coordinates">8 Problem 3(c): Schwarzschild metric in ingoing Eddington–Finkelstein coordinates</h2>
+<p>We now rewrite the Schwarzschild metric in terms of <span class="math inline">\((\bar t,r,\theta,\phi)\)</span>.</p>
+<p>From the definition</p>
+<p><span class="math display">\[
+\bar t = t + 2GM\ln(r-2GM)
+\]</span></p>
+<p>we get</p>
+<p><span class="math display">\[
+d\bar t = dt + \frac{2GM}{r-2GM}dr
+\quad\Rightarrow\quad
+dt = d\bar t - \frac{2GM}{r-2GM}dr
+\]</span></p>
+<p>Substitute into</p>
+<p>$$ ds^2 = -(1-)dt^2</p>
+<ul>
+<li>(1-)<sup>{-1}dr</sup>2</li>
+<li>r<sup>2(d</sup>2+<sup>2,d</sup>2) $$</li>
+</ul>
+<p>Let</p>
+<p><span class="math display">\[
+F \equiv 1-\frac{2GM}{r}
+\]</span></p>
+<p>Then</p>
+$$
+<span class="math display">\[\begin{aligned}
+dt
+&amp;= d\bar t - \frac{2GM}{r-2GM}dr [4pt]
+dt^2
+&amp;= d\bar t^{,2}
+
+* 2\frac{2GM}{r-2GM}d\bar t,dr
+
+- \left(\frac{2GM}{r-2GM}\right)^2dr^2
+  \end{aligned}\]</span>
+<p>$$</p>
+<p>Plug in:</p>
+$$
+<span class="math display">\[\begin{aligned}
+ds^2
+&amp;= -F\left[d\bar t^{,2}
+
+* 2\frac{2GM}{r-2GM}d\bar t,dr
+
+- \left(\frac{2GM}{r-2GM}\right)^2dr^2\right] [4pt]
+  &amp;\quad + F^{-1}dr^2
+- r^2\left(d\theta^2+\sin^2\theta,d\phi^2\right) [6pt]
+  &amp;= -F,d\bar t^{,2}
+- 2F\frac{2GM}{r-2GM}d\bar t,dr
+  -F\left(\frac{2GM}{r-2GM}\right)^2dr^2
+  +F^{-1}dr^2
+  +r^2d\Omega^2
+  \end{aligned}\]</span>
+<p>$$</p>
+<p>(where <span class="math inline">\(d\Omega^2 \equiv d\theta^2+\sin^2\theta,d\phi^2\)</span>).</p>
+<p>Now simplify the coefficients using <span class="math inline">\(F=(r-2GM)/r\)</span>.</p>
+<hr>
+<h3 data-original-heading="Cross term coefficient" id="cross-term-coefficient">8.1 Cross term coefficient</h3>
+<p>The <span class="math inline">\(d\bar t,dr\)</span> term has coefficient</p>
+<p><span class="math display">\[
+2F\frac{2GM}{r-2GM}
+= \frac{4GMF}{r-2GM}
+= \frac{4GM}{r}
+\]</span></p>
+<p>since <span class="math inline">\(F/(r-2GM) = (r-2GM)/r \cdot 1/(r-2GM) = 1/r\)</span>.</p>
+<p>So the cross term is</p>
+<p><span class="math display">\[
+\frac{4GM}{r},d\bar t,dr
+\]</span></p>
+<hr>
+<h3 data-original-heading="dr^2 coefficient" id="dr2-coefficient">8.2 <span class="math inline">\(dr^2\)</span> coefficient</h3>
+<p>The <span class="math inline">\(dr^2\)</span> coefficient comes from</p>
+<p>$$ -F()^2</p>
+<ul>
+<li>F^{-1} $$</li>
+</ul>
+<p>Compute each:</p>
+<p><span class="math display">\[
+\begin{aligned}
+-F\left(\frac{2GM}{r-2GM}\right)^2
+&amp;= -\frac{r-2GM}{r}\cdot\frac{4G^2M^2}{(r-2GM)^2} [4pt]
+&amp;= -\frac{4G^2M^2}{r(r-2GM)}
+\end{aligned}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+F^{-1} = \frac{1}{1-\frac{2GM}{r}} = \frac{r}{r-2GM}
+\]</span></p>
+<p>Add them:</p>
+$$
+<span class="math display">\[\begin{aligned}
+F^{-1}
+
+* F\left(\frac{2GM}{r-2GM}\right)^2
+  &amp;= \frac{r}{r-2GM}
+
+  * \frac{4G^2M^2}{r(r-2GM)} [4pt]
+    &amp;= \frac{1}{r-2GM}\left(r - \frac{4G^2M^2}{r}\right) [4pt]
+    &amp;= \frac{1}{r-2GM}\cdot\frac{r^2 - 4G^2M^2}{r} [4pt]
+    &amp;= \frac{1}{r-2GM}\cdot\frac{(r-2GM)(r+2GM)}{r} [4pt]
+    &amp;= \frac{r+2GM}{r}
+    = 1 + \frac{2GM}{r}
+    \end{aligned}\]</span>
+<p>$$</p>
+<p>So the <span class="math inline">\(dr^2\)</span> coefficient is <span class="math inline">\((1 + 2GM/r)\)</span>.</p>
+<hr>
+<h3 data-original-heading="Final form of the metric" id="final-form-of-the-metric">8.3 Final form of the metric</h3>
+<p>Collecting everything:</p>
+<p>$$ end{aligned} } $$</p>
+<p>This is the Schwarzschild metric in the ingoing Eddington–Finkelstein–type coordinates <span class="math inline">\((\bar t,r,\theta,\phi)\)</span> defined by your problem.</p>
+<hr>
+<h3 data-original-heading="Regularity at r=2GM" id="regularity-at-r2gm">8.4 Regularity at <span class="math inline">\(r=2GM\)</span></h3>
+<p>Check the metric coefficients at <span class="math inline">\(r=2GM\)</span>:</p>
+<ul>
+<li><p>Coefficient of <span class="math inline">\(d\bar t^{,2}\)</span>:</p>
+<p><span class="math display">\[
+-\left(1-\frac{2GM}{r}\right) \to 0
+\]</span></p></li>
+<li><p>Coefficient of <span class="math inline">\(d\bar t,dr\)</span>:</p>
+<p><span class="math display">\[
+\frac{4GM}{r} \to \frac{4GM}{2GM} = 2
+\]</span></p></li>
+<li><p>Coefficient of <span class="math inline">\(dr^2\)</span>:</p>
+<p><span class="math display">\[
+1+\frac{2GM}{r} \to 1+1 = 2
+\]</span></p></li>
+<li><p>Angular part:</p>
+<p><span class="math display">\[
+r^2 d\Omega^2 \to (2GM)^2 d\Omega^2
+\]</span></p></li>
+</ul>
+<p>All coefficients are <strong>finite</strong> and smooth at <span class="math inline">\(r=2GM\)</span>. There is no divergence like the <span class="math inline">\(g_{rr}\sim (1-2GM/r)^{-1}\)</span> we had in the original Schwarzschild coordinates. So the metric is well-behaved at the horizon in these coordinates.</p>
+<hr>
+<h3 data-original-heading="Null geodesics and light cones in (\bar t,r)" id="null-geodesics-and-light-cones-in-bar-tr">8.5 Null geodesics and light cones in <span class="math inline">\((\bar t,r)\)</span></h3>
+<p>Still in <span class="math inline">\((\bar t,r,\theta,\phi)\)</span>, consider radial motion (<span class="math inline">\(d\theta=d\phi=0\)</span>). The line element is</p>
+<p>$$ ds^2 = -(1-)dt^{,2}</p>
+<ul>
+<li>dt,dr</li>
+<li>(1+)dr^2 $$</li>
+</ul>
+<h4 data-original-heading="Ingoing null geodesics" id="ingoing-null-geodesics">8.5.1 Ingoing null geodesics</h4>
+<p>Take the ingoing family we already found:</p>
+<p><span class="math display">\[
+\bar t + r = \text{constant}
+\quad\Rightarrow\quad
+d\bar t = -dr
+\]</span></p>
+<p>Plug that into <span class="math inline">\(ds^2\)</span>:</p>
+$$
+<span class="math display">\[\begin{aligned}
+ds^2_{\text{radial}}
+&amp;= -\left(1-\frac{2GM}{r}\right)(-dr)^2
+
+* \frac{4GM}{r}(-dr),dr
+* \left(1+\frac{2GM}{r}\right)dr^2 [4pt]
+  &amp;= -\left(1-\frac{2GM}{r}\right)dr^2
+  -\frac{4GM}{r}dr^2
+  +\left(1+\frac{2GM}{r}\right)dr^2 [4pt]
+  &amp;= \Big[-1 + \frac{2GM}{r} - \frac{4GM}{r} + 1 + \frac{2GM}{r}\Big]dr^2 [4pt]
+  &amp;= 0
+  \end{aligned}\]</span>
+<p>$$</p>
+<p>So indeed these straight 45° lines <span class="math inline">\(\bar t + r = \text{const}\)</span> are <strong>null</strong> in the new metric.</p>
+<h4 data-original-heading="Outgoing null geodesics and light cones" id="outgoing-null-geodesics-and-light-cones">8.5.2 Outgoing null geodesics and light cones</h4>
+<p>For general radial null directions, set <span class="math inline">\(ds^2=0\)</span> and <span class="math inline">\(d\theta=d\phi=0\)</span>:</p>
+<p>$$ -(1-)dt^{,2}</p>
+<ul>
+<li>dt,dr</li>
+<li>(1+)dr^2 = 0 $$</li>
+</ul>
+<p>Divide by <span class="math inline">\(d\bar t^{,2}\)</span> and define <span class="math inline">\(u \equiv dr/d\bar t\)</span>:</p>
+<p>$$ -(1-)</p>
+<ul>
+<li>u</li>
+<li>(1+)u^2 = 0 $$</li>
+</ul>
+<p>This is a quadratic equation for <span class="math inline">\(u\)</span>:</p>
+<p>$$ (1+)u^2</p>
+<ul>
+<li><p>u</p></li>
+<li><p>(1-) = 0 $$</p></li>
+</ul>
+<p>Its two roots correspond to:</p>
+<ul>
+<li>The ingoing branch <span class="math inline">\(u=-1\)</span> we already know.</li>
+<li>The outgoing branch, with a different slope <span class="math inline">\(u = dr/d\bar t\)</span> that changes with <span class="math inline">\(r\)</span>.</li>
+</ul>
+<p>If you examine these roots:</p>
+<ul>
+<li>For <span class="math inline">\(r&gt;2GM\)</span>, one root has <span class="math inline">\(u&lt;0\)</span> (ingoing), the other has <span class="math inline">\(u&gt;0\)</span> (outgoing): light cones open around the timelike direction and you can still escape outward.</li>
+<li>At <span class="math inline">\(r=2GM\)</span>, the outgoing branch has <span class="math inline">\(u=0\)</span> (the outgoing null ray becomes tangent to the horizon: <span class="math inline">\(r=\text{constant}\)</span>), while the ingoing branch stays <span class="math inline">\(u=-1\)</span> and crosses inward.</li>
+<li>For <span class="math inline">\(r&lt;2GM\)</span>, <em>both</em> null directions have <span class="math inline">\(u&lt;0\)</span>: even light cannot increase its <span class="math inline">\(r\)</span>-coordinate; all future-directed null and timelike trajectories move to smaller <span class="math inline">\(r\)</span>.</li>
+</ul>
+<p>So in a spacetime diagram with <span class="math inline">\(\bar t\)</span> vertical and <span class="math inline">\(r\)</span> horizontal:</p>
+<ul>
+<li><p><strong>Ingoing null lines</strong> are straight 45° lines slanting down (to smaller <span class="math inline">\(r\)</span>) with slope <span class="math inline">\(d\bar t/dr=-1\)</span>.</p></li>
+<li><p><strong>Outgoing null lines</strong>:</p>
+<ul>
+<li>outside the horizon tilt outward,</li>
+<li>become horizontal at <span class="math inline">\(r=2GM\)</span>,</li>
+<li>and tilt inward (toward smaller <span class="math inline">\(r\)</span>) inside the horizon.</li>
+</ul></li>
+</ul>
+<p>The associated light cones tilt more and more “inward” as you approach and cross <span class="math inline">\(r=2GM\)</span>, and inside the horizon all future-directed light cones point toward decreasing <span class="math inline">\(r\)</span>, signaling inevitable collapse toward <span class="math inline">\(r=0\)</span>.</p>
+<p>That’s exactly why these ingoing Eddington–Finkelstein coordinates are so nice: the metric is regular at the horizon, the ingoing photons are straight 45° lines, and the light-cone structure makes the one-way nature of the horizon visually obvious.</p>
+<p>Nice finale: “will cosmic rays eat the Earth via tiny black holes?” Let’s kill that anxiety with math.</p>
+<p>I’ll keep the notation consistent with the book: <span class="math inline">\(M\)</span> for black–hole mass, <span class="math inline">\(G,\hbar,c\)</span> as usual.</p>
+<hr>
+<h2 data-original-heading="Step 1 – Convert the cosmic ray energy to a black hole mass" id="step-1-convert-the-cosmic-ray-energy-to-a-black-hole-mass">9 Step 1 – Convert the cosmic ray energy to a black hole mass</h2>
+<p>We’re told a cosmic-ray proton has energy <span class="math display">\[
+E \sim 3\times 10^{20},\mathrm{eV}
+\]</span></p>
+<p>Convert to joules (using <span class="math inline">\(1,\mathrm{eV} \approx 1.6\times10^{-19},\mathrm{J}\)</span>): <span class="math display">\[
+\begin{aligned}
+E
+&amp;\approx 3\times10^{20},\mathrm{eV}\times 1.6\times10^{-19},\frac{\mathrm{J}}{\mathrm{eV}} [4pt]
+&amp;\approx 4.8\times10^{1},\mathrm{J} \
+&amp;\sim 50,\mathrm{J}
+\end{aligned}
+\]</span></p>
+<p>If <em>all</em> this energy is converted into a tiny black hole, its mass is <span class="math display">\[
+M = \frac{E}{c^2}
+\]</span> with <span class="math inline">\(c\approx 3\times10^8\ \mathrm{m/s}\)</span>, so <span class="math inline">\(c^2\approx 9\times10^{16}\ \mathrm{m^2/s^2}\)</span>.</p>
+<p>Thus <span class="math display">\[
+\begin{aligned}
+M
+&amp;\approx \frac{50\ \mathrm{J}}{9\times10^{16}\ \mathrm{J/kg}} [4pt]
+&amp;\approx 5.6\times10^{-16}\ \mathrm{kg}
+\end{aligned}
+\]</span></p>
+<p>We can round to <span class="math display">\[
+\boxed{M \sim 5\times10^{-16}\ \mathrm{kg}}
+\]</span></p>
+<p>This is <em>absurdly</em> tiny: much smaller than a grain of dust, smaller than a proton by a factor of <span class="math inline">\(\sim10^{12}\)</span> in mass.</p>
+<hr>
+<h2 data-original-heading="Step 2 – Hawking evaporation time for a black hole of mass M" id="step-2-hawking-evaporation-time-for-a-black-hole-of-mass-m">10 Step 2 – Hawking evaporation time for a black hole of mass <span class="math inline">\(M\)</span></h2>
+<p>Here I have to be explicit about one thing: The excerpt of chapter 39 you pasted is about Kerr, Penrose processes, etc., and does <strong>not</strong> include the Hawking–evaporation formula. To proceed, I’ll use the standard Hawking lifetime expression</p>
+<p><span class="math display">\[
+\boxed{
+t_{\text{evap}} = \frac{5120,\pi,G^2 M^3}{\hbar c^4}
+}
+\]</span></p>
+<p>which is the usual GR/Hawking result (and is what essentially every GR text uses, possibly with the same or very similar numerical prefactor). If your book gives an approximate version like <span class="math display">\[
+t_{\text{evap}} \approx K,M^3
+\]</span> with some rounded <span class="math inline">\(K\)</span>, you’ll get the same <em>order of magnitude</em> answer.</p>
+<p>Let’s estimate <span class="math inline">\(t_{\text{evap}}\)</span> for <span class="math inline">\(M\sim 5\times10^{-16}\ \mathrm{kg}\)</span>.</p>
+<p>Use rough values:</p>
+<ul>
+<li><span class="math inline">\(G \approx 6.7\times10^{-11}\ \mathrm{m^3,kg^{-1},s^{-2}}\)</span></li>
+<li><span class="math inline">\(\hbar \approx 1.05\times10^{-34}\ \mathrm{J,s}\)</span></li>
+<li><span class="math inline">\(c \approx 3\times10^8\ \mathrm{m/s}\)</span></li>
+</ul>
+<p>First note that the lifetime scales as <span class="math display">\[
+t_{\text{evap}} \propto M^3
+\]</span></p>
+<p>The prefactor can be summarized as <span class="math display">\[
+t_{\text{evap}} \approx K,M^3,
+\qquad
+K \equiv \frac{5120,\pi,G^2}{\hbar c^4}
+\]</span></p>
+<p>If you plug the constants in, you find numerically <span class="math display">\[
+K \sim 8\times10^{-17}\ \mathrm{s/kg^3}
+\]</span></p>
+<p>So for our mass <span class="math display">\[
+M\sim 5\times10^{-16}\ \mathrm{kg}
+\]</span></p>
+<p>we get <span class="math display">\[
+\begin{aligned}
+t_{\text{evap}}
+&amp;\sim K,M^3 [4pt]
+&amp;\sim 8\times10^{-17}\ \mathrm{s/kg^3}
+\times (5\times10^{-16}\ \mathrm{kg})^3 [4pt]
+&amp;= 8\times10^{-17}\ \mathrm{s}
+\times 125\times10^{-48} [4pt]
+&amp;\sim 10^{-16}\times10^{-46}\ \mathrm{s} [4pt]
+&amp;\sim 10^{-62}\ \mathrm{s}
+\end{aligned}
+\]</span></p>
+<p>More carefully, one finds <span class="math display">\[
+\boxed{
+t_{\text{evap}} \sim 10^{-62}\ \mathrm{s}
+}
+\]</span></p>
+<p>That’s not just short; it’s <em>nonsense-level</em> short compared to any physical timescale we normally talk about.</p>
+<p>For comparison, the Planck time is <span class="math inline">\(\sim 10^{-43}\ \mathrm{s}\)</span>, so this is roughly <span class="math inline">\(10^{-19}\)</span> times shorter than even that. The whole semiclassical Hawking formula is being extrapolated into a regime where quantum gravity would dominate, but the key point is: <strong>the lifetime is insanely tiny</strong>, effectively instantaneous on any macroscopic or even microscopic scale.</p>
+<hr>
+<h2 data-original-heading="Step 3 – What does this mean physically?" id="step-3-what-does-this-mean-physically">11 Step 3 – What does this mean physically?</h2>
+<p>We can also look at the Schwarzschild radius: <span class="math display">\[
+r_s = \frac{2GM}{c^2}
+\]</span></p>
+<p>For <span class="math inline">\(M\sim 5\times10^{-16}\ \mathrm{kg}\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+r_s
+&amp;\approx \frac{2\times6.7\times10^{-11}\ \mathrm{m^3/kg,s^2}
+\times5\times10^{-16}\ \mathrm{kg}}
+{9\times10^{16}\ \mathrm{m^2/s^2}} [4pt]
+&amp;\sim \frac{6.7\times10^{-26}}{9\times10^{16}}\ \mathrm{m} [4pt]
+&amp;\sim 7\times10^{-43}\ \mathrm{m}
+\end{aligned}
+\]</span></p>
+<p>This is <em>smaller than the Planck length</em> (<span class="math inline">\(\sim10^{-35}\ \mathrm{m}\)</span>). That’s exactly the regime where the problem statement notes “obviously quantum gravitational effects will become important… but that theory is not yet known.’’</p>
+<p>Even if quantum gravity ultimately modifies the details, one thing is crystal clear:</p>
+<ul>
+<li>Such an object would be <strong>extremely</strong> hot (Hawking temperature <span class="math inline">\(\propto 1/M\)</span> is enormous)</li>
+<li>It radiates its mass–energy away about as fast as you can possibly imagine</li>
+<li>The total energy it can release is <strong>only</strong> the original cosmic ray energy (about <span class="math inline">\(50\ \mathrm{J}\)</span>), which our atmosphere already deals with in the form of high-energy cascades anyway</li>
+</ul>
+<hr>
+<h2 data-original-heading="Step 4 – Should we worry about “mini black holes destroying us all”?" id="step-4-should-we-worry-about-mini-black-holes-destroying-us-all">12 Step 4 – Should we worry about “mini black holes destroying us all”?</h2>
+<p>No.</p>
+<p>Putting it together:</p>
+<ul>
+<li>A cosmic-ray proton with <span class="math inline">\(E\sim 3\times10^{20}\ \mathrm{eV}\)</span> has about <span class="math inline">\(50\ \mathrm{J}\)</span> of energy.</li>
+<li>If that entire energy turned into a black hole, its mass would be <span class="math inline">\(\sim 5\times10^{-16}\ \mathrm{kg}\)</span>.</li>
+<li>Using the standard Hawking evaporation formula, its lifetime is roughly <span class="math display">\[
+t_{\text{evap}} \sim 10^{-62}\ \mathrm{s}
+\]</span> which is <em>far shorter</em> than any meaningful timescale (and even shorter than the Planck time).</li>
+<li>It would radiate away essentially instantly, long before it could interact gravitationally with anything in a “classical” sense.</li>
+</ul>
+<p>We are <em>already</em> constantly bombarded by such high-energy cosmic rays from all directions in the universe, for billions of years. If processes like “cosmic-ray-made mini black holes” had any realistic chance to accumulate or do damage, we would have noticed a long time ago.</p>
+<p>So, in the language of the problem:</p>
+<ul>
+<li><strong>How long would it live?</strong> About <span class="math inline">\(10^{-62}\ \mathrm{s}\)</span> by the standard Hawking estimate — effectively zero.</li>
+<li><strong>Should we worry about a rain of such mini black holes destroying us?</strong> Absolutely not. They would evaporate essentially instantly, and their total energy is only what the original cosmic ray already carried, which the atmosphere and Earth have no trouble handling.</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span>← Previous page</span><span>Ch. 35 Gravitomagnetism</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span>Next page →</span><span>Ch. 37 Kerr Particle Orbits</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 36 Rotating Objects and the Kerr Metric</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#overview" class="is-active" aria-current="location">1. Overview</a></li><li style="--depth:0"><a href="#weak-field-solution-for-a-rotating-sphere">2. Weak-Field Solution for a Rotating Sphere</a></li><li style="--depth:1"><a href="#stationary-rotating-sphere-and-metric-perturbations">2.1 Stationary rotating sphere and metric perturbations</a></li><li style="--depth:1"><a href="#the-scalar-part-htt">2.2 The scalar part h^{tt}</a></li><li style="--depth:1"><a href="#rigid-rotation-and-angular-momentum">2.3 Rigid rotation and angular momentum</a></li><li style="--depth:1"><a href="#multipole-expansion-of-the-potential-kernel">2.4 Multipole expansion of the potential kernel</a></li><li style="--depth:1"><a href="#metric-in-cartesian-coordinates">2.5 Metric in Cartesian coordinates</a></li><li style="--depth:1"><a href="#metric-in-spherical-coordinates">2.6 Metric in spherical coordinates</a></li><li style="--depth:0"><a href="#towards-the-kerr-solution">3. Towards the Kerr Solution</a></li><li style="--depth:1"><a href="#desired-properties-of-the-exact-solution">3.1 Desired properties of the exact solution</a></li><li style="--depth:1"><a href="#stationary-axisymmetric-ansatz">3.2 Stationary axisymmetric ansatz</a></li><li style="--depth:0"><a href="#the-kerr-metric">4. The Kerr Metric</a></li><li style="--depth:1"><a href="#statement-of-the-solution">4.1 Statement of the solution</a></li><li style="--depth:1"><a href="#properties-and-limits">4.2 Properties and limits</a></li><li style="--depth:0"><a href="#the-importance-of-the-kerr-solution">5. The Importance of the Kerr Solution</a></li><li style="--depth:0"><a href="#problem-3a-radial-ingoing-photon-t-as-a-function-of-r">6 Problem 3(a): Radial ingoing photon, t as a function of r</a></li><li style="--depth:0"><a href="#problem-3b-straight-45-line-in-bar-t-r-coordinates">7 Problem 3(b): Straight 45° line in (\bar t, r) coordinates</a></li><li style="--depth:0"><a href="#problem-3c-schwarzschild-metric-in-ingoing-eddingtonfinkelstein-coordinates">8 Problem 3(c): Schwarzschild metric in ingoing Eddington–Finkelstein coordinates</a></li><li style="--depth:1"><a href="#cross-term-coefficient">8.1 Cross term coefficient</a></li><li style="--depth:1"><a href="#dr2-coefficient">8.2 dr^2 coefficient</a></li><li style="--depth:1"><a href="#final-form-of-the-metric">8.3 Final form of the metric</a></li><li style="--depth:1"><a href="#regularity-at-r2gm">8.4 Regularity at r=2GM</a></li><li style="--depth:1"><a href="#null-geodesics-and-light-cones-in-bar-tr">8.5 Null geodesics and light cones in (\bar t,r)</a></li><li style="--depth:2"><a href="#ingoing-null-geodesics">8.5.1 Ingoing null geodesics</a></li><li style="--depth:2"><a href="#outgoing-null-geodesics-and-light-cones">8.5.2 Outgoing null geodesics and light cones</a></li><li style="--depth:0"><a href="#step-1-convert-the-cosmic-ray-energy-to-a-black-hole-mass">9 Step 1 – Convert the cosmic ray energy to a black hole mass</a></li><li style="--depth:0"><a href="#step-2-hawking-evaporation-time-for-a-black-hole-of-mass-m">10 Step 2 – Hawking evaporation time for a black hole of mass M</a></li><li style="--depth:0"><a href="#step-3-what-does-this-mean-physically">11 Step 3 – What does this mean physically?</a></li><li style="--depth:0"><a href="#step-4-should-we-worry-about-mini-black-holes-destroying-us-all">12 Step 4 – Should we worry about “mini black holes destroying us all”?</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

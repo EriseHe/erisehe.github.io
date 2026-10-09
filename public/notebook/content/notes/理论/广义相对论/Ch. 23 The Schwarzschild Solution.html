@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 23 The Schwarzschild Solution — E.H. Notebook</title>
+<meta name="description" content="23.1 Introduction and StrategyWe now apply the Einstein equation to an important exact case: the spacetime outside a spherically symmetric mass. The goal is to derive the">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 23 The Schwarzschild Solution</h1></header><div id="article-body" class="prose"><h2 data-original-heading="23.1 Introduction and Strategy" id="introduction-and-strategy">23.1 Introduction and Strategy</h2>
+<p>We now apply the Einstein equation to an important exact case: the spacetime outside a spherically symmetric mass.<br>
+The goal is to derive the <strong>Schwarzschild metric</strong>.</p>
+<p>General strategy for solving the Einstein equation:</p>
+<ol type="1">
+<li><strong>Choose coordinates</strong> that exploit the symmetries of the source.</li>
+<li><strong>Write a trial metric</strong> with as few undetermined functions as possible.</li>
+<li><strong>Insert the trial metric</strong> into the Einstein equation to obtain coupled differential equations for those functions.</li>
+<li><strong>Solve the differential equations</strong> and fix any integration constants using physical conditions (e.g.&nbsp;Newtonian limit).</li>
+</ol>
+<hr>
+<h2 data-original-heading="23.2 Consequences of Spherical Symmetry" id="consequences-of-spherical-symmetry">23.2 Consequences of Spherical Symmetry</h2>
+<p>Consider the spacetime outside a spherically symmetric source (possibly expanding or contracting).<br>
+“Spherical symmetry’’ means we can foliate spacetime by 2-spheres whose intrinsic geometry is the same as that of the ordinary unit 2-sphere.</p>
+<p>Let <span class="math inline">\((\theta,\phi)\)</span> be standard angular coordinates on each sphere, and let <span class="math inline">\(r\)</span> be a radial coordinate defined so that <span class="math inline">\(2\pi r\)</span> is the circumference of a great circle.<br>
+Then the metric on each 2-sphere is <span class="math display">\[
+ds^2 = r^2(d\theta^2 + \sin^2\theta\, d\phi^2)
+\tag{23.1}
+\]</span></p>
+<p>We require that the polar axis directions be aligned for all spheres so that the polar basis vectors remain perpendicular.<br>
+With this choice, the purely spatial part of the spacetime metric becomes <span class="math display">\[
+ds^2 = g_{rr}\,dr^2 + r^2(d\theta^2 + \sin^2\theta\, d\phi^2)
+\tag{23.2}
+\]</span></p>
+<p>If the full spacetime metric had a mixed term <span class="math inline">\(g_{t\phi}\,dt\,d\phi\)</span>, the geometry would distinguish between <span class="math inline">\(d\phi&gt;0\)</span> and <span class="math inline">\(d\phi&lt;0\)</span>, breaking spherical symmetry.<br>
+By symmetry we can therefore choose coordinates such that <span class="math inline">\(g_{t\phi}=0\)</span>.<br>
+A similar argument eliminates <span class="math inline">\(g_{t\theta}\)</span>.<br>
+Thus the general metric consistent with spherical symmetry can be written as <span class="math display">\[
+ds^2 = g_{tt}\,dt^2 + 2g_{tr}\,dr\,dt + g_{rr}\,dr^2 + r^2(d\theta^2 + \sin^2\theta\, d\phi^2)
+\tag{23.3}
+\]</span></p>
+<hr>
+<h2 data-original-heading="23.3 Choosing a Time Coordinate" id="choosing-a-time-coordinate">23.3 Choosing a Time Coordinate</h2>
+<p>The time coordinate <span class="math inline">\(t\)</span> is still arbitrary. We can use our coordinate freedom to simplify the metric further.</p>
+<p>Consider a coordinate transformation of the form <span class="math display">\[
+t' = t + f(r,t)
+\tag{23.4}
+\]</span> for some function <span class="math inline">\(f(r,t)\)</span>.<br>
+One can show that with a suitable choice of <span class="math inline">\(f(r,t)\)</span>, the off-diagonal component <span class="math inline">\(g'_{tr}\)</span> in the new coordinates can be made zero.</p>
+<p>Since the physics is unchanged by this coordinate choice, we are free to <strong>set <span class="math inline">\(g_{tr}=0\)</span> from the start</strong>, making the metric diagonal.</p>
+<hr>
+<h2 data-original-heading="23.4 The General Spherically Symmetric Metric" id="the-general-spherically-symmetric-metric">23.4 The General Spherically Symmetric Metric</h2>
+<p>Using <span class="math inline">\(t\)</span> and <span class="math inline">\(r\)</span> as above and setting <span class="math inline">\(g_{tr}=0\)</span>, a general spherically symmetric metric takes the form <span class="math display">\[
+ds^2 = -A(r,t)\,dt^2 + B(r,t)\,dr^2 + r^2(d\theta^2 + \sin^2\theta\, d\phi^2)
+\tag{23.5}
+\]</span> where <span class="math inline">\(A(r,t)\)</span> and <span class="math inline">\(B(r,t)\)</span> are positive functions to be determined by the Einstein equation.</p>
+<p>This will be our <strong>trial metric</strong>.</p>
+<hr>
+<h2 data-original-heading="23.5 Ricci Tensor for the Diagonal Spherical Metric" id="ricci-tensor-for-the-diagonal-spherical-metric">23.5 Ricci Tensor for the Diagonal Spherical Metric</h2>
+<p>We now assume empty space outside the source and a negligible cosmological constant, so that the Einstein equation reduces to <span class="math display">\[
+R^{\mu\nu} = 0
+\qquad\Longrightarrow\qquad
+R_{\mu\nu}=0
+\]</span> (since lowering indices multiplies by the non-singular metric).</p>
+<p>Using the “Diagonal Metric Worksheet’’ (or direct computation), the non-zero components of the Ricci tensor for the metric (23.5) are</p>
+<p><span class="math display">\[
+\begin{aligned}
+R_{tt}
+&amp;=\frac{1}{2B}\Bigg[
++\frac{\partial^2 A}{\partial r^2}
+-\underbrace{\frac{1}{2A}\Big(\frac{\partial A}{\partial r}\Big)^2}_{\text{radial }A\text{ self-term}}
+-\underbrace{\frac{1}{2B}\frac{\partial A}{\partial r}\frac{\partial B}{\partial r}}_{\text{radial }A\text{–}B\text{ coupling}}
++\frac{2}{r}\frac{\partial A}{\partial r}
+-\frac{\partial^2 B}{\partial t^2}
++\frac{1}{2B}\Big(\frac{\partial B}{\partial t}\Big)^2
++\frac{1}{2A}\frac{\partial A}{\partial t}\frac{\partial B}{\partial t}
+\Bigg]
+\\[6pt]
+R_{rr}
+&amp;=\frac{1}{2A}\Bigg[
+-\frac{\partial^2 A}{\partial r^2}
++\frac{1}{2A}\Big(\frac{\partial A}{\partial r}\Big)^2
++\frac{1}{2B}\frac{\partial A}{\partial r}\frac{\partial B}{\partial r}
++\frac{2A}{Br}\frac{\partial B}{\partial r}
++\frac{\partial^2 B}{\partial t^2}
+-\frac{1}{2B}\Big(\frac{\partial B}{\partial t}\Big)^2
+-\frac{1}{2A}\frac{\partial A}{\partial t}\frac{\partial B}{\partial t}
+\Bigg]
+\\[6pt]
+R_{\theta\theta}
+&amp;=-\frac{r}{2AB}\frac{\partial A}{\partial r}
++\frac{r}{2B^2}\frac{\partial B}{\partial r}
++1-\frac{1}{B}
+\\[6pt]
+R_{\phi\phi}
+&amp;=\sin^2\theta\,R_{\theta\theta}
+\\[6pt]
+R_{tr}
+&amp;=+\frac{1}{Br}\frac{\partial B}{\partial t}
+\end{aligned}
+\]</span></p>
+<p>All other components of <span class="math inline">\(R_{\mu\nu}\)</span> vanish identically.</p>
+<p>Note that <span class="math inline">\(R_{tt}\)</span> and <span class="math inline">\(R_{rr}\)</span> contain almost the same bracketed expression, but with many signs reversed and one term different.<br>
+Combining them, we find <span class="math display">\[
+\frac{B}{A}R_{tt} + R_{rr}
+= \frac{1}{r}\Bigg(
+\frac{1}{A}\frac{\partial A}{\partial r}
++\frac{1}{B}\frac{\partial B}{\partial r}
+\Bigg)
+\tag{23.7}
+\]</span></p>
+<hr>
+<h2 data-original-heading="23.6 The Empty-Space Spherical Solution" id="the-empty-space-spherical-solution">23.6 The Empty-Space Spherical Solution</h2>
+<h3 data-original-heading="23.6.1 Eliminating Time Dependence of B" id="eliminating-time-dependence-of-b">23.6.1 Eliminating Time Dependence of <span class="math inline">\(B\)</span></h3>
+<p>The vacuum Einstein equation requires <span class="math inline">\(R_{\mu\nu}=0\)</span>.<br>
+From <span class="math inline">\(R_{tr}=0\)</span> we obtain <span class="math display">\[
+R_{tr} = +\frac{1}{Br}\frac{\partial B}{\partial t} = 0
+\quad\Longrightarrow\quad
+\frac{\partial B}{\partial t} = 0
+\tag{23.8}
+\]</span> so <span class="math inline">\(B\)</span> depends only on <span class="math inline">\(r\)</span>.</p>
+<h3 data-original-heading="23.6.2 Relating A and B" id="relating-a-and-b">23.6.2 Relating <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></h3>
+<p>In empty space, <span class="math inline">\(R_{tt}=0\)</span> and <span class="math inline">\(R_{rr}=0\)</span>. Using equation (23.7) we get <span class="math display">\[
+0 = \frac{B}{A}R_{tt} + R_{rr}
+= \frac{1}{r}\Bigg(
+\frac{1}{A}\frac{\partial A}{\partial r}
++\frac{1}{B}\frac{d B}{d r}
+\Bigg)
+\]</span> hence <span class="math display">\[
+\frac{1}{A}\frac{\partial A}{\partial r}
+= -\frac{1}{B}\frac{dB}{dr}
+\tag{23.9}
+\]</span></p>
+<p>Now substitute <span class="math inline">\(R_{\theta\theta}=0\)</span> and use <span class="math inline">\(B=B(r)\)</span>.<br>
+Equation (23.6c) becomes a differential equation for <span class="math inline">\(B(r)\)</span> alone, whose solution is <span class="math display">\[
+\frac{1}{B} = 1 + \frac{C}{r}
+\tag{23.10}
+\]</span> where <span class="math inline">\(C\)</span> is a constant of integration.</p>
+<h3 data-original-heading="23.6.3 Solving for A" id="solving-for-a">23.6.3 Solving for <span class="math inline">\(A\)</span></h3>
+<p>Equation (23.9) now constrains <span class="math inline">\(A(r,t)\)</span>.<br>
+Because the right-hand side of (23.9) is independent of <span class="math inline">\(t\)</span>, any <span class="math inline">\(t\)</span>-dependence of <span class="math inline">\(A\)</span> must factor out as a multiplicative function of <span class="math inline">\(t\)</span> only.<br>
+So we can write <span class="math display">\[
+A(r,t) = f(t)\,a(r)
+\]</span> for some functions <span class="math inline">\(f(t)\)</span> and <span class="math inline">\(a(r)\)</span>.</p>
+<p>Using this form in (23.9) gives <span class="math display">\[
+\begin{aligned}
+-\frac{1}{B}\frac{dB}{dr}
+&amp;=\frac{1}{A}\frac{\partial A}{\partial r}
+=\frac{1}{f(t)a(r)}\,f(t)\frac{da}{dr}
+=\frac{1}{a}\frac{da}{dr}
+\end{aligned}
+\tag{23.11}
+\]</span></p>
+<p>This is a differential equation for <span class="math inline">\(a(r)\)</span> with known <span class="math inline">\(B(r)\)</span>.<br>
+Integrating, using <span class="math inline">\(1/B=1+C/r\)</span>, yields <span class="math display">\[
+a = \frac{K}{B} = K\Big(1 + \frac{C}{r}\Big)
+\tag{23.12}
+\]</span> where <span class="math inline">\(K\)</span> is another constant of integration.</p>
+<p>Therefore <span class="math display">\[
+A(r,t) = f(t)\,a(r)
+=Kf(t)\Big(1+\frac{C}{r}\Big)
+\]</span> and the metric (23.5) becomes <span class="math display">\[
+ds^2
+= -Kf(t)\Big(1+\frac{C}{r}\Big)dt^2
++ \frac{dr^2}{1+C/r}
++ r^2(d\theta^2 + \sin^2\theta\,d\phi^2)
+\tag{23.13}
+\]</span></p>
+<hr>
+<h2 data-original-heading="23.7 Time Reparameterization and Birkhoff’s Theorem" id="time-reparameterization-and-birkhoffs-theorem">23.7 Time Reparameterization and Birkhoff’s Theorem</h2>
+<p>The constants <span class="math inline">\(K\)</span> and the function <span class="math inline">\(f(t)\)</span> have not yet been fixed, but note that <span class="math inline">\(Kf(t)\)</span> must be positive so that the <span class="math inline">\(dt^2\)</span> term has the correct sign.</p>
+<p>We can absorb <span class="math inline">\(Kf(t)\)</span> into a redefinition of the time coordinate. Define <span class="math display">\[
+dt_{\text{new}} = dt_{\text{old}}\sqrt{Kf(t)}
+\tag{23.14}
+\]</span> In terms of the new <span class="math inline">\(t\)</span>, the metric becomes <span class="math display">\[
+ds^2
+= -\Big(1+\frac{C}{r}\Big)dt^2
++ \frac{dr^2}{1+C/r}
++ r^2(d\theta^2 + \sin^2\theta\,d\phi^2)
+\tag{23.15}
+\]</span></p>
+<p>This form is <strong>time-independent</strong>, even if the source itself (e.g.&nbsp;the star) changes with time, as long as the exterior spacetime remains spherically symmetric.</p>
+<div class="math-theorem remark" data-callout="remark" data-label="23.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 23.1</span><span class="theorem-title">Birkhoff’s theorem</span></p>
+</div>
+<div class="theorem-content">
+<p>The statement that the vacuum spacetime outside any spherically symmetric source must be static and described by a metric of the form (23.15) is known as <strong>Birkhoff’s theorem</strong>.</p>
+</div>
+</div>
+<p>The time coordinate defined by (23.14) corresponds to time measured by an observer at infinity.</p>
+<hr>
+<h2 data-original-heading="23.8 Fixing C from the Newtonian Limit — Schwarzschild Solution" id="fixing-c-from-the-newtonian-limit-schwarzschild-solution">23.8 Fixing <span class="math inline">\(C\)</span> from the Newtonian Limit — Schwarzschild Solution</h2>
+<p>To obtain the <strong>Schwarzschild solution</strong>, we must determine the constant <span class="math inline">\(C\)</span> by matching to the Newtonian limit.</p>
+<p>Consider an object that is initially at rest in this spacetime (outside the source).<br>
+Its spatial components of four-momentum <span class="math inline">\(u^\alpha\)</span> are zero.<br>
+The normalization condition <span class="math inline">\(-1 = u\cdot u\)</span> implies for the time component <span class="math display">\[
+u^t = (-g_{tt})^{-1/2} = A^{-1/2}
+\]</span> with <span class="math inline">\(A = 1 + C/r\)</span> in metric (23.15).</p>
+<p>The geodesic equation is <span class="math display">\[
+0 = \frac{d^2 x^\alpha}{d\tau^2} + \Gamma^\alpha_{\mu\nu}u^\mu u^\nu
+\]</span> For a particle initially at rest, only <span class="math inline">\(u^t\)</span> is non-zero, so <span class="math display">\[
+\begin{aligned}
+0
+&amp;= \frac{d^2 x^\alpha}{d\tau^2} + \Gamma^\alpha_{tt}(u^t)^2
+\\[4pt]
+\Rightarrow\quad
+\frac{d^2 x^\alpha}{d\tau^2}
+&amp;= -\Gamma^\alpha_{tt}(u^t)^2
+= +\frac{\Gamma^\alpha_{tt}}{g_{tt}}
+= -\frac{1}{A}\Gamma^\alpha_{tt}
+\end{aligned}
+\tag{23.16}
+\]</span></p>
+<p>Using the Christoffel symbols for the metric (23.15), one finds that the only relevant non-zero symbol here is <span class="math display">\[
+\Gamma^r_{tt} = +\frac{1}{2B}\frac{\partial A}{\partial r}
+\tag{23.17}
+\]</span> with <span class="math inline">\(A = 1 + C/r\)</span> and <span class="math inline">\(B = 1/(1+C/r)\)</span>.</p>
+<p>Thus the radial component of the geodesic equation becomes <span class="math display">\[
+\begin{aligned}
+\frac{d^2 r}{d\tau^2}
+&amp;= -\frac{1}{A}\Gamma^r_{tt}
+= -\frac{1}{2AB}\frac{\partial A}{\partial r}
+\\[4pt]
+&amp;= -\frac{1}{2}\frac{\partial A}{\partial r}
+\quad\underbrace{=\, -\frac{1}{2}\frac{\partial}{\partial r}\Big(1+\frac{C}{r}\Big)}_{\displaystyle \partial_r A = -\frac{C}{r^2}}
+\\[4pt]
+&amp;= +\frac{C}{2r^2}
+\end{aligned}
+\tag{23.18}
+\]</span></p>
+<p>In the Newtonian limit <span class="math inline">\(r\to\infty\)</span>, <span class="math inline">\(r\)</span> becomes the standard radial coordinate and <span class="math inline">\(d\tau\)</span> becomes <span class="math inline">\(dt\)</span>.<br>
+The Newtonian radial acceleration of a freely falling particle is <span class="math display">\[
+\frac{d^2 r}{dt^2} = -\frac{GM}{r^2}
+\]</span> Comparing with (23.18), we must have <span class="math display">\[
+\frac{C}{2r^2} = -\frac{GM}{r^2}
+\quad\Longrightarrow\quad
+C \equiv -2GM
+\]</span></p>
+<p>Substituting this into metric (23.15) yields the <strong>Schwarzschild solution</strong> <span class="math display">\[
+ds^2
+= -\Big(1-\frac{2GM}{r}\Big)dt^2
++ \Big(1-\frac{2GM}{r}\Big)^{-1}dr^2
++ r^2(d\theta^2 + \sin^2\theta\,d\phi^2)
+\tag{23.19}
+\]</span></p>
+<hr>
+<h2 data-original-heading="23.9 Meaning of the Constant M" id="meaning-of-the-constant-m">23.9 Meaning of the Constant <span class="math inline">\(M\)</span></h2>
+<p>The constant <span class="math inline">\(M\)</span> is the <strong>mass of the gravitational source</strong> as inferred from the motion of test particles at large <span class="math inline">\(r\)</span> in the Newtonian limit; it is often called the source’s <strong>Newtonian mass</strong>.</p>
+<p>For ordinary stars or planets this will closely match the integral of rest mass density over volume, but:</p>
+<ul>
+<li>In strongly relativistic fluids the pressure <span class="math inline">\(p\)</span> contributes to the gravitational field.</li>
+<li>When spacetime is highly curved in the interior, <span class="math inline">\(M\)</span> does <strong>not</strong> simply equal the total rest mass.</li>
+</ul>
+<p>However, Birkhoff’s theorem implies that this Newtonian mass <span class="math inline">\(M\)</span> remains constant (as seen by a distant observer) as long as the star remains spherically symmetric, even if it collapses or explodes.<br>
+This can be viewed as a kind of conservation law for the Newtonian mass <span class="math inline">\(M\)</span>.</p>
+<hr>
+<h2 data-original-heading="23.10 Beyond Schwarzschild" id="beyond-schwarzschild">23.10 Beyond Schwarzschild</h2>
+<p>The Schwarzschild solution is the basic “laboratory’’ for more complicated spacetimes.<br>
+By modifying the assumptions (adding charge, cosmological constant, different symmetries, interior solutions, etc.), one can derive:</p>
+<ul>
+<li>Reissner–Nordström metric (spherical source with electric charge <span class="math inline">\(Q\)</span>)</li>
+<li>Solutions with a vacuum energy term</li>
+<li>Plane-symmetric or cylindrical solutions (e.g.&nbsp;idealized cosmic strings)</li>
+</ul>
+<p>These extensions follow the same general strategy used in this chapter: exploit symmetry, choose a trial metric, and solve the Einstein equation for the unknown functions.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span>← Previous page</span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span>Next page →</span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 23 The Schwarzschild Solution</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#introduction-and-strategy" class="is-active" aria-current="location">23.1 Introduction and Strategy</a></li><li style="--depth:0"><a href="#consequences-of-spherical-symmetry">23.2 Consequences of Spherical Symmetry</a></li><li style="--depth:0"><a href="#choosing-a-time-coordinate">23.3 Choosing a Time Coordinate</a></li><li style="--depth:0"><a href="#the-general-spherically-symmetric-metric">23.4 The General Spherically Symmetric Metric</a></li><li style="--depth:0"><a href="#ricci-tensor-for-the-diagonal-spherical-metric">23.5 Ricci Tensor for the Diagonal Spherical Metric</a></li><li style="--depth:0"><a href="#the-empty-space-spherical-solution">23.6 The Empty-Space Spherical Solution</a></li><li style="--depth:1"><a href="#eliminating-time-dependence-of-b">23.6.1 Eliminating Time Dependence of B</a></li><li style="--depth:1"><a href="#relating-a-and-b">23.6.2 Relating A and B</a></li><li style="--depth:1"><a href="#solving-for-a">23.6.3 Solving for A</a></li><li style="--depth:0"><a href="#time-reparameterization-and-birkhoffs-theorem">23.7 Time Reparameterization and Birkhoff’s Theorem</a></li><li style="--depth:0"><a href="#fixing-c-from-the-newtonian-limit-schwarzschild-solution">23.8 Fixing C from the Newtonian Limit — Schwarzschild Solution</a></li><li style="--depth:0"><a href="#meaning-of-the-constant-m">23.9 Meaning of the Constant M</a></li><li style="--depth:0"><a href="#beyond-schwarzschild">23.10 Beyond Schwarzschild</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

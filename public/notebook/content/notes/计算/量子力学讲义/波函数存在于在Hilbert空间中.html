@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>波函数存在于Hilbert空间中 — E.H. Notebook</title>
+<meta name="description" content="1 Hilbert SpaceInfinite dimensional vector space, denoted as L^2(a,b), of square-integrable functions on an interval [a,b]. \int_a^b |f(x)|^2 \, dx &lt; \infty Inner product">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="量子力学讲义 file hierarchy" data-sidebar-root="content/notes/计算/量子力学讲义"><a class="sidebar-root" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Lecture" aria-controls="folder-210a2627460a" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/Lecture.html">Lecture</a></div><ul class="tree-children" id="folder-210a2627460a" hidden><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第一章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aa50c1410152" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一章</span></button></div><ul class="tree-children" id="folder-aa50c1410152" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E4%B8%80%E7%AB%A0/1.1%20The%20Wave%20Function.html"><span class="page-number">1.1</span><span>The Wave Function</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 第四章" aria-controls="folder-43e880ae5f94" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.html">第四章</a></div><ul class="tree-children" id="folder-43e880ae5f94" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E7%BB%8F%E5%85%B8%E6%B0%A2%E5%8E%9F%E5%AD%90.html"><span class="page-number">4.1</span><span>经典氢原子</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.2%20Hydrogen%20Atom.html"><span class="page-number">4.2</span><span>Hydrogen Atom</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.3%20%E8%A7%92%E5%8A%A8%E9%87%8F%20(Angular%20Momentum).html"><span class="page-number">4.3</span><span>角动量 (Angular Momentum)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.4%20Spin%20Spin%20Spin.html"><span class="page-number">4.4</span><span>Spin Spin Spin</span></a></li></ul></li></ul></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E6%B3%A2%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E4%BA%8E%E5%9C%A8Hilbert%E7%A9%BA%E9%97%B4%E4%B8%AD.html"><span class="page-number"></span><span>波函数存在于在Hilbert空间中</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B%E7%9A%84%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2.html"><span class="page-number"></span><span>薛定谔方程的傅立叶变换</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/index.html">计算</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a></nav><h1 id="reader-title">波函数存在于Hilbert空间中</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Hilbert Space" id="hilbert-space">1 Hilbert Space</h2>
+<p>Infinite dimensional <strong>vector space</strong>, denoted as <span class="math inline">\(L^2(a,b)\)</span>, of <strong>square-integrable functions</strong> on an interval <span class="math inline">\([a,b]\)</span>. <span class="math display">\[\int_a^b |f(x)|^2 \, dx &lt; \infty\]</span> Inner product defined as: <span class="math display">\[\langle f | g \rangle = \int_a^b f^*(x)g(x) \, dx\]</span> Note that: <span class="math display">\[\langle f | g \rangle = \langle g | f \rangle^*\]</span> <span class="math display">\[\langle f | f \rangle = \int_a^b |f(x)|^2 \, dx \geq 0\]</span> Also: <span class="math display">\[\langle f | f \rangle = 0 \iff f(x) = 0 \quad\text{in the interval}\quad [a,b]\]</span></p>
+<hr>
+<h3 data-original-heading="Orthonormal Set \{f_n\}" id="orthonormal-set-f_n">1.1 Orthonormal Set <span class="math inline">\(\{f_n\}\)</span></h3>
+<p><span class="math display">\[\langle f_m | f_n \rangle = \int_a^b f_m^*(x)f_n(x)\,dx = \delta_{m,n}\]</span> <strong>Completeness:</strong> A set of functions <span class="math inline">\(\{f_n\}\)</span> is complete if any <span class="math inline">\(f(x)\)</span> in the Hilbert space can be expanded as: <span class="math display">\[f(x) = \sum_n c_n f_n(x)\]</span> If <span class="math inline">\(\{f_n\}\)</span> is orthonormal, then: <span class="math display">\[c_n = \langle f_n | f \rangle\]</span> ## Observables and Hermitian Operators</p>
+<p>An operator <span class="math inline">\(\hat{Q}\)</span> is Hermitian if:</p>
+<p><span class="math display">\[
+\hat{Q} = \hat{Q}^{\dagger}
+\]</span></p>
+<h3 data-original-heading="Properties" id="properties">1.2 Properties</h3>
+<ul>
+<li>Eigenvalues are <strong>real</strong>.</li>
+</ul>
+<p>Expectation value <span class="math inline">\(\langle Q \rangle\)</span>:</p>
+<p><span class="math display">\[
+\langle Q \rangle = \langle \psi | \hat{Q} \psi \rangle = \langle \hat{Q}^{\dagger} \psi | \psi \rangle = \langle \psi | \hat{Q} \psi \rangle^{*}
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+\langle Q \rangle \quad \text{is real}
+\]</span></p>
+<hr>
+<p>Check inner product:</p>
+<p><span class="math display">\[
+\langle f| \hat{x} g \rangle = \int_{-\infty}^{\infty} f^*(x) x g(x) \, dx
+\]</span></p>
+<p>Complex conjugate clearly shows:</p>
+<p><span class="math display">\[
+= \int_{-\infty}^{\infty} (x f(x))^* g(x) \, dx = \langle \hat{x}f | g \rangle
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+\hat{x} = \hat{x}^{\dagger} \quad \Rightarrow \quad \text{Hermitian}
+\]</span></p>
+<hr>
+<p>Evaluate inner product:</p>
+<p><span class="math display">\[
+\langle f| \hat{p} g \rangle = \int_{-\infty}^{\infty} f^*(x) \left(-i\hbar \frac{d}{dx}\right) g(x) \, dx
+\]</span></p>
+<p>Using integration by parts:</p>
+<p><span class="math display">\[
+= -i\hbar \int_{-\infty}^{\infty} dx \frac{d}{dx}(f^*(x)g(x)) + i\hbar \int_{-\infty}^{\infty} dx \frac{df^*(x)}{dx} g(x)
+\]</span></p>
+<p>Boundary term vanishes:</p>
+<p><span class="math display">\[
+= -i\hbar [f^*(x)g(x)]_{-\infty}^{\infty} + \langle \hat{p} f | g \rangle, \quad \text{with boundary term = 0}
+\]</span></p>
+<p>Thus:</p>
+<p><span class="math display">\[
+\langle f| \hat{p} g \rangle = \langle \hat{p} f | g \rangle \quad \Rightarrow \quad \hat{p} = \hat{p}^{\dagger}, \quad \text{Hermitian!}
+\]</span></p>
+<hr>
+<h2 data-original-heading="Observables and Hermitian Operators" id="observables-and-hermitian-operators">2 Observables and Hermitian Operators</h2>
+<h3 data-original-heading="Hermitian Operator:" id="hermitian-operator">2.1 Hermitian Operator:</h3>
+<p>An operator <span class="math inline">\(\hat{Q}\)</span> is Hermitian if:</p>
+<p><span class="math display">\[\hat{Q} = \hat{Q}^{\dagger}\]</span></p>
+<h3 data-original-heading="Spectrum of \hat{Q}" id="spectrum-of-hatq">2.2 Spectrum of <span class="math inline">\(\hat{Q}\)</span></h3>
+<ul>
+<li><strong>Spectrum:</strong> The collection of all eigenvalues <span class="math inline">\(q \in \mathbb{R}\)</span>.</li>
+</ul>
+<p>Eigenvalue equation:</p>
+<p><span class="math display">\[\hat{Q}\Psi = q\Psi\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(q\)</span> is an <strong>eigenvalue</strong>.</li>
+<li><span class="math inline">\(\Psi\)</span> represents <strong>eigenvectors</strong>, <strong>eigenstates</strong>, or <strong>eigenfunctions</strong>.</li>
+</ul>
+<hr>
+<h3 data-original-heading="Standard Deviation:" id="standard-deviation">2.3 Standard Deviation:</h3>
+<p>The uncertainty (standard deviation) <span class="math inline">\(\sigma\)</span> of an observable <span class="math inline">\(\hat{Q}\)</span> is given by:</p>
+<p><span class="math display">\[\sigma^2 = \langle \Psi | \hat{Q}^2 \Psi \rangle - \langle \Psi | \hat{Q} \Psi \rangle^2\]</span></p>
+<p>If <span class="math inline">\(\Psi\)</span> is an eigenfunction of <span class="math inline">\(\hat{Q}\)</span>:</p>
+<ul>
+<li>Eigenvalue equations:</li>
+</ul>
+<p><span class="math display">\[\hat{Q}\Psi = q\Psi, \quad \hat{Q}^2 \Psi = q^2 \Psi\]</span></p>
+<p>Then, the standard deviation becomes:</p>
+<p><span class="math display">\[\langle \Psi | \hat{Q}^2 \Psi \rangle = q^2 \langle \Psi | \Psi \rangle = q^2\]</span> <span class="math display">\[\langle \Psi | \hat{Q} \Psi \rangle^2 = (q \langle \Psi | \Psi \rangle)^2 = q^2\]</span></p>
+<p>Thus:</p>
+<p><span class="math display">\[\sigma^2 = q^2 - q^2 = 0\]</span></p>
+<hr>
+<h3 data-original-heading="Physical Interpretation:" id="physical-interpretation">2.4 Physical Interpretation:</h3>
+<p>This means that if we prepare a quantum state to be an eigenstate/eigenvector/eigenfunction of <span class="math inline">\(\hat{Q}\)</span>, then a measurement of <span class="math inline">\(\hat{Q}\)</span> will return a <strong>definite value</strong>. In this case, the state <span class="math inline">\(|\Psi\rangle\)</span> is called a <strong>determinate state</strong>. ##### Example</p>
+<p>For <span class="math inline">\(\hat{H}\Psi = E\Psi\)</span>, we have:</p>
+<ul>
+<li><span class="math inline">\(E\)</span> is an eigenvalue (energy level) belonging to the set <span class="math inline">\(\{ E \}\)</span>, which represents <strong>all possible energies</strong> of the system.</li>
+<li><span class="math inline">\(\Psi\)</span> are the corresponding <strong>eigenstates</strong>/<strong>eigenfunctions</strong> of definite energy (<strong>stationary states</strong>).</li>
+</ul>
+<hr>
+<h2 data-original-heading="Example: Energy Eigenvalue Equation" id="example-energy-eigenvalue-equation">3 Example: Energy Eigenvalue Equation</h2>
+<p>The Schrödinger equation for a quantum system is given by:</p>
+<p><span class="math display">\[\hat{H}\Psi = E\Psi\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(E\)</span> is an eigenvalue (energy level) belonging to the set <span class="math inline">\(\{ E \}\)</span>, representing <strong>all possible energies</strong> of the system.</li>
+<li><span class="math inline">\(\Psi\)</span> represents the corresponding <strong>eigenstates</strong> or <strong>eigenfunctions</strong> of definite energy, also known as <strong>stationary states</strong>.</li>
+</ul>
+<hr>
+<h2 data-original-heading="Particle on a Ring of Radius R" id="particle-on-a-ring-of-radius-r">4 Particle on a Ring of Radius <span class="math inline">\(R\)</span></h2>
+<p>Coordinate transformation: <span class="math display">\[x = R \cdot \phi, \quad (\text{with } \phi \text{ periodic, } \phi \sim \phi + 2\pi)\]</span></p>
+<h3 data-original-heading="Momentum Operator in Circular Coordinates:" id="momentum-operator-in-circular-coordinates">4.1 Momentum Operator in Circular Coordinates:</h3>
+<p><span class="math display">\[\hat{p} = -i\hbar\frac{d}{dx} = -i\hbar\frac{\partial}{R\partial\phi} = \frac{\hbar}{R}\left(-i\frac{\partial}{\partial\phi}\right)\]</span></p>
+<p>Check if <span class="math inline">\(\hat{Q}\)</span> is Hermitian:</p>
+<p><span class="math display">\[\langle f|\hat{Q}g \rangle \stackrel{?}{=} \langle \hat{Q}f | g \rangle\]</span></p>
+<h3 data-original-heading="Hermiticity Check for Operator \hat{x}:" id="hermiticity-check-for-operator-hatx">4.2 Hermiticity Check for Operator <span class="math inline">\(\hat{x}\)</span>:</h3>
+<p><span class="math display">\[\langle f|\hat{x}g \rangle = \int_{-\infty}^{\infty}f^*(x)xg(x)\,dx = \langle \hat{x}f|g \rangle \quad \Rightarrow \quad \hat{x} = \hat{x}^{\dagger}\]</span></p>
+<p>Thus, <span class="math inline">\(\hat{x}\)</span> is Hermitian.</p>
+<hr>
+<h3 data-original-heading="Eigenvalues and Eigenfunctions (Periodic Boundary Conditions):" id="eigenvalues-and-eigenfunctions-periodic-boundary-conditions">4.3 Eigenvalues and Eigenfunctions (Periodic Boundary Conditions):</h3>
+<ul>
+<li>Functions on a ring of radius <span class="math inline">\(R\)</span>: periodic with <span class="math inline">\(\phi\)</span>: <span class="math display">\[f(\phi+2\pi) = f(\phi)\]</span> <span class="math display">\[g(\phi+2\pi) = g(\phi)\]</span> Eigenvalue equation for the operator <span class="math inline">\(\hat{Q}\)</span>: <span class="math display">\[\hat{Q}f(\phi)=q f(\phi)\]</span> Solve for <span class="math inline">\(f(\phi)\)</span>: <span class="math display">\[-i\frac{d f(\phi)}{d\phi} = q f(\phi) \quad\Rightarrow\quad f(\phi) = A e^{i q \phi}\]</span></li>
+</ul>
+<hr>
+<h3 data-original-heading="Normalization and Quantization of q:" id="normalization-and-quantization-of-q">4.4 Normalization and Quantization of <span class="math inline">\(q\)</span>:</h3>
+<p>From periodic boundary condition:</p>
+<p><span class="math display">\[f(\phi + 2\pi) = A e^{i q (\phi+2\pi)} = A e^{i q \phi} e^{i q 2\pi} = f(\phi)\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[e^{i q 2\pi} = 1 \quad\Rightarrow\quad q = 0, \pm1, \pm2, \pm3, \dots\]</span></p>
+<h3 data-original-heading="Normalization condition:" id="normalization-condition">4.5 Normalization condition:</h3>
+<p><span class="math display">\[\int_0^{2\pi} d\phi |f(\phi)|^2 = \int_0^{2\pi} d\phi |A|^2 = |A|^2 \cdot 2\pi = 1\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[|A|^2 = \frac{1}{2\pi} \quad\Rightarrow\quad A = \frac{1}{\sqrt{2\pi}}\]</span></p>
+<h3 data-original-heading="Final Set of Eigenfunctions and Eigenvalues:" id="final-set-of-eigenfunctions-and-eigenvalues">4.6 Final Set of Eigenfunctions and Eigenvalues:</h3>
+<p><span class="math display">\[f_q(\phi) = \frac{1}{\sqrt{2\pi}} e^{i q \phi}, \quad q = 0, \pm1, \pm2, \dots\]</span> ### Eigenvalues for Momentum <span class="math inline">\(\hat{p}\)</span>:</p>
+<p><span class="math display">\[\frac{\hbar}{R}q = 0, \pm\frac{\hbar}{R}, \pm\frac{2\hbar}{R}, \pm\frac{3\hbar}{R}, \dots\]</span></p>
+<hr>
+<p>Here’s the requested content neatly formatted in Markdown with LaTeX notation, using the <code>{align}</code> environment for clarity:</p>
+<hr>
+<h2 data-original-heading="Eigenfunctions of a Hermitian Operator" id="eigenfunctions-of-a-hermitian-operator">5 Eigenfunctions of a Hermitian Operator</h2>
+<p><span class="math display">\[\hat{Q}\psi = q\psi\]</span></p>
+<p><strong>Discrete Spectra:</strong> <span class="math display">\[\hat{Q} f = q f\]</span></p>
+<ol type="1">
+<li>Eigenvalues <span class="math inline">\(q \in \mathbb{R}\)</span>.</li>
+<li>For two eigenfunctions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> corresponding to distinct eigenvalues <span class="math inline">\(q\)</span> and <span class="math inline">\(q'\)</span>, we have: <span class="math display">\[\hat{Q}f = qf, \quad \hat{Q}g = q'g,\quad q \neq q'\]</span></li>
+</ol>
+<p>Then: <span class="math display">\[\langle f | \hat{Q} g \rangle = \langle \hat{Q}f|g \rangle\]</span></p>
+<p>But also: <span class="math display">\[q'\langle f|g \rangle = q\langle f|g\rangle \implies (q - q')\langle f|g\rangle = 0\]</span></p>
+<p>Thus, for distinct eigenvalues: <span class="math display">\[\langle f|g\rangle = 0\]</span></p>
+<hr>
+<h2 data-original-heading="Continuous Spectra" id="continuous-spectra">6 Continuous Spectra</h2>
+<p>Consider eigenfunctions of the momentum operator on the real line <span class="math inline">\((-\infty, +\infty)\)</span>:</p>
+<p><span class="math display">\[-i\hbar \frac{d}{dx}f_p(x) = p\,f_p(x)\]</span></p>
+<p>Eigenfunctions have the form: <span class="math display">\[f_p(x) = A e^{\frac{i p x}{\hbar}}\]</span></p>
+<p>Note that these eigenfunctions are not square-integrable: <span class="math display">\[\int_{-\infty}^{\infty}|f_p(x)|^2\,dx = |A|^2\int_{-\infty}^{\infty}\left|e^{\frac{ipx}{\hbar}}\right|^2dx = \infty\]</span></p>
+<p>Hence, the eigenfunctions corresponding to continuous eigenvalues are not square-integrable functions.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B%E7%9A%84%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2.html"><span>Next page →</span><span>薛定谔方程的傅立叶变换</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">波函数存在于Hilbert空间中</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#hilbert-space" class="is-active" aria-current="location">1 Hilbert Space</a></li><li style="--depth:1"><a href="#orthonormal-set-f_n">1.1 Orthonormal Set \{f_n\}</a></li><li style="--depth:1"><a href="#properties">1.2 Properties</a></li><li style="--depth:0"><a href="#observables-and-hermitian-operators">2 Observables and Hermitian Operators</a></li><li style="--depth:1"><a href="#hermitian-operator">2.1 Hermitian Operator:</a></li><li style="--depth:1"><a href="#spectrum-of-hatq">2.2 Spectrum of \hat{Q}</a></li><li style="--depth:1"><a href="#standard-deviation">2.3 Standard Deviation:</a></li><li style="--depth:1"><a href="#physical-interpretation">2.4 Physical Interpretation:</a></li><li style="--depth:0"><a href="#example-energy-eigenvalue-equation">3 Example: Energy Eigenvalue Equation</a></li><li style="--depth:0"><a href="#particle-on-a-ring-of-radius-r">4 Particle on a Ring of Radius R</a></li><li style="--depth:1"><a href="#momentum-operator-in-circular-coordinates">4.1 Momentum Operator in Circular Coordinates:</a></li><li style="--depth:1"><a href="#hermiticity-check-for-operator-hatx">4.2 Hermiticity Check for Operator \hat{x}:</a></li><li style="--depth:1"><a href="#eigenvalues-and-eigenfunctions-periodic-boundary-conditions">4.3 Eigenvalues and Eigenfunctions (Periodic Boundary Conditions):</a></li><li style="--depth:1"><a href="#normalization-and-quantization-of-q">4.4 Normalization and Quantization of q:</a></li><li style="--depth:1"><a href="#normalization-condition">4.5 Normalization condition:</a></li><li style="--depth:1"><a href="#final-set-of-eigenfunctions-and-eigenvalues">4.6 Final Set of Eigenfunctions and Eigenvalues:</a></li><li style="--depth:0"><a href="#eigenfunctions-of-a-hermitian-operator">5 Eigenfunctions of a Hermitian Operator</a></li><li style="--depth:0"><a href="#continuous-spectra">6 Continuous Spectra</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

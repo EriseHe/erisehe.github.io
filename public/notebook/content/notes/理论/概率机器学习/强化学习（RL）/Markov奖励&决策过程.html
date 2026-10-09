@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Markov奖励&amp;决策过程 — E.H. Notebook</title>
+<meta name="description" content="1 Markov Reward Processes (MRPs)Goal: construct an algorithms for computing decision policies, where more iteration \to monotonically improve the decision policy.1.1 Retu">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/index.html">强化学习（RL）</a></nav><h1 id="reader-title">Markov奖励&amp;决策过程</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1 Markov Reward Processes (MRPs)" id="markov-reward-processes-mrps">1 Markov Reward Processes (MRPs)</h2>
+<p>Goal: construct an algorithms for computing decision policies, where more iteration <span class="math inline">\(\to\)</span> monotonically improve the decision policy.</p>
+<h3 data-original-heading="1.1 Return" id="return">1.1 Return</h3>
+<p>The <strong>return</strong>, denoted as <span class="math inline">\(G_{t}\)</span>, is the (<em>discounted</em>) sum of rewards received from time <span class="math inline">\(t\)</span> to horizon <span class="math inline">\(H\)</span>.</p>
+<h4 data-original-heading="1.1.1 Discount Factor" id="discount-factor">1.1.1 Discount Factor</h4>
+<p>The primary purpose of discount factor <span class="math inline">\(\gamma\in[0,1]\)</span> is to weights future rewards:</p>
+<ul>
+<li>ensures <em>convergence</em> for infinite sum</li>
+<li>controls <em>immediate</em> rewards (<span class="math inline">\(\gamma=0\)</span>) vs.&nbsp;<em>delayed</em> rewards (<span class="math inline">\(\gamma \to 1\)</span>)</li>
+</ul>
+<h4 data-original-heading="1.1.2 Horizon" id="horizon">1.1.2 Horizon</h4>
+<p><strong>Infinite-horizon</strong>: <span class="math display">\[
+\begin{aligned}
+G_t &amp;= \sum_{k=0}^{\infty} \gamma^k r_{t+k}
+\end{aligned}
+\]</span> ### 1.1.3 Finite-horizon (episode length <span class="math inline">\(H\)</span>)</p>
+<p>For <span class="math inline">\(H\)</span> steps included, we have: <span class="math display">\[\begin{aligned}
+G_t &amp;= r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \cdots + \gamma^{H-1} r_{t+H-1} \\
+    &amp;= \sum_{k=0}^{H-1} \gamma^k r_{t+k}.
+\end{aligned}
+\]</span> &gt; Horizon → determines which rewards you sum → defines the return</p>
+<h3 data-original-heading="1.2 State Value function V(s)" id="state-value-function-vs">1.2 State Value function <span class="math inline">\(V(s)\)</span></h3>
+<div class="math-theorem definition" data-callout="definition" data-label="1.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.2</span><span class="theorem-title">State Value Function</span></p>
+</div>
+<div class="theorem-content">
+<p>The <strong>state-value function</strong> under policy <span class="math inline">\({} \pi(a|s) {}\)</span> is the <em>expected return</em> starting from state <span class="math inline">\(s\)</span> : <span class="math display">\[
+V^\pi(s)=\mathbb{E}_\pi\left[G_t \mid s_t=s\right]=\mathbb{E}_\pi\left[\sum_{k=0}^{\infty} \gamma^k r_{t+k} \mid s_t=s\right]
+\]</span></p>
+</div>
+</div>
+<p>If using a finite horizon <span class="math inline">\(H\)</span>, we replace the infinite sum by <span class="math inline">\(G_{t}=\sum_{k=0}^{H-1} \gamma^k r_{t+k}\)</span>, that is: <span class="math display">\[
+\begin{aligned}
+V(s)&amp;=\mathbb{E}\left[\sum_{k=0}^{H-1} \gamma^k r_{t+k} \mid s_t=s\right] \\
+&amp;=\mathbb{E}\left[r_t+\gamma r_{t+1}+\gamma^2 r_{t+2}+\cdots+\gamma^{H-1} r_{t+H-1} \mid s_t=s\right] \\
+\end{aligned}
+\]</span></p>
+<h4 data-original-heading="1.2.1 Value of an Infinite Horizon MRP (Bellman)" id="value-of-an-infinite-horizon-mrp-bellman">1.2.1 Value of an Infinite Horizon MRP (Bellman)</h4>
+<p><span class="math display">\[
+\begin{aligned}
+V(s) &amp; =\mathbb{E}\left[\sum_{k=0}^{\infty} \gamma^k r_{t+k} \mid s_t=s\right] \\
+&amp; =\mathbb{E}\left[r_t \mid s_t=s\right]+\gamma \mathbb{E}\left[\sum_{k=0}^{\infty} \gamma^k r_{t+1+k} \mid s_t=s\right] \\
+&amp; =R(s)+\gamma \mathbb{E}\left[V\left(s_{t+1}\right) \mid s_t=s\right] \\
+&amp; =R(s)+\gamma \sum_{s^{\prime}} P\left(s^{\prime} \mid s\right) V\left(s^{\prime}\right) 
+\end{aligned}
+\]</span> where <span class="math inline">\(R(s)=\mathbb{E}[r_{t}|s_{t}=s]\)</span>. Therefore, in this formulation, we have:</p>
+<div class="math-theorem theorem" data-callout="theorem" data-label="1.2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem 1.2.1</span><span class="theorem-title">Bellman Expectation Equation</span></p>
+</div>
+<div class="theorem-content">
+<p>The state-value function <span class="math inline">\(V: \mathcal{S} \rightarrow \mathbb{R}\)</span> is the unique function satisfying, for every <span class="math inline">\(s \in \mathcal{S}\)</span>, <span class="math display">\[V(s)=\underbrace{R(s)}_{\text{Immediate reward }}+\underbrace{\gamma \sum_{s^{\prime} \in S} P\left(s^{\prime} \mid s\right) V\left(s^{\prime}\right)}_{\text {Discounted sum of future rewards }}\]</span></p>
+</div>
+</div>
+<h4 data-original-heading="1.2.2 Value of an finite Horizon V(s) using matrix equation" id="value-of-an-finite-horizon-vs-using-matrix-equation">1.2.2 Value of an finite Horizon V(s) using matrix equation</h4>
+<p>We can solve this equation explicitly: <span class="math display">\[
+\begin{aligned}
+V &amp; =R+\gamma P V \\
+V-\gamma P V &amp; =R \\
+(I-\gamma P) V &amp; =R \\
+V &amp; =(I-\gamma P)^{-1} R
+\end{aligned}
+\]</span> However, computing inverse requires <span class="math inline">\(O(N^3)\)</span> + <em>invertible</em>, so we use iterative algorithm (<strong>fixed point method</strong>) for computing value of a MRP:</p>
+<ul>
+<li>Initialize <span class="math inline">\(V_0(s)=0\)</span> for all <span class="math inline">\(s\)</span></li>
+<li>For <span class="math inline">\(k=1\)</span> until convergence</li>
+<li>For all <span class="math inline">\(s\)</span> in <span class="math inline">\(S\)</span></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+V_k(s)&amp;=R+\gamma PV_{k-1}\\
+&amp;=R(s)+\gamma \sum_{s^{\prime} \in S} P\left(s^{\prime} \mid s\right) V_{k-1}\left(s^{\prime}\right)
+\end{aligned}
+\]</span> Computational complexity: <span class="math inline">\(O\left(|S|^2\right)\)</span> for each iteration <span class="math inline">\((|S|=N)\)</span></p>
+<h2 data-original-heading="2 Markov Decision Processes (MDPs)" id="markov-decision-processes-mdps">2 Markov Decision Processes (MDPs)</h2>
+<div class="math-theorem definition" data-callout="definition" data-label="2.0">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 2.0</span></p>
+</div>
+<div class="theorem-content">
+<p>A Markov Decision Process (MDP) is a 5 -tuple<span class="math display">\[
+(\mathcal{S}, \mathcal{A}, P, R, \gamma) \]</span> where</p>
+<ul>
+<li><span class="math inline">\(S\)</span> is the state space</li>
+<li><span class="math inline">\(\mathcal{A}\)</span> is the action space</li>
+<li><span class="math inline">\(P\left(s^{\prime} \mid s, a\right)\)</span> is the transition kernel (the probability of moving from <span class="math inline">\((s, \text{action }a \text{ taken})  \to s'\)</span>)</li>
+<li><span class="math inline">\(R(s, a)\)</span> is the reward function</li>
+<li><span class="math inline">\(\gamma \in[0,1]\)</span> is the discount factor</li>
+</ul>
+</div>
+</div>
+<h3 data-original-heading="2.1 Policy" id="policy">2.1 Policy</h3>
+<p>Policy <span class="math inline">\(\pi\)</span> specifies what action to take in each state <span class="math inline">\(s\)</span>:</p>
+<ul>
+<li>can be deterministic or stochastic</li>
+<li>a probability distribution over action given a state</li>
+</ul>
+<div class="math-theorem definition" data-callout="definition" data-label="2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 2.1</span><span class="theorem-title">Policy (π)</span></p>
+</div>
+<div class="theorem-content">
+<p>A (stationary Markov) policy is a map <span class="math display">\[\pi:\mathcal S\to \Delta(\mathcal A),\qquad\pi(a\mid s)=P(a_t=a\mid s_t=s)
+\]</span></p>
+</div>
+</div>
+<h4 data-original-heading="2.1.1 Relation between MDP abd MRP" id="relation-between-mdp-abd-mrp">2.1.1 Relation between MDP abd MRP</h4>
+<span class="math display">\[\operatorname{MDP}+ \operatorname{policy}=\operatorname{MRP}\left(S, R^\pi, P^\pi, \gamma\right)\]</span> where <span class="math display">\[\begin{aligned}
+R^\pi(s) &amp; =\sum_{a \in A} \pi(a \mid s) R(s, a) \\
+P^\pi\left(s^{\prime} \mid s\right) &amp; =\sum_{a \in A} \pi(a \mid s) P\left(s^{\prime} \mid s, a\right)
+\end{aligned}\]</span> By this relation, we then can find <strong>Bellman backup</strong> for a particular policy <span class="math inline">\(\pi\)</span> : $$
+<span class="math display">\[\begin{aligned}
+V_k^\pi(s)&amp;=\qquad\qquad\quad\;\;
+R^\pi(s)+\gamma \sum_{s^{\prime} \in S} P^\pi\left(s^{\prime} \mid s\right) V^\pi_{k-1}\left(s^{\prime}\right)\\
+
+&amp;=\sum_a \pi(a \mid s)\left[R(s, a)+\gamma \sum_{s^{\prime}}p\left(s^{\prime} \mid s, a\right) V_{k-1}^\pi\left(s^{\prime}\right)\right]
+\end{aligned}\]</span>
+<span class="math display">\[
+If $\pi$ is *deterministic*, then $\pi(a \mid s)=1$, thus $\pi(s)=a$: 
+\]</span>
+<span class="math display">\[\begin{aligned}
+V_k^\pi(s)
+&amp;= \sum_{a} \mathbf 1\{a=\pi(s)\}\,\Big[\,R(s,a) + \gamma \sum_{s'} p(s'\mid s,a)\,V_{k-1}^\pi(s')\Big] \\
+&amp;= R\big(s,\pi(s)\big) \;+\; \gamma \sum_{s'} p\big(s'\mid s,\pi(s)\big)\,V_{k-1}^\pi(s').
+\end{aligned}\]</span>
+<p>$$</p>
+<h3 data-original-heading="2.2 MDP Control &amp; Evaluation" id="mdp-control-evaluation">2.2 MDP Control &amp; Evaluation</h3>
+<ul>
+<li><strong>optimal policy</strong>: not necessarily</li>
+<li><strong>optimal value function</strong>: yes, and unique ### 2.2.1 Policy Optimality We compute the optimal policy: <span class="math display">\[\pi^*(s)=\arg \max _\pi V^\pi(s)\]</span> ### 2.2.2 Policy search</li>
+</ul></div><footer class="article-footer"></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Markov奖励&amp;决策过程</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#markov-reward-processes-mrps" class="is-active" aria-current="location">1 Markov Reward Processes (MRPs)</a></li><li style="--depth:1"><a href="#return">1.1 Return</a></li><li style="--depth:2"><a href="#discount-factor">1.1.1 Discount Factor</a></li><li style="--depth:2"><a href="#horizon">1.1.2 Horizon</a></li><li style="--depth:1"><a href="#state-value-function-vs">1.2 State Value function V(s)</a></li><li style="--depth:2"><a href="#value-of-an-infinite-horizon-mrp-bellman">1.2.1 Value of an Infinite Horizon MRP (Bellman)</a></li><li style="--depth:2"><a href="#value-of-an-finite-horizon-vs-using-matrix-equation">1.2.2 Value of an finite Horizon V(s) using matrix equation</a></li><li style="--depth:0"><a href="#markov-decision-processes-mdps">2 Markov Decision Processes (MDPs)</a></li><li style="--depth:1"><a href="#policy">2.1 Policy</a></li><li style="--depth:2"><a href="#relation-between-mdp-abd-mrp">2.1.1 Relation between MDP abd MRP</a></li><li style="--depth:1"><a href="#mdp-control-evaluation">2.2 MDP Control &amp; Evaluation</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

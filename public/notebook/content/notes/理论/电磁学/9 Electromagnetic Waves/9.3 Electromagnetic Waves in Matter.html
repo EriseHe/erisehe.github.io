@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>9.3 Electromagnetic Waves in Matter — E.H. Notebook</title>
+<meta name="description" content="9.3.1 Big pictureIn vacuum, Maxwell’s equations gave us waves traveling at speed c. In matter, the fields interact with the medium through polarization and magnetization,">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/index.html">9 Electromagnetic Waves</a></nav><h1 id="reader-title">9.3 Electromagnetic Waves in Matter</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Big picture" id="big-picture">9.3.1 Big picture</h2>
+<p>In vacuum, Maxwell’s equations gave us waves traveling at speed <span class="math inline">\(c\)</span>.<br>
+In matter, the fields interact with the medium through polarization and magnetization, so the wave still propagates, but with a modified speed</p>
+<p><span class="math display">\[
+v=\frac{1}{\sqrt{\epsilon\mu}}=\frac{c}{n}.
+\]</span></p>
+<p>The main goals of this section are:</p>
+<ul>
+<li>derive wave propagation in a linear homogeneous medium,</li>
+<li>use electromagnetic boundary conditions to determine what happens at an interface,</li>
+<li>recover the laws of reflection and refraction,</li>
+<li>derive amplitude and energy relations for reflected and transmitted waves,</li>
+<li>understand the special role of polarization, including Brewster’s angle.</li>
+</ul>
+<hr>
+<h2 data-original-heading="9.3.1 Propagation in Linear Media" id="propagation-in-linear-media">9.3.1 Propagation in Linear Media</h2>
+<h3 data-original-heading="Maxwell equations in matter" id="maxwell-equations-in-matter">9.3.1.1 Maxwell equations in matter</h3>
+<p>Inside matter, but in regions with no free charge and no free current, Maxwell’s equations are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla\cdot \mathbf D &amp;= 0, \\
+\nabla\cdot \mathbf B &amp;= 0, \\
+\nabla\times \mathbf E &amp;= -\frac{\partial \mathbf B}{\partial t}, \\
+\nabla\times \mathbf H &amp;= \frac{\partial \mathbf D}{\partial t}.
+\end{aligned}
+\]</span></p>
+<p>If the medium is <strong>linear</strong>,</p>
+<p><span class="math display">\[
+\mathbf D=\epsilon \mathbf E,
+\qquad
+\mathbf H=\frac{1}{\mu}\mathbf B,
+\]</span></p>
+<p>and <strong>homogeneous</strong> so that <span class="math inline">\(\epsilon\)</span> and <span class="math inline">\(\mu\)</span> are constants, then these become</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla\cdot \mathbf E &amp;= 0, \\
+\nabla\cdot \mathbf B &amp;= 0, \\
+\nabla\times \mathbf E &amp;= -\frac{\partial \mathbf B}{\partial t}, \\
+\nabla\times \mathbf B &amp;= \mu\epsilon \frac{\partial \mathbf E}{\partial t}.
+\end{aligned}
+\]</span></p>
+<p>These are exactly the vacuum equations with the replacement</p>
+<p><span class="math display">\[
+\mu_0\epsilon_0 \longrightarrow \mu\epsilon.
+\]</span></p>
+<p>So all the vacuum-wave machinery carries over with this substitution.</p>
+<hr>
+<h3 data-original-heading="Wave speed and index of refraction" id="wave-speed-and-index-of-refraction">9.3.1.2 Wave speed and index of refraction</h3>
+<p>From the same curl-of-curl derivation used in vacuum,</p>
+<p><span class="math display">\[
+\boxed{
+\nabla^2\mathbf E=\mu\epsilon\frac{\partial^2 \mathbf E}{\partial t^2},
+\qquad
+\nabla^2\mathbf B=\mu\epsilon\frac{\partial^2 \mathbf B}{\partial t^2}}
+\]</span></p>
+<p>so the wave speed is</p>
+<p><span class="math display">\[
+\boxed{
+v=\frac{1}{\sqrt{\epsilon\mu}}=\frac{c}{n}}
+\]</span></p>
+<p>with index of refraction</p>
+<p><span class="math display">\[
+\boxed{
+n\equiv \sqrt{\frac{\epsilon\mu}{\epsilon_0\mu_0}} }.
+\]</span></p>
+<p>For most media, <span class="math inline">\(\mu\approx \mu_0\)</span>, so</p>
+<p><span class="math display">\[
+\boxed{n\approx \sqrt{\epsilon_r}}.
+\]</span></p>
+<p>That is why light usually travels more slowly in matter than in vacuum.</p>
+<hr>
+<h3 data-original-heading="Plane-wave relations in matter" id="plane-wave-relations-in-matter">9.3.1.3 Plane-wave relations in matter</h3>
+<p>All the plane-wave structure from vacuum survives, with <span class="math inline">\(c\to v\)</span>, <span class="math inline">\(\epsilon_0\to\epsilon\)</span>, <span class="math inline">\(\mu_0\to\mu\)</span>.</p>
+<p>For a monochromatic plane wave:</p>
+<ul>
+<li><span class="math inline">\(\omega=kv\)</span>,</li>
+<li>the amplitude of <span class="math inline">\(\mathbf B\)</span> is <span class="math inline">\((1/v)\)</span> times the amplitude of <span class="math inline">\(\mathbf E\)</span>,</li>
+<li><span class="math inline">\(\mathbf E\)</span>, <span class="math inline">\(\mathbf B\)</span>, and <span class="math inline">\(\hat{\mathbf k}\)</span> are mutually perpendicular.</li>
+</ul>
+<p>So for amplitudes,</p>
+<p><span class="math display">\[
+\boxed{B_0=\frac{E_0}{v}}.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Energy density, Poynting vector, and intensity" id="energy-density-poynting-vector-and-intensity">9.3.1.4 Energy density, Poynting vector, and intensity</h3>
+<p>The energy density is</p>
+<p><span class="math display">\[
+\boxed{
+u=\frac12\left(\epsilon E^2+\frac{1}{\mu}B^2\right)}
+\]</span></p>
+<p>and the Poynting vector is</p>
+<p><span class="math display">\[
+\boxed{
+\mathbf S=\frac{1}{\mu}(\mathbf E\times \mathbf B)}.
+\]</span></p>
+<p>For a monochromatic plane wave, the intensity is</p>
+<p><span class="math display">\[
+\boxed{
+I=\frac12\,\epsilon v E_0^2 }.
+\]</span></p>
+<p>So the practical transcription from vacuum is very simple:</p>
+<p><span class="math display">\[
+\epsilon_0 \to \epsilon,\qquad
+\mu_0 \to \mu,\qquad
+c \to v.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Key conceptual point" id="key-conceptual-point">9.3.1.5 Key conceptual point</h3>
+<p>The mathematics looks simple, but physically this is subtle: the wave polarizes and magnetizes the medium, and the induced microscopic dipoles generate fields that combine with the original wave into one new wave with the same frequency but a different speed.</p>
+<hr>
+<h2 data-original-heading="9.3.2 Reflection and Transmission at Normal Incidence" id="reflection-and-transmission-at-normal-incidence">9.3.2 Reflection and Transmission at Normal Incidence</h2>
+<h3 data-original-heading="Setup" id="setup">9.3.2.1 Setup</h3>
+<p>Let the interface be the <span class="math inline">\(xy\)</span>-plane.<br>
+A wave in medium 1 travels in the <span class="math inline">\(+z\)</span> direction toward medium 2, polarized in the <span class="math inline">\(x\)</span> direction.</p>
+<p>The incident wave is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{\mathbf E}_I(z,t) &amp;= \tilde E_{0I} e^{i(k_1 z-\omega t)}\hat{\mathbf x},\\
+\tilde{\mathbf B}_I(z,t) &amp;= \frac{1}{v_1}\tilde E_{0I} e^{i(k_1 z-\omega t)}\hat{\mathbf y}.
+\end{aligned}
+\]</span></p>
+<p>The reflected wave is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{\mathbf E}_R(z,t) &amp;= \tilde E_{0R} e^{i(-k_1 z-\omega t)}\hat{\mathbf x},\\
+\tilde{\mathbf B}_R(z,t) &amp;= -\frac{1}{v_1}\tilde E_{0R} e^{i(-k_1 z-\omega t)}\hat{\mathbf y}.
+\end{aligned}
+\]</span></p>
+<p>The minus sign in <span class="math inline">\(\tilde{\mathbf B}_R\)</span> is essential: it makes <span class="math inline">\(\mathbf E\times \mathbf B\)</span> point in the reflected propagation direction.</p>
+<p>The transmitted wave is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{\mathbf E}_T(z,t) &amp;= \tilde E_{0T} e^{i(k_2 z-\omega t)}\hat{\mathbf x},\\
+\tilde{\mathbf B}_T(z,t) &amp;= \frac{1}{v_2}\tilde E_{0T} e^{i(k_2 z-\omega t)}\hat{\mathbf y}.
+\end{aligned}
+\]</span></p>
+<hr>
+<h3 data-original-heading="Boundary conditions" id="boundary-conditions">9.3.2.2 Boundary conditions</h3>
+<p>At the interface <span class="math inline">\(z=0\)</span>, the fields on the left must match those on the right.</p>
+<p>For linear media, the boundary conditions are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\epsilon_1 E_{1}^{\perp} &amp;= \epsilon_2 E_{2}^{\perp}, \\
+B_{1}^{\perp} &amp;= B_{2}^{\perp}, \\
+E_{1}^{\parallel} &amp;= E_{2}^{\parallel}, \\
+\frac{1}{\mu_1}B_{1}^{\parallel} &amp;= \frac{1}{\mu_2}B_{2}^{\parallel}.
+\end{aligned}
+\]</span></p>
+<p>In the present geometry there are no perpendicular components, so only the tangential conditions matter.</p>
+<p>From continuity of tangential <span class="math inline">\(\mathbf E\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\tilde E_{0I}+\tilde E_{0R}=\tilde E_{0T}}
+\]</span></p>
+<p>and from continuity of tangential <span class="math inline">\(\mathbf H=\mathbf B/\mu\)</span>,</p>
+<p><span class="math display">\[
+\frac{1}{\mu_1}\left(\frac{1}{v_1}\tilde E_{0I}-\frac{1}{v_1}\tilde E_{0R}\right)
+=
+\frac{1}{\mu_2}\left(\frac{1}{v_2}\tilde E_{0T}\right).
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+\boxed{
+\beta\equiv \frac{\mu_1 v_1}{\mu_2 v_2}
+=\frac{\mu_1 n_2}{\mu_2 n_1}}
+\]</span></p>
+<p>so the second condition becomes</p>
+<p><span class="math display">\[
+\boxed{\tilde E_{0I}-\tilde E_{0R}=\beta \tilde E_{0T}}.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Solving for amplitudes" id="solving-for-amplitudes">9.3.2.3 Solving for amplitudes</h3>
+<p>Now solve the two equations</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde E_{0I}+\tilde E_{0R} &amp;= \tilde E_{0T},\\
+\tilde E_{0I}-\tilde E_{0R} &amp;= \beta \tilde E_{0T}.
+\end{aligned}
+\]</span></p>
+<p>A clean textbook-style elimination is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde E_{0I}+\tilde E_{0R} &amp;= \tilde E_{0T},\\
+\tilde E_{0I}-\tilde E_{0R} &amp;= \beta \tilde E_{0T}
+\end{aligned}
+\]</span></p>
+<p>Add and subtract appropriately:</p>
+<p><span class="math display">\[
+\begin{aligned}
+2\tilde E_{0I}
+&amp;=(1+\beta)\tilde E_{0T}
+\\
+\Rightarrow\quad
+\tilde E_{0T}
+&amp;=\frac{2}{1+\beta}\tilde E_{0I},
+\end{aligned}
+\]</span></p>
+<p>and then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde E_{0R}
+&amp;=\tilde E_{0T}-\tilde E_{0I}
+\\
+&amp;=\left(\frac{2}{1+\beta}-1\right)\tilde E_{0I}
+\\
+&amp;=\frac{1-\beta}{1+\beta}\tilde E_{0I}.
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+\boxed{
+\tilde E_{0R}=\frac{1-\beta}{1+\beta}\tilde E_{0I},
+\qquad
+\tilde E_{0T}=\frac{2}{1+\beta}\tilde E_{0I}}
+\]</span></p>
+<p>These are the normal-incidence amplitude relations.</p>
+<hr>
+<h3 data-original-heading="Common approximation: \mu_1\approx \mu_2" id="common-approximation-mu_1approx-mu_2">9.3.2.4 Common approximation: <span class="math inline">\(\mu_1\approx \mu_2\)</span></h3>
+<p>For most optical media, <span class="math inline">\(\mu_1\approx\mu_2\approx \mu_0\)</span>, so</p>
+<p><span class="math display">\[
+\beta=\frac{v_1}{v_2}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\boxed{
+\tilde E_{0R}=\frac{v_2-v_1}{v_2+v_1}\tilde E_{0I},
+\qquad
+\tilde E_{0T}=\frac{2v_2}{v_2+v_1}\tilde E_{0I}}
+\]</span></p>
+<p>or, using <span class="math inline">\(v=c/n\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+E_{0R}=\left|\frac{n_1-n_2}{n_1+n_2}\right|E_{0I},
+\qquad
+E_{0T}=\frac{2n_1}{n_1+n_2}E_{0I}}
+\]</span></p>
+<p>with the sign of the reflected amplitude encoding phase reversal:</p>
+<ul>
+<li>if <span class="math inline">\(v_2&gt;v_1\)</span> then reflected wave is in phase,</li>
+<li>if <span class="math inline">\(v_2&lt;v_1\)</span> then reflected wave is <span class="math inline">\(180^\circ\)</span> out of phase.</li>
+</ul>
+<hr>
+<h3 data-original-heading="Reflection and transmission coefficients" id="reflection-and-transmission-coefficients">9.3.2.5 Reflection and transmission coefficients</h3>
+<p>Since</p>
+<p><span class="math display">\[
+I=\frac12 \epsilon v E_0^2,
+\]</span></p>
+<p>the reflection coefficient is</p>
+<p><span class="math display">\[
+\boxed{
+R\equiv \frac{I_R}{I_I}
+=
+\left(\frac{E_{0R}}{E_{0I}}\right)^2
+=
+\left(\frac{n_1-n_2}{n_1+n_2}\right)^2}
+\]</span></p>
+<p>and the transmission coefficient is</p>
+<p><span class="math display">\[
+\boxed{
+T\equiv \frac{I_T}{I_I}
+=
+\frac{\epsilon_2 v_2}{\epsilon_1 v_1}
+\left(\frac{E_{0T}}{E_{0I}}\right)^2
+=
+\frac{4n_1n_2}{(n_1+n_2)^2}}
+\]</span></p>
+<p>when <span class="math inline">\(\mu_1=\mu_2=\mu_0\)</span>.</p>
+<p>These satisfy</p>
+<p><span class="math display">\[
+\boxed{R+T=1},
+\]</span></p>
+<p>as they must.</p>
+<hr>
+<h3 data-original-heading="Example / interpretation" id="example-interpretation">9.3.2.6 Example / interpretation</h3>
+<p>For air to glass,</p>
+<p><span class="math display">\[
+n_1=1,\qquad n_2=1.5,
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+R=0.04,\qquad T=0.96.
+\]</span></p>
+<p>Only about <span class="math inline">\(4\%\)</span> is reflected, and most is transmitted.</p>
+<hr>
+<h3 data-original-heading="Solution technique to remember" id="solution-technique-to-remember">9.3.2.7 Solution technique to remember</h3>
+<p>For normal incidence:</p>
+<ol type="1">
+<li>write incident, reflected, transmitted waves with correct propagation directions,</li>
+<li>be careful with the sign of <span class="math inline">\(\mathbf B_R\)</span>,</li>
+<li>apply tangential boundary conditions at the interface,</li>
+<li>solve the resulting two linear equations for <span class="math inline">\(\tilde E_{0R}\)</span> and <span class="math inline">\(\tilde E_{0T}\)</span>,</li>
+<li>convert to intensities using <span class="math inline">\(I=\frac12 \epsilon v E_0^2\)</span>.</li>
+</ol>
+<p>That is the standard template.</p>
+<hr>
+<h2 data-original-heading="9.3.3 Reflection and Transmission at Oblique Incidence" id="reflection-and-transmission-at-oblique-incidence">9.3.3 Reflection and Transmission at Oblique Incidence</h2>
+<h3 data-original-heading="General setup" id="general-setup">9.3.3.1 General setup</h3>
+<p>Now let the incident wave strike the interface at angle <span class="math inline">\(\theta_I\)</span>.</p>
+<p>Write</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{\mathbf E}_I(\mathbf r,t)&amp;=\tilde{\mathbf E}_{0I}e^{i(\mathbf k_I\cdot\mathbf r-\omega t)},\\
+\tilde{\mathbf B}_I(\mathbf r,t)&amp;=\frac{1}{v_1}(\hat{\mathbf k}_I\times \tilde{\mathbf E}_I),
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{\mathbf E}_R(\mathbf r,t)&amp;=\tilde{\mathbf E}_{0R}e^{i(\mathbf k_R\cdot\mathbf r-\omega t)},\\
+\tilde{\mathbf B}_R(\mathbf r,t)&amp;=\frac{1}{v_1}(\hat{\mathbf k}_R\times \tilde{\mathbf E}_R),
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{\mathbf E}_T(\mathbf r,t)&amp;=\tilde{\mathbf E}_{0T}e^{i(\mathbf k_T\cdot\mathbf r-\omega t)},\\
+\tilde{\mathbf B}_T(\mathbf r,t)&amp;=\frac{1}{v_2}(\hat{\mathbf k}_T\times \tilde{\mathbf E}_T).
+\end{aligned}
+\]</span></p>
+<p>All three waves have the same frequency <span class="math inline">\(\omega\)</span>, while the wave numbers satisfy</p>
+<p><span class="math display">\[
+\boxed{
+k_I v_1=k_R v_1=k_T v_2=\omega}
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\boxed{
+k_I=k_R=\frac{v_2}{v_1}k_T=\frac{n_1}{n_2}k_T}.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Matching the phase along the boundary" id="matching-the-phase-along-the-boundary">9.3.3.2 Matching the phase along the boundary</h3>
+<p>At <span class="math inline">\(z=0\)</span>, the boundary conditions have the generic form</p>
+<p><span class="math display">\[
+(\cdots)e^{i(\mathbf k_I\cdot\mathbf r-\omega t)}
++
+(\cdots)e^{i(\mathbf k_R\cdot\mathbf r-\omega t)}
+=
+(\cdots)e^{i(\mathbf k_T\cdot\mathbf r-\omega t)}.
+\]</span></p>
+<p>Because this must hold for all points on the interface and for all time, the exponential factors must match when <span class="math inline">\(z=0\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+\mathbf k_I\cdot\mathbf r
+=
+\mathbf k_R\cdot\mathbf r
+=
+\mathbf k_T\cdot\mathbf r
+\qquad (z=0)}
+\]</span></p>
+<p>which implies equality of the components parallel to the interface.</p>
+<hr>
+<h3 data-original-heading="The three laws of geometrical optics" id="the-three-laws-of-geometrical-optics">9.3.3.3 The three laws of geometrical optics</h3>
+<p>Choose axes so that the incident wave lies in the <span class="math inline">\(xz\)</span> plane. Then the reflected and transmitted wave vectors must also lie in that plane.</p>
+<p>So:</p>
+<h4 data-original-heading="First law" id="first-law">9.3.3.3.1 First law</h4>
+<p>The incident, reflected, and transmitted wave vectors all lie in a single plane, the <strong>plane of incidence</strong>, which also contains the normal to the surface.</p>
+<p>From matching tangential components,</p>
+<p><span class="math display">\[
+k_I\sin\theta_I=k_R\sin\theta_R=k_T\sin\theta_T.
+\]</span></p>
+<p>Using <span class="math inline">\(k_I=k_R\)</span>, we get</p>
+<h4 data-original-heading="Second law: reflection" id="second-law-reflection">9.3.3.3.2 Second law: reflection</h4>
+<p><span class="math display">\[
+\boxed{\theta_I=\theta_R}
+\]</span></p>
+<p>and using <span class="math inline">\(k_I/k_T=n_1/n_2\)</span>, we get</p>
+<h4 data-original-heading="Third law: refraction (Snell’s law)" id="third-law-refraction-snells-law">9.3.3.3.3 Third law: refraction (Snell’s law)</h4>
+<p><span class="math display">\[
+\boxed{
+\frac{\sin\theta_T}{\sin\theta_I}=\frac{n_1}{n_2}}
+\]</span></p>
+<p>or equivalently</p>
+<p><span class="math display">\[
+\boxed{n_1\sin\theta_I=n_2\sin\theta_T}.
+\]</span></p>
+<p>A key point is that these laws follow mostly from phase matching, before using the detailed electromagnetic boundary conditions.</p>
+<hr>
+<h3 data-original-heading="Boundary conditions for amplitudes" id="boundary-conditions-for-amplitudes">9.3.3.4 Boundary conditions for amplitudes</h3>
+<p>After the exponentials cancel, the boundary conditions become relations among amplitudes:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\epsilon_1(\tilde E_{0I}+\tilde E_{0R})_z &amp;= \epsilon_2(\tilde E_{0T})_z,\\
+(\tilde B_{0I}+\tilde B_{0R})_z &amp;= (\tilde B_{0T})_z,\\
+(\tilde E_{0I}+\tilde E_{0R})_{x,y} &amp;= (\tilde E_{0T})_{x,y},\\
+\frac{1}{\mu_1}(\tilde B_{0I}+\tilde B_{0R})_{x,y}
+&amp;=
+\frac{1}{\mu_2}(\tilde B_{0T})_{x,y}.
+\end{aligned}
+\]</span></p>
+<p>At this point polarization matters.</p>
+<hr>
+<h3 data-original-heading="Case 1: polarization parallel to the plane of incidence" id="case-1-polarization-parallel-to-the-plane-of-incidence">9.3.3.5 Case 1: polarization parallel to the plane of incidence</h3>
+<p>Take the incident electric field in the plane of incidence (<span class="math inline">\(xz\)</span>-plane). Then the reflected and transmitted fields are also in that plane.</p>
+<p>The boundary conditions reduce to</p>
+<p><span class="math display">\[
+\epsilon_1(-\tilde E_{0I}\sin\theta_I+\tilde E_{0R}\sin\theta_R)
+=
+\epsilon_2(-\tilde E_{0T}\sin\theta_T),
+\]</span></p>
+<p><span class="math display">\[
+\tilde E_{0I}\cos\theta_I+\tilde E_{0R}\cos\theta_R
+=
+\tilde E_{0T}\cos\theta_T,
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{\mu_1 v_1}(\tilde E_{0I}-\tilde E_{0R})
+=
+\frac{1}{\mu_2 v_2}\tilde E_{0T}.
+\]</span></p>
+<p>Using the laws of reflection and refraction, the first and third both reduce to</p>
+<p><span class="math display">\[
+\boxed{\tilde E_{0I}-\tilde E_{0R}=\beta \tilde E_{0T}}
+\]</span></p>
+<p>with</p>
+<p><span class="math display">\[
+\boxed{\beta=\frac{\mu_1 v_1}{\mu_2 v_2}
+=\frac{\mu_1 n_2}{\mu_2 n_1}}
+\]</span></p>
+<p>while the second becomes</p>
+<p><span class="math display">\[
+\boxed{\tilde E_{0I}+\tilde E_{0R}=\alpha \tilde E_{0T}}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\boxed{\alpha\equiv \frac{\cos\theta_T}{\cos\theta_I}}.
+\]</span></p>
+<p>Now solve exactly as in the normal-incidence case:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde E_{0I}-\tilde E_{0R}&amp;=\beta \tilde E_{0T},\\
+\tilde E_{0I}+\tilde E_{0R}&amp;=\alpha \tilde E_{0T}.
+\end{aligned}
+\]</span></p>
+<p>Hence</p>
+<p><span class="math display">\[
+\boxed{
+\tilde E_{0R}=\frac{\alpha-\beta}{\alpha+\beta}\tilde E_{0I},
+\qquad
+\tilde E_{0T}=\frac{2}{\alpha+\beta}\tilde E_{0I}}
+\]</span></p>
+<p>These are the <strong>Fresnel equations</strong> for polarization parallel to the plane of incidence.</p>
+<hr>
+<h3 data-original-heading="Angular dependence and Brewster angle" id="angular-dependence-and-brewster-angle">9.3.3.6 Angular dependence and Brewster angle</h3>
+<p>Here</p>
+<p><span class="math display">\[
+\alpha=\frac{\cos\theta_T}{\cos\theta_I}
+=
+\frac{\sqrt{1-\sin^2\theta_T}}{\cos\theta_I}
+=
+\frac{\sqrt{1-\left[(n_1/n_2)\sin\theta_I\right]^2}}{\cos\theta_I}.
+\]</span></p>
+<p>So the reflected and transmitted amplitudes depend on the incident angle.</p>
+<p>A remarkable feature is the existence of <strong>Brewster’s angle</strong> <span class="math inline">\(\theta_B\)</span>, where the reflected wave disappears:</p>
+<p><span class="math display">\[
+\tilde E_{0R}=0
+\quad\Longrightarrow\quad
+\alpha=\beta.
+\]</span></p>
+<p>This yields</p>
+<p><span class="math display">\[
+\boxed{
+\sin^2\theta_B=\frac{1-\beta^2}{(n_1/n_2)^2-\beta^2}}
+\]</span></p>
+<p>and for the common case <span class="math inline">\(\mu_1\approx \mu_2\)</span>,</p>
+<p><span class="math display">\[
+\beta\approx \frac{n_2}{n_1}
+\quad\Longrightarrow\quad
+\boxed{\tan\theta_B\approx \frac{n_2}{n_1}}.
+\]</span></p>
+<p>At this angle, the reflected beam is extinguished for this polarization.</p>
+<hr>
+<h3 data-original-heading="Intensities for the parallel-polarization case" id="intensities-for-the-parallel-polarization-case">9.3.3.7 Intensities for the parallel-polarization case</h3>
+<p>The power per unit area of interface is the normal component of the Poynting vector, so</p>
+<p><span class="math display">\[
+\boxed{
+I_I=\frac12 \epsilon_1 v_1 E_{0I}^2 \cos\theta_I}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+I_R=\frac12 \epsilon_1 v_1 E_{0R}^2 \cos\theta_R,
+\qquad
+I_T=\frac12 \epsilon_2 v_2 E_{0T}^2 \cos\theta_T}
+\]</span></p>
+<p>The extra cosine factors appear because the wave fronts are tilted relative to the interface.</p>
+<p>So the reflection and transmission coefficients are</p>
+<p><span class="math display">\[
+\boxed{
+R=\frac{I_R}{I_I}
+=
+\left(\frac{E_{0R}}{E_{0I}}\right)^2
+=
+\left(\frac{\alpha-\beta}{\alpha+\beta}\right)^2}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\boxed{
+T=\frac{I_T}{I_I}
+=
+\frac{\epsilon_2 v_2}{\epsilon_1 v_1}
+\left(\frac{E_{0T}}{E_{0I}}\right)^2
+\frac{\cos\theta_T}{\cos\theta_I}
+=
+\alpha\beta\left(\frac{2}{\alpha+\beta}\right)^2}
+\]</span></p>
+<p>with</p>
+<p><span class="math display">\[
+\boxed{R+T=1}.
+\]</span></p>
+<p>At Brewster’s angle,</p>
+<p><span class="math display">\[
+R=0,\qquad T=1.
+\]</span></p>
+<hr>
+<h3 data-original-heading="Case 2: polarization perpendicular to the plane of incidence" id="case-2-polarization-perpendicular-to-the-plane-of-incidence">9.3.3.8 Case 2: polarization perpendicular to the plane of incidence</h3>
+<p>Griffiths leaves the full derivation to the problem set. The important conceptual takeaway is:</p>
+<ul>
+<li>there is another pair of Fresnel equations for this polarization,</li>
+<li>unlike the parallel-polarization case, there is <strong>no Brewster angle</strong> in the generic case,</li>
+<li>the reflected component is not extinguished.</li>
+</ul>
+<p>So polarization is not a minor detail; it changes the boundary-value problem.</p>
+<hr>
+<h3 data-original-heading="Solution technique to remember for oblique incidence" id="solution-technique-to-remember-for-oblique-incidence">9.3.3.9 Solution technique to remember for oblique incidence</h3>
+<p>The standard Griffiths strategy is:</p>
+<ol type="1">
+<li>write incident, reflected, and transmitted plane waves in complex notation,</li>
+<li>impose equality of phase along the interface,</li>
+<li>deduce:
+<ul>
+<li>coplanarity of <span class="math inline">\(\mathbf k_I,\mathbf k_R,\mathbf k_T\)</span>,</li>
+<li><span class="math inline">\(\theta_I=\theta_R\)</span>,</li>
+<li>Snell’s law,</li>
+</ul></li>
+<li>then impose amplitude boundary conditions,</li>
+<li>solve separately for each polarization.</li>
+</ol>
+<p>This is the cleanest way to organize the algebra.</p>
+<hr>
+<h2 data-original-heading="Summary sheet" id="summary-sheet">9.3.4 Summary sheet</h2>
+<h3 data-original-heading="Wave propagation in matter" id="wave-propagation-in-matter">9.3.4.1 Wave propagation in matter</h3>
+<p><span class="math display">\[
+\boxed{
+\nabla^2\mathbf E=\mu\epsilon\frac{\partial^2\mathbf E}{\partial t^2},
+\qquad
+\nabla^2\mathbf B=\mu\epsilon\frac{\partial^2\mathbf B}{\partial t^2}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+v=\frac{1}{\sqrt{\epsilon\mu}}=\frac{c}{n}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+n=\sqrt{\frac{\epsilon\mu}{\epsilon_0\mu_0}}
+\approx \sqrt{\epsilon_r}}
+\]</span></p>
+<h3 data-original-heading="Energy flow in matter" id="energy-flow-in-matter">9.3.4.2 Energy flow in matter</h3>
+<p><span class="math display">\[
+\boxed{
+u=\frac12\left(\epsilon E^2+\frac{1}{\mu}B^2\right)}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\mathbf S=\frac{1}{\mu}(\mathbf E\times \mathbf B)}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+I=\frac12 \epsilon v E_0^2}
+\]</span></p>
+<h3 data-original-heading="Boundary conditions at an interface" id="boundary-conditions-at-an-interface">9.3.4.3 Boundary conditions at an interface</h3>
+<p><span class="math display">\[
+\boxed{
+\epsilon_1 E_1^\perp=\epsilon_2 E_2^\perp,\quad
+B_1^\perp=B_2^\perp,\quad
+E_1^\parallel=E_2^\parallel,\quad
+\frac{1}{\mu_1}B_1^\parallel=\frac{1}{\mu_2}B_2^\parallel}
+\]</span></p>
+<h3 data-original-heading="Normal incidence" id="normal-incidence">9.3.4.4 Normal incidence</h3>
+<p><span class="math display">\[
+\boxed{
+\tilde E_{0R}=\frac{1-\beta}{1+\beta}\tilde E_{0I},
+\qquad
+\tilde E_{0T}=\frac{2}{1+\beta}\tilde E_{0I}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\beta=\frac{\mu_1 v_1}{\mu_2 v_2}=\frac{\mu_1 n_2}{\mu_2 n_1}}
+\]</span></p>
+<p>If <span class="math inline">\(\mu_1\approx\mu_2\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+E_{0R}=\left|\frac{n_1-n_2}{n_1+n_2}\right|E_{0I},
+\qquad
+E_{0T}=\frac{2n_1}{n_1+n_2}E_{0I}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+R=\left(\frac{n_1-n_2}{n_1+n_2}\right)^2,
+\qquad
+T=\frac{4n_1n_2}{(n_1+n_2)^2}}
+\]</span></p>
+<h3 data-original-heading="Oblique incidence" id="oblique-incidence">9.3.4.5 Oblique incidence</h3>
+<p><span class="math display">\[
+\boxed{\theta_I=\theta_R}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{n_1\sin\theta_I=n_2\sin\theta_T}
+\]</span></p>
+<p>For polarization parallel to the plane of incidence,</p>
+<p><span class="math display">\[
+\boxed{
+\tilde E_{0R}=\frac{\alpha-\beta}{\alpha+\beta}\tilde E_{0I},
+\qquad
+\tilde E_{0T}=\frac{2}{\alpha+\beta}\tilde E_{0I}}
+\]</span></p>
+<p>with</p>
+<p><span class="math display">\[
+\boxed{
+\alpha=\frac{\cos\theta_T}{\cos\theta_I},
+\qquad
+\beta=\frac{\mu_1 v_1}{\mu_2 v_2}}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\boxed{
+R=\left(\frac{\alpha-\beta}{\alpha+\beta}\right)^2,
+\qquad
+T=\alpha\beta\left(\frac{2}{\alpha+\beta}\right)^2}
+\]</span></p>
+<h3 data-original-heading="Brewster angle" id="brewster-angle">9.3.4.6 Brewster angle</h3>
+<p><span class="math display">\[
+\boxed{
+\sin^2\theta_B=\frac{1-\beta^2}{(n_1/n_2)^2-\beta^2}}
+\]</span></p>
+<p>For <span class="math inline">\(\mu_1\approx\mu_2\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\tan\theta_B\approx \frac{n_2}{n_1}}
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span>← Previous page</span><span>9.2 Electromagnetic Waves in Vacuum</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">9.3 Electromagnetic Waves in Matter</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#big-picture" class="is-active" aria-current="location">9.3.1 Big picture</a></li><li style="--depth:0"><a href="#propagation-in-linear-media">9.3.1 Propagation in Linear Media</a></li><li style="--depth:1"><a href="#maxwell-equations-in-matter">9.3.1.1 Maxwell equations in matter</a></li><li style="--depth:1"><a href="#wave-speed-and-index-of-refraction">9.3.1.2 Wave speed and index of refraction</a></li><li style="--depth:1"><a href="#plane-wave-relations-in-matter">9.3.1.3 Plane-wave relations in matter</a></li><li style="--depth:1"><a href="#energy-density-poynting-vector-and-intensity">9.3.1.4 Energy density, Poynting vector, and intensity</a></li><li style="--depth:1"><a href="#key-conceptual-point">9.3.1.5 Key conceptual point</a></li><li style="--depth:0"><a href="#reflection-and-transmission-at-normal-incidence">9.3.2 Reflection and Transmission at Normal Incidence</a></li><li style="--depth:1"><a href="#setup">9.3.2.1 Setup</a></li><li style="--depth:1"><a href="#boundary-conditions">9.3.2.2 Boundary conditions</a></li><li style="--depth:1"><a href="#solving-for-amplitudes">9.3.2.3 Solving for amplitudes</a></li><li style="--depth:1"><a href="#common-approximation-mu_1approx-mu_2">9.3.2.4 Common approximation: \mu_1\approx \mu_2</a></li><li style="--depth:1"><a href="#reflection-and-transmission-coefficients">9.3.2.5 Reflection and transmission coefficients</a></li><li style="--depth:1"><a href="#example-interpretation">9.3.2.6 Example / interpretation</a></li><li style="--depth:1"><a href="#solution-technique-to-remember">9.3.2.7 Solution technique to remember</a></li><li style="--depth:0"><a href="#reflection-and-transmission-at-oblique-incidence">9.3.3 Reflection and Transmission at Oblique Incidence</a></li><li style="--depth:1"><a href="#general-setup">9.3.3.1 General setup</a></li><li style="--depth:1"><a href="#matching-the-phase-along-the-boundary">9.3.3.2 Matching the phase along the boundary</a></li><li style="--depth:1"><a href="#the-three-laws-of-geometrical-optics">9.3.3.3 The three laws of geometrical optics</a></li><li style="--depth:2"><a href="#first-law">9.3.3.3.1 First law</a></li><li style="--depth:2"><a href="#second-law-reflection">9.3.3.3.2 Second law: reflection</a></li><li style="--depth:2"><a href="#third-law-refraction-snells-law">9.3.3.3.3 Third law: refraction (Snell’s law)</a></li><li style="--depth:1"><a href="#boundary-conditions-for-amplitudes">9.3.3.4 Boundary conditions for amplitudes</a></li><li style="--depth:1"><a href="#case-1-polarization-parallel-to-the-plane-of-incidence">9.3.3.5 Case 1: polarization parallel to the plane of incidence</a></li><li style="--depth:1"><a href="#angular-dependence-and-brewster-angle">9.3.3.6 Angular dependence and Brewster angle</a></li><li style="--depth:1"><a href="#intensities-for-the-parallel-polarization-case">9.3.3.7 Intensities for the parallel-polarization case</a></li><li style="--depth:1"><a href="#case-2-polarization-perpendicular-to-the-plane-of-incidence">9.3.3.8 Case 2: polarization perpendicular to the plane of incidence</a></li><li style="--depth:1"><a href="#solution-technique-to-remember-for-oblique-incidence">9.3.3.9 Solution technique to remember for oblique incidence</a></li><li style="--depth:0"><a href="#summary-sheet">9.3.4 Summary sheet</a></li><li style="--depth:1"><a href="#wave-propagation-in-matter">9.3.4.1 Wave propagation in matter</a></li><li style="--depth:1"><a href="#energy-flow-in-matter">9.3.4.2 Energy flow in matter</a></li><li style="--depth:1"><a href="#boundary-conditions-at-an-interface">9.3.4.3 Boundary conditions at an interface</a></li><li style="--depth:1"><a href="#normal-incidence">9.3.4.4 Normal incidence</a></li><li style="--depth:1"><a href="#oblique-incidence">9.3.4.5 Oblique incidence</a></li><li style="--depth:1"><a href="#brewster-angle">9.3.4.6 Brewster angle</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

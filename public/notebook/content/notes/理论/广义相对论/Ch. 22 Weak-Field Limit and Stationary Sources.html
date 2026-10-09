@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ch. 22 Weak-Field Limit and Stationary Sources — E.H. Notebook</title>
+<meta name="description" content="22. 1. Energy Conservation as a Geometric NecessityIn chapter 21 the Einstein tensor was defined as G^{\mu\nu} \equiv R^{\mu\nu} - \tfrac12 g^{\mu\nu} R and the Einstein ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="广义相对论 file hierarchy" data-sidebar-root="content/notes/理论/广义相对论"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%202%20Einstein%20Summation%20Convention.html"><span class="page-number"></span><span>Ch. 2 Einstein Summation Convention</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%203%20%E2%80%94%20Four%E2%80%91Vectors.html"><span class="page-number"></span><span>Ch. 3 — Four‑Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%204%20%E2%80%94%20Index%20Notation.html"><span class="page-number"></span><span>Ch. 4 — Index Notation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%205%20%E2%80%94%20Arbitrary%20Coordinates.html"><span class="page-number"></span><span>Ch. 5 — Arbitrary Coordinates</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%206%20%E2%80%94%20Tensor%20Equations.html"><span class="page-number"></span><span>Ch. 6 — Tensor Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%207%20%E2%80%94%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number"></span><span>Ch. 7 — Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%208%20%E2%80%94%20Geodesics.html"><span class="page-number"></span><span>Ch. 8 — Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%209%20%E2%80%94%20The%20Schwarzschild%20Metric.html"><span class="page-number"></span><span>Ch. 9 — The Schwarzschild Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2010%20%E2%80%94%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 10 — Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2012%20%E2%80%94%20Photon%20Orbits.html"><span class="page-number"></span><span>Ch. 12 — Photon Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2014%20%E2%80%94%20Event%20Horizon.html"><span class="page-number"></span><span>Ch. 14 — Event Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2015%20Kruskal%E2%80%93Szekeres%20Coordinates%20for%20Schwarzschild%20Spacetime.html"><span class="page-number"></span><span>Ch. 15 Kruskal–Szekeres Coordinates for Schwarzschild Spacetime</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2016%20Black%20Hole%20Thermodynamics.html"><span class="page-number"></span><span>Ch. 16 Black Hole Thermodynamics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2017%20The%20Absolute%20Gradient.html"><span class="page-number"></span><span>Ch. 17 The Absolute Gradient</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Derivation.html"><span class="page-number"></span><span>Ch. 18 Geodesic Derivation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2018%20Geodesic%20Deviation%20and%20the%20Riemann%20Tensor.html"><span class="page-number"></span><span>Ch. 18 Geodesic Deviation and the Riemann Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2019%20Riemman%20Tensor.html"><span class="page-number"></span><span>Ch. 19 Riemman Tensor</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2020%20Stress-Energy%20and%20the%20Source%20of%20Gravity.html"><span class="page-number"></span><span>Ch. 20 Stress-Energy and the Source of Gravity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span class="page-number"></span><span>Ch. 21 The Einstein Equation (2)</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2022%20Weak-Field%20Limit%20and%20Stationary%20Sources.html"><span class="page-number"></span><span>Ch. 22 Weak-Field Limit and Stationary Sources</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span class="page-number"></span><span>Ch. 23 The Schwarzschild Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2030%20Gauge%20Freedom%20in%20the%20Weak-Field%20Einstein%20Equation.html"><span class="page-number"></span><span>Ch. 30 Gauge Freedom in the Weak-Field Einstein Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2031%20Detecting%20Gravitational%20Waves.html"><span class="page-number"></span><span>Ch. 31 Detecting Gravitational Waves</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2032%20Gravitational%20Wave%20Energy.html"><span class="page-number"></span><span>Ch. 32 Gravitational Wave Energy</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20ChatGPT.html"><span class="page-number"></span><span>Ch. 33 ChatGPT</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2033%20Gemini.html"><span class="page-number"></span><span>Ch. 33 Gemini</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2035%20Gravitomagnetism.html"><span class="page-number"></span><span>Ch. 35 Gravitomagnetism</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2036%20Rotating%20Objects%20and%20the%20Kerr%20Metric.html"><span class="page-number"></span><span>Ch. 36 Rotating Objects and the Kerr Metric</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2037%20Kerr%20Particle%20Orbits.html"><span class="page-number"></span><span>Ch. 37 Kerr Particle Orbits</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2038%20Ergoregion%20and%20Horizon.html"><span class="page-number"></span><span>Ch. 38 Ergoregion and Horizon</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2039%20Penrose%20Process%20and%20Energy%20Limits%20in%20Kerr%20Spacetime.html"><span class="page-number"></span><span>Ch. 39 Penrose Process and Energy Limits in Kerr Spacetime</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/index.html">广义相对论</a></nav><h1 id="reader-title">Ch. 22 Weak-Field Limit and Stationary Sources</h1></header><div id="article-body" class="prose"><h2 data-original-heading="22. 1. Energy Conservation as a Geometric Necessity" id="energy-conservation-as-a-geometric-necessity">22. 1. Energy Conservation as a Geometric Necessity</h2>
+<p>In chapter 21 the Einstein tensor was defined as<br>
+<span class="math display">\[
+G^{\mu\nu} \equiv R^{\mu\nu} - \tfrac12 g^{\mu\nu} R
+\]</span> and the Einstein equation was written as <span class="math display">\[
+G^{\mu\nu} = 8\pi G T^{\mu\nu}
+\]</span></p>
+<p>The metric <span class="math inline">\(g_{\mu\nu}\)</span> has 10 independent components, so <strong>naively</strong> this system looks like 10 independent second-order differential equations for <span class="math inline">\(g_{\mu\nu}\)</span>.</p>
+<p>However, the metric cannot be completely determined by these equations because we are free to choose coordinates. A general coordinate transformation <span class="math display">\[
+x'^{\mu} = f^{\mu}(x^\nu)
+\]</span> contains four arbitrary functions, so the components <span class="math inline">\(g_{\mu\nu}\)</span> in different coordinate systems that describe the <em>same</em> spacetime are related in a way that cannot change the physical content.</p>
+<p>This means the 10 equations in <span class="math inline">\(G^{\mu\nu} = 8\pi G T^{\mu\nu}\)</span> can only impose <strong>six</strong> independent constraints on the metric; the remaining four are effectively coordinate conditions.</p>
+<p>The way this happens mathematically is through the <strong>Bianchi identity</strong>, which implies <span class="math display">\[
+\nabla_{\nu} G^{\mu\nu} \equiv 0
+\]</span> for any metric. Thus, the Einstein tensor is automatically constructed so that it satisfies <strong>four internal differential identities</strong>. As a result, the Einstein equation <span class="math display">\[
+G^{\mu\nu} = 8\pi G T^{\mu\nu}
+\]</span> demands <span class="math display">\[
+\nabla_{\nu} T^{\mu\nu} = 0
+\]</span> which is the local law of conservation of energy and momentum.</p>
+<div class="math-theorem remark" data-callout="remark" data-label="22.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Remark 22.1</span><span class="theorem-title">Energy conservation from coordinate freedom</span></p>
+</div>
+<div class="theorem-content">
+<p>The requirement that physical laws be independent of our arbitrary coordinate choice forces the Einstein tensor to have vanishing divergence. When we equate this tensor to <span class="math inline">\(T^{\mu\nu}\)</span>, the conservation law <span class="math inline">\(\nabla_\nu T^{\mu\nu} = 0\)</span> follows as a <strong>necessary consequence</strong> of general covariance, rather than an extra assumption.</p>
+</div>
+</div>
+<hr>
+<h2 data-original-heading="22.2 Connection to the Geodesic Hypothesis" id="connection-to-the-geodesic-hypothesis">22.2 Connection to the Geodesic Hypothesis</h2>
+<p>The conservation equation <span class="math inline">\(\nabla_\nu T^{\mu\nu} = 0\)</span> also encodes the motion of matter.</p>
+<p>For “dust” (a pressureless fluid whose constituents move together) the stress-energy tensor is <span class="math display">\[
+T^{\mu\nu} = \rho_0 u^\mu u^\nu
+\]</span> where <span class="math inline">\(\rho_0\)</span> is the mass-energy density in the fluid’s own rest frame and <span class="math inline">\(u^\mu\)</span> is its four-velocity.</p>
+<p>Using the product rule, the conservation law becomes <span class="math display">\[
+\begin{aligned}
+0 = \nabla_\nu T^{\mu\nu}
+&amp;= \nabla_\nu(\rho_0 u^\mu u^\nu) \\[4pt]
+&amp;= u^\mu \nabla_\nu(\rho_0 u^\nu)
+   + \rho_0 u^\nu \nabla_\nu u^\mu 
+\end{aligned}
+\tag{22.1}
+\]</span></p>
+<p>From the normalization of the four-velocity, <span class="math display">\[
+-1 = u\cdot u \equiv u^\mu g_{\mu\alpha}u^\alpha
+\]</span> one can show (using the metric compatibility of <span class="math inline">\(\nabla_\nu\)</span>) that <span class="math display">\[
+\nabla_\nu(\rho_0 u^\nu) = 0
+\]</span> which expresses conservation of the dust particles themselves. Substituting this into equation (22.1) gives <span class="math display">\[
+0 = \rho_0 u^\nu \nabla_\nu u^\mu
+\]</span> or, since <span class="math inline">\(\rho_0 \neq 0\)</span>, <span class="math display">\[
+u^\nu \nabla_\nu u^\mu = 0
+\]</span></p>
+<p>Now expand the covariant derivative: <span class="math display">\[
+\begin{aligned}
+0
+&amp;= u^\nu \left(\frac{\partial u^\mu}{\partial x^\nu}
+         + \Gamma^\mu_{\ \beta\nu} u^\beta\right) \\[4pt]
+&amp;= \underbrace{u^\nu \frac{\partial u^\mu}{\partial x^\nu}}_{\displaystyle
+=\,\dfrac{du^\mu}{d\tau}}
+   + \Gamma^\mu_{\ \beta\nu} u^\beta u^\nu \\[4pt]
+&amp;= \frac{du^\mu}{d\tau}
+   + \Gamma^\mu_{\ \beta\nu} u^\beta u^\nu \\[4pt]
+&amp;= \frac{d^2 x^\mu}{d\tau^2}
+   + \Gamma^\mu_{\ \beta\nu}
+     \frac{dx^\beta}{d\tau}\frac{dx^\nu}{d\tau} 
+\end{aligned}
+\tag{22.2}
+\]</span> where we used <span class="math inline">\(u^\mu \equiv dx^\mu/d\tau\)</span>.</p>
+<p>Equation (22.2) is precisely the <strong>geodesic equation</strong>. Thus, for dust, <span class="math display">\[
+\nabla_\nu T^{\mu\nu} = 0
+\quad\Rightarrow\quad
+\text{constituent particles follow geodesics}
+\]</span></p>
+<hr>
+<h2 data-original-heading="22.3 The Weak-Field Limit" id="the-weak-field-limit">22.3 The Weak-Field Limit</h2>
+<p>To connect with Newtonian gravity and simplify the Einstein equation, we assume the gravitational field is weak: spacetime is only slightly curved, and in some coordinates <span class="math inline">\(x^\mu = (t,x,y,z)\)</span> we can write the metric as <span class="math display">\[
+g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}
+\quad\text{with}\quad
+h_{\mu\nu} = h_{\nu\mu},
+\quad |h_{\mu\nu}|\ll 1 \tag{22.3}
+\]</span> where <span class="math inline">\(\eta_{\mu\nu}\)</span> is the flat-space metric. These coordinates are <strong>quasi-cartesian</strong>.</p>
+<p>In the weak-field limit we systematically drop any term of order <span class="math inline">\(|h_{\mu\nu}|^2\)</span> or higher.</p>
+<h3 data-original-heading="3.1 Inverse metric to first order" id="inverse-metric-to-first-order">3.1 Inverse metric to first order</h3>
+<p>Using the defining relation for the inverse metric <span class="math display">\[
+g_{\alpha\beta}g^{\beta\nu} \equiv \delta_\alpha^{\ \nu}
+\]</span> you can show that to first order in <span class="math inline">\(h_{\mu\nu}\)</span> <span class="math display">\[
+g^{\mu\nu} = \eta^{\mu\nu} - h^{\mu\nu},
+\qquad
+h^{\mu\nu} \equiv \eta^{\mu\alpha}\eta^{\nu\beta} h_{\alpha\beta} \tag{22.4}
+\]</span></p>
+<p>This means we can raise or lower indices on quantities of order <span class="math inline">\(h_{\mu\nu}\)</span> using the <em>flat-space</em> metric <span class="math inline">\(\eta_{\mu\nu}\)</span> or <span class="math inline">\(\eta^{\mu\nu}\)</span>. For example, <span class="math display">\[
+\begin{aligned}
+h^\mu_{\ \nu}
+&amp;\equiv g^{\mu\alpha} h_{\alpha\nu}
+   = (\eta^{\mu\alpha}-h^{\mu\alpha}) h_{\alpha\nu} \\[4pt]
+&amp;= \eta^{\mu\alpha}h_{\alpha\nu}
+   - \underbrace{h^{\mu\alpha}h_{\alpha\nu}}_{\mathcal O(h^2)\ \text{drop}} \\[4pt]
+&amp;\approx \eta^{\mu\alpha} h_{\alpha\nu} 
+\end{aligned}
+\tag{22.5}
+\]</span></p>
+<h3 data-original-heading="3.2 Einstein equation and curvature tensors" id="einstein-equation-and-curvature-tensors">3.2 Einstein equation and curvature tensors</h3>
+<p>The Einstein equation with both indices lowered is <span class="math display">\[
+R_{\beta\nu} = 8\pi G
+\left(T_{\beta\nu} - \tfrac12 g_{\beta\nu} T\right),
+\qquad
+T \equiv g_{\mu\nu}T^{\mu\nu} \tag{22.6}
+\]</span></p>
+<p>To first order in <span class="math inline">\(h_{\mu\nu}\)</span>, the Riemann tensor is <span class="math display">\[
+R_{\alpha\beta\mu\nu}
+= \tfrac12\big(
+\partial_\beta\partial_\mu h_{\alpha\nu}
++ \partial_\alpha\partial_\nu h_{\beta\mu}
+- \partial_\alpha\partial_\mu h_{\beta\nu}
+- \partial_\beta\partial_\nu h_{\alpha\mu}\big) \tag{22.7}
+\]</span></p>
+<p>Contracting on the first and third indices gives the Ricci tensor: <span class="math display">\[
+\begin{aligned}
+R_{\beta\nu}
+&amp;\equiv g^{\alpha\mu} R_{\alpha\beta\mu\nu} \\[4pt]
+&amp;\approx \eta^{\alpha\mu} R_{\alpha\beta\mu\nu}
+   \quad\text{(keep only first order in }h_{\mu\nu}\text{)} \\[4pt]
+&amp;= \tfrac12\Big(
+ -\eta^{\alpha\mu}\partial_\alpha\partial_\mu h_{\beta\nu}
+ + \partial_\beta H_\nu
+ + \partial_\nu H_\beta
+ \Big) 
+\end{aligned}
+\tag{22.8a}
+\]</span> where <span class="math display">\[
+H_\nu \equiv \eta^{\mu\alpha}
+\left(\partial_\mu h_{\alpha\nu}
+     - \tfrac12 \partial_\nu h_{\alpha\mu}\right) \tag{22.8b}
+\]</span></p>
+<hr>
+<h2 data-original-heading="22.4 A Constraint on the Coordinates" id="a-constraint-on-the-coordinates">22.4 A Constraint on the Coordinates</h2>
+<p>The Einstein equation contains only six independent constraints on <span class="math inline">\(h_{\mu\nu}\)</span>; the remaining four degrees of freedom correspond to our freedom to tweak the coordinates slightly, <span class="math display">\[
+x'^{\mu} = f^{\mu}(x^\nu)
+\]</span> without changing the physics.</p>
+<p>In the weak-field limit we can always choose these four coordinate functions so that <span class="math display">\[
+H_\nu = 0
+\]</span> in our quasi-cartesian coordinates. This is a <strong>coordinate condition</strong> (a weak-field analogue of a gauge choice).</p>
+<p>If we impose <span class="math inline">\(H_\nu = 0\)</span>, the last two terms in (22.8a) vanish, leaving <span class="math display">\[
+R_{\beta\nu} = -\tfrac12 \eta^{\alpha\mu}\partial_\alpha\partial_\mu h_{\beta\nu}
+\equiv -\tfrac12 \Box^2 h_{\beta\nu}
+\]</span> where <span class="math inline">\(\Box^2 \equiv \eta^{\alpha\mu}\partial_\alpha\partial_\mu\)</span> is the flat d’Alembertian.</p>
+<p>To first order in <span class="math inline">\(h_{\mu\nu}\)</span> the Einstein equation (22.6) becomes <span class="math display">\[
+-\tfrac12 \Box^2 h_{\beta\nu}
+= 8\pi G\left(T_{\beta\nu} - \tfrac12 \eta_{\beta\nu}T\right) \tag{22.9}
+\]</span></p>
+<hr>
+<h2 data-original-heading="22.5 The Stationary-Source Limit" id="the-stationary-source-limit">22.5 The Stationary-Source Limit</h2>
+<p>Now additionally assume that the matter source is <strong>stationary</strong>: the stress-energy tensor is independent of time. Then the field is also time-independent, so <span class="math display">\[
+\eta^{\alpha\mu}\partial_\alpha\partial_\mu
+= \partial_x\partial_x + \partial_y\partial_y + \partial_z\partial_z
+\equiv \nabla^2
+\]</span> and equation (22.9) reduces to <span class="math display">\[
+\nabla^2 h_{\beta\nu}
+= -16\pi G
+\left(T_{\beta\nu} - \tfrac12 \eta_{\beta\nu}T\right) \tag{22.10}
+\]</span></p>
+<p>This has exactly the same form as the Newtonian Poisson equation <span class="math display">\[
+\nabla^2 \Phi_N = 4\pi G \rho
+\]</span> for the gravitational potential <span class="math inline">\(\Phi_N\)</span>.</p>
+<h3 data-original-heading="5.1 Solution by analogy with Newtonian gravity" id="solution-by-analogy-with-newtonian-gravity">5.1 Solution by analogy with Newtonian gravity</h3>
+<p>For a static Newtonian field, we know <span class="math display">\[
+\Phi_N(\vec r)
+= \int_{\text{src}}
+\frac{-G\rho(\vec r_s)\, dV}{|\vec r - \vec r_s|} \tag{22.11}
+\]</span> where the integral is over the source volume and <span class="math inline">\(\rho(\vec r_s)\)</span> is the mass density at <span class="math inline">\(\vec r_s\)</span>.</p>
+<p>By analogy, the solution to (22.10) is <span class="math display">\[
+\begin{aligned}
+h_{\beta\nu}(\vec r)
+&amp;= 4\int_{\text{src}}
+   \frac{G\big(T_{\beta\nu} - \tfrac12 \eta_{\beta\nu}T\big)\, dV}
+        {|\vec r - \vec r_s|} \\[4pt]
+&amp;= 2\int_{\text{src}}
+   \frac{G\big(2T_{\beta\nu} - \eta_{\beta\nu}T\big)\, dV}
+        {|\vec r - \vec r_s|} 
+\end{aligned}
+\tag{22.12}
+\]</span> where <span class="math inline">\(T_{\beta\nu}\)</span> is evaluated at <span class="math inline">\(\vec r_s\)</span> inside the source.</p>
+<hr>
+<h2 data-original-heading="22.6 Perfect-Fluid Sources and Effective Densities" id="perfect-fluid-sources-and-effective-densities">22.6 Perfect-Fluid Sources and Effective Densities</h2>
+<p>For a perfect fluid in arbitrary coordinates (using equation 20.16) the stress-energy tensor is <span class="math display">\[
+T_{\beta\nu} = (\rho_0 + p_0) u_\beta u_\nu + g_{\beta\nu} p_0
+\]</span> where <span class="math inline">\(\rho_0\)</span> and <span class="math inline">\(p_0\)</span> are the energy density and pressure in the fluid’s rest frame, and <span class="math inline">\(u_\nu\)</span> is the covariant four-velocity of the fluid.</p>
+<p>In the weak-field and low-velocity limit (“slow rotation”), and to first order in <span class="math inline">\(h_{\mu\nu}\)</span>, one finds <span class="math display">\[
+\begin{aligned}
+2T_{tt} - \eta_{tt}T
+&amp;\approx \rho_0 + 3p_0
+\equiv \rho_g
+\quad\text{(gravitoelectric energy density)}\\[4pt]
+-T_{ti} + \tfrac12 \eta_{ti}T
+&amp;\approx (\rho_0 + p_0)u_i
+\equiv \Pi_i
+\quad\text{(gravitomagnetic current density)} \\[4pt]
+2T_{ii} - \eta_{ii}T
+&amp;\approx \rho_0 - p_0
+\equiv \rho_c
+\quad\text{(curvature energy density)} 
+\end{aligned}
+\tag{22.13}
+\]</span> with <span class="math inline">\(T_{ij} \approx 0\)</span> for <span class="math inline">\(i\neq j\)</span> (spatial indices only).</p>
+<div class="math-theorem definition" data-callout="definition" data-label="22.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 22.2</span><span class="theorem-title">Gravitational “charge” densities</span></p>
+</div>
+<div class="theorem-content">
+<p>In the weak-field, stationary limit:</p>
+<ul>
+<li><span class="math inline">\(\rho_g\)</span> is the <strong>gravitoelectric energy density</strong> (source of the gravitoelectric potential)<br>
+</li>
+<li><span class="math inline">\(\Pi_i\)</span> is the <strong>gravitomagnetic current density</strong><br>
+</li>
+<li><span class="math inline">\(\rho_c\)</span> is the <strong>curvature energy density</strong>, related to deviations of spatial metric components from flatness</li>
+</ul>
+</div>
+</div>
+<p>Equations (22.12) and (22.13) together show, for example, that the source of the gravitoelectric potential <span class="math inline">\(\Phi_G\)</span> is an integral over <span class="math inline">\(\rho_g\)</span>: <span class="math display">\[
+\Phi_G(\vec r)
+= \int_{\text{src}}
+\frac{-G \rho_g(\vec r_s)\, dV}
+     {|\vec r - \vec r_s|}
+\]</span></p>
+<hr>
+<h2 data-original-heading="7. How Particles Respond: Gravitoelectric and Gravitomagnetic Fields" id="how-particles-respond-gravitoelectric-and-gravitomagnetic-fields">7. How Particles Respond: Gravitoelectric and Gravitomagnetic Fields</h2>
+<p>Consider a test particle moving <strong>non-relativistically</strong> in a weak and stationary field. To first order in both <span class="math inline">\(h_{\mu\nu}\)</span> and the particle’s speed <span class="math inline">\(v^i\)</span>, the geodesic equation reduces to <span class="math display">\[
+\frac{d^2 x^i}{dt^2}
+\approx \tfrac12 \eta^{ik}\partial_k h_{tt}
+ + \eta^{ik}(\partial_k h_{tj} - \partial_j h_{tk}) v^j
+\equiv \eta^{ik}\big(-\partial_k \Phi_G + F_{kj} v^j\big) \tag{22.14}
+\]</span> where <span class="math inline">\(i,j,k\)</span> run over spatial indices and <span class="math inline">\(v^j = dx^j/dt\)</span>.</p>
+<ul>
+<li><p>The term <span class="math inline">\(-\partial_k \Phi_G \equiv \partial_k(\tfrac12 h_{tt})\)</span> causes an acceleration even for a particle initially at rest (relative to our quasi-cartesian coordinates). This is analogous to the electric field in electrodynamics, so it is called the <strong>gravitoelectric</strong> part of the gravitational field.</p></li>
+<li><p>The tensor <span class="math display">\[
+F_{kj} \equiv \partial_k h_{tj} - \partial_j h_{tk}
+\]</span> contributes an acceleration proportional to the particle’s velocity. This is analogous to the effect of a magnetic field, and we refer to it as the <strong>gravitomagnetic</strong> aspect of the field. Equations (22.12) and (22.13) imply that <span class="math inline">\(F_{kj}\)</span> is sourced by the <strong>gravitomagnetic current density</strong> <span class="math inline">\(\Pi_i\)</span>.</p></li>
+</ul>
+<p>If the random motion in the fluid source is non-relativistic, the pressure is negligible compared to the energy density, so <span class="math inline">\(\rho_0\)</span> dominates and <span class="math inline">\(\Phi_G\)</span> reduces to the Newtonian potential <span class="math inline">\(\Phi_N\)</span>. Vacuum energy, with <span class="math display">\[
+T^{\mu\nu}_{\text{vac}} = -(\Lambda/8\pi G)g^{\mu\nu}
+\]</span> behaves like a perfect fluid with <span class="math inline">\(\rho_0 = -p_0 = -\Lambda/8\pi G\)</span>; this gives <strong>negative</strong> <span class="math inline">\(\rho_g\)</span> and hence a <strong>repulsive</strong> gravitoelectric field in the weak-field limit.</p>
+<hr>
+<h2 data-original-heading="8. Spherical Objects and the Schwarzschild Limit" id="spherical-objects-and-the-schwarzschild-limit">8. Spherical Objects and the Schwarzschild Limit</h2>
+<p>Consider now the external field of a non-rotating, spherically symmetric object, under the assumption that the weak-field approximation holds everywhere inside and outside the object.</p>
+<p>If the internal motions are non-relativistic and pressure is negligible, then <span class="math display">\[
+\rho_c \approx \rho_g \approx \rho
+\]</span> where <span class="math inline">\(\rho\)</span> is the Newtonian mass density, and the gravitomagnetic current density vanishes: <span class="math display">\[
+\Pi_i = 0
+\]</span></p>
+<p>From the Newtonian integral (22.11) for a spherically symmetric source centered at the origin, we know <span class="math display">\[
+\Phi_N(r) = -\frac{GM}{r},
+\qquad
+M \equiv \int \rho(r)\, dV,
+\quad
+r \equiv (x^2 + y^2 + z^2)^{1/2}
+\]</span></p>
+<p>In this limit, equation (22.12) yields <span class="math display">\[
+h_{tt} = h_{xx} = h_{yy} = h_{zz} = \frac{2GM}{r},
+\qquad
+\text{all other }h_{\mu\nu}=0 \tag{22.15}
+\]</span></p>
+<p>The metric in the empty space outside such an object is therefore <span class="math display">\[
+ds^2 = -\left(1 - \frac{2GM}{r}\right)dt^2
+      + \left(1 + \frac{2GM}{r}\right)(dx^2 + dy^2 + dz^2) \tag{22.16}
+\]</span> which is the Schwarzschild metric expanded to first order in <span class="math inline">\(GM/r\)</span>.</p>
+<p>From equation (22.14) with this <span class="math inline">\(h_{tt}\)</span>, the particle acceleration outside the star becomes <span class="math display">\[
+\frac{d^2 \vec x}{dt^2}
+= -\vec\nabla \Phi_G
+= -\vec\nabla \Phi_N
+= -\vec\nabla\!\left(-\frac{GM}{r}\right)
+= -\frac{GM}{r^2} \hat r \tag{22.17}
+\]</span> exactly the usual Newtonian gravitational acceleration.</p>
+<hr>
+<h2 data-original-heading="9. Concluding Note" id="concluding-note">9. Concluding Note</h2>
+<p>In the weak-field, stationary-source limit:</p>
+<ul>
+<li>The Einstein equation reduces to a Poisson-like equation for the metric perturbations <span class="math inline">\(h_{\mu\nu}\)</span>.</li>
+<li>Different components of the stress-energy tensor play roles analogous to electric charge density and current density in electromagnetism:
+<ul>
+<li><span class="math inline">\(\rho_g\)</span> sources the gravitoelectric potential <span class="math inline">\(\Phi_G\)</span>,</li>
+<li><span class="math inline">\(\Pi_i\)</span> sources the gravitomagnetic aspects <span class="math inline">\(F_{ij}\)</span>,</li>
+<li><span class="math inline">\(\rho_c\)</span> is tied to spatial curvature.</li>
+</ul></li>
+<li>For spherical, non-rotating sources this weak-field metric reduces to the linearized Schwarzschild solution and reproduces Newtonian gravity.</li>
+</ul>
+<p>Even though strong fields and relativistic sources blur the clean separation between “gravitoelectric” and “gravitomagnetic” aspects, this chapter’s weak-field, stationary analysis gives a very useful qualitative picture of how the full Einstein equation behaves.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2021%20The%20Einstein%20Equation%20(2).html"><span>← Previous page</span><span>Ch. 21 The Einstein Equation (2)</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/Ch.%2023%20The%20Schwarzschild%20Solution.html"><span>Next page →</span><span>Ch. 23 The Schwarzschild Solution</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">Ch. 22 Weak-Field Limit and Stationary Sources</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#energy-conservation-as-a-geometric-necessity" class="is-active" aria-current="location">22. 1. Energy Conservation as a Geometric Necessity</a></li><li style="--depth:0"><a href="#connection-to-the-geodesic-hypothesis">22.2 Connection to the Geodesic Hypothesis</a></li><li style="--depth:0"><a href="#the-weak-field-limit">22.3 The Weak-Field Limit</a></li><li style="--depth:1"><a href="#inverse-metric-to-first-order">3.1 Inverse metric to first order</a></li><li style="--depth:1"><a href="#einstein-equation-and-curvature-tensors">3.2 Einstein equation and curvature tensors</a></li><li style="--depth:0"><a href="#a-constraint-on-the-coordinates">22.4 A Constraint on the Coordinates</a></li><li style="--depth:0"><a href="#the-stationary-source-limit">22.5 The Stationary-Source Limit</a></li><li style="--depth:1"><a href="#solution-by-analogy-with-newtonian-gravity">5.1 Solution by analogy with Newtonian gravity</a></li><li style="--depth:0"><a href="#perfect-fluid-sources-and-effective-densities">22.6 Perfect-Fluid Sources and Effective Densities</a></li><li style="--depth:0"><a href="#how-particles-respond-gravitoelectric-and-gravitomagnetic-fields">7. How Particles Respond: Gravitoelectric and Gravitomagnetic Fields</a></li><li style="--depth:0"><a href="#spherical-objects-and-the-schwarzschild-limit">8. Spherical Objects and the Schwarzschild Limit</a></li><li style="--depth:0"><a href="#concluding-note">9. Concluding Note</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

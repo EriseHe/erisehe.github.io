@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>9. Cholesky Factorization and Schur Complements — E.H. Notebook</title>
+<meta name="description" content="Numerical Methods I — Florian Schaefer. Source: Lecture 09.pdf, pp. 1–8; PDF page 9 is blank. Schedule association: October 5, 2026, from the Brightspace syllabus.9.1 Rec">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">9. Cholesky Factorization and Schur Complements</h1><p class="article-meta">2026-10-05</p></header><div id="article-body" class="prose"><p><em>Numerical Methods I — Florian Schaefer. Source: Lecture 09.pdf, pp.&nbsp;1–8; PDF page 9 is blank. Schedule association: October 5, 2026, from the Brightspace syllabus.</em></p>
+<h2 data-original-heading="9.1 Recap" id="recap">9.1 Recap</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;1.</em></p>
+<p><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html" class="wikilink">The preceding lecture</a> derived least-squares optimality as orthogonality of <span class="math inline">\(Ax-b\)</span> to the column space of <span class="math inline">\(A\)</span>, obtained the normal equations <span class="math inline">\(A^*Ax=A^*b\)</span>, and characterized Hermitian positive semidefinite matrices as Gram matrices.</p>
+<p>Now we exploit the structure of a Hermitian positive definite matrix to obtain a triangular factorization using only one triangular half.</p>
+<h2 data-original-heading="9.2 Symmetry-Preserving Elimination" id="symmetry-preserving-elimination">9.2 Symmetry-Preserving Elimination</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;2.</em></p>
+<p>Partition a Hermitian positive definite matrix as</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}a&amp;w^*\\w&amp;C\end{pmatrix},\qquad a&gt;0.
+\]</span></p>
+<p>Ordinary elimination removes the entries below <span class="math inline">\(a\)</span>. Applying a matching column operation preserves Hermitian symmetry:</p>
+<p><span class="math display">\[
+E=\begin{pmatrix}1&amp;0\\-w/a&amp;I\end{pmatrix},
+\qquad
+EAE^*=\begin{pmatrix}a&amp;0\\0&amp;C-ww^*/a\end{pmatrix}.
+\]</span></p>
+<p>The minus signs in <span class="math inline">\(E\)</span> are required to obtain the subtraction shown in the source’s trailing-block update.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The remaining matrix</p>
+<p><span class="math display">\[
+S=C-\frac{ww^*}{a}
+\]</span></p>
+<p>is the Schur complement of the pivot block.</p>
+<h2 data-original-heading="9.3 Cholesky Factorization" id="cholesky-factorization">9.3 Cholesky Factorization</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;3.</em></p>
+<p>Normalize the pivot by its positive square root. Recursively factoring <span class="math inline">\(S=L_{22}L_{22}^*\)</span> yields</p>
+<p><span class="math display">\[
+\boxed{A=LL^*,}\qquad
+L=\begin{pmatrix}\sqrt a&amp;0\\w/\sqrt a&amp;L_{22}\end{pmatrix}.
+\]</span></p>
+<p>This is the <strong>Cholesky factorization</strong>. In contrast with ordinary LU:</p>
+<ul>
+<li>The pivot normalization uses a square root</li>
+<li>Only one triangular factor needs to be stored</li>
+<li>Hermitian symmetry allows the work to be restricted to one triangle</li>
+</ul>
+<h3 data-original-heading="9.3.1 Right-Looking In-Place Algorithm" id="right-looking-in-place-algorithm">9.3.1 Right-Looking In-Place Algorithm</h3>
+<p>The following is an implementation-oriented transcription of the sheet, with its indexing, diagonal update, and complex conjugation made explicit. The input is assumed to be Hermitian positive definite and stored in a floating-point array. The lower triangle is overwritten by <span class="math inline">\(L\)</span>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fu">size</span>(A, <span class="fl">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">real</span>(A[k, k]))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    A[k, k] <span class="op">=</span> d</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> (k <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>n</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        A[i, k] <span class="op">/=</span> d</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> (k <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>n</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> j<span class="op">:</span>n</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            A[i, j] <span class="op">-=</span> A[i, k] <span class="op">*</span> <span class="fu">conj</span>(A[j, k])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>The positive-pivot and Hermitian assumptions must be checked if this is used as general-purpose code; taking the real part is not permission to silently accept a non-Hermitian input. The upper triangle remains unused/stale after this lower-triangle algorithm.</p>
+<h2 data-original-heading="9.4 Left-Looking and Up-Looking Cholesky" id="left-looking-and-up-looking-cholesky">9.4 Left-Looking and Up-Looking Cholesky</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;4.</em></p>
+<p>Cholesky can be organized around different memory-access patterns.</p>
+<h3 data-original-heading="9.4.1 Left-Looking Version" id="left-looking-version">9.4.1 Left-Looking Version</h3>
+<p>For column <span class="math inline">\(j\)</span>, subtract contributions from the previously computed columns, then normalize:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fu">size</span>(A, <span class="fl">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>(j <span class="op">-</span> <span class="fl">1</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> j<span class="op">:</span>n</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            A[i, j] <span class="op">-=</span> A[i, k] <span class="op">*</span> <span class="fu">conj</span>(A[j, k])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">real</span>(A[j, j]))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    A[j, j] <span class="op">=</span> d</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> (j <span class="op">+</span> <span class="fl">1</span>)<span class="op">:</span>n</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        A[i, j] <span class="op">/=</span> d</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>Caching <span class="math inline">\(d\)</span> before overwriting the diagonal is necessary. Otherwise a literal scalar-loop reading of the handwritten code changes the denominator midway through the column.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<h3 data-original-heading="9.4.2 Up-Looking Version" id="up-looking-version">9.4.2 Up-Looking Version</h3>
+<p>Computing row <span class="math inline">\(i\)</span> from previously available entries gives</p>
+<p><span class="math display">\[
+L_{ij}=\frac{A_{ij}-\sum_{k=1}^{j-1}L_{ik}\overline{L_{jk}}}{L_{jj}},
+\qquad j&lt;i,
+\]</span></p>
+<p>followed by</p>
+<p><span class="math display">\[
+L_{ii}=\sqrt{A_{ii}-\sum_{k=1}^{i-1}|L_{ik}|^2}.
+\]</span></p>
+<p>An upper-triangular/transposed storage arrangement can make this traversal more convenient in column-oriented memory. The source also sketches packed upper-triangular storage. These storage choices change traversal, not the underlying factorization.</p>
+<p>The separate diagonal and off-diagonal formulas resolve the sheet’s compact denominator notation: an already computed diagonal entry is <span class="math inline">\(L_{jj}\)</span>, so an off-diagonal entry is divided by <span class="math inline">\(L_{jj}\)</span>, not by another square root of it.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<h2 data-original-heading="9.5 Why the Pivots Stay Positive" id="why-the-pivots-stay-positive">9.5 Why the Pivots Stay Positive</h2>
+<p><em>Source: Lecture 09.pdf, pp.&nbsp;5–6.</em></p>
+<div class="math-theorem lemma" data-callout="lemma">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma</span><span class="theorem-title">Congruence preserves positive definiteness</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(A\)</span> is Hermitian positive definite and <span class="math inline">\(B\)</span> is nonsingular, then <span class="math inline">\(B^*AB\)</span> is Hermitian positive definite.</p>
+</div>
+</div>
+<p>Indeed, for <span class="math inline">\(x\ne0\)</span>, nonsingularity gives <span class="math inline">\(Bx\ne0\)</span>, and</p>
+<p><span class="math display">\[
+x^*B^*ABx=(Bx)^*A(Bx)&gt;0.
+\]</span></p>
+<p>Symmetry-preserving elimination is such a congruence. Its transformed matrix remains positive definite, so the next diagonal pivot is real and positive:</p>
+<p><span class="math display">\[
+s_{kk}=e_k^*Se_k&gt;0.
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Existence without pivoting</span></p>
+</div>
+<div class="theorem-content">
+<p>A Hermitian positive definite matrix admits Cholesky factorization without pivoting, with strictly positive real diagonal entries in <span class="math inline">\(L\)</span>.</p>
+</div>
+</div>
+<p>The handwritten theorem says “PSD”; strict positive definiteness is needed for the stated positive-pivot division algorithm.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<h3 data-original-heading="9.5.1 Quantitative Pivot Bound" id="quantitative-pivot-bound">9.5.1 Quantitative Pivot Bound</h3>
+<p>The intended reciprocal bound can be stated precisely as</p>
+<p><span class="math display">\[
+s_{kk}\ge\lambda_{\min}(A)=\frac1{\|A^{-1}\|_2},
+\qquad
+L_{kk}\ge\sqrt{\lambda_{\min}(A)}.
+\]</span></p>
+<p>Here <span class="math inline">\(s_{kk}\)</span> is the unnormalized elimination pivot and <span class="math inline">\(L_{kk}\)</span> is its square root. The handwritten line lacks the reciprocal and does not distinguish the two quantities.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>An editorial completion using the block-inverse identity below proves the bound. The inverse of a trailing Schur complement <span class="math inline">\(S\)</span> is a principal block of <span class="math inline">\(A^{-1}\)</span>, so</p>
+<p><span class="math display">\[
+\|S^{-1}\|_2\le\|A^{-1}\|_2.
+\]</span></p>
+<p>Therefore <span class="math inline">\(\lambda_{\min}(S)\ge\lambda_{\min}(A)\)</span>, and any diagonal entry of <span class="math inline">\(S\)</span> is at least <span class="math inline">\(\lambda_{\min}(S)\)</span>.</p>
+<h2 data-original-heading="9.6 Roundoff and Element Growth" id="roundoff-and-element-growth">9.6 Roundoff and Element Growth</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;6.</em></p>
+<p>Earlier LU error analysis involved the product of entrywise absolute values <span class="math inline">\(|L||U|\)</span>. For Cholesky, <span class="math inline">\(U=L^*\)</span>, so the corresponding nonnegative product is <span class="math inline">\(|L||L|^T\)</span>.</p>
+<p>Cauchy–Schwarz gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+(|L||L|^T)_{ij}
+&amp;=\sum_k|L_{ik}||L_{jk}|\\
+&amp;\le\sqrt{\sum_k|L_{ik}|^2}\sqrt{\sum_k|L_{jk}|^2}\\
+&amp;=\sqrt{A_{ii}A_{jj}}\\
+&amp;\le\max_\ell A_{\ell\ell}
+\le\max_{p,q}|A_{pq}|.
+\end{aligned}
+\]</span></p>
+<p>The matrix-product expansion uses a sum, and the complex case requires squared absolute values.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>This explains why the large factor growth that can occur in general elimination is controlled for positive definite Cholesky. It is not a claim that every arbitrarily ill-conditioned positive definite matrix can be factored successfully in finite precision.</p>
+<h2 data-original-heading="9.7 Symmetric Indefinite Matrices" id="symmetric-indefinite-matrices">9.7 Symmetric Indefinite Matrices</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;7.</em></p>
+<p>For real symmetric matrices that are not positive definite, a factorization of the form</p>
+<p><span class="math display">\[
+PAP^T=LDL^T
+\]</span></p>
+<p>can use a block-diagonal <span class="math inline">\(D\)</span> with <span class="math inline">\(1\times1\)</span> and <span class="math inline">\(2\times2\)</span> blocks. The example</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}
+\]</span></p>
+<p>shows why a <span class="math inline">\(2\times2\)</span> pivot block is useful: there is no nonzero scalar diagonal pivot to start with. The lecture mentions this structure without specifying a complete pivot-selection algorithm.</p>
+<h2 data-original-heading="9.8 Block Cholesky and Schur Complements" id="block-cholesky-and-schur-complements">9.8 Block Cholesky and Schur Complements</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;7.</em></p>
+<p>Let <span class="math inline">\(A\)</span> be Hermitian positive definite, partitioned as</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}A_{11}&amp;A_{12}\\A_{21}&amp;A_{22}\end{pmatrix},
+\qquad
+L=\begin{pmatrix}L_{11}&amp;0\\L_{21}&amp;L_{22}\end{pmatrix}.
+\]</span></p>
+<p>Using <span class="math inline">\(A=LL^*\)</span>,<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p><span class="math display">\[
+\begin{aligned}
+A_{11}&amp;=L_{11}L_{11}^*,\\
+A_{21}&amp;=L_{21}L_{11}^*,\\
+A_{22}&amp;=L_{21}L_{21}^*+L_{22}L_{22}^*.
+\end{aligned}
+\]</span></p>
+<p>Writing <span class="math inline">\(L_{11}^{-*}=(L_{11}^*)^{-1}\)</span>, we have <span class="math inline">\(L_{21}=A_{21}L_{11}^{-*}\)</span> and</p>
+<p><span class="math display">\[
+L_{21}L_{21}^*=A_{21}A_{11}^{-1}A_{12},
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\boxed{S=A_{22}-A_{21}A_{11}^{-1}A_{12}=L_{22}L_{22}^*.}
+\]</span></p>
+<p>The matrix <span class="math inline">\(S\)</span> is the <strong>Schur complement of <span class="math inline">\(A_{11}\)</span> in <span class="math inline">\(A\)</span></strong>.</p>
+<h2 data-original-heading="9.9 The Block-Inverse Identity" id="the-block-inverse-identity">9.9 The Block-Inverse Identity</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;8.</em></p>
+<p>Assume <span class="math inline">\(A\)</span> and <span class="math inline">\(A_{11}\)</span> are invertible. Then the Schur complement is invertible and</p>
+<p><span class="math display">\[
+\boxed{(A^{-1})_{22}=S^{-1},\qquad S=((A^{-1})_{22})^{-1}.}
+\]</span></p>
+<p>This is the lecture’s phrase <strong>“invert, take submatrix, invert”</strong> made explicit.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>The sheet proposes a proof by block LU. Completing that calculation,</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}I&amp;0\\A_{21}A_{11}^{-1}&amp;I\end{pmatrix}
+\begin{pmatrix}A_{11}&amp;A_{12}\\0&amp;S\end{pmatrix}.
+\]</span></p>
+<p>Inverting the two factors in reverse order gives</p>
+<p><span class="math display">\[
+A^{-1}=
+\begin{pmatrix}
+A_{11}^{-1}&amp;-A_{11}^{-1}A_{12}S^{-1}\\
+0&amp;S^{-1}
+\end{pmatrix}
+\begin{pmatrix}I&amp;0\\-A_{21}A_{11}^{-1}&amp;I\end{pmatrix}.
+\]</span></p>
+<p>The lower-right block is <span class="math inline">\(S^{-1}\)</span>, as claimed.</p>
+<h2 data-original-heading="9.10 Cholesky and QR" id="cholesky-and-qr">9.10 Cholesky and QR</h2>
+<p><em>Source: Lecture 09.pdf, p.&nbsp;8.</em></p>
+<p>Let <span class="math inline">\(B=QR\)</span> be a reduced QR factorization of a full-column-rank matrix, with <span class="math inline">\(Q^*Q=I\)</span>. Then</p>
+<p><span class="math display">\[
+B^*B=R^*Q^*QR=R^*R.
+\]</span></p>
+<p>Thus, with positive real diagonal convention, <span class="math inline">\(R\)</span> is the upper Cholesky factor of <span class="math inline">\(B^*B\)</span>. The lower-factor convention is <span class="math inline">\(L=R^*\)</span>.</p>
+<p>This is an algebraic connection, not a reason to ignore the squared-conditioning disadvantage of forming the Gram matrix.</p>
+<hr>
+<p><strong>Sources:</strong> <a href="https://brightspace.nyu.edu/content/enforced/609409-FA26_MATH-GA_2010_1_001_crse/Lecture%2009.pdf">Lecture 09.pdf</a>; <a href="https://brightspace.nyu.edu/d2l/le/lessons/609409/units/13637646">course syllabus</a>.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Lecture 09, p.&nbsp;2 shows positive elimination multipliers in its left matrix while its displayed result subtracts the pivot outer product. The elimination matrix must use negative multipliers; multiplying the blocks verifies the correction.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Lecture 09, pp.&nbsp;3–4 use compact handwritten pseudocode. The displayed algorithms cache the square-root pivot before overwriting it, separate the up-looking diagonal case, and include complex conjugation. These are explicit executable interpretations, not claims that the literal handwritten loops are ready-to-run Julia.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Lecture 09, pp.&nbsp;3–4 use compact handwritten pseudocode. The displayed algorithms cache the square-root pivot before overwriting it, separate the up-looking diagonal case, and include complex conjugation. These are explicit executable interpretations, not claims that the literal handwritten loops are ready-to-run Julia.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Lecture 09, p.&nbsp;5 labels the theorem “PSD” but requires positive pivots and an inverse. A positive semidefinite matrix such as <span class="math inline">\(\operatorname{diag}(1,0)\)</span> has a zero second pivot. The positive-definite version is consistent with the accompanying lemma and proof.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Lecture 09, p.&nbsp;5 writes a lower bound using <span class="math inline">\(\|A^{-1}\|\)</span> without a reciprocal. For example <span class="math inline">\(A=0.1I\)</span> has elimination pivots <span class="math inline">\(0.1\)</span> and <span class="math inline">\(\|A^{-1}\|_2=10\)</span>, disproving that literal form. The reciprocal 2-norm bound and its short block-inverse proof are supplied explicitly here.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Lecture 09, p.&nbsp;6 has a product-like handwritten symbol where matrix multiplication requires <span class="math inline">\(\sum_k\)</span>. The displayed Cauchy–Schwarz argument spells out the sum and complex absolute values.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Lecture 09, p.&nbsp;7 starts its block discussion with <span class="math inline">\(A=L^*L\)</span>, but all subsequent lower-triangular block equations are for <span class="math inline">\(A=LL^*\)</span>. The latter convention is used consistently here.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Lecture 09, p.&nbsp;8’s notation does not display both inverses clearly, while its prose says to invert, take the submatrix, and invert again. The identity and block-LU calculation above make the intended relation unambiguous. The full calculation is an editorial completion of the suggested proof.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span>← Previous page</span><span>8. Least Squares and Normal Equations</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">9. Cholesky Factorization and Schur Complements</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#recap" class="is-active" aria-current="location">9.1 Recap</a></li><li style="--depth:0"><a href="#symmetry-preserving-elimination">9.2 Symmetry-Preserving Elimination</a></li><li style="--depth:0"><a href="#cholesky-factorization">9.3 Cholesky Factorization</a></li><li style="--depth:1"><a href="#right-looking-in-place-algorithm">9.3.1 Right-Looking In-Place Algorithm</a></li><li style="--depth:0"><a href="#left-looking-and-up-looking-cholesky">9.4 Left-Looking and Up-Looking Cholesky</a></li><li style="--depth:1"><a href="#left-looking-version">9.4.1 Left-Looking Version</a></li><li style="--depth:1"><a href="#up-looking-version">9.4.2 Up-Looking Version</a></li><li style="--depth:0"><a href="#why-the-pivots-stay-positive">9.5 Why the Pivots Stay Positive</a></li><li style="--depth:1"><a href="#quantitative-pivot-bound">9.5.1 Quantitative Pivot Bound</a></li><li style="--depth:0"><a href="#roundoff-and-element-growth">9.6 Roundoff and Element Growth</a></li><li style="--depth:0"><a href="#symmetric-indefinite-matrices">9.7 Symmetric Indefinite Matrices</a></li><li style="--depth:0"><a href="#block-cholesky-and-schur-complements">9.8 Block Cholesky and Schur Complements</a></li><li style="--depth:0"><a href="#the-block-inverse-identity">9.9 The Block-Inverse Identity</a></li><li style="--depth:0"><a href="#cholesky-and-qr">9.10 Cholesky and QR</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

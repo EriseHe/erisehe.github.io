@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>习题集 — E.H. Notebook</title>
+<meta name="description" content="1 Homework Set 11.1 Problem 1.33Test the divergence theorem for the function \mathbf{v}=(x y) \hat{\mathbf{x}}+(2 y z) \hat{\mathbf{y}}+(3 z x) \hat{\mathbf{z}}. Take as ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a></nav><h1 id="reader-title">习题集</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Homework Set 1" id="homework-set-1">1 Homework Set 1</h2>
+<h3 data-original-heading="Problem 1.33" id="problem-1.33">1.1 Problem 1.33</h3>
+<p>Test the divergence theorem for the function <span class="math inline">\(\mathbf{v}=(x y) \hat{\mathbf{x}}+(2 y z) \hat{\mathbf{y}}+(3 z x) \hat{\mathbf{z}}\)</span>. Take as your volume the cube shown in Fig. 1.30, with sides of length 2. ### (a) <span class="math display">\[\begin{aligned}
+\nabla \cdot \vec{v} &amp;= \partial_x(xy) + \partial_y(2yz) + \partial_z(3zx)\\
+&amp;= y + 2z + 3x
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\int_V (\nabla \cdot \vec{v}) \, d\tau &amp;= \int_{x=0}^{2} \int_{y=0}^{4} \int_{z=0}^{2} (y + 2z + 3x) \, dx \, dy \, dz \\
+&amp;= 4 \int_0^{4} y \, dy + 8 \int_0^{2} z \, dz + 12 \int_0^{2} x \, dx \\
+&amp;= 8 + 16 + 24 \\
+&amp;= 48
+\end{aligned}\]</span></p>
+<h4 data-original-heading="(b) Use labels from Fig. 1.29:" id="b-use-labels-from-fig.-1.29">1.1.1 (b) Use labels from Fig. 1.29:</h4>
+<ol type="i">
+<li></li>
+</ol>
+<p><span class="math display">\[d\vec{a} = \hat{x} \, dy \, dz \Big|_{x=2}\]</span> <span class="math display">\[\begin{aligned}
+\Rightarrow \int_{L_i} \vec{v} \cdot d\vec{a} &amp;= \int_0^{2} xy \, dy \, dz \Big|_{x=2} \\
+&amp;= 8
+\end{aligned}\]</span></p>
+<ol start="2" type="i">
+<li><span class="math display">\[d\vec{a} = -\hat{x} \, dy \, dz \Big|_{x=0}\]</span> <span class="math display">\[\begin{aligned}
+\Rightarrow \int_{L_{ii}} \vec{v} \cdot d\vec{a} &amp;= -\int_0^{2} xy \, dy \, dz \Big|_{x=0} \\
+&amp;= 0
+\end{aligned}\]</span></li>
+<li><span class="math display">\[d\vec{a} = \hat{y} \, dx \, dz \Big|_{y=2}\]</span> <span class="math display">\[\begin{aligned}
+\Rightarrow \int_{L_{iii}} \vec{v} \cdot d\vec{a} &amp;= \int_0^{2} 4y^2 \, dx \, dz \Big|_{y=2} \\
+&amp;= 16
+\end{aligned}\]</span></li>
+<li><span class="math display">\[d\vec{a} = -\hat{y} \, dx \, dz \Big|_{y=0}\]</span> <span class="math display">\[\begin{aligned}
+\Rightarrow \int_{L_{iv}} \vec{v} \cdot d\vec{a} &amp;= -\int_0^{2} 2y^2 \, dx \, dz \Big|_{y=0} \\
+&amp;= 0
+\end{aligned}\]</span></li>
+<li><span class="math display">\[d\vec{a} = \hat{z} \, dy \, dx \Big|_{z=2}\]</span> <span class="math display">\[\begin{aligned}
+\Rightarrow \int_V \vec{v} \cdot d\vec{a} &amp;= \int_0^{2} 3zx \, dx \, dy \Big|_{z=2} \\
+&amp;= 24
+\end{aligned}\]</span></li>
+<li></li>
+</ol>
+<p><span class="math display">\[d\vec{a} = -\hat{z} \, dx \, dy \Big|_{z=0}\]</span> <span class="math display">\[\begin{aligned}
+\Rightarrow \int_{V_i} \vec{v} \cdot d\vec{a} &amp;= -\int_0^{2} 3zx \, dx \, dy \Big|_{z=0} \\
+&amp;= 0
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\Rightarrow \oint \vec{v} \cdot d\vec{a} &amp;= \sum_{L=i}^{6} \int_L \vec{v} \cdot d\vec{a} \\
+&amp;= 48
+\end{aligned}\]</span></p>
+<ol type="a">
+<li><ul>
+<li>(b): <span class="math display">\[\int_V (\vec{\nabla} \cdot \vec{v}) \, d\tau = \oint_{\partial V} \vec{v} \cdot d\vec{a} = 48 \checkmark\]</span></li>
+</ul></li>
+</ol>
+<h3 data-original-heading="Problem 1.34" id="problem-1.34">1.2 Problem 1.34</h3>
+<p>Test Stokes’ theorem for the function <span class="math inline">\(\mathbf{v}=(x y) \hat{\mathbf{x}}+(2 y z) \hat{\mathbf{y}}+(3 z x) \hat{\mathbf{z}}\)</span>, using the triangular shaded area of Fig. 1.34.</p>
+<h3 data-original-heading="Problem 1.62" id="problem-1.62">1.3 Problem 1.62</h3>
+<p>P1.62 The integral <span class="math display">\[
+\mathbf{a} \equiv \int_{\mathcal{S}} d \mathbf{a}
+\]</span> is sometimes called the vector area of the surface <span class="math inline">\(\mathcal{S}\)</span>. If <span class="math inline">\(\mathcal{S}\)</span> happens to be flat, then <span class="math inline">\(|\mathbf{a}|\)</span> is the ordinary (scalar) area, obviously.</p>
+<h4 data-original-heading="Part A" id="part-a">1.3.1 Part A</h4>
+<p>Find the vector area of a hemispherical bowl of radius <span class="math inline">\(R\)</span>.</p>
+<h4 data-original-heading="Part B" id="part-b">1.3.2 Part B</h4>
+<p>Show that <span class="math inline">\(\mathbf{a}=\mathbf{0}\)</span> for any closed surface. [Hint: Use Prob. 1.61a.]</p>
+<h4 data-original-heading="Part C" id="part-c">1.3.3 Part C</h4>
+<p>Show that a is the same for all surfaces sharing the same boundary.</p>
+<h4 data-original-heading="Part D" id="part-d">1.3.4 Part D</h4>
+<p>Show that</p>
+<p><span class="math display">\[
+\mathbf{a}=\frac{1}{2} \oint \mathbf{r} \times d \mathbf{l},
+\]</span></p>
+<p>where the integral is around the boundary line. [Hint: One way to do it is to draw the cone subtended by the loop at the origin. Divide the conical surface up into infinitesimal triangular wedges, each with vertex at the origin and opposite side <span class="math inline">\(d l\)</span>, and exploit the geometrical interpretation of the cross product (Fig. 1.8).]</p>
+<h4 data-original-heading="Part E" id="part-e">1.3.5 Part E</h4>
+<p>Show that</p>
+<p><span class="math display">\[
+\oint(\mathbf{c} \cdot \mathbf{r}) d \mathbf{l}=\mathbf{a} \times \mathbf{c}
+\]</span> for any constant vector c.[Hint: Let <span class="math inline">\(T=\mathrm{c} \cdot \mathrm{r}\)</span> in Prob. 1.61e.]</p>
+<h3 data-original-heading="Problem 1.64" id="problem-1.64">1.4 Problem 1.64</h3>
+<p>P1.64 In case you’re not persuaded that <span class="math inline">\(\nabla^2(1 / r)=-4 \pi \delta^3(\mathbf{r})\)</span> (Eq. 1.102, with <span class="math inline">\(\mathbf{r}^{\prime}=\mathbf{0}\)</span> for simplicity), try replacing <span class="math inline">\(r\)</span> by <span class="math inline">\(\sqrt{r^2+\epsilon^2}\)</span>, and watching what happens as <span class="math inline">\(\epsilon \rightarrow 0\)</span>. Specifically, let <span class="math display">\[
+D(r, \epsilon) \equiv-\frac{1}{4 \pi} \nabla^2 \frac{1}{\sqrt{r^2+\epsilon^2}}
+\]</span></p>
+<p>To demonstrate that this goes to <span class="math inline">\(\delta^3(\mathbf{r})\)</span> as <span class="math inline">\(\epsilon \rightarrow 0:\)</span></p>
+<h4 data-original-heading="Part A" id="part-a-1">1.4.1 Part A</h4>
+<p>Show that <span class="math inline">\(D(r, \epsilon)=\left(3 \epsilon^2 / 4 \pi\right)\left(r^2+\epsilon^2\right)^{-5 / 2}\)</span>.</p>
+<h4 data-original-heading="Part B" id="part-b-1">1.4.2 Part B</h4>
+<p>check that <span class="math inline">\(D(0, \epsilon) \rightarrow \infty\)</span> as <span class="math inline">\(\epsilon \rightarrow 0\)</span>.</p>
+<h4 data-original-heading="Part C" id="part-c-1">1.4.3 Part C</h4>
+<p>check that <span class="math inline">\(D(r, \epsilon) \rightarrow 0\)</span>, as <span class="math inline">\(\epsilon \rightarrow 0\)</span>, for all <span class="math inline">\(r \neq 0\)</span>.</p>
+<h4 data-original-heading="Part D" id="part-d-1">1.4.4 Part D</h4>
+<p>check that the integral of <span class="math inline">\(D(r, \epsilon)\)</span> over all space is 1 . # Homework Set 2</p>
+<h3 data-original-heading="Problem 2.27" id="problem-2.27">1.5 Problem 2.27</h3>
+<p>A conical surface (an empty ice-cream cone) carries a uniform surface charge <span class="math inline">\(\sigma\)</span>. The height of the cone is <span class="math inline">\(h\)</span>, as is the radius of the top. Find the potential difference between points <span class="math inline">\(a\)</span> (the vertex) and <span class="math inline">\(b\)</span> (the center of the top).</p>
+<h3 data-original-heading="Problem 2.35" id="problem-2.35">1.6 Problem 2.35</h3>
+<p>Find the energy stored in a uniformly charged solid sphere of radius <span class="math inline">\(R\)</span> and charge <span class="math inline">\(q\)</span>. Do it three different ways:</p>
+<h4 data-original-heading="(a) Use Eq. 2.43. You found the potential in Prob. 2.22." id="a-use-eq.-2.43.-you-found-the-potential-in-prob.-2.22.">1.6.1 (a) Use Eq. 2.43. You found the potential in Prob. 2.22.</h4>
+<p>Solution. using <span class="math display">\[\boxed{W = \frac{1}{2} \int \rho V d\tau}\]</span> To get <span class="math inline">\(V\)</span>, use Gauss’ Law to get <span class="math inline">\(\vec{E}\)</span> first:</p>
+<p>outside: <span class="math display">\[
+\begin{aligned}
+E_{out} \cdot 4\pi r_{out}^2 &amp;= \frac{Q_{en}}{\epsilon_0} = \frac{q}{\epsilon_0} \\
+\Rightarrow \vec{E}_{out}(\vec{r}) &amp;= \frac{1}{4\pi\epsilon_0} \frac{q}{r^2} \hat{r}
+\end{aligned}
+\]</span></p>
+<p>inside: <span class="math display">\[
+\begin{aligned}
+E_{in} \cdot 4\pi r_{in}^2 &amp;= \frac{Q_{en}}{\epsilon_0} = \frac{q}{\epsilon_0} \frac{\frac{4}{3}\pi r_{in}^3}{\frac{4}{3}\pi R^3} \\
+\Rightarrow \vec{E}_{in} (\vec{r}) &amp;= \frac{q}{4\pi\epsilon_0} \frac{\vec{r}}{R^3}
+\end{aligned}
+\]</span></p>
+<p>Then, <span class="math inline">\(V(\vec{r})= -\int_{\infty}^{\vec{r}} \vec{E} \cdot d\vec{l}\)</span>, only needed for <span class="math inline">\(r &lt; R\)</span>: <span class="math display">\[
+\begin{aligned}
+\Rightarrow V(\vec{r}) &amp;= - \int_{\infty}^{R} E_{out} \cdot dr - \int_{R}^{r} E_{in} \cdot dr \\
+&amp;= - \frac{q}{4\pi\epsilon_0} \left\{ \int_{\infty}^{R} \frac{dr}{r^2} + \frac{1}{R^3} \int_{R}^{r} r dr \right\} \\
+&amp;= - \frac{q}{4\pi\epsilon_0} \left\{ -\frac{1}{R} + \frac{1}{2R^3} (r^2 - R^2) \right\} \\
+&amp;= \frac{3}{8\pi\epsilon_0} \frac{q}{R} \left(1 - \frac{r^2}{3R^2}\right)
+\end{aligned}
+\]</span></p>
+<p>Finally, <span class="math display">\[
+\begin{aligned}
+W &amp;= \frac{1}{2} \int_{sph} \rho V d\tau \\
+&amp;= \frac{q}{\frac{8}{3}\pi R^3} \cdot \frac{3}{8\pi\epsilon_0} \frac{q}{R} 4\pi \int_0^R \left(1 - \frac{r^2}{3R^2}\right) r^2 dr \\
+&amp;\quad \quad \quad \quad \quad \quad \quad \quad \quad \underbrace{\quad \quad \quad \quad \quad \quad}_{\frac{1}{3}R^3 - \frac{1}{15}R^3 = \frac{4R^3}{15}} \\
+\Rightarrow W &amp;= \frac{3}{20\pi\epsilon_0} \frac{q^2}{R} //
+\end{aligned}
+\]</span> ### (b) Use Eq. 2.45. Don’t forget to integrate over all space. ### (c) Use Eq. 2.44. Take a spherical volume of radius <span class="math inline">\(a\)</span>. What happens as <span class="math inline">\(a \rightarrow \infty\)</span> ?</p>
+<h3 data-original-heading="Problem 2.40" id="problem-2.40">1.7 Problem 2.40</h3>
+<p>Two spherical cavities, of radii <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, are hollowed out from the interior of a (neutral) conducting sphere of radius <span class="math inline">\(R\)</span> (Fig. 2.49). At the center of each cavity a point charge is placed - call these charges <span class="math inline">\(q_a\)</span> and <span class="math inline">\(q_b\)</span>.</p>
+<p>Figure 1: Figure 2.49.</p>
+<h4 data-original-heading="(a) Find the surface charge densities \sigma_a, \sigma_b, and \sigma_R." id="a-find-the-surface-charge-densities-sigma_a-sigma_b-and-sigma_r.">1.7.1 (a) Find the surface charge densities <span class="math inline">\(\sigma_a, \sigma_b\)</span>, and <span class="math inline">\(\sigma_R\)</span>.</h4>
+<h4 data-original-heading="(b) What is the field outside the conductor?" id="b-what-is-the-field-outside-the-conductor">1.7.2 (b) What is the field outside the conductor?</h4>
+<h4 data-original-heading="(c) What is the field within each cavity?" id="c-what-is-the-field-within-each-cavity">1.7.3 (c) What is the field within each cavity?</h4>
+<h4 data-original-heading="(d) What is the force on q_a and q_b ?" id="d-what-is-the-force-on-q_a-and-q_b">1.7.4 (d) What is the force on <span class="math inline">\(q_a\)</span> and <span class="math inline">\(q_b\)</span> ?</h4>
+<h4 data-original-heading="(e) Which of these answers would change if a third charge, q_c, were brought near the conductor (but outside it)?" id="e-which-of-these-answers-would-change-if-a-third-charge-q_c-were-brought-near-the-conductor-but-outside-it">1.7.5 (e) Which of these answers would change if a third charge, <span class="math inline">\(q_c\)</span>, were brought near the conductor (but outside it)?</h4>
+<h2 data-original-heading="Homework Set 3" id="homework-set-3">2 Homework Set 3</h2>
+<h2 data-original-heading="Homework Set 4" id="homework-set-4">3 Homework Set 4</h2></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span>← Previous page</span><span>Chapter 1</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span>Next page →</span><span>第一章</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">习题集</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#homework-set-1" class="is-active" aria-current="location">1 Homework Set 1</a></li><li style="--depth:1"><a href="#problem-1.33">1.1 Problem 1.33</a></li><li style="--depth:2"><a href="#b-use-labels-from-fig.-1.29">1.1.1 (b) Use labels from Fig. 1.29:</a></li><li style="--depth:1"><a href="#problem-1.34">1.2 Problem 1.34</a></li><li style="--depth:1"><a href="#problem-1.62">1.3 Problem 1.62</a></li><li style="--depth:2"><a href="#part-a">1.3.1 Part A</a></li><li style="--depth:2"><a href="#part-b">1.3.2 Part B</a></li><li style="--depth:2"><a href="#part-c">1.3.3 Part C</a></li><li style="--depth:2"><a href="#part-d">1.3.4 Part D</a></li><li style="--depth:2"><a href="#part-e">1.3.5 Part E</a></li><li style="--depth:1"><a href="#problem-1.64">1.4 Problem 1.64</a></li><li style="--depth:2"><a href="#part-a-1">1.4.1 Part A</a></li><li style="--depth:2"><a href="#part-b-1">1.4.2 Part B</a></li><li style="--depth:2"><a href="#part-c-1">1.4.3 Part C</a></li><li style="--depth:2"><a href="#part-d-1">1.4.4 Part D</a></li><li style="--depth:1"><a href="#problem-2.27">1.5 Problem 2.27</a></li><li style="--depth:1"><a href="#problem-2.35">1.6 Problem 2.35</a></li><li style="--depth:2"><a href="#a-use-eq.-2.43.-you-found-the-potential-in-prob.-2.22.">1.6.1 (a) Use Eq. 2.43. You found the potential in Prob. 2.22.</a></li><li style="--depth:1"><a href="#problem-2.40">1.7 Problem 2.40</a></li><li style="--depth:2"><a href="#a-find-the-surface-charge-densities-sigma_a-sigma_b-and-sigma_r.">1.7.1 (a) Find the surface charge densities \sigma_a, \sigma_b, and \sigma_R.</a></li><li style="--depth:2"><a href="#b-what-is-the-field-outside-the-conductor">1.7.2 (b) What is the field outside the conductor?</a></li><li style="--depth:2"><a href="#c-what-is-the-field-within-each-cavity">1.7.3 (c) What is the field within each cavity?</a></li><li style="--depth:2"><a href="#d-what-is-the-force-on-q_a-and-q_b">1.7.4 (d) What is the force on q_a and q_b ?</a></li><li style="--depth:2"><a href="#e-which-of-these-answers-would-change-if-a-third-charge-q_c-were-brought-near-the-conductor-but-outside-it">1.7.5 (e) Which of these answers would change if a third charge, q_c, were brought near the conductor (but outside it)?</a></li><li style="--depth:0"><a href="#homework-set-3">2 Homework Set 3</a></li><li style="--depth:0"><a href="#homework-set-4">3 Homework Set 4</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

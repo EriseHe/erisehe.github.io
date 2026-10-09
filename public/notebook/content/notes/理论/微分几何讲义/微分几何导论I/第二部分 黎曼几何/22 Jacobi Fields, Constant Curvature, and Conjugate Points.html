@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>22 Jacobi Fields, Constant Curvature, and Conjugate Points — E.H. Notebook</title>
+<meta name="description" content="1. Trivial Jacobi Fields and Normal Jacobi Fields1.1 Trivial Jacobi fieldsThe following are trivial Jacobi fields (coming from reparametrizations of the same geodesic): \">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="微分几何讲义 file hierarchy" data-sidebar-root="content/notes/理论/微分几何讲义"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/Frederic P Schuller讲义" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4588f86aeacf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Frederic P Schuller讲义</span></button></div><ul class="tree-children" id="folder-4588f86aeacf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC3%E8%AE%B2%20%E5%A4%9A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html"><span class="page-number"></span><span>第3讲 多线性代数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/Frederic%20P%20Schuller%E8%AE%B2%E4%B9%89/%E7%AC%AC4%E8%AE%B2%20%E5%8F%AF%E5%BE%AE%E6%B5%81%E5%BD%A2.html"><span class="page-number"></span><span>第4讲 可微流形</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-244bccca26dc" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论I</span></button></div><ul class="tree-children" id="folder-244bccca26dc"><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第一部分 曲线与曲面" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f23833b55fc8" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一部分 曲线与曲面</span></button></div><ul class="tree-children" id="folder-f23833b55fc8" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/1.%20Overview%20of%20Differential%20Geometry.html"><span class="page-number">1</span><span>Overview of Differential Geometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/2.%20Parametrized%20Curves%20%26%20Surfaces.html"><span class="page-number">2</span><span>Parametrized Curves &amp; Surfaces</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vector%20on%20Surface%20(from%20Lecture).html"><span class="page-number">3</span><span>Tangent Vector on Surface (from Lecture)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/3.%20Tangent%20Vectors%20and%20Orientability%20(From%20Notes).html"><span class="page-number">3</span><span>Tangent Vectors and Orientability (From Notes)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/4.%20First%20Fundamental%20Form.html"><span class="page-number">4</span><span>First Fundamental Form</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/5.%20Pushforward%2C%20Pullback%2C%20and%20Local%20Isometry.html"><span class="page-number">5</span><span>Pushforward, Pullback, and Local Isometry</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/6.%20Normal%20%26%20Geodesic%20Curvature.html"><span class="page-number">6</span><span>Normal &amp; Geodesic Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/7.%20Gauss%20Map%2C%20Shape%20Operator%2C%20and%20Curvatures.html"><span class="page-number">7</span><span>Gauss Map, Shape Operator, and Curvatures</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/8.%20Gauss%20Map%20Area%2C%20Principal%20Curvatures%2C%20Mean%20Curvature%20%26%20Geodesics.html"><span class="page-number">8</span><span>Gauss Map Area, Principal Curvatures, Mean Curvature &amp; Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/9.%20Geodesic%20Normal%20Coordinates%2C%20Exponential%20Map.html"><span class="page-number">9</span><span>Geodesic Normal Coordinates, Exponential Map</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/10.%20Geodesic%20Polar%20Coordinates%2C%20Local%20Length%20Minimizers%2C%20and%20Gauss%E2%80%99s%20Theorema%20Egregium.html"><span class="page-number">10</span><span>Geodesic Polar Coordinates, Local Length Minimizers, and Gauss’s Theorema Egregium</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E6%9B%B2%E7%BA%BF%E4%B8%8E%E6%9B%B2%E9%9D%A2/12.%20Geodesic%20Triangle%20and%20Euler's%20Characteristics.html"><span class="page-number">12</span><span>Geodesic Triangle and Euler&#39;s Characteristics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论I/第二部分 黎曼几何" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-61e3399769bc" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第二部分 黎曼几何</span></button></div><ul class="tree-children" id="folder-61e3399769bc"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/13.%20Smooth%20Functions%2C%20Tangent%20and%20Cotangent%20Vectors%2C%20Metrics.html"><span class="page-number">13</span><span>Smooth Functions, Tangent and Cotangent Vectors, Metrics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/14.%20Tensors%2C%20Connections%2C%20Lie%20bracket.html"><span class="page-number">14</span><span>Tensors, Connections, Lie bracket</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/15.%20Riemannian%20Connection%2C%20Geodesics%2C%20and%20Parallel%20Transport.html"><span class="page-number">15</span><span>Riemannian Connection, Geodesics, and Parallel Transport</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/16.%20Exponential%20Map%2C%20Normal%20Coordinates%2C%20and%20Distance.html"><span class="page-number">16</span><span>Exponential Map, Normal Coordinates, and Distance</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/17.%20Riemannian%20Distance%2C%20Variations%2C%20and%20Geodesics.html"><span class="page-number">17</span><span>Riemannian Distance, Variations, and Geodesics</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/18%20Hopf%E2%80%93Rinow%20direction.html"><span class="page-number">18</span><span>Hopf–Rinow direction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/19%20Curvature%20Operator%20and%20Tensoriality.html"><span class="page-number">19</span><span>Curvature Operator and Tensoriality</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/20%20Gauss%26Weingarten%20Formulas%2C%20Surfaces%2C%20and%20Sectional%20Curvature.html"><span class="page-number">20</span><span>Gauss&amp;Weingarten Formulas, Surfaces, and Sectional Curvature</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/21%20Curvature%20via%20Sectional%20Curvature%2C%20and%20Jacobi%20Fields.html"><span class="page-number">21</span><span>Curvature via Sectional Curvature, and Jacobi Fields</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/22%20Jacobi%20Fields%2C%20Constant%20Curvature%2C%20and%20Conjugate%20Points.html"><span class="page-number">22</span><span>Jacobi Fields, Constant Curvature, and Conjugate Points</span></a></li></ul></li></ul></li><li class="folder-node" data-folder="content/notes/理论/微分几何讲义/微分几何导论II" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-016769c1691a" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>微分几何导论II</span></button></div><ul class="tree-children" id="folder-016769c1691a" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%208.html"><span class="page-number"></span><span>Apr 8</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Apr%2020.html"><span class="page-number"></span><span>Apr 20</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Course%20Content.html"><span class="page-number"></span><span>Course Content</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%202.html"><span class="page-number"></span><span>Problem 2</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%203.html"><span class="page-number"></span><span>Problem 3</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/problem%204.html"><span class="page-number"></span><span>problem 4</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAII/Problem%204%20Boundary%20Distance%20Determines%20Volume%20for%20Simple%20Metrics.html"><span class="page-number"></span><span>Problem 4 Boundary Distance Determines Volume for Simple Metrics</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/index.html">微分几何讲义</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/index.html">微分几何导论I</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/index.html">第二部分 黎曼几何</a></nav><h1 id="reader-title">22 Jacobi Fields, Constant Curvature, and Conjugate Points</h1><p class="article-meta">2025-11-17</p></header><div id="article-body" class="prose"><h2 data-original-heading="1. Trivial Jacobi Fields and Normal Jacobi Fields" id="trivial-jacobi-fields-and-normal-jacobi-fields">1. Trivial Jacobi Fields and Normal Jacobi Fields</h2>
+<h3 data-original-heading="1.1 Trivial Jacobi fields" id="trivial-jacobi-fields">1.1 Trivial Jacobi fields</h3>
+<p>The following are <em>trivial Jacobi fields</em> (coming from reparametrizations of the same geodesic):</p>
+<p><span class="math display">\[
+\begin{aligned}
+J_0(t) &amp;= \dot{\gamma}(t)
+&amp;\longleftrightarrow\quad \Gamma(s,t) &amp;= \gamma(t+s) \\
+J_1(t) &amp;= t\,\dot{\gamma}(t)
+&amp;\longleftrightarrow\quad \Gamma(s,t) &amp;= \gamma(e^s t)
+\end{aligned}
+\]</span></p>
+<p>Note that these are both tangential to <span class="math inline">\(\gamma\)</span>.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="1.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 1.1</span><span class="theorem-title">Normal Jacobi field</span></p>
+</div>
+<div class="theorem-content">
+<p>A normal Jacobi field along <span class="math inline">\(\gamma\)</span> satisfies <span class="math inline">\(J \perp \dot{\gamma}\)</span> at all pts</p>
+</div>
+</div>
+<div class="math-theorem lemma" data-callout="lemma" data-label="1.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma 1.2</span><span class="theorem-title">Normality from one point</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(J\)</span> is a Jacobi field and <span class="math inline">\(J\)</span> and <span class="math inline">\(D_tJ\)</span> are <span class="math inline">\(\perp \dot{\gamma}\)</span> at one point, then <span class="math inline">\(J\)</span> is a normal Jacobi field</p>
+</div>
+</div>
+<p><strong>Proof</strong><br>
+Let <span class="math inline">\(f(t):=\langle J,\dot{\gamma}\rangle\)</span>. Since <span class="math inline">\(\gamma\)</span> is a geodesic, <span class="math inline">\(D_t\dot{\gamma}=0\)</span>, hence <span class="math display">\[
+\begin{aligned}
+f'(t)
+&amp;=\frac{d}{dt}\langle J,\dot{\gamma}\rangle \\
+&amp;=\langle D_tJ,\dot{\gamma}\rangle+\langle J,D_t\dot{\gamma}\rangle \\
+&amp;=\langle D_tJ,\dot{\gamma}\rangle
+\end{aligned}
+\]</span> Differentiating again gives <span class="math display">\[
+\begin{aligned}
+f''(t)
+&amp;=\langle D_t^2J,\dot{\gamma}\rangle \\
+&amp;=\langle -Rm(J,\dot{\gamma})\dot{\gamma},\dot{\gamma}\rangle \\
+&amp;=-Rm(J,\dot{\gamma},\dot{\gamma},\dot{\gamma}) \\
+&amp;=0
+\end{aligned}
+\]</span> where the last line is by antisymmetry. Thus <span class="math inline">\(f\)</span> is affine in <span class="math inline">\(t\)</span>.</p>
+<p>If at some <span class="math inline">\(t_0\)</span> we have <span class="math inline">\(J(t_0)\perp \dot{\gamma}(t_0)\)</span> and <span class="math inline">\((D_tJ)(t_0)\perp \dot{\gamma}(t_0)\)</span>, then <span class="math inline">\(f(t_0)=0\)</span> and <span class="math inline">\(f'(t_0)=0\)</span>. Since <span class="math inline">\(f''\equiv 0\)</span>, this forces <span class="math inline">\(f'\equiv 0\)</span> and hence <span class="math inline">\(f\equiv 0\)</span>, so <span class="math inline">\(J\perp\dot{\gamma}\)</span> for all <span class="math inline">\(t\)</span>.</p>
+<h2 data-original-heading="2. Radial Jacobi Fields" id="radial-jacobi-fields">2. Radial Jacobi Fields</h2>
+<p>Our goal is to study families of radial geodesics from a pt <span class="math inline">\(p\)</span>.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="2.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 2.1</span><span class="theorem-title">Radial Jacobi field</span></p>
+</div>
+<div class="theorem-content">
+<p>Given <span class="math inline">\(V=\dot{\gamma}(0)\)</span> at <span class="math inline">\(p\)</span> and <span class="math inline">\(W\in T_pM\)</span>, let <span class="math display">\[
+\Gamma(s,t):=\exp_p\big(t(V+sW)\big)
+\]</span> The associated radial Jacobi field is <span class="math display">\[
+J=\partial_s\Gamma(0,t)
+\]</span></p>
+</div>
+</div>
+<h3 data-original-heading="2.1 Geodesic normal coordinates description" id="geodesic-normal-coordinates-description">2.1 Geodesic normal coordinates description</h3>
+<p>This looks simple in geodesic normal coord’s:</p>
+<p><span class="math display">\[
+x^1,\dots,x^n\ \longleftrightarrow\ \exp_p(x^iE_i)
+\]</span></p>
+<p>for an orthonormal basis <span class="math inline">\(E_i\)</span> of <span class="math inline">\(T_pM\)</span>. For <span class="math inline">\(\Gamma(s,t)\)</span> as above, in these coord’s <span class="math display">\[
+x^i(s,t)=t\big(V^i+sW^i\big)
+\]</span> so <span class="math display">\[
+J=t\,W^i\partial_i
+\]</span></p>
+<div class="math-theorem lemma" data-callout="lemma" data-label="2.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma 2.2</span><span class="theorem-title">Radial Jacobi field in geodesic normal coords</span></p>
+</div>
+<div class="theorem-content">
+<p>In geodesic normal coord’s at <span class="math inline">\(p\)</span>, the unique radial Jacobi field with <span class="math inline">\(D_tJ|_0=W\in T_pM\)</span> is <span class="math display">\[
+J(t)=t\,W^i\partial_i
+\]</span></p>
+</div>
+</div>
+<h2 data-original-heading="3. Constant Curvature Metrics and the Jacobi Equation" id="constant-curvature-metrics-and-the-jacobi-equation">3. Constant Curvature Metrics and the Jacobi Equation</h2>
+<div class="math-theorem definition" data-callout="definition" data-label="3.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 3.1</span><span class="theorem-title">Constant curvature</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(M\)</span> has constant curvature if <span class="math inline">\(K(\Pi)=k\)</span> at all pts</p>
+</div>
+</div>
+<p>In this case, <span class="math display">\[
+R(X,Y)Z=k\big(\langle Y,Z\rangle X-\langle X,Z\rangle Y\big)
+\]</span></p>
+<p>In the Jacobi eq., we then have (for <span class="math inline">\(\gamma\)</span> unit speed) <span class="math display">\[
+R(J,\dot{\gamma})\dot{\gamma}=kJ-k\langle J,\dot{\gamma}\rangle\dot{\gamma}
+\]</span> If <span class="math inline">\(J\)</span> is normal, <span class="math inline">\(\langle J,\dot{\gamma}\rangle=0\)</span>, so the Jacobi eq. reduces to <span class="math display">\[
+D_t^2J=-kJ
+\]</span></p>
+<div class="math-theorem lemma" data-callout="lemma" data-label="3.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Lemma 3.2</span><span class="theorem-title">Radial normal Jacobi fields in constant curvature</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(M\)</span> has constant curvature <span class="math inline">\(k\)</span>, then radial normal <span class="math inline">\(J\)</span>-fields on <span class="math inline">\(\gamma\)</span> have the form <span class="math display">\[
+J(t)=u(t)E(t)
+\]</span> where <span class="math inline">\(E\)</span> is parallel along <span class="math inline">\(\gamma\)</span> and <span class="math display">\[
+u(t)=
+\begin{cases}
+\dfrac{1}{\sqrt{k}}\sin(\sqrt{k}\,t) &amp; k&gt;0 \\
+t &amp; k=0 \\
+\dfrac{1}{\sqrt{-k}}\sinh(\sqrt{-k}\,t) &amp; k&lt;0
+\end{cases}
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof sketch</strong><br>
+With <span class="math inline">\(E\)</span> parallel, the equation becomes <span class="math inline">\(\ddot{u}=-ku\)</span>, so solve for <span class="math inline">\(u\)</span>. This yields <span class="math inline">\((n-1)\)</span> independent solutions.</p>
+<h2 data-original-heading="4. Application: Constant Curvature Determines g Locally" id="application-constant-curvature-determines-g-locally">4. Application: Constant Curvature Determines <span class="math inline">\(g\)</span> Locally</h2>
+<p>Let <span class="math inline">\(x^i\)</span> be geodesic normal coord’s at <span class="math inline">\(p\)</span>. The radial vector field is <span class="math display">\[
+\partial_r=\frac{x^i}{r}\partial_i
+\]</span> for <span class="math inline">\(x\neq 0\)</span>.</p>
+<p>Suppose <span class="math inline">\(X=X^i\partial_i\)</span> is tangent to the geodesic sphere <span class="math inline">\(S_r\)</span>. Our goal is to compute <span class="math inline">\(|X|\)</span>.</p>
+<p>Define the Jacobi field <span class="math display">\[
+J(t)=\frac{t}{r}X^i\partial_i
+\]</span> so <span class="math inline">\(J(r)=X\)</span>.</p>
+<p>Gauss lemma: <span class="math inline">\(X\)</span> tangent to <span class="math inline">\(S_r\)</span> implies <span class="math inline">\(\langle X,\partial_r\rangle=0\)</span>, hence <span class="math inline">\(J\)</span> is normal.</p>
+<p>By the previous lemma, we can write <span class="math inline">\(J=u_hE\)</span> with <span class="math inline">\(E\)</span> parallel along <span class="math inline">\(\gamma\)</span>. Then <span class="math display">\[
+\begin{aligned}
+|X|
+&amp;=|J(r)| \\
+&amp;=|u_h(r)|\,|E(r)| \\
+&amp;=|u_h(r)|\,|E(0)|
+\end{aligned}
+\]</span> Also <span class="math inline">\(D_tJ(0)=E(0)\)</span> since <span class="math inline">\(\dot{u}_h(0)=1\)</span>, so <span class="math display">\[
+E(0)=\frac{1}{r}X^i\partial_i\Big|_p
+\]</span> At <span class="math inline">\(p\)</span>, <span class="math inline">\(\{\partial_i\}\)</span> is an orthonormal basis.</p>
+<p>This is easiest to write in polar coord’s <span class="math inline">\((r,w)\in \mathbb{R}_+\times S^{n-1}\)</span> with <span class="math display">\[
+(r,w)\mapsto x=rw\in\mathbb{R}^n\mapsto \exp_p(x^iE_i)
+\]</span> Let <span class="math inline">\(h\)</span> denote the standard metric on the unit sphere <span class="math inline">\(S^{n-1}\subset\mathbb{R}^n\)</span> (restriction of Euclidean).</p>
+<p>Thus for constant curvature <span class="math inline">\(h\)</span>, the metric in geodesic polar coord’s at any pt has the form <span class="math display">\[
+g=dr^2+u_h^2(r)\cdot h
+\]</span> where <span class="math display">\[
+u_h^2(r)=
+\begin{cases}
+r^2 &amp; h=0 \\
+\dfrac{1}{h}\sin^2(hr) &amp; h&gt;0 \\
+\dfrac{1}{|h|}\sinh^2(|h|r) &amp; h&lt;0
+\end{cases}
+\]</span></p>
+<div class="math-theorem corollary" data-callout="corollary" data-label="4.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Corollary 4.1</span><span class="theorem-title">Local isometry</span></p>
+</div>
+<div class="theorem-content">
+<p>Constant curvature metrics are locally isometric at all pts</p>
+</div>
+</div>
+<h2 data-original-heading="5. Conjugate Points" id="conjugate-points">5. Conjugate Points</h2>
+<h3 data-original-heading="5.1 When does \exp_p fail to be a local diffeo?" id="when-does-exp_p-fail-to-be-a-local-diffeo">5.1 When does <span class="math inline">\(\exp_p\)</span> fail to be a local diffeo?</h3>
+<p>Intuition: failure corresponds to crossing of nearby geodesics</p>
+<p>This corresponds to a non-trivial Jacobi field vanishing at <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>.</p>
+<p>Suppose <span class="math inline">\(M\)</span> is complete, so there is a geodesic segment between any two pts <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>.</p>
+<div class="math-theorem definition" data-callout="definition" data-label="5.1">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition 5.1</span><span class="theorem-title">Conjugate points</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are conjugate pts if, along a geodesic segment <span class="math inline">\(\gamma\)</span> from <span class="math inline">\(p\)</span> to <span class="math inline">\(q\)</span>, there is a non-zero Jacobi field along <span class="math inline">\(\gamma\)</span> that vanishes at both <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span></p>
+</div>
+</div>
+<div class="math-theorem proposition" data-callout="proposition" data-label="5.2">
+<div class="theorem-header">
+<p><span class="theorem-badge">Proposition 5.2</span><span class="theorem-title">Local diffeo criterion via conjugate points</span></p>
+</div>
+<div class="theorem-content">
+<p>Given <span class="math inline">\(p\in M\)</span>, <span class="math inline">\(\exp_p\)</span> extends to a local diffeo in a nbd of <span class="math inline">\(v\)</span> iff the pt <span class="math inline">\(q=\exp_p(v)\)</span> is not conjugate to <span class="math inline">\(p\)</span> along <span class="math display">\[
+\gamma(t)=\exp_p(tv)
+\]</span></p>
+</div>
+</div></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E8%AE%B2%E4%B9%89/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E5%AF%BC%E8%AE%BAI/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/21%20Curvature%20via%20Sectional%20Curvature%2C%20and%20Jacobi%20Fields.html"><span>← Previous page</span><span>21 Curvature via Sectional Curvature, and Jacobi Fields</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">22 Jacobi Fields, Constant Curvature, and Conjugate Points</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#trivial-jacobi-fields-and-normal-jacobi-fields" class="is-active" aria-current="location">1. Trivial Jacobi Fields and Normal Jacobi Fields</a></li><li style="--depth:1"><a href="#trivial-jacobi-fields">1.1 Trivial Jacobi fields</a></li><li style="--depth:0"><a href="#radial-jacobi-fields">2. Radial Jacobi Fields</a></li><li style="--depth:1"><a href="#geodesic-normal-coordinates-description">2.1 Geodesic normal coordinates description</a></li><li style="--depth:0"><a href="#constant-curvature-metrics-and-the-jacobi-equation">3. Constant Curvature Metrics and the Jacobi Equation</a></li><li style="--depth:0"><a href="#application-constant-curvature-determines-g-locally">4. Application: Constant Curvature Determines g Locally</a></li><li style="--depth:0"><a href="#conjugate-points">5. Conjugate Points</a></li><li style="--depth:1"><a href="#when-does-exp_p-fail-to-be-a-local-diffeo">5.1 When does \exp_p fail to be a local diffeo?</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

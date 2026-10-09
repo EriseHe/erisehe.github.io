@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>T-n分离公理 — E.H. Notebook</title>
+<meta name="description" content="1 T_n Separation Axioms[!axiom] T_{0} — Kolmogorov Space \forall x \neq y \in X,\, \exists open U s.t. x \in U,\, y \notin U or y \in U,\, x \notin U.[!axiom] T_{1} — Fré">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="拓扑学笔记 file hierarchy" data-sidebar-root="content/notes/理论/拓扑学笔记"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%8B%93%E6%89%91%E5%AD%A6%E7%AC%94%E8%AE%B0/index.html">拓扑学笔记</a><ul class="notes-tree"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%8B%93%E6%89%91%E5%AD%A6%E7%AC%94%E8%AE%B0/T-n%E5%88%86%E7%A6%BB%E5%85%AC%E7%90%86.html"><span class="page-number"></span><span>T-n分离公理</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%8B%93%E6%89%91%E5%AD%A6%E7%AC%94%E8%AE%B0/index.html">拓扑学笔记</a></nav><h1 id="reader-title">T-n分离公理</h1></header><div id="article-body" class="prose"><h2 data-original-heading="T_n Separation Axioms" id="t_n-separation-axioms">1 <span class="math inline">\(T_n\)</span> Separation Axioms</h2>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title"><strong><span class="math inline">\(T_{0}\)</span> — Kolmogorov Space</strong></span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall x \neq y \in X,\, \exists\)</span> open <span class="math inline">\(U\)</span> s.t. <span class="math inline">\(x \in U,\, y \notin U\)</span> or <span class="math inline">\(y \in U,\, x \notin U\)</span>.</p>
+</div>
+</div>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title"><span class="math inline">\(T_{1}\)</span> — Fréchet Space</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall x \neq y \in X,\, \exists\)</span> open <span class="math inline">\(U, V\)</span> s.t. <span class="math inline">\(x \in U,\, y \notin U\)</span> and <span class="math inline">\(y \in V,\, x \notin V\)</span>.<br>
+(Equivalently, all singletons are closed.)</p>
+</div>
+</div>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title"><span class="math inline">\(T_{2}\)</span> — Hausdorff Space</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall x \neq y \in X,\, \exists\)</span> disjoint open <span class="math inline">\(U, V\)</span> with <span class="math inline">\(x \in U,\, y \in V\)</span>.</p>
+</div>
+</div>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title">**<span class="math inline">\(T_{2.5}\)</span> — Urysohn Space</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall x \neq y \in X,\, \exists\)</span> disjoint closed neighborhoods <span class="math inline">\(N_x, N_y\)</span> with <span class="math inline">\(x \in N_x,\, y \in N_y\)</span>.</p>
+</div>
+</div>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title">**<span class="math inline">\(T_{3}\)</span> — Regular <span class="math inline">\(T_0\)</span> Space（正规 <span class="math inline">\(T_0\)</span> 空间）</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall x \in X,\, A\)</span> closed, <span class="math inline">\(x \notin A,\, \exists\)</span> disjoint open <span class="math inline">\(U, V\)</span> with <span class="math inline">\(x \in U,\, A \subset V\)</span>.</p>
+</div>
+</div>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title">**<span class="math inline">\(T_{3.5}\)</span> — Tychonoff Space（Tychonoff 空间 / 完全正规 <span class="math inline">\(T_0\)</span> 空间）</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall x \in X,\, A\)</span> closed, <span class="math inline">\(x \notin A,\, \exists f:X \to [0,1]\)</span> continuous with <span class="math inline">\(f(x)=0,\, f(A)=\{1\}\)</span>.</p>
+</div>
+</div>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title">**<span class="math inline">\(T_{4}\)</span> — Normal <span class="math inline">\(T_1\)</span> Space（正规 <span class="math inline">\(T_1\)</span> 空间）</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall\)</span> disjoint closed <span class="math inline">\(A, B,\, \exists\)</span> disjoint open <span class="math inline">\(U, V\)</span> with <span class="math inline">\(A \subset U,\, B \subset V\)</span>.</p>
+</div>
+</div>
+<div class="math-theorem axiom" data-callout="axiom">
+<div class="theorem-header">
+<p><span class="theorem-badge">Axiom</span><span class="theorem-title">**<span class="math inline">\(T_{5}\)</span> — Completely Normal <span class="math inline">\(T_1\)</span> Space（完全正规 <span class="math inline">\(T_1\)</span> 空间）</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math inline">\(\forall\)</span> disjoint closed <span class="math inline">\(A, B,\, \exists f:X \to [0,1]\)</span> continuous with <span class="math inline">\(f(A)=\{0\},\, f(B)=\{1\}\)</span>.</p>
+</div>
+</div>
+<h2 data-original-heading="逻辑链" id="逻辑链">2 逻辑链</h2>
+<p>纵向箭头代表“蕴含”关系：</p>
+<p><span class="math display">\[
+\begin{array}{r@{\qquad}l}
+T_{5}      &amp; \text{Completely normal Hausdorff} \\
+           &amp; \Downarrow \ \scriptsize\text{闭集–闭集可用连续函数分离} \\[6pt]
+T_{4}      &amp; \text{Normal Hausdorff} \\
+           &amp; \Downarrow \ \scriptsize\text{闭集–闭集可用不交开集分离} \\[6pt]
+T_{3.5}    &amp; \text{Completely regular Hausdorff / Tychonoff} \\
+           &amp; \Downarrow \ \scriptsize\text{点–闭集可用连续函数分离} \\[6pt]
+T_{3}      &amp; \text{Regular Hausdorff} \\
+           &amp; \Downarrow \ \scriptsize\text{点–闭集可用不交开集分离} \\[6pt]
+T_{2.5}    &amp; \text{Urysohn} \\
+           &amp; \Downarrow \ \scriptsize\text{点–点可用不交闭邻域分离} \\[6pt]
+T_{2}      &amp; \text{Hausdorff} \\
+           &amp; \Downarrow \ \scriptsize\text{点–点可用不交开集分离} \\[6pt]
+T_{1}      &amp; \text{Fr\'echet} \\
+           &amp; \Downarrow \ \scriptsize\text{单点集是闭集} \\[6pt]
+T_{0}      &amp; \text{Kolmogorov} \\
+           &amp; \scriptsize\text{任意两点至少有一个开集包含其中之一而不包含另一}
+\end{array}
+\]</span></p></div><footer class="article-footer"></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">T-n分离公理</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#t_n-separation-axioms" class="is-active" aria-current="location">1 T_n Separation Axioms</a></li><li style="--depth:0"><a href="#%E9%80%BB%E8%BE%91%E9%93%BE">2 逻辑链</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

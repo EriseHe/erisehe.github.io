@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>9.1 边值问题的近似 — E.H. Notebook</title>
+<meta name="description" content="1.1 Set-up: String with fixed endpoints我们可以写 \begin{align} -\frac{d^2u}{dx^2} &amp;= f(x), \quad x \in (0,1) \\ u(0) &amp;= \alpha, \quad \frac{du}{dx}(0) = \beta \end{align} 记w ">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="PDEs file hierarchy" data-sidebar-root="content/notes/理论/PDEs"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-d0ef79e2f3dd" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Application</span></button></div><ul class="tree-children" id="folder-d0ef79e2f3dd"><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第九章" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-088951c5579f" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第九章</span></button></div><ul class="tree-children" id="folder-088951c5579f"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20Boundary%20Value%20Problems.html"><span class="page-number">9.1</span><span>Boundary Value Problems</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span class="page-number">9.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.3%20Advection-Diffusion%20Equation.html"><span class="page-number">9.3</span><span>Advection-Diffusion Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.4%202D%20Problem.html"><span class="page-number">9.4</span><span>2D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/Exercise.html"><span class="page-number"></span><span>Exercise</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第十章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3049b40c07c1" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第十章</span></button></div><ul class="tree-children" id="folder-3049b40c07c1" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Finite%20Element%20Method.html"><span class="page-number"></span><span>Finite Element Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%8D%81%E7%AB%A0/Quiz%204.html"><span class="page-number"></span><span>Quiz 4</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Application/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-ec2435b632be" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第四章</span></button></div><ul class="tree-children" id="folder-ec2435b632be" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E6%9C%89%E9%99%90%E5%85%83.html"><span class="page-number">4.1</span><span>有限元</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/01%20Mid-Point%20Method.html"><span class="page-number">01</span><span>Mid-Point Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/02%20Three-Point%20Backward%20Differentiation%20Formula.html"><span class="page-number">02</span><span>Three-Point Backward Differentiation Formula</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/03%20Numerical%20Solution%20of%20Ordinary%20Differential%20Equations.html"><span class="page-number">03</span><span>Numerical Solution of Ordinary Differential Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Intro%20to%20MFEM.html"><span class="page-number"></span><span>Intro to MFEM</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/Untitled.html"><span class="page-number"></span><span>Untitled</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/MFEM" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-c1e826175e55" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>MFEM</span></button></div><ul class="tree-children" id="folder-c1e826175e55" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/1.%20MFEM%20Overview%20and%20Get%20Started.html"><span class="page-number">1</span><span>MFEM Overview and Get Started</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/2.%20Finite%20Element%20Hello%20World!.html"><span class="page-number">2</span><span>Finite Element Hello World!</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/3.%20Heat%20Transfer.html"><span class="page-number">3</span><span>Heat Transfer</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/4.%20Linear%20Elasticity.html"><span class="page-number">4</span><span>Linear Elasticity</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/MFEM/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/Partial Differential Equations" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-e390b6768306" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Partial Differential Equations</span></button></div><ul class="tree-children" id="folder-e390b6768306" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/0.%20Syllabus.html"><span class="page-number">0</span><span>Syllabus</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/1.%20Notation%20and%20Classification.html"><span class="page-number">1</span><span>Notation and Classification</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Partial%20Differential%20Equations/2.%20Transport%20equation.html"><span class="page-number">2</span><span>Transport equation</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-9dca6415e768" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>数值PDEs</span></button></div><ul class="tree-children" id="folder-9dca6415e768" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/1. Functional Analysis" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-52e578d7325d" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>1. Functional Analysis</span></button></div><ul class="tree-children" id="folder-52e578d7325d" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.1%20Data%20and%20Solution.html"><span class="page-number">1.1</span><span>Data and Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.2%20Functional%20Analysis.html"><span class="page-number">1.2</span><span>Functional Analysis</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.3%20Solving%20Linear%20System.html"><span class="page-number">1.3</span><span>Solving Linear System</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/1.%20Functional%20Analysis/1.4%20General%20Statement%20of%20PDEs.html"><span class="page-number">1.4</span><span>General Statement of PDEs</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/2. Poisson" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-3d2d7e1bb594" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>2. Poisson</span></button></div><ul class="tree-children" id="folder-3d2d7e1bb594" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.1%20Poisson%20Equation.html"><span class="page-number">2.1</span><span>Poisson Equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.2%20Finite%20Difference.html"><span class="page-number">2.2</span><span>Finite Difference</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.3%20Galerkin%20Method.html"><span class="page-number">2.3</span><span>Galerkin Method</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/2.4%20Finite%20Element.html"><span class="page-number">2.4</span><span>Finite Element</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/2.%20Poisson/Finite%20Element%20Method%20(1D%20Error%20Estimates%20%26%20Assembly).html"><span class="page-number"></span><span>Finite Element Method (1D Error Estimates &amp; Assembly)</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/数值PDEs/3. Advection-Diffusion" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 3. Advection-Diffusion" aria-controls="folder-8a7d45ca1f2e" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.%20Advection-Diffusion.html">3. Advection-Diffusion</a></div><ul class="tree-children" id="folder-8a7d45ca1f2e" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.1%20Finite%20Difference%20of%201D%20Problem.html"><span class="page-number">3.1</span><span>Finite Difference of 1D Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.4%20Reaction-Dominated%20Problem.html"><span class="page-number">3.4</span><span>Reaction-Dominated Problem</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.5%20Heat%20equation.html"><span class="page-number">3.5</span><span>Heat equation</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/3.%20Advection-Diffusion/3.6%20Linearization%2C%20ODE%20Stability%2C%20Semi-Discretization%2C%20and%20the%20Theta-Method.html"><span class="page-number">3.6</span><span>Linearization, ODE Stability, Semi-Discretization, and the Theta-Method</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final.html"><span class="page-number"></span><span>Final</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E6%95%B0%E5%80%BCPDEs/Final%20Project.html"><span class="page-number"></span><span>Final Project</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-f6dd2236c665" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>经典二阶PDEs</span></button></div><ul class="tree-children" id="folder-f6dd2236c665" hidden><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Heat Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Heat Equation" aria-controls="folder-328b314295fe" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/index.html">Heat Equation</a></div><ul class="tree-children" id="folder-328b314295fe" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/Heat%20Equation%20Solution.html"><span class="page-number"></span><span>Heat Equation Solution</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/%E7%BB%8F%E5%85%B8%E4%BA%8C%E9%98%B6PDEs/Heat%20Equation/The%20Fourier%20Series.html"><span class="page-number"></span><span>The Fourier Series</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Laplace Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fa477b9e53ce" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Laplace Equation</span></button></div><ul class="tree-children" id="folder-fa477b9e53ce" hidden></ul></li><li class="folder-node" data-folder="content/notes/理论/PDEs/经典二阶PDEs/Wave Equation" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7412163b125b" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>Wave Equation</span></button></div><ul class="tree-children" id="folder-7412163b125b" hidden></ul></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/index.html">PDEs</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/index.html">Application</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/index.html">第九章</a></nav><h1 id="reader-title">9.1 边值问题的近似</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1.1 Set-up: String with fixed endpoints" id="set-up-string-with-fixed-endpoints">1.1 Set-up: String with fixed endpoints</h2>
+<p>我们可以写 <span class="math display">\[
+\begin{align}
+-\frac{d^2u}{dx^2} &amp;= f(x), \quad x \in (0,1) \\
+u(0) &amp;= \alpha, \quad \frac{du}{dx}(0) = \beta
+\end{align}
+\]</span></p>
+<p>记<span class="math inline">\(w = \frac{du}{dx}\)</span>，那么 <span class="math inline">\(\frac{dw}{dx} = f(x)\)</span>。因此，我们知道</p>
+<p><span class="math display">\[\frac{d}{dt} = \begin{bmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} w \\ u \end{bmatrix}\]</span></p>
+<h3 data-original-heading="定义" id="定义">9.1.1.1 定义</h3>
+<p>边值问题（boundary-value problem）的定义为 &gt; [!definition|*] &gt; <span class="math display">\[\begin{align}
+-\mu\frac{d^2u}{dx^2} &amp;= f(x), \quad x\in (0,1), \quad \mu &gt; 0 \\
+u(0) &amp;= \alpha, \quad u(1) = \beta
+\end{align}
+&gt; \]</span> ## 1.2 泊松方程（Poisson Equation） 此类方程的二维形态为：</p>
+<p><span class="math display">\[\begin{align}
+-\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) &amp;= f(x,y) \\
+u|_{\text{boundary of }\Omega} &amp;= 0
+\end{align}\]</span></p>
+<p>用拉普拉斯算子来表示：</p>
+<p><span class="math display">\[\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) = \Delta u, \quad \text{where }\Delta = \nabla^2 u = \sum_{i=1}^{n} \frac{\partial^2}{\partial x_i^2}\]</span></p>
+<p>所以，广义的泊松方程可以写为</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span></p>
+</div>
+<div class="theorem-content">
+<p>A general (<span class="math inline">\(n\)</span>-dimentional) poisson equation is written as <span class="math display">\[\Delta u = f(\mathbf{x})\]</span> where <span class="math inline">\(\mathbf{x}=(x_{1},x_{2},x_{3}\dots x_{n})\)</span>.</p>
+</div>
+</div>
+<h2 data-original-heading="1.3 Back to the String Example: How can we get a BVP?" id="back-to-the-string-example-how-can-we-get-a-bvp">1.3 Back to the String Example: How can we get a BVP?</h2>
+<p>考虑以下经典力学中很常见的弦的能量<strong>泛函</strong>（energy functional）：</p>
+<p><span class="math display">\[J(u) = \frac{1}{2}\int_0^1 \mu\left(\frac{du}{dx}\right)^2 dx - \int_0^1 f \cdot u \, dx \quad \text{(Energy of string)}\]</span></p>
+<p>Boundary condition: <span class="math inline">\(u(0) = u(1) = 0\)</span>.</p>
+<p>作为自然界的基本趋势中，<strong>最小作用量原理</strong>解释了自然系统倾向于采取能量消耗最小的路径或状态，也就是说，自然会沿着<span class="math inline">\(\min J(u)\)</span>的路径发展。</p>
+<p>最简单的方法是直接用 欧拉-拉格朗日方程（Euler–Lagrange equation）搞定，但是这毕竟是个数学课，那么我们用最暴力的原始方法解决：</p>
+<p>大致思路为：</p>
+<ol type="1">
+<li>把 <span class="math inline">\(u\)</span> 加入扰动（perturbation）变成 <span class="math inline">\(u+εv\)</span>：</li>
+</ol>
+<p><span class="math display">\[u_{\epsilon}(x) = u(x) + \epsilon v(x)\]</span></p>
+<ol start="2" type="1">
+<li><span class="math inline">\(J(u+εv)\)</span> 进行显式展开：</li>
+</ol>
+<p><span class="math display">\[J(u + \epsilon v) = J(u) + \epsilon \underbrace{\delta J(u; v)}_{\text{一阶变分}} + \frac{1}{2} \epsilon^2 \underbrace{\delta^2 J(u; v)}_{\text{二阶变分}} + \cdots\]</span></p>
+<blockquote>
+<p>在变分法或力学的语言里：通常是指在能量或作用量（action）等泛函意义下的驻点（stationary point）：也就是对任意“小扰动” <span class="math inline">\(εv\)</span>，该函数 <span class="math inline">\(u\)</span> 都使得泛函的一阶变化量为 0。</p>
+</blockquote>
+<ol start="2" type="1">
+<li>求导，来找<span class="math inline">\(J\)</span>的最小值</li>
+</ol>
+<p><span class="math display">\[\lim_{\varepsilon \to 0} \frac{J(u + \varepsilon v) - J(u)}{\varepsilon} = 0, \quad \varepsilon \in \mathbb{R}\]</span></p>
+<p>显然易见：</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;\frac{1}{2}\int_0^1 \mu\left(\frac{du}{dx} + \varepsilon\frac{dv}{dx}\right)^2 dx - \int_0^1 f(u+\varepsilon v) \, dx - \frac{1}{2}\int_0^1 \mu\left(\frac{du}{dx}\right)^2 dx - \int_0^1 f \cdot u \, dx \\
+&amp;= \frac{1}{2}\int_0^1 \mu\left(\frac{du}{dx}\right)^2 dx + \frac{1}{2} \cdot 2\varepsilon \int_0^1 \mu \frac{du}{dx} \cdot \frac{dv}{dx} \, dx + \frac{1}{2}\varepsilon^2 \int_0^1 \mu\left(\frac{dv}{dx}\right)^2 dx \\
+&amp;\quad - \int_0^1 f \cdot u \, dx - \varepsilon\int_0^1 f \cdot v \, dx - \frac{1}{2}\int_0^1 \mu\left(\frac{du}{dx}\right)^2 dx - \int_0^1 f \cdot u \, dx \\
+&amp;= \varepsilon \int_0^1 \mu \frac{du}{dx} \cdot \frac{dv}{dx} \, dx + \frac{1}{2}\varepsilon^2 \int_0^1 \mu\left(\frac{dv}{dx}\right)^2 dx - \varepsilon\int_0^1 f \cdot v \, dx\end{align}
+\]</span></p>
+<blockquote>
+<p>这实际上正是欧拉–拉格朗日方程最早的“原始变分法”推导，也正是 E-L 方程的来龙去脉。只不过 E-L 方程把这个过程“公式化”了，让我们不必每次都展开一大堆项、再分部积分去凑出那个通用形式。</p>
+</blockquote>
+<p>然后</p>
+<p><span class="math display">\[\frac{J(u+\varepsilon v) - J(u)}{\varepsilon} = \int_0^1 \mu \frac{du}{dx} \cdot \frac{dv}{dx} \, dx + \frac{1}{2} \varepsilon \int_0^1 \mu\left(\frac{dv}{dx}\right)^2 dx - \int_0^1 f \cdot v \, dx\]</span></p>
+<p>极限为：</p>
+<p><span class="math display">\[\lim_{\varepsilon \to 0} \frac{J(u+\varepsilon v) - J(u)}{\varepsilon} = \int_0^1 \mu \frac{du}{dx} \cdot \frac{dv}{dx} \, dx - \int_0^1 f \cdot v \, dx = 0\]</span></p>
+<p>一个“平衡解”（equilibrium solution）。</p>
+<h3 data-original-heading="变分形式或弱形式（Variational/Weak）:" id="变分形式或弱形式variationalweak">9.1.2.1 变分形式或弱形式（Variational/Weak）:</h3>
+<p>由此我们得到了一个泛函的“变分条件”：</p>
+<div class="math-theorem claim" data-callout="claim">
+<div class="theorem-header">
+<p><span class="theorem-badge">Claim</span></p>
+</div>
+<div class="theorem-content">
+<p><span class="math display">\[\int_0^1 \mu \frac{du}{dx} \cdot \frac{dv}{dx} \, dx - \int_0^1 f \cdot v \, dx = 0\]</span></p>
+</div>
+</div>
+<p>分部积分:</p>
+<p><span class="math display">\[
+\begin{align}
+\int_0^1 \mu \frac{du}{dx} \cdot \frac{dv}{dx} \, dx &amp;= \mu\left[\frac{du}{dx}v\right]_0^1 - \mu\int_0^1 \frac{d^2u}{dx^2} v \, dx \\
+&amp;= -\mu\int_0^1 \frac{d^2u}{dx^2} v \, dx
+\end{align}
+\]</span></p>
+<p>Since <span class="math inline">\(v(0) = v(1) = 0\)</span></p>
+<p><span class="math display">\[\frac{d}{dx}\left(\frac{du}{dx}\right) = \frac{d^2u}{dx^2}\]</span></p>
+<p><span class="math display">\[\int \frac{dv}{dx} \, dx = v\]</span></p>
+<p>边界项因为BC而消失，所以弱形式<span class="math inline">\(\rightarrow\)</span><strong>强形式</strong>:</p>
+<p><span class="math display">\[-\mu\int_0^1 \frac{d^2u}{dx^2} v \, dx - \int_0^1 f \cdot v \, dx = 0\]</span></p>
+<p><span class="math display">\[-\int_0^1 \left(\mu\frac{d^2u}{dx^2} + f\right) \cdot v \, dx = 0\]</span></p>
+<p>We want it to be true <span class="math inline">\(\forall v\)</span>. So, it must be: <span class="math display">\[\mu\frac{d^2u}{dx^2} + f = 0\]</span></p>
+<p>我们得到一个常见的附带边界条件的强形式<strong>常微分方程</strong>(ODE)。</p>
+<div class="math-theorem claim" data-callout="claim">
+<div class="theorem-header">
+<p><span class="theorem-badge">Claim</span></p>
+</div>
+<div class="theorem-content">
+<p>We obtain a Boundary Value Problem (BVP): <span class="math display">\[
+\begin{align}
+\mu u''(x) +f&amp;= 0 \\
+u(0) &amp;= u(1) = 0
+\end{align}
+\]</span></p>
+</div>
+</div>
+<blockquote>
+<p>Assumption: <span class="math inline">\(u\)</span> is at least <span class="math inline">\(C^2\)</span>.</p>
+</blockquote>
+<h2 data-original-heading="1.4 两种表述边值问题（BVP）的方式" id="两种表述边值问题bvp的方式">1.4 两种表述边值问题（BVP）的方式</h2>
+<ol type="1">
+<li>寻找函数 <span class="math inline">\(u\)</span>，使得对所有满足 <span class="math inline">\(v(0) = v(1) = 0\)</span> 的 <span class="math inline">\(v\)</span>，均有</li>
+</ol>
+<p><span class="math display">\[
+   \int_0^1 \mu \frac{du}{dx} \cdot \frac{dv}{dx} \, dx \;=\; \int_0^1 f \cdot v \, dx
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(u\)</span> 只需保证“一阶可微”</li>
+<li><span class="math inline">\(\Rightarrow\)</span> 通常采用 <strong>有限元法</strong> (Finite Element)</li>
+</ul>
+<ol type="1">
+<li>寻找函数 <span class="math inline">\(u\)</span>，使得</li>
+</ol>
+<p><span class="math display">\[
+   \begin{aligned}
+   -\mu \frac{\partial^2 u}{\partial x^2} &amp;= f, \quad x \in (0,1),\\
+   u(0) &amp;= 0,\quad u(1) = 0
+   \end{aligned}
+   \]</span></p>
+<ul>
+<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(u\)</span> 需要至少“二阶可微”</li>
+<li><span class="math inline">\(\Rightarrow\)</span> 通常采用 <strong>有限差分法</strong> (Finite Difference)</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/PDEs/Application/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.2%20Finite%20Difference.html"><span>Next page →</span><span>9.2 有限差分法</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">9.1 边值问题的近似</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#set-up-string-with-fixed-endpoints" class="is-active" aria-current="location">1.1 Set-up: String with fixed endpoints</a></li><li style="--depth:1"><a href="#%E5%AE%9A%E4%B9%89">9.1.1.1 定义</a></li><li style="--depth:0"><a href="#back-to-the-string-example-how-can-we-get-a-bvp">1.3 Back to the String Example: How can we get a BVP?</a></li><li style="--depth:1"><a href="#%E5%8F%98%E5%88%86%E5%BD%A2%E5%BC%8F%E6%88%96%E5%BC%B1%E5%BD%A2%E5%BC%8Fvariationalweak">9.1.2.1 变分形式或弱形式（Variational/Weak）:</a></li><li style="--depth:0"><a href="#%E4%B8%A4%E7%A7%8D%E8%A1%A8%E8%BF%B0%E8%BE%B9%E5%80%BC%E9%97%AE%E9%A2%98bvp%E7%9A%84%E6%96%B9%E5%BC%8F">1.4 两种表述边值问题（BVP）的方式</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>I 变量、基本类型和函数 — E.H. Notebook</title>
+<meta name="description" content="1 Lecture Review: Julia &amp; GitBig picture: These notes consolidate core Julia language patterns (types, functions, dispatch, performance) and the Git mental model (objects">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Julia科学计算笔记 file hierarchy" data-sidebar-root="content/notes/理论/Julia科学计算笔记"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/0%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.html"><span class="page-number">0</span><span>基本语法</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/I%20%E5%8F%98%E9%87%8F%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0.html"><span class="page-number"></span><span>I 变量、基本类型和函数</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/II%20ODEs%E4%B8%8E%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6.html"><span class="page-number"></span><span>II ODEs与分子动力学</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/III%20Random%20Numbers%20%26%20Monte%20Carlo.html"><span class="page-number"></span><span>III Random Numbers &amp; Monte Carlo</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a></nav><h1 id="reader-title">I 变量、基本类型和函数</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Lecture Review: Julia &amp; Git" id="lecture-review-julia-git">1 Lecture Review: <strong>Julia &amp; Git</strong></h2>
+<p><em>Big picture:</em> These notes consolidate core Julia language patterns (types, functions, dispatch, performance) and the Git mental model (objects → trees → commits → refs) with small, runnable examples. Use them as a quick study sheet before coding.</p>
+<hr>
+<h3 data-original-heading="0) Key Takeaways" id="key-takeaways">1.1 0) Key Takeaways</h3>
+<ul>
+<li><strong>Julia:</strong> Performance flows from <strong>type stability</strong> and <strong>multiple dispatch</strong>. Prefer clear function definitions, broadcasting (<code>.</code>), and small, composable methods.</li>
+<li><strong>Git:</strong> Think “<strong>snapshot graph</strong>.” Commits point to trees (your files), and refs (branches/tags) point to commits. Stage → commit → push is the daily cadence. ## 1) Julia Basics</li>
+</ul>
+<h4 data-original-heading="1.1 Primitive &amp; Common Types" id="primitive-common-types">1.1 Primitive &amp; Common Types</h4>
+<ul>
+<li>Abstract: <code>Real</code>, <code>Integer</code>, <code>Signed</code>, <code>Unsigned</code></li>
+<li>Concrete: <code>Int64</code>, <code>Float64</code>, <code>Bool</code>, <code>Complex{T}</code>, <code>Rational{T}</code>, <code>Char</code>, <code>String</code>, <code>Symbol</code></li>
+</ul>
+<p>The Julia number hierarchy looks like:</p>
+<pre><code>Number
+├─ Complex{T}      ← parametric, concrete once T is concrete
+└─ Real            ← abstract
+   ├─ AbstractFloat
+   │  └─ Float16 / Float32 / Float64  (concrete)
+   ├─ Rational{T}  ← parametric, concrete once T is concrete
+   └─ Integer      ← abstract
+      ├─ Signed    ← abstract
+      │  └─ Int8 / Int16 / Int32 / Int64 / Int128 (concrete)
+      └─ Unsigned  ← abstract
+         └─ UInt8 / UInt16 / UInt32 / UInt64 / UInt128 (concrete)
+</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore the type lattice (in REPL):</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(<span class="dt">Real</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(<span class="dt">Integer</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(<span class="dt">Signed</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Type inspection:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fl">3</span>), <span class="fu">typeof</span>(<span class="fl">3.0</span>), <span class="fu">typeof</span>(<span class="fl">1</span><span class="op">//</span><span class="fl">2</span>), <span class="fu">typeof</span>(<span class="fl">1</span> <span class="op">+</span> <span class="fl">2im</span>), <span class="fu">typeof</span>(<span class="op">:</span>name)</span></code></pre></div>
+<h4 data-original-heading="1.2 Containers &amp; Basic Literals" id="containers-basic-literals">1.2 Containers &amp; Basic Literals</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrays, Tuples, Dicts</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>]                       <span class="co"># Vector{Int}</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [<span class="fl">1</span> <span class="fl">2</span>; <span class="fl">3</span> <span class="fl">4</span>]                      <span class="co"># Matrix{Int} (2×2)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (<span class="fl">1</span>, <span class="st">"a"</span>, <span class="fl">3.0</span>)                   <span class="co"># Tuple</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fu">Dict</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> <span class="fl">1</span>, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="fl">2</span>)        <span class="co"># Dict{String,Int}</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ranges &amp; comprehensions</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.25</span><span class="op">:</span><span class="fl">1</span>                        <span class="co"># 0.0,0.25,0.5,0.75,1.0</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [i<span class="op">^</span><span class="fl">2</span> for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>]        <span class="co"># [1,4,9,16,25]</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="2) Functions &amp; Syntax (Three Ways)" id="functions-syntax-three-ways">1.2 2) Functions &amp; Syntax (Three Ways)</h3>
+<h4 data-original-heading="2.1 One-liner" id="one-liner">2.1 One-liner</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fl">3</span>x <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">10</span>)  <span class="co"># 31</span></span></code></pre></div>
+<h4 data-original-heading="2.2 Expanded (long form)" id="expanded-long-form">2.2 Expanded (long form)</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">g</span>(x, y)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> x <span class="op">+</span> y</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">3</span>z</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(<span class="fl">2</span>, <span class="fl">4</span>)  <span class="co"># 18</span></span></code></pre></div>
+<h4 data-original-heading="2.3 Anonymous (lambda)" id="anonymous-lambda">2.3 Anonymous (lambda)</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> (x, y) <span class="op">-&gt;</span> <span class="fl">3</span> <span class="op">*</span> (x <span class="op">+</span> y)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(<span class="fl">2</span>, <span class="fl">4</span>)  <span class="co"># 18</span></span></code></pre></div>
+<h4 data-original-heading="2.4 Last-expression returns (implicit return)" id="last-expression-returns-implicit-return">2.4 Last-expression returns (implicit return)</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">no_return_example</span>(x)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">1</span>   <span class="co"># returned implicitly</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">no_return_example</span>(<span class="fl">3</span>)  <span class="co"># 10</span></span></code></pre></div>
+<h4 data-original-heading="2.5 Passing Functions" id="passing-functions">2.5 Passing Functions</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">apply_twice</span>(f, x)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">f</span>(<span class="fu">f</span>(x))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">apply_twice</span>(x <span class="op">-&gt;</span> x <span class="op">+</span> <span class="fl">1</span>, <span class="fl">3</span>)  <span class="co"># 5</span></span></code></pre></div>
+<h3 data-original-heading="3) Multiple Dispatch &amp; Method Overloading" id="multiple-dispatch-method-overloading">1.3 3) Multiple Dispatch &amp; Method Overloading</h3>
+<p><strong>Idea:</strong> Different method bodies for different argument types.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">area</span>(r<span class="op">::</span><span class="dt">Real</span>) <span class="op">=</span> <span class="cn">π</span> <span class="op">*</span> r<span class="op">^</span><span class="fl">2</span>                 <span class="co"># circle by radius</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">area</span>(w<span class="op">::</span><span class="dt">Real</span>, h<span class="op">::</span><span class="dt">Real</span>) <span class="op">=</span> w <span class="op">*</span> h          <span class="co"># rectangle</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">area</span>(<span class="fl">2</span>)       <span class="co"># uses first method</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">area</span>(<span class="fl">3.0</span>, <span class="fl">4</span>)  <span class="co"># uses second method</span></span></code></pre></div>
+<p>Type-specific behavior:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x<span class="op">::</span><span class="dt">Int</span>, y<span class="op">::</span><span class="dt">Int</span>) <span class="op">=</span> x <span class="op">+</span> y</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x<span class="op">::</span><span class="dt">AbstractFloat</span>, y<span class="op">::</span><span class="dt">AbstractFloat</span>) <span class="op">=</span> x <span class="op">+</span> y <span class="op">+</span> <span class="fl">0.1</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">1</span>, <span class="fl">2</span>)       <span class="co"># 3</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>)   <span class="co"># 3.1</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="4) Types, Structs, Mutability" id="types-structs-mutability">1.4 4) Types, Structs, Mutability</h3>
+<h4 data-original-heading="4.1 Immutable vs Mutable" id="immutable-vs-mutable">4.1 Immutable vs Mutable</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Point</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">mutable struct</span> MPoint</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    x<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    y<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># p.x = 3.0   # ERROR: immutable</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span> <span class="fu">MPoint</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>mp.x <span class="op">=</span> <span class="fl">3.0</span>    <span class="co"># OK</span></span></code></pre></div>
+<h4 data-original-heading="4.2 Type Annotations &amp; Stability" id="type-annotations-stability">4.2 Type Annotations &amp; Stability</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Annotate arguments for clarity/perf (when helpful)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">scale!</span>(v<span class="op">::</span><span class="dt">Vector{Float64}</span>, α<span class="op">::</span><span class="dt">Float64</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fu">eachindex</span>(v)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        v[i] <span class="op">*=</span> α</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> v</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">scale!</span>(v, <span class="fl">0.5</span>)  <span class="co"># [0.5,1.0,1.5]</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="5) Idiomatic Julia" id="idiomatic-julia">1.5 5) Idiomatic Julia</h3>
+<h4 data-original-heading="5.1 Broadcasting (elementwise with .)" id="broadcasting-elementwise-with-.">5.1 Broadcasting (elementwise with <code>.</code>)</h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>, stop<span class="op">=</span><span class="fl">2</span>π, length<span class="op">=</span><span class="fl">5</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">sin</span>.(x)               <span class="co"># elementwise sin</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="fu">sin</span>.(x <span class="op">.+</span> <span class="fl">0.1</span>) <span class="op">.^</span> <span class="fl">2</span>   <span class="co"># dotted ops fuse efficiently</span></span></code></pre></div>
+<h4 data-original-heading="5.2 Keyword Arguments" id="keyword-arguments">5.2 Keyword Arguments</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">midpoint</span>(a; b<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (a <span class="op">+</span> b)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">midpoint</span>(<span class="fl">3.0</span>; b<span class="op">=</span><span class="fl">5.0</span>)  <span class="co"># 4.0</span></span></code></pre></div>
+<h4 data-original-heading="5.3 Varargs (splatting)" id="varargs-splatting">5.3 Varargs (splatting)</h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_all</span>(xs<span class="op">...</span>) <span class="op">=</span> <span class="fu">sum</span>(xs)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_all</span>(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>)   <span class="co"># 10</span></span></code></pre></div>
+<h4 data-original-heading="5.4 Docstrings &amp; Help" id="docstrings-help">5.4 Docstrings &amp; Help</h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">    myfunc(x)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="st">Return x squared.</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunc</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># In REPL: ?myfunc</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="6) Performance Tips (Quick Wins)" id="performance-tips-quick-wins">1.6 6) Performance Tips (Quick Wins)</h3>
+<ul>
+<li>Prefer <strong>type-stable</strong> returns.</li>
+<li>Avoid mutating <strong>global</strong> vars; wrap code in functions.</li>
+<li>Prefer <strong>in-place</strong> operations for large arrays.</li>
+<li>Use <code>@views</code> for slicing without allocations; <code>@inbounds</code> in hot loops (careful).</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">add!</span>(y<span class="op">::</span><span class="dt">Vector{Float64}</span>, A<span class="op">::</span><span class="dt">Matrix{Float64}</span>, x<span class="op">::</span><span class="dt">Vector{Float64}</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@views</span> y <span class="op">.+=</span> A <span class="op">*</span> x   <span class="co"># no copies for slices; allocation from A*x remains</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="7) Git: Model &amp; Daily Flow" id="git-model-daily-flow">1.7 7) Git: Model &amp; Daily Flow</h3>
+<h4 data-original-heading="7.1 Big Picture" id="big-picture">7.1 Big Picture</h4>
+<p>Git stores <strong>content-addressed objects</strong>:</p>
+<ul>
+<li><strong>blob</strong> = file content</li>
+<li><strong>tree</strong> = directory (names → blobs/trees)</li>
+<li><strong>commit</strong> = snapshot + metadata (points to a tree and parent commit(s))</li>
+<li><strong>tag</strong> = named pointer (often to a commit)</li>
+</ul>
+<p>Refs (e.g., <code>main</code>) are pointers to commits; <code>HEAD</code> points to the current ref.</p>
+<h4 data-original-heading="7.2 Daily Workflow" id="daily-workflow">7.2 Daily Workflow</h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>url<span class="op">&gt;</span>          <span class="co"># or: git init</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status               <span class="co"># see changes</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>paths<span class="op">&gt;</span>          <span class="co"># stage</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"message"</span>  <span class="co"># snapshot</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main     <span class="co"># publish</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                 <span class="co"># update from remote</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="8) Git Internals (Peek Under the Hood)" id="git-internals-peek-under-the-hood">1.8 8) Git Internals (Peek Under the Hood)</h3>
+<h4 data-original-heading="8.1 Inspect Objects" id="inspect-objects">8.1 Inspect Objects</h4>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span> <span class="at">--decorate</span> <span class="at">-n</span> 10</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> ls-tree <span class="at">-r</span> HEAD                <span class="co"># list files in current commit tree</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cat-file <span class="at">-p</span> HEAD               <span class="co"># show commit (tree, parent, metadata)</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cat-file <span class="at">-p</span> <span class="op">&lt;</span>tree-hash<span class="op">&gt;</span>        <span class="co"># show tree entries</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cat-file <span class="at">-p</span> <span class="op">&lt;</span>blob-hash<span class="op">&gt;</span>        <span class="co"># show file contents snapshot</span></span></code></pre></div>
+<h4 data-original-heading="8.2 Refs &amp; HEAD" id="refs-head">8.2 Refs &amp; HEAD</h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> symbolic-ref <span class="at">--short</span> HEAD      <span class="co"># current branch name</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show-ref <span class="at">--heads</span>               <span class="co"># local branch refs</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show-ref <span class="at">--tags</span>                <span class="co"># tag refs</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="9) Essential Commands (Cheat Sheet)" id="essential-commands-cheat-sheet">1.9 9) Essential Commands (Cheat Sheet)</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Branching</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch feature/x</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch feature/x               <span class="co"># or: git checkout feature/x</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> feature/x            <span class="co"># create &amp; switch</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging / Rebasing</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge feature/x</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase main                    <span class="co"># replay commits on top of main (avoid on shared history)</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Amending</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span>                 <span class="co"># edit last commit</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Stashing</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash pop</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Show a file from a commit</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show <span class="op">&lt;</span>commit<span class="op">&gt;</span>:path/to/file</span></code></pre></div>
+<hr>
+<h3 data-original-heading="10) Feature Branch Workflow (PR-friendly)" id="feature-branch-workflow-pr-friendly">1.10 10) Feature Branch Workflow (PR-friendly)</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> feature/speed-up</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># edit; run tests</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Optimize inner loop with @inbounds"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin feature/speed-up</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># open PR on GitHub/GitLab</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="11) Recovery &amp; Inspection" id="recovery-inspection">1.11 11) Recovery &amp; Inspection</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reflog                         <span class="co"># timeline of HEAD moves (lifesaver)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> HEAD~1            <span class="co"># drop last commit (</span><span class="al">DANGER</span><span class="co">: discards changes)</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> <span class="op">&lt;</span>file<span class="op">&gt;</span>        <span class="co"># unstage a file</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>commit<span class="op">&gt;</span> -- <span class="op">&lt;</span>file<span class="op">&gt;</span>    <span class="co"># restore file version from old commit</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="12) Tags &amp; Releases" id="tags-releases">1.12 12) Tags &amp; Releases</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v0.1.0 <span class="at">-m</span> <span class="st">"First release"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="at">--tags</span></span></code></pre></div>
+<hr>
+<h3 data-original-heading="13) .gitignore (Starter)" id="gitignore-starter">1.13 13) <code>.gitignore</code> (Starter)</h3>
+<pre><code># Julia
+*.jl~
+*.ji
+*.jld2
+Manifest.toml
+Project.toml
+
+# General
+.DS_Store
+*.log
+.env
+.vscode/</code></pre>
+<hr>
+<h3 data-original-heading="14) Julia × Git for Reproducible Projects" id="julia-git-for-reproducible-projects">1.14 14) Julia × Git for Reproducible Projects</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save environment with your code</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span> <span class="at">-e</span> <span class="st">'using Pkg; Pkg.instantiate(); Pkg.status()'</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add Project.toml Manifest.toml</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Pin Julia environment"</span></span></code></pre></div>
+<hr>
+<h4 data-original-heading="Quick Self-Check" id="quick-self-check">1.14.1 Quick Self-Check</h4>
+<ul>
+<li>Can you explain why <strong>multiple dispatch</strong> helps write both generic and fast code?</li>
+<li>Can you draw the Git graph: <strong>refs → commits → trees → blobs</strong>?</li>
+<li>Can you stage/commit/push and recover a mistaken commit with <code>reflog</code>?</li>
+</ul>
+<p><em>That’s it—paste into Obsidian and you’re set for a crisp review before coding.</em></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/0%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.html"><span>← Previous page</span><span>0 基本语法</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/II%20ODEs%E4%B8%8E%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6.html"><span>Next page →</span><span>II ODEs与分子动力学</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">I 变量、基本类型和函数</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#lecture-review-julia-git" class="is-active" aria-current="location">1 Lecture Review: Julia &amp; Git</a></li><li style="--depth:1"><a href="#key-takeaways">1.1 0) Key Takeaways</a></li><li style="--depth:2"><a href="#primitive-common-types">1.1 Primitive &amp; Common Types</a></li><li style="--depth:2"><a href="#containers-basic-literals">1.2 Containers &amp; Basic Literals</a></li><li style="--depth:1"><a href="#functions-syntax-three-ways">1.2 2) Functions &amp; Syntax (Three Ways)</a></li><li style="--depth:2"><a href="#one-liner">2.1 One-liner</a></li><li style="--depth:2"><a href="#expanded-long-form">2.2 Expanded (long form)</a></li><li style="--depth:2"><a href="#anonymous-lambda">2.3 Anonymous (lambda)</a></li><li style="--depth:2"><a href="#last-expression-returns-implicit-return">2.4 Last-expression returns (implicit return)</a></li><li style="--depth:2"><a href="#passing-functions">2.5 Passing Functions</a></li><li style="--depth:1"><a href="#multiple-dispatch-method-overloading">1.3 3) Multiple Dispatch &amp; Method Overloading</a></li><li style="--depth:1"><a href="#types-structs-mutability">1.4 4) Types, Structs, Mutability</a></li><li style="--depth:2"><a href="#immutable-vs-mutable">4.1 Immutable vs Mutable</a></li><li style="--depth:2"><a href="#type-annotations-stability">4.2 Type Annotations &amp; Stability</a></li><li style="--depth:1"><a href="#idiomatic-julia">1.5 5) Idiomatic Julia</a></li><li style="--depth:2"><a href="#broadcasting-elementwise-with-.">5.1 Broadcasting (elementwise with .)</a></li><li style="--depth:2"><a href="#keyword-arguments">5.2 Keyword Arguments</a></li><li style="--depth:2"><a href="#varargs-splatting">5.3 Varargs (splatting)</a></li><li style="--depth:2"><a href="#docstrings-help">5.4 Docstrings &amp; Help</a></li><li style="--depth:1"><a href="#performance-tips-quick-wins">1.6 6) Performance Tips (Quick Wins)</a></li><li style="--depth:1"><a href="#git-model-daily-flow">1.7 7) Git: Model &amp; Daily Flow</a></li><li style="--depth:2"><a href="#big-picture">7.1 Big Picture</a></li><li style="--depth:2"><a href="#daily-workflow">7.2 Daily Workflow</a></li><li style="--depth:1"><a href="#git-internals-peek-under-the-hood">1.8 8) Git Internals (Peek Under the Hood)</a></li><li style="--depth:2"><a href="#inspect-objects">8.1 Inspect Objects</a></li><li style="--depth:2"><a href="#refs-head">8.2 Refs &amp; HEAD</a></li><li style="--depth:1"><a href="#essential-commands-cheat-sheet">1.9 9) Essential Commands (Cheat Sheet)</a></li><li style="--depth:1"><a href="#feature-branch-workflow-pr-friendly">1.10 10) Feature Branch Workflow (PR-friendly)</a></li><li style="--depth:1"><a href="#recovery-inspection">1.11 11) Recovery &amp; Inspection</a></li><li style="--depth:1"><a href="#tags-releases">1.12 12) Tags &amp; Releases</a></li><li style="--depth:1"><a href="#gitignore-starter">1.13 13) .gitignore (Starter)</a></li><li style="--depth:1"><a href="#julia-git-for-reproducible-projects">1.14 14) Julia × Git for Reproducible Projects</a></li><li style="--depth:2"><a href="#quick-self-check">1.14.1 Quick Self-Check</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

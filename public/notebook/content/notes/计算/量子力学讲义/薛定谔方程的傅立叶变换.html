@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>薛定谔方程的傅立叶变换 — E.H. Notebook</title>
+<meta name="description" content="0. Review \hat{H}=-\frac{\hbar^{2}}{2m}\partial^{2}x+V(x) Stationary States \Psi(x,t)=\psi(x)e^{-iEt/\hbar} Eigenvalue equation: \hat{H}\psi(x) = E\psi(x) In newtonian me">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="量子力学讲义 file hierarchy" data-sidebar-root="content/notes/计算/量子力学讲义"><a class="sidebar-root" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold Lecture" aria-controls="folder-210a2627460a" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/Lecture.html">Lecture</a></div><ul class="tree-children" id="folder-210a2627460a" hidden><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第一章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-aa50c1410152" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>第一章</span></button></div><ul class="tree-children" id="folder-aa50c1410152" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E4%B8%80%E7%AB%A0/1.1%20The%20Wave%20Function.html"><span class="page-number">1.1</span><span>The Wave Function</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/计算/量子力学讲义/Lecture/第四章" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 第四章" aria-controls="folder-43e880ae5f94" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.html">第四章</a></div><ul class="tree-children" id="folder-43e880ae5f94" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.1%20%E7%BB%8F%E5%85%B8%E6%B0%A2%E5%8E%9F%E5%AD%90.html"><span class="page-number">4.1</span><span>经典氢原子</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.2%20Hydrogen%20Atom.html"><span class="page-number">4.2</span><span>Hydrogen Atom</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.3%20%E8%A7%92%E5%8A%A8%E9%87%8F%20(Angular%20Momentum).html"><span class="page-number">4.3</span><span>角动量 (Angular Momentum)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/Lecture/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4.4%20Spin%20Spin%20Spin.html"><span class="page-number">4.4</span><span>Spin Spin Spin</span></a></li></ul></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E6%B3%A2%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E4%BA%8E%E5%9C%A8Hilbert%E7%A9%BA%E9%97%B4%E4%B8%AD.html"><span class="page-number"></span><span>波函数存在于在Hilbert空间中</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B%E7%9A%84%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2.html"><span class="page-number"></span><span>薛定谔方程的傅立叶变换</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/index.html">计算</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/index.html">量子力学讲义</a></nav><h1 id="reader-title">薛定谔方程的傅立叶变换</h1><p class="article-meta">2025-02-05</p></header><div id="article-body" class="prose"><h2 data-original-heading="0. Review" id="review">0. Review</h2>
+<p><span class="math display">\[
+\hat{H}=-\frac{\hbar^{2}}{2m}\partial^{2}x+V(x)
+\]</span> Stationary States <span class="math display">\[
+\Psi(x,t)=\psi(x)e^{-iEt/\hbar}
+\]</span> Eigenvalue equation: <span class="math display">\[\hat{H}\psi(x) = E\psi(x)\]</span> In newtonian mechanics, note <span class="math display">\[F(x)=-\frac{ \partial V(x) }{ \partial x } \]</span> ## 1. Infinite Finite Well (particle on a box) <span class="math display">\[E = \frac{p^{2}}{2m}\]</span> &gt; knowing <span class="math inline">\(E\)</span> results in knowing momentum <span class="math inline">\(p^{2}\)</span></p>
+<p>Problem Set-up Between <span class="math inline">\(x=0\)</span>, and <span class="math inline">\(x=a\)</span>, <span class="math display">\[-\frac{\hbar^{2}}{2m} \frac{d^{2}}{dx}\Psi(x)=E \Psi(x)\]</span> Subject to “boundary condition”: <span class="math inline">\(\Psi(0)=\Psi(a)=0\)</span> <span class="math display">\[
+\begin{align}
+\frac{d^{2}\Psi}{dx} &amp; =-\left( \frac{2m}{\hbar^{2}} \right) E \Psi \\
+ &amp; =-k^{2}\Psi
+\end{align}
+\]</span> Recall</p>
+<hr>
+<p>Solution:</p>
+<ol type="1">
+<li><span class="math inline">\(\Psi(x)=C_{1}e^{ikx}+C_{2}e^{-ikx}\)</span></li>
+<li><span class="math inline">\(\Psi(x)=C_{1}\cos(kx)+ C_{2}\sin(kx)\)</span> (picked this version)</li>
+</ol>
+<p>The solution is in the form of <span class="math display">\[\Psi(x)=A\sin(kx)+ B\cos(kx)\]</span> Impose the boundary condition:</p>
+<ol type="1">
+<li><span class="math inline">\(\Psi(x=0)=B\cos(0)=0\)</span> <span class="math display">\[\boxed{B=0}\]</span></li>
+<li><span class="math inline">\(\Psi(x=a)=A\sin(ka)=0\)</span> <span class="math display">\[\begin{align}
+\sin(ka) &amp; =0 \\
+ ka &amp; =+\boldsymbol{\pi},+2\boldsymbol{\pi},+3\boldsymbol{\pi}\dots \\
+ k_{n} &amp; =\frac{n\boldsymbol{\pi}}{a} \quad \{n\in \mathbb{N}\} \Rightarrow \boxed{E_{n}=\frac{\hbar^{2}\pi^{2}n^{2}}{2ma^{2}}} 
+\end{align}\]</span> &gt;Note: <span class="math inline">\(n \neq 0\)</span>, since the eq. would vanish entirely. <span class="math inline">\(n&gt;0\)</span>, for positive <span class="math inline">\(k\)</span>.</li>
+</ol>
+<h2 data-original-heading="3. Normalization" id="normalization">3. Normalization</h2>
+<p><span class="math display">\[\Psi(x)=A\sin(k_{n}x)=A\sin\left( \frac{n\pi x}{a} \right)\]</span> We normalize <span class="math display">\[
+\begin{align}
+\int^a_{b}|\Psi_{n}(x)|^{2}\, dx &amp; =1 \\
+A^{2}\int^a_{b}\sin ^{2}\left( \frac{n\pi x}{a} \right)\, dx &amp; =1 \\
+A^{2}\cdot \frac{a}{2} &amp; =1 \Rightarrow A=\sqrt{ \frac{2}{a} }
+\end{align}
+\]</span> Final Solution: <span class="math display">\[\Psi(x)=A\sin(k_{n}x)=\sqrt{ \frac{2}{a} }\sin\left( \frac{n\pi x}{a} \right) \quad \{n\in \mathbb{N}\}\]</span> (A): Why <span class="math inline">\(E_{1}&gt;0\)</span>? <span class="math display">\[\begin{aligned}  \Delta x &amp;\sim a \\  \Delta p \cdot \Delta x &amp;\sim \hbar \\  \Delta p &amp;\sim \frac{\hbar}{a} \quad \Longrightarrow \quad KE\sim \frac{(\Delta p)^2}{2 m} \sim \frac{\hbar^2}{2 m a^2}\end{aligned}\]</span></p>
+<ol start="2" type="A">
+<li>States with higher energy have more nodes</li>
+<li>States are orthonormal: <span class="math display">\[\int_0^a d x \Psi_n^*(x) \Psi_m(x)=\delta_{n m}\]</span></li>
+<li>Completeness: <span class="math inline">\(f(x)\)</span> defined on the interval <span class="math inline">\([0,a]\)</span>, with <span class="math inline">\(f(x=0) = f(x=a) = 0\)</span>.</li>
+</ol>
+<p>Fourier Series Representation: <span class="math display">\[
+f(x) = \sum_{n=1}^{\infty} c_n \psi_n(x) = \sqrt{\frac{2}{a}} \sum_{n=1}^{\infty} c_n \sin\left(\frac{n\pi x}{a}\right)
+\]</span> <span class="math display">\[
+\begin{align}
+\int_0^a dx \, \Psi_m^*(x) f(x)  &amp; = \sum_{n=1}^{\infty} C_n \int_0^a dx \, \Psi_m^*(x) \Psi_n(x)
+\\ &amp; =\sum_{n=1}^{\infty} C_n \delta_{m,n} \\
+ &amp; =C_m
+\end{align}
+\]</span>$$</p>
+<p><span class="math display">\[
+\]</span>  $$</p>
+<p><span class="math display">\[
+\delta_{m,n} =
+\begin{cases} 
+1, &amp; \text{if } m = n \\
+0, &amp; \text{if } m \neq n
+\end{cases}
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E8%AE%A1%E7%AE%97/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E8%AE%B2%E4%B9%89/%E6%B3%A2%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E4%BA%8E%E5%9C%A8Hilbert%E7%A9%BA%E9%97%B4%E4%B8%AD.html"><span>← Previous page</span><span>波函数存在于Hilbert空间中</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">薛定谔方程的傅立叶变换</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#review" class="is-active" aria-current="location">0. Review</a></li><li style="--depth:0"><a href="#normalization">3. Normalization</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

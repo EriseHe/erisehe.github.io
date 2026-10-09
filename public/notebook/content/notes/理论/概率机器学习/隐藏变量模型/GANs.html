@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>GANs — E.H. Notebook</title>
+<meta name="description" content="1 从 VAE 到 GAN1.1 大图景与动机我们要解决什么问题？ 给定真实数据分布 p_{\text{data}}(x)，学习一个生成模型 G 使其隐变量 z\sim p(z) 下生成 x=G(z) 的分布 p_G(x) 尽可能接近 p_{\text{data}}(x)。VAE 路线（有log-likelihood）：显式假设 p_\t">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="概率机器学习 file hierarchy" data-sidebar-root="content/notes/理论/概率机器学习"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/概率机器学习/强化学习（RL）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5339aa1da943" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>强化学习（RL）</span></button></div><ul class="tree-children" id="folder-5339aa1da943" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88RL%EF%BC%89/Markov%E5%A5%96%E5%8A%B1%26%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"><span class="page-number"></span><span>Markov奖励&amp;决策过程</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/自回归模型（AR）" data-active-branch="false"><div class="folder-row"><button class="tree-toggle" aria-label="Fold 自回归模型（AR）" aria-controls="folder-748d60bcc331" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="note-link folder-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/index.html">自回归模型（AR）</a></div><ul class="tree-children" id="folder-748d60bcc331" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Autoregressive%E6%A8%A1%E5%9E%8B.html"><span class="page-number"></span><span>Autoregressive模型</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Recurrent%20Neural%20Networks%20(RNN).html"><span class="page-number"></span><span>Recurrent Neural Networks (RNN)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88AR%EF%BC%89/Transformer.html"><span class="page-number"></span><span>Transformer</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/概率机器学习/隐藏变量模型" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-41f94cefdf2d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>隐藏变量模型</span></button></div><ul class="tree-children" id="folder-41f94cefdf2d"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span class="page-number"></span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/GANs.html"><span class="page-number"></span><span>GANs</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span class="page-number"></span><span>NF_transcribed</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Normalizing%20Flows%20(NF).html"><span class="page-number"></span><span>Normalizing Flows (NF)</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Score%20Matching.html"><span class="page-number"></span><span>Score Matching</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/VAE.html"><span class="page-number"></span><span>VAE</span></a></li></ul></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">概率机器学习</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/index.html">隐藏变量模型</a></nav><h1 id="reader-title">GANs</h1></header><div id="article-body" class="prose"><h2 data-original-heading="1 从 VAE 到 GAN" id="从-vae-到-gan">1 从 VAE 到 GAN</h2>
+<h3 data-original-heading="1.1 大图景与动机" id="大图景与动机">1.1 大图景与动机</h3>
+<p><strong>我们要解决什么问题？</strong><br>
+给定真实数据分布 <span class="math inline">\(p_{\text{data}}(x)\)</span>，学习一个生成模型 <span class="math inline">\(G\)</span> 使其隐变量 <span class="math inline">\(z\sim p(z)\)</span> 下生成 <span class="math inline">\(x=G(z)\)</span> 的分布 <span class="math inline">\(p_G(x)\)</span> 尽可能接近 <span class="math inline">\(p_{\text{data}}(x)\)</span>。</p>
+<ul>
+<li><p><strong>VAE 路线（有log-likelihood）</strong>：显式假设 <span class="math inline">\(p_\theta(x\mid z)\)</span>，用变分下界（ELBO）来近似最大化对数似然 <span class="math inline">\(\log p_\theta(x)\)</span>。优点是有概率语义、训练稳定；常见问题是重建模糊（均值化效应）。</p></li>
+<li><p><strong>GAN 路线（无log-likelihood）</strong>：不写 <span class="math inline">\(p(x\mid z)\)</span> 的显式密度，直接通过「判别器 vs 生成器」的对抗来最小化两分布的差异。优点是生成锐利；挑战是训练不稳、模式崩塌。</p></li>
+</ul>
+<p>VAE 与 ELBO中我们有这些问题：</p>
+<ul>
+<li><span class="math inline">\(z\)</span> has smaller dimension.</li>
+<li>Distribution of <span class="math inline">\(z\)</span> does not guarantee matching the distribution of <span class="math inline">\(x\)</span>.</li>
+<li>Average training points (blurring effect).</li>
+</ul>
+<p>于是我们转向 GAN 的minmax问题，推导optimal discrimiator与和 JS 散度的关系，然后讨论 WGAN（Wasserstein-1 距离）、条件 GAN、以及训练层面的问题与缓解策略。</p>
+<h3 data-original-heading="1.2 VAE 回顾：从似然最大化到 ELBO" id="vae-回顾从似然最大化到-elbo">1.2 VAE 回顾：从似然最大化到 ELBO</h3>
+<h4 data-original-heading="1.2.1 潜变量模型与证据下界" id="潜变量模型与证据下界">1.2.1 潜变量模型与证据下界</h4>
+<p>我们要最大化 <span class="math inline">\(\log p_\theta(x)\)</span>，但边缘化 <span class="math inline">\(z\)</span> 通常不可解： <span class="math display">\[\begin{aligned}
+\log p_\theta(x)
+&amp;= \log \int p_\theta(x, z)\,dz
+= \log \int p_\theta(x\mid z)\,p(z)\,dz.
+\end{aligned}\]</span> VAE 以变分分布 <span class="math inline">\(q_\phi(z\mid x)\)</span> 近似后验 <span class="math inline">\(p_\theta(z\mid x)\)</span>。由 Jensen 不等式得 <strong>ELBO</strong>： <span class="math display">\[\begin{aligned}
+\log p_\theta(x)
+&amp;= \log \int q_\phi(z\mid x)\,\frac{p_\theta(x,z)}{q_\phi(z\mid x)}\,dz \\
+&amp;\ge \int q_\phi(z\mid x)\,\log \frac{p_\theta(x,z)}{q_\phi(z\mid x)}\,dz \;=\; \mathcal{L}(\theta,\phi; x).
+\end{aligned}\]</span></p>
+<p>展开得 <span class="math display">\[\begin{aligned}
+\mathcal{L}(\theta,\phi;x)
+&amp;= \mathbb{E}_{q_\phi(z\mid x)}\big[\log p_\theta(x\mid z)\big] - \mathrm{KL}\!\big(q_\phi(z\mid x)\,\|\,p(z)\big).
+\end{aligned}\]</span></p>
+<h4 data-original-heading="1.2.2 直觉" id="直觉">1.2.2 直觉</h4>
+<ul>
+<li>第一项是<strong>重建项</strong>：<span class="math inline">\(z\)</span> 下重建 <span class="math inline">\(x\)</span> 的对数似然期望，逼真度。<br>
+</li>
+<li>第二项是<strong>正则项</strong>：让 <span class="math inline">\(q_\phi(z\mid x)\)</span> 接近先验 <span class="math inline">\(p(z)\)</span>，保证隐空间结构与可采样性。</li>
+</ul>
+<h4 data-original-heading="1.2.3 重参数化技巧" id="重参数化技巧">1.2.3 重参数化技巧</h4>
+<p>若 <span class="math inline">\(q_\phi(z\mid x)=\mathcal{N}(\mu_\phi(x),\operatorname{diag}\sigma^2_\phi(x))\)</span>，令 <span class="math inline">\(\varepsilon\sim\mathcal{N}(0,I)\)</span>，</p>
+<p><span class="math display">\[\begin{aligned}
+z \;=\; \mu_\phi(x) + \sigma_\phi(x)\odot \varepsilon,
+\end{aligned}\]</span> 即可把对 <span class="math inline">\(z\)</span> 的随机性外移到 <span class="math inline">\(\varepsilon\)</span>，使梯度可反传。</p>
+<p><strong>优点/局限</strong>：VAE 有稳定似然学习与编码器-解码器结构，但常出现<strong>过度平滑/模糊</strong>重建。接下来转入 GAN 的「无似然」思想。</p>
+<h3 data-original-heading="1.3 GAN 的极小极大：从判别式学习度量分布差异" id="gan-的极小极大从判别式学习度量分布差异">1.3 GAN 的极小极大：从判别式学习度量分布差异</h3>
+<h4 data-original-heading="1.3.1 原始 GAN 目标" id="原始-gan-目标">1.3.1 原始 GAN 目标</h4>
+<p>判别器 <span class="math inline">\(D(x)\in(0,1)\)</span> 估计「来自真实数据的概率」，生成器 <span class="math inline">\(G(z)\)</span> 试图以假乱真：</p>
+<p><span class="math display">\[\begin{aligned}
+\min_G \max_D \; V(D,G)
+&amp;= \mathbb{E}_{x\sim p_{\text{data}}}\big[\log D(x)\big]
+\;+\; \mathbb{E}_{z\sim p(z)}\big[\log (1-D(G(z)))\big].
+\end{aligned}
+\]</span> ### 1.3.2 固定 <span class="math inline">\(G\)</span> 时的最优判别器 <span class="math inline">\(D^*\)</span> 对每个 <span class="math inline">\(x\)</span> 局部最大化，被积函数为 <span class="math inline">\(\;p_{\text{data}}(x)\log D(x) + p_G(x)\log(1-D(x))\)</span>。<br>
+令导数为 0：</p>
+<p><span class="math display">\[\begin{aligned}
+\frac{p_{\text{data}}(x)}{D(x)} - \frac{p_G(x)}{1-D(x)} = 0
+\;\;\Rightarrow\;\;
+D^*(x) = \frac{p_{\text{data}}(x)}{p_{\text{data}}(x)+p_G(x)}.
+\end{aligned}\]</span></p>
+<h4 data-original-heading="1.3.3 代回得与 JS 散度的关系" id="代回得与-js-散度的关系">1.3.3 代回得与 JS 散度的关系</h4>
+<p>将 <span class="math inline">\(D^*\)</span> 代回价值函数，得到 <span class="math display">\[\begin{aligned}
+V(D^*,G)
+&amp;= \mathbb{E}_{x\sim p_{\text{data}}}\!\left[\log \frac{p_{\text{data}}(x)}{p_{\text{data}}(x)+p_G(x)}\right]
+ + \mathbb{E}_{x\sim p_G}\!\left[\log \frac{p_G(x)}{p_{\text{data}}(x)+p_G(x)}\right] \\
+&amp;= -\log 4 + 2\,\mathrm{JS}\!\big(p_{\text{data}} \,\|\, p_G\big).
+\end{aligned}\]</span> 因此，在optimal discriminator下，GAN 等价于最小化 <span class="math inline">\(\mathrm{JS}(p_{\text{data}}\|p_G)\)</span>。</p>
+<blockquote>
+<p><strong>直觉</strong>：判别器为我们<strong>隐式</strong>地诱导了一个分布差异度量（JS），无需显式密度函数。</p>
+</blockquote>
+<h4 data-original-heading="1.3.4 非饱和生成器损失" id="非饱和生成器损失">1.3.4 非饱和生成器损失</h4>
+<p>原式中 <span class="math inline">\(\max_D\)</span> 的对数项使得当 <span class="math inline">\(D(G(z))\approx 0\)</span> 时梯度饱和。实践中常改用 <span class="math display">\[\begin{aligned}
+\min_G \; \tilde{J}(G) = - \mathbb{E}_{z\sim p(z)}\big[\log D(G(z))\big],
+\end{aligned}\]</span> 以获得更强梯度信号（同一固定点，不同梯度路径）。</p>
+<h3 data-original-heading="1.4 WGAN：引入 Wasserstein-1 距离" id="wgan引入-wasserstein-1-距离">1.4 WGAN：引入 Wasserstein-1 距离</h3>
+<p>JS 在「两个distribution不重叠的」时梯度不稳定。WGAN 用<strong>地球搬运距离</strong>（<span class="math inline">\(W_1\)</span>）替代： <span class="math display">\[\boxed{\begin{aligned}
+W(p_{\text{data}},p_\theta)
+= \inf_{\gamma\in\Pi(p_{\text{data}},p_\theta)} \;\mathbb{E}_{(x,y)\sim\gamma}\big[\|x-y\|\big]
+\end{aligned}}\]</span> 其对偶（Kantorovich–Rubinstein）形式： <span class="math display">\[\begin{aligned}
+W(p_{\text{data}},p_G)
+= \sup_{\|f\|_{L}\le 1}\;\Big(\mathbb{E}_{x\sim p_{\text{data}}}[f(x)] - \mathbb{E}_{x\sim p_\theta}[f(x)]\Big).
+\end{aligned}\]</span> WGAN 用一个 <strong>1-Lipschitz</strong> 的打分函数 <span class="math inline">\(f_w\)</span>（discriminator <span class="math inline">\(\to\)</span> critic）近似该上确界： <span class="math display">\[\begin{aligned}
+\max_{w:\|f_w\|_L\le 1}\; \mathbb{E}_{x\sim p_{\text{data}}}[f_w(x)] - \mathbb{E}_{z\sim p(z)}[f_w(G(z))].
+\end{aligned}\]</span> 生成器最小化该差值。实践中以<strong>权重裁剪</strong>或<strong>梯度惩罚（WGAN-GP）</strong> 来约束 1-Lipschitz： <span class="math display">\[\begin{aligned}
+\min_G \max_w\;\; &amp;\mathbb{E}_{x\sim p_{\text{data}}}[f_w(x)] - \mathbb{E}_{z}[f_w(G(z))] \\
+&amp;\quad - \lambda \,\mathbb{E}_{\hat x\sim\mathbb{P}_{\hat x}}\big(\|\nabla_{\hat x} f_w(\hat x)\|_2 - 1\big)^2.
+\end{aligned}\]</span></p>
+<blockquote>
+<p><strong>直觉</strong>：<span class="math inline">\(W_1\)</span> 在分布几乎不重叠时仍给出<strong>有意义且连续的梯度</strong>，缓解训练不稳与模式崩塌。</p>
+</blockquote>
+<h2 data-original-heading="2 Generative Adversarial Network (GAN)" id="generative-adversarial-network-gan">2 Generative Adversarial Network (GAN)</h2>
+<h3 data-original-heading="2.1 Forward Analysis" id="forward-analysis">2.1 Forward Analysis</h3>
+<ul>
+<li><p><strong>Generator</strong>: <span class="math inline">\(G_\theta(z)\)</span><br>
+Input: latent vector <span class="math inline">\(z \sim \mathcal{N}(0,I)\)</span> (random noise).<br>
+Output: generated image.</p></li>
+<li><p><strong>Discriminator</strong>: <span class="math inline">\(D_\phi(x)\)</span><br>
+Input: real or generated image.<br>
+Output: scalar in <span class="math inline">\([0,1]\)</span>, probability of being real.</p></li>
+</ul>
+<p>Diagrammatically: <span class="math display">\[z \sim \mathcal{N}(0,I) \;\; \longrightarrow \;\; G_\theta(z) \;\; \longrightarrow \;\; D_\phi(x) \in [0,1].\]</span></p>
+<h3 data-original-heading="2.2 Training Objective" id="training-objective">2.2 Training Objective</h3>
+<ol type="1">
+<li><p><strong>Discriminator goal</strong>: maximize <span class="math display">\[\mathbb{E}_{x \sim P_{\text{data}}} \log D(x)\]</span> &gt; maximize <span class="math inline">\(D(x)\)</span> to correctly classify real images.</p></li>
+<li><p><strong>Generator goal</strong>: minimize <span class="math display">\[\mathbb{E}_{z \sim P_z} \log\big(1 - D(G(z))\big)\]</span> &gt; fool <span class="math inline">\(D\)</span> into recognizing fake images as real.</p></li>
+</ol>
+<h3 data-original-heading="2.3 Overall Minimax Game" id="overall-minimax-game">2.3 Overall Minimax Game</h3>
+<p><span class="math display">\[\min_G \max_D \Bigg[ \mathbb{E}_{x \sim P_{\text{data}}} \log D(x) \;+\; \mathbb{E}_{z \sim P_z} \log(1 - D(G(z))) \Bigg]\]</span> Define the loss as <span class="math inline">\(L = - \text{goal}\)</span>.</p>
+<h2 data-original-heading="3 Optimal Discriminator" id="optimal-discriminator">3 Optimal Discriminator</h2>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Optimal Discriminator</span></p>
+</div>
+<div class="theorem-content">
+<p>When fixing the generator <span class="math inline">\(G\)</span>, the optimal discriminator is: <span class="math display">\[D^*(x) = \frac{P_{\text{data}}(x)}{P_{\text{data}}(x) + P_G(x)}\]</span></p>
+</div>
+</div>
+<h3 data-original-heading="3.1 Plug Back into GAN Objective" id="plug-back-into-gan-objective">3.1 Plug Back into GAN Objective</h3>
+<p><span class="math display">\[\begin{aligned}
+&amp;\quad\,\mathbb{E}_{x \sim P_{\text{data}}} \log \frac{P_{\text{data}}(x)}{P_{\text{data}}(x) + P_G(x)} 
++ \mathbb{E}_{z \sim P_z} \log \frac{P_G(x)}{P_{\text{data}}(x) + P_G(x)} \\[6pt]
+&amp;= \mathbb{E}_{x \sim P_{\text{data}}} \log \frac{P_{\text{data}}(x)}{2m(x)} 
++ \mathbb{E}_{z \sim P_z} \log \frac{P_G(x)}{2m(x)} \\[6pt]
+&amp;= -\log 4 \;+\; KL\big(P_{\text{data}} \,\|\, m\big) + KL\big(P_G \,\|\, m\big)
+\end{aligned}\]</span> where <span class="math display">\[m = \tfrac{1}{2}\big(P_{\text{data}} + P_G\big).\]</span></p>
+<h3 data-original-heading="3.2 Jensen–Shannon Divergence (JSD)" id="jensenshannon-divergence-jsd">3.2 Jensen–Shannon Divergence (JSD)</h3>
+<p>Symmetric divergence: <span class="math display">\[JSD(P \,\|\, Q) = \tfrac{1}{2} KL(P \,\|\, m) + \tfrac{1}{2} KL(Q \,\|\, m).\]</span> Thus the GAN loss is: <span class="math display">\[L(G) = 2 \cdot JSD\!\left(P_{\text{data}} \,\|\, P_G\right) - \log 4.\]</span></p>
+<h3 data-original-heading="3.3 Issues with GAN" id="issues-with-gan">3.3 Issues with GAN</h3>
+<ul>
+<li><span class="math inline">\(P_{\text{data}}\)</span> and <span class="math inline">\(P_G\)</span> often lie on <strong>different manifolds</strong>.<br>
+</li>
+<li>JSD <span class="math inline">\(\approx \log 2\)</span> → gradient vanishes for the generator.<br>
+</li>
+<li>Leads to <strong>mode collapse</strong> (many <span class="math inline">\(z\)</span> map to the same <span class="math inline">\(G(z)\)</span>).</li>
+</ul>
+<h2 data-original-heading="4 Improvement: Better Metric (Wasserstein Distance)" id="improvement-better-metric-wasserstein-distance">4 Improvement: Better Metric (Wasserstein Distance)</h2>
+<h3 data-original-heading="4.1.1 Wasserstein-1 Distance (WGAN)" id="wasserstein-1-distance-wgan">4.1.1 Wasserstein-1 Distance (WGAN)</h3>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Wasserstein Distance</span></p>
+</div>
+<div class="theorem-content">
+<p>We define the minimal cost to transport mass from one distribution to another: <span class="math display">\[W(P, Q) = \inf_{\gamma \in \Pi(P,Q)} \mathbb{E}_{(x,y) \sim \gamma} \|x - y\|\]</span> as the Wasserstein Distance.</p>
+</div>
+</div>
+<ul>
+<li>Symmetry: <span class="math inline">\(W(P,Q) = W(Q,P).\)</span><br>
+</li>
+<li>Referred to as Earth Mover’s Distance (EMD).<br>
+</li>
+<li>In WGAN, enforce <strong>1-Lipschitz constraint</strong> on <span class="math inline">\(D\)</span>.</li>
+</ul>
+<h3 data-original-heading="4.2 Enforcing the 1-Lipschitz Constraint in WGANs" id="enforcing-the-1-lipschitz-constraint-in-wgans">4.2 Enforcing the 1-Lipschitz Constraint in WGANs</h3>
+<h4 data-original-heading="4.2.1 Weight Clipping (Original WGAN)" id="weight-clipping-original-wgan">4.2.1 Weight Clipping (Original WGAN)</h4>
+<ul>
+<li><strong>Idea:</strong> Directly clip critic weights to a fixed range after every update: <span class="math display">\[
+w \; \leftarrow \; \text{clip}(w, -c, c)
+\]</span></li>
+<li>Ensures the function doesn’t become too steep.<br>
+</li>
+<li><strong>Problems:</strong> Can lead to capacity underuse and poor critic performance.</li>
+</ul>
+<h4 data-original-heading="4.2.2 Gradient Penalty (WGAN-GP)" id="gradient-penalty-wgan-gp">4.2.2 Gradient Penalty (WGAN-GP)</h4>
+<ul>
+<li><strong>Idea:</strong> Penalize the critic if its gradient norm deviates from 1.</li>
+<li>Add a regularization term to the loss: <span class="math display">\[
+\lambda \, \mathbb{E}_{\widehat{x} \sim p_{\widehat{x}}}
+\Big[ \big( \|\nabla_{\widehat{x}} f(\widehat{x})\|_2 - 1 \big)^2 \Big]
+\]</span> where:</li>
+<li><span class="math inline">\(\widehat{x}\)</span> is sampled along straight lines between real and generated data</li>
+<li><span class="math inline">\(\lambda\)</span> is a penalty coefficient</li>
+<li>Encourages <span class="math inline">\(\|\nabla f(\widehat{x})\|_2 \approx 1\)</span>, enforcing Lipschitz continuity.</li>
+</ul>
+<h4 data-original-heading="4.2.3 comparison" id="comparison">4.2.3 comparison</h4>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 35%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr>
+<th>Method</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weight Clipping</td>
+<td>Simple to implement</td>
+<td>Can hurt capacity; unstable</td>
+</tr>
+<tr>
+<td>Gradient Penalty</td>
+<td>More stable; widely used</td>
+<td>Slightly more computation</td>
+</tr>
+</tbody>
+</table></div>
+<h4 data-original-heading="4.2.4 procedure" id="procedure">4.2.4 procedure</h4>
+<ol type="1">
+<li>interpolation of <span class="math inline">\(\widehat{x}\)</span> between real and fake <span class="math inline">\(x\)</span></li>
+<li>compute gradient norm: <span class="math inline">\(g=\nabla_{\hat{x}} f(\hat{x})\)</span>, then <span class="math inline">\(\left(\|g\|_2-1\right)^2\)</span></li>
+<li>auto-differentiation w.r.t. <span class="math inline">\(\widehat{x}\)</span></li>
+</ol>
+<p>大多数现代 WGAN 实现都采用 WGAN-GP.</p>
+<h3 data-original-heading="4.3 Conditional GAN（cGAN）：在标签/条件下生成" id="conditional-gancgan在标签条件下生成">4.3 Conditional GAN（cGAN）：在标签/条件下生成</h3>
+<p>引入条件 <span class="math inline">\(y\)</span>（如类别/文本），把判别与生成都条件化： <span class="math display">\[\begin{aligned}
+\min_G \max_D \;\; &amp;\mathbb{E}_{(x,y)\sim p_{\text{data}}}\big[\log D(x,y)\big] \\
+&amp;\;+\; \mathbb{E}_{z\sim p(z),\, y\sim p(y)}\big[\log (1 - D(G(z,y),y))\big].
+\end{aligned}\]</span> 或在 WGAN 中加入条件，critic 学习条件下分布偏差。</p>
+<h2 data-original-heading="5 从 VAE 到 GAN的数学与理念的桥梁" id="从-vae-到-gan的数学与理念的桥梁">5 从 VAE 到 GAN的数学与理念的桥梁</h2>
+<h3 data-original-heading="5.1.1 「likelihood」 vs.&nbsp;「non-likelihood」" id="likelihood-vs.-non-likelihood">5.1.1 「likelihood」 vs.&nbsp;「non-likelihood」</h3>
+<ul>
+<li><strong>VAE</strong>：最大化 <span class="math inline">\(\log p_\theta(x)\)</span>，用 ELBO 下界，学习到<strong>后验近似</strong> <span class="math inline">\(q_\phi(z\mid x)\)</span>。<br>
+</li>
+<li><strong>GAN</strong>：不写likelihood，直接<strong>最小化分布差异</strong>（JS、Wasserstein 等），通过discriminator/critic 提供信号。</li>
+</ul>
+<h3 data-original-heading="5.1.2 两者的互补视角" id="两者的互补视角">5.1.2 两者的互补视角</h3>
+<ul>
+<li><strong>训练信号</strong>：VAE 的重建损失在像素域，GAN 的信号在判别器特征域（往往更贴近感知质量）。<br>
+</li>
+<li><strong>多样性 vs.&nbsp;锐利度</strong>：VAE 更多样但模糊；GAN 更锐利但易模式崩塌。<br>
+</li>
+<li><strong>后验推断</strong>：VAE 自带编码器；GAN 需借助额外网络（如 BiGAN/ALI）学习逆映射。</li>
+</ul>
+<h3 data-original-heading="5.2 训练细节与典型问题" id="训练细节与典型问题">5.2 训练细节与典型问题</h3>
+<h4 data-original-heading="5.2.1 模式崩塌（mode collapse）" id="模式崩塌mode-collapse">5.2.1 模式崩塌（mode collapse）</h4>
+<ul>
+<li><strong>症状</strong>：生成样本缺乏多样性，集中到少数模式。<br>
+</li>
+<li><strong>缓解</strong>：WGAN/WGAN-GP；使用多判别器或小批次判别（minibatch discrimination）；加入噪声或正则。</li>
+</ul>
+<h4 data-original-heading="5.2.2 判别器过强/过弱" id="判别器过强过弱">5.2.2 判别器过强/过弱</h4>
+<ul>
+<li><strong>过强</strong>：生成器几乎无梯度；<strong>做法</strong>：限制判别器训练步数或容量，加入 label smoothing。<br>
+</li>
+<li><strong>过弱</strong>：无法提供有信息的梯度；<strong>做法</strong>：提高判别器更新步、使用谱归一化等。</li>
+</ul>
+<h4 data-original-heading="5.2.3 损失选择与指标" id="损失选择与指标">5.2.3 损失选择与指标</h4>
+<ul>
+<li>原始 GAN 损失 vs 非饱和损失；Wasserstein 损失更稳定。<br>
+</li>
+<li>评估：FID、IS、Precision/Recall for GANs 等。</li>
+</ul></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/Diffussion%20Models%20%E2%80%94%20Full%20ELBO%20Derivation%20(compact%2C%20rigorous%2C%20annotated).html"><span>← Previous page</span><span>Diffussion Models — Full ELBO Derivation (compact, rigorous, annotated)</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E6%A6%82%E7%8E%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B/NF_transcribed.html"><span>Next page →</span><span>NF_transcribed</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">GANs</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#%E4%BB%8E-vae-%E5%88%B0-gan" class="is-active" aria-current="location">1 从 VAE 到 GAN</a></li><li style="--depth:1"><a href="#%E5%A4%A7%E5%9B%BE%E6%99%AF%E4%B8%8E%E5%8A%A8%E6%9C%BA">1.1 大图景与动机</a></li><li style="--depth:1"><a href="#vae-%E5%9B%9E%E9%A1%BE%E4%BB%8E%E4%BC%BC%E7%84%B6%E6%9C%80%E5%A4%A7%E5%8C%96%E5%88%B0-elbo">1.2 VAE 回顾：从似然最大化到 ELBO</a></li><li style="--depth:2"><a href="#%E6%BD%9C%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%AF%81%E6%8D%AE%E4%B8%8B%E7%95%8C">1.2.1 潜变量模型与证据下界</a></li><li style="--depth:2"><a href="#%E7%9B%B4%E8%A7%89">1.2.2 直觉</a></li><li style="--depth:2"><a href="#%E9%87%8D%E5%8F%82%E6%95%B0%E5%8C%96%E6%8A%80%E5%B7%A7">1.2.3 重参数化技巧</a></li><li style="--depth:1"><a href="#gan-%E7%9A%84%E6%9E%81%E5%B0%8F%E6%9E%81%E5%A4%A7%E4%BB%8E%E5%88%A4%E5%88%AB%E5%BC%8F%E5%AD%A6%E4%B9%A0%E5%BA%A6%E9%87%8F%E5%88%86%E5%B8%83%E5%B7%AE%E5%BC%82">1.3 GAN 的极小极大：从判别式学习度量分布差异</a></li><li style="--depth:2"><a href="#%E5%8E%9F%E5%A7%8B-gan-%E7%9B%AE%E6%A0%87">1.3.1 原始 GAN 目标</a></li><li style="--depth:2"><a href="#%E4%BB%A3%E5%9B%9E%E5%BE%97%E4%B8%8E-js-%E6%95%A3%E5%BA%A6%E7%9A%84%E5%85%B3%E7%B3%BB">1.3.3 代回得与 JS 散度的关系</a></li><li style="--depth:2"><a href="#%E9%9D%9E%E9%A5%B1%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8%E6%8D%9F%E5%A4%B1">1.3.4 非饱和生成器损失</a></li><li style="--depth:1"><a href="#wgan%E5%BC%95%E5%85%A5-wasserstein-1-%E8%B7%9D%E7%A6%BB">1.4 WGAN：引入 Wasserstein-1 距离</a></li><li style="--depth:0"><a href="#generative-adversarial-network-gan">2 Generative Adversarial Network (GAN)</a></li><li style="--depth:1"><a href="#forward-analysis">2.1 Forward Analysis</a></li><li style="--depth:1"><a href="#training-objective">2.2 Training Objective</a></li><li style="--depth:1"><a href="#overall-minimax-game">2.3 Overall Minimax Game</a></li><li style="--depth:0"><a href="#optimal-discriminator">3 Optimal Discriminator</a></li><li style="--depth:1"><a href="#plug-back-into-gan-objective">3.1 Plug Back into GAN Objective</a></li><li style="--depth:1"><a href="#jensenshannon-divergence-jsd">3.2 Jensen–Shannon Divergence (JSD)</a></li><li style="--depth:1"><a href="#issues-with-gan">3.3 Issues with GAN</a></li><li style="--depth:0"><a href="#improvement-better-metric-wasserstein-distance">4 Improvement: Better Metric (Wasserstein Distance)</a></li><li style="--depth:1"><a href="#wasserstein-1-distance-wgan">4.1.1 Wasserstein-1 Distance (WGAN)</a></li><li style="--depth:1"><a href="#enforcing-the-1-lipschitz-constraint-in-wgans">4.2 Enforcing the 1-Lipschitz Constraint in WGANs</a></li><li style="--depth:2"><a href="#weight-clipping-original-wgan">4.2.1 Weight Clipping (Original WGAN)</a></li><li style="--depth:2"><a href="#gradient-penalty-wgan-gp">4.2.2 Gradient Penalty (WGAN-GP)</a></li><li style="--depth:2"><a href="#comparison">4.2.3 comparison</a></li><li style="--depth:2"><a href="#procedure">4.2.4 procedure</a></li><li style="--depth:1"><a href="#conditional-gancgan%E5%9C%A8%E6%A0%87%E7%AD%BE%E6%9D%A1%E4%BB%B6%E4%B8%8B%E7%94%9F%E6%88%90">4.3 Conditional GAN（cGAN）：在标签/条件下生成</a></li><li style="--depth:0"><a href="#%E4%BB%8E-vae-%E5%88%B0-gan%E7%9A%84%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%90%86%E5%BF%B5%E7%9A%84%E6%A1%A5%E6%A2%81">5 从 VAE 到 GAN的数学与理念的桥梁</a></li><li style="--depth:1"><a href="#likelihood-vs.-non-likelihood">5.1.1 「likelihood」 vs. 「non-likelihood」</a></li><li style="--depth:1"><a href="#%E4%B8%A4%E8%80%85%E7%9A%84%E4%BA%92%E8%A1%A5%E8%A7%86%E8%A7%92">5.1.2 两者的互补视角</a></li><li style="--depth:1"><a href="#%E8%AE%AD%E7%BB%83%E7%BB%86%E8%8A%82%E4%B8%8E%E5%85%B8%E5%9E%8B%E9%97%AE%E9%A2%98">5.2 训练细节与典型问题</a></li><li style="--depth:2"><a href="#%E6%A8%A1%E5%BC%8F%E5%B4%A9%E5%A1%8Cmode-collapse">5.2.1 模式崩塌（mode collapse）</a></li><li style="--depth:2"><a href="#%E5%88%A4%E5%88%AB%E5%99%A8%E8%BF%87%E5%BC%BA%E8%BF%87%E5%BC%B1">5.2.2 判别器过强/过弱</a></li><li style="--depth:2"><a href="#%E6%8D%9F%E5%A4%B1%E9%80%89%E6%8B%A9%E4%B8%8E%E6%8C%87%E6%A0%87">5.2.3 损失选择与指标</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

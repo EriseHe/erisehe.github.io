@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>II ODEs与分子动力学 — E.H. Notebook</title>
+<meta name="description" content="This note summarizes Chapters 8 and 9 of Module II on ordinary differential equations (ODEs) and molecular dynamics. It distills the big-picture ideas, derivations, formu">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Julia科学计算笔记 file hierarchy" data-sidebar-root="content/notes/理论/Julia科学计算笔记"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/0%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.html"><span class="page-number">0</span><span>基本语法</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/I%20%E5%8F%98%E9%87%8F%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0.html"><span class="page-number"></span><span>I 变量、基本类型和函数</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/II%20ODEs%E4%B8%8E%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6.html"><span class="page-number"></span><span>II ODEs与分子动力学</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/III%20Random%20Numbers%20%26%20Monte%20Carlo.html"><span class="page-number"></span><span>III Random Numbers &amp; Monte Carlo</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/index.html">Julia科学计算笔记</a></nav><h1 id="reader-title">II ODEs与分子动力学</h1></header><div id="article-body" class="prose"><p>This note summarizes Chapters 8 and 9 of Module II on ordinary differential equations (ODEs) and molecular dynamics. It distills the big-picture ideas, derivations, formulas and example code from the PDF into a structured teaching resource suitable for an applied mathematics or computational physics course.</p>
+<h2 data-original-heading="8 Ordinary differential equations (ODEs)" id="ordinary-differential-equations-odes">8 Ordinary differential equations (ODEs)</h2>
+<h3 data-original-heading="8.1 Why solve ODEs?" id="why-solve-odes">8.1 Why solve ODEs?</h3>
+<p>Many physical systems evolve in time according to a set of first-order ODEs. Given a state vector <span class="math inline">\(\mathbf{y}(t)\)</span> that completely specifies the configuration (e.g.&nbsp;positions and velocities of particles), the evolution is governed by an ODE system of the form <span class="math inline">\(\dot{\mathbf{y}}=f(\mathbf{y}, t)\)</span>. Higher-order equations, such as Newton’s second law <span class="math inline">\(\ddot{x}= F / m\)</span>, can always be recast as first-order systems. The initial value problem asks us to determine <span class="math inline">\(\mathbf{y}(t)\)</span> for <span class="math inline">\(t&gt;0\)</span> given <span class="math inline">\(\mathbf{y}(0)\)</span>.</p>
+<h3 data-original-heading="8.2 Case study: N-body simulations and planetary dynamics" id="case-study-n-body-simulations-and-planetary-dynamics">8.2 Case study: N-body simulations and planetary dynamics</h3>
+<p>To make these ideas concrete, the notes develop a gravitational N-body simulation of the solar system. This serves both as a motivating physical problem and as a programming design exercise.</p>
+<h3 data-original-heading="8.2.1 The naïve solution: Euler’s method" id="the-naïve-solution-eulers-method">8.2.1 The naïve solution: Euler’s method</h3>
+<p>The forward (or explicit) Euler method is derived by taking a first-order Taylor expansion of <span class="math inline">\(\mathbf{y}\)</span> at time <span class="math inline">\(t+\Delta t\)</span>. Truncating the expansion yields</p>
+<p><span class="math display">\[
+\mathbf{y}_{n+1}=\mathbf{y}_{n}+\Delta t f\left(\mathbf{y}_{n}, t_{n}\right),
+\]</span></p>
+<p>which has a local truncation error of <span class="math inline">\(O\left(\Delta t^{2}\right)\)</span>. A direct implementation of this idea for the solar system stores each body in a list and loops over bodies to compute pairwise forces and then updates positions and velocities. Although concise, this monolithic script mixes data, physics and numerical method in one loop and is hard to extend or test.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pseudocode of the naïve N-body solver (simplified)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>Nsteps</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute accelerations</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        a[i] <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i f j</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                r <span class="op">=</span> positions[i] <span class="op">-</span> positions[j]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                a[i] <span class="op">+=</span> G <span class="op">*</span> masses[j] <span class="op">*</span> r <span class="op">/</span> <span class="fu">norm</span>(r)<span class="op">^</span><span class="fl">3</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">end</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Euler update</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    positions <span class="op">+=</span> velocities <span class="op">*</span> }<span class="op">\</span>Delta</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    velocities <span class="op">+=</span> a <span class="op">*</span> }<span class="op">\</span>Delta</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<h2 data-original-heading="Limitations" id="limitations">9 Limitations</h2>
+<ul>
+<li>Low accuracy: energy drifts systematically over time.</li>
+<li>No modularity: physics, integrator and data structures are tangled, making it hard to replace the integrator or force law.</li>
+<li>Global state: mutating global arrays leads to brittle code.</li>
+</ul>
+<h3 data-original-heading="8.2.2 Top-down design and a reusable API" id="top-down-design-and-a-reusable-api">8.2.2 Top-down design and a reusable API</h3>
+<p>To build robust simulations one should separate concerns. The notes propose a high-level function run_simulation! that takes a system, a force calculator and an integrator as separate objects, along with a time step and number of steps. An optional callback allows data to be recorded periodically.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">run_simulation!</span>(system, force_calc, integrator,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                <span class="op">\</span>Deltat, Nsteps; callback<span class="op">=</span>(sys, step)<span class="op">-&gt;</span><span class="cn">nothing</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                callback_interval<span class="op">=</span><span class="fl">1</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>Nsteps</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">integrate!</span>(system, force_calc, integrator, ut)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> step <span class="op">%</span> callback_interval <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">callback</span>(system, step)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p>The separation of the state (positions, velocities, masses), the force law and the time-stepping algorithm not only clarifies intent but makes the code extensible and testable.</p>
+<h3 data-original-heading="8.2.3 Data structures for particles" id="data-structures-for-particles">8.2.3 Data structures for particles</h3>
+<p>A stateful system of particles can be represented either as an array of structs (AoS)-each particle stores its own position, velocity and mass-or as a struct of arrays (SoA)-separate arrays for positions, velocities and masses. The AoS pattern is intuitive, whereas the SoA layout often offers better cache locality and vectorization. The notes introduce a Particle type and a System type (AoS) using static vectors for fixed-dimension positions and velocities:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Particle{D,T}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    position<span class="op">::</span><span class="dt">SVector{D,T}</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    velocity<span class="op">::</span><span class="dt">SVector{D,T}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    mass<span class="op">::</span><span class="dt">T</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> System{D,T}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    particles<span class="op">::</span><span class="dt">Vector{Particle{D,T}}</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p>Units matter: one should choose units so that numbers are <span class="math inline">\(O(1)\)</span>. The solar-system example uses astronomical units (AU), years and solar masses to avoid round-off issues.</p>
+<h3 data-original-heading="8.2.4 Designing integrators via multiple dispatch" id="designing-integrators-via-multiple-dispatch">8.2.4 Designing integrators via multiple dispatch</h3>
+<p>Using Julia’s multiple dispatch, we create an abstract integrator type and concrete types for each algorithm. For the forward Euler method, an integrator stores a pre-allocated vector of accelerations. The integrator is stateful so that scratch space is reused and no allocations occur inside the inner loop. The code is:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract type</span> AbstractIntegrator <span class="kw">end</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ForwardEuler{D,T} <span class="op">&lt;:</span><span class="dt"> AbstractIntegrator</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    accelerations<span class="op">::</span><span class="dt">Vector{SVector{D,T}}</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ForwardEuler</span>(system<span class="op">::</span><span class="dt">System{D,T}</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ForwardEuler</span>(<span class="fu">zeros</span>(SVector{D,T}, <span class="fu">length</span>(system.particles)))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">euler_step</span>(p<span class="op">::</span><span class="dt">Particle</span>, a, <span class="op">\</span>Deltat)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    new_pos <span class="op">=</span> p.position <span class="op">+</span> p.velocity <span class="op">*</span> }<span class="op">\</span>Delta</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    new_vel <span class="op">=</span> p.velocity <span class="op">+</span> a <span class="op">*</span> }<span class="op">\</span>Delta</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Particle</span>(new_pos, new_vel, p.mass)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">integrate!</span>(sys<span class="op">::</span><span class="dt">System{D,T}</span>, fcalc, integrator<span class="op">::</span><span class="dt">ForwardEuler{D,T}</span>, }<span class="op">\</span>Delta<span class="op">\</span>textrm{t}<span class="op">\</span>mathrm{ )</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> {D,T}</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">compute_acceleration!</span>(integrator.accelerations, sys, fcalc)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    sys.particles <span class="op">.=</span> <span class="fu">euler_step</span>.(sys.particles, integrator.accelerations, <span class="op">\</span>Deltat)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p>This design isolates the integrator logic: the integrator does not need to know details of gravity, and the force calculator does not need to know about the time-stepping scheme.</p>
+<h3 data-original-heading="8.2.5 Force calculators" id="force-calculators">8.2.5 Force calculators</h3>
+<p>A similar pattern yields a force-calculator hierarchy. For example, a brute-force calculator stores a user-provided pairwise force function. A helper _apply_force_pair! updates the accelerations of particles <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> using Newton’s third law. The main compute_acceleration! function loops over all unique pairs and calls the helper. These abstractions allow alternative force algorithms (e.g.&nbsp;Barnes-Hut tree codes) to be used without changing the integrator.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract type</span> AbstractForceCalculator <span class="kw">end</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> BruteForceCalculator{F} <span class="op">&lt;:</span><span class="dt"> AbstractForceCalculator</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    pairwise_force<span class="op">::</span><span class="dt">F</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">_apply_force_pair!</span>(a, i, j, particles, force)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    F12 <span class="op">=</span> <span class="fu">force</span>(particles[i], particles[j])</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    a[i] <span class="op">+=</span> F12 <span class="op">/</span> particles[i].mass</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    a[j] <span class="op">-=</span> F12 <span class="op">/</span> particles[j].mass <span class="co"># Newton's third law</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">compute_acceleration!</span>(a, sys<span class="op">::</span><span class="dt">System{D,T}</span>, calc<span class="op">::</span><span class="dt">BruteForceCalculator</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> {D,T}</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fill!</span>(a, <span class="fu">zero</span>(SVector{D,T}))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="fu">length</span>(sys.particles)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>(n<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> (i<span class="op">+</span><span class="fl">1</span>)<span class="op">:</span>n</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="fu">_apply_force_pair!</span>(a, i, j, sys.particles, calc.pairwise_force)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<h3 data-original-heading="8.2.6 Results: testing Euler on the solar system" id="results-testing-euler-on-the-solar-system">8.2.6 Results: testing Euler on the solar system</h3>
+<p>When the forward Euler method is used to simulate the solar system for a millennium, the total energy drifts monotonically upward. Decreasing the time step slows the drift but does not eliminate it. The energy error accumulates because the method is only first-order accurate and does not respect physical conservation laws. This motivates more sophisticated integrators.</p>
+<h2 data-original-heading="9 Integration schemes for ODEs" id="integration-schemes-for-odes">9 Integration schemes for ODEs</h2>
+<p>Chapter 9 explores higher-order and structure-preserving integrators.</p>
+<h3 data-original-heading="9.1 Higher-order integrators" id="higher-order-integrators">9.1 Higher-order integrators</h3>
+<h3 data-original-heading="9.1.1 Runge-Kutta 2 (RK2) family" id="runge-kutta-2-rk2-family">9.1.1 Runge-Kutta 2 (RK2) family</h3>
+<p>To obtain second-order accuracy, one can approximate the Taylor expansion to order <span class="math inline">\(\Delta t^{2}\)</span> by sampling the derivative at intermediate points. A generic two-stage method computes</p>
+<p><span class="math display">\[
+\begin{aligned}
+k_{1} &amp; =\Delta t f\left(\mathbf{y}_{n}, t_{n}\right) \\
+k_{2} &amp; =\Delta t f\left(\mathbf{y}_{n}+\alpha k_{1}, t_{n}+\beta \Delta t\right) \\
+\mathbf{y}_{n+1} &amp; =\mathbf{y}_{n}+a k_{1}+b k_{2}
+\end{aligned}
+\]</span></p>
+<p>where the coefficients <span class="math inline">\(\alpha, \beta, a, b\)</span> satisfy <span class="math inline">\(a+b=1\)</span> and <span class="math inline">\(b \beta=1 / 2\)</span>. Two common choices are:</p>
+<ul>
+<li>Heun’s method: <span class="math inline">\(\alpha=1, \beta=1, a=1 / 2, b=1 / 2\)</span>. It averages the slope at the beginning and end of the interval.</li>
+<li>Midpoint method: <span class="math inline">\(\alpha=1 / 2, \beta=1 / 2, a=0, b=1\)</span>. It estimates the slope at the midpoint.</li>
+</ul>
+<p>Both have local truncation errors <span class="math inline">\(O\left(\Delta t^{3}\right)\)</span> and global errors <span class="math inline">\(O\left(\Delta t^{2}\right)\)</span>.</p>
+<h3 data-original-heading="9.1.2 Butcher tableau notation" id="butcher-tableau-notation">9.1.2 Butcher tableau notation</h3>
+<p>A useful way to specify Runge-Kutta methods is the Butcher tableau, which arranges the coefficients <span class="math inline">\(c_{i}, a_{i j}\)</span> and <span class="math inline">\(b_{i}\)</span> in a lower-triangular matrix. The tableau for forward Euler, midpoint and Heun’s methods is shown in the notes; matching rows and columns encode the stages and their weights.</p>
+<h3 data-original-heading="9.1.3 The classic RK4 method" id="the-classic-rk4-method">9.1.3 The classic RK4 method</h3>
+<p>The four-stage Runge-Kutta (RK4) method is a workhorse for many problems. It uses four derivative evaluations per step:</p>
+<p><span class="math display">\[
+\begin{aligned}
+k_{1} &amp; =\Delta t f\left(\mathbf{y}_{n}, t_{n}\right) \\
+k_{2} &amp; =\Delta t f\left(\mathbf{y}_{n}+\frac{1}{2} k_{1}, t_{n}+\frac{1}{2} \Delta t\right) \\
+k_{3} &amp; =\Delta t f\left(\mathbf{y}_{n}+\frac{1}{2} k_{2}, t_{n}+\frac{1}{2} \Delta t\right) \\
+k_{4} &amp; =\Delta t f\left(\mathbf{y}_{n}+k_{3}, t_{n}+\Delta t\right) \\
+\mathbf{y}_{n+1} &amp; =\mathbf{y}_{n}+\frac{1}{6}\left(k_{1}+2 k_{2}+2 k_{3}+k_{4}\right)
+\end{aligned}
+\]</span></p>
+<p>Its local error is <span class="math inline">\(O\left(\Delta t^{5}\right)\)</span> and global error <span class="math inline">\(O\left(\Delta t^{4}\right)\)</span>. The Butcher tableau for RK4 has four rows and yields the coefficients <span class="math inline">\((1 / 6,1 / 3,1 / 3,1 / 6)\)</span>.</p>
+<h2 data-original-heading="Implementing RK4 in the N-body framework" id="implementing-rk4-in-the-n-body-framework">10 Implementing RK4 in the N-body framework</h2>
+<p>The modular framework from Chapter 8 makes it easy to add an RK4 integrator. A new RungeKutta4 struct stores scratch vectors k1_accel, k2_accel, k3_accel, k4_accel and a copy of the initial particle states. An integrate! method dispatches on this type and carries out the four updates while reusing the scratch space. In practice, RK4 is more accurate but requires four force evaluations per time step.</p>
+<h3 data-original-heading="9.1.4 Limitations of high-order methods" id="limitations-of-high-order-methods">9.1.4 Limitations of high-order methods</h3>
+<p>Simulations using RK4 with a time step <span class="math inline">\(\Delta t=10^{-3}\)</span> show dramatically smaller energy drift than forward Euler, but energy still increases slowly over long times. High-order methods improve accuracy but do not inherently respect the time-reversibility and symplectic structure of Hamiltonian systems.</p>
+<h3 data-original-heading="9.2 Time-reversible and symplectic integration" id="time-reversible-and-symplectic-integration">9.2 Time-reversible and symplectic integration</h3>
+<h3 data-original-heading="9.2.1 Failure of time reversal for Euler’s method" id="failure-of-time-reversal-for-eulers-method">9.2.1 Failure of time reversal for Euler’s method</h3>
+<p>Hamilton’s equations are time-reversible; running the system forward and then backward should return it to the initial state. For a simple harmonic oscillator <span class="math inline">\(\dot{x}=v, \dot{v}=-x\)</span> and forward Euler, applying a forward step and then a backward step leads to <span class="math inline">\((x, v) \mapsto\left(1+\Delta t^{2}\right)(x, v)\)</span>. The system does not return to its starting point, revealing that Euler’s method breaks time-reversal symmetry.</p>
+<h3 data-original-heading="9.2.2 Symplectic Euler method" id="symplectic-euler-method">9.2.2 Symplectic Euler method</h3>
+<p>A simple fix is the symplectic Euler method. In Hamiltonian mechanics where the Hamiltonian splits into kinetic and potential parts, one form of the method updates the velocity before the position (“kick-drift”), while the adjoint updates the position first (“drift-kick”):</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; v_{n+1}=v_{n}+\Delta t F\left(q_{n}\right) / m \\
+&amp; q_{n+1}=q_{n}+\Delta t v_{n+1}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(F=-\nabla V\)</span>. The reverse ordering with <span class="math inline">\(\Delta t \rightarrow-\Delta t\)</span> is the inverse map, so the method is time-reversible. In code, one can implement this using a SymplecticEuler integrator that stores accelerations and uses a symplectic_euler_step that first updates velocity then position.</p>
+<h3 data-original-heading="9.2.3 Velocity Verlet (Størmer-Verlet)" id="velocity-verlet-størmer-verlet">9.2.3 Velocity Verlet (Størmer-Verlet)</h3>
+<p>A more accurate symplectic integrator, favoured in molecular dynamics, is the velocity Verlet algorithm. It splits the step into a half-step velocity update, a full position update and a final half-step velocity update:</p>
+<p><span class="math display">\[
+\begin{aligned}
+v\left(t+\frac{\Delta t}{2}\right) &amp; =v(t)+\frac{\Delta t}{2} a(q(t)) \\
+q(t+\Delta t) &amp; =q(t)+\Delta t v\left(t+\frac{\Delta t}{2}\right) \\
+v(t+\Delta t) &amp; =v\left(t+\frac{\Delta t}{2}\right)+\frac{\Delta t}{2} a(q(t+\Delta t))
+\end{aligned}
+\]</span></p>
+<p>Because the force computed in the final step can be reused as the initial force in the next step, the method requires only one force evaluation per time step. A VerletIntegrator stores the current accelerations and an integrate! method performs the three-stage update.</p>
+<h3 data-original-heading="9.3 Symplectic integrators and energy conservation" id="symplectic-integrators-and-energy-conservation">9.3 Symplectic integrators and energy conservation</h3>
+<h3 data-original-heading="9.3.1 Operator splitting and the Liouvillian" id="operator-splitting-and-the-liouvillian">9.3.1 Operator splitting and the Liouvillian</h3>
+<p>Hamiltonian evolution can be viewed as applying the exponential of the Liouville operator <span class="math inline">\(\mathcal{L}=\{\cdot, H\}\)</span>, where <span class="math inline">\(\{\cdot, \cdot\}\)</span> denotes the Poisson bracket. For Hamiltonians of the form <span class="math inline">\(H=T(p)+V(q)\)</span>, one can split <span class="math inline">\(\mathcal{L}=\mathcal{L}_{T}+\mathcal{L}_{V}\)</span> corresponding to drift (updating positions with fixed momenta) and kick (updating momenta with fixed positions) parts. The Baker-Campbell-Hausdorff formula shows that alternating drift and kick steps approximates the true evolution; the velocity Verlet propagator implements the symmetric composition</p>
+<p><span class="math display">\[
+\Phi_{\text {Verlet }}(\Delta t)=e^{\Delta t \mathcal{L}_{V} / 2} e^{\Delta t \mathcal{L}_{T}} e^{\Delta t \mathcal{L}_{V} / 2}
+\]</span></p>
+<h3 data-original-heading="9.3.2 Shadow Hamiltonians and backward error analysis" id="shadow-hamiltonians-and-backward-error-analysis">9.3.2 Shadow Hamiltonians and backward error analysis</h3>
+<p>Symplectic integrators do not exactly conserve the original Hamiltonian, but they exactly conserve a shadow Hamiltonian <span class="math inline">\(\tilde{H}=H+\Delta t^{2} H_{2}+O\left(\Delta t^{4}\right)\)</span>. The correction term involves gradients and curvature of the potential. Thus the total energy oscillates around the true energy rather than drifting; numerical experiments with the solar system show that symplectic Euler and velocity Verlet keep the relative energy error bounded over millennia, whereas even RK4 exhibits linear energy drift.</p>
+<h2 data-original-heading="Summary and teaching reflections" id="summary-and-teaching-reflections">10 Summary and teaching reflections</h2>
+<ol type="1">
+<li>Conceptual foundation: ODEs describe how systems evolve in time. Turning higher-order equations into first-order systems simplifies numerical treatment.</li>
+<li>Euler’s method: A first-order scheme with local error <span class="math inline">\(O\left(\Delta t^{2}\right)\)</span>. Easy to implement but poor at conserving energy over long times.</li>
+<li>Modular design: Separate data structures, force calculations and integrators. Use high-level APIs to orchestrate simulations and callbacks for data collection.</li>
+<li>Higher-order methods: Runge-Kutta schemes improve accuracy. RK2 (Heun, midpoint) and RK4 are derived by matching Taylor series coefficients. RK4 has global error <span class="math inline">\(O\left(\Delta t^{4}\right)\)</span> but still fails to respect Hamiltonian structure over long times.</li>
+<li>Symplectic integrators: Time-reversible methods like symplectic Euler and velocity Verlet update positions and velocities asymmetrically to respect the underlying symplectic structure. These methods conserve a nearby Hamiltonian and keep long-term energy errors bounded.</li>
+<li>Implementation tips: Pre-allocate scratch vectors, use static vectors for fixed dimensions, and always choose consistent units.</li>
+</ol>
+<p>These notes illustrate both the mathematics of numerical integration and the importance of software design in scientific computing. Students should experiment with different integrators in code, measure energy conservation and performance, and appreciate how algorithmic choices reflect physical principles.</p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/I%20%E5%8F%98%E9%87%8F%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0.html"><span>← Previous page</span><span>I 变量、基本类型和函数</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Julia%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%AC%94%E8%AE%B0/III%20Random%20Numbers%20%26%20Monte%20Carlo.html"><span>Next page →</span><span>III Random Numbers &amp; Monte Carlo</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">II ODEs与分子动力学</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#ordinary-differential-equations-odes" class="is-active" aria-current="location">8 Ordinary differential equations (ODEs)</a></li><li style="--depth:1"><a href="#why-solve-odes">8.1 Why solve ODEs?</a></li><li style="--depth:1"><a href="#case-study-n-body-simulations-and-planetary-dynamics">8.2 Case study: N-body simulations and planetary dynamics</a></li><li style="--depth:1"><a href="#the-na%C3%AFve-solution-eulers-method">8.2.1 The naïve solution: Euler’s method</a></li><li style="--depth:0"><a href="#limitations">9 Limitations</a></li><li style="--depth:1"><a href="#top-down-design-and-a-reusable-api">8.2.2 Top-down design and a reusable API</a></li><li style="--depth:1"><a href="#data-structures-for-particles">8.2.3 Data structures for particles</a></li><li style="--depth:1"><a href="#designing-integrators-via-multiple-dispatch">8.2.4 Designing integrators via multiple dispatch</a></li><li style="--depth:1"><a href="#force-calculators">8.2.5 Force calculators</a></li><li style="--depth:1"><a href="#results-testing-euler-on-the-solar-system">8.2.6 Results: testing Euler on the solar system</a></li><li style="--depth:0"><a href="#integration-schemes-for-odes">9 Integration schemes for ODEs</a></li><li style="--depth:1"><a href="#higher-order-integrators">9.1 Higher-order integrators</a></li><li style="--depth:1"><a href="#runge-kutta-2-rk2-family">9.1.1 Runge-Kutta 2 (RK2) family</a></li><li style="--depth:1"><a href="#butcher-tableau-notation">9.1.2 Butcher tableau notation</a></li><li style="--depth:1"><a href="#the-classic-rk4-method">9.1.3 The classic RK4 method</a></li><li style="--depth:0"><a href="#implementing-rk4-in-the-n-body-framework">10 Implementing RK4 in the N-body framework</a></li><li style="--depth:1"><a href="#limitations-of-high-order-methods">9.1.4 Limitations of high-order methods</a></li><li style="--depth:1"><a href="#time-reversible-and-symplectic-integration">9.2 Time-reversible and symplectic integration</a></li><li style="--depth:1"><a href="#failure-of-time-reversal-for-eulers-method">9.2.1 Failure of time reversal for Euler’s method</a></li><li style="--depth:1"><a href="#symplectic-euler-method">9.2.2 Symplectic Euler method</a></li><li style="--depth:1"><a href="#velocity-verlet-st%C3%B8rmer-verlet">9.2.3 Velocity Verlet (Størmer-Verlet)</a></li><li style="--depth:1"><a href="#symplectic-integrators-and-energy-conservation">9.3 Symplectic integrators and energy conservation</a></li><li style="--depth:1"><a href="#operator-splitting-and-the-liouvillian">9.3.1 Operator splitting and the Liouvillian</a></li><li style="--depth:1"><a href="#shadow-hamiltonians-and-backward-error-analysis">9.3.2 Shadow Hamiltonians and backward error analysis</a></li><li style="--depth:0"><a href="#summary-and-teaching-reflections">10 Summary and teaching reflections</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>9.2 Electromagnetic Waves in Vacuum — E.H. Notebook</title>
+<meta name="description" content="9.2.1 Big pictureThe goal of this section is to show that, in empty space, Maxwell’s equations imply self-propagating waves of \mathbf E and \mathbf B. The key consequenc">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="电磁学 file hierarchy" data-sidebar-root="content/notes/理论/电磁学"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><ul class="notes-tree"><li class="folder-node" data-folder="content/notes/理论/电磁学/4 Electric Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-5c87746bb5e4" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>4 Electric Fields in Matter</span></button></div><ul class="tree-children" id="folder-5c87746bb5e4" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.1%20Polarization.html"><span class="page-number">4.1</span><span>Polarization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.2%20The%20Field%20of%20a%20Polarized%20Object.html"><span class="page-number">4.2</span><span>The Field of a Polarized Object</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.3%20The%20Electric%20Displacement.html"><span class="page-number">4.3</span><span>The Electric Displacement</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/4%20Electric%20Fields%20in%20Matter/4.4%20Linear%20Dielectrics.html"><span class="page-number">4.4</span><span>Linear Dielectrics</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/5 Magnetostatics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-4e0816c4c5bf" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>5 Magnetostatics</span></button></div><ul class="tree-children" id="folder-4e0816c4c5bf" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.1%20The%20Lorentz%20Force%20Law.html"><span class="page-number">5.1</span><span>The Lorentz Force Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.2%20The%20Biot%E2%80%93Savart%20Law.html"><span class="page-number">5.2</span><span>The Biot–Savart Law</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.3%20The%20Divergence%20and%20Curl%20of%20B%20227.html"><span class="page-number">5.3</span><span>The Divergence and Curl of B 227</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/5%20Magnetostatics/5.4%20Magnetic%20Vector%20Potential%20243.html"><span class="page-number">5.4</span><span>Magnetic Vector Potential 243</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/6 Magnetic Fields in Matter" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-69909a407c1c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>6 Magnetic Fields in Matter</span></button></div><ul class="tree-children" id="folder-69909a407c1c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.1%20Magnetization.html"><span class="page-number">6.1</span><span>Magnetization</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized.html"><span class="page-number">6.2</span><span>The Field of a Magnetized</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.2%20The%20Field%20of%20a%20Magnetized%20Object%20276.html"><span class="page-number">6.2</span><span>The Field of a Magnetized Object 276</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.3%20The%20Auxiliary%20Field%20H.html"><span class="page-number">6.3</span><span>The Auxiliary Field H</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/6%20Magnetic%20Fields%20in%20Matter/6.4%20Linear%20and%20Nonlinear%20Media.html"><span class="page-number">6.4</span><span>Linear and Nonlinear Media</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/7 Electrodynamics" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-7f249049b94c" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>7 Electrodynamics</span></button></div><ul class="tree-children" id="folder-7f249049b94c" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.1%20Electromotive%20Force.html"><span class="page-number">7.1</span><span>Electromotive Force</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.2%20Electromagnetic%20Induction.html"><span class="page-number">7.2</span><span>Electromagnetic Induction</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.3%20Maxwell%E2%80%99s%20Equations.html"><span class="page-number">7.3</span><span>Maxwell’s Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/7.4%20The%20Field%20of%20a%20Rotating%20Magnet.html"><span class="page-number">7.4</span><span>The Field of a Rotating Magnet</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/7%20Electrodynamics/Chapter%207.3%20Maxwell's%20Equations%20Cheat%20Sheet.html"><span class="page-number"></span><span>Chapter 7.3 Maxwell&#39;s Equations Cheat Sheet</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/8 Conservation Laws" data-active-branch="false"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-432f7dceddb5" aria-expanded="false"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>8 Conservation Laws</span></button></div><ul class="tree-children" id="folder-432f7dceddb5" hidden><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/8%20Conservation%20Laws/8.1.html"><span class="page-number">8</span><span>8.1</span></a></li></ul></li><li class="folder-node" data-folder="content/notes/理论/电磁学/9 Electromagnetic Waves" data-active-branch="true"><div class="folder-row"><button class="tree-toggle folder-label" aria-controls="folder-fb2382aa2b0d" aria-expanded="true"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""><span>9 Electromagnetic Waves</span></button></div><ul class="tree-children" id="folder-fb2382aa2b0d"><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.2%20Electromagnetic%20Waves%20in%20Vacuum.html"><span class="page-number">9.2</span><span>Electromagnetic Waves in Vacuum</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span class="page-number">9.3</span><span>Electromagnetic Waves in Matter</span></a></li></ul></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/Chapter%201.html"><span class="page-number"></span><span>Chapter 1</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E4%B9%A0%E9%A2%98%E9%9B%86.html"><span class="page-number"></span><span>习题集</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0.html"><span class="page-number"></span><span>第一章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E7%AB%A0.html"><span class="page-number"></span><span>第三章</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E7%AB%A0.html"><span class="page-number"></span><span>第二章</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/index.html">电磁学</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/index.html">9 Electromagnetic Waves</a></nav><h1 id="reader-title">9.2 Electromagnetic Waves in Vacuum</h1></header><div id="article-body" class="prose"><h2 data-original-heading="Big picture" id="big-picture">9.2.1 Big picture</h2>
+<p>The goal of this section is to show that, in empty space, Maxwell’s equations imply self-propagating waves of <span class="math inline">\(\mathbf E\)</span> and <span class="math inline">\(\mathbf B\)</span>. The key consequences are:</p>
+<ul>
+<li>both <span class="math inline">\(\mathbf E\)</span> and <span class="math inline">\(\mathbf B\)</span> satisfy the wave equation,</li>
+<li>the propagation speed is <span class="math display">\[
+c=\frac{1}{\sqrt{\epsilon_0\mu_0}},
+\]</span></li>
+<li>electromagnetic waves are <strong>transverse</strong>,</li>
+<li>for a plane monochromatic wave, <span class="math inline">\(\mathbf E\)</span>, <span class="math inline">\(\mathbf B\)</span>, and the propagation direction are mutually perpendicular,</li>
+<li>the wave carries <strong>energy</strong> and <strong>momentum</strong>.</li>
+</ul>
+<hr>
+<h2 data-original-heading="9.2.1 The wave equation for \mathbf E and \mathbf B" id="the-wave-equation-for-mathbf-e-and-mathbf-b">9.2.1 The wave equation for <span class="math inline">\(\mathbf E\)</span> and <span class="math inline">\(\mathbf B\)</span></h2>
+<p>In vacuum, where there is no charge and no current, Maxwell’s equations are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla\cdot \mathbf E &amp;= 0, \\
+\nabla\cdot \mathbf B &amp;= 0, \\
+\nabla\times \mathbf E &amp;= -\frac{\partial \mathbf B}{\partial t}, \\
+\nabla\times \mathbf B &amp;= \mu_0\epsilon_0 \frac{\partial \mathbf E}{\partial t}.
+\end{aligned}
+\]</span></p>
+<p>These are coupled first-order PDEs. To decouple them, take the curl of Faraday’s law and of Ampère–Maxwell’s law.</p>
+<h3 data-original-heading="Derivation for \mathbf E" id="derivation-for-mathbf-e">9.2.1.1 Derivation for <span class="math inline">\(\mathbf E\)</span></h3>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla\times(\nabla\times \mathbf E)
+&amp;= \nabla(\nabla\cdot \mathbf E)-\nabla^2\mathbf E \\
+&amp;= \nabla\times\left(-\frac{\partial \mathbf B}{\partial t}\right) \\
+&amp;= -\frac{\partial}{\partial t}(\nabla\times \mathbf B) \\
+&amp;= -\mu_0\epsilon_0 \frac{\partial^2 \mathbf E}{\partial t^2}.
+\end{aligned}
+\]</span></p>
+<p>Since <span class="math inline">\(\nabla\cdot \mathbf E=0\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\nabla^2\mathbf E=\mu_0\epsilon_0\frac{\partial^2 \mathbf E}{\partial t^2}}.
+\]</span></p>
+<h3 data-original-heading="Derivation for \mathbf B" id="derivation-for-mathbf-b">9.2.1.2 Derivation for <span class="math inline">\(\mathbf B\)</span></h3>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla\times(\nabla\times \mathbf B)
+&amp;= \nabla(\nabla\cdot \mathbf B)-\nabla^2\mathbf B \\
+&amp;= \nabla\times\left(\mu_0\epsilon_0\frac{\partial \mathbf E}{\partial t}\right) \\
+&amp;= \mu_0\epsilon_0\frac{\partial}{\partial t}(\nabla\times \mathbf E) \\
+&amp;= -\mu_0\epsilon_0\frac{\partial^2 \mathbf B}{\partial t^2}.
+\end{aligned}
+\]</span></p>
+<p>Since <span class="math inline">\(\nabla\cdot \mathbf B=0\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\nabla^2\mathbf B=\mu_0\epsilon_0\frac{\partial^2 \mathbf B}{\partial t^2}}.
+\]</span></p>
+<p>Thus each Cartesian component satisfies the 3D wave equation</p>
+<p><span class="math display">\[
+\nabla^2 f=\frac{1}{v^2}\frac{\partial^2 f}{\partial t^2},
+\]</span></p>
+<p>with wave speed</p>
+<p><span class="math display">\[
+\boxed{v=\frac{1}{\sqrt{\epsilon_0\mu_0}}=3.00\times 10^8\ \text{m/s}}.
+\]</span></p>
+<p>So in vacuum,</p>
+<p><span class="math display">\[
+\boxed{c=\frac{1}{\sqrt{\epsilon_0\mu_0}}}.
+\]</span></p>
+<h3 data-original-heading="Conceptual point" id="conceptual-point">9.2.1.3 Conceptual point</h3>
+<p>This is the central result: empty space itself supports electromagnetic disturbances that travel at speed <span class="math inline">\(c\)</span>. This is why light can be understood as an electromagnetic wave.</p>
+<hr>
+<h2 data-original-heading="9.2.2 Monochromatic plane waves" id="monochromatic-plane-waves">9.2.2 Monochromatic plane waves</h2>
+<h3 data-original-heading="Setup" id="setup">9.2.2.1 Setup</h3>
+<p>Restrict attention to sinusoidal waves of angular frequency <span class="math inline">\(\omega\)</span>. For a wave traveling in the <span class="math inline">\(z\)</span> direction, with no <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> dependence, take</p>
+<p><span class="math display">\[
+\tilde{\mathbf E}(z,t)=\tilde{\mathbf E}_0 e^{i(kz-\omega t)}, 
+\qquad
+\tilde{\mathbf B}(z,t)=\tilde{\mathbf B}_0 e^{i(kz-\omega t)},
+\]</span></p>
+<p>where <span class="math inline">\(\tilde{\mathbf E}_0\)</span> and <span class="math inline">\(\tilde{\mathbf B}_0\)</span> are complex amplitudes, and</p>
+<p><span class="math display">\[
+\omega=ck.
+\]</span></p>
+<p>These are called <strong>plane waves</strong> because the fields are uniform on each plane perpendicular to the direction of propagation.</p>
+<hr>
+<h3 data-original-heading="Transversality" id="transversality">9.2.2.2 Transversality</h3>
+<p>From <span class="math inline">\(\nabla\cdot \mathbf E=0\)</span> and <span class="math inline">\(\nabla\cdot \mathbf B=0\)</span>,</p>
+<p><span class="math display">\[
+\boxed{(\tilde{\mathbf E}_0)_z=0,\qquad (\tilde{\mathbf B}_0)_z=0}.
+\]</span></p>
+<p>So electromagnetic waves are <strong>transverse</strong>: both fields are perpendicular to the propagation direction.</p>
+<hr>
+<h3 data-original-heading="Relation between \mathbf E and \mathbf B" id="relation-between-mathbf-e-and-mathbf-b">9.2.2.3 Relation between <span class="math inline">\(\mathbf E\)</span> and <span class="math inline">\(\mathbf B\)</span></h3>
+<p>Use Faraday’s law:</p>
+<p><span class="math display">\[
+\nabla\times \mathbf E=-\frac{\partial \mathbf B}{\partial t}.
+\]</span></p>
+<p>For the plane-wave ansatz, this gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+-k(\tilde E_0)_y &amp;= \omega (\tilde B_0)_x, \\
+k(\tilde E_0)_x &amp;= \omega (\tilde B_0)_y.
+\end{aligned}
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\boxed{\tilde{\mathbf B}_0=\frac{k}{\omega}\left(\hat{\mathbf z}\times \tilde{\mathbf E}_0\right)}.
+\]</span></p>
+<p>Hence:</p>
+<ul>
+<li><span class="math inline">\(\mathbf E \perp \mathbf B\)</span>,</li>
+<li><span class="math inline">\(\mathbf E \perp \hat{\mathbf z}\)</span>,</li>
+<li><span class="math inline">\(\mathbf B \perp \hat{\mathbf z}\)</span>.</li>
+</ul>
+<p>Also, the fields are <strong>in phase</strong>, and their amplitudes satisfy</p>
+<p><span class="math display">\[
+\boxed{B_0=\frac{k}{\omega}E_0=\frac{1}{c}E_0}.
+\]</span></p>
+<p>So the electric and magnetic fields are locked together.</p>
+<hr>
+<h3 data-original-heading="Standard example: propagation in +\hat{\mathbf z}" id="standard-example-propagation-in-hatmathbf-z">9.2.2.4 Standard example: propagation in <span class="math inline">\(+\hat{\mathbf z}\)</span></h3>
+<p>If <span class="math inline">\(\mathbf E\)</span> points in the <span class="math inline">\(x\)</span> direction, then <span class="math inline">\(\mathbf B\)</span> points in the <span class="math inline">\(y\)</span> direction:</p>
+<p><span class="math display">\[
+\tilde{\mathbf E}(z,t)=\tilde E_0 e^{i(kz-\omega t)}\hat{\mathbf x},
+\qquad
+\tilde{\mathbf B}(z,t)=\frac{1}{c}\tilde E_0 e^{i(kz-\omega t)}\hat{\mathbf y}.
+\]</span></p>
+<p>Taking the real part,</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+\mathbf E(z,t) &amp;= E_0\cos(kz-\omega t+\delta)\,\hat{\mathbf x}, \\
+\mathbf B(z,t) &amp;= \frac{1}{c}E_0\cos(kz-\omega t+\delta)\,\hat{\mathbf y}.
+\end{aligned}}
+\]</span></p>
+<p>This is the basic model of a monochromatic plane wave.</p>
+<h3 data-original-heading="Polarization" id="polarization">9.2.2.5 Polarization</h3>
+<p>By convention, polarization is specified by the direction of <span class="math inline">\(\mathbf E\)</span>.<br>
+So the wave above is polarized in the <span class="math inline">\(x\)</span> direction.</p>
+<hr>
+<h3 data-original-heading="General propagation direction" id="general-propagation-direction">9.2.2.6 General propagation direction</h3>
+<p>Introduce the propagation vector <span class="math inline">\(\mathbf k\)</span>, with magnitude <span class="math inline">\(k\)</span> and direction <span class="math inline">\(\hat{\mathbf k}\)</span>.</p>
+<p>Then</p>
+<p><span class="math display">\[
+\boxed{
+\tilde{\mathbf E}(\mathbf r,t)=\tilde E_0 e^{i(\mathbf k\cdot \mathbf r-\omega t)}\hat{\mathbf n}}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\boxed{
+\tilde{\mathbf B}(\mathbf r,t)=\frac{1}{c}\tilde E_0 e^{i(\mathbf k\cdot \mathbf r-\omega t)}(\hat{\mathbf k}\times \hat{\mathbf n})
+=\frac{1}{c}\hat{\mathbf k}\times \tilde{\mathbf E}}.
+\]</span></p>
+<p>Here <span class="math inline">\(\hat{\mathbf n}\)</span> is the polarization vector, and because the wave is transverse,</p>
+<p><span class="math display">\[
+\boxed{\hat{\mathbf n}\cdot \hat{\mathbf k}=0}.
+\]</span></p>
+<p>The corresponding real fields are</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+\mathbf E(\mathbf r,t) &amp;= E_0\cos(\mathbf k\cdot \mathbf r-\omega t+\delta)\,\hat{\mathbf n}, \\
+\mathbf B(\mathbf r,t) &amp;= \frac{1}{c}E_0\cos(\mathbf k\cdot \mathbf r-\omega t+\delta)\,(\hat{\mathbf k}\times \hat{\mathbf n}).
+\end{aligned}}
+\]</span></p>
+<hr>
+<h2 data-original-heading="9.2.3 Energy and momentum in electromagnetic waves" id="energy-and-momentum-in-electromagnetic-waves">9.2.3 Energy and momentum in electromagnetic waves</h2>
+<p>The fields do not just oscillate; they transport energy and momentum.</p>
+<h3 data-original-heading="Energy density" id="energy-density">9.2.3.1 Energy density</h3>
+<p>From the general field-energy formula,</p>
+<p><span class="math display">\[
+u=\frac{1}{2}\left(\epsilon_0 E^2+\frac{1}{\mu_0}B^2\right).
+\]</span></p>
+<p>For a monochromatic plane wave,</p>
+<p><span class="math display">\[
+B^2=\frac{1}{c^2}E^2=\mu_0\epsilon_0 E^2,
+\]</span></p>
+<p>so the electric and magnetic parts are equal. Therefore,</p>
+<p><span class="math display">\[
+\boxed{u=\epsilon_0 E^2}
+\]</span></p>
+<p>and specifically,</p>
+<p><span class="math display">\[
+\boxed{u=\epsilon_0 E_0^2\cos^2(kz-\omega t+\delta)}.
+\]</span></p>
+<p>So in an EM plane wave, energy is equally shared between the electric and magnetic fields.</p>
+<hr>
+<h3 data-original-heading="Energy flux: Poynting vector" id="energy-flux-poynting-vector">9.2.3.2 Energy flux: Poynting vector</h3>
+<p>The energy flux density is the Poynting vector</p>
+<p><span class="math display">\[
+\mathbf S=\frac{1}{\mu_0}(\mathbf E\times \mathbf B).
+\]</span></p>
+<p>For a monochromatic plane wave propagating in the <span class="math inline">\(z\)</span> direction,</p>
+<p><span class="math display">\[
+\boxed{\mathbf S=c\,u\,\hat{\mathbf z}}
+\]</span></p>
+<p>or explicitly,</p>
+<p><span class="math display">\[
+\boxed{\mathbf S=c\epsilon_0 E_0^2\cos^2(kz-\omega t+\delta)\,\hat{\mathbf z}}.
+\]</span></p>
+<p>So <span class="math inline">\(\mathbf S\)</span> points in the propagation direction, and its magnitude is energy density times wave speed.</p>
+<hr>
+<h3 data-original-heading="Momentum density" id="momentum-density">9.2.3.3 Momentum density</h3>
+<p>From the field-momentum formula,</p>
+<p><span class="math display">\[
+\mathbf g=\frac{1}{c^2}\mathbf S.
+\]</span></p>
+<p>Hence for a monochromatic plane wave,</p>
+<p><span class="math display">\[
+\boxed{\mathbf g=\frac{1}{c}u\,\hat{\mathbf z}}
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+\boxed{\mathbf g=\frac{1}{c}\epsilon_0 E_0^2\cos^2(kz-\omega t+\delta)\,\hat{\mathbf z}}.
+\]</span></p>
+<p>So electromagnetic waves carry momentum in the same direction as energy flow.</p>
+<hr>
+<h2 data-original-heading="Time averages over a cycle" id="time-averages-over-a-cycle">9.2.4 Time averages over a cycle</h2>
+<p>Because optical frequencies are extremely high, most measurements see cycle averages rather than the instantaneous oscillation.</p>
+<p>Using <span class="math display">\[
+\langle \cos^2(\cdots)\rangle=\frac{1}{2},
+\]</span></p>
+<p>we get</p>
+<p><span class="math display">\[
+\boxed{\langle u\rangle=\frac{1}{2}\epsilon_0 E_0^2}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\langle \mathbf S\rangle=\frac{1}{2}c\epsilon_0 E_0^2\,\hat{\mathbf z}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\langle \mathbf g\rangle=\frac{1}{2c}\epsilon_0 E_0^2\,\hat{\mathbf z}}
+\]</span></p>
+<hr>
+<h2 data-original-heading="Intensity" id="intensity">9.2.5 Intensity</h2>
+<p>The average power per unit area carried by the wave is the <strong>intensity</strong>:</p>
+<p><span class="math display">\[
+\boxed{I\equiv \langle S\rangle=\frac{1}{2}c\epsilon_0 E_0^2}.
+\]</span></p>
+<p>This is one of the most useful formulas in applications.</p>
+<hr>
+<h2 data-original-heading="Radiation pressure" id="radiation-pressure">9.2.6 Radiation pressure</h2>
+<p>When light strikes a perfect absorber normally, it transfers momentum to the surface. The resulting average pressure is</p>
+<p><span class="math display">\[
+\boxed{P=\frac{I}{c}}.
+\]</span></p>
+<p>For a perfect reflector, the momentum reverses direction, so the pressure doubles:</p>
+<p><span class="math display">\[
+\boxed{P_{\text{reflector}}=\frac{2I}{c}}.
+\]</span></p>
+<hr>
+<h2 data-original-heading="Summary sheet" id="summary-sheet">9.2.7 Summary sheet</h2>
+<h3 data-original-heading="Vacuum wave equations" id="vacuum-wave-equations">9.2.7.1 Vacuum wave equations</h3>
+<p><span class="math display">\[
+\boxed{
+\nabla^2\mathbf E=\mu_0\epsilon_0\frac{\partial^2 \mathbf E}{\partial t^2},
+\qquad
+\nabla^2\mathbf B=\mu_0\epsilon_0\frac{\partial^2 \mathbf B}{\partial t^2}}
+\]</span></p>
+<h3 data-original-heading="Wave speed" id="wave-speed">9.2.7.2 Wave speed</h3>
+<p><span class="math display">\[
+\boxed{c=\frac{1}{\sqrt{\epsilon_0\mu_0}}}
+\]</span></p>
+<h3 data-original-heading="Plane-wave structure" id="plane-wave-structure">9.2.7.3 Plane-wave structure</h3>
+<p><span class="math display">\[
+\boxed{
+\mathbf E(\mathbf r,t)=E_0\cos(\mathbf k\cdot \mathbf r-\omega t+\delta)\,\hat{\mathbf n}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\mathbf B(\mathbf r,t)=\frac{1}{c}E_0\cos(\mathbf k\cdot \mathbf r-\omega t+\delta)\,(\hat{\mathbf k}\times \hat{\mathbf n})}
+\]</span></p>
+<p>with <span class="math display">\[
+\boxed{\hat{\mathbf n}\cdot \hat{\mathbf k}=0}
+\]</span></p>
+<p>and <span class="math display">\[
+\boxed{B_0=\frac{E_0}{c}}.
+\]</span></p>
+<h3 data-original-heading="Energy and momentum" id="energy-and-momentum">9.2.7.4 Energy and momentum</h3>
+<p><span class="math display">\[
+\boxed{u=\epsilon_0 E^2}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\mathbf S=\frac{1}{\mu_0}(\mathbf E\times \mathbf B)=c\,u\,\hat{\mathbf k}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\mathbf g=\frac{1}{c^2}\mathbf S=\frac{u}{c}\hat{\mathbf k}}
+\]</span></p>
+<h3 data-original-heading="Averages" id="averages">9.2.7.5 Averages</h3>
+<p><span class="math display">\[
+\boxed{\langle u\rangle=\frac{1}{2}\epsilon_0 E_0^2}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\langle \mathbf S\rangle=\frac{1}{2}c\epsilon_0 E_0^2\,\hat{\mathbf k}}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\langle \mathbf g\rangle=\frac{1}{2c}\epsilon_0 E_0^2\,\hat{\mathbf k}}
+\]</span></p>
+<h3 data-original-heading="Intensity and pressure" id="intensity-and-pressure">9.2.7.6 Intensity and pressure</h3>
+<p><span class="math display">\[
+\boxed{I=\frac{1}{2}c\epsilon_0 E_0^2}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{P_{\text{absorber}}=\frac{I}{c},\qquad P_{\text{reflector}}=\frac{2I}{c}}
+\]</span></p></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <span class="unavailable" aria-disabled="true"><span>← Previous page</span><span>First page</span></span>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/%E7%94%B5%E7%A3%81%E5%AD%A6/9%20Electromagnetic%20Waves/9.3%20Electromagnetic%20Waves%20in%20Matter.html"><span>Next page →</span><span>9.3 Electromagnetic Waves in Matter</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">9.2 Electromagnetic Waves in Vacuum</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#big-picture" class="is-active" aria-current="location">9.2.1 Big picture</a></li><li style="--depth:0"><a href="#the-wave-equation-for-mathbf-e-and-mathbf-b">9.2.1 The wave equation for \mathbf E and \mathbf B</a></li><li style="--depth:1"><a href="#derivation-for-mathbf-e">9.2.1.1 Derivation for \mathbf E</a></li><li style="--depth:1"><a href="#derivation-for-mathbf-b">9.2.1.2 Derivation for \mathbf B</a></li><li style="--depth:1"><a href="#conceptual-point">9.2.1.3 Conceptual point</a></li><li style="--depth:0"><a href="#monochromatic-plane-waves">9.2.2 Monochromatic plane waves</a></li><li style="--depth:1"><a href="#setup">9.2.2.1 Setup</a></li><li style="--depth:1"><a href="#transversality">9.2.2.2 Transversality</a></li><li style="--depth:1"><a href="#relation-between-mathbf-e-and-mathbf-b">9.2.2.3 Relation between \mathbf E and \mathbf B</a></li><li style="--depth:1"><a href="#standard-example-propagation-in-hatmathbf-z">9.2.2.4 Standard example: propagation in +\hat{\mathbf z}</a></li><li style="--depth:1"><a href="#polarization">9.2.2.5 Polarization</a></li><li style="--depth:1"><a href="#general-propagation-direction">9.2.2.6 General propagation direction</a></li><li style="--depth:0"><a href="#energy-and-momentum-in-electromagnetic-waves">9.2.3 Energy and momentum in electromagnetic waves</a></li><li style="--depth:1"><a href="#energy-density">9.2.3.1 Energy density</a></li><li style="--depth:1"><a href="#energy-flux-poynting-vector">9.2.3.2 Energy flux: Poynting vector</a></li><li style="--depth:1"><a href="#momentum-density">9.2.3.3 Momentum density</a></li><li style="--depth:0"><a href="#time-averages-over-a-cycle">9.2.4 Time averages over a cycle</a></li><li style="--depth:0"><a href="#intensity">9.2.5 Intensity</a></li><li style="--depth:0"><a href="#radiation-pressure">9.2.6 Radiation pressure</a></li><li style="--depth:0"><a href="#summary-sheet">9.2.7 Summary sheet</a></li><li style="--depth:1"><a href="#vacuum-wave-equations">9.2.7.1 Vacuum wave equations</a></li><li style="--depth:1"><a href="#wave-speed">9.2.7.2 Wave speed</a></li><li style="--depth:1"><a href="#plane-wave-structure">9.2.7.3 Plane-wave structure</a></li><li style="--depth:1"><a href="#energy-and-momentum">9.2.7.4 Energy and momentum</a></li><li style="--depth:1"><a href="#averages">9.2.7.5 Averages</a></li><li style="--depth:1"><a href="#intensity-and-pressure">9.2.7.6 Intensity and pressure</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>

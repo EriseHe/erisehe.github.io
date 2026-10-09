@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>5. Least Squares and Gram-Schmidt — E.H. Notebook</title>
+<meta name="description" content="[!note] Source Based on the professor’s Lecture 05.pdf, pp. 1–11. Syllabus association: September 21, least squares, Gram–Schmidt, and QR. The PDF itself does not print t">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">5. Least Squares and Gram-Schmidt</h1></header><div id="article-body" class="prose"><div class="math-theorem note" data-callout="note">
+<div class="theorem-header">
+<p><span class="theorem-badge">Note</span><span class="theorem-title">Source</span></p>
+</div>
+<div class="theorem-content">
+<p>Based on the professor’s <strong>Lecture 05.pdf</strong>, pp.&nbsp;1–11. Syllabus association: <strong>September 21, least squares, Gram–Schmidt, and QR</strong>. The PDF itself does not print this date. Page references below refer to PDF pages. Statements marked <strong>Clarification</strong> make assumptions explicit or expand the handwritten derivations.</p>
+</div>
+</div>
+<h2 data-original-heading="5.1 Pivoting: Theory and Practice" id="pivoting-theory-and-practice">5.1 Pivoting: Theory and Practice</h2>
+<p><em>Source: pp.&nbsp;1–2.</em></p>
+<p>The lecture begins by reviewing LU factorization with row pivoting:</p>
+<p><span class="math display">\[
+PA=LU.
+\]</span></p>
+<p>At each step, the largest-magnitude entry in the active column is moved to the pivot position. Full rows of the packed factorization and the accumulated permutation are exchanged, including the already stored multipliers.</p>
+<p>The backward-error estimate from the preceding lecture is, to first order,</p>
+<p><span class="math display">\[
+PA=\widehat L\widehat U+E,
+\qquad
+|E|\lesssim mu\,|\widehat L||\widehat U|.
+\]</span></p>
+<p>Here <span class="math inline">\(u\)</span> denotes machine roundoff and absolute values are entrywise. Controlling the size of the factors is therefore important.</p>
+<p><strong>More general pivoting.</strong> One may permute columns as well as rows, obtaining</p>
+<p><span class="math display">\[
+PA\widetilde P=LU.
+\]</span></p>
+<p>The two permutation matrices have different roles: <span class="math inline">\(P\)</span> reorders equations, while <span class="math inline">\(\widetilde P\)</span> reorders columns, hence the ordering of variables.</p>
+<p><strong>Practical observation.</strong> Row pivoting is usually sufficient in practice. However, the bound on the multipliers does not prevent large growth in <span class="math inline">\(U\)</span> in the worst case.</p>
+<h3 data-original-heading="5.1.1 A Matrix with Exponential Growth" id="a-matrix-with-exponential-growth">5.1.1 A Matrix with Exponential Growth</h3>
+<p>Consider the lecture’s matrix</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;1\\
+-1&amp;1&amp;0&amp;1\\
+-1&amp;-1&amp;1&amp;1\\
+-1&amp;-1&amp;-1&amp;1
+\end{pmatrix}.
+\]</span></p>
+<p>All active-column pivot candidates have magnitude <span class="math inline">\(1\)</span>. If ties keep the current pivot row, partial pivoting performs no swaps.</p>
+<p>At the first elimination step, the multipliers are all <span class="math inline">\(-1\)</span>, so the last-column entries below the first row become <span class="math inline">\(2\)</span>. At the second step, the remaining last-column entries become <span class="math inline">\(4\)</span>. At the third, the last entry becomes <span class="math inline">\(8\)</span>.</p>
+<p>The lecture shows these changes in <strong>packed LU storage</strong>:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+1&amp;0&amp;0&amp;1\\
+-1&amp;1&amp;0&amp;2\\
+-1&amp;-1&amp;1&amp;2\\
+-1&amp;-1&amp;-1&amp;2
+\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}
+1&amp;0&amp;0&amp;1\\
+-1&amp;1&amp;0&amp;2\\
+-1&amp;-1&amp;1&amp;4\\
+-1&amp;-1&amp;-1&amp;4
+\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}
+1&amp;0&amp;0&amp;1\\
+-1&amp;1&amp;0&amp;2\\
+-1&amp;-1&amp;1&amp;4\\
+-1&amp;-1&amp;-1&amp;8
+\end{pmatrix}.
+\]</span></p>
+<p>The entries <span class="math inline">\(-1\)</span> below the diagonal are stored multipliers, not entries of <span class="math inline">\(U\)</span>. The separate factors are</p>
+<p><span class="math display">\[
+L=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;0\\
+-1&amp;1&amp;0&amp;0\\
+-1&amp;-1&amp;1&amp;0\\
+-1&amp;-1&amp;-1&amp;1
+\end{pmatrix},
+\qquad
+U=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;1\\
+0&amp;1&amp;0&amp;2\\
+0&amp;0&amp;1&amp;4\\
+0&amp;0&amp;0&amp;8
+\end{pmatrix}.
+\]</span></p>
+<p>In the analogous <span class="math inline">\(m\times m\)</span> example, the last column of <span class="math inline">\(U\)</span> contains</p>
+<p><span class="math display">\[
+1,2,4,\ldots,2^{m-1}.
+\]</span></p>
+<blockquote>
+<p><strong>Clarification.</strong> The factors can be large even though every entry of the input has magnitude at most <span class="math inline">\(1\)</span>. In particular, <span class="math display">\[
+(|L||U|)_{mm}=1+2+\cdots+2^{m-1}=2^m-1.
+\]</span> The lecture’s exponential-growth warning is therefore directly relevant to the LU backward-error bound. It does not mean that every calculation on this particular matrix must incur large error: powers of two can be represented exactly. The example demonstrates the possibility of large intermediate growth and a correspondingly large worst-case error bound.</p>
+</blockquote>
+<h2 data-original-heading="5.2 Rectangular Linear Systems" id="rectangular-linear-systems">5.2 Rectangular Linear Systems</h2>
+<p><em>Source: p.&nbsp;3.</em></p>
+<p>Now let</p>
+<p><span class="math display">\[
+A\in\mathbb{K}^{m\times n},
+\qquad x\in\mathbb{K}^n,
+\qquad b\in\mathbb{K}^m,
+\]</span></p>
+<p>where <span class="math inline">\(\mathbb{K}\)</span> is <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span>. We want to understand what replaces the square system <span class="math inline">\(Ax=b\)</span> when <span class="math inline">\(m\ne n\)</span>.</p>
+<h3 data-original-heading="5.2.1 Overdetermined Systems: m > n" id="overdetermined-systems-m-n">5.2.1 Overdetermined Systems: m &gt; n</h3>
+<p><strong>Definition.</strong> A system with more equations than unknowns is <strong>overdetermined</strong>.</p>
+<p>Since</p>
+<p><span class="math display">\[
+\dim\operatorname{range}(A)\le n&lt;m,
+\]</span></p>
+<p>the column space is a proper subspace of <span class="math inline">\(\mathbb{K}^m\)</span>. An arbitrary vector <span class="math inline">\(b\in\mathbb{K}^m\)</span> need not lie in that column space, so an exact solution is not always possible.</p>
+<p>An exact solution exists precisely when</p>
+<p><span class="math display">\[
+b\in\operatorname{range}(A).
+\]</span></p>
+<blockquote>
+<p><strong>Clarification.</strong> “Overdetermined” does not mean that every right-hand side is inconsistent. Some vectors <span class="math inline">\(b\)</span> are in the column space. The problem is that solvability for every <span class="math inline">\(b\)</span> is impossible when <span class="math inline">\(m&gt;n\)</span>.</p>
+</blockquote>
+<h3 data-original-heading="5.2.2 Underdetermined Systems: m < n" id="underdetermined-systems-m-n">5.2.2 Underdetermined Systems: m &lt; n</h3>
+<p><strong>Definition.</strong> A system with more unknowns than equations is <strong>underdetermined</strong>.</p>
+<p>By rank-nullity,</p>
+<p><span class="math display">\[
+\dim\ker(A)=n-\operatorname{rank}(A)\ge n-m&gt;0.
+\]</span></p>
+<p>If <span class="math inline">\(x_0\)</span> solves <span class="math inline">\(Ax=b\)</span> and <span class="math inline">\(z\in\ker(A)\)</span>, then</p>
+<p><span class="math display">\[
+A(x_0+z)=Ax_0+Az=b.
+\]</span></p>
+<p>Thus, whenever a solution exists, it is not unique.</p>
+<blockquote>
+<p><strong>Clarification.</strong> A nontrivial nullspace guarantees nonuniqueness of an existing solution, not existence for every <span class="math inline">\(b\)</span>. Full row rank is sufficient for the latter.</p>
+</blockquote>
+<h2 data-original-heading="5.3 Replacing Exact Solvability with Minimization" id="replacing-exact-solvability-with-minimization">5.3 Replacing Exact Solvability with Minimization</h2>
+<p><em>Source: p.&nbsp;4.</em></p>
+<p>The two rectangular cases suggest different optimization problems.</p>
+<p><strong>Overdetermined case.</strong> Find the best attainable approximation to <span class="math inline">\(b\)</span>:</p>
+<p><span class="math display">\[
+\min_{x\in\mathbb{K}^n}\|Ax-b\|.
+\]</span></p>
+<p><strong>Underdetermined case.</strong> When the constraints are consistent, choose a smallest solution among all exact solutions:</p>
+<p><span class="math display">\[
+\min_{x:\,Ax=b}\|x\|.
+\]</span></p>
+<blockquote>
+<p>Which norm should be used?</p>
+</blockquote>
+<p>There are many choices, and the application determines which is appropriate. In a regression interpretation:</p>
+<ul>
+<li>The residual norm measures the <strong>fitting error</strong></li>
+<li>A solution norm measures the <strong>size or complexity of the coefficient vector</strong></li>
+</ul>
+<p>The rest of this lecture focuses on <strong>ordinary least squares</strong>, using the Euclidean norm:</p>
+<p><span class="math display">\[
+\boxed{\min_x\|Ax-b\|_2^2.}
+\]</span></p>
+<p>Squaring the norm does not change its minimizers because <span class="math inline">\(t\mapsto t^2\)</span> is increasing for <span class="math inline">\(t\ge0\)</span>. The name “least squares” comes from</p>
+<p><span class="math display">\[
+\|Ax-b\|_2^2=\sum_{i=1}^m |(Ax-b)_i|^2.
+\]</span></p>
+<p><strong>Inner-product geometry.</strong> For the Euclidean norm,</p>
+<p><span class="math display">\[
+\langle v,w\rangle=v^*w,
+\qquad
+\|v\|_2=\sqrt{v^*v}.
+\]</span></p>
+<p>Here <span class="math inline">\(v^*\)</span> is the conjugate transpose; for real vectors it is simply <span class="math inline">\(v^T\)</span>. This inner product provides the notions of orthogonality and projection used below.</p>
+<blockquote>
+<p><strong>Clarification.</strong> Inner-product norms give a linear orthogonal-projection map, and under the full-column-rank assumption the least-squares coefficient vector depends linearly on <span class="math inline">\(b\)</span>. The handwritten “only if” statement about norm choice is not needed: the lecture’s argument establishes this useful sufficient setting, rather than a universal necessity claim for every matrix.</p>
+</blockquote>
+<h2 data-original-heading="5.4 Geometry of Ordinary Least Squares" id="geometry-of-ordinary-least-squares">5.4 Geometry of Ordinary Least Squares</h2>
+<p><em>Source: p.&nbsp;5.</em></p>
+<p>Write the matrix in columns:</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}a_1&amp;\cdots&amp;a_n\end{pmatrix}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+Ax=x_1a_1+\cdots+x_na_n.
+\]</span></p>
+<p>Solving <span class="math inline">\(Ax=b\)</span> means expressing <span class="math inline">\(b\)</span> as a linear combination of the columns of <span class="math inline">\(A\)</span>. In a square invertible system, every <span class="math inline">\(b\)</span> has exactly one such expression.</p>
+<p>For an overdetermined system, <span class="math inline">\(Ax\)</span> is restricted to the lower-dimensional column space. Least squares asks for the point in this space closest to <span class="math inline">\(b\)</span>.</p>
+<p><strong>Geometric picture.</strong> The lecture draws the column space as a plane and <span class="math inline">\(b\)</span> outside it. The best fitted vector <span class="math inline">\(Ax\)</span> is the perpendicular projection of <span class="math inline">\(b\)</span> onto that plane. The remaining error points out of the plane.</p>
+<p>Let</p>
+<p><span class="math display">\[
+r=b-Ax
+\]</span></p>
+<p>be the residual. At the best fit,</p>
+<p><span class="math display">\[
+r\perp\operatorname{range}(A).
+\]</span></p>
+<blockquote>
+<p><strong>Clarification of the geometry.</strong> If <span class="math inline">\(r\)</span> is perpendicular to the column space, then for every alternative coefficient vector <span class="math inline">\(x+z\)</span>, <span class="math display">\[
+\begin{aligned}
+\|b-A(x+z)\|_2^2
+&amp;=\|r-Az\|_2^2\\
+&amp;=\|r\|_2^2+\|Az\|_2^2
+\ge\|r\|_2^2.
+\end{aligned}
+\]</span> This Pythagorean identity explains why the perpendicular foot is the minimizer. The fitted vector is unique; the coefficients are unique when <span class="math inline">\(A\)</span> has independent columns.</p>
+</blockquote>
+<h2 data-original-heading="5.5 Least Squares with Orthonormal Columns" id="least-squares-with-orthonormal-columns">5.5 Least Squares with Orthonormal Columns</h2>
+<p><em>Source: p.&nbsp;6.</em></p>
+<p><strong>Definition.</strong> The columns of <span class="math inline">\(A\)</span> are <strong>orthonormal</strong> if</p>
+<p><span class="math display">\[
+a_i^*a_j=
+\begin{cases}
+1,&amp;i=j,\\
+0,&amp;i\ne j.
+\end{cases}
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+A^*A=I_n.
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Orthonormal-column least squares</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(A\)</span> has orthonormal columns, the unique least-squares solution is <span class="math display">\[
+\boxed{x=A^*b.}
+\]</span> The fitted vector is <span class="math inline">\(AA^*b\)</span>.</p>
+</div>
+</div>
+<p><strong>Explanation.</strong> The coefficient</p>
+<p><span class="math display">\[
+x_i=a_i^*b
+\]</span></p>
+<p>measures the component of <span class="math inline">\(b\)</span> in the direction <span class="math inline">\(a_i\)</span>. Because the column directions are mutually orthogonal, these components can be chosen independently.</p>
+<p><strong>Clarification: verification.</strong> For <span class="math inline">\(x=A^*b\)</span>,</p>
+<p><span class="math display">\[
+A^*(b-Ax)=A^*b-A^*AA^*b=0,
+\]</span></p>
+<p>so the residual is perpendicular to every column. The geometry in Section 5.4 then establishes optimality.</p>
+<p><strong>Example.</strong> The lecture uses</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}
+1&amp;0\\
+0&amp;1\\
+0&amp;0
+\end{pmatrix}.
+\]</span></p>
+<p>For <span class="math inline">\(b=(b_1,b_2,b_3)^T\)</span>,</p>
+<p><span class="math display">\[
+x=A^*b=\begin{pmatrix}b_1\\b_2\end{pmatrix},
+\qquad
+Ax=\begin{pmatrix}b_1\\b_2\\0\end{pmatrix},
+\qquad
+r=\begin{pmatrix}0\\0\\b_3\end{pmatrix}.
+\]</span></p>
+<p>The solution keeps the two components that lie in the column-space plane and leaves the perpendicular component in the residual.</p>
+<h2 data-original-heading="5.6 Orthogonalization and the QR Factorization" id="orthogonalization-and-the-qr-factorization">5.6 Orthogonalization and the QR Factorization</h2>
+<p><em>Source: p.&nbsp;7.</em></p>
+<blockquote>
+<p>What if the columns of A are not orthonormal?</p>
+</blockquote>
+<p><strong>Idea.</strong> Replace the columns by an orthonormal basis for the same space, while recording the change of coordinates.</p>
+<p>Assume throughout the QR construction that <span class="math inline">\(m\ge n\)</span> and the columns of <span class="math inline">\(A\)</span> are linearly independent. Seek</p>
+<p><span class="math display">\[
+\boxed{A=QR,}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+Q\in\mathbb{K}^{m\times n},
+\qquad Q^*Q=I_n,
+\qquad R\in\mathbb{K}^{n\times n}.
+\]</span></p>
+<p>The Gram–Schmidt construction below makes <span class="math inline">\(R\)</span> upper triangular with nonzero diagonal entries, so it is invertible. This is the <strong>reduced</strong>, or <strong>thin</strong>, QR factorization.</p>
+<h3 data-original-heading="5.6.1 Interpreting the Factors" id="interpreting-the-factors">5.6.1 Interpreting the Factors</h3>
+<p>The identity <span class="math inline">\(A=QR\)</span> means</p>
+<p><span class="math display">\[
+a_j=\sum_{i=1}^n q_i r_{ij}.
+\]</span></p>
+<p>Thus the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(R\)</span> contains the coordinates of <span class="math inline">\(a_j\)</span> in the orthonormal basis formed by the columns of <span class="math inline">\(Q\)</span>.</p>
+<p>For a coefficient vector <span class="math inline">\(x\)</span>,</p>
+<p><span class="math display">\[
+Ax=Q(Rx).
+\]</span></p>
+<p>The vector <span class="math inline">\(Rx\)</span> gives the coordinates of the same fitted vector in the <span class="math inline">\(Q\)</span> basis.</p>
+<h3 data-original-heading="5.6.2 Solving Least Squares with QR" id="solving-least-squares-with-qr">5.6.2 Solving Least Squares with QR</h3>
+<p>Since <span class="math inline">\(R\)</span> is invertible, setting <span class="math inline">\(y=Rx\)</span> gives</p>
+<p><span class="math display">\[
+\min_x\|Ax-b\|_2
+=\min_y\|Qy-b\|_2.
+\]</span></p>
+<p>The columns of <span class="math inline">\(Q\)</span> are orthonormal, so the optimal <span class="math inline">\(y\)</span> is</p>
+<p><span class="math display">\[
+y=Q^*b.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\boxed{Rx=Q^*b,\qquad x=R^{-1}Q^*b.}
+\]</span></p>
+<p><strong>Computational form.</strong> Compute <span class="math inline">\(Q^*b\)</span>, then solve the upper-triangular system by backward substitution. The inverse in the formula describes the solution; it need not be explicitly formed.</p>
+<blockquote>
+<p><strong>Clarification.</strong> The coordinate directions matter: <span class="math inline">\(R\)</span> converts coefficients in the original columns of <span class="math inline">\(A\)</span> into coefficients in the orthonormal columns of <span class="math inline">\(Q\)</span>. The factor <span class="math inline">\(R^{-1}\)</span> converts them back. Also, <span class="math inline">\(Q^*Q=I_n\)</span> does not mean <span class="math inline">\(QQ^*=I_m\)</span> when <span class="math inline">\(Q\)</span> is tall; <span class="math inline">\(QQ^*b\)</span> is the fitted projection of <span class="math inline">\(b\)</span>.</p>
+</blockquote>
+<h2 data-original-heading="5.7 Classical Gram–Schmidt" id="classical-gramschmidt">5.7 Classical Gram–Schmidt</h2>
+<p><em>Source: p.&nbsp;8.</em></p>
+<p>Suppose</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}a_1&amp;\cdots&amp;a_n\end{pmatrix}
+\]</span></p>
+<p>has linearly independent columns. <strong>Classical Gram–Schmidt (CGS)</strong> builds orthonormal vectors <span class="math inline">\(q_1,\ldots,q_n\)</span> by subtracting from each new column all components in the previous directions.</p>
+<h3 data-original-heading="5.7.1 The Algorithm" id="the-algorithm">5.7.1 The Algorithm</h3>
+<p>For column <span class="math inline">\(j\)</span>, compute</p>
+<p><span class="math display">\[
+\begin{aligned}
+r_{ij}&amp;=q_i^*a_j, &amp;&amp;i=1,\ldots,j-1,\\
+v_j&amp;=a_j-\sum_{i=1}^{j-1}r_{ij}q_i,\\
+r_{jj}&amp;=\|v_j\|_2,\\
+q_j&amp;=v_j/r_{jj}.
+\end{aligned}
+\]</span></p>
+<p>The vector <span class="math inline">\(v_j\)</span> is the unnormalized residual, written <span class="math inline">\(\widehat q_j\)</span> in the handwritten algorithm. Here the symbol <span class="math inline">\(v_j\)</span> avoids confusing it with a computed, rounded <span class="math inline">\(q_j\)</span>.</p>
+<pre class="text"><code>R = zero matrix of size n by n
+
+for j = 1, ..., n:
+    v = a_j
+
+    for i = 1, ..., j-1:
+        R[i, j] = q_i^* a_j
+        v = v - R[i, j] * q_i
+
+    R[j, j] = norm(v, 2)
+    q_j = v / R[j, j]</code></pre>
+<p><strong>Important.</strong> Every coefficient <span class="math inline">\(r_{ij}\)</span> is computed using the <strong>original</strong> column <span class="math inline">\(a_j\)</span>, even though the working vector <span class="math inline">\(v\)</span> is being updated.</p>
+<h3 data-original-heading="5.7.2 Why It Works in Exact Arithmetic" id="why-it-works-in-exact-arithmetic">5.7.2 Why It Works in Exact Arithmetic</h3>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Gram–Schmidt orthonormalization</span></p>
+</div>
+<div class="theorem-content">
+<p>For linearly independent <span class="math inline">\(a_1,\ldots,a_n\)</span>, classical Gram–Schmidt produces orthonormal <span class="math inline">\(q_1,\ldots,q_n\)</span> such that, for each <span class="math inline">\(j\)</span>, <span class="math display">\[
+\operatorname{span}(q_1,\ldots,q_j)
+=\operatorname{span}(a_1,\ldots,a_j).
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof.</strong> For <span class="math inline">\(j=1\)</span>, <span class="math inline">\(a_1\ne0\)</span> and</p>
+<p><span class="math display">\[
+q_1=a_1/\|a_1\|_2
+\]</span></p>
+<p>has unit length and spans the same one-dimensional space.</p>
+<p>Assume that <span class="math inline">\(q_1,\ldots,q_{j-1}\)</span> are orthonormal and have the same span as <span class="math inline">\(a_1,\ldots,a_{j-1}\)</span>. For any <span class="math inline">\(k&lt;j\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+q_k^*v_j
+&amp;=q_k^*\left(a_j-\sum_{i=1}^{j-1}(q_i^*a_j)q_i\right)\\
+&amp;=q_k^*a_j-\sum_{i=1}^{j-1}(q_i^*a_j)(q_k^*q_i)\\
+&amp;=q_k^*a_j-q_k^*a_j=0.
+\end{aligned}
+\]</span></p>
+<p>Thus <span class="math inline">\(v_j\)</span> is perpendicular to all previous <span class="math inline">\(q_k\)</span>. It cannot be zero: otherwise <span class="math inline">\(a_j\)</span> would be in the span of the preceding columns, contradicting independence.</p>
+<p>After normalization, <span class="math inline">\(q_j\)</span> has unit length. Finally,</p>
+<p><span class="math display">\[
+q_j\in\operatorname{span}(a_1,\ldots,a_j)
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+a_j=\sum_{i=1}^{j-1}r_{ij}q_i+r_{jj}q_j,
+\]</span></p>
+<p>so the spans agree. This completes the induction.</p>
+<h3 data-original-heading="5.7.3 Recovering R" id="recovering-r">5.7.3 Recovering R</h3>
+<p>The last identity becomes, column by column,</p>
+<p><span class="math display">\[
+a_j=\sum_{i=1}^{j}r_{ij}q_i.
+\]</span></p>
+<p>Stacking the columns yields</p>
+<p><span class="math display">\[
+A=QR,
+\qquad
+R=
+\begin{pmatrix}
+r_{11}&amp;r_{12}&amp;\cdots&amp;r_{1n}\\
+0&amp;r_{22}&amp;\cdots&amp;r_{2n}\\
+\vdots&amp;\ddots&amp;\ddots&amp;\vdots\\
+0&amp;\cdots&amp;0&amp;r_{nn}
+\end{pmatrix}.
+\]</span></p>
+<p>Each <span class="math inline">\(r_{jj}=\|v_j\|_2\)</span> is positive for independent input columns.</p>
+<blockquote>
+<p><strong>Clarification.</strong> If a column is dependent on earlier ones, its exact residual is zero and the displayed normalization is impossible. The lecture’s orthonormal-basis theorem and invertible <span class="math inline">\(R\)</span> therefore require full column rank. Numerical treatment of rank deficiency requires additional decisions beyond this algorithm.</p>
+</blockquote>
+<h2 data-original-heading="5.8 Loss of Orthogonality in Classical Gram–Schmidt" id="loss-of-orthogonality-in-classical-gramschmidt">5.8 Loss of Orthogonality in Classical Gram–Schmidt</h2>
+<p><em>Source: p.&nbsp;9.</em></p>
+<p>An exact orthogonality proof need not survive floating-point cancellation.</p>
+<p><strong>Example.</strong> Consider</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}
+1&amp;1&amp;1\\
+\varepsilon&amp;0&amp;0\\
+0&amp;\varepsilon&amp;0\\
+0&amp;0&amp;\varepsilon
+\end{pmatrix},
+\qquad \varepsilon&gt;0.
+\]</span></p>
+<p>Take <span class="math inline">\(\varepsilon\)</span> small enough that floating-point arithmetic rounds <span class="math inline">\(1+\varepsilon^2\)</span> to <span class="math inline">\(1\)</span>, while <span class="math inline">\(\varepsilon\)</span> itself remains representable. The columns are linearly independent for every nonzero <span class="math inline">\(\varepsilon\)</span>, but nearly point in the same direction.</p>
+<p>The following calculation follows the lecture’s simplified rounding model: the small <span class="math inline">\(\varepsilon^2\)</span> term is lost at the first normalization, and the leading effects of subsequent operations are displayed.</p>
+<h3 data-original-heading="5.8.1 First Column" id="first-column">5.8.1 First Column</h3>
+<p>In exact arithmetic,</p>
+<p><span class="math display">\[
+q_1=\frac{1}{\sqrt{1+\varepsilon^2}}
+\begin{pmatrix}1\\\varepsilon\\0\\0\end{pmatrix}.
+\]</span></p>
+<p>With the stated rounding,</p>
+<p><span class="math display">\[
+\widehat q_1\approx
+\begin{pmatrix}1\\\varepsilon\\0\\0\end{pmatrix}.
+\]</span></p>
+<h3 data-original-heading="5.8.2 Second Column" id="second-column">5.8.2 Second Column</h3>
+<p>The first projection coefficient is approximately <span class="math inline">\(1\)</span>, giving</p>
+<p><span class="math display">\[
+v_2=
+\begin{pmatrix}1\\0\\\varepsilon\\0\end{pmatrix}
+-
+\begin{pmatrix}1\\\varepsilon\\0\\0\end{pmatrix}
+=
+\begin{pmatrix}0\\-\varepsilon\\\varepsilon\\0\end{pmatrix}.
+\]</span></p>
+<p>After normalization,</p>
+<p><span class="math display">\[
+\widehat q_2=
+\begin{pmatrix}
+0\\-1/\sqrt2\\1/\sqrt2\\0
+\end{pmatrix}.
+\]</span></p>
+<h3 data-original-heading="5.8.3 Third Column: The Classical Coefficient" id="third-column-the-classical-coefficient">5.8.3 Third Column: The Classical Coefficient</h3>
+<p>Classical Gram–Schmidt computes the second coefficient from the original third column:</p>
+<p><span class="math display">\[
+r_{23}=\widehat q_2^*a_3
+=
+\begin{pmatrix}0&amp;-1/\sqrt2&amp;1/\sqrt2&amp;0\end{pmatrix}
+\begin{pmatrix}1\\0\\0\\\varepsilon\end{pmatrix}
+=0.
+\]</span></p>
+<p>Consequently,</p>
+<p><span class="math display">\[
+v_3=
+\begin{pmatrix}1\\0\\0\\\varepsilon\end{pmatrix}
+-
+\begin{pmatrix}1\\\varepsilon\\0\\0\end{pmatrix}
+-0\widehat q_2
+=
+\begin{pmatrix}0\\-\varepsilon\\0\\\varepsilon\end{pmatrix},
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\widehat q_3=
+\begin{pmatrix}
+0\\-1/\sqrt2\\0\\1/\sqrt2
+\end{pmatrix}.
+\]</span></p>
+<p>The computed matrix is therefore approximately</p>
+<p><span class="math display">\[
+\widehat Q_{\mathrm{CGS}}=
+\begin{pmatrix}
+1&amp;0&amp;0\\
+\varepsilon&amp;-1/\sqrt2&amp;-1/\sqrt2\\
+0&amp;1/\sqrt2&amp;0\\
+0&amp;0&amp;1/\sqrt2
+\end{pmatrix}.
+\]</span></p>
+<p><strong>Clarification: checking the failure.</strong> The second and third columns satisfy</p>
+<p><span class="math display">\[
+\widehat q_2^*\widehat q_3=\frac12,
+\]</span></p>
+<p>which is not small. Although the columns are individually normalized, they are far from orthogonal.</p>
+<h2 data-original-heading="5.9 Modified Gram–Schmidt" id="modified-gramschmidt">5.9 Modified Gram–Schmidt</h2>
+<p><em>Source: p.&nbsp;10.</em></p>
+<blockquote>
+<p>What went wrong, and what should the next projection use?</p>
+</blockquote>
+<p>Subtracting the first component from <span class="math inline">\(a_3\)</span> creates the small residual</p>
+<p><span class="math display">\[
+a_3-\widehat q_1=
+\begin{pmatrix}0\\-\varepsilon\\0\\\varepsilon\end{pmatrix}.
+\]</span></p>
+<p>The next step must remove the <span class="math inline">\(q_2\)</span> component of <strong>this residual</strong>. Classical Gram–Schmidt instead computes <span class="math inline">\(q_2^*a_3\)</span>, relying on the exact orthogonality relation <span class="math inline">\(q_2^*q_1=0\)</span> to make the two choices equivalent.</p>
+<p>That relation is no longer exact in floating-point arithmetic. Indeed, in the simplified example,</p>
+<p><span class="math display">\[
+\widehat q_2^*\widehat q_1=-\varepsilon/\sqrt2.
+\]</span></p>
+<p>This looks small on the scale of the original columns, but it is significant on the scale of a residual of size <span class="math inline">\(\varepsilon\)</span>.</p>
+<h3 data-original-heading="5.9.1 The Modified Algorithm" id="the-modified-algorithm">5.9.1 The Modified Algorithm</h3>
+<p><strong>Modified Gram–Schmidt (MGS)</strong> computes every projection coefficient from the current residual:</p>
+<pre class="text"><code>R = zero matrix of size n by n
+
+for j = 1, ..., n:
+    v = a_j
+
+    for i = 1, ..., j-1:
+        R[i, j] = q_i^* v
+        v = v - R[i, j] * q_i
+
+    R[j, j] = norm(v, 2)
+    q_j = v / R[j, j]</code></pre>
+<p>The single changed line is</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+\text{CGS:}&amp;r_{ij}=q_i^*a_j,\\[2pt]
+\text{MGS:}&amp;r_{ij}=q_i^*v\quad\text{using the updated residual.}
+\end{array}
+\]</span></p>
+<h3 data-original-heading="5.9.2 Exact Equivalence, Different Floating-Point Behavior" id="exact-equivalence-different-floating-point-behavior">5.9.2 Exact Equivalence, Different Floating-Point Behavior</h3>
+<p>In exact arithmetic, before the <span class="math inline">\(i\)</span>-th projection,</p>
+<p><span class="math display">\[
+v=a_j-\sum_{k=1}^{i-1}r_{kj}q_k.
+\]</span></p>
+<p>Because <span class="math inline">\(q_i\)</span> is perpendicular to each earlier <span class="math inline">\(q_k\)</span>,</p>
+<p><span class="math display">\[
+q_i^*v
+=q_i^*a_j-\sum_{k=1}^{i-1}r_{kj}q_i^*q_k
+=q_i^*a_j.
+\]</span></p>
+<p>Thus CGS and MGS are mathematically equivalent in exact arithmetic. Their order of computation differs, and that difference matters after rounding errors disturb orthogonality.</p>
+<div class="math-theorem warning" data-callout="warning">
+<div class="theorem-header">
+<p><span class="theorem-badge">Warning</span><span class="theorem-title">Orthogonality is numerically fragile</span></p>
+</div>
+<div class="theorem-content">
+<p>An argument that relies on a computed inner product being exactly zero may break down in floating-point arithmetic. Modified Gram–Schmidt uses the actual current residual instead of assuming that all earlier orthogonality relations are exact.</p>
+</div>
+</div>
+<h2 data-original-heading="5.10 Modified Gram–Schmidt on the Same Example" id="modified-gramschmidt-on-the-same-example">5.10 Modified Gram–Schmidt on the Same Example</h2>
+<p><em>Source: p.&nbsp;11.</em></p>
+<p>The first two vectors are unchanged in the lecture’s simplified arithmetic:</p>
+<p><span class="math display">\[
+\widehat q_1\approx
+\begin{pmatrix}1\\\varepsilon\\0\\0\end{pmatrix},
+\qquad
+\widehat q_2=
+\begin{pmatrix}0\\-1/\sqrt2\\1/\sqrt2\\0\end{pmatrix}.
+\]</span></p>
+<p>For the third column, after removing the first component,</p>
+<p><span class="math display">\[
+v_3^{(1)}=
+\begin{pmatrix}0\\-\varepsilon\\0\\\varepsilon\end{pmatrix}.
+\]</span></p>
+<p>Now compute the next coefficient from this residual:</p>
+<p><span class="math display">\[
+r_{23}=\widehat q_2^*v_3^{(1)}=\frac{\varepsilon}{\sqrt2}.
+\]</span></p>
+<p>Subtract it:</p>
+<p><span class="math display">\[
+\begin{aligned}
+v_3^{(2)}
+&amp;=v_3^{(1)}-\frac{\varepsilon}{\sqrt2}\widehat q_2\\
+&amp;=\begin{pmatrix}0\\-\varepsilon\\0\\\varepsilon\end{pmatrix}
+-\frac{\varepsilon}{\sqrt2}
+\begin{pmatrix}0\\-1/\sqrt2\\1/\sqrt2\\0\end{pmatrix}\\
+&amp;=\begin{pmatrix}0\\-\varepsilon/2\\-\varepsilon/2\\\varepsilon\end{pmatrix}.
+\end{aligned}
+\]</span></p>
+<p>Its norm is</p>
+<p><span class="math display">\[
+\|v_3^{(2)}\|_2
+=\varepsilon\sqrt{\frac14+\frac14+1}
+=\varepsilon\sqrt{\frac32}.
+\]</span></p>
+<p>The normalized vector is</p>
+<p><span class="math display">\[
+\widehat q_3=
+\begin{pmatrix}
+0\\-1/\sqrt6\\-1/\sqrt6\\\sqrt{2/3}
+\end{pmatrix}
+=\frac1{\sqrt6}
+\begin{pmatrix}0\\-1\\-1\\2\end{pmatrix}.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\widehat Q_{\mathrm{MGS}}\approx
+\begin{pmatrix}
+1&amp;0&amp;0\\
+\varepsilon&amp;-1/\sqrt2&amp;-1/\sqrt6\\
+0&amp;1/\sqrt2&amp;-1/\sqrt6\\
+0&amp;0&amp;\sqrt{2/3}
+\end{pmatrix}.
+\]</span></p>
+<p><strong>Clarification: checking the improvement.</strong> For these displayed vectors,</p>
+<p><span class="math display">\[
+\widehat q_2^*\widehat q_3=0,
+\qquad
+\widehat q_1^*\widehat q_2=-\frac{\varepsilon}{\sqrt2},
+\qquad
+\widehat q_1^*\widehat q_3=-\frac{\varepsilon}{\sqrt6}.
+\]</span></p>
+<p>The order-one inner product <span class="math inline">\(1/2\)</span> from classical Gram–Schmidt has disappeared. The remaining inner products are small when <span class="math inline">\(\varepsilon\)</span> is small, explaining the lecture’s conclusion that the columns are <strong>almost orthogonal</strong>.</p>
+<p>This calculation demonstrates an improvement on the given example. It is not a claim that a single pass of modified Gram–Schmidt always produces exact orthogonality in floating-point arithmetic.</p>
+<h2 data-original-heading="5.11 Source Clarifications and Main Conclusions" id="source-clarifications-and-main-conclusions">5.11 Source Clarifications and Main Conclusions</h2>
+<p><strong>Source clarifications.</strong></p>
+<ul>
+<li><strong>P. 1:</strong> The short LU-error recap omits the roundoff factor; the preceding lecture’s proof supplies the first-order factor <span class="math inline">\(mu\)</span></li>
+<li><strong>P. 3:</strong> For <span class="math inline">\(A\in\mathbb{K}^{m\times n}\)</span>, <span class="math inline">\(\operatorname{range}(A)\)</span> lies in <span class="math inline">\(\mathbb{K}^m\)</span>, not <span class="math inline">\(\mathbb{K}^n\)</span>. An underdetermined system has multiple solutions when it is consistent</li>
+<li><strong>P. 4:</strong> Inner-product geometry is used as a sufficient framework for a linear projection and a linear full-rank least-squares solution map; no unrestricted “only if” claim is made</li>
+<li><strong>Pp. 7–8:</strong> Invertibility of <span class="math inline">\(R\)</span> and all nonzero Gram–Schmidt normalizations require independent columns. In <span class="math inline">\(A=QR\)</span>, <span class="math inline">\(R\)</span> expresses columns of <span class="math inline">\(A\)</span> in the <span class="math inline">\(Q\)</span> basis</li>
+<li><strong>P. 11:</strong> The <span class="math inline">\(q_2\)</span> vector in one intermediate subtraction has an inconsistent sign. Its third coordinate is <span class="math inline">\(+1/\sqrt2\)</span>, giving the final vector <span class="math inline">\((0,-1,-1,2)^T/\sqrt6\)</span>, consistent with the lecture’s final result</li>
+</ul>
+<p><strong>Main conclusions.</strong></p>
+<ol type="1">
+<li>Partial pivoting is useful in practice, but exponential element growth is possible</li>
+<li>Overdetermined systems motivate least squares; consistent underdetermined systems motivate choosing a minimum-norm solution</li>
+<li>Euclidean least squares projects <span class="math inline">\(b\)</span> onto the column space of <span class="math inline">\(A\)</span></li>
+<li>For orthonormal columns, the coefficients are <span class="math inline">\(A^*b\)</span></li>
+<li>For a full-column-rank factorization <span class="math inline">\(A=QR\)</span>, solve <span class="math inline">\(Rx=Q^*b\)</span></li>
+<li>Classical Gram–Schmidt constructs QR in exact arithmetic, but can lose orthogonality badly in floating-point arithmetic</li>
+<li>Modified Gram–Schmidt projects the current residual, improving the lecture’s near-dependent-column example</li>
+</ol></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span>← Previous page</span><span>4. LU Error Analysis and Row Pivoting</span></a>
+    <a rel="next" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span>Next page →</span><span>6. Error Bounds and Householder QR</span></a>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">5. Least Squares and Gram-Schmidt</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#pivoting-theory-and-practice" class="is-active" aria-current="location">5.1 Pivoting: Theory and Practice</a></li><li style="--depth:1"><a href="#a-matrix-with-exponential-growth">5.1.1 A Matrix with Exponential Growth</a></li><li style="--depth:0"><a href="#rectangular-linear-systems">5.2 Rectangular Linear Systems</a></li><li style="--depth:1"><a href="#overdetermined-systems-m-n">5.2.1 Overdetermined Systems: m &gt; n</a></li><li style="--depth:1"><a href="#underdetermined-systems-m-n">5.2.2 Underdetermined Systems: m &lt; n</a></li><li style="--depth:0"><a href="#replacing-exact-solvability-with-minimization">5.3 Replacing Exact Solvability with Minimization</a></li><li style="--depth:0"><a href="#geometry-of-ordinary-least-squares">5.4 Geometry of Ordinary Least Squares</a></li><li style="--depth:0"><a href="#least-squares-with-orthonormal-columns">5.5 Least Squares with Orthonormal Columns</a></li><li style="--depth:0"><a href="#orthogonalization-and-the-qr-factorization">5.6 Orthogonalization and the QR Factorization</a></li><li style="--depth:1"><a href="#interpreting-the-factors">5.6.1 Interpreting the Factors</a></li><li style="--depth:1"><a href="#solving-least-squares-with-qr">5.6.2 Solving Least Squares with QR</a></li><li style="--depth:0"><a href="#classical-gramschmidt">5.7 Classical Gram–Schmidt</a></li><li style="--depth:1"><a href="#the-algorithm">5.7.1 The Algorithm</a></li><li style="--depth:1"><a href="#why-it-works-in-exact-arithmetic">5.7.2 Why It Works in Exact Arithmetic</a></li><li style="--depth:1"><a href="#recovering-r">5.7.3 Recovering R</a></li><li style="--depth:0"><a href="#loss-of-orthogonality-in-classical-gramschmidt">5.8 Loss of Orthogonality in Classical Gram–Schmidt</a></li><li style="--depth:1"><a href="#first-column">5.8.1 First Column</a></li><li style="--depth:1"><a href="#second-column">5.8.2 Second Column</a></li><li style="--depth:1"><a href="#third-column-the-classical-coefficient">5.8.3 Third Column: The Classical Coefficient</a></li><li style="--depth:0"><a href="#modified-gramschmidt">5.9 Modified Gram–Schmidt</a></li><li style="--depth:1"><a href="#the-modified-algorithm">5.9.1 The Modified Algorithm</a></li><li style="--depth:1"><a href="#exact-equivalence-different-floating-point-behavior">5.9.2 Exact Equivalence, Different Floating-Point Behavior</a></li><li style="--depth:0"><a href="#modified-gramschmidt-on-the-same-example">5.10 Modified Gram–Schmidt on the Same Example</a></li><li style="--depth:0"><a href="#source-clarifications-and-main-conclusions">5.11 Source Clarifications and Main Conclusions</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>
