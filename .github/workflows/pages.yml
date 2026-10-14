@@ -76,6 +76,24 @@ jobs:
           NEXT_TELEMETRY_DISABLED: 1
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         
+      # The gym app is developed in its independent EriseHe/gym repository.
+      # It is copied into the existing user-site Pages artifact so /gym/
+      # can deploy even before project-level Pages has been enabled.
+      - name: Checkout standalone gym repository
+        uses: actions/checkout@v4
+        with:
+          repository: EriseHe/gym
+          ref: main
+          path: _gym_source
+
+      - name: Bundle gym site and licensed exercise photos
+        run: |
+          python3 _gym_source/scripts/vendor_photos.py
+          mkdir -p ./out/gym
+          cp -a _gym_source/site/. ./out/gym/
+          test -s ./out/gym/index.html
+          test -s ./out/gym/photos/Side_Lateral_Raise/0.jpg
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
