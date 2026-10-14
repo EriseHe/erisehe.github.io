@@ -89,6 +89,7 @@ jobs:
       - name: Bundle gym site and licensed exercise photos
         run: |
           python3 _gym_source/scripts/vendor_photos.py
+          rm -rf ./out/gym
           mkdir -p ./out/gym
           cp -a _gym_source/site/. ./out/gym/
           test -s ./out/gym/index.html
