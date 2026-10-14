@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="个性化哑铃训练指南：肩胛控制、肩臂增肌、下肢与核心稳定。每一天都有图解、动作步骤、组数、休息计时与进度记录。">
+  <title>GYM — 我的哑铃训练指南</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=3">
+</head>
+<body>
+  <a class="skip-link" href="#workout">跳到今日训练</a>
+  <header class="topbar">
+    <div class="page-width topbar-inner">
+      <a class="brand" href="./" aria-label="GYM 首页"><span class="brand-icon">G<span class="brand-dot">.</span></span><span class="brand-text">GYM <span class="brand-sep">/</span> TRAINING GUIDE</span></a>
+      <div class="topbar-right"><span class="online-badge"><span class="pulse-dot"></span> 你的私人训练手册</span><button type="button" id="help-btn" class="text-button">使用说明 <span aria-hidden="true">↗</span></button></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-width" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> A BETTER WAY TO MOVE · 8 WEEK PROGRAM</div>
+        <h1 id="hero-title">让身体更稳。<br><em>让力量更有形。</em></h1>
+        <p class="hero-description">一套专为你的目标整理的哑铃计划：改善肩胛控制、增加肩宽与上臂肌肉，同时训练下肢和核心的稳定性。每天打开，就知道该练什么。</p>
+        <div class="hero-facts"><span><strong>03</strong> 天 / 周</span><i></i><span><strong>30–50</strong> 分钟</span><i></i><span><strong>哑铃</strong> + 地板 + 墙</span></div>
+      </div>
+      <div class="hero-panel" aria-hidden="true">
+        <div class="hero-top-label">MOVEMENT / STABILITY</div>
+        <svg viewBox="0 0 410 340" class="hero-art" role="presentation">
+          <g fill="none" stroke="#d0e1c5" stroke-width="1.2" opacity=".7">
+            <circle cx="204" cy="171" r="130"/><circle cx="204" cy="171" r="94"/><circle cx="204" cy="171" r="58"/>
+            <path d="M40 171H365M204 23V322" stroke-dasharray="4 7"/>
+          </g>
+          <path d="M195 86C171 105 155 136 151 164M216 86C239 105 252 136 258 164" stroke="#3c6259" stroke-width="14" stroke-linecap="round" fill="none"/>
+          <circle cx="205" cy="66" r="28" fill="#f3b890"/>
+          <path d="M171 116Q205 100 239 116L253 222Q202 247 156 222Z" fill="#264b43"/>
+          <path d="M171 127L131 170L101 151" stroke="#f3b890" stroke-width="17" stroke-linecap="round" fill="none"/>
+          <path d="M238 127L277 170L309 135" stroke="#f3b890" stroke-width="17" stroke-linecap="round" fill="none"/>
+          <g fill="#152d2a" stroke="#152d2a" stroke-width="5">
+            <path d="M89 138L109 163M96 132L116 156M303 125L320 146M310 118L327 139"/>
+          </g>
+          <path d="M177 228L165 311M232 228L244 311" stroke="#264b43" stroke-width="25" stroke-linecap="round"/>
+          <path d="M150 315H174M234 315H257" stroke="#172e2a" stroke-width="12" stroke-linecap="round"/>
+          <path d="M142 137Q129 173 148 202" stroke="#e0ff73" stroke-width="3" fill="none" stroke-dasharray="5 5"/>
+          <circle cx="143" cy="169" r="7" fill="#e0ff73"/>
+          <path d="M268 110l18-9M272 118l22 0" stroke="#e0ff73" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="hero-stat hero-stat-a"><span class="stat-spark">✳</span><span>BUILD<br><strong>CONTROL</strong></span></div>
+        <div class="hero-stat hero-stat-b"><span>FOCUS 01</span><strong>肩胛 · 肩臂</strong></div>
+        <div class="hero-bottom-label">STRENGTH WITHOUT COMPENSATION <span>↗</span></div>
+      </div>
+    </section>
+
+    <section class="planner page-width" id="schedule" aria-labelledby="planner-title">
+      <div class="section-heading"><div><p class="overline">01 / WEEKLY PROGRAM</p><h2 id="planner-title">你的每周训练</h2></div><div class="week-nav"><button id="prev-week" type="button" aria-label="上一周">←</button><button id="this-week" type="button">本周</button><button id="next-week" type="button" aria-label="下一周">→</button></div></div>
+      <div class="week-caption"><span id="week-range">—</span><span class="storage-label"><span aria-hidden="true">●</span> 进度保存在此设备</span></div>
+      <div id="day-tabs" class="day-tabs" role="tablist" aria-label="选择训练日"></div>
+    </section>
+
+    <section class="workout-section page-width" id="workout" aria-live="polite">
+      <div class="session-top">
+        <div class="session-identity">
+          <p id="session-kicker" class="overline">TODAY'S SESSION</p>
+          <h2 id="session-title">—</h2>
+          <p id="session-desc" class="session-desc"></p>
+          <div id="session-meta" class="meta-chips"></div>
+        </div>
+        <div class="session-side">
+          <div class="progress-disc" id="progress-disc" aria-label="训练进度"><span id="progress-value">0%</span><small>已完成</small></div>
+          <div class="phase-control"><label for="phase-select">训练阶段</label><select id="phase-select"><option value="starter">适应期 · 每项 1 组</option><option value="regular">标准期 · 每项 2 组</option></select></div>
+        </div>
+      </div>
+
+      <div class="notice-row"><span class="notice-icon" aria-hidden="true">i</span><p id="session-note">动作以无痛、稳定为前提。右侧肩胛凸出不等于所有右侧肌肉都弱。</p></div>
+      <div id="workout-content"></div>
+      <div class="finish-panel" id="finish-panel" hidden>
+        <div><p class="overline">WORKOUT COMPLETE</p><h3>今天的训练完成了。</h3><p>记录已保存到这台设备。训练后无需再补大量额外动作。</p></div>
+        <button id="finish-btn" class="primary-button" type="button">标记今天已完成 <span>✓</span></button>
+      </div>
+    </section>
+
+    <section class="guide page-width" id="guide">
+      <div class="guide-heading"><p class="overline">02 / HOW TO PROGRESS</p><h2>训练原则</h2></div>
+      <div class="guide-grid">
+        <article class="guide-card"><span class="guide-number">01</span><h3>先稳定，再加重</h3><p>选择每组结束仍能再做 2–3 次规范动作的重量。第一周先做 1 组，适应后切换到标准期。</p></article>
+        <article class="guide-card"><span class="guide-number">02</span><h3>左右都练，不加倍补右侧</h3><p>单侧动作先从控制较差的一侧开始；两侧采用相同的规范次数。肩胛突出不等于右侧所有肌肉都弱。</p></article>
+        <article class="guide-card"><span class="guide-number">03</span><h3>不强行纠正右脚朝向</h3><p>下肢采用舒适的脚尖角度。反复右脚跟碰到左踝，建议由运动医学物理治疗师做动态步态检查。</p></article>
+        <article class="guide-card"><span class="guide-number">04</span><h3>有症状就调整</h3><p>出现肩部刺痛、麻木、逐渐加重的无力或明显代偿时，停止该动作并接受评估。不要追求强行“夹正”肩胛。</p></article>
+      </div>
+    </section>
+    <section class="sources page-width" id="references"><div><p class="overline">03 / REFERENCE & NOTE</p><h2>参考与使用范围</h2></div><p>这是一套保守的运动起始计划，不是远程医疗诊断。你的视频无法证明具体哪块肌肉薄弱，也未覆盖完整步态。动作插画为原创示意图，始末位置仅辅助理解，请以文字要点、无痛活动范围和现场治疗师指导为准。</p><div class="source-links"><a href="https://orthoinfo.aaos.org/en/recovery/rotator-cuff-and-shoulder-conditioning-program/" target="_blank" rel="noopener noreferrer">AAOS · 肩袖训练指南 ↗</a><a href="https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/" target="_blank" rel="noopener noreferrer">ACSM · 2026 抗阻训练指南 ↗</a></div></section>
+  </main>
+
+  <footer class="footer page-width"><span>GYM <b>.</b> / 做得标准，比做得多重要。</span><span>私人训练指南 · 中文 · v1.0</span></footer>
+
+  <div class="timer-widget" id="timer-widget" hidden><div><small>组间休息</small><strong id="timer-display">01:00</strong></div><div class="timer-actions"><button id="timer-toggle" type="button" aria-label="暂停计时">Ⅱ</button><button id="timer-close" type="button" aria-label="关闭计时">×</button></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="help-dialog"><div class="dialog-head"><h2>如何使用这个训练手册</h2><button type="button" id="help-close" aria-label="关闭">×</button></div><ol><li>按星期选择训练日，周一/周五为 A，周三为 B。</li><li>第一次使用选“适应期”，每个力量动作先做一组；适应后切换“标准期”。</li><li>每张动作卡可以展开查看两幅图、分步骤讲解、重点感受与错误提醒。</li><li>一组完成后点圆形组数按钮，可启动休息倒计时。</li><li>重量和打勾状态仅保存在当前浏览器的本机储存，换设备不会自动同步。请不要在共享设备记录敏感信息。</li></ol><p class="dialog-small">如有动作疼痛、麻木、渐进性无力或反复绊倒，不应依赖网站自行纠正。</p></dialog>
+  <script defer src="./app.js?v=3"></script>
+</body>
+</html>
