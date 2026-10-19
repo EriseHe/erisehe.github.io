@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>10. Eigenvalues and Iterative Methods — E.H. Notebook</title>
+<meta name="description" content="Numerical Methods I — Florian Schaefer. Source: Lecture 10.pdf, pp. 1–13.Schedule association: October 7, 2026 (from the course schedule, not a handwritten date stamp).10">
+<link rel="stylesheet" href="/notebook/assets/reader.css"><link rel="preload" href="/notebook/assets/fonts/texgyretermes-regular.otf" as="font" type="font/otf" crossorigin>
+<script defer src="/notebook/assets/reader.js"></script>
+<script src="/notebook/assets/math-config.js"></script><script defer id="MathJax-script" src="/notebook/assets/vendor/mathjax/tex-chtml-full.js"></script>
+</head><body data-layout="reader" data-has-notes="true" data-has-outline="true" data-notes-open="true" data-outline-open="true" data-search-index="/notebook/assets/search.json">
+<a class="skip-link" href="#article-body">Skip to content</a>
+<header class="toolbar"><div class="identity"><button class="icon-button" id="notes-toggle" aria-label="Toggle notes sidebar" aria-controls="notes-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/sidebar.svg" alt="" width="20" height="20"></button><a class="brand" href="/notebook/">E.H. Notebook</a></div>
+<nav class="top-navigation" aria-label="Notebook sections"><a href="/notebook/content/notes/index.html" aria-current="page">Notes</a><a href="/notebook/content/posts/index.html">Posts</a><a href="/notebook/content/research/index.html">Research</a></nav>
+<div class="reading-tools"><button class="icon-button appearance-toggle" id="appearance-toggle" aria-label="Reading text size" aria-controls="appearance-dialog">Aa</button><button class="icon-button" id="search-toggle" aria-label="Search notes" aria-keyshortcuts="Control+k Meta+k"><img src="/notebook/assets/icons/search.svg" alt="" width="20" height="20"></button><a class="icon-button github-link" href="https://github.com/EriseHe/notebook" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><img src="/notebook/assets/icons/github.svg" alt="" width="20" height="20"></a><button class="icon-button" id="outline-toggle" aria-label="Toggle outline" aria-controls="outline-sidebar" aria-expanded="true" ><img src="/notebook/assets/icons/outline.svg" alt="" width="20" height="20"></button></div></header>
+<div class="reader-layout"><aside class="notes-sidebar" id="notes-sidebar" aria-label="Notes navigation"><nav aria-label="Numerical Linear Algbera file hierarchy" data-sidebar-root="content/notes/理论/Numerical Linear Algbera"><a class="sidebar-root" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a><ul class="notes-tree"><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/1.%20Vectors%20and%20Matrices.html"><span class="page-number">1</span><span>Vectors and Matrices</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/2.%20Storing%20Matrices%20%26%20Vectors.html"><span class="page-number">2</span><span>Storing Matrices &amp; Vectors</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/3.%20Lecture.html"><span class="page-number">3</span><span>Lecture</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/4.%20LU%20Factorization%20with%20Pivoting.html"><span class="page-number">4</span><span>LU Factorization with Pivoting</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/5.%20Least%20Squares%20and%20Gram-Schmidt.html"><span class="page-number">5</span><span>Least Squares and Gram-Schmidt</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/6.%20Error%20Bounds%20and%20Householder%20QR.html"><span class="page-number">6</span><span>Error Bounds and Householder QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/7.%20Orthogonal%20Transformations%20and%20QR.html"><span class="page-number">7</span><span>Orthogonal Transformations and QR</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/8.%20Least%20Squares%20and%20Normal%20Equations.html"><span class="page-number">8</span><span>Least Squares and Normal Equations</span></a></li><li class="file-node"><a class="note-link" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span class="page-number">9</span><span>Cholesky Factorization and Schur Complements</span></a></li><li class="file-node"><a class="note-link is-current" aria-current="page" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/10.%20Eigenvalues%20and%20Iterative%20Methods.html"><span class="page-number">10</span><span>Eigenvalues and Iterative Methods</span></a></li></ul></nav></aside>
+<main class="reading-viewport" id="reading-viewport" tabindex="-1"><article class="article"><header class="article-header"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/index.html">理论</a><span aria-hidden="true"> / </span><a href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/index.html">Numerical Linear Algbera</a></nav><h1 id="reader-title">10. Eigenvalues and Iterative Methods</h1></header><div id="article-body" class="prose"><p><em>Numerical Methods I — Florian Schaefer. Source: <a href="https://brightspace.nyu.edu/content/enforced/609409-FA26_MATH-GA_2010_1_001_crse/Lecture%2010.pdf">Lecture 10.pdf</a>, pp.&nbsp;1–13.</em></p>
+<p>Schedule association: October 7, 2026 (from the course schedule, not a handwritten date stamp).</p>
+<h2 data-original-heading="10.1 Recap" id="recap">10.1 Recap</h2>
+<!-- Source: Lecture 10.pdf, p. 1. -->
+<p>The preceding lectures developed LU, QR, and Cholesky factorizations through elimination and orthogonal projection. For a Hermitian positive definite matrix, symmetry-preserving elimination gives</p>
+<p><span class="math display">\[
+A=LL^*,
+\qquad
+A=\begin{pmatrix}A_{11}&amp;A_{12}\\A_{21}&amp;A_{22}\end{pmatrix},
+\qquad
+L=\begin{pmatrix}L_{11}&amp;0\\L_{21}&amp;L_{22}\end{pmatrix}.
+\]</span></p>
+<p>The remaining block is described by the Schur complement:</p>
+<p><span class="math display">\[
+\boxed{A_{22}-A_{21}A_{11}^{-1}A_{12}=L_{22}L_{22}^*.}
+\]</span></p>
+<p>Positive definiteness keeps the elimination pivots positive. It also controls factor growth through</p>
+<p><span class="math display">\[
+\begin{aligned}
+(|L||L|^T)_{ij}
+&amp;=\sum_k |L_{ik}|\,|L_{jk}|\\
+&amp;\le\sqrt{\sum_k|L_{ik}|^2}\sqrt{\sum_k|L_{jk}|^2}
+=\sqrt{A_{ii}A_{jj}}.
+\end{aligned}
+\]</span></p>
+<p>We now turn to factorizations organized around eigenvectors. The lecture names eigenvalue, polar, Schur, and singular value decompositions, then begins with the problem of computing a single eigenpair.</p>
+<h2 data-original-heading="10.2 Eigenvalues and Eigenvectors" id="eigenvalues-and-eigenvectors">10.2 Eigenvalues and Eigenvectors</h2>
+<!-- Source: Lecture 10.pdf, p. 2. -->
+<p>Write <span class="math inline">\(\mathbb{K}\)</span> for <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span>, and let <span class="math inline">\(A\in\mathbb{K}^{m\times m}\)</span>. The star denotes conjugate transpose.</p>
+<div class="math-theorem definition" data-callout="definition">
+<div class="theorem-header">
+<p><span class="theorem-badge">Definition</span><span class="theorem-title">Eigenpair</span></p>
+</div>
+<div class="theorem-content">
+<p>A scalar <span class="math inline">\(\lambda\in\mathbb{K}\)</span> and a nonzero vector <span class="math inline">\(x\in\mathbb{K}^m\)</span> form an eigenpair of <span class="math inline">\(A\)</span> when <span class="math display">\[
+Ax=\lambda x.
+\]</span></p>
+</div>
+</div>
+<p>Multiplication by <span class="math inline">\(A\)</span> preserves the direction of an eigenvector and scales it by its eigenvalue. We use <span class="math inline">\(\lambda_i\)</span> for the eigenvalues denoted by <span class="math inline">\(\delta_i\)</span> on the sheet.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<h3 data-original-heading="10.2.1 Hermitian Matrices" id="hermitian-matrices">10.2.1 Hermitian Matrices</h3>
+<p>Suppose <span class="math inline">\(A=A^*\)</span>.</p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Reality and orthogonality</span></p>
+</div>
+<div class="theorem-content">
+<p>Every eigenvalue of a Hermitian matrix is real. Eigenvectors belonging to distinct eigenvalues are orthogonal.</p>
+</div>
+</div>
+<p>If <span class="math inline">\(Ax=\lambda x\)</span>, then</p>
+<p><span class="math display">\[
+\lambda=\frac{x^*Ax}{x^*x}.
+\]</span></p>
+<p>The denominator is positive, and the numerator is real because</p>
+<p><span class="math display">\[
+\overline{x^*Ax}=x^*A^*x=x^*Ax.
+\]</span></p>
+<p>Thus <span class="math inline">\(\lambda=\overline\lambda\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>For <span class="math inline">\(Ax_i=\lambda_i x_i\)</span> and <span class="math inline">\(Ax_j=\lambda_j x_j\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_i x_i^*x_j
+&amp;=(Ax_i)^*x_j\\
+&amp;=x_i^*Ax_j
+=\lambda_j x_i^*x_j.
+\end{aligned}
+\]</span></p>
+<p>Consequently,</p>
+<p><span class="math display">\[
+(\lambda_i-\lambda_j)x_i^*x_j=0,
+\qquad
+\lambda_i\ne\lambda_j\Longrightarrow x_i^*x_j=0.
+\]</span></p>
+<p>The spectral theorem supplies an orthonormal eigenbasis, including within repeated eigenspaces. With</p>
+<p><span class="math display">\[
+X=\begin{pmatrix}x_1&amp;\cdots&amp;x_m\end{pmatrix},
+\qquad
+\Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_m),
+\]</span></p>
+<p>we can therefore write</p>
+<p><span class="math display">\[
+\boxed{A=X\Lambda X^*,\qquad X^*X=I.}
+\]</span></p>
+<p>The subsequent convergence arguments use this Hermitian setting. A general matrix need not have an orthonormal eigenbasis, or even be diagonalizable.</p>
+<h2 data-original-heading="10.3 Why Eigenvalue Computation Is Iterative" id="why-eigenvalue-computation-is-iterative">10.3 Why Eigenvalue Computation Is Iterative</h2>
+<!-- Source: Lecture 10.pdf, p. 3. -->
+<p>LU, Cholesky, and QR can be computed by a finite sequence of elimination or orthogonalization steps, using <span class="math inline">\(O(m^3)\)</span> arithmetic work for a dense square matrix. Ignoring roundoff, these procedures produce exact factorizations.</p>
+<blockquote>
+<p>Can we compute eigenvalues by a similar finite formula?</p>
+</blockquote>
+<p>The lecture invokes the Abel–Ruffini obstruction: there is no general formula in radicals for the roots of a polynomial of degree five or higher.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Eigenvalue computation contains polynomial root finding as a special case.</p>
+<p>To see this, consider a monic polynomial</p>
+<p><span class="math display">\[
+p(z)=z^m+a_{m-1}z^{m-1}+\cdots+a_1z+a_0
+\]</span></p>
+<p>and its companion matrix</p>
+<p><span class="math display">\[
+C=\begin{pmatrix}
+0&amp;1&amp;0&amp;\cdots&amp;0\\
+0&amp;0&amp;1&amp;\ddots&amp;\vdots\\
+\vdots&amp;\ddots&amp;\ddots&amp;\ddots&amp;0\\
+0&amp;\cdots&amp;0&amp;0&amp;1\\
+-a_0&amp;-a_1&amp;-a_2&amp;\cdots&amp;-a_{m-1}
+\end{pmatrix}.
+\]</span></p>
+<p>If <span class="math inline">\(p(z)=0\)</span>, define</p>
+<p><span class="math display">\[
+v(z)=\begin{pmatrix}1&amp;z&amp;\cdots&amp;z^{m-1}\end{pmatrix}^T.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+Cv(z)
+=\begin{pmatrix}
+z\\z^2\\\vdots\\z^{m-1}\\-\sum_{i=0}^{m-1}a_i z^i
+\end{pmatrix}
+=\begin{pmatrix}z\\z^2\\\vdots\\z^{m-1}\\z^m\end{pmatrix}
+=zv(z).
+\]</span></p>
+<p>Thus every root of <span class="math inline">\(p\)</span> is an eigenvalue of <span class="math inline">\(C\)</span>. A general finite radical formula for eigenvalues would give one for polynomial roots as well.</p>
+<p>This companion matrix is not generally Hermitian; the example explains the obstruction for the general eigenvalue problem. For numerical computation, we instead seek a sequence of increasingly accurate approximations.</p>
+<h2 data-original-heading="10.4 Power Iteration" id="power-iteration">10.4 Power Iteration</h2>
+<!-- Source: Lecture 10.pdf, pp. 4–5. -->
+<p>For <span class="math inline">\(A=X\Lambda X^*\)</span>, write a starting vector in eigenvector coordinates:</p>
+<p><span class="math display">\[
+z=Xy=\sum_{i=1}^m y_i x_i.
+\]</span></p>
+<p>Repeated multiplication gives</p>
+<p><span class="math display">\[
+Az=X\Lambda y,
+\qquad
+A^2z=X\Lambda^2y,
+\qquad
+A^kz=X\Lambda^k y.
+\]</span></p>
+<p>Assume the eigenvalues are ordered by magnitude and that there is a unique dominant one:</p>
+<p><span class="math display">\[
+|\lambda_1|&gt;|\lambda_2|\ge\cdots\ge|\lambda_m|.
+\]</span></p>
+<p>If <span class="math inline">\(y_1\ne0\)</span>, then</p>
+<p><span class="math display">\[
+A^kz
+=\lambda_1^k y_1
+\left(
+x_1+\sum_{i=2}^m\frac{y_i}{y_1}
+\left(\frac{\lambda_i}{\lambda_1}\right)^k x_i
+\right).
+\]</span></p>
+<p>Every ratio in the sum has magnitude less than one. The component along <span class="math inline">\(x_1\)</span> therefore dominates as <span class="math inline">\(k\)</span> grows.</p>
+<h3 data-original-heading="10.4.1 Normalizing at Every Step" id="normalizing-at-every-step">10.4.1 Normalizing at Every Step</h3>
+<p>Computing <span class="math inline">\(A^kz\)</span> directly can overflow or underflow. We only need its direction, so normalize after each multiplication:</p>
+<p><span class="math display">\[
+\boxed{
+z^{(k)}=Aq^{(k)},
+\qquad
+q^{(k+1)}=\frac{z^{(k)}}{\|z^{(k)}\|_2}.
+}
+\]</span></p>
+<p>In exact arithmetic this produces the direction of <span class="math inline">\(A^{k+1}q^{(0)}\)</span> without explicitly forming a matrix power. A Gaussian starting vector has a nonzero component in the dominant eigendirection with probability one under the continuous model.</p>
+<p>For a nonzero vector <span class="math inline">\(q\)</span>, define its <strong>Rayleigh quotient</strong> by</p>
+<p><span class="math display">\[
+r(q)=\frac{q^*Aq}{q^*q}.
+\]</span></p>
+<p>For a unit vector, this reduces to <span class="math inline">\(r(q)=q^*Aq\)</span>. If <span class="math inline">\(q=x_i\)</span>, the quotient is exactly <span class="math inline">\(\lambda_i\)</span>, so it provides an eigenvalue estimate along with the eigenvector estimate.</p>
+<h3 data-original-heading="10.4.2 Algorithm" id="algorithm">10.4.2 Algorithm</h3>
+<p>The following Julia-style transcription assumes a real symmetric floating-point matrix and a prescribed number of iterations. <code>norm</code> and <code>dot</code> are from Julia’s <code>LinearAlgebra</code> standard library.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fu">randn</span>(<span class="fu">size</span>(A, <span class="fl">1</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">/=</span> <span class="fu">norm</span>(q)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>maxiter</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> A <span class="op">*</span> q</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    rho <span class="op">=</span> <span class="fu">norm</span>(z)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">iszero</span>(rho)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">error</span>(<span class="st">"Power iteration reached a zero vector."</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> z <span class="op">/</span> rho</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>lambda <span class="op">=</span> <span class="fu">dot</span>(q, A <span class="op">*</span> q)</span></code></pre></div>
+<p>The final quotient is evaluated at the returned vector. The sheet evaluates it before the normalization within the loop, which estimates the eigenvalue using the preceding iterate.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<h2 data-original-heading="10.5 Convergence of Power Iteration" id="convergence-of-power-iteration">10.5 Convergence of Power Iteration</h2>
+<!-- Source: Lecture 10.pdf, pp. 6–7. -->
+<p>Let <span class="math inline">\(q^{(0)}\)</span> be a unit vector with expansion</p>
+<p><span class="math display">\[
+q^{(0)}=\sum_{i=1}^m\alpha_i x_i,
+\qquad \alpha_1\ne0,
+\qquad \sum_i|\alpha_i|^2=1.
+\]</span></p>
+<p>Set</p>
+<p><span class="math display">\[
+\rho=\left|\frac{\lambda_2}{\lambda_1}\right|&lt;1.
+\]</span></p>
+<p>The relevant error is the angle <span class="math inline">\(\theta_k\)</span> between <span class="math inline">\(q^{(k)}\)</span> and the line spanned by <span class="math inline">\(x_1\)</span>. Using the orthonormal eigenbasis,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tan\theta_k
+&amp;=\frac{\left\|\sum_{i=2}^m\alpha_i\lambda_i^k x_i\right\|_2}
+{|\alpha_1\lambda_1^k|}\\
+&amp;=\left(
+\sum_{i=2}^m\left|\frac{\alpha_i}{\alpha_1}\right|^2
+\left|\frac{\lambda_i}{\lambda_1}\right|^{2k}
+\right)^{1/2}\\
+&amp;\le\frac{\sqrt{1-|\alpha_1|^2}}{|\alpha_1|}\rho^k.
+\end{aligned}
+\]</span></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Power iteration convergence</span></p>
+</div>
+<div class="theorem-content">
+<p>If <span class="math inline">\(A\)</span> is Hermitian, <span class="math inline">\(|\lambda_1|&gt;|\lambda_2|\)</span>, and <span class="math inline">\(\alpha_1\ne0\)</span>, then the normalized power iterates converge to the dominant eigendirection with <span class="math display">\[
+\sin\theta_k=O(\rho^k),
+\qquad \rho=|\lambda_2/\lambda_1|.
+\]</span></p>
+</div>
+</div>
+<p>For a negative dominant eigenvalue, the vector may alternate signs at every iteration. Over <span class="math inline">\(\mathbb C\)</span>, an eigenvector is similarly defined only up to a unit-modulus scalar. Convergence of the eigendirection allows these sign or phase changes.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<h3 data-original-heading="10.5.1 Accuracy of the Eigenvalue Estimate" id="accuracy-of-the-eigenvalue-estimate">10.5.1 Accuracy of the Eigenvalue Estimate</h3>
+<p>For a unit vector <span class="math inline">\(q=\sum_i\beta_i x_i\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+r(q)-\lambda_1
+&amp;=\sum_i\lambda_i|\beta_i|^2-\lambda_1\sum_i|\beta_i|^2\\
+&amp;=\sum_{i=2}^m(\lambda_i-\lambda_1)|\beta_i|^2.
+\end{aligned}
+\]</span></p>
+<p>Since <span class="math inline">\(\sum_{i=2}^m|\beta_i|^2=\sin^2\theta\)</span>,</p>
+<p><span class="math display">\[
+|r(q)-\lambda_1|
+\le\max_{i\ge2}|\lambda_i-\lambda_1|\,\sin^2\theta.
+\]</span></p>
+<p>Therefore the power iteration estimates satisfy</p>
+<p><span class="math display">\[
+\boxed{|r(q^{(k)})-\lambda_1|=O(\rho^{2k}).}
+\]</span></p>
+<p>The eigenvalue error is second order in the error of the eigenvector direction.</p>
+<h3 data-original-heading="10.5.2 When Convergence Is Slow" id="when-convergence-is-slow">10.5.2 When Convergence Is Slow</h3>
+<p>The ratio <span class="math inline">\(|\lambda_2/\lambda_1|\)</span> determines how quickly competing components disappear. If it is close to one, convergence is slow. A small initial coefficient <span class="math inline">\(|\alpha_1|\)</span> can also delay the point at which the dominant component becomes visible.</p>
+<p>The sketches on the sheet distinguish nearby eigenvalues with the same sign from eigenvalues with nearly equal magnitude and opposite signs. Both give slow separation in magnitude. Opposite signs additionally cause relative sign changes between the corresponding components.</p>
+<p>If <span class="math inline">\(|\lambda_1|=|\lambda_2|\)</span>, the strict dominance assumption fails. Power iteration need not select one eigenvector; for example, eigenvalues <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(-\lambda\)</span> can produce an alternating direction.</p>
+<h2 data-original-heading="10.6 Matrix Functions and Polynomial Filtering" id="matrix-functions-and-polynomial-filtering">10.6 Matrix Functions and Polynomial Filtering</h2>
+<!-- Source: Lecture 10.pdf, p. 8. -->
+<blockquote>
+<p>How can we change the eigenvalues while preserving the eigenvectors?</p>
+</blockquote>
+<p>If <span class="math inline">\(Ax=\lambda x\)</span>, then</p>
+<p><span class="math display">\[
+\begin{aligned}
+A^kx&amp;=\lambda^k x,\\
+(\alpha A)x&amp;=(\alpha\lambda)x,\\
+(A+\beta I)x&amp;=(\lambda+\beta)x,\\
+p(A)x&amp;=p(\lambda)x.
+\end{aligned}
+\]</span></p>
+<p>The last identity follows by expanding a polynomial <span class="math inline">\(p(t)=\sum_{j=0}^d c_jt^j\)</span>:</p>
+<p><span class="math display">\[
+p(A)x
+=\sum_{j=0}^d c_j A^j x
+=\left(\sum_{j=0}^d c_j\lambda^j\right)x
+=p(\lambda)x.
+\]</span></p>
+<p>For a diagonalizable matrix,</p>
+<p><span class="math display">\[
+p(A)=Xp(\Lambda)X^{-1}.
+\]</span></p>
+<p>A polynomial can amplify some eigendirections relative to others by making the corresponding values <span class="math inline">\(|p(\lambda_i)|\)</span> larger. This is the lecture’s idea of <strong>polynomial filtering</strong>.</p>
+<p>The number-line sketch illustrates a shift by <span class="math inline">\(I\)</span>: every eigenvalue moves from <span class="math inline">\(\lambda_i\)</span> to <span class="math inline">\(\lambda_i+1\)</span>. A suitable shift can change which transformed eigenvalue has largest magnitude. It does not change the eigenvectors, although different eigenvalues can map to the same transformed value.</p>
+<h2 data-original-heading="10.7 Inverse Iteration" id="inverse-iteration">10.7 Inverse Iteration</h2>
+<!-- Source: Lecture 10.pdf, p. 9. -->
+<p>Power iteration targets the eigenvalue of largest magnitude. Suppose instead that we want an eigenvalue near a real number <span class="math inline">\(\mu\)</span>.</p>
+<p>If <span class="math inline">\(\mu\)</span> is not an eigenvalue of <span class="math inline">\(A\)</span>, then</p>
+<p><span class="math display">\[
+(A-\mu I)x_i=(\lambda_i-\mu)x_i
+\quad\Longrightarrow\quad
+(A-\mu I)^{-1}x_i=\frac{1}{\lambda_i-\mu}x_i.
+\]</span></p>
+<p>The eigenvalue closest to <span class="math inline">\(\mu\)</span> produces the transformed eigenvalue of largest magnitude. Apply power iteration to this inverse:</p>
+<p><span class="math display">\[
+\boxed{
+(A-\mu I)z^{(k)}=q^{(k)},
+\qquad
+q^{(k+1)}=\frac{z^{(k)}}{\|z^{(k)}\|_2}.
+}
+\]</span></p>
+<p>The inverse is a mathematical description. Numerically, each step solves a linear system.</p>
+<h3 data-original-heading="10.7.1 Algorithm with a Fixed Shift" id="algorithm-with-a-fixed-shift">10.7.1 Algorithm with a Fixed Shift</h3>
+<p>For a fixed <span class="math inline">\(\mu\)</span>, the matrix <span class="math inline">\(A-\mu I\)</span> does not change. Its LU factorization can be computed once and reused:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fu">randn</span>(<span class="fu">size</span>(A, <span class="fl">1</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">/=</span> <span class="fu">norm</span>(q)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> <span class="fu">lu</span>(A <span class="op">-</span> mu <span class="op">*</span> I)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>maxiter</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> F <span class="op">\</span> q</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> z <span class="op">/</span> <span class="fu">norm</span>(z)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>lambda <span class="op">=</span> <span class="fu">dot</span>(q, A <span class="op">*</span> q)</span></code></pre></div>
+<p>Here <code>lu</code> and <code>I</code> are also from <code>LinearAlgebra</code>, and <span class="math inline">\(A-\mu I\)</span> is assumed nonsingular. Reusing the factorization implements the fixed-shift solves on the sheet without repeating the factorization at every iteration.</p>
+<h3 data-original-heading="10.7.2 Convergence Factor" id="convergence-factor">10.7.2 Convergence Factor</h3>
+<p>Suppose <span class="math inline">\(\lambda_j\)</span> is uniquely closest to <span class="math inline">\(\mu\)</span> and the starting vector has a nonzero component along <span class="math inline">\(x_j\)</span>. The power iteration argument gives the convergence factor</p>
+<p><span class="math display">\[
+\rho_\mu
+=\max_{i\ne j}\left|\frac{\lambda_j-\mu}{\lambda_i-\mu}\right|
+=\frac{|\lambda_j-\mu|}{\min_{i\ne j}|\lambda_i-\mu|}
+&lt;1.
+\]</span></p>
+<p>A shift close to <span class="math inline">\(\lambda_j\)</span>, compared with its distance from the other eigenvalues, gives fast convergence. The Rayleigh quotient is still evaluated using the original <span class="math inline">\(A\)</span>, so it estimates <span class="math inline">\(\lambda_j\)</span> itself.</p>
+<h2 data-original-heading="10.8 Rayleigh Quotient Iteration" id="rayleigh-quotient-iteration">10.8 Rayleigh Quotient Iteration</h2>
+<!-- Source: Lecture 10.pdf, p. 10. -->
+<blockquote>
+<p>What if a good shift is not known in advance?</p>
+</blockquote>
+<p>Use the current eigenvector estimate to choose it:</p>
+<p><span class="math display">\[
+\mu_k=r(q^{(k)}).
+\]</span></p>
+<p>One inverse iteration step then gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+(A-\mu_k I)z^{(k)}&amp;=q^{(k)},\\
+q^{(k+1)}&amp;=\frac{z^{(k)}}{\|z^{(k)}\|_2},\\
+\mu_{k+1}&amp;=r(q^{(k+1)}).
+\end{aligned}
+\]</span></p>
+<p>A better vector gives a better shift, and a better shift strengthens the next inverse iteration step.</p>
+<p>The lecture compares this feedback with Newton’s method. The rate still needs its own analysis; for a symmetric matrix near a simple eigenpair, the combination will give cubic convergence.</p>
+<h3 data-original-heading="10.8.1 Algorithm" id="algorithm-1">10.8.1 Algorithm</h3>
+<p>For a real symmetric matrix, the Julia-style iteration is</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fu">randn</span>(<span class="fu">size</span>(A, <span class="fl">1</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">/=</span> <span class="fu">norm</span>(q)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fu">dot</span>(q, A <span class="op">*</span> q)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>maxiter</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">norm</span>(A <span class="op">*</span> q <span class="op">-</span> mu <span class="op">*</span> q) <span class="op">&lt;=</span> tol</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> (A <span class="op">-</span> mu <span class="op">*</span> I) <span class="op">\</span> q</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> z <span class="op">/</span> <span class="fu">norm</span>(z)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    mu <span class="op">=</span> <span class="fu">dot</span>(q, A <span class="op">*</span> q)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>Here <code>tol</code> is a chosen absolute residual tolerance. The residual check is an explicit stopping condition added to the lecture loop.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> An exact eigenpair has zero residual and should be accepted before attempting a singular shifted solve.</p>
+<p>Unlike fixed-shift inverse iteration, the coefficient matrix changes with <span class="math inline">\(\mu_k\)</span>, so its numerical factorization generally changes at each step. The convergence argument below assumes the shifted systems encountered before termination are nonsingular. A zero residual is sufficient for termination, but a nonzero residual alone does not guarantee that a Rayleigh shift avoids the spectrum.</p>
+<h2 data-original-heading="10.9 Why the Rayleigh Quotient Is Accurate" id="why-the-rayleigh-quotient-is-accurate">10.9 Why the Rayleigh Quotient Is Accurate</h2>
+<!-- Source: Lecture 10.pdf, pp. 11–12. -->
+<p>For the derivative calculation, take <span class="math inline">\(A\in\mathbb{R}^{m\times m}\)</span> symmetric, as on the sheet. For <span class="math inline">\(x\ne0\)</span>,</p>
+<p><span class="math display">\[
+r(x)=\frac{x^TAx}{x^Tx}.
+\]</span></p>
+<p>The quotient is unchanged by a nonzero scalar rescaling of <span class="math inline">\(x\)</span>. Differentiating the numerator and denominator gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla r(x)
+&amp;=\frac{2Ax\,(x^Tx)-2x\,(x^TAx)}{(x^Tx)^2}\\
+&amp;=\frac{2}{x^Tx}\bigl(Ax-r(x)x\bigr).
+\end{aligned}
+\]</span></p>
+<p>At an eigenvector <span class="math inline">\(x_j\)</span>,</p>
+<p><span class="math display">\[
+Ax_j=\lambda_jx_j,
+\qquad r(x_j)=\lambda_j,
+\qquad \boxed{\nabla r(x_j)=0.}
+\]</span></p>
+<p>Thus eigenvectors are stationary points of the Rayleigh quotient. For a small perturbation <span class="math inline">\(h\)</span>, Taylor expansion yields<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p><span class="math display">\[
+\begin{aligned}
+r(x_j+h)
+&amp;=r(x_j)+\underbrace{\nabla r(x_j)^Th}_{0}
++\frac12h^T\nabla^2r(x_j)h+O(\|h\|_2^3)\\
+&amp;=\lambda_j+O(\|h\|_2^2).
+\end{aligned}
+\]</span></p>
+<p>There is no first-order change. This explains the locally flat graph of <span class="math inline">\(r\)</span> in the lecture and the second-order accuracy of the eigenvalue estimate.</p>
+<h3 data-original-heading="10.9.1 An Exact Error Identity" id="an-exact-error-identity">10.9.1 An Exact Error Identity</h3>
+<p>Normalize <span class="math inline">\(x_j\)</span> and <span class="math inline">\(q\)</span>, and write</p>
+<p><span class="math display">\[
+q=\alpha x_j+e,
+\qquad e\perp x_j,
+\qquad \alpha^2+\|e\|_2^2=1.
+\]</span></p>
+<p>The cross terms vanish because <span class="math inline">\(Ax_j=\lambda_jx_j\)</span>. Therefore</p>
+<p><span class="math display">\[
+\begin{aligned}
+r(q)-\lambda_j
+&amp;=\alpha^2\lambda_j+e^TAe-\lambda_j\\
+&amp;=e^T(A-\lambda_jI)e.
+\end{aligned}
+\]</span></p>
+<p>In particular,</p>
+<p><span class="math display">\[
+\boxed{|r(q)-\lambda_j|\le\|A-\lambda_jI\|_2\,\|e\|_2^2.}
+\]</span></p>
+<p>This gives the same second-order estimate directly in terms of the error perpendicular to the target eigendirection. It will also supply the shift estimate in the convergence proof.</p>
+<h2 data-original-heading="10.10 Local Cubic Convergence" id="local-cubic-convergence">10.10 Local Cubic Convergence</h2>
+<!-- Source: Lecture 10.pdf, p. 13. -->
+<p>The final page combines the improved Rayleigh shift with inverse iteration. We make the separation and nonsingularity assumptions explicit.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<div class="math-theorem theorem" data-callout="theorem">
+<div class="theorem-header">
+<p><span class="theorem-badge">Theorem</span><span class="theorem-title">Local convergence of Rayleigh quotient iteration</span></p>
+</div>
+<div class="theorem-content">
+<p>Let <span class="math inline">\(A\)</span> be real symmetric and let <span class="math inline">\(\lambda_j\)</span> be a simple eigenvalue with unit eigenvector <span class="math inline">\(x_j\)</span>. For normalized iterates sufficiently close to its eigendirection, each well-defined Rayleigh quotient iteration step satisfies <span class="math display">\[
+\sin\theta_{k+1}=O(\sin^3\theta_k),
+\]</span> where <span class="math inline">\(\theta_k\)</span> is the angle to the line spanned by <span class="math inline">\(x_j\)</span>. This is local cubic convergence in exact arithmetic.</p>
+</div>
+</div>
+<h3 data-original-heading="10.10.1 Proof" id="proof">10.10.1 Proof</h3>
+<p>Choose the sign of the current unit vector <span class="math inline">\(q\)</span> so that</p>
+<p><span class="math display">\[
+q=\alpha x_j+e,
+\qquad e\perp x_j,
+\qquad \alpha&gt;0,
+\qquad \epsilon=\|e\|_2=\sin\theta.
+\]</span></p>
+<p>Near the target eigendirection, <span class="math inline">\(\alpha=\sqrt{1-\epsilon^2}\)</span> is bounded away from zero. Define the spectral gap</p>
+<p><span class="math display">\[
+g=\min_{i\ne j}|\lambda_i-\lambda_j|&gt;0.
+\]</span></p>
+<p>For <span class="math inline">\(\mu=r(q)\)</span>, the preceding identity gives</p>
+<p><span class="math display">\[
+|\mu-\lambda_j|=O(\epsilon^2).
+\]</span></p>
+<p>Once <span class="math inline">\(q\)</span> is sufficiently close, <span class="math inline">\(|\mu-\lambda_j|&lt;g/2\)</span>, and hence</p>
+<p><span class="math display">\[
+|\lambda_i-\mu|\ge g/2,
+\qquad i\ne j.
+\]</span></p>
+<p>For a nonsingular shifted system, decompose its solution as</p>
+<p><span class="math display">\[
+\begin{aligned}
+z=(A-\mu I)^{-1}q
+&amp;=\underbrace{\frac{\alpha}{\lambda_j-\mu}x_j}_{\text{target component}}
++\underbrace{(A-\mu I)^{-1}e}_{w\perp x_j}.
+\end{aligned}
+\]</span></p>
+<p>The inverse is bounded on the orthogonal complement of <span class="math inline">\(x_j\)</span>:</p>
+<p><span class="math display">\[
+\|w\|_2\le\frac{2}{g}\|e\|_2=\frac{2\epsilon}{g}.
+\]</span></p>
+<p>Normalization does not change the ratio between the perpendicular and target components. If <span class="math inline">\(q_+=z/\|z\|_2\)</span> has angle <span class="math inline">\(\theta_+\)</span> to <span class="math inline">\(x_j\)</span>, then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tan\theta_+
+&amp;=\frac{\|w\|_2}{|\alpha/(\lambda_j-\mu)|}\\
+&amp;\le\frac{2\epsilon\,|\lambda_j-\mu|}{g\alpha}\\
+&amp;=O(\epsilon^3).
+\end{aligned}
+\]</span></p>
+<p>Since <span class="math inline">\(\sin\theta_+\le\tan\theta_+\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\sin\theta_+=O(\epsilon^3)=O(\sin^3\theta).}
+\]</span></p>
+<p>The mechanism is now explicit: an eigenvector error of size <span class="math inline">\(\epsilon\)</span> produces a shift error of size <span class="math inline">\(O(\epsilon^2)\)</span>, and the inverse step reduces the relative unwanted component by this additional factor. The result is an error of size <span class="math inline">\(O(\epsilon^3)\)</span>.</p>
+<p>The theorem is local: a random starting vector is not asserted to enter this neighborhood in every case. It also concerns exact arithmetic; rounding and the accuracy of the shifted solves limit the improvement observed in a numerical implementation.</p>
+<hr>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Lecture 10, p.&nbsp;2 writes <span class="math inline">\(Ax_i=\delta_i A\)</span> in its defining line. The eigenpair equation requires the vector <span class="math inline">\(x_i\)</span> on the right. The notes use <span class="math inline">\(\lambda_i\)</span> consistently for these eigenvalues.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Lecture 10, p.&nbsp;2 gives a norm in the denominator of the eigenvalue identity without its square. The denominator is <span class="math inline">\(x_i^*x_i=\|x_i\|_2^2\)</span>. This also agrees with the Rayleigh quotient written on p.&nbsp;11.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Lecture 10, p.&nbsp;3 describes the obstruction in terms of finitely many arithmetic operations. The usual Abel–Ruffini statement rules out a general formula using arithmetic operations and radicals for degree five and higher. It does not rule out exact formulas for particular matrices or numerical approximation to any prescribed tolerance.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Lecture 10, pp.&nbsp;5, 9–10 contain schematic Julia-style loops. The code here makes initialization and the returned quotient explicit, adds a zero-norm guard to power iteration and a residual stopping check to Rayleigh quotient iteration, and reuses LU for the fixed shift. These are executable interpretations of the iterations, not literal transcriptions of every handwritten line.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Lecture 10, p.&nbsp;6 suppresses the sign or phase of <span class="math inline">\(\alpha_1\lambda_1^k\)</span> when normalizing, then writes convergence to a fixed vector. The angle formulation retains the intended rate while covering negative dominant eigenvalues and complex starting coefficients. The squared Rayleigh quotient error rate uses Hermitian symmetry.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Lecture 10, pp.&nbsp;5, 9–10 contain schematic Julia-style loops. The code here makes initialization and the returned quotient explicit, adds a zero-norm guard to power iteration and a residual stopping check to Rayleigh quotient iteration, and reuses LU for the fixed shift. These are executable interpretations of the iterations, not literal transcriptions of every handwritten line.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Lecture 10, p.&nbsp;11 labels <span class="math inline">\(H\)</span> as the Hessian but omits the factor <span class="math inline">\(1/2\)</span> in the quadratic Taylor term. The displayed expansion restores that factor and the remainder. The exact perpendicular-error identity is an algebraic completion of the same second-order argument.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Lecture 10, p.&nbsp;13 compresses the normalization and the inverse acting on the error vector. The proof above bounds that inverse on the orthogonal complement using a positive spectral gap, and measures vector error up to sign. It assumes nonsingular shifted solves; if a Rayleigh shift equals an eigenvalue before an exact eigenpair is reached, the displayed inverse step is undefined. The source’s cubic conclusion is therefore stated with its local, symmetric, simple-eigenvalue hypotheses.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div><footer class="article-footer"><nav class="page-navigation" aria-label="Previous and next pages">
+    <a rel="prev" href="/notebook/content/notes/%E7%90%86%E8%AE%BA/Numerical%20Linear%20Algbera/9.%20Cholesky%20Factorization%20and%20Schur%20Complements.html"><span>← Previous page</span><span>9. Cholesky Factorization and Schur Complements</span></a>
+    <span class="unavailable" aria-disabled="true"><span>Next page →</span><span>No later page yet</span></span>
+  </nav></footer></article></main>
+<aside class="outline-sidebar" id="outline-sidebar" aria-label="Current note outline"><div class="outline-document"><button id="outline-fold" class="outline-fold" aria-label="Collapse or expand outline entries" aria-expanded="true" aria-controls="outline-items"><img src="/notebook/assets/icons/chevron.svg" width="12" height="12" alt=""></button><a class="outline-title" href="#reader-title">10. Eigenvalues and Iterative Methods</a></div><div class="outline-contents" id="outline-contents"><div id="outline-progress" class="outline-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-controls="reading-viewport"><span class="outline-marker"></span></div><ol id="outline-items"><li style="--depth:0"><a href="#recap" class="is-active" aria-current="location">10.1 Recap</a></li><li style="--depth:0"><a href="#eigenvalues-and-eigenvectors">10.2 Eigenvalues and Eigenvectors</a></li><li style="--depth:1"><a href="#hermitian-matrices">10.2.1 Hermitian Matrices</a></li><li style="--depth:0"><a href="#why-eigenvalue-computation-is-iterative">10.3 Why Eigenvalue Computation Is Iterative</a></li><li style="--depth:0"><a href="#power-iteration">10.4 Power Iteration</a></li><li style="--depth:1"><a href="#normalizing-at-every-step">10.4.1 Normalizing at Every Step</a></li><li style="--depth:1"><a href="#algorithm">10.4.2 Algorithm</a></li><li style="--depth:0"><a href="#convergence-of-power-iteration">10.5 Convergence of Power Iteration</a></li><li style="--depth:1"><a href="#accuracy-of-the-eigenvalue-estimate">10.5.1 Accuracy of the Eigenvalue Estimate</a></li><li style="--depth:1"><a href="#when-convergence-is-slow">10.5.2 When Convergence Is Slow</a></li><li style="--depth:0"><a href="#matrix-functions-and-polynomial-filtering">10.6 Matrix Functions and Polynomial Filtering</a></li><li style="--depth:0"><a href="#inverse-iteration">10.7 Inverse Iteration</a></li><li style="--depth:1"><a href="#algorithm-with-a-fixed-shift">10.7.1 Algorithm with a Fixed Shift</a></li><li style="--depth:1"><a href="#convergence-factor">10.7.2 Convergence Factor</a></li><li style="--depth:0"><a href="#rayleigh-quotient-iteration">10.8 Rayleigh Quotient Iteration</a></li><li style="--depth:1"><a href="#algorithm-1">10.8.1 Algorithm</a></li><li style="--depth:0"><a href="#why-the-rayleigh-quotient-is-accurate">10.9 Why the Rayleigh Quotient Is Accurate</a></li><li style="--depth:1"><a href="#an-exact-error-identity">10.9.1 An Exact Error Identity</a></li><li style="--depth:0"><a href="#local-cubic-convergence">10.10 Local Cubic Convergence</a></li><li style="--depth:1"><a href="#proof">10.10.1 Proof</a></li></ol></div></aside></div>
+<button class="sidebar-scrim" tabindex="-1" aria-label="Close sidebar" hidden></button>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label id="search-label" for="search-input">Search notes</label><button value="close" aria-label="Close search">×</button></form><input id="search-input" type="search" placeholder="Title, topic, or phrase…" autocomplete="off"><p id="search-status" role="status">Search the published notes on this site.</p><ol id="search-results"></ol></dialog>
+<dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-label"><form method="dialog"><h2 id="appearance-label">Reading appearance</h2><button aria-label="Close text settings">×</button></form><p class="settings-label">Typeface</p><div class="font-options"><button data-font="termes">Classic textbook<small>TeX Gyre Termes</small></button><button data-font="stix">STIX Two Text<small>Original reader</small></button></div><p class="settings-label">Text size</p><div class="size-options"><button data-size="18">Compact</button><button data-size="20">Comfortable</button><button data-size="22">Large</button></div></dialog>
+</body></html>
